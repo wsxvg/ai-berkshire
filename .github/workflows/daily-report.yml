@@ -2,10 +2,8 @@ name: Daily Fund Report
 
 on:
   schedule:
-    # 每天 14:30 北京时间 = 06:30 UTC（周一至周日）
     - cron: '30 6 * * *'
-  workflow_dispatch:
-    # 支持手动触发
+  workflow_dispatch: {}
 
 jobs:
   pipeline:
@@ -33,9 +31,8 @@ jobs:
         continue-on-error: true
 
       - name: Check pipeline status
-        if: steps.pipeline.outcome == 'failure'
-        run: |
-          echo "::warning::Pipeline failed — report may be based on stale data"
+        if: ${{ steps.pipeline.outcome == 'failure' }}
+        run: echo "::warning::Pipeline failed - report may be based on stale data"
 
       - name: Clean sensitive files before commit
         run: rm -rf data/jd_auth/
@@ -44,7 +41,6 @@ jobs:
         run: |
           git config user.name "ai-berkshire-bot"
           git config user.email "bot@ai-berkshire.local"
-          # Whitelist: only add specific files, never data/jd_auth/
           git add data/holdings_snapshot*.json \
                   data/holdings_diff_cache.json \
                   data/trading_records_cache.json \
