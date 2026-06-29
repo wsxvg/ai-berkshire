@@ -1,0 +1,15 @@
+logs/command-log.jsonl
+reports/美团/command-log.jsonl
+.DS_Store
+reports/.DS_Store
+
+# 雪球爬虫登录态缓存（含 cookies，本地使用）
+/tmp/xueqiu_state.json
+
+# 京东金融认证与缓存（含 cookies，本地使用）
+data/jd_auth/
+data/fund_cache/
+data/fund_snapshots/
+
+# Python 缓存
+__pycache__/

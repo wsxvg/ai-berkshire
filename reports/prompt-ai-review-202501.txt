@@ -1,0 +1,136 @@
+请你作为代码评审专家，对以下变更进行评审。请从代码质量、设计合理性、潜在风险三个维度给出评价，并标注你认为需要修改或优化的点。
+
+---
+
+## 项目背景
+
+这是一个投资研究工具的 AI Skill 合集（兼容 Claude Code / Codex / OpenCode）。核心能力包括：
+- 大佬持仓变动监控（fund-monitor）
+- 基于信号加权的卖出决策（fund-sell）
+- 买入前 Checklist（fund-checklist）
+- 金融数据 API 封装（jd_finance_api.py）
+
+## 本轮变更主题
+
+**交易流水信号集成**：新增从雪球 API 获取大佬交易流水（买入/卖出记录），将其信号与原有的持仓快照信号合并，作为卖出决策的加权依据。
+
+## 变更详情
+
+### 1. jd_finance_api.py — 新增交易流水 CLI
+
+```python
+# 函数签名
+def get_trading_records(target_uid=None, page=1, size=20, cookies=None):
+    body = {
+        "pageId": "11568",
+        "pageType": "11568",
+        "buildCodes": ["common", "feeds", "errorConfig", "topData"],
+        "pageSize": size,
+        "busData": {"isFirstFeed": False, "pageSize": str(size), "lastId": "", "end": False},
+        "extParams": {"requestFrom": "pc"},
+        "pageNum": page,
+        "clientVersion": "9.9.9",
+        "clientType": "android",
+    }
+    if target_uid:
+        body["extParams"]["targetUid"] = target_uid
+    # → API call → parse feed → extract tradeRecordData
+```
+
+新增 CLI 参数：
+```
+--trading-records {uid}     # 单用户
+--trading-records-all       # 全部关注用户（串行调用）
+```
+
+**评审重点**：
+- cookie 鉴权复用是否可靠？
+- pageId=11568 是否稳定（会否随版本更新变化）？
+- 串行 --trading-records-all 的性能/限流风险
+
+### 2. fund-monitor — Step 4 交易流水分析
+
+在现有监控流程末尾新增 Step 4：
+
+```
+Step 4: 遍历所有关注uid → 调用 --trading-records → 解析 JSON
+       → 按 fund_code 汇总 buy_count/sell_count → 判断 net_signal
+       → 写入 data/trading_records_cache.json
+```
+
+**评审重点**：
+- 交易流水信号转换规则（买入⭐ / 卖出⚠️ / 多人共识⭐⭐⭐）是否合理？
+- net_signal 计算：buy_count > sell_count → buy, 反之 sell, 相等 → neutral
+- 缓存字段设计（buy_actions/sell_actions 数组 vs 纯计数）是否简洁够用？
+
+### 3. fund-sell — 双缓存合并加权
+
+**数据流**：
+```
+holdings_diff_cache.json (已有)  ─┐
+                                  ├─→ 加权计算 → 卖出建议
+trading_records_cache.json (新增) ─┘
+```
+
+**加权公式**：
+```
+weighted_clear = holdings_score × (1 - sell_count × 0.1)
+sell_count=0 → 满权重
+sell_count=1 → ×0.9
+sell_count=2 → ×0.8
+sell_count≥3 → ×0.7（上限）
+```
+
+**硬性卖出（🔴）独立触发条件**：
+```
+if net_signal == "sell" AND sell_count >= 2 AND 持仓金额减少:
+    → 强制执行，不依赖加权分
+```
+
+**Buy Shield（🛡️）**：
+```
+if net_signal == "buy" AND buy_count >= 2:
+    → 持有确认，跳过本轮减仓检查
+```
+
+**信号矛盾处理**：
+```
+如果 holdings_diff 显示减仓，但 trading_records 多人买入
+    → 标记"分歧观察"，不触发减仓，等待后续信号清晰
+```
+
+**评审重点**：
+- sell_count × 0.1 系数的依据？是否需要可配置化？
+- sell_count ≥ 2 独立触发硬性卖出是否过于敏感？
+- buy shield 无时效限制是否合理？（买入信号是否应该随时间衰减？）
+- "分歧观察"的处理是否足够保守？
+
+### 4. OpenCode 兼容层（辅助变更）
+
+新增三个脚本：
+- `scripts/sync-opencode-skills.py`：将 skills/*.md 转为 OpenCode 格式
+- `scripts/install-opencode-skills.ps1`：Windows 安装
+- `scripts/install-opencode-skills.sh`：macOS/Linux 安装
+
+## 评审要求
+
+请从以下方面给出评价：
+
+1. **代码质量**（函数拆分、命名、注释、错误处理）
+2. **设计合理性**（架构、数据流、扩展性）
+3. **潜在风险**（API 稳定性、竞态条件、数据一致性）
+4. **改进建议**（如果有）
+
+对于每个问题，请标注严重程度：🔴 阻塞 / 🟡 建议 / ⚪ 可选
+
+---
+
+## 变更文件路径（供参考）
+
+- tools/jd_finance_api.py
+- skills/fund-monitor.md
+- skills/fund-sell.md
+- scripts/sync-opencode-skills.py
+- scripts/install-opencode-skills.ps1
+- scripts/install-opencode-skills.sh
+- AGENTS.md
