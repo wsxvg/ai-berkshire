@@ -363,9 +363,44 @@ def run():
             mv_str = f"{vh.get('market_value',h['cost']):,.0f}"
             lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {mv_str} | {pnl_str} | {h.get('buy_date','?')} |")
 
+    # AI 审计入口
+    buy_codes = [a["code"] for a in today_actions if a["action"] == "BUY"]
+    blocked_codes = [r["code"] for r in results if r.get("blocked")]
+    lines += [
+        "",
+        "## AI 审计入口",
+        "",
+        "在本地 IDE 中打开此文件，让 AI 调用以下 SKILL 进行深度分析：",
+        "",
+    ]
+    if buy_codes:
+        lines.append(f"- `fund-checklist {' '.join(buy_codes)}` — 买入前六关审计")
+        lines.append(f"- `fund-penetration {' '.join(buy_codes)}` — 穿透持仓分析")
+    if blocked_codes:
+        lines.append(f"- `fund-analyze {' '.join(blocked_codes)}` — 风控拦截基金复查")
+    if portfolio.holdings:
+        held = list(portfolio.holdings.keys())
+        lines.append(f"- `fund-sell {' '.join(held)}` — 持仓卖出信号检查")
+
     lines += ["", "---", f"*{TODAY_CN} 14:30 CST*"]
     (SIM_DIR / f"{TODAY}.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"   日报已保存")
+
+    # 保存 AI 可读的机器报告
+    ai_report = {
+        "date": TODAY,
+        "market": market,
+        "min_score": min_score,
+        "candidates_top5": [{"code": c["code"], "name": c["name"], "score": c["score"]} for c in candidates[:5]],
+        "buy_recommendations": [a for a in today_actions if a["action"] == "BUY"],
+        "sell_recommendations": [a for a in today_actions if a["action"] == "SELL"],
+        "blocked_funds": [{"code": r["code"], "name": r["name"], "reason": r.get("reason")} for r in results if r.get("blocked")],
+        "holdings": {code: {"name": h["name"], "cost": h["cost"], "market_value": hv.get("market_value"), "pnl_pct": hv.get("pnl_pct")}
+                     for code, h in portfolio.holdings.items() for hv in [vp_holdings.get(code, {})]},
+        "portfolio": {"total_value": round(total_val, 2), "cash": round(portfolio.cash, 2), "fees": round(portfolio.total_fees, 2)},
+    }
+    (SIM_DIR / f"{TODAY}.json").write_text(json.dumps(ai_report, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"   AI机器报告已保存: {TODAY}.json")
 
     print(f"\n=== 完成: 总资产 {total_val:,.0f} ({((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}%) ===")
 
