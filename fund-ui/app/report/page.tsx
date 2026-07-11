@@ -20,12 +20,14 @@ function StatCard({ label, value, unit = '' }: { label: string; value: string | 
 
 export default function ReportPage() {
   const [data, setData] = useState<DailyReport | null>(null)
+  const [snapshots, setSnapshots] = useState<Array<{ date: string; total_value: number }>>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchDailyReport()
-      .then(setData)
+    fetch('/api/report')
+      .then(r => r.json())
+      .then(d => { setData(d.latest); setSnapshots(d.snapshots || []) })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false))
   }, [])
@@ -61,6 +63,25 @@ export default function ReportPage() {
         <StatCard label="现金" value={portfolio.cash.toLocaleString()} unit=" 元" />
         <StatCard label="手续费" value={portfolio.fees.toLocaleString()} unit=" 元" />
       </div>
+
+      {/* 净值趋势 */}
+      {snapshots.length > 1 && (
+        <div className="glass" style={{ padding: '16px', marginBottom: '24px' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '12px' }}>组合净值走势</h3>
+          <ResponsiveContainer width="100%" height={200}>
+            <AreaChart data={snapshots}>
+              <XAxis dataKey="date" tick={{ fontSize: 10, fill: 'var(--text-secondary)' }}
+                     tickFormatter={(d: string) => d.slice(5)} />
+              <YAxis domain={['dataMin - 1000', 'dataMax + 1000']} tick={{ fontSize: 10, fill: 'var(--text-secondary)' }} />
+              <Tooltip
+                contentStyle={{ background: 'rgba(15,20,40,0.9)', border: '1px solid var(--glass-border)', borderRadius: '8px' }}
+                formatter={(v: number) => [`${v.toLocaleString()} 元`, '总资产']}
+              />
+              <Area type="monotone" dataKey="total_value" stroke="#ff5577" fill="rgba(255,85,119,0.15)" strokeWidth={2} />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      )}
 
       {/* 操作建议 */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '24px' }}>

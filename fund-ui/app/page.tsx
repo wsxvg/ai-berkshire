@@ -114,22 +114,24 @@ export default function Home() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
         <div>
           <h2 style={{ fontSize: '24px', fontWeight: 700 }}>自选基金</h2>
-          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>{funds.length} 只</span>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>{funds.length} 只 · 实时数据来自京东金融</span>
         </div>
-        <button
-          onClick={loadScores}
-          disabled={scoring}
-          style={{
-            padding: '10px 24px', borderRadius: '12px', border: '1px solid var(--glass-border)',
-            background: 'var(--bg-card)', color: 'var(--text-primary)', cursor: 'pointer',
-            fontWeight: 600, fontSize: '14px',
-          }}
-        >
-          {scoring ? '评分中...' : 'AI 评分'}
-        </button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            onClick={loadScores}
+            disabled={scoring}
+            style={{
+              padding: '10px 24px', borderRadius: '12px', border: '1px solid var(--glass-border)',
+              background: 'var(--bg-card)', color: 'var(--text-primary)', cursor: 'pointer',
+              fontWeight: 600, fontSize: '14px',
+            }}
+          >
+            {scoring ? '评分中...' : 'AI 评分'}
+          </button>
+        </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px' }}>

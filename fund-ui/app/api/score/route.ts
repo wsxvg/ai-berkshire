@@ -5,6 +5,10 @@ import fs from 'fs'
 
 const ROOT = path.resolve(process.cwd(), '..')
 
+// 缓存：5分钟内不重复计算
+let cache: { data: any; time: number; codes: string } | null = null
+const CACHE_TTL = 5 * 60 * 1000
+
 function runPy(file: string): Promise<string> {
   return new Promise((resolve, reject) => {
     exec(`python "${file}"`, {
@@ -20,6 +24,11 @@ function runPy(file: string): Promise<string> {
 export async function GET(req: NextRequest) {
   const codes = req.nextUrl.searchParams.get('codes') || ''
   if (!codes) return NextResponse.json({ error: 'missing codes' }, { status: 400 })
+
+  // 缓存命中
+  if (cache && cache.codes === codes && Date.now() - cache.time < CACHE_TTL) {
+    return NextResponse.json(cache.data, { headers: { 'X-Cache': 'HIT' } })
+  }
 
   const tmp = path.join(ROOT, '_api_score.py')
   try {
@@ -74,7 +83,9 @@ results.sort(key=lambda x: -x['total'])
 print(json.dumps(results, ensure_ascii=False))`, 'utf-8')
     const stdout = await runPy(tmp)
     fs.unlinkSync(tmp)
-    return NextResponse.json(JSON.parse(stdout.trim()))
+    const data = JSON.parse(stdout.trim())
+    cache = { data, time: Date.now(), codes }
+    return NextResponse.json(data)
   } catch (e: any) {
     try { fs.unlinkSync(tmp) } catch {}
     return NextResponse.json({ error: e.message }, { status: 500 })
