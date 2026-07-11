@@ -160,13 +160,26 @@ def score_quality_backtest(chart_points, cutoff_date, scale_text=None, perf_data
     return DimensionScore(score=min(5.0, max(0, score * penalty)), weight=0.25, freshness_days=0)
 
 
-def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date):
+def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None):
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
-    trading_by_date: {"2026-01-15": [{fund_name, action, _user}, ...]}
+    trading_by_date: {"2026-01-15": [{fund_name, action, _user, fund_code?}, ...]}
     cutoff_date: "2026-03-15" → 只取 <= 的日期。
+    fund_code: 可选，用于精确匹配（优先级高于 fund_name）。
     """
     sorted_dates = sorted(d for d in trading_by_date if d <= cutoff_date)
+
+    def _match(record):
+        """匹配: fund_code 优先 → fund_name → 包含"""
+        if fund_code and record.get("fund_code") == fund_code:
+            return True
+        if record.get("fund_name", "") == fund_name:
+            return True
+        # 模糊: 名称包含（处理份额后缀差异）
+        rn = record.get("fund_name", "")
+        if rn and (fund_name in rn or rn in fund_name):
+            return True
+        return False
 
     # 追踪每个用户对这只基金的操作历史
     user_actions = {}   # {user: [action, ...]}
@@ -174,7 +187,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date):
 
     for d in sorted_dates:
         for r in trading_by_date[d]:
-            if r.get("fund_name", "") != fund_name:
+            if not _match(r):
                 continue
             act = r.get("action", "")
             user = r.get("_user", "")
@@ -189,6 +202,13 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date):
 
     # 今天的操作
     today_records = trading_by_date.get(cutoff_date, [])
+    # 如果今天无交易记录，回退到最近有数据的日期
+    if not today_records and sorted_dates:
+        for fallback_date in reversed(sorted_dates):
+            fb = trading_by_date.get(fallback_date, [])
+            if any(_match(r) for r in fb):
+                today_records = fb
+                break
     first_time_buyers = set()   # 建仓
     repeat_buyers = set()       # 加仓
     daily_buyers = set()
@@ -196,7 +216,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date):
     complete_exiters = set()    # 清仓
 
     for r in today_records:
-        if r.get("fund_name", "") != fund_name:
+        if not _match(r):
             continue
         act = r.get("action", "")
         user = r.get("_user", "")
@@ -231,7 +251,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date):
         if d >= cutoff_date:
             continue
         for r in trading_by_date[d]:
-            if r.get("fund_name", "") != fund_name:
+            if not _match(r):
                 continue
             act = r.get("action", "")
             if "买入" in act or "转换入" in act or "加仓" in act or "定投" in act:
@@ -555,7 +575,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     quality = score_quality_backtest(chart_pts, cutoff_date,
                                      profile.get("scale") if profile else None,
                                      perf_data)
-    smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date)
+    smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
