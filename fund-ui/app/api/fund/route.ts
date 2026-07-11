@@ -7,9 +7,12 @@ const ROOT = path.resolve(process.cwd(), '..')
 
 function runPy(file: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    exec(`python "${file}"`, { cwd: ROOT, timeout: 30000 }, (err, stdout, stderr) => {
-      if (err) reject(new Error(stderr || err.message))
-      else resolve(stdout)
+    exec(`python "${file}"`, {
+      cwd: ROOT, timeout: 30000, encoding: 'buffer',
+      env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
+    }, (err, stdout, stderr) => {
+      if (err) reject(new Error(stderr?.toString('utf-8') || err.message))
+      else resolve(stdout.toString('utf-8'))
     })
   })
 }
