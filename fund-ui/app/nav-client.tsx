@@ -18,6 +18,7 @@ export function NavClient() {
         <span style={{ color: dark ? '#f0b90b' : '#d48b00' }}>AI</span> Berkshire Fund
       </h1>
       <a href="/" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>首页</a>
+      <a href="/feed" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>动态</a>
       <a href="/news" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>资讯</a>
       <a href="/ranking" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>排行</a>
       <a href="/dca" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>定投</a>

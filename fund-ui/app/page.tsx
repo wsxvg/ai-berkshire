@@ -110,20 +110,29 @@ export default function Home() {
         </div>
       )}
 
-      {/* 大佬动态 */}
+      {/* 大佬动态 — 最近 10 笔 */}
       {feed.length > 0 && (
-        <div className="glass" style={{ padding: '12px 16px', marginBottom: '24px', display: 'flex', gap: '12px', overflowX: 'auto', fontSize: '13px', alignItems: 'center' }}>
-          <span style={{ fontWeight: 600, whiteSpace: 'nowrap', color: 'var(--accent-gold)', marginRight: '8px' }}>大佬动态</span>
-          {feed.slice(0, 15).map((f, i) => (
-            <span key={i} style={{ whiteSpace: 'nowrap', padding: '4px 10px', borderRadius: '12px',
-              background: f.action?.includes('买入') ? 'rgba(255,85,119,0.1)' : 'rgba(0,168,120,0.1)',
-              color: f.action?.includes('买入') ? 'var(--accent-red)' : 'var(--accent-green)',
-              display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
-              <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{f.user?.slice(0,4)}</span>
-              <span>{f.action?.includes('买入') ? '买入' : '卖出'}</span>
-              <span style={{ fontSize: '11px' }}>{f.fund?.slice(0,8)}</span>
-            </span>
-          ))}
+        <div className="glass" style={{ padding: '12px 16px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+            <span style={{ fontWeight: 600, color: 'var(--accent-gold)' }}>大佬动态</span>
+            <a href="/feed" style={{ fontSize: '12px', color: 'var(--accent-blue)' }}>查看全部 →</a>
+          </div>
+          <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', fontSize: '12px', alignItems: 'center' }}>
+            {feed.slice(0, 12).map((f: any, i: number) => (
+              <span key={i} title={`${f.user} ${f.action} ${f.fund} ${f.amount} (${f.time})`}
+                style={{ whiteSpace: 'nowrap', padding: '4px 10px', borderRadius: '12px',
+                  background: f.isBuy ? 'rgba(255,85,119,0.1)' : 'rgba(0,168,120,0.1)',
+                  color: f.isBuy ? 'var(--accent-red)' : 'var(--accent-green)',
+                  display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+                <span style={{ color: 'var(--text-primary)', fontSize: '11px' }}>{f.user?.slice(0,4)}</span>
+                <span>{f.isBuy ? '买入' : '卖出'}</span>
+                <span style={{ color: 'var(--text-primary)' }}>{f.fund?.slice(0,10)}</span>
+                {f.amt_num > 0 && <span style={{ fontSize: '10px', opacity: 0.8 }}>
+                  ¥{f.amt_num >= 10000 ? Math.round(f.amt_num/10000)/10 + '万' : f.amt_num.toFixed(0)}
+                </span>}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
