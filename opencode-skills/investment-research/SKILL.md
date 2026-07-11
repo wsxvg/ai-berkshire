@@ -20,6 +20,16 @@ This skill is generated from `skills/investment-research.md` — the canonical s
 - `投资研究 {公司}`
 - `投研报告 {公司}`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `data/auto/status.json` | 大佬持仓/市场状态 |
+| `data/fund_cache/fund_detail_pin_<code>.json` | 完整基金数据 (最强端点) |
+| `data/fund_charts/<code>.json` | 净值 (估值百分位) |
+| `data/industry_valuation.json` | 行业估值 |
+
 # 投资研究：巴菲特-芒格-段永平-李录 四大师综合分析框架
 
 对 $ARGUMENTS 进行系统化投资研究分析。

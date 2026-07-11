@@ -22,6 +22,21 @@ This skill is generated from `skills/fund-monitor.md` so Claude Code and Codex u
 - `基金共识`
 - `fund-monitor`
 
+
+## 必读数据 (先读这)
+
+| 文件 | 用途 |
+|------|------|
+| `data/auto/status.json` | 当前所有大佬持仓快照 + 交易汇总 |
+| `backtest/data/trading_by_date_fixed.json` | 按日聚合交易 (448 交易日) |
+| `backtest/data/trading_history_fixed.json` | 全部交易记录 (8856 条) |
+| `data/fund_charts_meta.json` | 净值元数据 (273 只) |
+| `data/fund_name_map.json` | 基金名→代码 (433 条) |
+| `data/cache/scores.json` | 30 只预计算评分 |
+| `data/cache/ranking.json` | 271 只排行指标 |
+
+**API 入口**: `python tools/jd_finance_api.py --batch-holdings` / `--trading-records <uid>`
+
 # 场外基金大佬持仓监控
 
 监控 11 位关注大佬的**持仓变化 + 交易流水**，识别共识信号，自动触发基金分析。

@@ -7,6 +7,19 @@
 - `该卖了吗`
 - `fund-sell {代码}`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `reports/sim/virtual_portfolio.json` | 虚拟持仓 + PnL |
+| `data/trading_records_cache.json` | 交易记录 (供 fund_rules) |
+| `data/holdings_diff_cache.json` | 持仓变化 (供 fund_rules) |
+| `data/auto/status.json` | 实时状态 |
+| `data/industry_valuation.json` | 行业估值 (供卖出择时) |
+
+**输入**: 用户持仓代码 / `--my-holdings` 自动读
+
 # 场外基金卖出决策
 
 对 $ARGUMENTS 检查已持仓基金是否需要卖出/减仓。支持参数 `--my-holdings` 自动读取自身持仓，或传入基金代码列表手动指定。

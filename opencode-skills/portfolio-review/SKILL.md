@@ -21,6 +21,16 @@ This skill is generated from `skills/portfolio-review.md` — the canonical sour
 - `持仓复盘`
 - `组合检查`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `reports/sim/virtual_portfolio.json` | 模拟持仓 |
+| `data/auto/status.json` | 实时大佬信号 |
+| `data/fund_charts_meta.json` | 持仓基金净值 |
+| `data/industry_valuation.json` | 行业暴露评估 |
+
 # 组合管理：从"研究公司"到"管理组合"
 
 对 $ARGUMENTS 执行投资组合审视与优化。

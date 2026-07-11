@@ -66,7 +66,9 @@ def main() -> None:
     md.append("```\n")
 
     # 按场景分组
-    md += ["## 典型触发场景\n"]
+    md += ["## 典型触发场景\n",
+           "> 📖 **AI 工作流**: 触发后, AI 读 `docs/AI_DATA_GUIDE.md` 找数据, 然后按 SKILL 步骤执行。\n",
+           "> 💡 **开局 Prompt**: 复制 `docs/AI_AUDIT_PROMPT.md` 到 IDE 的 system prompt。\n"]
     scenarios = [
         ("📊 每日 14:30 实盘", [
             "**触发**: GitHub Actions 14:30 自动",

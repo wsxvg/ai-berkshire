@@ -17,22 +17,31 @@ CODEX_PROMPTS = ROOT / "codex-prompts"
 
 
 def normalize(text: str) -> str:
-    """去掉生成的 adapter note 和 frontmatter, 只比较 body。"""
+    """去掉 frontmatter / adapter note / frontmatter 注释, 只比较 body。"""
     # 去 frontmatter
     if text.startswith("---"):
         end = text.find("\n---\n", 4)
         if end != -1:
             text = text[end + 5:]
-    # 去 adapter note (前 4 段: ## Codex/OpenCode adapter note + 4 bullet 段)
-    text = re.sub(
-        r"## (Codex|OpenCode) adapter note\n\n.*?(?=\n# |\Z)",
-        "", text, flags=re.DOTALL,
-    )
-    # 去 # Original frontmatter 注释段
-    text = re.sub(
-        r"# Original frontmatter.*?(?=\n# |\Z)",
-        "", text, flags=re.DOTALL,
-    )
+    # 按行扫: 跳过特定段
+    skip_block = False
+    out_lines = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        # 开始跳过: adapter note / Original frontmatter 注释
+        if re.match(r"^## (Codex|OpenCode) adapter note\s*$", stripped):
+            skip_block = True
+            continue
+        if re.match(r"^# Original frontmatter.*$", stripped):
+            skip_block = True
+            continue
+        # 结束跳过: 遇到下一个 # / ## 标题
+        if skip_block and (stripped.startswith("# ") or stripped.startswith("## ")):
+            skip_block = False
+        if skip_block:
+            continue
+        out_lines.append(line)
+    text = "\n".join(out_lines)
     # 去空白差异
     text = re.sub(r"\s+", " ", text).strip()
     return text
@@ -77,15 +86,14 @@ def main() -> int:
         else:
             issues.append(f"  MISSING: opencode-skills/{name}/SKILL.md")
 
-        # Codex prompt
+        # Codex prompt (格式不同, 只检查存在)
         prompt_file = CODEX_PROMPTS / f"{name}.md"
         if prompt_file.exists():
             prompts_count += 1
-            # prompt 是另一格式, 只检查存在
         else:
             issues.append(f"  MISSING: codex-prompts/{name}.md")
 
-    # 孤儿 (target 有, source 没有)
+    # 孤儿
     src_names = {p.stem for p in source_files}
     for tgt in CODEX_SKILLS.iterdir():
         if tgt.is_dir() and tgt.name not in src_names:
@@ -103,8 +111,10 @@ def main() -> int:
 
     if issues:
         print(f"FAILED ({len(issues)} issues):")
-        for i in issues:
+        for i in issues[:30]:
             print(i)
+        if len(issues) > 30:
+            print(f"  ... and {len(issues) - 30} more")
         print()
         print("Fix: run scripts/sync-all-skills.sh")
         return 1

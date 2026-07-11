@@ -23,6 +23,16 @@ This skill is generated from `skills/fund-analyze.md` — the canonical source.
 - `基金综合分析 {代码}`
 - `基金体检 {代码}`
 
+
+## 必读数据
+
+完整数据 → `docs/AI_DATA_GUIDE.md` → fund-analyze 章节
+
+主要复用: fund-checklist + fund-penetration + fund-sell 三套数据
+- `data/cache/scores.json` (评分引擎结果)
+- `data/fund_cache/fund_*_<code>.json` (档案/持仓/经理/费率)
+- `data/fund_charts/<code>.json` (净值/择时)
+
 # 基金评分解读
 
 对 $ARGUMENTS 的基金评分结果进行 AI 文本解读。

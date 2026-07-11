@@ -21,6 +21,22 @@ This skill is generated from `skills/fund-checklist.md` so Claude Code and Codex
 - `基金六关 {代码}`
 - `fund-checklist {代码}`
 
+
+## 必读数据 (按代码)
+
+| 文件 | 用途 |
+|------|------|
+| `data/fund_cache/fund_profile_<code>.json` | 基金档案 (类型/规模/经理公司) |
+| `data/fund_cache/fund_perf_<code>.json` | 业绩 (近 1/3/6/12 月 + 排名) |
+| `data/fund_cache/fund_holdings_<code>.json` | 持仓分布 + 重仓股 |
+| `data/fund_cache/trade_rules_<code>.json` | 费率/T+N/限额 |
+| `data/fund_cache/fund_manager_<code>.json` | 经理 (任职/历史业绩) |
+| `data/fund_cache/fund_notices_<code>.json` | 公告 (限购/分红/清盘) |
+| `data/fund_charts/<code>.json` | 净值曲线 (算 RSI/择时) |
+| `data/cache/scores.json` | 评分引擎结果 |
+
+**完整指南**: `docs/AI_DATA_GUIDE.md` → fund-checklist 章节
+
 # 场外基金买入前 Checklist
 
 对 $ARGUMENTS 执行场外基金买入前六关 Checklist 分析。

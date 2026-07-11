@@ -23,6 +23,15 @@ This skill is generated from `skills/fund-compare.md` — the canonical source.
 - `基金对比 {代码1,代码2}`
 - `基金 PK`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `data/fund_cache/fund_profile_<code1,code2>.json` | 多只基金档案 |
+| `data/fund_charts/<code>.json` | 净值曲线 (算相关/对比) |
+| `data/cache/scores.json` | 评分对比 |
+
 # 基金对比分析
 
 对比 $ARGUMENTS 中多只基金的评分差异。

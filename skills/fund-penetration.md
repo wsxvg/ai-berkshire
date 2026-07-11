@@ -7,6 +7,17 @@
 - `底层资产 {代码}`
 - `fund-penetration`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `data/fund_cache/fund_holdings_<code>.json` | 重仓股列表 |
+| `data/industry_valuation.json` | 重仓股所属行业 PE 百分位 |
+| `data/fund_charts/<code>.json` | 基金净值 (算换手/波动) |
+
+**API 补充**: `python tools/jd_finance_api.py --stock-quotes <stock_code>`
+
 # 场外基金持仓穿透分析
 
 对 $ARGUMENTS 基金执行持仓穿透分析，评估底层重仓股质量。

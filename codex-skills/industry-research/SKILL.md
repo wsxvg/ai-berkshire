@@ -20,6 +20,16 @@ This skill is generated from `skills/industry-research.md` so Claude Code and Co
 - `行业研究 {行业}`
 - `行业分析 {行业}`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `data/industry_valuation.json` | 行业 PE/PB 百分位 + 三维共振评分 |
+| `data/fund_cache/featured_rankings_main.json` | 主题榜 (光模块/机器人/半导体/...) |
+
+**API 补充**: `python tools/jd_finance_api.py --index-block-info` / `--index-detail <code>`
+
 # 行业投资研究：产业链全景扫描 + 四大师个股分析框架
 
 对 $ARGUMENTS 行业进行系统化产业链投资研究。

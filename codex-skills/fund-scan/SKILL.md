@@ -21,6 +21,16 @@ This skill is generated from `skills/fund-scan.md` so Claude Code and Codex user
 - `基金筛选`
 - `扫基金`
 
+
+## 必读数据
+
+| 文件 | 用途 |
+|------|------|
+| `data/cache/ranking.json` | 271 只排行 (近1/3/6/12月+夏普+回撤) |
+| `data/fund_cache/featured_rankings_main.json` | 京东官方 26 榜 TOP20 |
+| `data/fund_name_map.json` | 名称→代码 |
+| `data/fund_charts_meta.json` | 元数据 |
+
 # 基金全流程扫描
 
 一站式基金分析：从京东金融实时数据抓取到五维评分+独立HTML报告输出。
