@@ -116,8 +116,25 @@ def run():
     valid, info = _verify_cookies(cookies)
     print(f"Cookie: {'有效' if valid else '无效'}")
 
+    # 0. 自动扩展：扫描新基金加入清单（异步, 不阻塞）
+    print("0. 扫描新基金...")
+    from tools.fund_data_manager import expand_from_trading
+    new_codes = expand_from_trading() or set()
+    if new_codes:
+        # 写入待抓清单 (后台)
+        todo_file = PROJECT / "data" / "fund_charts_todo.json"
+        existing_todo = set()
+        if todo_file.exists():
+            try: existing_todo = set(json.loads(todo_file.read_text("utf-8")))
+            except: pass
+        todo = existing_todo | new_codes
+        todo_file.write_text(json.dumps(list(todo), ensure_ascii=False), "utf-8")
+        print(f"   发现 {len(new_codes)} 只新基金, 待拉清单 {len(todo)} 只")
+    else:
+        print("   无新基金")
+
     # 1. 自选 + 大佬信号
-    print("1. 数据...")
+    print("1. 数据...")"}
     wl = get_watchlist(cookies=cookies)
     if not wl or not wl.get("funds"):
         print("[ERROR] 自选列表为空"); return

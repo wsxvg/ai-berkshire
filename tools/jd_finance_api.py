@@ -2026,6 +2026,74 @@ def get_index_detail(index_code, cookies=None):
 
 
 # ============================================================
+# NEW: Featured Rankings — 12 主题榜 + 5 人气榜 TOP20
+# 数据源: jj/h5/m/queryFullRanking + getInvestResearchRank + getRankingProductListV2
+# 特点: 不需要 cookie (多数榜是 public 的)
+# ============================================================
+RANKING_TYPES = [
+    # 主题榜 (8 个)
+    {"code": "1m_return", "name": "近1月收益榜", "sort_by": "2", "cycle": "301"},
+    {"code": "3m_return", "name": "近3月收益榜", "sort_by": "2", "cycle": "303"},
+    {"code": "6m_return", "name": "近6月收益榜", "sort_by": "2", "cycle": "306"},
+    {"code": "1y_return", "name": "近1年收益榜", "sort_by": "2", "cycle": "401"},
+    {"code": "2y_return", "name": "近2年收益榜", "sort_by": "2", "cycle": "601"},
+    {"code": "3y_return", "name": "近3年收益榜", "sort_by": "2", "cycle": "801"},
+    {"code": "5y_return", "name": "近5年收益榜", "sort_by": "2", "cycle": "1001"},
+    {"code": "this_year_return", "name": "今年来收益榜", "sort_by": "2", "cycle": "1101"},
+    # 人气认证榜 (5 个)
+    {"code": "search_hot", "name": "今日热搜榜", "sort_by": "6", "cycle": "401"},
+    {"code": "stay_profitable", "name": "季季正收益榜", "sort_by": "2", "cycle": "401"},
+    {"code": "beat_market", "name": "连续跑赢大盘榜", "sort_by": "2", "cycle": "401"},
+    {"code": "high_holdings_profit", "name": "持仓盈利多榜", "sort_by": "2", "cycle": "401"},
+    {"code": "user_focus", "name": "用户关注榜", "sort_by": "6", "cycle": "401"},
+]
+
+
+def get_featured_rankings(cookies=None, use_cache=True, max_items=20):
+    """拉取 12 主题榜 + 5 人气认证榜 TOP20。
+
+    Returns:
+        dict: {rank_code: {name, code, top20: [{rank, code, name, value, returns...}]}}
+    """
+    if use_cache:
+        cached = _read_cache("featured_rankings", "main", max_age_days=0)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    results = {}
+    for rt in RANKING_TYPES:
+        try:
+            r = get_fund_ranking(cookies=cookies, rank_sort_by=rt["sort_by"], time_cycle=rt["cycle"])
+            top = []
+            for item in r.get("list", [])[:max_items]:
+                top.append({
+                    "rank": item.get("rankNo"),
+                    "code": item.get("fundCode"),
+                    "name": item.get("fundName"),
+                    "value": item.get("rate"),
+                    "return_1m": item.get("month1Rate"),
+                    "return_3m": item.get("month3Rate"),
+                    "return_6m": item.get("month6Rate"),
+                    "return_1y": item.get("year1Rate"),
+                    "return_this_year": item.get("yearRate"),
+                    "return_3y": item.get("year3Rate"),
+                    "return_5y": item.get("year5Rate"),
+                    "tags": item.get("tagList", []),
+                })
+            results[rt["code"]] = {"name": rt["name"], "code": rt["code"], "top20": top}
+        except Exception:
+            results[rt["code"]] = {"name": rt["name"], "code": rt["code"], "top20": [], "error": "fetch failed"}
+    if use_cache and results:
+        _write_cache("featured_rankings", "main", results)
+    return results
+
+
+# ============================================================
+# Snapshot Management
+
+
+# ============================================================
 # Snapshot Management
 # ============================================================
 def save_snapshot(tag, data):
