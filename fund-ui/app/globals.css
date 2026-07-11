@@ -48,9 +48,9 @@ body {
   transition: width 0.5s ease;
 }
 
-/* 净值涨跌 */
-.up { color: var(--accent-green); }
-.down { color: var(--accent-red); }
+/* 净值涨跌 — 红色涨绿色跌（中国习惯） */
+.up { color: var(--accent-red); }
+.down { color: var(--accent-green); }
 .gold { color: var(--accent-gold); }
 
 /* 滚动条 */

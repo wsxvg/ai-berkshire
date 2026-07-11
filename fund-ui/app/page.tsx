@@ -21,14 +21,15 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
 
 function FundCard({ fund, score }: { fund: FundInfo; score?: FundScore }) {
   const dayRet = fund.dayReturn ?? 0
-  const color = dayRet >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'
+  const up = dayRet >= 0
+  const color = up ? 'var(--accent-red)' : 'var(--accent-green)'
   const blocked = score?.blocked
 
   return (
     <div className="glass" style={{
-      padding: '16px', opacity: blocked ? 0.6 : 1,
+      padding: '16px', opacity: blocked ? 0.6 : 1, cursor: 'pointer',
       borderColor: blocked ? 'rgba(255,85,119,0.4)' : undefined,
-    }}>
+    }} onClick={() => window.location.href = `/fund/${fund.code}`}>
       {/* header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '12px' }}>
         <div>
@@ -59,7 +60,7 @@ function FundCard({ fund, score }: { fund: FundInfo; score?: FundScore }) {
         <>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
             <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>综合评分</span>
-            <span style={{ fontSize: '18px', fontWeight: 700, color: score.total >= 3 ? 'var(--accent-green)' : 'var(--accent-red)' }}>
+            <span style={{ fontSize: '18px', fontWeight: 700, color: score.total >= 3 ? 'var(--accent-red)' : 'var(--accent-green)' }}>
               {score.total.toFixed(1)}<span style={{ fontSize: '12px' }}>/5.0</span>
             </span>
           </div>
