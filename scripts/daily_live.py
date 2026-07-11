@@ -131,6 +131,11 @@ def run():
     merged_trades = dict(trading_by_date)
     for d, items in fresh.items():
         merged_trades.setdefault(d, []).extend(items)
+    # 为所有交易记录补 fund_code（和 run_backtest 一致）
+    for d in merged_trades:
+        for r in merged_trades[d]:
+            if not r.get("fund_code") and r.get("fund_name", "") in name_map:
+                r["fund_code"] = name_map[r["fund_name"]]
 
     # 2. 市场状态
     market = detect_market_state(TODAY, fund_charts)
