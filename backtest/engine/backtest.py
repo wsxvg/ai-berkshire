@@ -729,7 +729,7 @@ class Portfolio:
         self.total_fees = 0
         self.monthly_injections = 0
         self.fund_rules = {}  # per-fund rules loaded from cache
-        self._min_holding_days = 30  # 30-day minimum hold for cost control
+        self._min_holding_days = 60  # 60天最低持有（减少交易频率）
         self.yearly_trades = {}  # {year: count}
         self.max_yearly_trades = 6  # annual trade cap
         self.sell_history = {}  # {code: {date: "YYYY-MM-DD", reason: "...", nav: float}} — 冷却期追踪
@@ -1675,8 +1675,8 @@ def run_backtest(config):
                         should_sell = True
                         sell_reason = f"big_sell {sc}人"
 
-            # 🔴 动量崩溃: 动量分低于阈值
-            if mom.score < mom_sell:
+            # 🔴 动量崩溃: 动量分低于阈值（牛市不触发，减少假信号）
+            if mom.score < mom_sell and _market_state != "bull":
                 should_sell = True
                 sell_reason = f"momentum_crash mom={mom.score:.2f}"
 

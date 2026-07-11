@@ -215,8 +215,8 @@ def run():
     for code in list(portfolio.holdings.keys()):
         h = portfolio.holdings[code]
         days = portfolio._holding_days(code, TODAY)
-        if days < 30:
-            continue  # 最低持有期
+        if days < 60:
+            continue  # 60天最低持有期（减少摩擦成本）
 
         # day_ret 从自选数据拿（动量崩溃需要实时涨跌幅）
         info = funds.get(code, {})
@@ -248,8 +248,8 @@ def run():
             sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": 1.0}
             print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}%")
 
-        # 动量崩溃
-        elif day_ret < -8:
+        # 动量崩溃（牛市不触发，减少假信号）
+        elif day_ret < -8 and market != "bull":
             pts = fund_charts.get(code, [])
             if len(pts) >= 20:
                 timing = compute_entry_timing_score(pts, TODAY)
