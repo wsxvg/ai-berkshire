@@ -12,6 +12,14 @@ This skill is generated from `skills/management-deep-dive.md` so Claude Code and
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `管理层深挖 {公司}`
+- `管理层分析 {公司}`
+
 # 管理层纵深研究：买股票就是买人
 
 对 $ARGUMENTS 进行管理层深度研究。

@@ -1,6 +1,6 @@
 ---
 name: industry-funnel
-description: "对 $ARGUMENTS 行业/方向执行漏斗式价值投资筛选，从全市场扫描逐层精选到 3 家终选标的。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/industry-funnel.md` — the canonical sourc
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `行业漏斗 {行业}`
+- `行业筛选`
+- `industry-funnel`
 
 # 行业漏斗筛选：从全市场到 3 家的价值投资精选流程
 

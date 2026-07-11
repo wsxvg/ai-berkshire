@@ -12,6 +12,14 @@ This skill is generated from `skills/investment-research.md` so Claude Code and 
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `投资研究 {公司}`
+- `投研报告 {公司}`
+
 # 投资研究：巴菲特-芒格-段永平-李录 四大师综合分析框架
 
 对 $ARGUMENTS 进行系统化投资研究分析。

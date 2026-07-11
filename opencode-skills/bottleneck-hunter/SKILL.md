@@ -1,6 +1,6 @@
 ---
 name: bottleneck-hunter
-description: "对 $ARGUMENTS 超级趋势执行供应链瓶颈扫描与套利机会挖掘。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/bottleneck-hunter.md` — the canonical sou
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `瓶颈分析 {公司}`
+- `找卡脖子环节`
+- `卡脖子行业`
 
 # 供应链瓶颈猎手：AI驱动的全球产业链瓶颈套利
 

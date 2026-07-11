@@ -1,6 +1,6 @@
 ---
 name: fund-checklist
-description: "对 $ARGUMENTS 执行场外基金买入前六关 Checklist 分析。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/fund-checklist.md` — the canonical source
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金买入检查 {代码}`
+- `基金六关 {代码}`
+- `fund-checklist {代码}`
 
 # 场外基金买入前 Checklist
 
@@ -341,6 +350,29 @@ This skill is generated from `skills/fund-checklist.md` — the canonical source
 python3 tools/jd_finance_api.py --fund-holdings {基金代码}
 # 对每只重仓股 → 调用 /investment-checklist
 ```
+
+#### 五维评分参考（如数据可用）
+
+如果 `data/auto/status.json` 中包含 `fund_scores` 字段（由 auto-pipeline.py Step 3b 自动写入），可以在输出报告中附加评分引擎结果供参考：
+
+```python
+# 读取评分数据
+import json
+scores = json.load(open("data/auto/status.json"))["fund_scores"]
+# scores[code] = {"total": 3.42, "verdict": "watch"}
+```
+
+**评分引擎信息**（tools/fund_scorer.py）：
+- 五维：质量分×0.25 + 成本分×0.20 + 经理分×0.20 + 动量分×0.15 + 聪明钱×0.20
+- ≥4.0 建议买入，3.3~4.0 值得关注，<3.3 建议跳过
+- 评分是确定性数值计算（非LLM），LLM只负责解读
+- 评分引擎有反证规则（规模<5000万→否决、经理换人→否决、数据过时→降权）
+- 数据新鲜度标记：超90天数据自动降权10%
+
+**评分 vs 手动六关的关系**：
+- 六关评分更精细（包含流动性、理解度等主观维度）——适合人工深度分析
+- 五维评分更稳定（纯数值、可回溯、可对比）——适合自动化扫描
+- 两者一致时→信心增强。不一致时→说明基金在流动性/理解度等维度存在特殊问题
 
 ### 第六步：输出报告
 

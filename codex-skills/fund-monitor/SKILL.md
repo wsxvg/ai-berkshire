@@ -12,6 +12,16 @@ This skill is generated from `skills/fund-monitor.md` so Claude Code and Codex u
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `大佬持仓监控`
+- `持仓变化`
+- `基金共识`
+- `fund-monitor`
+
 # 场外基金大佬持仓监控
 
 监控 11 位关注大佬的**持仓变化 + 交易流水**，识别共识信号，自动触发基金分析。

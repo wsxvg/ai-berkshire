@@ -1,3 +1,12 @@
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金买入检查 {代码}`
+- `基金六关 {代码}`
+- `fund-checklist {代码}`
+
 # 场外基金买入前 Checklist
 
 对 $ARGUMENTS 执行场外基金买入前六关 Checklist 分析。

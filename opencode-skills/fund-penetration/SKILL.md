@@ -1,6 +1,6 @@
 ---
 name: fund-penetration
-description: "对 $ARGUMENTS 基金执行持仓穿透分析，评估底层重仓股质量。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/fund-penetration.md` — the canonical sour
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `穿透分析 {代码}`
+- `底层资产 {代码}`
+- `fund-penetration`
 
 # 场外基金持仓穿透分析
 

@@ -84,6 +84,14 @@ def codex_body(name: str, source_name: str, source_text: str) -> str:
 
 def main() -> None:
     CODEX_SKILLS.mkdir(exist_ok=True)
+    # Sources
+    source_names = {p.stem for p in CLAUDE_SKILLS.glob("*.md")}
+    # Remove stale target dirs (not in sources)
+    for tgt in CODEX_SKILLS.iterdir():
+        if tgt.is_dir() and tgt.name not in source_names:
+            import shutil
+            shutil.rmtree(tgt)
+            print(f"  removed stale: {tgt.name}")
     count = 0
     for source in sorted(CLAUDE_SKILLS.glob("*.md")):
         name = source.stem

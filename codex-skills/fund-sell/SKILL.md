@@ -1,3 +1,26 @@
+---
+name: fund-sell
+description: "AI Berkshire skill: 场外基金卖出决策. Source: skills/fund-sell.md."
+---
+
+## Codex adapter note
+
+This skill is generated from `skills/fund-sell.md` so Claude Code and Codex users share one canonical workflow.
+
+- Treat `$ARGUMENTS` as the user's request in the current Codex thread.
+- When the source mentions Claude-only surfaces such as Task, Agent, WebSearch, Bash, Read, or Write, use the closest Codex capability available in this session: subagents when available, web search when needed, shell commands for local tools, and normal file edits for workspace files.
+- Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
+- Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金卖出检查 {代码}`
+- `该卖了吗`
+- `fund-sell {代码}`
+
 # 场外基金卖出决策
 
 对 $ARGUMENTS 检查已持仓基金是否需要卖出/减仓。支持参数 `--my-holdings` 自动读取自身持仓，或传入基金代码列表手动指定。

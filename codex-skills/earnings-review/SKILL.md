@@ -12,6 +12,15 @@ This skill is generated from `skills/earnings-review.md` so Claude Code and Code
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `财报解读 {公司}`
+- `季报点评 {公司}`
+- `业绩点评`
+
 # 财报精读：一手资料深度解读
 
 对 $ARGUMENTS 进行财报精读分析。

@@ -12,6 +12,15 @@ This skill is generated from `skills/fund-penetration.md` so Claude Code and Cod
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `穿透分析 {代码}`
+- `底层资产 {代码}`
+- `fund-penetration`
+
 # 场外基金持仓穿透分析
 
 对 $ARGUMENTS 基金执行持仓穿透分析，评估底层重仓股质量。

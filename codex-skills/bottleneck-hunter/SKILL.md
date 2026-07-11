@@ -12,6 +12,15 @@ This skill is generated from `skills/bottleneck-hunter.md` so Claude Code and Co
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `瓶颈分析 {公司}`
+- `找卡脖子环节`
+- `卡脖子行业`
+
 # 供应链瓶颈猎手：AI驱动的全球产业链瓶颈套利
 
 对 $ARGUMENTS 超级趋势执行供应链瓶颈扫描与套利机会挖掘。

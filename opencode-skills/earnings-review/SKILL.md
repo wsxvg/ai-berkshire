@@ -1,6 +1,6 @@
 ---
 name: earnings-review
-description: "对 $ARGUMENTS 进行财报精读分析。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/earnings-review.md` — the canonical sourc
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `财报解读 {公司}`
+- `季报点评 {公司}`
+- `业绩点评`
 
 # 财报精读：一手资料深度解读
 

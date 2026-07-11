@@ -12,6 +12,15 @@ This skill is generated from `skills/portfolio-review.md` so Claude Code and Cod
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `组合复盘`
+- `持仓复盘`
+- `组合检查`
+
 # 组合管理：从"研究公司"到"管理组合"
 
 对 $ARGUMENTS 执行投资组合审视与优化。

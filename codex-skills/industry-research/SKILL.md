@@ -12,6 +12,14 @@ This skill is generated from `skills/industry-research.md` so Claude Code and Co
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `行业研究 {行业}`
+- `行业分析 {行业}`
+
 # 行业投资研究：产业链全景扫描 + 四大师个股分析框架
 
 对 $ARGUMENTS 行业进行系统化产业链投资研究。

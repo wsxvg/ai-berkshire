@@ -1,6 +1,6 @@
 ---
 name: industry-research
-description: "对 $ARGUMENTS 行业进行系统化产业链投资研究。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,14 @@ This skill is generated from `skills/industry-research.md` — the canonical sou
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `行业研究 {行业}`
+- `行业分析 {行业}`
 
 # 行业投资研究：产业链全景扫描 + 四大师个股分析框架
 

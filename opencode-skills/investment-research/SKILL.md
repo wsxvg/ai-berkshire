@@ -1,6 +1,6 @@
 ---
 name: investment-research
-description: "对 $ARGUMENTS 进行系统化投资研究分析。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,14 @@ This skill is generated from `skills/investment-research.md` — the canonical s
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `投资研究 {公司}`
+- `投研报告 {公司}`
 
 # 投资研究：巴菲特-芒格-段永平-李录 四大师综合分析框架
 

@@ -1,11 +1,11 @@
 ---
 name: fund-scan
-description: "对关注的大佬进行一站式分析：抓持仓→交易流水→信号合并→基金Checklist→四大师投资评价→输出HTML报告。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 # Original frontmatter from skills/fund-scan.md:
 #   name: fund-scan
 #   user-invocable: true
-#   description: "一句话全流程分析：抓数据→信号→Checklist→四大师评价→输出HTML报告"
+#   description: "完整基金全流程扫描——抓数据→五维评分→交易信号→深度分析→四大师评价→独立HTML报告"
 ---
 ## OpenCode adapter note
 
@@ -16,75 +16,80 @@ This skill is generated from `skills/fund-scan.md` — the canonical source.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
 
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金扫描`
+- `基金筛选`
+- `扫基金`
+
 # 基金全流程扫描
 
-对关注的大佬进行一站式分析：抓持仓→交易流水→信号合并→基金Checklist→四大师投资评价→输出HTML报告。
+一站式基金分析：从京东金融实时数据抓取到五维评分+独立HTML报告输出。
 
 ## 一句话触发
 
-"分析今天基金操作" / "看看大佬买卖什么" / "基金全流程扫描" / "fund-scan"
+"分析今天基金操作" / "看看大佬买卖什么" / "基金全流程扫描" / "fund-scan" / "今天基金有什么信号"
 
-## 执行流程
+## 执行步骤
 
-### Phase 0：前置检查
+### 第一步：前置检查
 
-检查 `data/jd_auth/cookies.json` 是否存在且有效。
-- 无效 → 提示用户重新登录
-- 有效 → 继续
+运行 `python tools/jd_finance_api.py --test` 检查 cookie。无效则提示登录。
 
-### Phase 1：抓取数据
+### 第二步：抓取数据
 
 ```bash
-cd c:/项目/A基金/ai-berkshire-main
 python scripts/auto-pipeline.py
 python scripts/generate_report.py
 ```
 
-读取输出：
-- `reports/auto/latest.md` — 监控报告
-- `data/auto/status.json` — 管道状态
+管道自动包含五维评分（tools/fund_scorer.py）+ 资金分配器 + 穿透估值(PE/PB)。
 
-### Phase 2：解析结果
+### 第三步：解读报告 + 评分
 
-从报告中提取：
-- 今日买入最多的基金（前10）
-- 强共识基金名单
-- 大佬活跃度排行
-- 用户本年收益排名（从快照提取）
+读取 `reports/auto/latest.md` 和 `data/auto/status.json`，展示：
+- 今日信号 + 五维评分
+- 评分≥4.0 建议买入，3.3~4.0 值得关注，<3.3 建议跳过
 
-### Phase 3：四大师评价（仅针对强共识基金）
+### 第四步：LLM 自动点评（读取 daily_snapshot.json）
 
-对 **strong_buy（≥3人买入）** 的每只基金，调用四大师视角分析：
+读取 `data/auto/daily_snapshot.json`（管道自动生成），用 Claude 生成 2-3 句今日解读：
 
-| 角色 | 评估维度 |
-|------|---------|
-| 段永平视角 | 商业模式+护城河（基金底层持仓的生意质量） |
-| 巴菲特视角 | 财务面+估值（费率、历史业绩、穿透持仓估值） |
-| 芒格视角 | 行业竞争+风险（基金赛道拥挤度、管理人能力） |
-| 李录视角 | 管理层+治理（基金经理背景、公司治理） |
+```json
+// daily_snapshot.json 包含:
+{
+  "summary": { "total_scored": 271, "buy_verdict": 0, "watch_verdict": 7, "strong_buy_signals": 12 },
+  "top_scores": [ { "code": "013841", "total": 3.57, "verdict": "watch" }, ... ],
+  "buy_signals": [ { "code": "013841", "buy_count": 5, "score": 3.57 }, ... ],
+  "changes": { "013841": 0.17, ... }
+}
+```
 
-数据来源：已经自动生成的 Checklist 报告在 `reports/fund-checklist/{代码}/checklist-{日期}.md`。
+解读要点：
+- 今天评分最高的基金是谁？为什么？
+- 评分变化最大的基金（涨/跌）原因分析
+- 大佬共识集中在哪个方向？评分是否支持？
+- 你的持仓基金评分变化和操作建议
+- 输出简洁、直接、不说废话，2-3 句话
 
-### Phase 4：生成 HTML 报告
+### 第五步：四大师评价
 
-输出一份独立 HTML 到 `reports/auto/scan-{日期}.html`，包含：
+对 strong_buy（≥3人）基金做四大师视角评价，结合评分数据。
 
-1. 用户收益率排名（柱状图）
-2. 买入信号汇总表（基金名、共识人数、代码、费率摘要、限额）
-3. 每只强共识基金的四大师评价卡片
-4. 建议操作策略：
-   - A类/C类推荐
-   - 限购情况说明
-   - 建议金额（参考日限额）
-   - 定投/一次性策略
-5. 风险提示
+### 第六步：生成 HTML
 
-### 第四步：呈现
+```bash
+python scripts/generate_html.py
+```
+输出 `reports/auto/scan-{日期}.html`。
 
-直接展示 HTML 给用户或告诉用户报告位置。
+直接展示关键结论，告诉用户 HTML 报告位置。
 
 ## 注意事项
 
-- cookie 先验证，过期直接提示
-- 四大师评价基于 Checklist 数据，不做重复 API 调用
-- HTML 报告使用内联 CSS，独立文件，浏览器可直接打开
+- 所有费率/限额/N 从 API 实时获取，不硬编码
+- 评分是 Python 数值计算，LLM 只做解读不做评分
+- 穿透估值目前仅支持 A 股 PE/PB，美股只支持价格行情
+- 反模式参见 docs/评分反模式.md

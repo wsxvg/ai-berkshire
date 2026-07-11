@@ -12,6 +12,15 @@ This skill is generated from `skills/quality-screen.md` so Claude Code and Codex
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `质量筛选`
+- `质优筛选`
+- `quality-screen`
+
 # 去劣筛选：7条指标快速排除非一流公司
 
 对 $ARGUMENTS 执行去劣指标筛选，快速排除不符合一流公司标准的标的。

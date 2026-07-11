@@ -1,3 +1,26 @@
+---
+name: fund-checklist
+description: "AI Berkshire skill: 场外基金买入前 Checklist. Source: skills/fund-checklist.md."
+---
+
+## Codex adapter note
+
+This skill is generated from `skills/fund-checklist.md` so Claude Code and Codex users share one canonical workflow.
+
+- Treat `$ARGUMENTS` as the user's request in the current Codex thread.
+- When the source mentions Claude-only surfaces such as Task, Agent, WebSearch, Bash, Read, or Write, use the closest Codex capability available in this session: subagents when available, web search when needed, shell commands for local tools, and normal file edits for workspace files.
+- Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
+- Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金买入检查 {代码}`
+- `基金六关 {代码}`
+- `fund-checklist {代码}`
+
 # 场外基金买入前 Checklist
 
 对 $ARGUMENTS 执行场外基金买入前六关 Checklist 分析。

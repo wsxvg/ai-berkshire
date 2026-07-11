@@ -387,19 +387,47 @@ def run():
         "",
         "## AI 审计入口",
         "",
-        "在本地 IDE 中打开此文件，让 AI 调用以下 SKILL 进行深度分析：",
+        "在本地 IDE (Claude Code / OpenCode) 打开此文件，AI 会自动调用以下 SKILL：",
         "",
     ]
     if buy_codes:
-        lines.append(f"- `fund-checklist {' '.join(buy_codes)}` — 买入前六关审计")
-        lines.append(f"- `fund-penetration {' '.join(buy_codes)}` — 穿透持仓分析")
+        lines.append(f"### 买入前深度审计（今日候选 {len(buy_codes)} 只）")
+        lines.append("")
+        for code in buy_codes:
+            lines.append(f"- `fund-checklist {code}` — 买入前六关 (能力圈/质量/经理/成本/流动性/聪明钱)")
+            lines.append(f"- `fund-penetration {code}` — 穿透持仓看底层资产 (PE/PB/行业景气)")
+        lines.append("")
     if blocked_codes:
-        lines.append(f"- `fund-analyze {' '.join(blocked_codes)}` — 风控拦截基金复查")
+        lines.append(f"### 风控拦截复查（{len(blocked_codes)} 只被系统拦截）")
+        lines.append("")
+        for code in blocked_codes:
+            reason = next((r.get("reason","?") for r in results if r["code"]==code), "?")
+            lines.append(f"- `fund-analyze {code}` — 复查: {reason}")
+        lines.append("")
     if portfolio.holdings:
         held = list(portfolio.holdings.keys())
-        lines.append(f"- `fund-sell {' '.join(held)}` — 持仓卖出信号检查")
-
-    lines += ["", "---", f"*{TODAY_CN} 14:30 CST*"]
+        lines.append(f"### 持仓卖出信号（{len(held)} 只在仓）")
+        lines.append("")
+        for code in held:
+            lines.append(f"- `fund-sell {code}` — 大佬卖出信号/止盈止损/调仓成本")
+        lines.append("")
+    lines += [
+        "### 通用 SKILL（随时可用）",
+        "",
+        "- `fund-monitor` — 大佬持仓 + 交易流水监控 (信号核心)",
+        "- `fund-scan` — 全市场基金扫描（按多维度筛选）",
+        "- `fund-compare {代码1,代码2}` — 基金对比",
+        "- `portfolio-review` — 组合复盘",
+        "",
+        "### 数据状态",
+        "",
+        f"- 大佬交易数据: 截至 {TODAY}",
+        f"- 行情数据: 截至 {TODAY} 收盘",
+        f"- AI 机器报告: `reports/sim/{TODAY}.json` (结构化数据供 LLM 解析)",
+        "",
+        "---",
+        f"*{TODAY_CN} 14:30 CST*",
+    ]
     (SIM_DIR / f"{TODAY}.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"   日报已保存")
 

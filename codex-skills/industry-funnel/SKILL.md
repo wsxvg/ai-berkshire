@@ -12,6 +12,15 @@ This skill is generated from `skills/industry-funnel.md` so Claude Code and Code
 - Use shared project tools from `tools/` in this repository. Commands that reference `~/ai-berkshire/tools/...` assume the repo is checked out at `~/ai-berkshire`; if needed, prefer the current workspace path.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic tools for valuation/math, and clearly label uncertainty and source gaps.
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `行业漏斗 {行业}`
+- `行业筛选`
+- `industry-funnel`
+
 # 行业漏斗筛选：从全市场到 3 家的价值投资精选流程
 
 对 $ARGUMENTS 行业/方向执行漏斗式价值投资筛选，从全市场扫描逐层精选到 3 家终选标的。

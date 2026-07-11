@@ -4,6 +4,14 @@ user-invocable: true
 description: "对比多只基金的5维评分差异——指出各自的优劣势"
 ---
 
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `基金对比 {代码1,代码2}`
+- `基金 PK`
+
 # 基金对比分析
 
 对比 $ARGUMENTS 中多只基金的评分差异。

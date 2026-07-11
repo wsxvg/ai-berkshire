@@ -1,6 +1,6 @@
 ---
 name: portfolio-review
-description: "对 $ARGUMENTS 执行投资组合审视与优化。"
+description: "以下自然语言/命令会自动触发本 SKILL:"
 user-invocable: true
 ---
 ## OpenCode adapter note
@@ -11,6 +11,15 @@ This skill is generated from `skills/portfolio-review.md` — the canonical sour
 - When the source references Claude-only tool names (Task, Agent, etc.), use the closest capability available in your environment.
 - Commands reference `python3 tools/...` — use the correct Python path for your shell.
 - Preserve the research quality rules from `AGENTS.md`: cross-check financial data, use exact arithmetic, label uncertainty.
+
+
+## 触发短语 (triggers)
+
+以下自然语言/命令会自动触发本 SKILL:
+
+- `组合复盘`
+- `持仓复盘`
+- `组合检查`
 
 # 组合管理：从"研究公司"到"管理组合"
 

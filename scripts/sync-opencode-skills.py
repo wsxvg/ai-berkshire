@@ -83,6 +83,12 @@ def opencode_body(name: str, source_name: str, source_text: str) -> str:
 
 def main() -> None:
     OPENCODE_SKILLS.mkdir(exist_ok=True)
+    source_names = {p.stem for p in CLAUDE_SKILLS.glob("*.md")}
+    for tgt in OPENCODE_SKILLS.iterdir():
+        if tgt.is_dir() and tgt.name not in source_names:
+            import shutil
+            shutil.rmtree(tgt)
+            print(f"  removed stale: {tgt.name}")
     count = 0
     for source in sorted(CLAUDE_SKILLS.glob("*.md")):
         name = source.stem
