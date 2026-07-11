@@ -1,0 +1,28 @@
+- generic [ref=f5e3]:
+  - generic [ref=f5e4]:
+    - generic:
+      - button "返回" [ref=f5e5]
+      - generic "京东登录注册" [ref=f5e6]
+  - generic [ref=f5e8]:
+    - paragraph [ref=f5e9]:
+      - button "选择国家地区编号，当前为86" [ref=f5e10]:
+        - generic [ref=f5e11]: "+86"
+      - textbox "请输入手机号" [ref=f5e13]
+    - paragraph [ref=f5e14]:
+      - textbox "请输入收到的验证码" [ref=f5e15]
+      - button "获取验证码" [ref=f5e16]
+  - generic [ref=f5e19]: 同意协议并登录
+  - paragraph [ref=f5e20]:
+    - generic [ref=f5e21]: 账号密码登录
+    - generic [ref=f5e22]: 手机快速注册
+  - generic [ref=f5e23]:
+    - heading "同意协议并选择其他登录方式" [level=4] [ref=f5e24]
+    - paragraph [ref=f5e25]
+  - paragraph [ref=f5e27]:
+    - checkbox [ref=f5e28]
+    - text: 我已阅读并同意
+    - link "《京东用户服务协议》" [ref=f5e29] [cursor=pointer]:
+      - /url: https://in.m.jd.com/help/app/register_info.html
+    - link "《用户隐私政策》" [ref=f5e30] [cursor=pointer]:
+      - /url: https://in.m.jd.com/help/app/private_policy.html
+    - text: ，未注册的手机号将自动创建京东账号

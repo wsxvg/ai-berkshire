@@ -1,0 +1,4 @@
+[     344ms] [WARNING] %c 请接入奇点时设置pageId参数（未设置可能导致浏览数据统计不到），下一个版本如果未设置，将不再上报页面浏览数据，请尽快完成，感谢您的配合！如何设置，可以在这里查看：https://joyspace.jd.com/pages/puZEQL6Ct1T50FVq8NMH color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[     663ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://lc.jr.jd.com/fund/funddiagnosis/index/?itemId=114880:0
+[     899ms] [LOG] {perFormanceList: undefined, score: undefined, morePerformance: undefined, __ob__: St} [Object, Object, Object] @ https://lc.jr.jd.com/fund/funddiagnosis/js/index_a8350d41dd.js:0
+[     925ms] [LOG] {PKButton: undefined, buttonList: undefined, bbsButton: undefined, isFavorite: undefined, __ob__: St} @ https://lc.jr.jd.com/fund/funddiagnosis/js/index_a8350d41dd.js:0

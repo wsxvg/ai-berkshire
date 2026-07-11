@@ -1,0 +1,106 @@
+{
+  "fund_code": "014320",
+  "report_date": "2026-03-31",
+  "total_asset": 4270797698.9,
+  "allocation": {
+    "股票": 92.27,
+    "现金": 8.63,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "胜宏科技",
+      "code": "300476",
+      "ratio": "6.05%",
+      "change": "0.80%",
+      "rate": "0.65%",
+      "industry": "元件",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "海光信息",
+      "code": "688041",
+      "ratio": "5.91%",
+      "change": "1.04%",
+      "rate": "0.96%",
+      "industry": "半导体",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "兆易创新",
+      "code": "603986",
+      "ratio": "5.58%",
+      "change": "0.99%",
+      "rate": "-2.45%",
+      "industry": "半导体",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "炬光科技",
+      "code": "688167",
+      "ratio": "5.33%",
+      "change": "新增",
+      "rate": "-2.25%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "中芯国际",
+      "code": "00981",
+      "ratio": "5.24%",
+      "change": "0.83%",
+      "rate": "-3.48%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "寒武纪",
+      "code": "688256",
+      "ratio": "5.17%",
+      "change": "1.61%",
+      "rate": "-1.38%",
+      "industry": "半导体",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "伟测科技",
+      "code": "688372",
+      "ratio": "4.53%",
+      "change": "新增",
+      "rate": "-5.78%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "华虹宏力",
+      "code": "01347",
+      "ratio": "4.33%",
+      "change": "新增",
+      "rate": "-4.35%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "4.30%",
+      "change": "新增",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "拓荆科技",
+      "code": "688072",
+      "ratio": "3.99%",
+      "change": "0.28%",
+      "rate": "0.00%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比50.43%",
+  "invest_date": "2026-03-31"
+}

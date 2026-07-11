@@ -1,0 +1,106 @@
+{
+  "fund_code": "320016",
+  "report_date": "2026-03-31",
+  "total_asset": 5062376650.31,
+  "allocation": {
+    "股票": 93.93,
+    "现金": 6.84,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "两面针",
+      "code": "600249",
+      "ratio": "0.38%",
+      "change": "新增",
+      "rate": "1.30%",
+      "industry": "美容护理",
+      "quarters_held": ""
+    },
+    {
+      "name": "益佰制药",
+      "code": "600594",
+      "ratio": "0.34%",
+      "change": "新增",
+      "rate": "1.27%",
+      "industry": "中药",
+      "quarters_held": ""
+    },
+    {
+      "name": "美硕科技",
+      "code": "301295",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "5.21%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "鸿泉技术",
+      "code": "688288",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "3.30%",
+      "industry": "计算机设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "亚通股份",
+      "code": "600692",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "1.25%",
+      "industry": "房地产",
+      "quarters_held": ""
+    },
+    {
+      "name": "天目湖",
+      "code": "603136",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "1.15%",
+      "industry": "旅游及酒店",
+      "quarters_held": ""
+    },
+    {
+      "name": "华神科技",
+      "code": "000790",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "2.96%",
+      "industry": "中药",
+      "quarters_held": ""
+    },
+    {
+      "name": "丰林集团",
+      "code": "601996",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "1.42%",
+      "industry": "种植业与林业",
+      "quarters_held": ""
+    },
+    {
+      "name": "天地源",
+      "code": "600665",
+      "ratio": "0.32%",
+      "change": "新增",
+      "rate": "0.65%",
+      "industry": "房地产",
+      "quarters_held": ""
+    },
+    {
+      "name": "大龙地产",
+      "code": "600159",
+      "ratio": "0.31%",
+      "change": "新增",
+      "rate": "2.21%",
+      "industry": "房地产",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比3.27%",
+  "invest_date": "2026-03-31"
+}

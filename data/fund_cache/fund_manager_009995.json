@@ -1,0 +1,21 @@
+{
+  "fund_code": "009995",
+  "managers": [
+    {
+      "name": "王贵重",
+      "year_performance": "25.84",
+      "employ_performance": "266.87",
+      "manage_scale": "117.43亿元",
+      "employment_date": "7年58天",
+      "accession_date": "2023.11.16-至今"
+    },
+    {
+      "name": "彭民",
+      "year_performance": "112.75",
+      "employ_performance": "299.35",
+      "manage_scale": "27.62亿元",
+      "employment_date": "1年303天",
+      "accession_date": "2024.09.04-至今"
+    }
+  ]
+}

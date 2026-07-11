@@ -1,0 +1,106 @@
+{
+  "fund_code": "017192",
+  "report_date": "2026-03-31",
+  "total_asset": 7846497361.69,
+  "allocation": {
+    "基金": 55.76,
+    "股票": 38.29,
+    "现金": 5.91,
+    "其他": 0.03,
+    "债券": 0.01
+  },
+  "top_stocks": [
+    {
+      "name": "洛阳钼业",
+      "code": "603993",
+      "ratio": "4.15%",
+      "change": "新增",
+      "rate": "1.26%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "北方稀土",
+      "code": "600111",
+      "ratio": "3.34%",
+      "change": "新增",
+      "rate": "0.77%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国铝业",
+      "code": "601600",
+      "ratio": "2.47%",
+      "change": "新增",
+      "rate": "1.96%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "云铝股份",
+      "code": "000807",
+      "ratio": "1.92%",
+      "change": "新增",
+      "rate": "2.99%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "厦门钨业",
+      "code": "600549",
+      "ratio": "1.71%",
+      "change": "新增",
+      "rate": "-8.64%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "天山铝业",
+      "code": "002532",
+      "ratio": "1.67%",
+      "change": "新增",
+      "rate": "4.03%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "兴业银锡",
+      "code": "000426",
+      "ratio": "1.58%",
+      "change": "新增",
+      "rate": "2.94%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "神火股份",
+      "code": "000933",
+      "ratio": "1.55%",
+      "change": "新增",
+      "rate": "4.20%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "铜陵有色",
+      "code": "000630",
+      "ratio": "1.29%",
+      "change": "新增",
+      "rate": "4.19%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "江西铜业",
+      "code": "600362",
+      "ratio": "1.24%",
+      "change": "新增",
+      "rate": "3.24%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比20.92%",
+  "invest_date": "2026-03-31"
+}

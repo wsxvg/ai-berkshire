@@ -1,0 +1,96 @@
+{
+  "fund_code": "501225",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": -7.7,
+      "avg": 0.17,
+      "rank": "387/410",
+      "rank_pct": 0.9439024390243902
+    },
+    {
+      "period": "近1月",
+      "return": 0.55,
+      "avg": -5.1,
+      "rank": "75/408",
+      "rank_pct": 0.18382352941176472
+    },
+    {
+      "period": "近3月",
+      "return": 58.81,
+      "avg": 5.95,
+      "rank": "8/406",
+      "rank_pct": 0.019704433497536946
+    },
+    {
+      "period": "近6月",
+      "return": 69.76,
+      "avg": 2.86,
+      "rank": "9/398",
+      "rank_pct": 0.022613065326633167
+    },
+    {
+      "period": "近1年",
+      "return": 114.56,
+      "avg": 13.15,
+      "rank": "10/386",
+      "rank_pct": 0.025906735751295335
+    },
+    {
+      "period": "今年以来",
+      "return": 69.76,
+      "avg": 2.49,
+      "rank": "9/410",
+      "rank_pct": 0.02195121951219512
+    },
+    {
+      "period": "近3年",
+      "return": 198.5,
+      "avg": 48.86,
+      "rank": "5/261",
+      "rank_pct": 0.019157088122605363
+    },
+    {
+      "period": "成立以来",
+      "return": 236.02,
+      "avg": 115.04,
+      "rank": "35/230",
+      "rank_pct": 0.15217391304347827
+    }
+  ],
+  "year_performance": [
+    {
+      "year": "2025年",
+      "return": 36.61,
+      "avg": null
+    },
+    {
+      "year": "2024年",
+      "return": 24.37,
+      "avg": null
+    },
+    {
+      "year": "2023年",
+      "return": null,
+      "avg": 9.05
+    }
+  ],
+  "aip_performance": [
+    {
+      "period": "近一年",
+      "return": 54.48
+    },
+    {
+      "period": "近二年",
+      "return": 97.53
+    },
+    {
+      "period": "近三年",
+      "return": 126.75
+    },
+    {
+      "period": "近五年",
+      "return": null
+    }
+  ]
+}

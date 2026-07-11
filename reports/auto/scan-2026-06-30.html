@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基金全流程扫描报告 — 2026-06-30</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d28;
+    --card-hover: #222639;
+    --border: #2a2e3a;
+    --text: #e4e6ea;
+    --text-secondary: #8b8fa3;
+    --accent: #4f8cff;
+    --accent-dim: #3a6fd8;
+    --green: #34d399;
+    --green-bg: rgba(52,211,153,0.12);
+    --red: #f87171;
+    --red-bg: rgba(248,113,113,0.12);
+    --orange: #fbbf24;
+    --orange-bg: rgba(251,191,36,0.12);
+    --blue: #60a5fa;
+    --purple: #a78bfa;
+    --teal: #2dd4bf;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1d28 0%, #0f1117 100%);
+    padding: 40px 0 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header .meta {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .header .meta span { margin-right: 20px; }
+  .header .badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  .badge-green { background: var(--green-bg); color: var(--green); }
+  .badge-blue { background: rgba(79,140,255,0.12); color: var(--accent); }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .emoji { font-size: 24px; }
+
+  /* Cards Grid */
+  .rank-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    padding: 20px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    min-height: 300px;
+    overflow-x: auto;
+  }
+  .rank-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 55px;
+  }
+  .rank-bar {
+    width: 36px;
+    border-radius: 6px 6px 0 0;
+    min-height: 4px;
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+  }
+  .rank-bar:hover { opacity: 0.8; transform: scaleX(1.1); }
+  .rank-bar .val {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .rank-name {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    text-align: center;
+    max-width: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .rank-weight {
+    font-size: 9px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 700px;
+  }
+  thead {
+    background: var(--bg);
+  }
+  th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(42,46,58,0.5);
+    vertical-align: middle;
+  }
+  tr:hover td { background: var(--card-hover); }
+  .consensus-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .c-7 { background: rgba(52,211,153,0.2); color: #34d399; }
+  .c-6 { background: rgba(96,165,250,0.2); color: #60a5fa; }
+  .c-5 { background: rgba(167,139,250,0.2); color: #a78bfa; }
+  .c-4 { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .c-3 { background: rgba(248,113,113,0.2); color: #f87171; }
+
+  /* Master Cards */
+  .fund-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+  .fund-card:hover { border-color: var(--accent-dim); }
+  .fund-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .fund-name {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .fund-name .code {
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .fund-consensus {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fund-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .fund-meta strong { color: var(--text); }
+  .master-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .master-card {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .master-card .name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .master-card .dimension {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .master-card .score {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .score-high { background: var(--green-bg); color: var(--green); }
+  .score-mid { background: var(--orange-bg); color: var(--orange); }
+  .score-low { background: var(--red-bg); color: var(--red); }
+  .master-card .comment { font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+
+  /* Strategy */
+  .strategy-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .strategy-box h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .strategy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .strategy-table td {
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 1px solid rgba(42,46,58,0.3);
+  }
+  .strategy-table td:first-child {
+    color: var(--text-secondary);
+    width: 100px;
+    font-weight: 600;
+  }
+
+  /* Risk */
+  .risk-box {
+    background: var(--red-bg);
+    border: 1px solid rgba(248,113,113,0.2);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .risk-box h4 { color: var(--red); font-size: 14px; margin-bottom: 8px; }
+  .risk-box li { color: var(--text-secondary); font-size: 13px; margin-left: 16px; margin-bottom: 4px; }
+
+  /* Action Button */
+  .action-bar {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: default;
+  }
+  .btn-buy { background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
+  .btn-watch { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(251,191,36,0.3); }
+  .btn-hold { background: rgba(96,165,250,0.12); color: var(--blue); border: 1px solid rgba(96,165,250,0.3); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* Summary grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .summary-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+  }
+  .summary-item .num {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .summary-item .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .master-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>基金全流程扫描报告</h1>
+    <div class="meta">
+      <span>报告日期：2026-06-30</span>
+      <span>监控大佬：11 人</span>
+      <span>今日记录：129 条</span>
+      <span>强共识基金：15 只</span>
+      <span class="badge badge-green">Trading Day</span>
+      <span class="badge badge-blue">实时数据</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Summary -->
+<div class="summary-grid">
+  <div class="summary-item">
+    <div class="num">15</div>
+    <div class="label">强共识基金（≥3人）</div>
+  </div>
+  <div class="summary-item">
+    <div class="num">9</div>
+    <div class="label">今日活跃大佬</div>
+  </div>
+  <div class="summary-item">
+    <div class="num">46.5%</div>
+    <div class="label">最高收益率（晴空万里理财）</div>
+  </div>
+  <div class="summary-item">
+    <div class="num">129</div>
+    <div class="label">今日交易记录</div>
+  </div>
+</div>
+
+<!-- Section 1: User Rankings -->
+<div class="section">
+  <div class="section-title"><span class="emoji">📊</span> 大佬持仓收益率排名</div>
+  <div class="rank-grid">
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:186px;background:linear-gradient(to top,#34d399,#059669);">
+        <span class="val" style="color:#34d399;">46.5%</span>
+      </div>
+      <div class="rank-name">晴空万里理财</div>
+      <div class="rank-weight">权重1.5x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:164px;background:linear-gradient(to top,#60a5fa,#2563eb);">
+        <span class="val" style="color:#60a5fa;">41.1%</span>
+      </div>
+      <div class="rank-name">黑夜银翼</div>
+      <div class="rank-weight">权重1.5x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:163px;background:linear-gradient(to top,#60a5fa,#2563eb);">
+        <span class="val" style="color:#60a5fa;">40.8%</span>
+      </div>
+      <div class="rank-name">王晴阳</div>
+      <div class="rank-weight">权重1.5x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:162px;background:linear-gradient(to top,#60a5fa,#2563eb);">
+        <span class="val" style="color:#60a5fa;">40.5%</span>
+      </div>
+      <div class="rank-name">Z先生养基</div>
+      <div class="rank-weight">权重1.0x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:102px;background:linear-gradient(to top,#a78bfa,#7c3aed);">
+        <span class="val" style="color:#a78bfa;">25.6%</span>
+      </div>
+      <div class="rank-name">南山隐士</div>
+      <div class="rank-weight">权重1.0x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:77px;background:linear-gradient(to top,#fbbf24,#d97706);">
+        <span class="val" style="color:#fbbf24;">19.2%</span>
+      </div>
+      <div class="rank-name">招财小猫</div>
+      <div class="rank-weight">权重1.0x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:72px;background:linear-gradient(to top,#fbbf24,#d97706);">
+        <span class="val" style="color:#fbbf24;">18.1%</span>
+      </div>
+      <div class="rank-name">赚认知内的钱</div>
+      <div class="rank-weight">权重1.0x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:49px;background:linear-gradient(to top,#f87171,#dc2626);">
+        <span class="val" style="color:#f87171;">12.2%</span>
+      </div>
+      <div class="rank-name">家庭的温暖</div>
+      <div class="rank-weight">权重1.0x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:47px;background:linear-gradient(to top,#f87171,#dc2626);">
+        <span class="val" style="color:#f87171;">11.7%</span>
+      </div>
+      <div class="rank-name">蓝鲸跃财</div>
+      <div class="rank-weight">权重0.5x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:12px;background:linear-gradient(to top,#8b8fa3,#4b5563);">
+        <span class="val" style="color:#8b8fa3;">3.0%</span>
+      </div>
+      <div class="rank-name">西西的金算盘</div>
+      <div class="rank-weight">权重0.5x</div>
+    </div>
+    <div class="rank-bar-wrapper">
+      <div class="rank-bar" style="height:2px;background:linear-gradient(to top,#8b8fa3,#4b5563);">
+        <span class="val" style="color:#8b8fa3;">0.5%</span>
+      </div>
+      <div class="rank-name">小猫咪爱黄金</div>
+      <div class="rank-weight">权重0.5x</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;font-size:12px;color:var(--text-secondary);text-align:center;">
+    🟢 前三名权重 1.5x 计入信号 · 柱高按收益率比例
+  </div>
+</div>
+
+<!-- Section 2: Buy Signals -->
+<div class="section">
+  <div class="section-title"><span class="emoji">🟢</span> 买入信号汇总 — 强共识（≥3人）</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>基金名称</th>
+          <th>代码</th>
+          <th>共识</th>
+          <th>总金额</th>
+          <th>类型</th>
+          <th>申购费</th>
+          <th>日限额</th>
+          <th>参与大佬</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>华夏全球科技先锋混合(QDII)A</td>
+          <td>005698</td>
+          <td><span class="consensus-badge c-7">7人</span></td>
+          <td>¥7,000</td>
+          <td>QDII混合</td>
+          <td>0.15%</td>
+          <td>¥1,000</td>
+          <td>Z先生养基, 家庭的温暖, 小猫咪爱黄金, 招财小猫, 晴空万里理财</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>易方达全球成长精选混合(QDII)C</td>
+          <td>012922</td>
+          <td><span class="consensus-badge c-7">7人</span></td>
+          <td>¥70</td>
+          <td>QDII混合</td>
+          <td>0.0%</td>
+          <td>¥10</td>
+          <td>Z先生养基, 家庭的温暖, 小猫咪爱黄金, 招财小猫, 晴空万里理财, 王晴阳, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>易方达全球成长精选混合(QDII)A</td>
+          <td>012920</td>
+          <td><span class="consensus-badge c-6">6人</span></td>
+          <td>¥60</td>
+          <td>QDII混合</td>
+          <td>0.15%</td>
+          <td>¥10</td>
+          <td>Z先生养基, 南山隐士, 家庭的温暖, 晴空万里理财, 王晴阳, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>建信新兴市场混合(QDII)A</td>
+          <td>539002</td>
+          <td><span class="consensus-badge c-5">5人</span></td>
+          <td>¥140</td>
+          <td>QDII混合</td>
+          <td>0.16%</td>
+          <td>¥30</td>
+          <td>Z先生养基, 家庭的温暖, 晴空万里理财, 王晴阳, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>建信新兴市场混合(QDII)C</td>
+          <td>018147</td>
+          <td><span class="consensus-badge c-5">5人</span></td>
+          <td>¥131</td>
+          <td>QDII混合</td>
+          <td>0.0%</td>
+          <td>¥30</td>
+          <td>Z先生养基, 家庭的温暖, 晴空万里理财, 王晴阳, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>天弘全球高端制造混合(QDII)C</td>
+          <td>016665</td>
+          <td><span class="consensus-badge c-4">4人</span></td>
+          <td>¥400</td>
+          <td>QDII混合</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>南山隐士, 晴空万里理财, 王晴阳, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>嘉实全球产业升级股票发起式(QDII)A</td>
+          <td>017730</td>
+          <td><span class="consensus-badge c-4">4人</span></td>
+          <td>¥400</td>
+          <td>QDII股票</td>
+          <td>0.15%</td>
+          <td>¥100</td>
+          <td>Z先生养基, 家庭的温暖, 晴空万里理财, 王晴阳</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>财通成长优选混合C</td>
+          <td>021528</td>
+          <td><span class="consensus-badge c-4">4人</span></td>
+          <td>¥400</td>
+          <td>混合型</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>家庭的温暖, 小猫咪爱黄金, 招财小猫, 晴空万里理财</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>华宝致远混合A</td>
+          <td>008253</td>
+          <td><span class="consensus-badge c-4">4人</span></td>
+          <td>¥80</td>
+          <td>QDII混合</td>
+          <td>0.15%</td>
+          <td>¥20</td>
+          <td>Z先生养基, 小猫咪爱黄金, 晴空万里理财, 西西的金算盘</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>天弘全球高端制造混合(QDII)A</td>
+          <td>016664</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥300</td>
+          <td>QDII混合</td>
+          <td>0.15%</td>
+          <td>¥100</td>
+          <td>Z先生养基, 家庭的温暖, 王晴阳</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>嘉实全球产业升级股票发起式(QDII)C</td>
+          <td>017731</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥300</td>
+          <td>QDII股票</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>南山隐士, 家庭的温暖, 王晴阳</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>财通价值动量混合C</td>
+          <td>021523</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥300</td>
+          <td>混合型</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>家庭的温暖, 招财小猫, 晴空万里理财</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>财通品质甄选混合C</td>
+          <td>024481</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥300</td>
+          <td>混合型</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>家庭的温暖, 招财小猫, 晴空万里理财</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>财通集成电路产业股票C</td>
+          <td>006503</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥300</td>
+          <td>股票型</td>
+          <td>0.0%</td>
+          <td>¥100</td>
+          <td>家庭的温暖, 招财小猫, 晴空万里理财</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>国富全球科技互联混合(QDII)人民币C</td>
+          <td>021842</td>
+          <td><span class="consensus-badge c-3">3人</span></td>
+          <td>¥30</td>
+          <td>QDII混合</td>
+          <td>0.0%</td>
+          <td>¥10</td>
+          <td>南山隐士, 晴空万里理财, 王晴阳</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:8px;font-size:12px;color:var(--text-secondary);">* 排名前三（收益率）的大佬权重 1.5x，信号更可靠</div>
+</div>
+
+<!-- Section 3: Four Masters Evaluation -->
+<div class="section">
+  <div class="section-title"><span class="emoji">🎯</span> 四大师评价 — 强共识基金</div>
+
+  <!-- Fund 1: 华夏全球科技先锋 -->
+  <div class="fund-card">
+    <div class="fund-header">
+      <div>
+        <div class="fund-name">华夏全球科技先锋混合(QDII)A <span class="code">005698</span></div>
+        <div class="fund-meta">
+          <span>共识：<strong>7人</strong> · 总金额 <strong>¥7,000</strong></span>
+          <span>资产规模 <strong>33.00亿</strong></span>
+          <span>成立 <strong>2018-04-17</strong></span>
+          <span>年化管理费 <strong>1.2%</strong></span>
+          <span>日限购 <strong>¥1,000</strong></span>
+        </div>
+      </div>
+      <div class="fund-consensus">
+        <span class="consensus-badge c-7">7人 最高共识</span>
+        <span class="btn btn-buy">建议买入</span>
+      </div>
+    </div>
+    <div class="master-grid">
+      <div class="master-card">
+        <div class="name" style="color:#34d399;">段永平 · 商业模式</div>
+        <div class="dimension">评估维度：底层持仓生意质量</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">前十大重仓聚焦光通信（Ciena、Lumentum、Coherent）+ 半导体（台积电、博通），持仓的底层生意是AI基础设施"卖铲子"逻辑。全球科技硬件龙头ROE普遍15%+，商业模式清晰且现金流强劲。可惜A类份额申购费折后仍0.15%，对长期定投有轻微侵蚀。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#60a5fa;">巴菲特 · 财务与估值</div>
+        <div class="dimension">评估维度：费率、业绩持续性、估值</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">近1年+10.02%(同类17/160)、近3年+70.12%(12/157)、近5年+158.92%(4/68)，中长期业绩优秀且稳定。年化管理费1.2%+托管0.2%在QDII中属于合理水平。底层持仓科技龙头PE约20-30x，不算极度便宜但增速匹配。日限购¥1,000偏紧，大资金建仓周期较长。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#fbbf24;">芒格 · 逆向与风险</div>
+        <div class="dimension">评估维度：赛道拥挤度、管理人能力</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">7位大佬同买的最高共识——反向思考：如果所有人都买这只，是否意味着赛道已经拥挤？从数据看华夏基金QDII团队经验丰富，但光通信和AI硬件仓位集中度高（前十大占36%+）。风险点：全球科技硬件需求如果因AI资本开支放缓而回调，回撤幅度可能较大。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#a78bfa;">李录 · 管理层与治理</div>
+        <div class="dimension">评估维度：基金经理背景、公司治理</div>
+        <span class="score score-mid">★★★☆☆ 3/5</span>
+        <div class="comment">基金经理自2018年成立即管理至今，稳定性尚可，但公开信息较少。华夏基金作为头部公募，治理规范。基金规模33亿，规模适中不易受大额申赎冲击。需关注：QDII基金受外汇额度限制，可能出现暂停申购风险。</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h4>📋 操作策略</h4>
+      <table class="strategy-table">
+        <tr><td>份额推荐</td><td>A类（长期持有，申购费折后0.15%优于C类销售服务费累积）</td></tr>
+        <tr><td>方式</td><td>定投（分批进场，分散时点风险）</td></tr>
+        <tr><td>每周/每期</td><td>¥500~¥1,000（日限购¥1,000以内）</td></tr>
+        <tr><td>总仓位上限</td><td>总资金的15%（QDII侧重全球配置）</td></tr>
+        <tr><td>持有周期</td><td>≥6个月（QDII赎回到账T+7~T+10）</td></tr>
+        <tr><td>止盈线</td><td>+20%开始分批止盈</td></tr>
+        <tr><td>止损线</td><td>-20%重新评估逻辑（不止损在恐慌中）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fund 2: 易方达全球成长精选C -->
+  <div class="fund-card">
+    <div class="fund-header">
+      <div>
+        <div class="fund-name">易方达全球成长精选混合(QDII)C <span class="code">012922</span></div>
+        <div class="fund-meta">
+          <span>共识：<strong>7人</strong> · 总金额 <strong>¥70</strong></span>
+          <span>资产规模 <strong>61.61亿</strong></span>
+          <span>成立 <strong>2022-01-11</strong></span>
+          <span>年化管理费 <strong>1.2%</strong></span>
+          <span>日限购 <strong>¥10</strong> ⚠️</span>
+        </div>
+      </div>
+      <div class="fund-consensus">
+        <span class="consensus-badge c-7">7人 最高共识</span>
+        <span class="btn btn-watch">建议观察</span>
+      </div>
+    </div>
+    <div class="master-grid">
+      <div class="master-card">
+        <div class="name" style="color:#34d399;">段永平 · 商业模式</div>
+        <div class="dimension">评估维度：底层持仓生意质量</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">前十大重仓台积电(8.88%)、Lumentum(8.68%)、博通(6.02%)、AXT(4.67%)、微软(4.67%)、中际旭创(4.67%)等，横跨半导体设备、光通信、云计算、AI算力。组合兼具"卖铲子"（台积电、Lumentum）和"淘金者"（微软、谷歌）双重属性，生意质量优异。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#60a5fa;">巴菲特 · 财务与估值</div>
+        <div class="dimension">评估维度：费率、业绩持续性、估值</div>
+        <span class="score score-high">★★★★★ 5/5</span>
+        <div class="comment">业绩极为出色：近1年+15.02%(同类4/160)、近3年+78.36%(4/157)、成立以来+99.66%(6/165)，所有期限均排名前6！近1年+214.62%冠绝同类。C类份额0申购费，短期持有性价比极高。但⚠️日限购仅¥10，大额资金几乎无法入场。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#fbbf24;">芒格 · 逆向与风险</div>
+        <div class="dimension">评估维度：赛道拥挤度、管理人能力</div>
+        <span class="score score-mid">★★★☆☆ 3/5</span>
+        <div class="comment">7人共识说明认可度极高。但日限购¥10是严重制约——这意味着即使看好也无法建立有意义仓位。反向思考：限购是否因为QDII额度紧张或基金公司主动控制规模？若是后者，说明基金可能到了"太受欢迎反而不好买"的阶段。易方达QDII团队实力强劲，基金经理郑希管理经验丰富。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#a78bfa;">李录 · 管理层与治理</div>
+        <div class="dimension">评估维度：基金经理背景、公司治理</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">基金经理郑希自2022年成立即管理，稳定性好。易方达是头部公募，合规风控水平一流。资产规模61.61亿偏大，但QDII全球配置有天然分散。核心风险是限购额度过低（¥10/日），实际可投资性较差。</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h4>📋 操作策略</h4>
+      <table class="strategy-table">
+        <tr><td>份额推荐</td><td>C类（0申购费，短期持有合适；但日限购¥10是硬约束）</td></tr>
+        <tr><td>方式</td><td>每日定投¥10（上限就是¥10，无奈之举）</td></tr>
+        <tr><td>替代方案</td><td>考虑A类份额012920（同样限购¥10）或同类替代品</td></tr>
+        <tr><td>总仓位上限</td><td>总资金的5%（因限购实际很难建仓）</td></tr>
+        <tr><td>注意</td><td>限购放开时加大力度</td></tr>
+      </table>
+      <div style="margin-top:8px;font-size:12px;color:var(--orange);">⚠️ 业绩顶尖但日限购¥10，实际可投资性有限，建议作为"种子仓"每日定投</div>
+    </div>
+  </div>
+
+  <!-- Fund 3: 建信新兴市场A -->
+  <div class="fund-card">
+    <div class="fund-header">
+      <div>
+        <div class="fund-name">建信新兴市场混合(QDII)A <span class="code">539002</span></div>
+        <div class="fund-meta">
+          <span>共识：<strong>5人</strong> · 总金额 <strong>¥140</strong></span>
+          <span>资产规模 <strong>11.20亿</strong></span>
+          <span>成立 <strong>2011-06-21</strong></span>
+          <span>年化管理费 <strong>1.2%</strong></span>
+          <span>日限购 <strong>¥30</strong></span>
+        </div>
+      </div>
+      <div class="fund-consensus">
+        <span class="consensus-badge c-5">5人</span>
+        <span class="btn btn-buy">建议买入</span>
+      </div>
+    </div>
+    <div class="master-grid">
+      <div class="master-card">
+        <div class="name" style="color:#34d399;">段永平 · 商业模式</div>
+        <div class="dimension">评估维度：底层持仓生意质量</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">前十大全仓全球半导体龙头：台积电(10.26%)、英伟达(10.14%)、阿斯麦(8.65%)、高通(8.52%)、三星(6.76%)、Sandisk(4.91%)、博通(4.29%)。这是最纯粹的"全球半导体产业链"基金，底层生意是AI时代的核心基础设施，护城河极深——全球半导体代工/设备/EAD市场几乎被这几家垄断。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#60a5fa;">巴菲特 · 财务与估值</div>
+        <div class="dimension">评估维度：费率、业绩持续性、估值</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">业绩优秀：近3年+65.03%(15/157)、近5年+167.75%(3/68)、成立以来+90.69%(12/165)。中长期稳定在前10-20%分位。管理费1.2%+托管0.2%合理。申购费折后0.16%偏低。但近1月-5.55%短期回撤较大，宜分批入场而非一次性。底层英伟达PE约35x、台积电PE约20x，估值在合理范围。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#fbbf24;">芒格 · 逆向与风险</div>
+        <div class="dimension">评估维度：赛道拥挤度、管理人能力</div>
+        <span class="score score-mid">★★★☆☆ 3/5</span>
+        <div class="comment">半导体赛道拥挤度极高——几乎所有科技基金都重仓这几家。当所有人都看好半导体时，预期差在哪里？需警惕AI资本开支一旦放缓，半导体板块可能面临戴维斯双杀。建信基金三位基金经理共管（李博凯+朱金钰+李登虎），团队作战但决策链条可能较长。日限购¥30偏紧。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#a78bfa;">李录 · 管理层与治理</div>
+        <div class="dimension">评估维度：基金经理背景、公司治理</div>
+        <span class="score score-mid">★★★☆☆ 3/5</span>
+        <div class="comment">三位基金经理共同管理，李博凯自2017年管理至今（9年），稳定性好；朱金钰2019年加入、李登虎2024年新加入。三人组变动需要关注新加入者的影响。基金成立于2011年，是建信旗下老牌QDII产品，运作成熟。规模11.2亿适中。</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h4>📋 操作策略</h4>
+      <table class="strategy-table">
+        <tr><td>份额推荐</td><td>A类（长期持有选A，0.16%申购费折后很便宜）</td></tr>
+        <tr><td>方式</td><td>定投（半导体波动大，定投摊平成本）</td></tr>
+        <tr><td>每期金额</td><td>¥100~¥200（日限购¥30，可逐日定投）</td></tr>
+        <tr><td>总仓位上限</td><td>总资金的15%</td></tr>
+        <tr><td>持有周期</td><td>≥1年</td></tr>
+        <tr><td>止盈线</td><td>+25%分批止盈</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fund 4: 天弘全球高端制造C -->
+  <div class="fund-card">
+    <div class="fund-header">
+      <div>
+        <div class="fund-name">天弘全球高端制造混合(QDII)C <span class="code">016665</span></div>
+        <div class="fund-meta">
+          <span>共识：<strong>4人</strong> · 总金额 <strong>¥400</strong></span>
+          <span>资产规模 <strong>14.25亿</strong></span>
+          <span>成立 <strong>2023-04-26</strong></span>
+          <span>年化管理费 <strong>1.2%</strong></span>
+          <span>日限购 <strong>¥100</strong></span>
+        </div>
+      </div>
+      <div class="fund-consensus">
+        <span class="consensus-badge c-4">4人</span>
+        <span class="btn btn-buy">建议买入</span>
+      </div>
+    </div>
+    <div class="master-grid">
+      <div class="master-card">
+        <div class="name" style="color:#34d399;">段永平 · 商业模式</div>
+        <div class="dimension">评估维度：底层持仓生意质量</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">持仓均衡覆盖全球高端制造产业链：英伟达(3.65%)、高通(3.07%)、台积电(2.77%)、Tower半导体(2.75%)、Lumentum(2.69%)、中际旭创(2.44%)等。不同于纯半导体基金，它还覆盖胜科工业、索尼等泛高端制造标的，持仓更分散（前十大合计仅约28%），降低了单一赛道风险。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#60a5fa;">巴菲特 · 财务与估值</div>
+        <div class="dimension">评估维度：费率、业绩持续性、估值</div>
+        <span class="score score-high">★★★★★ 5/5</span>
+        <div class="comment">业绩极其亮眼：近1年+11.48%(14/160)、近3年+76.62%(6/157)、成立以来+101.33%(4/165)。所有期限均排名前6%，稳定性极高。C类0申购费、日限购¥100相对宽松。年化管理费1.2%+托管0.2%合理。净值趋势稳步向上（近5日+0.97%/+1.45%），短期趋势良好。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#fbbf24;">芒格 · 逆向与风险</div>
+        <div class="dimension">评估维度：赛道拥挤度、管理人能力</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">持仓分散是优点——不会因为单一半导体公司暴雷而大幅回撤。4位大佬买入不多不少，说明认可度够但还没到"拥挤"的程度。基金经理陈琳自2023年成立即管理，天弘基金以指数化能力见长。规模14.25亿适中。日限购¥100对普通投资者够用。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#a78bfa;">李录 · 管理层与治理</div>
+        <div class="dimension">评估维度：基金经理背景、公司治理</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">基金经理陈琳管理经验2年+，时间尚短但业绩证明能力。天弘基金背靠蚂蚁集团，治理规范、风控到位。规模14.25亿处于理想状态——足够大以维持运营，又不会大到大象难转身。日限购¥100合理充裕。</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h4>📋 操作策略</h4>
+      <table class="strategy-table">
+        <tr><td>份额推荐</td><td>C类（0申购费，适合中短期持有）</td></tr>
+        <tr><td>方式</td><td>定投 + 逢跌加仓</td></tr>
+        <tr><td>每期金额</td><td>¥200~¥500/日（日限购¥100可多日累计）</td></tr>
+        <tr><td>总仓位上限</td><td>总资金的15%</td></tr>
+        <tr><td>持有周期</td><td>≥6个月</td></tr>
+        <tr><td>止盈线</td><td>+20~30%分批止盈</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fund 5: 财通成长优选C -->
+  <div class="fund-card">
+    <div class="fund-header">
+      <div>
+        <div class="fund-name">财通成长优选混合C <span class="code">021528</span></div>
+        <div class="fund-meta">
+          <span>共识：<strong>4人</strong> · 总金额 <strong>¥400</strong></span>
+          <span>资产规模 <strong>11.17亿</strong></span>
+          <span>成立 <strong>2024-05-28</strong></span>
+          <span>年化管理费 <strong>1.2%</strong></span>
+          <span>日限购 <strong>¥100</strong></span>
+        </div>
+      </div>
+      <div class="fund-consensus">
+        <span class="consensus-badge c-4">4人</span>
+        <span class="btn btn-watch">建议观察</span>
+      </div>
+    </div>
+    <div class="master-grid">
+      <div class="master-card">
+        <div class="name" style="color:#34d399;">段永平 · 商业模式</div>
+        <div class="dimension">评估维度：底层持仓生意质量</div>
+        <span class="score score-high">★★★★☆ 4/5</span>
+        <div class="comment">前十大重仓全为A股高端制造/科技龙头：博创科技(9.90%)、长光华芯(9.83%)、中际旭创(9.81%)、新易盛(9.80%)、源杰科技(9.80%)、德科立(9.77%)、光迅科技(8.75%)等。这是最纯粹的光通信/光模块主题基金，底层生意是AI算力基础设施的光互联需求，受益于800G/1.6T光模块放量。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#60a5fa;">巴菲特 · 财务与估值</div>
+        <div class="dimension">评估维度：费率、业绩持续性、估值</div>
+        <span class="score score-high">★★★★★ 5/5</span>
+        <div class="comment">业绩极为炸裂：近1年+28.99%(3/250)、近3年+125.52%(2/249)、近6年+450.49%(2/219)、成立以来+144.77%(2/250)。几乎所有期限排名前3！C类0申购费、日限购¥100宽松。但⚠️成立仅2年（2024年5月），历史业绩展示的是A类母基金数据，需注意C类运作时间短。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#fbbf24;">芒格 · 逆向与风险</div>
+        <div class="dimension">评估维度：赛道拥挤度、管理人能力</div>
+        <span class="score score-low">★★☆☆☆ 2/5</span>
+        <div class="comment">最大风险：集中度极高！前十大重仓合计超81%，且全部集中在光通信/光模块一个细分赛道。一旦AI光模块需求放缓或技术路线切换（如硅光替代），回撤可能极其剧烈（参考2023年CPO概念回撤40%+的情况）。基金经理金梓才（2024.05起管理）经验尚不可评估。</div>
+      </div>
+      <div class="master-card">
+        <div class="name" style="color:#a78bfa;">李录 · 管理层与治理</div>
+        <div class="dimension">评估维度：基金经理背景、公司治理</div>
+        <span class="score score-low">★★☆☆☆ 2/5</span>
+        <div class="comment">财通基金规模中等，品牌力不如头部公募。基金经理管理时间短（仅1年+），无足够穿越周期的记录。高度集中的持仓风格在牛市中表现极佳，但熊市中回撤也会极大。此基金更适合风险承受能力强的投资者作为卫星仓位。</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h4>📋 操作策略</h4>
+      <table class="strategy-table">
+        <tr><td>份额推荐</td><td>C类（短期灵活进出，0申购费）</td></tr>
+        <tr><td>方式</td><td>分批低吸（高波动品种，切勿追高）</td></tr>
+        <tr><td>每期金额</td><td>¥50~¥200（卫星仓位，控制比例）</td></tr>
+        <tr><td>总仓位上限</td><td>总资金的5~8%（高集中度=高风险）</td></tr>
+        <tr><td>持有周期</td><td>3~6个月（趋势跟踪策略）</td></tr>
+        <tr><td>止盈线</td><td>+30%坚决止盈</td></tr>
+        <tr><td>止损线</td><td>-15%无条件止损</td></tr>
+      </table>
+      <div style="margin-top:8px;font-size:12px;color:var(--orange);">⚠️ 高集中度+短期业绩冠军魔咒：历史数据表明前一年排名前3的基金次年大多回落。建议小仓位博弈。</div>
+    </div>
+  </div>
+
+  <!-- Fund 6-15: Compact Cards -->
+  <details>
+    <summary style="cursor:pointer;font-size:15px;font-weight:600;color:var(--accent);padding:12px 0;">▼ 其余10只强共识基金评价（点击展开）</summary>
+
+    <!-- 嘉实全球产业升级A -->
+    <div class="fund-card" style="margin-top:12px;">
+      <div class="fund-header">
+        <div>
+          <div class="fund-name">嘉实全球产业升级股票发起式(QDII)A <span class="code">017730</span></div>
+          <div class="fund-meta"><span>共识 <strong>4人</strong> · ¥400 · 规模9.22亿 · 日限购¥100</span></div>
+        </div>
+        <span class="consensus-badge c-4">4人</span>
+      </div>
+      <div class="master-grid">
+        <div class="master-card"><div class="name" style="color:#34d399;">段永平</div><div class="comment">持仓聚焦全球半导体产业链升级，底层资产质地优良。4位大佬买入体现共识。</div></div>
+        <div class="master-card"><div class="name" style="color:#60a5fa;">巴菲特</div><div class="comment">近1年+12.46%(6/437)、近3年+75.94%(5/430)、成立以来+85.32%(5/441)。业绩稳定性极佳，所有期限排名前6%。</div></div>
+        <div class="master-card"><div class="name" style="color:#fbbf24;">芒格</div><div class="comment">QDII股票型基金波动大于混合型，但规模9.22亿适中。嘉实QDII团队经验丰富。日限购¥100宽松。</div></div>
+        <div class="master-card"><div class="name" style="color:#a78bfa;">李录</div><div class="comment">嘉实基金为头部公募，治理规范。发起式基金说明基金公司与持有人利益绑定。</div></div>
+      </div>
+      <div class="strategy-box"><h4>📋 策略</h4>C类更适合波段，A类适合长期。建议定投¥100~¥300/日，仓位≤10%。</div>
+    </div>
+
+    <!-- 华宝致远A -->
+    <div class="fund-card">
+      <div class="fund-header">
+        <div>
+          <div class="fund-name">华宝致远混合A <span class="code">008253</span></div>
+          <div class="fund-meta"><span>共识 <strong>4人</strong> · ¥80 · 规模2.26亿 · 日限购¥20</span></div>
+        </div>
+        <span class="consensus-badge c-4">4人</span>
+      </div>
+      <div class="master-grid">
+        <div class="master-card"><div class="name" style="color:#34d399;">段永平</div><div class="comment">全球科技混合配置，生意质量尚可但持仓分散度一般。</div></div>
+        <div class="master-card"><div class="name" style="color:#60a5fa;">巴菲特</div><div class="comment">近1年+2.80%(41/160)、近3年+53.80%(26/157)、近5年+54.49%(10/68)。业绩中等偏上，不算顶尖。</div></div>
+        <div class="master-card"><div class="name" style="color:#fbbf24;">芒格</div><div class="comment">规模仅2.26亿偏小，需关注清盘风险（<5000万）。流动性风险比大基金高。日限购¥20紧张。</div></div>
+        <div class="master-card"><div class="name" style="color:#a78bfa;">李录</div><div class="comment">华宝基金管理团队稳定，但小规模基金运营成本占比高。建议优先选规模更大的同类基金。</div></div>
+      </div>
+      <div class="strategy-box"><h4>📋 策略</h4>替代方案：同类QDII中选规模更大的基金。若坚持买，建议小额试探，≤总资金5%。</div>
+    </div>
+
+    <!-- 财通价值动量C / 品质甄选C / 集成电路C / 天弘高端制造A / 嘉实产业升级C / 国富全球科技C -->
+    <div class="fund-card">
+      <div class="fund-header">
+        <div>
+          <div class="fund-name">财通三剑客 + 天弘/嘉实/国富补充 <span style="font-weight:400;color:var(--text-secondary);font-size:13px;">6只3-4人共识基金</span></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="consensus-badge c-4">4人</span>
+          <span class="consensus-badge c-3">3人</span>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="min-width:auto;font-size:13px;">
+          <thead>
+            <tr>
+              <th>基金</th><th>代码</th><th>共识</th><th>日限购</th><th>近1年</th><th>建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>财通价值动量混合C</td><td>021523</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥100</td><td style="color:var(--green);">+27.19%</td>
+              <td><span class="btn btn-watch" style="font-size:11px;padding:4px 10px;">观察</span></td>
+            </tr>
+            <tr>
+              <td>财通品质甄选混合C</td><td>024481</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥100</td><td style="color:var(--green);">+25.41%</td>
+              <td><span class="btn btn-watch" style="font-size:11px;padding:4px 10px;">观察</span></td>
+            </tr>
+            <tr>
+              <td>财通集成电路产业股票C</td><td>006503</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥100</td><td style="color:var(--green);">+23.88%</td>
+              <td><span class="btn btn-watch" style="font-size:11px;padding:4px 10px;">观察</span></td>
+            </tr>
+            <tr>
+              <td>天弘全球高端制造A</td><td>016664</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥100</td><td style="color:var(--green);">+10.12%</td>
+              <td><span class="btn btn-buy" style="font-size:11px;padding:4px 10px;">买入</span></td>
+            </tr>
+            <tr>
+              <td>嘉实全球产业升级C</td><td>017731</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥100</td><td style="color:var(--green);">+11.74%</td>
+              <td><span class="btn btn-buy" style="font-size:11px;padding:4px 10px;">买入</span></td>
+            </tr>
+            <tr>
+              <td>国富全球科技互联人民币C</td><td>021842</td>
+              <td><span class="consensus-badge c-3">3人</span></td><td>¥10</td><td style="color:var(--green);">+3.01%</td>
+              <td><span class="btn btn-hold" style="font-size:11px;padding:4px 10px;">持有</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);">
+        <strong>综合评价</strong>：财通三剑客（价值动量/品质甄选/集成电路）同为财通基金旗下，持仓高度重叠（光通信产业链），建议三选一即可，避免重复建仓。<br>
+        天弘全球高端制造A与C类016665为同一只基金的不同份额，已选择C类（0申购费），A类仅适合超长期持有。<br>
+        国富全球科技互联C限购¥10，建仓困难，建议每日定投种子仓。
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- Section 4: Strategy Summary -->
+<div class="section">
+  <div class="section-title"><span class="emoji">💡</span> 组合策略建议</div>
+
+  <div class="fund-card">
+    <h3 style="font-size:17px;margin-bottom:16px;">推荐核心持仓</h3>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>基金</th><th>仓位</th><th>策略</th><th>金额参考</th><th>理由</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>天弘全球高端制造C (016665)</td>
+            <td><strong style="color:var(--green);">15%</strong></td>
+            <td>定投</td>
+            <td>¥500/周</td>
+            <td>业绩稳定前6%、持仓分散、日限购¥100宽松</td>
+          </tr>
+          <tr>
+            <td>华夏全球科技先锋A (005698)</td>
+            <td><strong style="color:var(--green);">12%</strong></td>
+            <td>定投</td>
+            <td>¥500/周</td>
+            <td>7人最高共识、中长期业绩优秀</td>
+          </tr>
+          <tr>
+            <td>建信新兴市场A (539002)</td>
+            <td><strong style="color:var(--green);">10%</strong></td>
+            <td>定投</td>
+            <td>¥200/周</td>
+            <td>5人共识、纯正半导体产业链、5年排名第3</td>
+          </tr>
+          <tr>
+            <td>嘉实全球产业升级C (017731)</td>
+            <td><strong style="color:var(--green);">8%</strong></td>
+            <td>定投</td>
+            <td>¥300/周</td>
+            <td>业绩前6%、规模9.22亿适中</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="fund-card">
+    <h3 style="font-size:17px;margin-bottom:16px;">卫星仓位（博弈高弹性）</h3>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>基金</th><th>仓位</th><th>策略</th><th>金额参考</th><th>注意</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>财通成长优选C (021528)</td>
+            <td><strong style="color:var(--orange);">5%</strong></td>
+            <td>逢跌买入</td>
+            <td>¥100~200/次</td>
+            <td>高度集中81%单一赛道，止损必设</td>
+          </tr>
+          <tr>
+            <td>易方达全球成长C (012922)</td>
+            <td><strong style="color:var(--orange);">3%</strong></td>
+            <td>每日定投</td>
+            <td>¥10/日（上限）</td>
+            <td>业绩第4但限购¥10，种子仓策略</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="fund-card">
+    <h3 style="font-size:17px;margin-bottom:16px;">A类 vs C类选择指南</h3>
+    <div style="overflow-x:auto;">
+      <table style="min-width:auto;">
+        <thead>
+          <tr><th>持有时间</th><th>推荐份额</th><th>原因</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 1年</td><td><strong>C类</strong></td><td>0申购费，销售服务费1.2%/年 ÷ 365 = 每日极低费用</td></tr>
+          <tr><td>1~2年</td><td>差异不大</td><td>申购费折后0.15% vs C类销售服务费1.2%/年，平衡点在1.5个月左右</td></tr>
+          <tr><td>&gt; 2年</td><td><strong>A类</strong></td><td>申购费一次性0.15%远低于C类累积的销售服务费</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Section 5: Risk Warning -->
+<div class="section">
+  <div class="section-title"><span class="emoji">⚠️</span> 风险提示</div>
+  <div class="risk-box">
+    <h4>重要声明</h4>
+    <ul>
+      <li>本报告基于京东金融公开数据自动生成，仅供学习研究参考，不构成任何投资建议</li>
+      <li>大佬买入 ≠ 你该买入。大佬的仓位规模、持有期限、风险承受能力可能与你完全不同</li>
+      <li>历史业绩不代表未来表现。短期排名靠前的基金常面临"冠军魔咒"——次年大幅回落的风险</li>
+      <li>QDII基金涉及汇率风险（人民币升值会降低收益）、赎回周期长（T+7~T+10）</li>
+      <li>高集中度基金（如财通系列持仓81%在光通信）在行业回调时回撤幅度可能远超大盘</li>
+      <li>小规模基金（&lt;5亿）需关注清盘风险</li>
+      <li>日限购额度紧张时，大资金建仓周期可能长达数周至数月</li>
+      <li><strong>分散投资、控制仓位、定期再平衡</strong>是长期制胜的关键</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>AI Berkshire · 基金全流程扫描报告 · 2026-06-30</p>
+  <p>数据来源：京东金融 API | 生成时间：2026-06-30 13:23</p>
+  <p>Powered by AI Berkshire Investment Research Framework</p>
+</div>
+
+</div>
+</body>
+</html>

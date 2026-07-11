@@ -1,0 +1,25 @@
+[
+  {
+    "timestamp": "2026-07-03T20:48:52.072249",
+    "score": {
+      "total": 4.2
+    },
+    "decision": {
+      "action": "buy",
+      "amount": 5000
+    },
+    "explanation": "测试分析"
+  },
+  {
+    "timestamp": "2026-07-03T20:55:40.016030",
+    "score": {
+      "total": 1.9542723962930273,
+      "quality": 2.1570895851721095
+    },
+    "decision": {
+      "action": "sell",
+      "amount": 50
+    },
+    "explanation": "评分 1.95 且数据陈旧(True)，建议减仓"
+  }
+]

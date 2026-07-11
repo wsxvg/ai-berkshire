@@ -1,0 +1,59 @@
+{
+  "fund_code": "021528",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": -0.12,
+      "rank": "92/253",
+      "rank_pct": 0.36363636363636365
+    },
+    {
+      "period": "近1月",
+      "return": 38.65,
+      "rank": "2/251",
+      "rank_pct": 0.00796812749003984
+    },
+    {
+      "period": "近3月",
+      "return": 132.18,
+      "rank": "2/250",
+      "rank_pct": 0.008
+    },
+    {
+      "period": "近6月",
+      "return": 147.94,
+      "rank": "2/244",
+      "rank_pct": 0.00819672131147541
+    },
+    {
+      "period": "近1年",
+      "return": 484.8,
+      "rank": "2/220",
+      "rank_pct": 0.00909090909090909
+    },
+    {
+      "period": "近3年",
+      "return": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近5年",
+      "return": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "今年以来",
+      "return": 152.6,
+      "rank": "2/253",
+      "rank_pct": 0.007905138339920948
+    },
+    {
+      "period": "成立以来",
+      "return": 477.2,
+      "rank": "25/205",
+      "rank_pct": 0.12195121951219512
+    }
+  ]
+}

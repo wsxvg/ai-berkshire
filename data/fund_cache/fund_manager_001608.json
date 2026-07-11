@@ -1,0 +1,21 @@
+{
+  "fund_code": "001608",
+  "managers": [
+    {
+      "name": "张媛",
+      "year_performance": "16.34",
+      "employ_performance": "367.31",
+      "manage_scale": "5.95亿元",
+      "employment_date": "8年162天",
+      "accession_date": "2019.03.11-至今"
+    },
+    {
+      "name": "张大铮",
+      "year_performance": "6.92",
+      "employ_performance": "249.00",
+      "manage_scale": "180.13亿元",
+      "employment_date": "6年179天",
+      "accession_date": "2020.01.06-至今"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "018823",
+  "report_date": "2026-03-31",
+  "total_asset": 4920480941.83,
+  "allocation": {
+    "股票": 91.83,
+    "现金": 8.29,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "ratio": "3.34%",
+      "change": "1.12%",
+      "rate": "-0.61%",
+      "industry": "电池",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "2.17%",
+      "change": "新增",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "佰维存储",
+      "code": "688525",
+      "ratio": "2.05%",
+      "change": "新增",
+      "rate": "2.18%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "洛阳钼业",
+      "code": "603993",
+      "ratio": "1.98%",
+      "change": "新增",
+      "rate": "1.26%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "包钢股份",
+      "code": "600010",
+      "ratio": "1.59%",
+      "change": "新增",
+      "rate": "1.35%",
+      "industry": "钢铁",
+      "quarters_held": ""
+    },
+    {
+      "name": "潍柴动力",
+      "code": "000338",
+      "ratio": "1.39%",
+      "change": "新增",
+      "rate": "6.59%",
+      "industry": "汽车零部件",
+      "quarters_held": ""
+    },
+    {
+      "name": "万华化学",
+      "code": "600309",
+      "ratio": "1.25%",
+      "change": "新增",
+      "rate": "0.85%",
+      "industry": "化学制品",
+      "quarters_held": ""
+    },
+    {
+      "name": "赣锋锂业",
+      "code": "002460",
+      "ratio": "1.19%",
+      "change": "新增",
+      "rate": "-1.59%",
+      "industry": "能源金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "天赐材料",
+      "code": "002709",
+      "ratio": "1.15%",
+      "change": "新增",
+      "rate": "-1.46%",
+      "industry": "电池",
+      "quarters_held": ""
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "1.13%",
+      "change": "新增",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比17.24%",
+  "invest_date": "2026-03-31"
+}

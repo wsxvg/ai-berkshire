@@ -1,0 +1,48 @@
+{
+  "strategy": "D-core-satellite",
+  "version": "1.0-final",
+  "date": "2026-07-04",
+  "backtest_period": "2024-03-11 ~ 2026-06-30",
+  "result": {
+    "total_return_pct": 35.99,
+    "max_drawdown_pct": 3.9,
+    "annualized_return_pct": 15.0,
+    "benchmark_return_pct": 27.87,
+    "calmar_ratio": 9.16,
+    "trade_count": 51,
+    "final_holdings": 6
+  },
+  "config": {
+    "initial_cash": 100000,
+    "weights": {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20},
+    "dynamic_ranking": true,
+    "use_weighted_consensus": true,
+    "min_score": 2.0,
+    "min_consensus": 1,
+    "max_position_pct": 25,
+    "cash_reserve_pct": 0.10,
+    "kelly_cap": 0.5,
+    "max_holdings": 6,
+    "max_sector_pct": 50,
+    "max_qdii_pct": 50,
+    "take_profit_pct": 200,
+    "stop_loss_pct": -15,
+    "momentum_sell": 0.5,
+    "fund_type_filter": "all",
+    "profit_mode": "half",
+    "rebalance": true,
+    "min_holding_days": 30,
+    "peak_drawdown_exit": 0,
+    "trailing_stop_pct": 0
+  },
+  "enhancements_available": {
+    "sector_concentration_bonus": "built-in but not yet linked to Kelly",
+    "dynamic_position_limits": {"bull": "35%/10%cash", "neutral": "25%/15%cash", "bear": "15%/40%cash"},
+    "full_chain_big_player_tracking": {"first_buy_x3": true, "repeat_buy_x1.5": true, "complete_exit_x-2": true}
+  },
+  "comparison_to_platform": {
+    "our_annualized_return": "15%",
+    "top10_avg_yearly_return": "31.6%",
+    "note": "Our 27-month return includes 2024 low-data period; 2025-only annualized is ~25%"
+  }
+}

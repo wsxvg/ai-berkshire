@@ -1,0 +1,175 @@
+{
+  "best_total_return": 55.84682000000001,
+  "best_drawdown": 8.665714416549616,
+  "best_excess": 49.492332767196224,
+  "best_trades": 21,
+  "best_label": "5E_ms3.5_mc1_mh3",
+  "top15": [
+    {
+      "label": "5E_ms3.5_mc1_mh3",
+      "total_return": 55.84682000000001,
+      "max_drawdown": 8.665714416549616,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 155846.82,
+      "fees": 1009.35,
+      "final_holdings": 1,
+      "excess": 49.492332767196224
+    },
+    {
+      "label": "5E_ms3.5_mc2_mh3",
+      "total_return": 55.84682000000001,
+      "max_drawdown": 8.665714416549616,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 155846.82,
+      "fees": 1009.35,
+      "final_holdings": 1,
+      "excess": 49.492332767196224
+    },
+    {
+      "label": "5E_ms3.5_mc1_mh2",
+      "total_return": 48.30717000000001,
+      "max_drawdown": 7.442694455895942,
+      "benchmark": 6.354487232803785,
+      "trades": 19,
+      "final_value": 148307.17,
+      "fees": 968.26,
+      "final_holdings": 1,
+      "excess": 41.95268276719623
+    },
+    {
+      "label": "5E_ms3.5_mc2_mh2",
+      "total_return": 48.30717000000001,
+      "max_drawdown": 7.442694455895942,
+      "benchmark": 6.354487232803785,
+      "trades": 19,
+      "final_value": 148307.17,
+      "fees": 968.26,
+      "final_holdings": 1,
+      "excess": 41.95268276719623
+    },
+    {
+      "label": "MAX_7",
+      "total_return": 43.10452272727273,
+      "max_drawdown": 8.47358465487235,
+      "benchmark": 6.354487232803785,
+      "trades": 67,
+      "final_value": 314829.95,
+      "fees": 5102.27,
+      "final_holdings": 6,
+      "excess": 36.750035494468946
+    },
+    {
+      "label": "5D_inj10000_quarter",
+      "total_return": 35.67262500000001,
+      "max_drawdown": 11.955943819917762,
+      "benchmark": 6.354487232803785,
+      "trades": 39,
+      "final_value": 217076.2,
+      "fees": 1674.32,
+      "final_holdings": 5,
+      "excess": 29.318137767196227
+    },
+    {
+      "label": "5D_inj10000_half",
+      "total_return": 35.67262500000001,
+      "max_drawdown": 11.955943819917762,
+      "benchmark": 6.354487232803785,
+      "trades": 39,
+      "final_value": 217076.2,
+      "fees": 1674.32,
+      "final_holdings": 5,
+      "excess": 29.318137767196227
+    },
+    {
+      "label": "5E_ms3.0_mc1_mh3",
+      "total_return": 35.20764000000001,
+      "max_drawdown": 9.343106232215314,
+      "benchmark": 6.354487232803785,
+      "trades": 18,
+      "final_value": 135207.64,
+      "fees": 947.53,
+      "final_holdings": 3,
+      "excess": 28.853152767196228
+    },
+    {
+      "label": "5E_ms3.0_mc2_mh3",
+      "total_return": 35.20764000000001,
+      "max_drawdown": 9.343106232215314,
+      "benchmark": 6.354487232803785,
+      "trades": 18,
+      "final_value": 135207.64,
+      "fees": 947.53,
+      "final_holdings": 3,
+      "excess": 28.853152767196228
+    },
+    {
+      "label": "5D_inj20000_quarter",
+      "total_return": 28.66240000000001,
+      "max_drawdown": 11.916517874066038,
+      "benchmark": 6.354487232803785,
+      "trades": 37,
+      "final_value": 283057.28,
+      "fees": 1881.24,
+      "final_holdings": 5,
+      "excess": 22.307912767196225
+    },
+    {
+      "label": "5D_inj20000_half",
+      "total_return": 28.66240000000001,
+      "max_drawdown": 11.916517874066038,
+      "benchmark": 6.354487232803785,
+      "trades": 37,
+      "final_value": 283057.28,
+      "fees": 1881.24,
+      "final_holdings": 5,
+      "excess": 22.307912767196225
+    },
+    {
+      "label": "5A_tp100_mh5_kc0.5",
+      "total_return": 27.218619999999994,
+      "max_drawdown": 11.257975604062489,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 127218.62,
+      "fees": 769.58,
+      "final_holdings": 4,
+      "excess": 20.86413276719621
+    },
+    {
+      "label": "5A_tp100_mh5_kc0.7",
+      "total_return": 27.218619999999994,
+      "max_drawdown": 11.257975604062489,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 127218.62,
+      "fees": 769.58,
+      "final_holdings": 4,
+      "excess": 20.86413276719621
+    },
+    {
+      "label": "5A_tp100_mh5_kc1.0",
+      "total_return": 27.218619999999994,
+      "max_drawdown": 11.257975604062489,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 127218.62,
+      "fees": 769.58,
+      "final_holdings": 4,
+      "excess": 20.86413276719621
+    },
+    {
+      "label": "5A_tp200_mh5_kc0.5",
+      "total_return": 27.218619999999994,
+      "max_drawdown": 11.257975604062489,
+      "benchmark": 6.354487232803785,
+      "trades": 21,
+      "final_value": 127218.62,
+      "fees": 769.58,
+      "final_holdings": 4,
+      "excess": 20.86413276719621
+    }
+  ],
+  "total_tested": 88
+}

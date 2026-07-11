@@ -1,0 +1,32 @@
+{
+  "fund_code": "005698",
+  "buy_date": "06-29 15:00前",
+  "confirm_date": "07-01",
+  "manage_fee": 1.2,
+  "custody_fee": 0.2,
+  "sale_fee": 0.0,
+  "purchase_fee": 0.15,
+  "purchase_fee_original": 1.5,
+  "day_limit": 2500.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 1.5,
+      "interval": "持有期限＜7日"
+    },
+    {
+      "rate": 0.75,
+      "interval": "7日≤持有期限＜30日"
+    },
+    {
+      "rate": 0.5,
+      "interval": "30日≤持有期限＜365日"
+    },
+    {
+      "rate": 0.0,
+      "interval": "持有期限≥365日"
+    }
+  ],
+  "purchase_status": "开放申购",
+  "redeem_status": "开放赎回"
+}

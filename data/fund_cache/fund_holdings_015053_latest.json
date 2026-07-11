@@ -1,0 +1,106 @@
+{
+  "fund_code": "015053",
+  "report_date": "2026-03-31",
+  "total_asset": 2210979459.78,
+  "allocation": {
+    "股票": 92.67,
+    "现金": 4.11,
+    "债券": 2.52,
+    "其他": 0.7,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "康弘药业",
+      "code": "002773",
+      "ratio": "10.29%",
+      "change": "0.65%",
+      "rate": "2.01%",
+      "industry": "生物制品",
+      "quarters_held": "重仓10个季度"
+    },
+    {
+      "name": "百利天恒",
+      "code": "688506",
+      "ratio": "10.00%",
+      "change": "0.14%",
+      "rate": "1.34%",
+      "industry": "化学制药",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "科伦博泰生物",
+      "code": "06990",
+      "ratio": "9.51%",
+      "change": "1.58%",
+      "rate": "6.72%",
+      "industry": "",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "迪哲医药",
+      "code": "688192",
+      "ratio": "9.50%",
+      "change": "0.50%",
+      "rate": "11.12%",
+      "industry": "化学制药",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "恒瑞医药",
+      "code": "600276",
+      "ratio": "8.10%",
+      "change": "3.54%",
+      "rate": "1.79%",
+      "industry": "化学制药",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "诺诚健华",
+      "code": "09969",
+      "ratio": "5.40%",
+      "change": "1.38%",
+      "rate": "6.00%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "诺诚健华",
+      "code": "688428",
+      "ratio": "4.69%",
+      "change": "0.77%",
+      "rate": "3.36%",
+      "industry": "生物制品",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "华东医药",
+      "code": "000963",
+      "ratio": "4.68%",
+      "change": "0.84%",
+      "rate": "1.90%",
+      "industry": "化学制药",
+      "quarters_held": "重仓16个季度"
+    },
+    {
+      "name": "特宝生物",
+      "code": "688278",
+      "ratio": "4.14%",
+      "change": "0.37%",
+      "rate": "1.81%",
+      "industry": "生物制品",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "智翔金泰",
+      "code": "688443",
+      "ratio": "3.87%",
+      "change": "新增",
+      "rate": "5.31%",
+      "industry": "生物制品",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比70.18%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,298 @@
+#!/usr/bin/env python3
+"""技术指标模块 — 融合 QuantDinger 的 RSI/MACD/布林带算法。
+
+适配场外基金场景：
+- 输入为基金累计收益率序列（yAxis%），自动转换为净值序列
+- 纯Python实现，无numpy/pandas依赖
+- 所有函数支持日期截断（防未来函数）
+
+算法来源：
+- RSI: QuantDinger multi_indicator_composite.py
+- MACD: QuantDinger multi_indicator_composite.py
+- 布林带: 经典技术分析
+- MA交叉: QuantDinger dual_ma_with_params.py
+"""
+import statistics
+from typing import List, Tuple, Optional
+
+
+def _to_nav(values: List[float]) -> List[float]:
+    """将累计收益率%转换为净值序列。 yAxis=5.23 → nav=1.0523"""
+    return [(100 + v) / 100 for v in values]
+
+
+def compute_rsi(nav_values: List[float], period: int = 14) -> float:
+    """计算RSI指标。
+
+    来源: QuantDinger multi_indicator_composite.py
+    RSI > 70: 超买（可能高位接盘）
+    RSI < 30: 超卖（可能低位机会）
+    RSI 30-50: 回调区间（均值回归买点）
+
+    Returns: RSI值 (0-100)，数据不足返回50（中性）
+    """
+    if len(nav_values) < period + 1:
+        return 50.0
+
+    deltas = [nav_values[i] - nav_values[i-1] for i in range(1, len(nav_values))]
+    recent = deltas[-(period):]
+
+    gains = [d for d in recent if d > 0]
+    losses = [-d for d in recent if d < 0]
+
+    avg_gain = sum(gains) / period if gains else 0
+    avg_loss = sum(losses) / period if losses else 0
+
+    if avg_loss == 0:
+        return 100.0
+    rs = avg_gain / avg_loss
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+
+
+def compute_macd(nav_values: List[float],
+                 fast: int = 12, slow: int = 26, signal: int = 9) -> Tuple[float, float, float]:
+    """计算MACD指标。
+
+    来源: QuantDinger multi_indicator_composite.py
+    使用指数移动平均(EMA)。
+
+    Returns: (macd_line, signal_line, histogram)
+    """
+    if len(nav_values) < slow + signal:
+        return (0.0, 0.0, 0.0)
+
+    def ema(data, period):
+        multiplier = 2 / (period + 1)
+        ema_val = data[0]
+        for v in data[1:]:
+            ema_val = v * multiplier + ema_val * (1 - multiplier)
+        return ema_val
+
+    # 计算快慢EMA序列
+    def ema_series(data, period):
+        multiplier = 2 / (period + 1)
+        result = [data[0]]
+        for v in data[1:]:
+            result.append(v * multiplier + result[-1] * (1 - multiplier))
+        return result
+
+    ema_fast = ema_series(nav_values, fast)
+    ema_slow = ema_series(nav_values, slow)
+
+    # MACD线 = 快EMA - 慢EMA
+    macd_line = [f - s for f, s in zip(ema_fast, ema_slow)]
+
+    # 信号线 = MACD的EMA
+    if len(macd_line) < slow:
+        return (macd_line[-1] if macd_line else 0, 0, 0)
+
+    signal_line = ema(macd_line[-(signal + 10):], signal)
+    histogram = macd_line[-1] - signal_line
+
+    return (macd_line[-1], signal_line, histogram)
+
+
+def compute_bollinger_bands(nav_values: List[float],
+                            period: int = 20, std_mult: float = 2.0) -> Tuple[float, float, float, float]:
+    """计算布林带。
+
+    Returns: (upper, middle, lower, %b)
+    %b > 1.0: 价格突破上轨（超买）
+    %b < 0.0: 价格突破下轨（超卖）
+    """
+    if len(nav_values) < period:
+        return (0, 0, 0, 0.5)
+
+    recent = nav_values[-period:]
+    middle = statistics.mean(recent)
+    std = statistics.stdev(recent) if len(recent) > 1 else 0
+    upper = middle + std_mult * std
+    lower = middle - std_mult * std
+
+    current = nav_values[-1]
+    if upper == lower:
+        pct_b = 0.5
+    else:
+        pct_b = (current - lower) / (upper - lower)
+
+    return (upper, middle, lower, pct_b)
+
+
+def ma_crossover_signal(nav_values: List[float],
+                        short_period: int = 20, long_period: int = 60) -> int:
+    """均线交叉信号。
+
+    来源: QuantDinger dual_ma_with_params.py
+    Returns:
+        1: 金叉（短线上穿长线，买入信号）
+       -1: 死叉（短线下穿长线，卖出信号）
+        0: 无交叉
+    """
+    if len(nav_values) < long_period + 2:
+        return 0
+
+    ma_short_curr = statistics.mean(nav_values[-short_period:])
+    ma_long_curr = statistics.mean(nav_values[-long_period:])
+    ma_short_prev = statistics.mean(nav_values[-short_period-1:-1])
+    ma_long_prev = statistics.mean(nav_values[-long_period-1:-1])
+
+    # 金叉: 之前短线在长线下方，现在在上方
+    if ma_short_prev <= ma_long_prev and ma_short_curr > ma_long_curr:
+        return 1
+    # 死叉
+    if ma_short_prev >= ma_long_prev and ma_short_curr < ma_long_curr:
+        return -1
+    return 0
+
+
+def ma_trend(nav_values: List[float],
+             short_period: int = 20, long_period: int = 60) -> int:
+    """均线趋势方向（非交叉，仅判断当前相对位置）。
+
+    Returns:
+        1: 短线在长线上方（上升趋势）
+       -1: 短线在长线下方（下降趋势）
+        0: 数据不足
+    """
+    if len(nav_values) < long_period:
+        return 0
+    ma_short = statistics.mean(nav_values[-short_period:])
+    ma_long = statistics.mean(nav_values[-long_period:])
+    return 1 if ma_short > ma_long else -1
+
+
+def compute_overbought_score(nav_values: List[float]) -> float:
+    """综合超买评分，融合RSI+布林带+涨幅。
+
+    Returns: 超买扣分值 (0 = 无超买, 负数 = 超买程度)
+    - RSI > 75: 扣0.5-1.5分
+    - 布林带上轨突破: 扣0.3-0.8分
+    - 近20日涨幅 > 15%: 扣0.2-0.5分
+    """
+    penalty = 0.0
+
+    # RSI超买
+    rsi = compute_rsi(nav_values, 14)
+    if rsi > 80:
+        penalty -= 1.5
+    elif rsi > 75:
+        penalty -= 1.0
+    elif rsi > 70:
+        penalty -= 0.5
+
+    # 布林带超买
+    _, _, _, pct_b = compute_bollinger_bands(nav_values, 20, 2.0)
+    if pct_b > 1.0:
+        penalty -= 0.8
+    elif pct_b > 0.9:
+        penalty -= 0.3
+
+    # 近20日涨幅过大
+    if len(nav_values) >= 21:
+        ret_20d = (nav_values[-1] / nav_values[-21] - 1) * 100
+        if ret_20d > 20:
+            penalty -= 0.5
+        elif ret_20d > 15:
+            penalty -= 0.2
+
+    return penalty
+
+
+def compute_mean_reversion_score(nav_values: List[float]) -> float:
+    """均值回归评分 — 奖励在回调中买入。
+
+    来源: QuantDinger cross_sectional_momentum_rsi.py 的 RSI反转思路
+    当基金从近期高点回调但长期趋势仍然向上时，给予买入奖励。
+
+    Returns: 均值回归加分 (0 = 无奖励, 正数 = 奖励)
+    - RSI在30-50区间（回调但非超卖）: +0.3-0.5
+    - 价格在布林带中轨下方但非下轨: +0.2-0.4
+    - 从近期高点回调5-15%但MA趋势向上: +0.3-0.5
+    """
+    bonus = 0.0
+
+    if len(nav_values) < 30:
+        return 0.0
+
+    rsi = compute_rsi(nav_values, 14)
+
+    # RSI在回调区间（30-50）：非超卖但回调中，是好的买点
+    if 30 <= rsi <= 50:
+        bonus += 0.4
+    elif 25 <= rsi < 30:
+        # 接近超卖，如果趋势向上则是更好的买点
+        trend = ma_trend(nav_values, 20, 60)
+        if trend > 0:
+            bonus += 0.5
+
+    # 布林带：价格在中轨下方但非下轨突破
+    _, middle, _, pct_b = compute_bollinger_bands(nav_values, 20, 2.0)
+    if 0.2 < pct_b < 0.5:
+        bonus += 0.3
+
+    # 从近期高点回调5-15%但长期趋势向上
+    recent_high = max(nav_values[-60:]) if len(nav_values) >= 60 else max(nav_values)
+    current = nav_values[-1]
+    pullback = (recent_high - current) / recent_high * 100 if recent_high > 0 else 0
+    trend = ma_trend(nav_values, 20, 60)
+    if 5 <= pullback <= 15 and trend > 0:
+        bonus += 0.4
+
+    return bonus
+
+
+def compute_entry_timing_score(chart_points: List[dict], cutoff_date: str) -> dict:
+    """综合择时评分 — 判断当前是否为好的买入时机。
+
+    Args:
+        chart_points: [{xAxis: "2026-01-15", yAxis: 5.23}, ...]
+        cutoff_date: "2026-03-15"
+
+    Returns: {
+        "rsi": float,
+        "overbought_penalty": float,
+        "mean_reversion_bonus": float,
+        "trend": int (1=上升, -1=下降, 0=数据不足),
+        "macd_histogram": float,
+        "entry_score": float,  # 综合择时分（正=适合买入，负=不适合）
+        "should_warn": bool,   # 是否发出超买警告
+    }
+    """
+    valid = [p for p in chart_points if p.get("xAxis", "") <= cutoff_date]
+    if len(valid) < 30:
+        return {
+            "rsi": 50, "overbought_penalty": 0, "mean_reversion_bonus": 0,
+            "trend": 0, "macd_histogram": 0, "entry_score": 0, "should_warn": False,
+        }
+
+    values = [_float(p.get("yAxis", 0)) for p in valid]
+    nav_values = _to_nav(values)
+
+    rsi = compute_rsi(nav_values, 14)
+    overbought = compute_overbought_score(nav_values)
+    reversion = compute_mean_reversion_score(nav_values)
+    trend = ma_trend(nav_values, 20, 60)
+    _, _, macd_hist = compute_macd(nav_values)
+
+    # 综合择时分 = 均值回归奖励 + 趋势确认 + MACD方向 - 超买惩罚
+    entry_score = reversion + (0.3 if trend > 0 else -0.3) + (0.2 if macd_hist > 0 else -0.1) + overbought
+
+    should_warn = rsi > 70 or overbought < -0.8
+
+    return {
+        "rsi": round(rsi, 1),
+        "overbought_penalty": round(overbought, 2),
+        "mean_reversion_bonus": round(reversion, 2),
+        "trend": trend,
+        "macd_histogram": round(macd_hist, 4),
+        "entry_score": round(entry_score, 2),
+        "should_warn": should_warn,
+    }
+
+
+def _float(v, default=0.0):
+    try:
+        return float(v)
+    except (ValueError, TypeError):
+        return default

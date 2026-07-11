@@ -1,0 +1,69 @@
+{
+  "fund_code": "012922",
+  "report_date": null,
+  "total_asset": 9865857240.58,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "8.88%",
+      "change": "1.81%"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "8.68%",
+      "change": "3.59%"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "6.02%",
+      "change": "0.41%"
+    },
+    {
+      "name": "AXT, Inc.",
+      "code": "AXTI",
+      "ratio": "4.67%",
+      "change": "新增"
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "4.67%",
+      "change": "新增"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "4.67%",
+      "change": "1.20%"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "4.49%",
+      "change": "新增"
+    },
+    {
+      "name": "Tower半导体",
+      "code": "TSEM",
+      "ratio": "3.72%",
+      "change": "0.84%"
+    },
+    {
+      "name": "谷歌-A",
+      "code": "GOOGL",
+      "ratio": "3.36%",
+      "change": "2.90%"
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "2.67%",
+      "change": "新增"
+    }
+  ],
+  "invest_date": ""
+}

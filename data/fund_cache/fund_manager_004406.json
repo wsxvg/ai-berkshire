@@ -1,0 +1,21 @@
+{
+  "fund_code": "004406",
+  "managers": [
+    {
+      "name": "李一鸣",
+      "year_performance": "4.74",
+      "employ_performance": "72.60",
+      "manage_scale": "297.52亿元",
+      "employment_date": "11年163天",
+      "accession_date": "2017.08.01-至今"
+    },
+    {
+      "name": "宋易潞",
+      "year_performance": "-0.08",
+      "employ_performance": "12.10",
+      "manage_scale": "1.38亿元",
+      "employment_date": "3年328天",
+      "accession_date": "2025.06.26-至今"
+    }
+  ]
+}

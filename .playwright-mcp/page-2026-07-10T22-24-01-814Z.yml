@@ -1,0 +1,13 @@
+- generic [ref=f38e3]:
+  - generic [ref=f38e4]:
+    - img "京东金融" [ref=f38e7]
+    - generic [ref=f38e8]: 切回旧版
+  - generic [ref=f38e12]:
+    - paragraph [ref=f38e15] [cursor=pointer]: 登录
+    - generic [ref=f38e16]:
+      - generic [ref=f38e17] [cursor=pointer]: 自选
+      - generic [ref=f38e20] [cursor=pointer]: 自定义
+      - generic [ref=f38e23] [cursor=pointer]: 积存金
+      - generic [ref=f38e26] [cursor=pointer]: 基金
+      - generic [ref=f38e29] [cursor=pointer]: 发现
+      - generic [ref=f38e32] [cursor=pointer]: 下载

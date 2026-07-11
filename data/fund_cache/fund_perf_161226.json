@@ -1,0 +1,136 @@
+{
+  "fund_code": "161226",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": 7.53,
+      "avg": 1.79,
+      "rank": "1/54",
+      "rank_pct": 0.018518518518518517
+    },
+    {
+      "period": "近1月",
+      "return": -17.31,
+      "avg": -10.4,
+      "rank": "53/54",
+      "rank_pct": 0.9814814814814815
+    },
+    {
+      "period": "近3月",
+      "return": -15.68,
+      "avg": -13.7,
+      "rank": "53/54",
+      "rank_pct": 0.9814814814814815
+    },
+    {
+      "period": "近6月",
+      "return": -16.0,
+      "avg": -9.39,
+      "rank": "53/54",
+      "rank_pct": 0.9814814814814815
+    },
+    {
+      "period": "近1年",
+      "return": 65.96,
+      "avg": 15.98,
+      "rank": "1/54",
+      "rank_pct": 0.018518518518518517
+    },
+    {
+      "period": "今年以来",
+      "return": -16.0,
+      "avg": -9.39,
+      "rank": "53/54",
+      "rank_pct": 0.9814814814814815
+    },
+    {
+      "period": "近3年",
+      "return": 135.76,
+      "avg": 90.7,
+      "rank": "1/42",
+      "rank_pct": 0.023809523809523808
+    },
+    {
+      "period": "成立以来",
+      "return": 70.69,
+      "avg": 212.37,
+      "rank": "9/9",
+      "rank_pct": 1.0
+    }
+  ],
+  "year_performance": [
+    {
+      "year": "2025年",
+      "return": 130.99,
+      "avg": null
+    },
+    {
+      "year": "2024年",
+      "return": 15.42,
+      "avg": null
+    },
+    {
+      "year": "2023年",
+      "return": 4.27,
+      "avg": 11.58
+    },
+    {
+      "year": "2022年",
+      "return": 0.83,
+      "avg": 8.6
+    },
+    {
+      "year": "2021年",
+      "return": -24.08,
+      "avg": -3.09
+    },
+    {
+      "year": "2020年",
+      "return": 6.47,
+      "avg": 5.71
+    },
+    {
+      "year": "2019年",
+      "return": 14.56,
+      "avg": 13.93
+    },
+    {
+      "year": "2018年",
+      "return": -8.21,
+      "avg": null
+    },
+    {
+      "year": "2017年",
+      "return": -12.15,
+      "avg": null
+    },
+    {
+      "year": "2016年",
+      "return": 5.09,
+      "avg": null
+    },
+    {
+      "year": "2015年",
+      "return": null,
+      "avg": -6.54
+    }
+  ],
+  "aip_performance": [
+    {
+      "period": "近一年",
+      "return": 5.77
+    },
+    {
+      "period": "近二年",
+      "return": 43.88
+    },
+    {
+      "period": "近三年",
+      "return": 67.07
+    },
+    {
+      "period": "近五年",
+      "return": 97.36
+    }
+  ]
+}

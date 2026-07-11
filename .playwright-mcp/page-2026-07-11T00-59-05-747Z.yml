@@ -1,0 +1,20 @@
+- generic [ref=f54e3]:
+  - paragraph [ref=f54e5]: 操作明细
+  - generic [ref=f54e6]:
+    - generic [ref=f54e10]:
+      - img "dancing" [ref=f54e13]
+      - generic [ref=f54e14]:
+        - generic [ref=f54e15]:
+          - generic:
+            - generic:
+              - paragraph
+          - generic [ref=f54e18]:
+            - paragraph [ref=f54e19]: 详情
+            - img "dancing" [ref=f54e21]
+        - generic [ref=f54e25]:
+          - paragraph [ref=f54e27]: 本基金
+          - paragraph [ref=f54e29]: 沪深300
+    - generic [ref=f54e31]: 正在加载中...
+  - generic [ref=f54e46]:
+    - img "dancing" [ref=f54e48]
+    - paragraph [ref=f54e49]: 用户暂未公开实盘

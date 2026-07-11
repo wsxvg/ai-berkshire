@@ -1,0 +1,59 @@
+{
+  "fund_code": "012922",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": 1.35,
+      "rank": "54/160",
+      "rank_pct": 0.3375
+    },
+    {
+      "period": "近1月",
+      "return": 23.39,
+      "rank": "4/158",
+      "rank_pct": 0.02531645569620253
+    },
+    {
+      "period": "近3月",
+      "return": 78.89,
+      "rank": "4/157",
+      "rank_pct": 0.025477707006369428
+    },
+    {
+      "period": "近6月",
+      "return": 105.52,
+      "rank": "8/154",
+      "rank_pct": 0.05194805194805195
+    },
+    {
+      "period": "近1年",
+      "return": 232.86,
+      "rank": "4/140",
+      "rank_pct": 0.02857142857142857
+    },
+    {
+      "period": "近3年",
+      "return": 398.82,
+      "rank": "4/104",
+      "rank_pct": 0.038461538461538464
+    },
+    {
+      "period": "近5年",
+      "return": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "今年以来",
+      "return": 109.82,
+      "rank": "8/160",
+      "rank_pct": 0.05
+    },
+    {
+      "period": "成立以来",
+      "return": 416.93,
+      "rank": "6/80",
+      "rank_pct": 0.075
+    }
+  ]
+}

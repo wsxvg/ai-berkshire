@@ -1,0 +1,21 @@
+{
+  "fund_code": "160644",
+  "managers": [
+    {
+      "name": "李悦",
+      "year_performance": "11.80",
+      "employ_performance": "101.45",
+      "manage_scale": "35.36亿元",
+      "employment_date": "3年360天",
+      "accession_date": "2022.07.09-至今"
+    },
+    {
+      "name": "周欣",
+      "year_performance": "6.68",
+      "employ_performance": "113.41",
+      "manage_scale": "2.84亿元",
+      "employment_date": "16年185天",
+      "accession_date": "2023.05.13-至今"
+    }
+  ]
+}

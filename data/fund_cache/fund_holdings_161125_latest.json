@@ -1,0 +1,106 @@
+{
+  "fund_code": "161125",
+  "report_date": "2026-03-31",
+  "total_asset": 1587367027.08,
+  "allocation": {
+    "股票": 86.76,
+    "债券": 8.29,
+    "现金": 4.76,
+    "其他": 0.19,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "6.60%",
+      "change": "0.05%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "苹果",
+      "code": "AAPL",
+      "ratio": "5.80%",
+      "change": "0.01%",
+      "rate": "4.84%",
+      "industry": "",
+      "quarters_held": "重仓37个季度"
+    },
+    {
+      "name": "微软",
+      "code": "MSFT",
+      "ratio": "4.28%",
+      "change": "0.92%",
+      "rate": "1.62%",
+      "industry": "",
+      "quarters_held": "重仓37个季度"
+    },
+    {
+      "name": "亚马逊",
+      "code": "AMZN",
+      "ratio": "3.17%",
+      "change": "0.08%",
+      "rate": "0.40%",
+      "industry": "",
+      "quarters_held": "重仓37个季度"
+    },
+    {
+      "name": "谷歌-A",
+      "code": "GOOGL",
+      "ratio": "2.61%",
+      "change": "0.02%",
+      "rate": "-0.36%",
+      "industry": "",
+      "quarters_held": "重仓29个季度"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "2.29%",
+      "change": "0.07%",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": "重仓10个季度"
+    },
+    {
+      "name": "谷歌-C",
+      "code": "GOOG",
+      "ratio": "2.09%",
+      "change": "0.02%",
+      "rate": "-0.48%",
+      "industry": "",
+      "quarters_held": "重仓36个季度"
+    },
+    {
+      "name": "Meta Platforms Inc Class A",
+      "code": "META",
+      "ratio": "1.95%",
+      "change": "0.13%",
+      "rate": "-4.72%",
+      "industry": "",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "特斯拉",
+      "code": "TSLA",
+      "ratio": "1.63%",
+      "change": "0.20%",
+      "rate": "-7.49%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "伯克希尔哈撒韦-B",
+      "code": "BRK.B",
+      "ratio": "1.37%",
+      "change": "0.04%",
+      "rate": "1.61%",
+      "industry": "",
+      "quarters_held": "重仓37个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比31.79%",
+  "invest_date": "2026-03-31"
+}

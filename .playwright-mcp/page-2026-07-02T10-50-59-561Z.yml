@@ -1,0 +1,186 @@
+- generic [ref=f13e3]:
+  - generic [ref=f13e4]:
+    - generic [ref=f13e5]:
+      - generic [ref=f13e6]:
+        - generic [ref=f13e7]:
+          - button [ref=f13e8] [cursor=pointer]: 
+          - button [ref=f13e9] [cursor=pointer]: 
+          - generic [ref=f13e11]:
+            - img [ref=f13e12]
+            - img [ref=f13e13] [cursor=pointer]
+          - generic [ref=f13e15]:
+            - img [ref=f13e16]
+            - generic [ref=f13e17]: 查看详情
+            - img [ref=f13e18] [cursor=pointer]
+          - generic [ref=f13e20]:
+            - img [ref=f13e21]
+            - generic [ref=f13e22]: 查看详情
+            - img [ref=f13e23] [cursor=pointer]
+          - generic [ref=f13e25]:
+            - img [ref=f13e26]
+            - generic [ref=f13e27]: 查看详情
+            - img [ref=f13e28] [cursor=pointer]
+        - list [ref=f13e29]:
+          - listitem [ref=f13e30] [cursor=pointer]:
+            - button [ref=f13e31]
+          - listitem [ref=f13e32] [cursor=pointer]:
+            - button [ref=f13e33]
+          - listitem [ref=f13e34] [cursor=pointer]:
+            - button [ref=f13e35]
+          - listitem [ref=f13e36] [cursor=pointer]:
+            - button [ref=f13e37]
+      - generic [ref=f13e39]:
+        - img [ref=f13e40]
+        - generic [ref=f13e41]:
+          - generic [ref=f13e42] [cursor=pointer]: 首页
+          - generic [ref=f13e43] [cursor=pointer]: 产品服务
+          - generic [ref=f13e44] [cursor=pointer]: 企业社会责任
+          - generic [ref=f13e45] [cursor=pointer]: 合作伙伴
+          - generic [ref=f13e46] [cursor=pointer]: 下载客户端
+          - generic [ref=f13e47]:
+            - text: 网络支持
+            - generic [ref=f13e48]: IPv6
+    - text: 
+  - generic [ref=f13e49]:
+    - generic [ref=f13e50]:
+      - img [ref=f13e51]
+      - generic [ref=f13e52]:
+        - generic [ref=f13e53]: 快速放款
+        - generic [ref=f13e54]: 随借随还
+        - generic [ref=f13e55]: 安全合规
+    - generic [ref=f13e56]:
+      - img [ref=f13e57]
+      - generic [ref=f13e58]:
+        - generic [ref=f13e59]: 先消费、后付款
+        - generic [ref=f13e60]: 实时审批
+        - generic [ref=f13e61]: 随心分期
+    - generic [ref=f13e62]:
+      - img [ref=f13e63]
+      - generic [ref=f13e64]:
+        - generic [ref=f13e65]: 灵活存取、乐享收益
+        - generic [ref=f13e66]: 支持理财产品购买
+        - generic [ref=f13e67]: 商城消费购物
+        - generic [ref=f13e68]: 金条、白条还款等场景
+    - generic [ref=f13e69]:
+      - img [ref=f13e70]
+      - generic [ref=f13e71]:
+        - generic [ref=f13e72]: 合规持牌基金代销平台
+        - generic [ref=f13e73]: 基金销售种类丰富
+        - generic [ref=f13e74]: 满足各类人群理财需求
+    - generic [ref=f13e75]:
+      - img [ref=f13e76]
+      - generic [ref=f13e77]:
+        - generic [ref=f13e78]: 稳健的保险合作渠道，满足多元化保险需求，
+        - generic [ref=f13e79]: 包含健康险、意外险、人寿险、重疾险、
+        - text: 财产险，车险等保险产品
+    - generic [ref=f13e80]:
+      - img [ref=f13e81]
+      - generic [ref=f13e83]: 下载京东金融APP体验
+  - generic [ref=f13e84]:
+    - img [ref=f13e85]
+    - generic [ref=f13e86]: “京东金融-订单公益”是京东践行企业CSR，发起全民公益新风尚的核心项目，倡导京东集团“有责任的消费”主旨 。在京东APP消费使用京东支付或白条交易完成的订单，均可选择将订单数兑换为公益物资，并由京东为您配捐到指定公益项目中。迄今为止，项目通过618、双11以及3.8三期传播，累计有效传播量超过3亿人次，公益涉及包括流浪动物救助、女性公益、乡村振兴、儿童教育等多个领域。
+    - generic [ref=f13e87]:
+      - generic [ref=f13e88]:
+        - generic [ref=f13e89]: 截至目前
+        - generic [ref=f13e90]:
+          - text: "1930"
+          - generic [ref=f13e91]: 万
+        - generic [ref=f13e92]: 累计参与人数
+        - generic [ref=f13e93]:
+          - text: "4159"
+          - generic [ref=f13e94]: 万
+        - generic [ref=f13e95]: 累计捐出订单笔数
+      - generic [ref=f13e98]:
+        - img [ref=f13e100]
+        - img [ref=f13e102]
+        - img [ref=f13e104]
+        - img [ref=f13e106]
+        - img [ref=f13e108]
+        - img [ref=f13e110]
+        - img [ref=f13e112]
+        - img [ref=f13e114]
+        - img [ref=f13e116]
+        - img [ref=f13e118]
+        - img [ref=f13e120]
+        - img [ref=f13e122]
+        - img [ref=f13e124]
+        - img [ref=f13e126]
+        - img [ref=f13e128]
+        - img [ref=f13e130]
+        - img [ref=f13e132]
+        - img [ref=f13e134]
+        - img [ref=f13e136]
+        - img [ref=f13e138]
+        - img [ref=f13e140]
+        - img [ref=f13e142]
+        - img [ref=f13e144]
+        - img [ref=f13e146]
+        - img [ref=f13e148]
+        - img [ref=f13e150]
+        - img [ref=f13e152]
+        - img [ref=f13e154]
+        - img [ref=f13e156]
+        - img [ref=f13e158]
+        - img [ref=f13e160]
+        - img [ref=f13e162]
+        - img [ref=f13e164]
+        - img [ref=f13e166]
+        - img [ref=f13e168]
+        - img [ref=f13e170]
+        - img [ref=f13e172]
+        - img [ref=f13e174]
+        - img [ref=f13e176]
+        - img [ref=f13e178]
+        - img [ref=f13e180]
+        - img [ref=f13e182]
+        - img [ref=f13e184]
+        - img [ref=f13e186]
+        - img [ref=f13e188]
+        - img [ref=f13e190]
+        - img [ref=f13e192]
+        - img [ref=f13e194]
+        - img [ref=f13e196]
+        - img [ref=f13e198]
+        - img [ref=f13e200]
+        - img [ref=f13e202]
+        - img [ref=f13e204]
+        - img [ref=f13e206]
+        - img [ref=f13e208]
+        - img [ref=f13e210]
+        - img [ref=f13e212]
+  - generic [ref=f13e217]:
+    - img [ref=f13e219]
+    - img [ref=f13e221]
+    - img [ref=f13e223]
+  - generic [ref=f13e227]:
+    - generic [ref=f13e228]:
+      - generic [ref=f13e229]: 京东金融总部 北京市亦庄经济开发区京东大厦A座
+      - generic [ref=f13e230]: 邮编 100110
+      - generic [ref=f13e231]: 客户服务咨询投诉热线
+      - generic [ref=f13e232]: "95118"
+      - generic [ref=f13e233]: Copyright © 2026 京东科技版权所有
+    - generic [ref=f13e234]:
+      - generic [ref=f13e235]:
+        - generic [ref=f13e237]: 网络语音服务(免话费)
+        - generic [ref=f13e239]: 京东金融公众号
+        - generic [ref=f13e241]: 白条公众号
+        - generic [ref=f13e243]: 金条公众号
+      - generic [ref=f13e244]:
+        - generic [ref=f13e245]:
+          - link "平台协议" [ref=f13e246] [cursor=pointer]:
+            - /url: https://storage.jd.com/protocols/format/2f4c7cc718135d2a8067e9230b3af814.html?_t=166813295129232
+          - text: "|"
+        - generic [ref=f13e247]:
+          - link "帮助中心" [ref=f13e248] [cursor=pointer]:
+            - /url: https://jrhelp.jd.com/show/getProblemInfo?id=688
+          - text: "|"
+        - generic [ref=f13e249]:
+          - link "营业执照" [ref=f13e250] [cursor=pointer]:
+            - /url: https://img14.360buyimg.com/imagetools/jfs/t1/146010/34/35387/537628/648a7179Fd4dfc96b/56dae54408f6bca8.png?v3
+          - text: "|"
+        - generic [ref=f13e251]:
+          - link "小贷“十不准”" [ref=f13e252] [cursor=pointer]:
+            - /url: https://storage.jd.com/protocols/format/b01c6c7c84fb5f2daf632d8b23e6a9f8.html
+          - text: "|"
+        - link "京ICP备11041704号" [ref=f13e253] [cursor=pointer]:
+          - /url: https://beian.miit.gov.cn/

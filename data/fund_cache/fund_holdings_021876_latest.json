@@ -1,0 +1,106 @@
+{
+  "fund_code": "021876",
+  "report_date": "2026-03-31",
+  "total_asset": 2338440451.24,
+  "allocation": {
+    "股票": 86.29,
+    "现金": 8.18,
+    "其他": 5.53,
+    "债券": 0.0,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "中国铝业",
+      "code": "02600",
+      "ratio": "7.73%",
+      "change": "2.10%",
+      "rate": "4.48%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "赣锋锂业",
+      "code": "01772",
+      "ratio": "7.39%",
+      "change": "新增",
+      "rate": "3.37%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "中远海能",
+      "code": "01138",
+      "ratio": "6.90%",
+      "change": "新增",
+      "rate": "5.51%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "招商轮船",
+      "code": "601872",
+      "ratio": "6.22%",
+      "change": "0.27%",
+      "rate": "2.84%",
+      "industry": "港口航运",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "天齐锂业",
+      "code": "09696",
+      "ratio": "5.78%",
+      "change": "新增",
+      "rate": "2.03%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "芯碁微装",
+      "code": "688630",
+      "ratio": "5.70%",
+      "change": "0.84%",
+      "rate": "2.63%",
+      "industry": "专用设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "东材科技",
+      "code": "601208",
+      "ratio": "4.88%",
+      "change": "0.58%",
+      "rate": "0.00%",
+      "industry": "塑料制品",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "云铝股份",
+      "code": "000807",
+      "ratio": "4.28%",
+      "change": "新增",
+      "rate": "2.99%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "新凤鸣",
+      "code": "603225",
+      "ratio": "4.00%",
+      "change": "新增",
+      "rate": "-8.55%",
+      "industry": "化学纤维",
+      "quarters_held": ""
+    },
+    {
+      "name": "恒逸石化",
+      "code": "000703",
+      "ratio": "3.95%",
+      "change": "新增",
+      "rate": "-3.38%",
+      "industry": "化学纤维",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比56.83%",
+  "invest_date": "2026-03-31"
+}

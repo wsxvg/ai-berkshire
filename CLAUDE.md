@@ -143,10 +143,46 @@ data/
   - `--batch-holdings` 批量获取所有关注人持仓
   - `--offline` 离线模式（仅用缓存）
 
-## 注意事项
+## 自动基金监控管道（重点）——任何 IDE 通用
 
-- 市值必须手算校验：股价 × 总股本，与报告市值对比
-- 货币单位要明确（港币/人民币/美元），防止混淆
-- PE/ROE等指标用 tools/financial_rigor.py 精确计算
-- **基金费率、T+N、限额等数值必须从API实时获取，绝不硬编码**
-- 报告写完后主动询问是否推送到GitHub
+**触发关键词**：只要用户说以下任一句，你就直接执行管道，不要先搜索文件：
+
+- "分析今天基金操作" / "分析今天大佬操作"
+- "看看今天买入卖出" / "今天买了什么"
+- "跑一下基金监控" / "分析基金信号"
+- "fund-scan" / "基金全流程扫描"
+- "输出 HTML 报告" + "基金"
+
+**执行流程（直接跑命令，不调用 Skill 工具）**：
+
+```bash
+# Step 1: 检查 cookie
+python tools/jd_finance_api.py --test
+
+# cookie 无效 → 提示 python tools/jd_finance_api.py --login
+
+# Step 2: 抓数据 + 生成报告（并发，≈5s）
+cd c:/项目/A基金/ai-berkshire-main
+python scripts/auto-pipeline.py
+
+# Step 3: 深度 Checklist 分析（并发，≈9s）
+python scripts/generate_report.py
+```
+
+**然后你必须做的事**：
+
+1. 读 `reports/auto/latest.md` — 今日信号汇总
+2. 读 `data/auto/status.json` — 判断是否交易日、收益率排名
+3. 如果 `status.is_trading_day == false` → 直接说"今天非交易日"，展示上一个交易日缓存
+4. 如果 `status.is_trading_day == true` 且 total_records == 0 → 问用户要不要看上一天的
+5. 正常有数据 → 做解读 + 四大师评价
+
+**四大师评价**（直接做，不调用额外 Skill）：
+- 段永平视角：底层持仓商业模式好不好（读 Checklist 穿透持仓）
+- 巴菲特视角：费率高不高、业绩持续多久、估值贵不贵（读 Checklist 费率+业绩）
+- 芒格视角：赛道拥挤度、经理能力对比（读 Checklist 经理雷达）
+- 李录视角：经理背景、公司治理（读 Checklist 经理详情）
+
+**HTML 报告**：如果用户说 "HTML" 或 "输出报告"，生成 `reports/auto/scan-{日期}.html`（独立文件，浏览器直接打开）。
+
+**OpenCode 用户注意**：在 OpenCode 中直接贴上面那段话，OpenCode 会调用 Bash 工具执行命令，不需要 Skill 系统。

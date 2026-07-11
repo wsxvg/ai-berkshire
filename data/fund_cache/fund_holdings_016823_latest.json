@@ -1,0 +1,106 @@
+{
+  "fund_code": "016823",
+  "report_date": "2026-03-31",
+  "total_asset": 187366670.18,
+  "allocation": {
+    "股票": 90.22,
+    "现金": 5.34,
+    "基金": 3.6,
+    "债券": 0.43,
+    "其他": 0.41
+  },
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "4.64%",
+      "change": "2.23%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "4.37%",
+      "change": "2.07%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓10个季度"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "4.15%",
+      "change": "0.75%",
+      "rate": "-9.09%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "泰瑞达",
+      "code": "TER",
+      "ratio": "3.83%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "科磊",
+      "code": "KLAC",
+      "ratio": "3.64%",
+      "change": "新增",
+      "rate": "-11.51%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "特斯拉",
+      "code": "TSLA",
+      "ratio": "3.57%",
+      "change": "1.82%",
+      "rate": "-7.49%",
+      "industry": "",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "3.43%",
+      "change": "3.06%",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "Coherent Corp.",
+      "code": "COHR",
+      "ratio": "3.34%",
+      "change": "新增",
+      "rate": "-9.57%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "超威半导体",
+      "code": "AMD",
+      "ratio": "3.31%",
+      "change": "新增",
+      "rate": "-5.61%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "拉姆研究",
+      "code": "LRCX",
+      "ratio": "3.27%",
+      "change": "0.01%",
+      "rate": "-10.19%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比37.55%",
+  "invest_date": "2026-03-31"
+}

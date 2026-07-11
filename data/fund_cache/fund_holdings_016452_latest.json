@@ -1,0 +1,69 @@
+{
+  "fund_code": "016452",
+  "report_date": null,
+  "total_asset": 7929887746.1,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "7.67%",
+      "change": "0.35%"
+    },
+    {
+      "name": "苹果",
+      "code": "AAPL",
+      "ratio": "6.74%",
+      "change": "0.37%"
+    },
+    {
+      "name": "微软",
+      "code": "MSFT",
+      "ratio": "4.97%",
+      "change": "1.39%"
+    },
+    {
+      "name": "亚马逊",
+      "code": "AMZN",
+      "ratio": "4.04%",
+      "change": "0.33%"
+    },
+    {
+      "name": "特斯拉",
+      "code": "TSLA",
+      "ratio": "3.36%",
+      "change": "0.16%"
+    },
+    {
+      "name": "Meta Platforms Inc Class A",
+      "code": "META",
+      "ratio": "3.05%",
+      "change": "0.38%"
+    },
+    {
+      "name": "谷歌-A",
+      "code": "GOOGL",
+      "ratio": "3.03%",
+      "change": "0.19%"
+    },
+    {
+      "name": "谷歌-C",
+      "code": "GOOG",
+      "ratio": "3.03%",
+      "change": "0.03%"
+    },
+    {
+      "name": "沃尔玛",
+      "code": "WMT",
+      "ratio": "3.03%",
+      "change": "新增"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "2.65%",
+      "change": "0.24%"
+    }
+  ],
+  "invest_date": ""
+}

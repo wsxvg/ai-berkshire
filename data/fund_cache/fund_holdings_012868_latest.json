@@ -1,0 +1,106 @@
+{
+  "fund_code": "012868",
+  "report_date": "2026-03-31",
+  "total_asset": 3453698811.6,
+  "allocation": {
+    "股票": 87.52,
+    "债券": 8.8,
+    "现金": 3.31,
+    "其他": 0.37,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "20.16%",
+      "change": "0.55%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "苹果",
+      "code": "AAPL",
+      "ratio": "17.73%",
+      "change": "0.35%",
+      "rate": "4.84%",
+      "industry": "",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "微软",
+      "code": "MSFT",
+      "ratio": "13.08%",
+      "change": "2.47%",
+      "rate": "1.62%",
+      "industry": "",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "6.98%",
+      "change": "0.09%",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": "重仓18个季度"
+    },
+    {
+      "name": "美光科技",
+      "code": "MU",
+      "ratio": "1.81%",
+      "change": "0.42%",
+      "rate": "-5.49%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "Palantir Technologies Inc. Class A",
+      "code": "PLTR",
+      "ratio": "1.59%",
+      "change": "0.17%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "超威半导体",
+      "code": "AMD",
+      "ratio": "1.58%",
+      "change": "0.07%",
+      "rate": "-5.61%",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "思科",
+      "code": "CSCO",
+      "ratio": "1.46%",
+      "change": "0.15%",
+      "rate": "-3.69%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "应用材料",
+      "code": "AMAT",
+      "ratio": "1.29%",
+      "change": "新增",
+      "rate": "-7.35%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "拉姆研究",
+      "code": "LRCX",
+      "ratio": "1.27%",
+      "change": "新增",
+      "rate": "-10.19%",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比66.95%",
+  "invest_date": "2026-03-31"
+}

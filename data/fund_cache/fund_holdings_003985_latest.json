@@ -1,0 +1,106 @@
+{
+  "fund_code": "003985",
+  "report_date": "2026-03-31",
+  "total_asset": 5731814111.62,
+  "allocation": {
+    "股票": 93.7,
+    "债券": 3.5,
+    "现金": 3.24,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "ratio": "8.92%",
+      "change": "0.55%",
+      "rate": "-0.61%",
+      "industry": "电池",
+      "quarters_held": "重仓28个季度"
+    },
+    {
+      "name": "湖南裕能",
+      "code": "301358",
+      "ratio": "6.29%",
+      "change": "1.45%",
+      "rate": "-2.68%",
+      "industry": "电池",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "盐湖股份",
+      "code": "000792",
+      "ratio": "6.10%",
+      "change": "0.67%",
+      "rate": "-2.55%",
+      "industry": "农化制品",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "天赐材料",
+      "code": "002709",
+      "ratio": "5.87%",
+      "change": "0.56%",
+      "rate": "-1.46%",
+      "industry": "电池",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "赣锋锂业",
+      "code": "002460",
+      "ratio": "5.86%",
+      "change": "1.64%",
+      "rate": "-1.59%",
+      "industry": "能源金属",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "雅化集团",
+      "code": "002497",
+      "ratio": "5.20%",
+      "change": "0.18%",
+      "rate": "0.05%",
+      "industry": "化学制品",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "天齐锂业",
+      "code": "002466",
+      "ratio": "5.04%",
+      "change": "0.40%",
+      "rate": "-2.25%",
+      "industry": "能源金属",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "璞泰来",
+      "code": "603659",
+      "ratio": "4.96%",
+      "change": "0.62%",
+      "rate": "-0.11%",
+      "industry": "电池",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "中矿资源",
+      "code": "002738",
+      "ratio": "4.61%",
+      "change": "新增",
+      "rate": "-1.88%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "华友钴业",
+      "code": "603799",
+      "ratio": "4.43%",
+      "change": "0.51%",
+      "rate": "-0.62%",
+      "industry": "能源金属",
+      "quarters_held": "重仓4个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比57.28%",
+  "invest_date": "2026-03-31"
+}

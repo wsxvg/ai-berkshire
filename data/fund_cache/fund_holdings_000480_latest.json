@@ -1,0 +1,106 @@
+{
+  "fund_code": "000480",
+  "report_date": "2026-03-31",
+  "total_asset": 6333514054.78,
+  "allocation": {
+    "股票": 78.1,
+    "现金": 22.77,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "海螺水泥",
+      "code": "600585",
+      "ratio": "4.42%",
+      "change": "0.47%",
+      "rate": "1.72%",
+      "industry": "建筑材料",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "隆基绿能",
+      "code": "601012",
+      "ratio": "3.70%",
+      "change": "1.22%",
+      "rate": "-1.80%",
+      "industry": "光伏设备",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "继峰股份",
+      "code": "603997",
+      "ratio": "3.43%",
+      "change": "0.46%",
+      "rate": "-0.73%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "京东方A",
+      "code": "000725",
+      "ratio": "3.14%",
+      "change": "0.53%",
+      "rate": "-7.91%",
+      "industry": "光学光电子",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "九州通",
+      "code": "600998",
+      "ratio": "2.96%",
+      "change": "新增",
+      "rate": "1.86%",
+      "industry": "医药商业",
+      "quarters_held": ""
+    },
+    {
+      "name": "盾安环境",
+      "code": "002011",
+      "ratio": "2.89%",
+      "change": "0.65%",
+      "rate": "0.37%",
+      "industry": "白色家电",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "南芯科技",
+      "code": "688484",
+      "ratio": "2.72%",
+      "change": "新增",
+      "rate": "-3.88%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "芒果超媒",
+      "code": "300413",
+      "ratio": "2.71%",
+      "change": "新增",
+      "rate": "0.54%",
+      "industry": "文化传媒",
+      "quarters_held": ""
+    },
+    {
+      "name": "航发动力",
+      "code": "600893",
+      "ratio": "2.53%",
+      "change": "0.52%",
+      "rate": "6.07%",
+      "industry": "军工装备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "帝尔激光",
+      "code": "300776",
+      "ratio": "2.49%",
+      "change": "新增",
+      "rate": "-2.04%",
+      "industry": "光伏设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比30.99%",
+  "invest_date": "2026-03-31"
+}

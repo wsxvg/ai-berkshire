@@ -1,0 +1,106 @@
+{
+  "fund_code": "024418",
+  "report_date": "2026-03-31",
+  "total_asset": 1326761187.63,
+  "allocation": {
+    "基金": 93.24,
+    "债券": 4.08,
+    "现金": 1.92,
+    "股票": 1.58,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "拓荆科技",
+      "code": "688072",
+      "ratio": "0.17%",
+      "change": "0.09%",
+      "rate": "0.00%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "华海清科",
+      "code": "688120",
+      "ratio": "0.17%",
+      "change": "0.08%",
+      "rate": "-4.80%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "0.16%",
+      "change": "0.09%",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "安集科技",
+      "code": "688019",
+      "ratio": "0.12%",
+      "change": "0.05%",
+      "rate": "-5.67%",
+      "industry": "电子化学品",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中科飞测",
+      "code": "688361",
+      "ratio": "0.12%",
+      "change": "0.09%",
+      "rate": "-3.93%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "沪硅产业",
+      "code": "688126",
+      "ratio": "0.11%",
+      "change": "0.13%",
+      "rate": "-7.80%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "芯源微",
+      "code": "688037",
+      "ratio": "0.11%",
+      "change": "0.05%",
+      "rate": "-1.36%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "华峰测控",
+      "code": "688200",
+      "ratio": "0.10%",
+      "change": "0.02%",
+      "rate": "3.11%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "天岳先进",
+      "code": "688234",
+      "ratio": "0.07%",
+      "change": "0.06%",
+      "rate": "-4.76%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "富创精密",
+      "code": "688409",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "-1.30%",
+      "industry": "半导体",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比1.18%",
+  "invest_date": "2026-03-31"
+}

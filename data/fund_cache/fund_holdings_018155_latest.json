@@ -1,0 +1,106 @@
+{
+  "fund_code": "018155",
+  "report_date": "2026-03-31",
+  "total_asset": 294545476.27,
+  "allocation": {
+    "股票": 86.87,
+    "现金": 20.45,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "Edgewise Therapeutics, Inc.",
+      "code": "EWTX",
+      "ratio": "4.59%",
+      "change": "0.45%",
+      "rate": "1.05%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "Summit Therapeutics Inc",
+      "code": "SMMT",
+      "ratio": "4.52%",
+      "change": "新增",
+      "rate": "7.23%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "AnaptysBio, Inc.",
+      "code": "ANAB",
+      "ratio": "3.97%",
+      "change": "0.05%",
+      "rate": "-3.07%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "Celcuity Inc.",
+      "code": "CELC",
+      "ratio": "3.46%",
+      "change": "新增",
+      "rate": "3.31%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Protagonist Therapeutics, Inc.",
+      "code": "PTGX",
+      "ratio": "3.27%",
+      "change": "新增",
+      "rate": "5.15%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "BioNTech SE Sponsored ADR",
+      "code": "BNTX",
+      "ratio": "3.17%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "内克塔治疗",
+      "code": "NKTR",
+      "ratio": "3.17%",
+      "change": "0.49%",
+      "rate": "10.33%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "NewAmsterdam Pharma Company N.V.",
+      "code": "NAMS",
+      "ratio": "3.14%",
+      "change": "新增",
+      "rate": "-0.97%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Cogent Biosciences, Inc.",
+      "code": "COGT",
+      "ratio": "2.86%",
+      "change": "新增",
+      "rate": "0.55%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Abivax SA Sponsored ADR",
+      "code": "ABVX",
+      "ratio": "2.54%",
+      "change": "新增",
+      "rate": "9.12%",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比34.69%",
+  "invest_date": "2026-03-31"
+}

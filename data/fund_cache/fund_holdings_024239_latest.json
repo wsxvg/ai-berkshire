@@ -1,0 +1,106 @@
+{
+  "fund_code": "024239",
+  "report_date": "2026-03-31",
+  "total_asset": 4694060571.65,
+  "allocation": {
+    "股票": 67.71,
+    "现金": 19.7,
+    "基金": 11.02,
+    "其他": 1.57,
+    "债券": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "Ciena科技",
+      "code": "CIEN",
+      "ratio": "5.56%",
+      "change": "4.26%",
+      "rate": "-8.65%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "4.87%",
+      "change": "1.85%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "4.72%",
+      "change": "2.74%",
+      "rate": "-9.09%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "Coherent Corp.",
+      "code": "COHR",
+      "ratio": "4.59%",
+      "change": "2.65%",
+      "rate": "-9.57%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "唯亚威系统服务",
+      "code": "VIAV",
+      "ratio": "4.52%",
+      "change": "新增",
+      "rate": "-11.49%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "4.15%",
+      "change": "新增",
+      "rate": "-10.81%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Sandisk Corporation",
+      "code": "SNDK",
+      "ratio": "2.66%",
+      "change": "新增",
+      "rate": "-14.13%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "美光科技",
+      "code": "MU",
+      "ratio": "2.30%",
+      "change": "新增",
+      "rate": "-5.49%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "先进能源工业",
+      "code": "AEIS",
+      "ratio": "1.63%",
+      "change": "新增",
+      "rate": "-12.65%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "泰瑞达",
+      "code": "TER",
+      "ratio": "1.62%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比36.62%",
+  "invest_date": "2026-03-31"
+}

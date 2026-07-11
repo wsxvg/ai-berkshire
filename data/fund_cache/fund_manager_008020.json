@@ -1,0 +1,29 @@
+{
+  "fund_code": "008020",
+  "managers": [
+    {
+      "name": "张娅",
+      "year_performance": "6.06",
+      "employ_performance": "96.54",
+      "manage_scale": "163.63亿元",
+      "employment_date": "19年229天",
+      "accession_date": "2020.04.23-至今"
+    },
+    {
+      "name": "郜哲",
+      "year_performance": "7.38",
+      "employ_performance": "96.54",
+      "manage_scale": "115.08亿元",
+      "employment_date": "8年131天",
+      "accession_date": "2020.04.23-至今"
+    },
+    {
+      "name": "李孝华",
+      "year_performance": "2.63",
+      "employ_performance": "158.81",
+      "manage_scale": "138.44亿元",
+      "employment_date": "5年58天",
+      "accession_date": "2023.02.09-至今"
+    }
+  ]
+}

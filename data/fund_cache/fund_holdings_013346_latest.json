@@ -1,0 +1,106 @@
+{
+  "fund_code": "013346",
+  "report_date": "2026-03-31",
+  "total_asset": 1213415655.39,
+  "allocation": {
+    "股票": 84.84,
+    "现金": 22.41,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "芯原股份",
+      "code": "688521",
+      "ratio": "7.36%",
+      "change": "新增",
+      "rate": "-2.10%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "海光信息",
+      "code": "688041",
+      "ratio": "6.93%",
+      "change": "新增",
+      "rate": "0.96%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "寒武纪",
+      "code": "688256",
+      "ratio": "6.91%",
+      "change": "1.97%",
+      "rate": "-1.38%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "网宿科技",
+      "code": "300017",
+      "ratio": "6.78%",
+      "change": "新增",
+      "rate": "-0.93%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "优刻得",
+      "code": "688158",
+      "ratio": "6.52%",
+      "change": "新增",
+      "rate": "-2.18%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "盛科通信",
+      "code": "688702",
+      "ratio": "5.07%",
+      "change": "新增",
+      "rate": "-8.33%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "协创数据",
+      "code": "300857",
+      "ratio": "5.00%",
+      "change": "新增",
+      "rate": "2.32%",
+      "industry": "计算机设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "润泽科技",
+      "code": "300442",
+      "ratio": "4.72%",
+      "change": "新增",
+      "rate": "-2.69%",
+      "industry": "通信服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "华丰科技",
+      "code": "688629",
+      "ratio": "4.62%",
+      "change": "新增",
+      "rate": "0.33%",
+      "industry": "军工电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "宏景科技",
+      "code": "301396",
+      "ratio": "4.43%",
+      "change": "新增",
+      "rate": "1.71%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比58.34%",
+  "invest_date": "2026-03-31"
+}

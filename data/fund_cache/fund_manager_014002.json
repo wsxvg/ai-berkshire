@@ -1,0 +1,21 @@
+{
+  "fund_code": "014002",
+  "managers": [
+    {
+      "name": "IKEDA KAE",
+      "year_performance": "16.21",
+      "employ_performance": "120.89",
+      "manage_scale": "30.07亿元",
+      "employment_date": "8年161天",
+      "accession_date": "2021.11.03-至今"
+    },
+    {
+      "name": "俞瑾",
+      "year_performance": "8.59",
+      "employ_performance": "178.02",
+      "manage_scale": "30.50亿元",
+      "employment_date": "3年327天",
+      "accession_date": "2022.08.11-至今"
+    }
+  ]
+}

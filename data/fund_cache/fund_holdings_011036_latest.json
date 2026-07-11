@@ -1,0 +1,106 @@
+{
+  "fund_code": "011036",
+  "report_date": "2026-03-31",
+  "total_asset": 6085169944.15,
+  "allocation": {
+    "基金": 93.65,
+    "现金": 6.05,
+    "股票": 1.05,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "北方稀土",
+      "code": "600111",
+      "ratio": "0.15%",
+      "change": "新增",
+      "rate": "0.77%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "厦门钨业",
+      "code": "600549",
+      "ratio": "0.08%",
+      "change": "新增",
+      "rate": "-8.64%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "金风科技",
+      "code": "002202",
+      "ratio": "0.08%",
+      "change": "新增",
+      "rate": "4.59%",
+      "industry": "风电设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国稀土",
+      "code": "000831",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "2.41%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "盛和资源",
+      "code": "600392",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "-3.14%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "格林美",
+      "code": "002340",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "1.52%",
+      "industry": "电池",
+      "quarters_held": ""
+    },
+    {
+      "name": "包钢股份",
+      "code": "600010",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "1.35%",
+      "industry": "钢铁",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国铝业",
+      "code": "601600",
+      "ratio": "0.05%",
+      "change": "新增",
+      "rate": "1.96%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "领益智造",
+      "code": "002600",
+      "ratio": "0.04%",
+      "change": "新增",
+      "rate": "4.89%",
+      "industry": "消费电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "盛新锂能",
+      "code": "002240",
+      "ratio": "0.04%",
+      "change": "新增",
+      "rate": "-3.44%",
+      "industry": "能源金属",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比0.64%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "015829",
+  "report_date": "2026-03-31",
+  "total_asset": 1282946026.65,
+  "allocation": {
+    "股票": 89.66,
+    "现金": 12.09,
+    "债券": 0.34,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "斯菱智驱",
+      "code": "301550",
+      "ratio": "8.12%",
+      "change": "1.17%",
+      "rate": "6.64%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "伟创电气",
+      "code": "688698",
+      "ratio": "6.70%",
+      "change": "1.19%",
+      "rate": "11.21%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "恒立液压",
+      "code": "601100",
+      "ratio": "6.17%",
+      "change": "1.23%",
+      "rate": "10.00%",
+      "industry": "工程机械",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "浙江荣泰",
+      "code": "603119",
+      "ratio": "5.42%",
+      "change": "4.18%",
+      "rate": "7.89%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "震裕科技",
+      "code": "300953",
+      "ratio": "5.06%",
+      "change": "1.87%",
+      "rate": "8.15%",
+      "industry": "电池",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "金宏气体",
+      "code": "688106",
+      "ratio": "3.68%",
+      "change": "新增",
+      "rate": "-16.21%",
+      "industry": "电子化学品",
+      "quarters_held": ""
+    },
+    {
+      "name": "江波龙",
+      "code": "301308",
+      "ratio": "3.65%",
+      "change": "新增",
+      "rate": "3.14%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "正泰电器",
+      "code": "601877",
+      "ratio": "3.56%",
+      "change": "新增",
+      "rate": "1.86%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "五洲新春",
+      "code": "603667",
+      "ratio": "3.49%",
+      "change": "4.19%",
+      "rate": "8.51%",
+      "industry": "通用设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "万向钱潮",
+      "code": "000559",
+      "ratio": "3.47%",
+      "change": "0.76%",
+      "rate": "7.97%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比49.32%",
+  "invest_date": "2026-03-31"
+}

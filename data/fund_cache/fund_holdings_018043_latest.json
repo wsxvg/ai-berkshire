@@ -1,0 +1,106 @@
+{
+  "fund_code": "018043",
+  "report_date": "2026-03-31",
+  "total_asset": 4776436183.76,
+  "allocation": {
+    "股票": 89.08,
+    "债券": 6.14,
+    "现金": 2.8,
+    "其他": 1.98,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "7.75%",
+      "change": "新增",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "苹果",
+      "code": "AAPL",
+      "ratio": "6.81%",
+      "change": "新增",
+      "rate": "4.84%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "微软",
+      "code": "MSFT",
+      "ratio": "5.02%",
+      "change": "新增",
+      "rate": "1.62%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "亚马逊",
+      "code": "AMZN",
+      "ratio": "4.09%",
+      "change": "新增",
+      "rate": "0.40%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "特斯拉",
+      "code": "TSLA",
+      "ratio": "3.39%",
+      "change": "新增",
+      "rate": "-7.49%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Meta Platforms Inc Class A",
+      "code": "META",
+      "ratio": "3.08%",
+      "change": "新增",
+      "rate": "-4.72%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "沃尔玛",
+      "code": "WMT",
+      "ratio": "3.07%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "谷歌-A",
+      "code": "GOOGL",
+      "ratio": "3.06%",
+      "change": "新增",
+      "rate": "-0.36%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "谷歌-C",
+      "code": "GOOG",
+      "ratio": "2.85%",
+      "change": "新增",
+      "rate": "-0.48%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "2.68%",
+      "change": "新增",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比41.80%",
+  "invest_date": "2026-03-31"
+}

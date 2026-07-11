@@ -1,0 +1,106 @@
+{
+  "fund_code": "002834",
+  "report_date": "2026-03-31",
+  "total_asset": 1524856886.13,
+  "allocation": {
+    "股票": 91.33,
+    "现金": 10.83,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "ratio": "1.53%",
+      "change": "0.44%",
+      "rate": "-0.61%",
+      "industry": "电池",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "中航成飞",
+      "code": "302132",
+      "ratio": "1.20%",
+      "change": "0.81%",
+      "rate": "3.27%",
+      "industry": "军工装备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中芯国际",
+      "code": "688981",
+      "ratio": "1.14%",
+      "change": "0.83%",
+      "rate": "-2.63%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "0.86%",
+      "change": "新增",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "汇川技术",
+      "code": "300124",
+      "ratio": "0.85%",
+      "change": "新增",
+      "rate": "5.48%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国石油",
+      "code": "601857",
+      "ratio": "0.85%",
+      "change": "0.55%",
+      "rate": "1.70%",
+      "industry": "石油加工贸易",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "联影医疗",
+      "code": "688271",
+      "ratio": "0.85%",
+      "change": "新增",
+      "rate": "1.01%",
+      "industry": "医疗器械",
+      "quarters_held": ""
+    },
+    {
+      "name": "海光信息",
+      "code": "688041",
+      "ratio": "0.84%",
+      "change": "新增",
+      "rate": "0.96%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "华虹宏力",
+      "code": "688347",
+      "ratio": "0.83%",
+      "change": "新增",
+      "rate": "0.18%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "同花顺",
+      "code": "300033",
+      "ratio": "0.83%",
+      "change": "新增",
+      "rate": "-0.59%",
+      "industry": "软件开发",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比9.78%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "018816",
+  "report_date": "2026-03-31",
+  "total_asset": 588083262.84,
+  "allocation": {
+    "股票": 93.34,
+    "现金": 10.39,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "江波龙",
+      "code": "301308",
+      "ratio": "10.15%",
+      "change": "0.97%",
+      "rate": "3.14%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "德明利",
+      "code": "001309",
+      "ratio": "10.02%",
+      "change": "0.01%",
+      "rate": "8.74%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "香农芯创",
+      "code": "300475",
+      "ratio": "9.61%",
+      "change": "1.31%",
+      "rate": "0.84%",
+      "industry": "其他电子",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "兆易创新",
+      "code": "603986",
+      "ratio": "8.10%",
+      "change": "3.72%",
+      "rate": "-2.45%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "佰维存储",
+      "code": "688525",
+      "ratio": "7.21%",
+      "change": "2.57%",
+      "rate": "2.18%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "普冉股份",
+      "code": "688766",
+      "ratio": "6.82%",
+      "change": "3.73%",
+      "rate": "3.99%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "朗科科技",
+      "code": "300042",
+      "ratio": "5.32%",
+      "change": "新增",
+      "rate": "-0.09%",
+      "industry": "计算机设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "亚翔集成",
+      "code": "603929",
+      "ratio": "5.20%",
+      "change": "新增",
+      "rate": "0.54%",
+      "industry": "建筑装饰",
+      "quarters_held": ""
+    },
+    {
+      "name": "圣晖集成",
+      "code": "603163",
+      "ratio": "4.99%",
+      "change": "新增",
+      "rate": "-3.24%",
+      "industry": "建筑装饰",
+      "quarters_held": ""
+    },
+    {
+      "name": "精智达",
+      "code": "688627",
+      "ratio": "4.96%",
+      "change": "4.18%",
+      "rate": "-0.65%",
+      "industry": "专用设备",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比72.38%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,102 @@
+[     336ms] [LOG] 不是股票app @ https://res.jr.jd.com/cf-local-jssdk/h5/bridge/2.0.3/jdstock.js:0
+[     338ms] [WARNING] registerCode上报埋点失败，但不影响后续流程: {status: -101, msg: 不在京东app内} @ https://res.jr.jd.com/cf-local-jssdk/babelnode/jd-jssdk/4.7.8/jd-jssdk.js:2
+[    1332ms] [LOG] lastJsUrl加载成功了 @ https://res.jr.jd.com/sdk/market-comp/lib/latest.umd.js:0
+[    1550ms] [LOG] 组件-prefixClass .market-comp-lac712820c323a5 market-comp-lac712820c323a5 #market-comp-lac712820c323a5 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1566ms] [LOG] 组件入参 Proxy(Object) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1573ms] [LOG] 成功订阅股票=====: CSI-H30184 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    1674ms] [LOG] 组件-prefixClass .market-comp-lac712820c323a5 market-comp-lac712820c323a5 #market-comp-lac712820c323a5 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    1677ms] [LOG] 行情库已连接不需要重复链接 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    1743ms] [LOG] [JdtWsClient]:  ws is connected. @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    1856ms] [LOG] 时间不一致刷新 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1865ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    1915ms] [LOG] 昨日收盘价 18309.48 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1919ms] [LOG] 格式化分时数据 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1935ms] [LOG] dateTimes Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1935ms] [LOG] XTicks undefined @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1937ms] [LOG] 间隔设置 17131 18853 430.5 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1937ms] [LOG] 间隔设置 100 500 17000 [17000, 17500, 18000, 18500, 19000] @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    1953ms] [LOG] maxVolume.value 127853700 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    2089ms] [LOG] 报盘组件-数据更新 {tagList: Array(3)} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    3005ms] [LOG] 昨日收盘价 18309.48 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    3008ms] [LOG] 格式化分时数据 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    3021ms] [LOG] 更新分时图 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    3022ms] [LOG] 最后一个点 15:00 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    3024ms] [LOG] resetChart############# 18852.7 17131.32 19000 17000 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[    3690ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    3690ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    4716ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    4717ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    5505ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    5506ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    6622ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    6622ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    7720ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    7721ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    8518ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    8518ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    9745ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[    9745ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   10503ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   10504ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   11649ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   11649ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   12621ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   12621ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   13619ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   13620ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   14725ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   14726ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   15692ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   15692ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   16651ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   16652ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   17628ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   17628ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   18614ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   18614ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   19671ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   19672ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   20723ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   20724ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   21658ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   21659ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   22614ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   22615ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   23619ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   23620ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   24731ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   24732ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   25621ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   25621ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   26711ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   26711ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   27661ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   27662ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   28606ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   28607ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   29686ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   29686ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   30626ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   30626ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   31711ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   31711ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   32724ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   32725ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   33627ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   33627ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   34733ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   34734ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   35636ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   35636ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   36693ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   36693ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   37720ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   37720ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   38629ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   38630ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   39694ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   39694ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   40766ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   40767ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   41627ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[   41627ms] [LOG] 交易时间回调 {tradeTime: 休市中} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22

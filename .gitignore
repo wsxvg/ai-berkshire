@@ -1,7 +1,5 @@
-# 认证 & 敏感数据
-data/jd_auth/cookies.json
-data/jd_auth/
-*.cookies
+# 参考项目（嵌套 git 仓库，不提交）
+reference_projects/
 
 # Python
 __pycache__/
@@ -18,8 +16,10 @@ venv/
 # 临时文件
 _tmp_*
 *.tmp
+nul; echo
+nul; echo ---versions---
 
-# 虚拟持仓（GitHub Actions 自动生成，不需要手动提交）
+# GitHub Actions 自动生成，不需要手动提交
 reports/sim/virtual_portfolio.json
 
 # 环境

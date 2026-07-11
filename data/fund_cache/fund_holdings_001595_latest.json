@@ -1,0 +1,106 @@
+{
+  "fund_code": "001595",
+  "report_date": "2026-03-31",
+  "total_asset": 4630746719.39,
+  "allocation": {
+    "基金": 93.02,
+    "现金": 5.28,
+    "股票": 1.86,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "招商银行",
+      "code": "600036",
+      "ratio": "0.27%",
+      "change": "0.01%",
+      "rate": "0.63%",
+      "industry": "银行",
+      "quarters_held": "重仓43个季度"
+    },
+    {
+      "name": "兴业银行",
+      "code": "601166",
+      "ratio": "0.19%",
+      "change": "持平",
+      "rate": "-0.29%",
+      "industry": "银行",
+      "quarters_held": "重仓43个季度"
+    },
+    {
+      "name": "工商银行",
+      "code": "601398",
+      "ratio": "0.15%",
+      "change": "0.01%",
+      "rate": "-0.14%",
+      "industry": "银行",
+      "quarters_held": "重仓43个季度"
+    },
+    {
+      "name": "交通银行",
+      "code": "601328",
+      "ratio": "0.11%",
+      "change": "0.01%",
+      "rate": "0.00%",
+      "industry": "银行",
+      "quarters_held": "重仓43个季度"
+    },
+    {
+      "name": "农业银行",
+      "code": "601288",
+      "ratio": "0.11%",
+      "change": "0.01%",
+      "rate": "-1.34%",
+      "industry": "银行",
+      "quarters_held": "重仓43个季度"
+    },
+    {
+      "name": "江苏银行",
+      "code": "600919",
+      "ratio": "0.10%",
+      "change": "0.02%",
+      "rate": "-0.89%",
+      "industry": "银行",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "浦发银行",
+      "code": "600000",
+      "ratio": "0.08%",
+      "change": "0.01%",
+      "rate": "-0.11%",
+      "industry": "银行",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "平安银行",
+      "code": "000001",
+      "ratio": "0.06%",
+      "change": "持平",
+      "rate": "0.10%",
+      "industry": "银行",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "上海银行",
+      "code": "601229",
+      "ratio": "0.06%",
+      "change": "0.01%",
+      "rate": "0.68%",
+      "industry": "银行",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "宁波银行",
+      "code": "002142",
+      "ratio": "0.06%",
+      "change": "新增",
+      "rate": "-0.36%",
+      "industry": "银行",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比1.19%",
+  "invest_date": "2026-03-31"
+}

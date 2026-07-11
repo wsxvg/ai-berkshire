@@ -1,0 +1,29 @@
+{
+  "fund_code": "019924",
+  "managers": [
+    {
+      "name": "盛豪",
+      "year_performance": "8.29",
+      "employ_performance": "108.23",
+      "manage_scale": "91.83亿元",
+      "employment_date": "10年264天",
+      "accession_date": "2024.01.12-至今"
+    },
+    {
+      "name": "雷文渊",
+      "year_performance": "18.74",
+      "employ_performance": "108.23",
+      "manage_scale": "26.06亿元",
+      "employment_date": "3年333天",
+      "accession_date": "2024.01.12-至今"
+    },
+    {
+      "name": "孔令烨",
+      "year_performance": "13.53",
+      "employ_performance": "108.23",
+      "manage_scale": "44.91亿元",
+      "employment_date": "3年333天",
+      "accession_date": "2024.01.12-至今"
+    }
+  ]
+}

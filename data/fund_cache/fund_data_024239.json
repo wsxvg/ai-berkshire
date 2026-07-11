@@ -1,0 +1,245 @@
+{
+  "fund_code": "024239",
+  "fetch_time": "2026-07-10T23:42:35.997339",
+  "profile": {
+    "fund_code": "024239",
+    "full_name": "华夏全球科技先锋混合(QDII)C",
+    "fund_type": "QDII-偏股",
+    "risk_level": 4,
+    "morningstar_rating": "",
+    "established": "2025-05-13",
+    "scale": "13.94亿元",
+    "manager_company": "华夏基金管理有限公司",
+    "company_scale": "21042.67亿",
+    "manage_count": 552,
+    "is_for_sale": true,
+    "wealth_rank": ""
+  },
+  "performance": {
+    "fund_code": "024239",
+    "performance": [
+      {
+        "period": "近1周",
+        "return": -0.56,
+        "avg": 0.35,
+        "rank": "107/140",
+        "rank_pct": 0.7642857142857142
+      },
+      {
+        "period": "近1月",
+        "return": 0.22,
+        "avg": 2.37,
+        "rank": "83/140",
+        "rank_pct": 0.5928571428571429
+      },
+      {
+        "period": "近3月",
+        "return": 31.25,
+        "avg": 7.62,
+        "rank": "24/140",
+        "rank_pct": 0.17142857142857143
+      },
+      {
+        "period": "近6月",
+        "return": 59.9,
+        "avg": 11.74,
+        "rank": "15/137",
+        "rank_pct": 0.10948905109489052
+      },
+      {
+        "period": "近1年",
+        "return": 84.89,
+        "avg": 35.87,
+        "rank": "24/124",
+        "rank_pct": 0.1935483870967742
+      },
+      {
+        "period": "今年以来",
+        "return": 64.75,
+        "avg": 13.82,
+        "rank": "23/160",
+        "rank_pct": 0.14375
+      },
+      {
+        "period": "近3年",
+        "return": null,
+        "avg": null,
+        "rank": "",
+        "rank_pct": null
+      },
+      {
+        "period": "成立以来",
+        "return": 100.35,
+        "avg": 93.4,
+        "rank": "52/140",
+        "rank_pct": 0.37142857142857144
+      }
+    ],
+    "year_performance": [],
+    "aip_performance": [
+      {
+        "period": "近一年",
+        "return": 45.4
+      },
+      {
+        "period": "近二年",
+        "return": null
+      },
+      {
+        "period": "近三年",
+        "return": null
+      },
+      {
+        "period": "近五年",
+        "return": null
+      }
+    ]
+  },
+  "holdings": {
+    "fund_code": "024239",
+    "report_date": "2026-03-31",
+    "total_asset": 4694060571.65,
+    "allocation": {
+      "股票": 67.71,
+      "现金": 19.7,
+      "基金": 11.02,
+      "其他": 1.57,
+      "债券": 0.0
+    },
+    "top_stocks": [
+      {
+        "name": "Ciena科技",
+        "code": "CIEN",
+        "ratio": "5.56%",
+        "change": "4.26%",
+        "rate": "-0.05%",
+        "industry": "",
+        "quarters_held": "重仓2个季度"
+      },
+      {
+        "name": "台积电",
+        "code": "TSM",
+        "ratio": "4.87%",
+        "change": "1.85%",
+        "rate": "-0.08%",
+        "industry": "",
+        "quarters_held": "重仓3个季度"
+      },
+      {
+        "name": "Lumentum Holdings, Inc.",
+        "code": "LITE",
+        "ratio": "4.72%",
+        "change": "2.74%",
+        "rate": "-1.19%",
+        "industry": "",
+        "quarters_held": "重仓2个季度"
+      },
+      {
+        "name": "Coherent Corp.",
+        "code": "COHR",
+        "ratio": "4.59%",
+        "change": "2.65%",
+        "rate": "-1.78%",
+        "industry": "",
+        "quarters_held": "重仓2个季度"
+      },
+      {
+        "name": "唯亚威系统服务",
+        "code": "VIAV",
+        "ratio": "4.52%",
+        "change": "新增",
+        "rate": "-0.05%",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "康宁",
+        "code": "GLW",
+        "ratio": "4.15%",
+        "change": "新增",
+        "rate": "-1.49%",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "Sandisk Corporation",
+        "code": "SNDK",
+        "ratio": "2.66%",
+        "change": "新增",
+        "rate": "3.00%",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "美光科技",
+        "code": "MU",
+        "ratio": "2.30%",
+        "change": "新增",
+        "rate": "-0.93%",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "先进能源工业",
+        "code": "AEIS",
+        "ratio": "1.63%",
+        "change": "新增",
+        "rate": "-0.89%",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "泰瑞达",
+        "code": "TER",
+        "ratio": "1.62%",
+        "change": "新增",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": ""
+      }
+    ],
+    "stock_nav_ratio": "前10大占比36.62%",
+    "invest_date": "2026-03-31"
+  },
+  "manager": {
+    "fund_code": "024239",
+    "managers": [
+      {
+        "name": "李湘杰",
+        "year_performance": "11.07",
+        "employ_performance": "100.35",
+        "manage_scale": "72.63亿元",
+        "employment_date": "12年302天",
+        "accession_date": "2025.05.13-至今"
+      }
+    ]
+  },
+  "rules": {
+    "fund_code": "024239",
+    "buy_date": "07-13 15:00前",
+    "confirm_date": "07-15",
+    "manage_fee": 1.2,
+    "custody_fee": 0.2,
+    "sale_fee": 0.6,
+    "purchase_fee": 0.0,
+    "purchase_fee_original": 0.0,
+    "day_limit": 1000.0,
+    "min_purchase": 1.0,
+    "redeem_fees": [
+      {
+        "rate": 1.5,
+        "interval": "持有期限＜7日"
+      },
+      {
+        "rate": 0.5,
+        "interval": "7日≤持有期限＜30日"
+      },
+      {
+        "rate": 0.0,
+        "interval": "持有期限≥30日"
+      }
+    ],
+    "purchase_status": "开放申购",
+    "redeem_status": "开放赎回"
+  }
+}

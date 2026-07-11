@@ -1,0 +1,289 @@
+{
+  "fund_code": "006105",
+  "fetch_time": "2026-07-03T20:55:36.210741",
+  "profile": {
+    "fund_code": "006105",
+    "full_name": "宏利印度股票(QDII)A",
+    "fund_type": "QDII-股票",
+    "risk_level": 4,
+    "morningstar_rating": "",
+    "established": "2019-01-30",
+    "scale": "15.87亿元",
+    "manager_company": "宏利基金管理有限公司",
+    "company_scale": "1147.32亿",
+    "manage_count": 79,
+    "is_for_sale": true,
+    "wealth_rank": ""
+  },
+  "performance": {
+    "fund_code": "006105",
+    "performance": [
+      {
+        "period": "近1周",
+        "return": -0.23,
+        "avg": 0.64,
+        "rank": "289/432",
+        "rank_pct": 0.6689814814814815
+      },
+      {
+        "period": "近1月",
+        "return": 2.81,
+        "avg": -3.41,
+        "rank": "57/430",
+        "rank_pct": 0.1325581395348837
+      },
+      {
+        "period": "近3月",
+        "return": 5.73,
+        "avg": 6.35,
+        "rank": "191/427",
+        "rank_pct": 0.44730679156908665
+      },
+      {
+        "period": "近6月",
+        "return": -8.6,
+        "avg": 4.01,
+        "rank": "268/417",
+        "rank_pct": 0.6426858513189448
+      },
+      {
+        "period": "近1年",
+        "return": -14.57,
+        "avg": 15.58,
+        "rank": "311/406",
+        "rank_pct": 0.7660098522167488
+      },
+      {
+        "period": "今年以来",
+        "return": -8.6,
+        "avg": 3.51,
+        "rank": "273/432",
+        "rank_pct": 0.6319444444444444
+      },
+      {
+        "period": "近3年",
+        "return": 5.12,
+        "avg": 50.89,
+        "rank": "228/272",
+        "rank_pct": 0.8382352941176471
+      },
+      {
+        "period": "成立以来",
+        "return": 34.92,
+        "avg": 193.56,
+        "rank": "64/89",
+        "rank_pct": 0.7191011235955056
+      }
+    ],
+    "year_performance": [
+      {
+        "year": "2025年",
+        "return": -5.31,
+        "avg": null
+      },
+      {
+        "year": "2024年",
+        "return": 11.89,
+        "avg": null
+      },
+      {
+        "year": "2023年",
+        "return": 18.3,
+        "avg": 9.05
+      },
+      {
+        "year": "2022年",
+        "return": -5.53,
+        "avg": -10.74
+      },
+      {
+        "year": "2021年",
+        "return": 12.95,
+        "avg": 1.05
+      },
+      {
+        "year": "2020年",
+        "return": 2.43,
+        "avg": 16.21
+      },
+      {
+        "year": "2019年",
+        "return": null,
+        "avg": 20.45
+      }
+    ],
+    "aip_performance": [
+      {
+        "period": "近一年",
+        "return": -4.69
+      },
+      {
+        "period": "近二年",
+        "return": -8.63
+      },
+      {
+        "period": "近三年",
+        "return": -6.78
+      },
+      {
+        "period": "近五年",
+        "return": 1.29
+      }
+    ]
+  },
+  "holdings": {
+    "fund_code": "006105",
+    "report_date": "2026-03-31",
+    "total_asset": 1595926629.31,
+    "allocation": {
+      "股票": 88.85,
+      "现金": 14.6,
+      "债券": 0.0,
+      "基金": 0.0,
+      "其他": 0.0
+    },
+    "top_stocks": [
+      {
+        "name": "爱西爱西爱银行有限公司",
+        "code": "ICICIBC",
+        "ratio": "6.52%",
+        "change": "0.76%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓9个季度"
+      },
+      {
+        "name": "印度瑞来斯实业公司",
+        "code": "RELIANCE",
+        "ratio": "5.19%",
+        "change": "0.17%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓9个季度"
+      },
+      {
+        "name": "巴帝电信有限公司",
+        "code": "BHARTI",
+        "ratio": "4.10%",
+        "change": "1.56%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓9个季度"
+      },
+      {
+        "name": "马亨德拉有限公司",
+        "code": "MM",
+        "ratio": "3.86%",
+        "change": "1.30%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓3个季度"
+      },
+      {
+        "name": "HDFC银行",
+        "code": "HDFCB",
+        "ratio": "3.59%",
+        "change": "4.01%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓7个季度"
+      },
+      {
+        "name": "轴线银行有限公司",
+        "code": "AXSB",
+        "ratio": "3.04%",
+        "change": "新增",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "印度国家银行有限公司",
+        "code": "SBIN",
+        "ratio": "2.84%",
+        "change": "新增",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "泰坦公司",
+        "code": "TTAN",
+        "ratio": "2.51%",
+        "change": "新增",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": ""
+      },
+      {
+        "name": "BAJAJ金融有限公司",
+        "code": "BAF",
+        "ratio": "2.47%",
+        "change": "0.77%",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": "重仓5个季度"
+      },
+      {
+        "name": "Shriram金融有限公司",
+        "code": "SHFL",
+        "ratio": "2.27%",
+        "change": "新增",
+        "rate": "--",
+        "industry": "",
+        "quarters_held": ""
+      }
+    ],
+    "stock_nav_ratio": "前10大占比36.39%",
+    "invest_date": "2026-03-31"
+  },
+  "manager": {
+    "fund_code": "006105",
+    "managers": [
+      {
+        "name": "师婧",
+        "year_performance": "-0.48",
+        "employ_performance": "34.92",
+        "manage_scale": "15.96亿元",
+        "employment_date": "8年190天",
+        "accession_date": "2019.01.30-至今"
+      }
+    ]
+  },
+  "rules": {
+    "fund_code": "006105",
+    "buy_date": "07-06 15:00前",
+    "confirm_date": "07-08",
+    "manage_fee": 1.2,
+    "custody_fee": 0.2,
+    "sale_fee": 0.0,
+    "purchase_fee": 0.15,
+    "purchase_fee_original": 1.5,
+    "day_limit": 100000.0,
+    "min_purchase": 1.0,
+    "redeem_fees": [
+      {
+        "rate": 1.5,
+        "interval": "1日≤持有期限≤6日"
+      },
+      {
+        "rate": 0.75,
+        "interval": "7日≤持有期限≤29日"
+      },
+      {
+        "rate": 0.5,
+        "interval": "30日≤持有期限≤179日"
+      },
+      {
+        "rate": 0.1,
+        "interval": "180日≤持有期限≤365日"
+      },
+      {
+        "rate": 0.0,
+        "interval": "持有期限≥366日"
+      }
+    ],
+    "purchase_status": "开放申购",
+    "redeem_status": "开放赎回"
+  }
+}

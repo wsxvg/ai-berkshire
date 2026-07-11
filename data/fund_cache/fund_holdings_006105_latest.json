@@ -1,0 +1,69 @@
+{
+  "fund_code": "006105",
+  "report_date": null,
+  "total_asset": 1595926629.31,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "爱西爱西爱银行有限公司",
+      "code": "ICICIBC",
+      "ratio": "6.52%",
+      "change": "0.76%"
+    },
+    {
+      "name": "印度瑞来斯实业公司",
+      "code": "RELIANCE",
+      "ratio": "5.19%",
+      "change": "0.17%"
+    },
+    {
+      "name": "巴帝电信有限公司",
+      "code": "BHARTI",
+      "ratio": "4.10%",
+      "change": "1.56%"
+    },
+    {
+      "name": "马亨德拉有限公司",
+      "code": "MM",
+      "ratio": "3.86%",
+      "change": "1.30%"
+    },
+    {
+      "name": "HDFC银行",
+      "code": "HDFCB",
+      "ratio": "3.59%",
+      "change": "4.01%"
+    },
+    {
+      "name": "轴线银行有限公司",
+      "code": "AXSB",
+      "ratio": "3.04%",
+      "change": "新增"
+    },
+    {
+      "name": "印度国家银行有限公司",
+      "code": "SBIN",
+      "ratio": "2.84%",
+      "change": "新增"
+    },
+    {
+      "name": "泰坦公司",
+      "code": "TTAN",
+      "ratio": "2.51%",
+      "change": "新增"
+    },
+    {
+      "name": "BAJAJ金融有限公司",
+      "code": "BAF",
+      "ratio": "2.47%",
+      "change": "0.77%"
+    },
+    {
+      "name": "Shriram金融有限公司",
+      "code": "SHFL",
+      "ratio": "2.27%",
+      "change": "新增"
+    }
+  ],
+  "invest_date": ""
+}

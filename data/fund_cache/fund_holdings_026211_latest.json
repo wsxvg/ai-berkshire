@@ -1,0 +1,69 @@
+{
+  "fund_code": "026211",
+  "report_date": null,
+  "total_asset": 530608434.94,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "长芯博创",
+      "code": "300548",
+      "ratio": "8.99%",
+      "change": "4.02%"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "8.90%",
+      "change": "0.30%"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "8.85%",
+      "change": "0.10%"
+    },
+    {
+      "name": "莱特光电",
+      "code": "688150",
+      "ratio": "8.68%",
+      "change": "新增"
+    },
+    {
+      "name": "斯迪克",
+      "code": "300806",
+      "ratio": "8.56%",
+      "change": "3.45%"
+    },
+    {
+      "name": "长飞光纤",
+      "code": "601869",
+      "ratio": "5.35%",
+      "change": "新增"
+    },
+    {
+      "name": "长飞光纤光缆",
+      "code": "06869",
+      "ratio": "5.18%",
+      "change": "新增"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "5.04%",
+      "change": "0.04%"
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "4.97%",
+      "change": "新增"
+    },
+    {
+      "name": "亨通光电",
+      "code": "600487",
+      "ratio": "4.93%",
+      "change": "新增"
+    }
+  ],
+  "invest_date": ""
+}

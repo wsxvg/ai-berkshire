@@ -1,0 +1,21 @@
+{
+  "fund_code": "014419",
+  "managers": [
+    {
+      "name": "盛丰衍",
+      "year_performance": "9.94",
+      "employ_performance": "93.98",
+      "manage_scale": "85.66亿元",
+      "employment_date": "9年222天",
+      "accession_date": "2021.12.23-至今"
+    },
+    {
+      "name": "张昌平",
+      "year_performance": "19.26",
+      "employ_performance": "91.26",
+      "manage_scale": "37.60亿元",
+      "employment_date": "5年241天",
+      "accession_date": "2025.09.06-至今"
+    }
+  ]
+}

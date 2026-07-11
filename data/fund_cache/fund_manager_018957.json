@@ -1,0 +1,21 @@
+{
+  "fund_code": "018957",
+  "managers": [
+    {
+      "name": "韩浩",
+      "year_performance": "7.84",
+      "employ_performance": "427.53",
+      "manage_scale": "137.15亿元",
+      "employment_date": "8年202天",
+      "accession_date": "2023.08.10-至今"
+    },
+    {
+      "name": "王森",
+      "year_performance": "19.45",
+      "employ_performance": "12.93",
+      "manage_scale": "144.40亿元",
+      "employment_date": "2年280天",
+      "accession_date": "2026.04.20-至今"
+    }
+  ]
+}

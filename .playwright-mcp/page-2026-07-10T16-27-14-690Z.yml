@@ -1,0 +1,55 @@
+- generic [ref=f31e3]:
+  - generic [ref=f31e4]:
+    - img "京东金融" [ref=f31e7]
+    - generic [ref=f31e8]: 切回旧版
+  - generic [ref=f31e11]:
+    - generic [ref=f31e12]:
+      - generic [ref=f31e13]:
+        - paragraph [ref=f31e15] [cursor=pointer]: jd_9b2u5ec8t4pmtb
+        - generic [ref=f31e16] [cursor=pointer]: 退出登录
+      - generic [ref=f31e17]:
+        - generic [ref=f31e18] [cursor=pointer]: 自选
+        - generic [ref=f31e21] [cursor=pointer]: 自定义
+        - generic [ref=f31e25] [cursor=pointer]: 积存金
+        - generic [ref=f31e28] [cursor=pointer]: 基金
+        - generic [ref=f31e31] [cursor=pointer]: 发现
+        - generic [ref=f31e34] [cursor=pointer]: 下载
+    - generic [ref=f31e798]:
+      - generic [ref=f31e800]:
+        - generic [ref=f31e801]:
+          - generic [ref=f31e802] [cursor=pointer]: 基金自选
+          - generic [ref=f31e804] [cursor=pointer]: 股票自选
+        - generic [ref=f31e806]:
+          - generic [ref=f31e807]:
+            - generic [ref=f31e809]:
+              - generic [ref=f31e810] [cursor=pointer]: 全部
+              - generic [ref=f31e811] [cursor=pointer]: 进阶
+              - generic [ref=f31e812] [cursor=pointer]: 稳健
+              - generic [ref=f31e813] [cursor=pointer]: 指数
+              - generic [ref=f31e814] [cursor=pointer]: 全球
+            - generic [ref=f31e817]:
+              - img "search" [ref=f31e818]
+              - textbox "名称/代码" [ref=f31e819]
+          - generic [ref=f31e820]:
+            - generic [ref=f31e821] [cursor=pointer]: 基金名称
+            - generic [ref=f31e822] [cursor=pointer]: 净值7-11
+            - generic [ref=f31e826] [cursor=pointer]: 添加后涨跌
+            - generic [ref=f31e830] [cursor=pointer]: 近一周
+      - iframe [ref=f31e843]:
+        - generic [ref=f35e3]:
+          - generic [ref=f35e4]: 基金圈
+          - generic [ref=f35e9]:
+            - tablist [ref=f35e13]:
+              - tab [ref=f35e14] [cursor=pointer]:
+                - emphasis [ref=f35e16]: 关注
+              - tab [ref=f35e17] [cursor=pointer]:
+                - emphasis [ref=f35e19]: 最新
+              - tab [ref=f35e20] [cursor=pointer]:
+                - emphasis [ref=f35e22]: 推荐
+              - tab [selected] [ref=f35e23] [cursor=pointer]:
+                - emphasis [ref=f35e25]: 资讯
+              - tab [ref=f35e26] [cursor=pointer]:
+                - emphasis [ref=f35e28]: 精华必读
+            - tabpanel [ref=f35e31]:
+              - feed [ref=f35e35]:
+                - generic [ref=f35e36]: 加载中...

@@ -1,0 +1,7 @@
+[     320ms] [LOG] window._READMISSION-- {setOption: , setElementHide: , setReceiveMissionModel: , setMissionId: , setMissionIdInner: } @ https://storage.jd.com/static-page/mission/forever/readmult/2.2.4/readPluginv2.2.4.js:1
+[    1165ms] [INFO] Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113 @ https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-17533758:0
+[    1226ms] [WARNING] startExposure in web not supported @ https://roma.jd.com/content/shipan-detail/js/vendor_b5b5de29d5.js:46
+[    1699ms] [LOG] valid error @ https://roma.jd.com/content/shipan-detail/js/vendor_b5b5de29d5.js:0
+[    2421ms] [LOG] Download mq sdk failed ReferenceError: JOYER_ENV_ROMA_MQTT_APP_CODE is not defined
+    at ge (https://roma.jd.com/content/shipan-detail/js/vendor_b5b5de29d5.js:20:138582)
+    at https://roma.jd.com/content/shipan-detail/js/vendor_b5b5de29d5.js:20:141998 @ https://roma.jd.com/content/shipan-detail/js/vendor_b5b5de29d5.js:19

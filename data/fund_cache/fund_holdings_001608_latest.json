@@ -1,0 +1,106 @@
+{
+  "fund_code": "001608",
+  "report_date": "2026-03-31",
+  "total_asset": 54346382.66,
+  "allocation": {
+    "股票": 86.09,
+    "现金": 11.32,
+    "其他": 2.6,
+    "债券": 0.0,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "6.39%",
+      "change": "新增",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "5.85%",
+      "change": "新增",
+      "rate": "4.98%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "5.38%",
+      "change": "新增",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "5.38%",
+      "change": "新增",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "菲利华",
+      "code": "300395",
+      "ratio": "4.71%",
+      "change": "新增",
+      "rate": "-2.71%",
+      "industry": "军工装备",
+      "quarters_held": ""
+    },
+    {
+      "name": "德科立",
+      "code": "688205",
+      "ratio": "4.55%",
+      "change": "新增",
+      "rate": "-2.68%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "腾景科技",
+      "code": "688195",
+      "ratio": "4.35%",
+      "change": "新增",
+      "rate": "-3.39%",
+      "industry": "光学光电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "生益科技",
+      "code": "600183",
+      "ratio": "3.99%",
+      "change": "新增",
+      "rate": "5.81%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "3.91%",
+      "change": "新增",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "罗博特科",
+      "code": "300757",
+      "ratio": "3.85%",
+      "change": "新增",
+      "rate": "-3.13%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比48.36%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Berkshire 基金扫描 — 2026-07-01</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft YaHei","PingFang SC",sans-serif;background:#f8fafc;color:#1e293b;padding:32px 24px;max-width:1100px;margin:auto}
+h1{font-size:22px;font-weight:700;color:#1e293b;margin-bottom:2px}
+.subtitle{color:#64748b;font-size:13px;margin-bottom:20px}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.si{background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid #e2e8f0}
+.si .n{font-size:26px;font-weight:700;color:#2563eb}
+.si .l{font-size:11px;color:#64748b;margin-top:2px}
+.rc-list{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.rc{display:flex;align-items:center;gap:8px;background:#fff;border-radius:6px;padding:10px 12px;border:1px solid #e2e8f0;font-size:13px}
+.rc-icon{font-size:16px;width:24px}
+.rc-label{font-size:11px;font-weight:600;width:32px;flex-shrink:0}
+.rc-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-code{font-family:monospace;font-size:11px;color:#64748b;width:80px}
+.rc-score{font-weight:700;width:32px;text-align:right}
+.rc-limit{font-size:10px;color:#d97706;width:60px;text-align:right}
+.rc-reason{font-size:11px;color:#64748b;width:120px;text-align:right}
+.rc-hold{display:inline-block;font-size:9px;background:#dbeafe;color:#2563eb;padding:0 4px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.rc-buy .rc-label{color:#16a34a}
+.rc-watch .rc-label{color:#d97706}
+.rc-sell .rc-label{color:#dc2626}
+.rc-empty{text-align:center;color:#94a3b8;padding:20px}
+.tr-up{font-size:10px;color:#16a34a;font-weight:600;margin-left:2px}
+.tr-down{font-size:10px;color:#dc2626;font-weight:600;margin-left:2px}
+.tr-flat{font-size:10px;color:#94a3b8;margin-left:2px}
+table{width:100%;border-collapse:collapse;margin:6px 0;font-size:13px}
+th{background:#f1f5f9;color:#475569;padding:7px 8px;text-align:left;font-size:11px;font-weight:600;border-bottom:2px solid #e2e8f0}
+td{padding:6px 8px;border-bottom:1px solid #f1f5f9;font-size:12px}
+tr:hover{background:#f8fafc}
+tr.sb td:first-child{color:#2563eb;font-weight:700}
+.tb{display:inline-block;background:#dcfce7;color:#16a34a;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:600}
+.ts{background:#fef2f2;color:#dc2626;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:600}
+.tg{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9px;margin:0 1px;font-weight:500}
+.tg-QDII{background:#eff6ff;color:#2563eb}
+.tg-指{background:#f0fdf4;color:#16a34a}
+.tg-C{background:#faf5ff;color:#9333ea}
+.sb{color:#2563eb;font-weight:700}
+.sw{color:#d97706}
+.sp{color:#9ca3af}
+.sn{color:#e2e8f0}
+.ss{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:10px 0}
+.sc{background:#fff;border-radius:8px;padding:12px;border:1px solid #e2e8f0}
+.sh{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.scode{font-size:11px;color:#64748b;font-family:monospace}
+.sname{font-size:12px;color:#1e293b;margin-left:6px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+.st{font-size:20px;font-weight:700;color:#2563eb;margin-left:auto}
+.sv{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600}
+.sv-buy{background:#dcfce7;color:#16a34a}
+.sv-watch{background:#fef3c7;color:#d97706}
+.sv-pass{background:#f1f5f9;color:#94a3b8}
+.db{display:flex;align-items:center;gap:4px;margin:2px 0}
+.dl{font-size:10px;color:#64748b;width:36px;flex-shrink:0}
+.dt{flex:1;height:5px;background:#f1f5f9;border-radius:2px;overflow:hidden}
+.df{height:100%;border-radius:2px}
+.dv{font-size:10px;font-weight:600;width:20px;text-align:right;color:#475569}
+h2{font-size:16px;color:#1e293b;margin:22px 0 8px;padding-bottom:6px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:6px}
+h2 .bd{background:#f1f5f9;color:#64748b;font-size:10px;padding:1px 7px;border-radius:8px}
+.note{color:#64748b;font-size:12px;margin:6px 0}
+.al{background:#fff;border-radius:8px;padding:14px;margin:10px 0;border:1px solid #e2e8f0}
+.al h3{font-size:14px;margin-bottom:10px}
+.al-row{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+.al-input{font-size:16px;padding:6px 10px;border:1px solid #cbd5e1;border-radius:6px;width:160px;outline:none}
+.al-input:focus{border-color:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
+.al-btn{background:#2563eb;color:#fff;border:none;padding:7px 18px;border-radius:6px;font-size:14px;cursor:pointer}
+.al-btn:hover{background:#1d4ed8}
+.al-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+.al-table th{background:#f1f5f9;color:#475569;padding:6px 8px;text-align:left;font-size:11px;border-bottom:2px solid #e2e8f0}
+.al-table td{padding:5px 8px;border-bottom:1px solid #f1f5f9;font-size:12px}
+.al-amt{font-weight:700;color:#16a34a}
+.al-dca{font-size:11px;color:#d97706}
+.al-total{font-size:14px;font-weight:700;color:#1e293b;margin-top:6px}
+.al-detail{font-size:11px;color:#64748b;margin-top:4px;line-height:1.5}
+.cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:10px 0}
+.cmp-card{background:#fff;border-radius:8px;padding:12px;border:1px solid #e2e8f0}
+.cmp-h{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.cmp-name{font-size:12px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmp-code{font-family:monospace;font-size:10px;color:#64748b}
+.cmp-total{font-size:18px;font-weight:700;color:#2563eb}
+.cmp-row{display:flex;align-items:center;gap:4px;margin:2px 0}
+.cmp-l{font-size:9px;color:#64748b;width:32px;flex-shrink:0}
+.cmp-t{flex:1;height:5px;background:#f1f5f9;border-radius:2px;overflow:hidden}
+.cmp-f{height:100%;border-radius:2px}
+.cmp-v{font-size:10px;font-weight:600;width:18px;text-align:right;color:#475569}
+.footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:36px;padding-top:12px;border-top:1px solid #e2e8f0}
+</style>
+</head>
+<body>
+
+<h1>AI Berkshire 基金扫描</h1>
+<p class="subtitle">2026-07-01 · 交易日 · 跟踪21位大佬 · 271 只基金已评分</p>
+
+<div class="sg">
+<div class="si"><div class="n">5</div><div class="l">建议买入</div></div>
+<div class="si"><div class="n">0</div><div class="l">值得关注</div></div>
+<div class="si"><div class="n">2</div><div class="l">卖出信号</div></div>
+<div class="si"><div class="n">19</div><div class="l">强共识买入</div></div>
+</div>
+
+<h2>操作建议 <span class="bd">7</span></h2>
+<div class="rc-list"><div class="rc rc-buy"><span class="rc-icon">🟢</span><span class="rc-label">买入</span><span class="rc-name">银华集成电路混合C<span class="rc-hold">你持有</span></span><span class="rc-code">013841</span><span class="rc-score">3.6</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">5人买入</span></div><div class="rc rc-buy"><span class="rc-icon">🟢</span><span class="rc-label">买入</span><span class="rc-name">财通成长优选混合C</span><span class="rc-code">021528</span><span class="rc-score">3.4</span><span class="tr-flat">→</span><span class="rc-limit">¥100/天</span><span class="rc-reason">5人买入</span></div><div class="rc rc-buy"><span class="rc-icon">🟢</span><span class="rc-label">买入</span><span class="rc-name">财通价值动量混合C</span><span class="rc-code">021523</span><span class="rc-score">3.4</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">4人买入</span></div><div class="rc rc-buy"><span class="rc-icon">🟢</span><span class="rc-label">买入</span><span class="rc-name">天弘全球高端制造混合(QDII)C</span><span class="rc-code">016665</span><span class="rc-score">3.4</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">4人买入</span></div><div class="rc rc-buy"><span class="rc-icon">🟢</span><span class="rc-label">买入</span><span class="rc-name">天弘全球高端制造混合(QDII)A</span><span class="rc-code">016664</span><span class="rc-score">3.3</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">3人买入</span></div><div class="rc rc-sell"><span class="rc-icon">🔴</span><span class="rc-label">卖出</span><span class="rc-name">永赢科技智选混合发起A</span><span class="rc-code">022364</span><span class="rc-score">2.2</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">2人卖出</span></div><div class="rc rc-sell"><span class="rc-icon">🔴</span><span class="rc-label">卖出</span><span class="rc-name">前海开源黄金ETF联接C</span><span class="rc-code">021740</span><span class="rc-score">2.2</span><span class="tr-flat">→</span><span class="rc-limit"></span><span class="rc-reason">2人卖出</span></div></div>
+<p class="note">🟢 买入 = 评分≥3.3 + 大佬共识 · 👁 关注 = 评分≥3.3 · 🔴 卖出 = 卖出信号 · ↑↓ 较昨日变化</p>
+
+<h2>你的持仓 <span class="bd">3</span></h2>
+<table>
+<tr><th>基金</th><th>代码</th><th>持有金额</th><th>收益率</th><th>大佬买入</th><th>大佬卖出</th><th>评分</th><th>限购</th></tr>
+<tr><td>华夏全球科技先锋混合(QDII)C</td><td style="font-family:monospace">024239</td><td>2,400.80</td><td>-3.97%</td><td>0人</td><td>0人</td><td class="sp">2.3</td><td style="font-size:11px">—</td></tr><tr><td>银华集成电路混合C</td><td style="font-family:monospace">013841</td><td>100.00</td><td>0.00%</td><td>5人</td><td>1人</td><td class="sw">3.6</td><td style="font-size:11px">—</td></tr><tr><td>易方达全球成长精选混合(QDII)C</td><td style="font-family:monospace">012922</td><td>42.42</td><td>+6.05%</td><td>0人</td><td>0人</td><td class="sp">2.6</td><td style="font-size:11px">¥10/天</td></tr>
+</table>
+
+<h2>资金分配器 <span class="bd">凯利公式</span></h2>
+<div class="al">
+<h3>输入闲钱，自动计算推荐投入</h3>
+<div class="al-row">
+<span>金额：</span>
+<input type="number" class="al-input" id="cashInput" value="10000" oninput="calcAlloc()" min="0" step="1000"><span>元</span>
+<button class="al-btn" onclick="calcAlloc()">计算</button>
+</div>
+<p class="note">凯利公式 f*=(p×b-q)/b · 预留20%现金 · 单只≤总资金15% · 日限约束</p>
+<div id="allocResult"></div>
+</div>
+<script>
+var FUNDS = [{"code": "013841", "name": "银华集成电路混合C", "score": 3.57, "buy_count": 5, "day_limit": 999999, "is_qdii": false, "my_hold": true}, {"code": "021528", "name": "财通成长优选混合C", "score": 3.41, "buy_count": 5, "day_limit": 100.0, "is_qdii": false, "my_hold": false}, {"code": "021523", "name": "财通价值动量混合C", "score": 3.39, "buy_count": 4, "day_limit": 999999, "is_qdii": false, "my_hold": false}, {"code": "016665", "name": "天弘全球高端制造混合(QDII)C", "score": 3.37, "buy_count": 4, "day_limit": 999999, "is_qdii": true, "my_hold": false}, {"code": "016664", "name": "天弘全球高端制造混合(QDII)A", "score": 3.32, "buy_count": 3, "day_limit": 999999, "is_qdii": true, "my_hold": false}];
+function calcAlloc(){
+var t=parseFloat(document.getElementById('cashInput').value)||0,a=t*0.8,r=[],gt=0;
+for(var f of FUNDS){if(f.score<3.3)continue;var p=f.score/5.0,b=Math.max(p*2,0.5),k=Math.max(0,Math.min((p*b-(1-p))/b,0.2));f._s=Math.round(Math.min(a*k*f.score/5,f.day_limit<999999?f.day_limit:999999,t*0.15)/100)*100;f._k=k;}
+FUNDS.sort(function(a,b){return b.score-a.score;});var al=0;
+for(var f of FUNDS){if(f.score<3.3||al>=a)continue;if(al+f._s>a)f._s=Math.round((a-al)/100)*100;if(f._s<100)continue;al+=f._s;gt+=f._s;var ht=f.my_hold?' (已持有)':'',dc='';if(f.day_limit<999999&&f._s>f.day_limit){var dcaAmt=Math.min(f.day_limit,Math.max(100,Math.round(f._s/20/100)*100));dc='<span class="al-dca">→ 建议日定投 ¥'+dcaAmt+'/天</span>';}r.push('<tr><td>'+f.name+ht+'</td><td style="font-family:monospace">'+f.code+'</td><td>'+f.score.toFixed(2)+'</td><td class="al-amt">¥'+f._s.toLocaleString()+'</td><td>'+dc+'</td></tr>');}
+var h=r.length?'<table class="al-table"><tr><th>基金</th><th>代码</th><th>评分</th><th>建议金额</th><th>执行策略</th></tr>'+r.join('')+'</table><div class="al-total">建议总投入：¥'+gt.toLocaleString()+' / 可用 ¥'+Math.round(a).toLocaleString()+'（留存 ¥'+Math.round(t*0.2).toLocaleString()+'）</div>':'<p style="color:#94a3b8;padding:12px;text-align:center">暂无评分达标的基金</p>';
+document.getElementById('allocResult').innerHTML=h;
+}
+calcAlloc();
+</script>
+
+<h2>强共识买入 <span class="bd">19</span></h2>
+<table>
+<tr><th>#</th><th>基金</th><th>代码</th><th>共识</th><th>评分</th><th>类型</th><th>参与大佬</th></tr>
+<tr><td>1</td><td>银华集成电路混合C</td><td style="font-family:monospace">013841</td><td><span class="tb">5人</span></td><td class="sw">3.6</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 招财小猫</td></tr><tr><td>2</td><td>财通成长优选混合C</td><td style="font-family:monospace">021528</td><td><span class="tb">5人</span></td><td class="sw">3.4</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 小猫咪爱黄金, 招财小猫</td></tr><tr><td>3</td><td>财通价值动量混合C</td><td style="font-family:monospace">021523</td><td><span class="tb">4人</span></td><td class="sw">3.4</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 招财小猫, 晴空万里理财</td></tr><tr><td>4</td><td>天弘全球高端制造混合(QDII)C</td><td style="font-family:monospace">016665</td><td><span class="tb">4人</span></td><td class="sw">3.4</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-C">C</span></td><td style="font-size:12px">南山隐士, 晴空万里理财, 王晴阳的活财之路</td></tr><tr><td>5</td><td>天弘全球高端制造混合(QDII)A</td><td style="font-family:monospace">016664</td><td><span class="tb">3人</span></td><td class="sw">3.3</td><td><span class="tg tg-QDII">QDII</span></td><td style="font-size:12px">Z先生养基, 家庭的温暖, 王晴阳的活财之路</td></tr><tr><td>6</td><td>东方人工智能主题混合C</td><td style="font-family:monospace">017811</td><td><span class="tb">3人</span></td><td class="sw">3.3</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">水手的梦想, 赚自己认知内的钱, 金蟾仙人</td></tr><tr><td>7</td><td>华泰柏瑞质量成长混合C</td><td style="font-family:monospace">011452</td><td><span class="tb">3人</span></td><td class="sp">3.2</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">招财小猫, 晴空万里理财, 蓝鲸跃财</td></tr><tr><td>8</td><td>华夏半导体龙头混合发起式C</td><td style="font-family:monospace">016501</td><td><span class="tb">3人</span></td><td class="sp">3.2</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖</td></tr><tr><td>9</td><td>华宝致远混合A</td><td style="font-family:monospace">008253</td><td><span class="tb">4人</span></td><td class="sp">3.2</td><td></td><td style="font-size:12px">Z先生养基, 小猫咪爱黄金, 晴空万里理财</td></tr><tr><td>10</td><td>国富全球科技互联混合(QDII)人民币C</td><td style="font-family:monospace">021842</td><td><span class="tb">3人</span></td><td class="sp">3.1</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-C">C</span></td><td style="font-size:12px">南山隐士, 晴空万里理财, 王晴阳的活财之路</td></tr><tr><td>11</td><td>南方纳斯达克100指数发起(QDII)A</td><td style="font-family:monospace">016452</td><td><span class="tb">3人</span></td><td class="sp">3.0</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-指">指</span></td><td style="font-size:12px">Z先生养基, 晴空万里理财, 杜康的菠萝爷</td></tr><tr><td>12</td><td>华夏国证半导体芯片ETF联接C</td><td style="font-family:monospace">008888</td><td><span class="tb">4人</span></td><td class="sp">2.8</td><td><span class="tg tg-指">指</span><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 招财小猫, 赚自己认知内的钱</td></tr><tr><td>13</td><td>摩根纳斯达克100指数(QDII)人民币A</td><td style="font-family:monospace">019172</td><td><span class="tb">3人</span></td><td class="sp">2.7</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-指">指</span></td><td style="font-size:12px">Z先生养基, 晴空万里理财, 杜康的菠萝爷</td></tr><tr><td>14</td><td>招商纳斯达克100ETF发起式联接(QDII)A</td><td style="font-family:monospace">019547</td><td><span class="tb">3人</span></td><td class="sp">2.7</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-指">指</span></td><td style="font-size:12px">Z先生养基, 招财小猫, 杜康的菠萝爷</td></tr><tr><td>15</td><td>南方纳斯达克100指数发起(QDII)C</td><td style="font-family:monospace">016453</td><td><span class="tb">3人</span></td><td class="sp">2.7</td><td><span class="tg tg-QDII">QDII</span><span class="tg tg-指">指</span><span class="tg tg-C">C</span></td><td style="font-size:12px">晴空万里理财, 杜康的菠萝爷, 西西的金算盘</td></tr><tr><td>16</td><td>国泰中证全指通信设备ETF联接C</td><td style="font-family:monospace">007818</td><td><span class="tb">3人</span></td><td class="sp">2.6</td><td><span class="tg tg-指">指</span><span class="tg tg-C">C</span></td><td style="font-size:12px">招财小猫, 赚自己认知内的钱</td></tr><tr><td>17</td><td>嘉实上证科创板芯片ETF发起联接C</td><td style="font-family:monospace">017470</td><td><span class="tb">3人</span></td><td class="sp">2.6</td><td><span class="tg tg-指">指</span><span class="tg tg-C">C</span></td><td style="font-size:12px">招财小猫, 柠檬小金库</td></tr><tr><td>18</td><td>东方阿尔法科技智选混合发起C</td><td style="font-family:monospace">025500</td><td><span class="tb">4人</span></td><td class="sp">2.5</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 招财小猫, 柠檬小金库</td></tr><tr><td>19</td><td>财通品质甄选混合C</td><td style="font-family:monospace">024481</td><td><span class="tb">4人</span></td><td class="sp">2.5</td><td><span class="tg tg-C">C</span></td><td style="font-size:12px">家庭的温暖, 招财小猫, 晴空万里理财</td></tr>
+</table>
+
+<h2>五维评分详情 <span class="bd">271</span></h2>
+<p class="note">质量×25% + 成本×20% + 经理×20% + 动量×15% + 聪明钱×20% + 穿透估值(质量子项10%)</p>
+<div class="ss"><div class="sc"><div class="sh"><span class="scode">013841</span><span class="sname">银华集成电路混合C</span><span class="tr-flat">→</span><span class="st">3.6</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:82%;background:#16a34a"></div></div><span class="dv">4.1</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:60%;background:#d97706"></div></div><span class="dv">3.0</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:56%;background:#dc2626"></div></div><span class="dv">2.8</span></div></div><div class="sc"><div class="sh"><span class="scode">021528</span><span class="sname">财通成长优选混合C</span><span class="tr-flat">→</span><span class="st">3.4</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:68%;background:#d97706"></div></div><span class="dv">3.4</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:56%;background:#dc2626"></div></div><span class="dv">2.8</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:56%;background:#dc2626"></div></div><span class="dv">2.8</span></div></div><div class="sc"><div class="sh"><span class="scode">021523</span><span class="sname">财通价值动量混合C</span><span class="tr-flat">→</span><span class="st">3.4</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:72%;background:#d97706"></div></div><span class="dv">3.6</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:60%;background:#d97706"></div></div><span class="dv">3.0</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:50%;background:#dc2626"></div></div><span class="dv">2.5</span></div></div><div class="sc"><div class="sh"><span class="scode">016665</span><span class="sname">天弘全球高端制造混合(QDII)</span><span class="tr-flat">→</span><span class="st">3.4</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:60%;background:#d97706"></div></div><span class="dv">3.0</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:68%;background:#d97706"></div></div><span class="dv">3.4</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:50%;background:#dc2626"></div></div><span class="dv">2.5</span></div></div><div class="sc"><div class="sh"><span class="scode">017811</span><span class="sname">东方人工智能主题混合C</span><span class="tr-flat">→</span><span class="st">3.3</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:82%;background:#16a34a"></div></div><span class="dv">4.1</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:60%;background:#d97706"></div></div><span class="dv">3.0</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:72%;background:#d97706"></div></div><span class="dv">3.6</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:42%;background:#dc2626"></div></div><span class="dv">2.1</span></div></div><div class="sc"><div class="sh"><span class="scode">016664</span><span class="sname">天弘全球高端制造混合(QDII)</span><span class="tr-flat">→</span><span class="st">3.3</span><span class="sv sv-watch">值得关注</span></div><div class="db"><span class="dl">质量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">成本</span><div class="dt"><div class="df" style="width:60%;background:#d97706"></div></div><span class="dv">3.0</span></div><div class="db"><span class="dl">经理</span><div class="dt"><div class="df" style="width:68%;background:#d97706"></div></div><span class="dv">3.4</span></div><div class="db"><span class="dl">动量</span><div class="dt"><div class="df" style="width:84%;background:#16a34a"></div></div><span class="dv">4.2</span></div><div class="db"><span class="dl">聪明钱</span><div class="dt"><div class="df" style="width:42%;background:#dc2626"></div></div><span class="dv">2.1</span></div></div></div>
+
+<h2>多基金对比 <span class="bd">TOP 4</span></h2>
+<p class="note">五维评分横向对比，维度条越长表示该维度评分越高</p>
+<div class="cmp-grid"><div class="cmp-card"><div class="cmp-h"><span class="cmp-name">银华集成电路混合C</span><span class="cmp-code">013841</span><span class="cmp-total">3.6</span></div><div class="cmp-row"><span class="cmp-l">质量</span><div class="cmp-t"><div class="cmp-f" style="width:82%;background:#2563eb"></div></div><span class="cmp-v">4.1</span></div><div class="cmp-row"><span class="cmp-l">成本</span><div class="cmp-t"><div class="cmp-f" style="width:60%;background:#16a34a"></div></div><span class="cmp-v">3.0</span></div><div class="cmp-row"><span class="cmp-l">经理</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#d97706"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">动量</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#8b5cf6"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">聪明钱</span><div class="cmp-t"><div class="cmp-f" style="width:56%;background:#ec4899"></div></div><span class="cmp-v">2.8</span></div></div><div class="cmp-card"><div class="cmp-h"><span class="cmp-name">财通成长优选混合C</span><span class="cmp-code">021528</span><span class="cmp-total">3.4</span></div><div class="cmp-row"><span class="cmp-l">质量</span><div class="cmp-t"><div class="cmp-f" style="width:68%;background:#2563eb"></div></div><span class="cmp-v">3.4</span></div><div class="cmp-row"><span class="cmp-l">成本</span><div class="cmp-t"><div class="cmp-f" style="width:56%;background:#16a34a"></div></div><span class="cmp-v">2.8</span></div><div class="cmp-row"><span class="cmp-l">经理</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#d97706"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">动量</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#8b5cf6"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">聪明钱</span><div class="cmp-t"><div class="cmp-f" style="width:56%;background:#ec4899"></div></div><span class="cmp-v">2.8</span></div></div><div class="cmp-card"><div class="cmp-h"><span class="cmp-name">财通价值动量混合C</span><span class="cmp-code">021523</span><span class="cmp-total">3.4</span></div><div class="cmp-row"><span class="cmp-l">质量</span><div class="cmp-t"><div class="cmp-f" style="width:72%;background:#2563eb"></div></div><span class="cmp-v">3.6</span></div><div class="cmp-row"><span class="cmp-l">成本</span><div class="cmp-t"><div class="cmp-f" style="width:60%;background:#16a34a"></div></div><span class="cmp-v">3.0</span></div><div class="cmp-row"><span class="cmp-l">经理</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#d97706"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">动量</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#8b5cf6"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">聪明钱</span><div class="cmp-t"><div class="cmp-f" style="width:50%;background:#ec4899"></div></div><span class="cmp-v">2.5</span></div></div><div class="cmp-card"><div class="cmp-h"><span class="cmp-name">天弘全球高端制造混合(Q</span><span class="cmp-code">016665</span><span class="cmp-total">3.4</span></div><div class="cmp-row"><span class="cmp-l">质量</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#2563eb"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">成本</span><div class="cmp-t"><div class="cmp-f" style="width:60%;background:#16a34a"></div></div><span class="cmp-v">3.0</span></div><div class="cmp-row"><span class="cmp-l">经理</span><div class="cmp-t"><div class="cmp-f" style="width:68%;background:#d97706"></div></div><span class="cmp-v">3.4</span></div><div class="cmp-row"><span class="cmp-l">动量</span><div class="cmp-t"><div class="cmp-f" style="width:84%;background:#8b5cf6"></div></div><span class="cmp-v">4.2</span></div><div class="cmp-row"><span class="cmp-l">聪明钱</span><div class="cmp-t"><div class="cmp-f" style="width:50%;background:#ec4899"></div></div><span class="cmp-v">2.5</span></div></div></div>
+
+<h2>市场指数 <span class="bd">实时行情</span></h2>
+<div class="al" style="padding:10px"><p style="color:#94a3b8;text-align:center;padding:8px">暂无数据</p></div>
+
+<h2>卖出信号</h2>
+<table><tr><th>基金</th><th>代码</th><th>信号</th><th>评分</th><th>卖出大佬</th></tr><tr><td>永赢科技智选混合发起A</td><td style="font-family:monospace">022364</td><td><span class="ts">2人卖出</span></td><td class="sp">2.2</td><td style="font-size:12px">家庭的温暖</td></tr><tr><td>前海开源黄金ETF联接C</td><td style="font-family:monospace">021740</td><td><span class="ts">2人卖出</span></td><td class="sp">2.2</td><td style="font-size:12px">晴空万里理财</td></tr></table>
+
+<div class="footer">
+<p>AI Berkshire · 京东金融API · 五维评分 v1.2 · 穿透估值已接入 · 2026-07-01</p>
+<p style="margin-top:2px">⚠️ 不构成投资建议。大佬买 ≠ 你该买。</p>
+</div>
+
+</body></html>

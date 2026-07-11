@@ -1,0 +1,15 @@
+{
+  "fund_code": "150122",
+  "report_date": "2018-06-30",
+  "total_asset": 15613455.72,
+  "allocation": {
+    "股票": 81.87,
+    "现金": 19.26,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [],
+  "stock_nav_ratio": "",
+  "invest_date": "2018-06-30"
+}

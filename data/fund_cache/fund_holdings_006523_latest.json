@@ -1,0 +1,106 @@
+{
+  "fund_code": "006523",
+  "report_date": "2026-03-31",
+  "total_asset": 69116684.5,
+  "allocation": {
+    "股票": 92.84,
+    "债券": 5.12,
+    "其他": 1.34,
+    "现金": 0.69,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "9.42%",
+      "change": "0.83%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "8.99%",
+      "change": "3.22%",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "鼎泰高科",
+      "code": "301377",
+      "ratio": "8.60%",
+      "change": "0.87%",
+      "rate": "-2.44%",
+      "industry": "通用设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "7.99%",
+      "change": "1.86%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "生益科技",
+      "code": "600183",
+      "ratio": "7.41%",
+      "change": "2.41%",
+      "rate": "5.81%",
+      "industry": "元件",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "腾景科技",
+      "code": "688195",
+      "ratio": "7.15%",
+      "change": "0.39%",
+      "rate": "-3.39%",
+      "industry": "光学光电子",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "5.90%",
+      "change": "新增",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "百通能源",
+      "code": "001376",
+      "ratio": "5.56%",
+      "change": "新增",
+      "rate": "1.69%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "三峡旅游",
+      "code": "002627",
+      "ratio": "4.57%",
+      "change": "新增",
+      "rate": "1.20%",
+      "industry": "旅游及酒店",
+      "quarters_held": ""
+    },
+    {
+      "name": "中远海能",
+      "code": "600026",
+      "ratio": "3.71%",
+      "change": "新增",
+      "rate": "5.27%",
+      "industry": "港口航运",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比69.30%",
+  "invest_date": "2026-03-31"
+}

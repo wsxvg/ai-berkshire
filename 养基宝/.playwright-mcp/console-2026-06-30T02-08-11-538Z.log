@@ -1,0 +1,5 @@
+[     819ms] [TIMEEND] Main._createAppUI: 67.41796875 ms @ devtools://devtools/bundled/entrypoints/main/main.js:10
+[     945ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ devtools://devtools/bundled/inspector.html?ws=127.0.0.1:62000:0
+[    1159ms] [TIMEEND] Main._showAppUI: 331.1640625 ms @ devtools://devtools/bundled/entrypoints/main/main.js:10
+[    1226ms] [TIMEEND] Main._initializeTarget: 51.51806640625 ms @ devtools://devtools/bundled/entrypoints/main/main.js:10
+[    1338ms] [TIMEEND] Main._lateInitialization: 1.14697265625 ms @ devtools://devtools/bundled/entrypoints/main/main.js:10

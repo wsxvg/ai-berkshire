@@ -1,0 +1,21 @@
+{
+  "fund_code": "017653",
+  "managers": [
+    {
+      "name": "刘扬",
+      "year_performance": "10.76",
+      "employ_performance": "142.38",
+      "manage_scale": "10.87亿元",
+      "employment_date": "4年266天",
+      "accession_date": "2023.03.24-至今"
+    },
+    {
+      "name": "赖鹏",
+      "year_performance": "",
+      "employ_performance": "3.85",
+      "manage_scale": "8.89亿元",
+      "employment_date": "228天",
+      "accession_date": "2026.05.26-至今"
+    }
+  ]
+}

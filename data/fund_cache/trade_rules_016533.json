@@ -1,0 +1,24 @@
+{
+  "fund_code": "016533",
+  "buy_date": "07-06 15:00前",
+  "confirm_date": "07-08",
+  "manage_fee": 0.5,
+  "custody_fee": 0.1,
+  "sale_fee": 0.25,
+  "purchase_fee": 0.0,
+  "purchase_fee_original": 0.0,
+  "day_limit": 100.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 1.5,
+      "interval": "持有期限＜7日"
+    },
+    {
+      "rate": 0.0,
+      "interval": "持有期限≥7日"
+    }
+  ],
+  "purchase_status": "暂停申购",
+  "redeem_status": "开放赎回"
+}

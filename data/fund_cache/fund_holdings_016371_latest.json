@@ -1,0 +1,106 @@
+{
+  "fund_code": "016371",
+  "report_date": "2026-03-31",
+  "total_asset": 3726262117.57,
+  "allocation": {
+    "股票": 94.44,
+    "债券": 5.12,
+    "现金": 2.51,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "9.43%",
+      "change": "0.26%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "9.26%",
+      "change": "0.18%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓10个季度"
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "9.12%",
+      "change": "0.04%",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "8.43%",
+      "change": "0.27%",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "长飞光纤",
+      "code": "601869",
+      "ratio": "7.06%",
+      "change": "新增",
+      "rate": "2.31%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "麦格米特",
+      "code": "002851",
+      "ratio": "4.95%",
+      "change": "0.17%",
+      "rate": "0.44%",
+      "industry": "其他电源设备",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "长芯博创",
+      "code": "300548",
+      "ratio": "4.69%",
+      "change": "2.78%",
+      "rate": "-0.45%",
+      "industry": "通信设备",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "4.66%",
+      "change": "新增",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "德科立",
+      "code": "688205",
+      "ratio": "4.41%",
+      "change": "新增",
+      "rate": "-2.68%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "4.19%",
+      "change": "新增",
+      "rate": "4.98%",
+      "industry": "元件",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比66.20%",
+  "invest_date": "2026-03-31"
+}

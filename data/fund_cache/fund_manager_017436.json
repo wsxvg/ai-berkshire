@@ -1,0 +1,21 @@
+{
+  "fund_code": "017436",
+  "managers": [
+    {
+      "name": "周晶",
+      "year_performance": "2.78",
+      "employ_performance": "126.34",
+      "manage_scale": "283.33亿元",
+      "employment_date": "13年16天",
+      "accession_date": "2023.03.02-至今"
+    },
+    {
+      "name": "赵启元",
+      "year_performance": "20.40",
+      "employ_performance": "77.13",
+      "manage_scale": "109.08亿元",
+      "employment_date": "2年333天",
+      "accession_date": "2023.08.05-至今"
+    }
+  ]
+}

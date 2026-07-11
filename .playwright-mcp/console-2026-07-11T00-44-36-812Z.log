@@ -1,0 +1,8 @@
+[     171ms] [LOG] init @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     171ms] [LOG] Only support android and ios @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     171ms] [LOG] 注册监听 @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     203ms] [WARNING] %c 请接入奇点时设置pageId参数（未设置可能导致浏览数据统计不到），下一个版本如果未设置，将不再上报页面浏览数据，请尽快完成，感谢您的配合！如何设置，可以在这里查看：https://joyspace.jd.com/pages/puZEQL6Ct1T50FVq8NMH color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[     649ms] [LOG] [setTopBar] 无回调函数 @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     649ms] [LOG] [setTopBar] rightItemList不存在或为空 @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     649ms] [LOG] init @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0
+[     649ms] [LOG] Only support android and ios @ https://res.jr.jd.com/cf-local-jssdk/common/jssdk/jrbridge/3.0.3/jrbridge.js:0

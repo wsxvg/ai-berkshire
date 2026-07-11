@@ -1,0 +1,21 @@
+{
+  "fund_code": "012752",
+  "managers": [
+    {
+      "name": "李博涵",
+      "year_performance": "5.14",
+      "employ_performance": "92.52",
+      "manage_scale": "83.01亿元",
+      "employment_date": "12年333天",
+      "accession_date": "2021.09.22-至今"
+    },
+    {
+      "name": "朱金钰",
+      "year_performance": "7.66",
+      "employ_performance": "92.52",
+      "manage_scale": "178.87亿元",
+      "employment_date": "6年203天",
+      "accession_date": "2021.09.22-至今"
+    }
+  ]
+}

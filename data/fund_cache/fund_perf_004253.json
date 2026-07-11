@@ -1,0 +1,121 @@
+{
+  "fund_code": "004253",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": 3.09,
+      "avg": 3.19,
+      "rank": "32/43",
+      "rank_pct": 0.7441860465116279
+    },
+    {
+      "period": "近1月",
+      "return": -6.5,
+      "avg": -6.53,
+      "rank": "27/43",
+      "rank_pct": 0.627906976744186
+    },
+    {
+      "period": "近3月",
+      "return": -12.19,
+      "avg": -11.96,
+      "rank": "42/43",
+      "rank_pct": 0.9767441860465116
+    },
+    {
+      "period": "近6月",
+      "return": -6.72,
+      "avg": -6.7,
+      "rank": "21/43",
+      "rank_pct": 0.4883720930232558
+    },
+    {
+      "period": "近1年",
+      "return": 16.34,
+      "avg": 16.34,
+      "rank": "26/43",
+      "rank_pct": 0.6046511627906976
+    },
+    {
+      "period": "今年以来",
+      "return": -6.72,
+      "avg": -6.7,
+      "rank": "21/43",
+      "rank_pct": 0.4883720930232558
+    },
+    {
+      "period": "近3年",
+      "return": 96.3,
+      "avg": 94.92,
+      "rank": "16/33",
+      "rank_pct": 0.48484848484848486
+    },
+    {
+      "period": "成立以来",
+      "return": 199.69,
+      "avg": 222.09,
+      "rank": "10/14",
+      "rank_pct": 0.7142857142857143
+    }
+  ],
+  "year_performance": [
+    {
+      "year": "2025年",
+      "return": 56.66,
+      "avg": null
+    },
+    {
+      "year": "2024年",
+      "return": 26.36,
+      "avg": null
+    },
+    {
+      "year": "2023年",
+      "return": 16.05,
+      "avg": 11.58
+    },
+    {
+      "year": "2022年",
+      "return": 9.55,
+      "avg": 8.6
+    },
+    {
+      "year": "2021年",
+      "return": -5.2,
+      "avg": -3.09
+    },
+    {
+      "year": "2020年",
+      "return": 13.15,
+      "avg": 5.71
+    },
+    {
+      "year": "2019年",
+      "return": 18.59,
+      "avg": 13.93
+    },
+    {
+      "year": "2018年",
+      "return": 2.89,
+      "avg": null
+    }
+  ],
+  "aip_performance": [
+    {
+      "period": "近一年",
+      "return": -3.92
+    },
+    {
+      "period": "近二年",
+      "return": 16.24
+    },
+    {
+      "period": "近三年",
+      "return": 37.62
+    },
+    {
+      "period": "近五年",
+      "return": 71.05
+    }
+  ]
+}

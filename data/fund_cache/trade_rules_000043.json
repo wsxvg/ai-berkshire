@@ -1,0 +1,32 @@
+{
+  "fund_code": "000043",
+  "buy_date": "07-06 15:00前",
+  "confirm_date": "07-08",
+  "manage_fee": 1.2,
+  "custody_fee": 0.2,
+  "sale_fee": 0.0,
+  "purchase_fee": 0.15,
+  "purchase_fee_original": 1.5,
+  "day_limit": 100.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 1.5,
+      "interval": "持有期限＜7日"
+    },
+    {
+      "rate": 0.5,
+      "interval": "7日≤持有期限＜365日"
+    },
+    {
+      "rate": 0.3,
+      "interval": "365日≤持有期限＜730日"
+    },
+    {
+      "rate": 0.0,
+      "interval": "持有期限≥730日"
+    }
+  ],
+  "purchase_status": "开放申购",
+  "redeem_status": "开放赎回"
+}

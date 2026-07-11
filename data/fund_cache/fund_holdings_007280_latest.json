@@ -1,0 +1,106 @@
+{
+  "fund_code": "007280",
+  "report_date": "2026-03-31",
+  "total_asset": 2867871118.22,
+  "allocation": {
+    "股票": 90.44,
+    "现金": 9.55,
+    "其他": 0.01,
+    "债券": 0.0,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "索尼",
+      "code": "6758",
+      "ratio": "3.73%",
+      "change": "0.12%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "日立",
+      "code": "6501",
+      "ratio": "3.59%",
+      "change": "0.05%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "三井住友金融集团",
+      "code": "8316",
+      "ratio": "3.27%",
+      "change": "0.77%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "Hoya株式会社",
+      "code": "7741",
+      "ratio": "3.18%",
+      "change": "1.15%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "瑞穗金融集团",
+      "code": "8411",
+      "ratio": "3.09%",
+      "change": "1.21%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "东京电子",
+      "code": "8035",
+      "ratio": "3.07%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "三菱电机",
+      "code": "6503",
+      "ratio": "2.85%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "丰田汽车",
+      "code": "7203",
+      "ratio": "2.79%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "东京三菱金融集团",
+      "code": "8306",
+      "ratio": "2.76%",
+      "change": "持平",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "住友电气工业有限公司",
+      "code": "5802",
+      "ratio": "2.72%",
+      "change": "1.19%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比31.05%",
+  "invest_date": "2026-03-31"
+}

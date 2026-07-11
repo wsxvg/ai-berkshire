@@ -1,0 +1,106 @@
+{
+  "fund_code": "021513",
+  "report_date": "2026-03-31",
+  "total_asset": 1502784764.71,
+  "allocation": {
+    "股票": 71.15,
+    "现金": 27.06,
+    "其他": 1.74,
+    "债券": 0.05,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "渣打集团",
+      "code": "02888",
+      "ratio": "5.05%",
+      "change": "新增",
+      "rate": "2.41%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "汇丰控股",
+      "code": "00005",
+      "ratio": "4.18%",
+      "change": "1.14%",
+      "rate": "1.67%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中国平安",
+      "code": "02318",
+      "ratio": "3.76%",
+      "change": "0.44%",
+      "rate": "-0.48%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "招商银行",
+      "code": "03968",
+      "ratio": "3.22%",
+      "change": "新增",
+      "rate": "0.78%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "建设银行",
+      "code": "00939",
+      "ratio": "2.97%",
+      "change": "2.12%",
+      "rate": "-0.77%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中国海洋石油",
+      "code": "00883",
+      "ratio": "2.86%",
+      "change": "新增",
+      "rate": "3.82%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "腾讯控股",
+      "code": "00700",
+      "ratio": "2.86%",
+      "change": "5.42%",
+      "rate": "0.23%",
+      "industry": "",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "中国银行",
+      "code": "03988",
+      "ratio": "2.85%",
+      "change": "新增",
+      "rate": "0.00%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "重庆农村商业银行",
+      "code": "03618",
+      "ratio": "2.57%",
+      "change": "新增",
+      "rate": "0.51%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国财险",
+      "code": "02328",
+      "ratio": "2.26%",
+      "change": "新增",
+      "rate": "1.00%",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比32.58%",
+  "invest_date": "2026-03-31"
+}

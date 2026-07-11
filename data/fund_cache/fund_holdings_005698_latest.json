@@ -1,0 +1,69 @@
+{
+  "fund_code": "005698",
+  "report_date": null,
+  "total_asset": 4694060571.65,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "Ciena科技",
+      "code": "CIEN",
+      "ratio": "5.56%",
+      "change": "4.26%"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "4.87%",
+      "change": "1.85%"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "4.72%",
+      "change": "2.74%"
+    },
+    {
+      "name": "Coherent Corp.",
+      "code": "COHR",
+      "ratio": "4.59%",
+      "change": "2.65%"
+    },
+    {
+      "name": "唯亚威系统服务",
+      "code": "VIAV",
+      "ratio": "4.52%",
+      "change": "新增"
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "4.15%",
+      "change": "新增"
+    },
+    {
+      "name": "Sandisk Corporation",
+      "code": "SNDK",
+      "ratio": "2.66%",
+      "change": "新增"
+    },
+    {
+      "name": "美光科技",
+      "code": "MU",
+      "ratio": "2.30%",
+      "change": "新增"
+    },
+    {
+      "name": "先进能源工业",
+      "code": "AEIS",
+      "ratio": "1.63%",
+      "change": "新增"
+    },
+    {
+      "name": "泰瑞达",
+      "code": "TER",
+      "ratio": "1.62%",
+      "change": "新增"
+    }
+  ],
+  "invest_date": ""
+}

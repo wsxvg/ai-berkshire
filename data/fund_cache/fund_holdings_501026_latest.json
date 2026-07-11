@@ -1,0 +1,106 @@
+{
+  "fund_code": "501026",
+  "report_date": "2026-03-31",
+  "total_asset": 112346199.74,
+  "allocation": {
+    "股票": 90.16,
+    "现金": 6.2,
+    "其他": 2.92,
+    "债券": 0.72,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "8.86%",
+      "change": "0.32%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "8.01%",
+      "change": "1.93%",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "沪电股份",
+      "code": "002463",
+      "ratio": "7.86%",
+      "change": "0.16%",
+      "rate": "3.71%",
+      "industry": "元件",
+      "quarters_held": "重仓9个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "7.55%",
+      "change": "1.20%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "英维克",
+      "code": "002837",
+      "ratio": "6.76%",
+      "change": "1.88%",
+      "rate": "0.04%",
+      "industry": "专用设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "寒武纪",
+      "code": "688256",
+      "ratio": "6.61%",
+      "change": "1.87%",
+      "rate": "-1.38%",
+      "industry": "半导体",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "盛科通信",
+      "code": "688702",
+      "ratio": "5.67%",
+      "change": "新增",
+      "rate": "-8.33%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "和林微纳",
+      "code": "688661",
+      "ratio": "5.22%",
+      "change": "新增",
+      "rate": "11.41%",
+      "industry": "消费电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "生益科技",
+      "code": "600183",
+      "ratio": "4.46%",
+      "change": "1.52%",
+      "rate": "5.81%",
+      "industry": "元件",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "三峡旅游",
+      "code": "002627",
+      "ratio": "4.11%",
+      "change": "新增",
+      "rate": "1.20%",
+      "industry": "旅游及酒店",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比65.11%",
+  "invest_date": "2026-03-31"
+}

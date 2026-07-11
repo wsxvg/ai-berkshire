@@ -1,0 +1,21 @@
+{
+  "fund_code": "014925",
+  "managers": [
+    {
+      "name": "王顺利",
+      "year_performance": "2.54",
+      "employ_performance": "10.40",
+      "manage_scale": "111.68亿元",
+      "employment_date": "4年187天",
+      "accession_date": "2022.05.18-至今"
+    },
+    {
+      "name": "程仕湘",
+      "year_performance": "2.63",
+      "employ_performance": "0.44",
+      "manage_scale": "163.92亿元",
+      "employment_date": "3年153天",
+      "accession_date": "2026.04.03-至今"
+    }
+  ]
+}

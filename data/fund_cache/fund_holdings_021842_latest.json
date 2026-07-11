@@ -1,0 +1,106 @@
+{
+  "fund_code": "021842",
+  "report_date": "2026-03-31",
+  "total_asset": 4140867251.27,
+  "allocation": {
+    "股票": 86.04,
+    "现金": 9.17,
+    "债券": 7.28,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "美光科技",
+      "code": "MU",
+      "ratio": "7.69%",
+      "change": "0.87%",
+      "rate": "-5.49%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "7.03%",
+      "change": "0.07%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "拉姆研究",
+      "code": "LRCX",
+      "ratio": "7.02%",
+      "change": "新增",
+      "rate": "-10.19%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "6.79%",
+      "change": "3.37%",
+      "rate": "-10.81%",
+      "industry": "",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "谷歌-C",
+      "code": "GOOG",
+      "ratio": "6.49%",
+      "change": "1.48%",
+      "rate": "-0.48%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "5.86%",
+      "change": "0.71%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "Tower半导体",
+      "code": "TSEM",
+      "ratio": "5.01%",
+      "change": "0.41%",
+      "rate": "-10.76%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "MKS Inc.",
+      "code": "MKSI",
+      "ratio": "4.68%",
+      "change": "新增",
+      "rate": "-11.07%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "TTM科技",
+      "code": "TTMI",
+      "ratio": "4.48%",
+      "change": "0.57%",
+      "rate": "-13.20%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "英特尔",
+      "code": "INTC",
+      "ratio": "3.16%",
+      "change": "新增",
+      "rate": "-5.25%",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比58.21%",
+  "invest_date": "2026-03-31"
+}

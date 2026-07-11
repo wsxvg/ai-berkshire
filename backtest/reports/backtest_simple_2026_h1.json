@@ -1,0 +1,675 @@
+{
+  "config": {
+    "start_date": "2026-01-05",
+    "end_date": "2026-06-30",
+    "initial_cash": 10000,
+    "min_score": 3.3,
+    "weights": {
+      "quality": 25,
+      "cost": 20,
+      "manager": 20,
+      "momentum": 15,
+      "smart_money": 20
+    },
+    "dynamic_ranking": false,
+    "use_weighted_consensus": false,
+    "cost_penalty": 0,
+    "min_consensus": 2,
+    "top_n": 0,
+    "top_n_pct": 0,
+    "consensus_priority": false,
+    "net_signal": false,
+    "limit_boost": 0,
+    "max_sector_pct": 100,
+    "max_qdii_pct": 100,
+    "take_profit_pct": 30,
+    "take_profit_sell_pct": 0.5,
+    "stop_loss_pct": -15,
+    "momentum_sell": 2.0,
+    "max_position_pct": 25,
+    "kelly_cap": 0.2,
+    "cash_reserve_pct": 0.2,
+    "max_holdings": 0,
+    "rebalance": false,
+    "monthly_injection": 0,
+    "fund_type_filter": "all",
+    "sell_consensus": 0,
+    "profit_mode": "half",
+    "no_stop_loss": false
+  },
+  "final_value": 10000,
+  "total_return": 0.0,
+  "max_drawdown": 0,
+  "benchmark_return": 6.354487232803785,
+  "benchmark_dd": 0,
+  "buyhold_return": 2.098819414079589,
+  "buyhold_code": "021876",
+  "trade_count": 0,
+  "final_holdings": 0,
+  "total_fees": 0,
+  "monthly_injections": 0,
+  "daily_values": [
+    {
+      "date": "2026-01-05",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-06",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-07",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-08",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-09",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-12",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-13",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-14",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-15",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-16",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-19",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-20",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-21",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-22",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-23",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-26",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-27",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-28",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-29",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-01-30",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-05",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-06",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-09",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-12",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-13",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-24",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-25",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-26",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-02-27",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-02",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-03",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-04",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-05",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-06",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-09",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-10",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-11",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-12",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-13",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-16",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-17",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-18",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-19",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-20",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-23",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-24",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-25",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-26",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-27",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-30",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-03-31",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-01",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-02",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-03",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-07",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-08",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-09",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-10",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-13",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-14",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-15",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-16",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-17",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-20",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-21",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-22",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-23",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-24",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-27",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-28",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-29",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-04-30",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-06",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-07",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-08",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-11",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-12",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-13",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-14",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-15",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-19",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-20",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-21",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-22",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-26",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-27",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-05-29",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-01",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-05",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-08",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-09",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-10",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-11",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-16",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-17",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-18",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-22",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-23",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-24",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-26",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-29",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    },
+    {
+      "date": "2026-06-30",
+      "cash": 10000,
+      "holdings_value": 0,
+      "total": 10000
+    }
+  ],
+  "trades": [],
+  "scores": [
+    {
+      "date": "2026-01-07",
+      "code": "021876",
+      "name": "路博迈资源精选股票发起C",
+      "score": 3.19,
+      "verdict": "pass"
+    }
+  ]
+}

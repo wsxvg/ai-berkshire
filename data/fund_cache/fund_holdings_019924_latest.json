@@ -1,0 +1,106 @@
+{
+  "fund_code": "019924",
+  "report_date": "2026-03-31",
+  "total_asset": 2072779888.52,
+  "allocation": {
+    "股票": 91.5,
+    "现金": 8.96,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "科瑞技术",
+      "code": "002957",
+      "ratio": "0.73%",
+      "change": "新增",
+      "rate": "-1.29%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "航发科技",
+      "code": "600391",
+      "ratio": "0.62%",
+      "change": "新增",
+      "rate": "10.00%",
+      "industry": "军工装备",
+      "quarters_held": ""
+    },
+    {
+      "name": "金银河",
+      "code": "300619",
+      "ratio": "0.62%",
+      "change": "新增",
+      "rate": "1.95%",
+      "industry": "电池",
+      "quarters_held": ""
+    },
+    {
+      "name": "新集能源",
+      "code": "601918",
+      "ratio": "0.61%",
+      "change": "新增",
+      "rate": "1.10%",
+      "industry": "煤炭开采加工",
+      "quarters_held": ""
+    },
+    {
+      "name": "华联控股",
+      "code": "000036",
+      "ratio": "0.60%",
+      "change": "新增",
+      "rate": "-0.46%",
+      "industry": "房地产",
+      "quarters_held": ""
+    },
+    {
+      "name": "新华百货",
+      "code": "600785",
+      "ratio": "0.60%",
+      "change": "新增",
+      "rate": "1.27%",
+      "industry": "零售",
+      "quarters_held": ""
+    },
+    {
+      "name": "华正新材",
+      "code": "603186",
+      "ratio": "0.55%",
+      "change": "新增",
+      "rate": "2.04%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "斯迪克",
+      "code": "300806",
+      "ratio": "0.55%",
+      "change": "新增",
+      "rate": "-3.24%",
+      "industry": "塑料制品",
+      "quarters_held": ""
+    },
+    {
+      "name": "漱玉平民",
+      "code": "301017",
+      "ratio": "0.54%",
+      "change": "新增",
+      "rate": "0.07%",
+      "industry": "医药商业",
+      "quarters_held": ""
+    },
+    {
+      "name": "炬光科技",
+      "code": "688167",
+      "ratio": "0.52%",
+      "change": "新增",
+      "rate": "-2.25%",
+      "industry": "半导体",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比5.94%",
+  "invest_date": "2026-03-31"
+}

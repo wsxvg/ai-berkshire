@@ -1,0 +1,106 @@
+{
+  "fund_code": "016874",
+  "report_date": "2026-03-31",
+  "total_asset": 11986164381.71,
+  "allocation": {
+    "股票": 93.15,
+    "现金": 7.92,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "长飞光纤",
+      "code": "601869",
+      "ratio": "9.28%",
+      "change": "新增",
+      "rate": "2.31%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中天科技",
+      "code": "600522",
+      "ratio": "8.92%",
+      "change": "新增",
+      "rate": "-2.64%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "亨通光电",
+      "code": "600487",
+      "ratio": "8.68%",
+      "change": "新增",
+      "rate": "-4.71%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "协创数据",
+      "code": "300857",
+      "ratio": "6.50%",
+      "change": "新增",
+      "rate": "2.32%",
+      "industry": "计算机设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "佰维存储",
+      "code": "688525",
+      "ratio": "6.34%",
+      "change": "3.24%",
+      "rate": "2.18%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "德明利",
+      "code": "001309",
+      "ratio": "6.29%",
+      "change": "1.61%",
+      "rate": "8.74%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "亚翔集成",
+      "code": "603929",
+      "ratio": "6.11%",
+      "change": "0.22%",
+      "rate": "0.54%",
+      "industry": "建筑装饰",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "宏景科技",
+      "code": "301396",
+      "ratio": "6.09%",
+      "change": "新增",
+      "rate": "1.71%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "杭电股份",
+      "code": "603618",
+      "ratio": "5.95%",
+      "change": "新增",
+      "rate": "2.96%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "国科微",
+      "code": "300672",
+      "ratio": "5.45%",
+      "change": "新增",
+      "rate": "-1.70%",
+      "industry": "半导体",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比69.61%",
+  "invest_date": "2026-03-31"
+}

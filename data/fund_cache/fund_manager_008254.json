@@ -1,0 +1,21 @@
+{
+  "fund_code": "008254",
+  "managers": [
+    {
+      "name": "周晶",
+      "year_performance": "2.78",
+      "employ_performance": "91.53",
+      "manage_scale": "283.33亿元",
+      "employment_date": "13年16天",
+      "accession_date": "2019.11.27-至今"
+    },
+    {
+      "name": "杨洋",
+      "year_performance": "9.25",
+      "employ_performance": "74.48",
+      "manage_scale": "81.19亿元",
+      "employment_date": "5年54天",
+      "accession_date": "2022.01.27-至今"
+    }
+  ]
+}

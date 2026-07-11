@@ -1,0 +1,106 @@
+{
+  "fund_code": "378546",
+  "report_date": "2026-03-31",
+  "total_asset": 867522052.81,
+  "allocation": {
+    "股票": 91.1,
+    "现金": 18.47,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "埃克森美孚",
+      "code": "XOM",
+      "ratio": "5.63%",
+      "change": "1.19%",
+      "rate": "0.59%",
+      "industry": "",
+      "quarters_held": "重仓16个季度"
+    },
+    {
+      "name": "纽蒙特",
+      "code": "NEM",
+      "ratio": "3.82%",
+      "change": "0.36%",
+      "rate": "4.01%",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "Shell Plc",
+      "code": "SHEL",
+      "ratio": "3.82%",
+      "change": "0.30%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "瓦莱罗能源",
+      "code": "VLO",
+      "ratio": "3.65%",
+      "change": "1.05%",
+      "rate": "-0.62%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "加拿大自然资源有限公司",
+      "code": "CNQ",
+      "ratio": "3.44%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "道达尔",
+      "code": "TTE",
+      "ratio": "3.04%",
+      "change": "新增",
+      "rate": "2.53%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "马拉松原油",
+      "code": "MPC",
+      "ratio": "2.63%",
+      "change": "新增",
+      "rate": "0.56%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "巴西石油",
+      "code": "PBR",
+      "ratio": "2.62%",
+      "change": "新增",
+      "rate": "0.75%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "伊格尔矿业",
+      "code": "AEM",
+      "ratio": "2.60%",
+      "change": "0.73%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "金罗斯黄金",
+      "code": "KGC",
+      "ratio": "2.56%",
+      "change": "0.60%",
+      "rate": "5.28%",
+      "industry": "",
+      "quarters_held": "重仓5个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比33.81%",
+  "invest_date": "2026-03-31"
+}

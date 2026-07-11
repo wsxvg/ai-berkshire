@@ -1,0 +1,21 @@
+{
+  "fund_code": "018043",
+  "managers": [
+    {
+      "name": "刘冬",
+      "year_performance": "4.68",
+      "employ_performance": "103.31",
+      "manage_scale": "361.22亿元",
+      "employment_date": "15年143天",
+      "accession_date": "2023.04.11-至今"
+    },
+    {
+      "name": "胡超",
+      "year_performance": "8.04",
+      "employ_performance": "103.31",
+      "manage_scale": "432.71亿元",
+      "employment_date": "6年283天",
+      "accession_date": "2023.04.11-至今"
+    }
+  ]
+}

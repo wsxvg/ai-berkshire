@@ -1,0 +1,106 @@
+{
+  "fund_code": "016665",
+  "report_date": "2026-03-31",
+  "total_asset": 1985559521.17,
+  "allocation": {
+    "股票": 83.0,
+    "现金": 9.04,
+    "基金": 7.72,
+    "债券": 0.77,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "3.65%",
+      "change": "1.56%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "3.07%",
+      "change": "2.73%",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "2.77%",
+      "change": "0.62%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "Tower半导体",
+      "code": "TSEM",
+      "ratio": "2.75%",
+      "change": "0.78%",
+      "rate": "-10.76%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "2.69%",
+      "change": "0.43%",
+      "rate": "-9.09%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "2.44%",
+      "change": "1.44%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "Coherent Corp.",
+      "code": "COHR",
+      "ratio": "2.28%",
+      "change": "新增",
+      "rate": "-9.57%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "2.23%",
+      "change": "1.54%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "胜宏科技",
+      "code": "300476",
+      "ratio": "2.21%",
+      "change": "1.22%",
+      "rate": "0.65%",
+      "industry": "元件",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "日东纺",
+      "code": "JP3684400009",
+      "ratio": "2.04%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比26.13%",
+  "invest_date": "2026-03-31"
+}

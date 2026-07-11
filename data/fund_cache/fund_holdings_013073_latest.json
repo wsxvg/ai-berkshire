@@ -1,0 +1,106 @@
+{
+  "fund_code": "013073",
+  "report_date": "2026-03-31",
+  "total_asset": 91205859.11,
+  "allocation": {
+    "股票": 94.02,
+    "现金": 6.58,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "三生国健",
+      "code": "688336",
+      "ratio": "7.98%",
+      "change": "0.23%",
+      "rate": "2.64%",
+      "industry": "生物制品",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "荣昌生物",
+      "code": "688331",
+      "ratio": "7.45%",
+      "change": "新增",
+      "rate": "5.66%",
+      "industry": "生物制品",
+      "quarters_held": ""
+    },
+    {
+      "name": "百济神州",
+      "code": "688235",
+      "ratio": "6.82%",
+      "change": "1.75%",
+      "rate": "5.28%",
+      "industry": "化学制药",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "恒瑞医药",
+      "code": "600276",
+      "ratio": "6.64%",
+      "change": "0.09%",
+      "rate": "1.79%",
+      "industry": "化学制药",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "石药创新",
+      "code": "300765",
+      "ratio": "6.55%",
+      "change": "新增",
+      "rate": "6.44%",
+      "industry": "化学制药",
+      "quarters_held": ""
+    },
+    {
+      "name": "福瑞医科",
+      "code": "300049",
+      "ratio": "6.01%",
+      "change": "2.86%",
+      "rate": "5.89%",
+      "industry": "医疗器械",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "舒泰神",
+      "code": "300204",
+      "ratio": "5.95%",
+      "change": "1.04%",
+      "rate": "0.71%",
+      "industry": "化学制药",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "百利天恒",
+      "code": "688506",
+      "ratio": "5.87%",
+      "change": "0.74%",
+      "rate": "1.34%",
+      "industry": "化学制药",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "海思科",
+      "code": "002653",
+      "ratio": "5.45%",
+      "change": "新增",
+      "rate": "-2.96%",
+      "industry": "化学制药",
+      "quarters_held": ""
+    },
+    {
+      "name": "益方生物",
+      "code": "688382",
+      "ratio": "3.98%",
+      "change": "新增",
+      "rate": "6.21%",
+      "industry": "化学制药",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比62.70%",
+  "invest_date": "2026-03-31"
+}

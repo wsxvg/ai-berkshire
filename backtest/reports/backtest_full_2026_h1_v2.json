@@ -1,0 +1,735 @@
+{
+  "config": {
+    "start_date": "2026-01-05",
+    "end_date": "2026-06-30",
+    "initial_cash": 100000,
+    "min_score": 2.8,
+    "weights": {
+      "quality": 25,
+      "cost": 20,
+      "manager": 20,
+      "momentum": 15,
+      "smart_money": 20
+    },
+    "min_consensus": 2,
+    "dynamic_ranking": true,
+    "use_weighted_consensus": false,
+    "cost_penalty": 0,
+    "top_n": 0,
+    "top_n_pct": 0,
+    "consensus_priority": false,
+    "net_signal": false,
+    "limit_boost": 0,
+    "max_sector_pct": 24,
+    "max_qdii_pct": 30,
+    "take_profit_pct": 30,
+    "take_profit_sell_pct": 0.5,
+    "stop_loss_pct": -15,
+    "momentum_sell": 2.0,
+    "max_position_pct": 25,
+    "kelly_cap": 0.2,
+    "cash_reserve_pct": 0.2,
+    "max_holdings": 8,
+    "rebalance": true,
+    "monthly_injection": 10000,
+    "fund_type_filter": "active",
+    "sell_consensus": 0,
+    "profit_mode": "half",
+    "no_stop_loss": false,
+    "ranking_window": 90,
+    "ranking_fwd_days": 30,
+    "ranking_min_buys": 5,
+    "ranking_recalc_days": 30,
+    "verbose_ranking": false
+  },
+  "final_value": 161097.49,
+  "total_return": 0.6859312499999942,
+  "max_drawdown": 1.377410074561912,
+  "benchmark_return": 6.354487232803785,
+  "benchmark_dd": 0,
+  "buyhold_return": 2.098819414079589,
+  "buyhold_code": "021876",
+  "trade_count": 8,
+  "final_holdings": 0,
+  "total_fees": 78.6,
+  "monthly_injections": 60000,
+  "daily_values": [
+    {
+      "date": "2026-01-05",
+      "cash": 110000,
+      "holdings_value": 0,
+      "total": 110000
+    },
+    {
+      "date": "2026-01-06",
+      "cash": 110000,
+      "holdings_value": 0,
+      "total": 110000
+    },
+    {
+      "date": "2026-01-07",
+      "cash": 98800,
+      "holdings_value": 11183.2,
+      "total": 109983.2
+    },
+    {
+      "date": "2026-01-08",
+      "cash": 98800,
+      "holdings_value": 11144.06,
+      "total": 109944.06
+    },
+    {
+      "date": "2026-01-09",
+      "cash": 98800,
+      "holdings_value": 11344.52,
+      "total": 110144.52
+    },
+    {
+      "date": "2026-01-12",
+      "cash": 98800,
+      "holdings_value": 11479.15,
+      "total": 110279.15
+    },
+    {
+      "date": "2026-01-13",
+      "cash": 98800,
+      "holdings_value": 11602.51,
+      "total": 110402.51
+    },
+    {
+      "date": "2026-01-14",
+      "cash": 98800,
+      "holdings_value": 11766.8,
+      "total": 110566.8
+    },
+    {
+      "date": "2026-01-15",
+      "cash": 98800,
+      "holdings_value": 11959.55,
+      "total": 110759.55
+    },
+    {
+      "date": "2026-01-16",
+      "cash": 98800,
+      "holdings_value": 11920.4,
+      "total": 110720.4
+    },
+    {
+      "date": "2026-01-19",
+      "cash": 98800,
+      "holdings_value": 12073.42,
+      "total": 110873.42
+    },
+    {
+      "date": "2026-01-20",
+      "cash": 98800,
+      "holdings_value": 12004.62,
+      "total": 110804.62
+    },
+    {
+      "date": "2026-01-21",
+      "cash": 98800,
+      "holdings_value": 12301.16,
+      "total": 111101.16
+    },
+    {
+      "date": "2026-01-22",
+      "cash": 98800,
+      "holdings_value": 12192.63,
+      "total": 110992.63
+    },
+    {
+      "date": "2026-01-23",
+      "cash": 98800,
+      "holdings_value": 12286.34,
+      "total": 111086.34
+    },
+    {
+      "date": "2026-01-26",
+      "cash": 98800,
+      "holdings_value": 12584.07,
+      "total": 111384.07
+    },
+    {
+      "date": "2026-01-27",
+      "cash": 98800,
+      "holdings_value": 12625.58,
+      "total": 111425.58
+    },
+    {
+      "date": "2026-01-28",
+      "cash": 98800,
+      "holdings_value": 13070.99,
+      "total": 111870.99
+    },
+    {
+      "date": "2026-01-29",
+      "cash": 98800,
+      "holdings_value": 13001.6,
+      "total": 111801.6
+    },
+    {
+      "date": "2026-01-30",
+      "cash": 98800,
+      "holdings_value": 12537.21,
+      "total": 111337.21
+    },
+    {
+      "date": "2026-02-05",
+      "cash": 108800,
+      "holdings_value": 11935.23,
+      "total": 120735.23
+    },
+    {
+      "date": "2026-02-06",
+      "cash": 108800,
+      "holdings_value": 11910.91,
+      "total": 120710.91
+    },
+    {
+      "date": "2026-02-09",
+      "cash": 108800,
+      "holdings_value": 12201.53,
+      "total": 121001.53
+    },
+    {
+      "date": "2026-02-12",
+      "cash": 108800,
+      "holdings_value": 12827.82,
+      "total": 121627.82
+    },
+    {
+      "date": "2026-02-13",
+      "cash": 108800,
+      "holdings_value": 12324.89,
+      "total": 121124.89
+    },
+    {
+      "date": "2026-02-24",
+      "cash": 108800,
+      "holdings_value": 12968.38,
+      "total": 121768.38
+    },
+    {
+      "date": "2026-02-25",
+      "cash": 108800,
+      "holdings_value": 13476.66,
+      "total": 122276.66
+    },
+    {
+      "date": "2026-02-26",
+      "cash": 108800,
+      "holdings_value": 13591.12,
+      "total": 122391.12
+    },
+    {
+      "date": "2026-02-27",
+      "cash": 108800,
+      "holdings_value": 13732.87,
+      "total": 122532.87
+    },
+    {
+      "date": "2026-03-02",
+      "cash": 118800,
+      "holdings_value": 14128.46,
+      "total": 132928.46
+    },
+    {
+      "date": "2026-03-03",
+      "cash": 118800,
+      "holdings_value": 13556.13,
+      "total": 132356.13
+    },
+    {
+      "date": "2026-03-04",
+      "cash": 118800,
+      "holdings_value": 13325.42,
+      "total": 132125.42
+    },
+    {
+      "date": "2026-03-05",
+      "cash": 118800,
+      "holdings_value": 13273.23,
+      "total": 132073.23
+    },
+    {
+      "date": "2026-03-06",
+      "cash": 118800,
+      "holdings_value": 13034.81,
+      "total": 131834.81
+    },
+    {
+      "date": "2026-03-09",
+      "cash": 118800,
+      "holdings_value": 12582.29,
+      "total": 131382.29
+    },
+    {
+      "date": "2026-03-10",
+      "cash": 118800,
+      "holdings_value": 12753.69,
+      "total": 131553.69
+    },
+    {
+      "date": "2026-03-11",
+      "cash": 118800,
+      "holdings_value": 12843.24,
+      "total": 131643.24
+    },
+    {
+      "date": "2026-03-12",
+      "cash": 118800,
+      "holdings_value": 12721.07,
+      "total": 131521.07
+    },
+    {
+      "date": "2026-03-13",
+      "cash": 118800,
+      "holdings_value": 12492.73,
+      "total": 131292.73
+    },
+    {
+      "date": "2026-03-16",
+      "cash": 118800,
+      "holdings_value": 12359.29,
+      "total": 131159.29
+    },
+    {
+      "date": "2026-03-17",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-18",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-19",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-20",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-23",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-24",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-25",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-26",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-27",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-30",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-03-31",
+      "cash": 131097.49,
+      "holdings_value": 0.0,
+      "total": 131097.49
+    },
+    {
+      "date": "2026-04-01",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-02",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-03",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-07",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-08",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-09",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-10",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-13",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-14",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-15",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-16",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-17",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-20",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-21",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-22",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-23",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-24",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-27",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-28",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-29",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-04-30",
+      "cash": 141097.49,
+      "holdings_value": 0.0,
+      "total": 141097.49
+    },
+    {
+      "date": "2026-05-06",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-07",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-08",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-11",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-12",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-13",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-14",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-15",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-19",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-20",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-21",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-22",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-26",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-27",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-05-29",
+      "cash": 151097.49,
+      "holdings_value": 0.0,
+      "total": 151097.49
+    },
+    {
+      "date": "2026-06-01",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-05",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-08",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-09",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-10",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-11",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-16",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-17",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-18",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-22",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-23",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-24",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-26",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-29",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    },
+    {
+      "date": "2026-06-30",
+      "cash": 161097.49,
+      "holdings_value": 0.0,
+      "total": 161097.49
+    }
+  ],
+  "trades": [
+    {
+      "date": "2026-01-05",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    },
+    {
+      "date": "2026-01-07",
+      "code": "021876",
+      "action": "buy",
+      "amount": 11200,
+      "fee": 16.8,
+      "nav": 1.8856
+    },
+    {
+      "date": "2026-02-05",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    },
+    {
+      "date": "2026-03-02",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    },
+    {
+      "date": "2026-03-17",
+      "code": "021876",
+      "action": "sell_all",
+      "amount": 12359.29,
+      "fee": 61.8,
+      "price": 2.0839,
+      "days_held": 69,
+      "reason": "momentum_crash mom=1.45"
+    },
+    {
+      "date": "2026-04-01",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    },
+    {
+      "date": "2026-05-06",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    },
+    {
+      "date": "2026-06-01",
+      "code": "CASH",
+      "action": "salary",
+      "amount": 10000
+    }
+  ],
+  "scores": [
+    {
+      "date": "2026-01-07",
+      "code": "021876",
+      "name": "路博迈资源精选股票发起C",
+      "score": 3.19,
+      "verdict": "candidate"
+    }
+  ]
+}

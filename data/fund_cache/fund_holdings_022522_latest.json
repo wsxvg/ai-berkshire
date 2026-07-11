@@ -1,0 +1,106 @@
+{
+  "fund_code": "022522",
+  "report_date": "2026-03-31",
+  "total_asset": 1121463751.73,
+  "allocation": {
+    "股票": 91.53,
+    "现金": 10.72,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "德康农牧",
+      "code": "02419",
+      "ratio": "10.11%",
+      "change": "0.34%",
+      "rate": "1.37%",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "优然牧业",
+      "code": "09858",
+      "ratio": "9.92%",
+      "change": "0.08%",
+      "rate": "4.56%",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "众兴菌业",
+      "code": "002772",
+      "ratio": "9.84%",
+      "change": "0.07%",
+      "rate": "8.44%",
+      "industry": "种植业与林业",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "牧原股份",
+      "code": "002714",
+      "ratio": "9.79%",
+      "change": "0.23%",
+      "rate": "-1.20%",
+      "industry": "养殖业",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "现代牧业",
+      "code": "01117",
+      "ratio": "9.72%",
+      "change": "0.21%",
+      "rate": "2.02%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "华统股份",
+      "code": "002840",
+      "ratio": "8.10%",
+      "change": "新增",
+      "rate": "-1.37%",
+      "industry": "食品加工制造",
+      "quarters_held": ""
+    },
+    {
+      "name": "温氏股份",
+      "code": "300498",
+      "ratio": "6.04%",
+      "change": "0.63%",
+      "rate": "-0.91%",
+      "industry": "养殖业",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "天康生物",
+      "code": "002100",
+      "ratio": "5.92%",
+      "change": "3.70%",
+      "rate": "-1.82%",
+      "industry": "农产品加工",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "巨星农牧",
+      "code": "603477",
+      "ratio": "5.24%",
+      "change": "新增",
+      "rate": "1.74%",
+      "industry": "养殖业",
+      "quarters_held": ""
+    },
+    {
+      "name": "康农种业",
+      "code": "920403",
+      "ratio": "3.07%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "种植业与林业",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比77.75%",
+  "invest_date": "2026-03-31"
+}

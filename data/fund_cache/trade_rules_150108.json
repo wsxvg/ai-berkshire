@@ -1,0 +1,15 @@
+{
+  "fund_code": "150108",
+  "buy_date": "",
+  "confirm_date": "",
+  "manage_fee": 0.0,
+  "custody_fee": 0.0,
+  "sale_fee": 0.0,
+  "purchase_fee": 0,
+  "purchase_fee_original": 0,
+  "day_limit": Infinity,
+  "min_purchase": 0.0,
+  "redeem_fees": [],
+  "purchase_status": "",
+  "redeem_status": "暂停赎回"
+}

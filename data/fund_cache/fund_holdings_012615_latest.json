@@ -1,0 +1,106 @@
+{
+  "fund_code": "012615",
+  "report_date": "2026-03-31",
+  "total_asset": 12826180.95,
+  "allocation": {
+    "股票": 89.62,
+    "现金": 11.82,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "招商银行",
+      "code": "600036",
+      "ratio": "8.03%",
+      "change": "3.18%",
+      "rate": "0.63%",
+      "industry": "银行",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "宁波银行",
+      "code": "002142",
+      "ratio": "6.24%",
+      "change": "新增",
+      "rate": "-0.36%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "中信证券",
+      "code": "600030",
+      "ratio": "5.94%",
+      "change": "新增",
+      "rate": "1.15%",
+      "industry": "证券",
+      "quarters_held": ""
+    },
+    {
+      "name": "杭州银行",
+      "code": "600926",
+      "ratio": "5.37%",
+      "change": "新增",
+      "rate": "0.74%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "南京银行",
+      "code": "601009",
+      "ratio": "5.22%",
+      "change": "新增",
+      "rate": "0.87%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "兴业银行",
+      "code": "601166",
+      "ratio": "5.14%",
+      "change": "新增",
+      "rate": "-0.29%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "成都银行",
+      "code": "601838",
+      "ratio": "4.94%",
+      "change": "新增",
+      "rate": "0.05%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "上海银行",
+      "code": "601229",
+      "ratio": "4.86%",
+      "change": "新增",
+      "rate": "0.68%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "渝农商行",
+      "code": "601077",
+      "ratio": "4.77%",
+      "change": "新增",
+      "rate": "1.12%",
+      "industry": "银行",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国太保",
+      "code": "601601",
+      "ratio": "4.45%",
+      "change": "新增",
+      "rate": "0.07%",
+      "industry": "保险",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比54.96%",
+  "invest_date": "2026-03-31"
+}

@@ -65,3 +65,29 @@ validation tools. Keep compatibility with both Claude Code and Codex users.
 - Before finishing a skill/tool change, run the relevant syntax or generation
   check. For compatibility changes, run:
   `python3 scripts/sync-codex-skills.py`
+
+## Code Knowledge Graph (codebase-memory MCP)
+
+This repo has a pre-built code knowledge graph. Prefer it for code navigation
+instead of blindly reading files or grepping the whole tree.
+
+- MCP server: `codebase-memory`
+- Project name to query: **`X`** (the graph was indexed via the `X:` drive
+  mapping, so all node paths look like `X:/...`)
+- Tools to use:
+  - `search_graph` — find functions / classes / variables by name
+  - `query_graph` — Cypher queries for call relations, dependencies, complexity
+  - `get_code_snippet` — pull a specific implementation snippet
+  - `get_architecture` — whole-repo tree / architecture overview
+  - `impact` / `affected` — blast radius of editing a file
+- Why `X:` instead of the real path: the tool's symbol extractor fails on the
+  Chinese path `c:/项目/A基金/基金`. Work around it with a drive mapping:
+  `subst X: "c:\项目\A基金\基金"` before indexing.
+- To refresh the index (it does NOT auto-update): make sure `X:` exists, then
+  `index_repository(repo_path="X:/", mode="full")`.
+- Caveats the AI must respect:
+  - `subst X:` is lost after a reboot; it only affects re-indexing, not queries.
+  - The graph is a periodically refreshed map, not a live mirror. For exact
+    function bodies, fall back to `get_code_snippet` / `read` on that one file.
+  - The graph complements reading; it tells you *where* to look, not the full
+    file contents.

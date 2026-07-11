@@ -1,0 +1,106 @@
+{
+  "fund_code": "013081",
+  "report_date": "2026-03-31",
+  "total_asset": 2624926970.0,
+  "allocation": {
+    "股票": 94.03,
+    "现金": 5.58,
+    "其他": 0.39,
+    "债券": 0.0,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "紫金矿业",
+      "code": "601899",
+      "ratio": "13.21%",
+      "change": "1.26%",
+      "rate": "5.78%",
+      "industry": "贵金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "洛阳钼业",
+      "code": "603993",
+      "ratio": "6.50%",
+      "change": "1.38%",
+      "rate": "1.26%",
+      "industry": "工业金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "北方稀土",
+      "code": "600111",
+      "ratio": "5.23%",
+      "change": "0.03%",
+      "rate": "0.77%",
+      "industry": "小金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "中国铝业",
+      "code": "601600",
+      "ratio": "3.92%",
+      "change": "0.45%",
+      "rate": "1.96%",
+      "industry": "工业金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "华友钴业",
+      "code": "603799",
+      "ratio": "3.86%",
+      "change": "0.81%",
+      "rate": "-0.62%",
+      "industry": "能源金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "赣锋锂业",
+      "code": "002460",
+      "ratio": "3.84%",
+      "change": "0.64%",
+      "rate": "-1.59%",
+      "industry": "能源金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "中金黄金",
+      "code": "600489",
+      "ratio": "3.37%",
+      "change": "0.31%",
+      "rate": "6.55%",
+      "industry": "贵金属",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "山东黄金",
+      "code": "600547",
+      "ratio": "3.16%",
+      "change": "持平",
+      "rate": "7.86%",
+      "industry": "贵金属",
+      "quarters_held": "重仓19个季度"
+    },
+    {
+      "name": "赤峰黄金",
+      "code": "600988",
+      "ratio": "3.11%",
+      "change": "新增",
+      "rate": "10.00%",
+      "industry": "贵金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "云铝股份",
+      "code": "000807",
+      "ratio": "2.80%",
+      "change": "0.28%",
+      "rate": "2.99%",
+      "industry": "工业金属",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比49.00%",
+  "invest_date": "2026-03-31"
+}

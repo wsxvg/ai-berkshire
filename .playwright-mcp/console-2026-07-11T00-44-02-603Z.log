@@ -1,0 +1,4 @@
+[     415ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/product/js/vendor_e1801926ed.js:38
+[     419ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/product/js/vendor_e1801926ed.js:38
+[     547ms] [WARNING] %c 请接入奇点时设置pageId参数（未设置可能导致浏览数据统计不到），下一个版本如果未设置，将不再上报页面浏览数据，请尽快完成，感谢您的配合！如何设置，可以在这里查看：https://joyspace.jd.com/pages/puZEQL6Ct1T50FVq8NMH color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[     957ms] [LOG] -dddd-showGuideAlert @ https://roma.jd.com/fund/product/js/main_131be83975.js:0

@@ -1,0 +1,106 @@
+{
+  "fund_code": "110020",
+  "report_date": "2026-03-31",
+  "total_asset": 20385451560.6,
+  "allocation": {
+    "基金": 92.3,
+    "现金": 4.2,
+    "债券": 2.51,
+    "股票": 0.68,
+    "其他": 0.32
+  },
+  "top_stocks": [
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "ratio": "0.04%",
+      "change": "持平",
+      "rate": "-0.61%",
+      "industry": "电池",
+      "quarters_held": "重仓16个季度"
+    },
+    {
+      "name": "紫金矿业",
+      "code": "601899",
+      "ratio": "0.02%",
+      "change": "持平",
+      "rate": "5.78%",
+      "industry": "贵金属",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "贵州茅台",
+      "code": "600519",
+      "ratio": "0.02%",
+      "change": "0.01%",
+      "rate": "-0.71%",
+      "industry": "白酒",
+      "quarters_held": "重仓41个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "0.02%",
+      "change": "持平",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "美的集团",
+      "code": "000333",
+      "ratio": "0.01%",
+      "change": "0.01%",
+      "rate": "1.23%",
+      "industry": "白色家电",
+      "quarters_held": "重仓24个季度"
+    },
+    {
+      "name": "中国平安",
+      "code": "601318",
+      "ratio": "0.01%",
+      "change": "0.01%",
+      "rate": "0.35%",
+      "industry": "保险",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "长江电力",
+      "code": "600900",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "0.37%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "0.01%",
+      "change": "0.01%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "比亚迪",
+      "code": "002594",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "5.86%",
+      "industry": "汽车整车",
+      "quarters_held": ""
+    },
+    {
+      "name": "招商银行",
+      "code": "600036",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "0.63%",
+      "industry": "银行",
+      "quarters_held": "重仓6个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比0.16%",
+  "invest_date": "2026-03-31"
+}

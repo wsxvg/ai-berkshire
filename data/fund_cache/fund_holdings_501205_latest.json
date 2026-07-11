@@ -1,0 +1,106 @@
+{
+  "fund_code": "501205",
+  "report_date": "2026-03-31",
+  "total_asset": 1762032547.81,
+  "allocation": {
+    "股票": 90.55,
+    "现金": 7.29,
+    "其他": 1.86,
+    "债券": 0.31,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "长飞光纤光缆",
+      "code": "06869",
+      "ratio": "8.83%",
+      "change": "新增",
+      "rate": "1.64%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "8.65%",
+      "change": "新增",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "德科立",
+      "code": "688205",
+      "ratio": "8.30%",
+      "change": "新增",
+      "rate": "-2.68%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "8.16%",
+      "change": "1.69%",
+      "rate": "4.98%",
+      "industry": "元件",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "盛科通信",
+      "code": "688702",
+      "ratio": "7.65%",
+      "change": "新增",
+      "rate": "-8.33%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "腾景科技",
+      "code": "688195",
+      "ratio": "6.75%",
+      "change": "4.07%",
+      "rate": "-3.39%",
+      "industry": "光学光电子",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "云南锗业",
+      "code": "002428",
+      "ratio": "6.37%",
+      "change": "新增",
+      "rate": "-1.70%",
+      "industry": "小金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "5.63%",
+      "change": "0.21%",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "5.10%",
+      "change": "3.33%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "天通股份",
+      "code": "600330",
+      "ratio": "4.98%",
+      "change": "新增",
+      "rate": "-5.81%",
+      "industry": "电子化学品",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比70.42%",
+  "invest_date": "2026-03-31"
+}

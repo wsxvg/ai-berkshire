@@ -1,0 +1,21 @@
+{
+  "fund_code": "006373",
+  "managers": [
+    {
+      "name": "徐成",
+      "year_performance": "14.24",
+      "employ_performance": "646.18",
+      "manage_scale": "114.36亿元",
+      "employment_date": "10年192天",
+      "accession_date": "2018.11.20-至今"
+    },
+    {
+      "name": "狄星华",
+      "year_performance": "31.34",
+      "employ_performance": "646.18",
+      "manage_scale": "41.41亿元",
+      "employment_date": "7年226天",
+      "accession_date": "2018.11.20-至今"
+    }
+  ]
+}

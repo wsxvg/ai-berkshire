@@ -1,0 +1,53 @@
+- generic [ref=f38e3]:
+  - generic [ref=f38e4]:
+    - img "京东金融" [ref=f38e7]
+    - generic [ref=f38e8]: 切回旧版
+  - generic [ref=f38e11]:
+    - generic [ref=f38e12]:
+      - generic [ref=f38e13]:
+        - paragraph [ref=f38e15] [cursor=pointer]: jd_9b2u5ec8t4pmtb
+        - generic [ref=f38e38] [cursor=pointer]: 退出登录
+      - generic [ref=f38e16]:
+        - generic [ref=f38e17] [cursor=pointer]: 自选
+        - generic [ref=f38e20] [cursor=pointer]: 自定义
+        - generic [ref=f38e23] [cursor=pointer]: 积存金
+        - generic [ref=f38e26] [cursor=pointer]: 基金
+        - generic [ref=f38e29] [cursor=pointer]: 发现
+        - generic [ref=f38e32] [cursor=pointer]: 下载
+    - generic [ref=f38e222]:
+      - generic [ref=f38e223]:
+        - generic [ref=f38e224]:
+          - heading "黄金工具" [level=3] [ref=f38e226]
+          - generic [ref=f38e227]:
+            - generic [ref=f38e231] [cursor=pointer]:
+              - heading "黄金换算" [level=4] [ref=f38e232]
+              - paragraph [ref=f38e233]: 简单便捷，金价转换
+            - generic [ref=f38e237] [cursor=pointer]:
+              - heading "黄金ETF持仓" [level=4] [ref=f38e238]
+              - paragraph [ref=f38e239]: 一览黄金投资情绪
+            - generic [ref=f38e243] [cursor=pointer]:
+              - heading "全球黄金储备" [level=4] [ref=f38e244]
+              - paragraph [ref=f38e245]: 查看各国黄金持有量
+        - generic [ref=f38e246]:
+          - heading "基金工具" [level=3] [ref=f38e248]
+          - generic [ref=f38e249]:
+            - generic [ref=f38e253] [cursor=pointer]:
+              - heading "基民爱看榜" [level=4] [ref=f38e254]
+              - paragraph [ref=f38e255]: 查看高申购率基金
+            - generic [ref=f38e259] [cursor=pointer]:
+              - heading "基民爱买榜" [level=4] [ref=f38e260]
+              - paragraph [ref=f38e261]: 查看高申购率基金
+            - generic [ref=f38e265] [cursor=pointer]:
+              - heading "基金排行" [level=4] [ref=f38e266]
+              - paragraph [ref=f38e267]: 综合排行，基金全览
+            - generic [ref=f38e271] [cursor=pointer]:
+              - heading "基金pk" [level=4] [ref=f38e272]
+              - paragraph [ref=f38e273]: 直观对比，选出好基
+        - generic [ref=f38e274]:
+          - heading "互动游戏" [level=3] [ref=f38e276]
+          - generic [ref=f38e281] [cursor=pointer]:
+            - heading "财富庄园" [level=4] [ref=f38e282]
+            - paragraph [ref=f38e283]: 种菜领现金 提现秒到账
+      - generic [ref=f38e286]:
+        - iframe [ref=f38e288]
+        - generic [ref=f38e289]: 黄金换算

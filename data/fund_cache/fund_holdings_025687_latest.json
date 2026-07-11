@@ -1,0 +1,106 @@
+{
+  "fund_code": "025687",
+  "report_date": "2026-03-31",
+  "total_asset": 139562453.24,
+  "allocation": {
+    "股票": 94.24,
+    "现金": 4.51,
+    "债券": 2.1,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "拓荆科技",
+      "code": "688072",
+      "ratio": "9.77%",
+      "change": "0.36%",
+      "rate": "0.00%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "北方华创",
+      "code": "002371",
+      "ratio": "9.35%",
+      "change": "0.45%",
+      "rate": "-2.98%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "9.00%",
+      "change": "1.71%",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中科飞测",
+      "code": "688361",
+      "ratio": "8.85%",
+      "change": "0.70%",
+      "rate": "-3.93%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "安集科技",
+      "code": "688019",
+      "ratio": "6.53%",
+      "change": "0.59%",
+      "rate": "-5.67%",
+      "industry": "电子化学品",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "华海清科",
+      "code": "688120",
+      "ratio": "6.29%",
+      "change": "0.14%",
+      "rate": "-4.80%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "富创精密",
+      "code": "688409",
+      "ratio": "6.22%",
+      "change": "新增",
+      "rate": "-1.30%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "华虹宏力",
+      "code": "688347",
+      "ratio": "5.99%",
+      "change": "2.86%",
+      "rate": "0.18%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "芯源微",
+      "code": "688037",
+      "ratio": "5.92%",
+      "change": "0.97%",
+      "rate": "-1.36%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "上海新阳",
+      "code": "300236",
+      "ratio": "4.16%",
+      "change": "新增",
+      "rate": "-6.41%",
+      "industry": "电子化学品",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比72.08%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "025833",
+  "report_date": "2026-03-31",
+  "total_asset": 6525168165.35,
+  "allocation": {
+    "股票": 94.93,
+    "现金": 6.07,
+    "债券": 0.03,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "特变电工",
+      "code": "600089",
+      "ratio": "10.45%",
+      "change": "新增",
+      "rate": "0.82%",
+      "industry": "综合",
+      "quarters_held": ""
+    },
+    {
+      "name": "思源电气",
+      "code": "002028",
+      "ratio": "9.94%",
+      "change": "新增",
+      "rate": "7.86%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "亨通光电",
+      "code": "600487",
+      "ratio": "8.37%",
+      "change": "新增",
+      "rate": "-4.71%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "国电南瑞",
+      "code": "600406",
+      "ratio": "7.94%",
+      "change": "新增",
+      "rate": "0.97%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中天科技",
+      "code": "600522",
+      "ratio": "6.54%",
+      "change": "新增",
+      "rate": "-2.64%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "正泰电器",
+      "code": "601877",
+      "ratio": "2.98%",
+      "change": "新增",
+      "rate": "1.86%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国西电",
+      "code": "601179",
+      "ratio": "2.96%",
+      "change": "新增",
+      "rate": "1.64%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "宏发股份",
+      "code": "600885",
+      "ratio": "2.15%",
+      "change": "新增",
+      "rate": "4.87%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "四方股份",
+      "code": "601126",
+      "ratio": "2.09%",
+      "change": "新增",
+      "rate": "0.85%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "东方电缆",
+      "code": "603606",
+      "ratio": "1.90%",
+      "change": "新增",
+      "rate": "0.90%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比55.32%",
+  "invest_date": "2026-03-31"
+}

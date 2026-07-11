@@ -1,0 +1,106 @@
+{
+  "fund_code": "012620",
+  "report_date": "2026-03-31",
+  "total_asset": 2374817109.22,
+  "allocation": {
+    "基金": 91.63,
+    "现金": 6.11,
+    "股票": 3.16,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "科大讯飞",
+      "code": "002230",
+      "ratio": "0.43%",
+      "change": "0.32%",
+      "rate": "1.05%",
+      "industry": "软件开发",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "同花顺",
+      "code": "300033",
+      "ratio": "0.26%",
+      "change": "0.20%",
+      "rate": "-0.59%",
+      "industry": "软件开发",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "金山办公",
+      "code": "688111",
+      "ratio": "0.22%",
+      "change": "0.15%",
+      "rate": "-1.88%",
+      "industry": "软件开发",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "拓维信息",
+      "code": "002261",
+      "ratio": "0.18%",
+      "change": "0.14%",
+      "rate": "-2.38%",
+      "industry": "软件开发",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "恒生电子",
+      "code": "600570",
+      "ratio": "0.16%",
+      "change": "0.12%",
+      "rate": "-0.28%",
+      "industry": "软件开发",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "三六零",
+      "code": "601360",
+      "ratio": "0.15%",
+      "change": "0.11%",
+      "rate": "0.11%",
+      "industry": "软件开发",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "指南针",
+      "code": "300803",
+      "ratio": "0.14%",
+      "change": "0.10%",
+      "rate": "-1.63%",
+      "industry": "软件开发",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "润和软件",
+      "code": "300339",
+      "ratio": "0.13%",
+      "change": "0.09%",
+      "rate": "-0.62%",
+      "industry": "IT服务",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "深信服",
+      "code": "300454",
+      "ratio": "0.10%",
+      "change": "0.07%",
+      "rate": "-1.77%",
+      "industry": "软件开发",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中科星图",
+      "code": "688568",
+      "ratio": "0.10%",
+      "change": "新增",
+      "rate": "4.92%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比1.87%",
+  "invest_date": "2026-03-31"
+}

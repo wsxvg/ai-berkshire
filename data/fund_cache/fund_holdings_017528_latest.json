@@ -1,0 +1,106 @@
+{
+  "fund_code": "017528",
+  "report_date": "2026-03-31",
+  "total_asset": 402249334.64,
+  "allocation": {
+    "股票": 94.66,
+    "现金": 4.42,
+    "债券": 1.25,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "贝特瑞",
+      "code": "920185",
+      "ratio": "7.09%",
+      "change": "0.06%",
+      "rate": "--",
+      "industry": "电池",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "锦波生物",
+      "code": "920982",
+      "ratio": "4.98%",
+      "change": "1.93%",
+      "rate": "--",
+      "industry": "美容护理",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "纳科诺尔",
+      "code": "920522",
+      "ratio": "3.75%",
+      "change": "0.56%",
+      "rate": "--",
+      "industry": "电池",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "并行科技",
+      "code": "920493",
+      "ratio": "3.67%",
+      "change": "0.62%",
+      "rate": "--",
+      "industry": "IT服务",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "同力股份",
+      "code": "920599",
+      "ratio": "3.60%",
+      "change": "0.10%",
+      "rate": "--",
+      "industry": "工程机械",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "连城数控",
+      "code": "920368",
+      "ratio": "3.44%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "光伏设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "诺思兰德",
+      "code": "920047",
+      "ratio": "3.35%",
+      "change": "0.43%",
+      "rate": "--",
+      "industry": "生物制品",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "星图测控",
+      "code": "920116",
+      "ratio": "3.11%",
+      "change": "0.51%",
+      "rate": "--",
+      "industry": "IT服务",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "曙光数创",
+      "code": "920808",
+      "ratio": "2.99%",
+      "change": "0.25%",
+      "rate": "--",
+      "industry": "计算机设备",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "吉林碳谷",
+      "code": "920077",
+      "ratio": "2.84%",
+      "change": "0.27%",
+      "rate": "--",
+      "industry": "化学纤维",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比38.82%",
+  "invest_date": "2026-03-31"
+}

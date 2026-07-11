@@ -5,9 +5,10 @@ JD Finance Fund API Tool (zero external dependencies)
 
 Features:
   - Cookie authentication (cookies.json + auto Playwright refresh)
-  - 12 core API wrappers (holdings/trade/fund detail/rules/distribution/manager)
+  - 27 core API wrappers (holdings/trade/fund detail/rules/distribution/manager
+    + NEW: index_block_info/fund_detail_pin/watchlist/player_trading_feed/index_detail)
   - Local cache (trade rules 30d / fund detail 7d / holdings 1d)
-  - Rate limiting (0.3s interval)
+  - Rate limiting (0.15s interval, bypass in batch mode)
   - --offline fallback mode (cache only)
 
 Dependencies: Python stdlib only (urllib/json/os/time/datetime/pathlib)
@@ -16,13 +17,20 @@ Auth: data/jd_auth/cookies.json (Playwright auto-capture or manual paste)
 Usage:
   python tools/jd_finance_api.py --test
   python tools/jd_finance_api.py --holdings jimu_user_info-14345330
-  python tools/jd_finance_api.py --trade-rules 006105
-  python tools/jd_finance_api.py --fund-holdings 006105
+  python tools/jd_finance_api.py --fund-data 006105
   python tools/jd_finance_api.py --list-followed
-  python tools/jd_finance_api.py --holdings jimu_user_info-14345330 --offline
+  python tools/jd_finance_api.py --batch-fund 002891 018147 008253
 
-  # NEW: concurrent batch fetching (60x faster!)
-  python tools/jd_finance_api.py --batch-fund 002891 018147 008253 026211 021528 011452 002112 016452
+  # NEW: industry-level valuation + investment signals
+  python tools/jd_finance_api.py --index-block-info BK0447
+  python tools/jd_finance_api.py --index-detail BK0447
+
+  # NEW: logged-in fund detail (includes diagnosis: Sharpe/drawdown/volatility)
+  python tools/jd_finance_api.py --fund-detail-pin 006105
+
+  # NEW: watchlist + player trading feed
+  python tools/jd_finance_api.py --watchlist
+  python tools/jd_finance_api.py --player-trading-feed
 """
 
 import argparse
@@ -30,6 +38,7 @@ import asyncio
 import concurrent.futures
 import json
 import os
+import ssl
 import sys
 import time
 import urllib.error
@@ -85,7 +94,7 @@ def _load_cookies():
                 if ".jd.com" in c.get("domain", "")
             }
         return data
-    except Exception:
+    except (json.JSONDecodeError, OSError):
         return {}
 
 
@@ -96,23 +105,27 @@ def _save_cookies(cookies_dict):
 
 
 def _verify_cookies(cookies):
+    """Verify cookie by calling a real API that requires auth.
+    If this API succeeds, cookie is good — period."""
     if not cookies:
         return False, None
     try:
-        url = f"{_JD_BASE}/gw2/generic/CreatorSer/h5/m/pcQueryUserInfo"
-        payload = json.dumps({}).encode("utf-8")
-        req = urllib.request.Request(url, data=payload, headers={
-            "Content-Type": "application/json",
-            "User-Agent": _USER_AGENT,
-        })
-        cookie_str = "; ".join(f"{k}={v}" for k, v in cookies.items())
-        req.add_header("Cookie", cookie_str)
-        resp = urllib.request.urlopen(req, timeout=10)
-        data = json.loads(resp.read())
+        # Use the user holdings query as verification (it's a real auth-required endpoint)
+        body = {
+            "firmOfferType": "fund",
+            "searchType": 2,
+            "extParams": {"requestFrom": "pc"},
+            "clientVersion": "9.9.9",
+            "clientType": "android",
+        }
+        data = _api_form("gw2/generic/CreatorSer/h5/m/queryUserFundHoldingInfo", body, cookies)
         rd = data.get("resultData", {})
-        code = rd.get("code", "")
-        if code in ("0", "0000"):
-            return True, rd.get("data", {})
+        items = rd.get("data", {}).get("fundHoldItemInfo", {}).get("itemList", [])
+        if rd.get("code") == "0" and items is not None:
+            return True, {"holdings_count": len(items)}
+        # If we get no error and items is empty list (not None), cookie is still valid
+        if items == []:
+            return True, {"holdings_count": 0}
         return False, None
     except Exception:
         return False, None
@@ -235,7 +248,7 @@ _last_request_time = 0
 _BATCH_MODE = False  # set True to skip throttle for concurrent batch operations
 
 
-def _throttle(delay=0.3):
+def _throttle(delay=0.15):
     global _last_request_time
     if _BATCH_MODE:
         return  # skip throttle in concurrent batch mode
@@ -324,40 +337,45 @@ def _api_form_batch(path, body_dict):
 
 
 def batch_get_fund_data(fund_codes, include=("profile", "perf", "trade_rules", "holdings", "manager"),
-                        use_cache=False, max_workers=10):
+                        use_cache=False, max_workers=10, cookies=None):
     """Fetch ALL data endpoints for MULTIPLE funds concurrently.
+
+    Uses getFundDetailPageInfo (one call per fund) instead of 3+ separate calls,
+    reducing API requests by ~60%.
 
     Args:
         fund_codes: list of fund code strings
         include: which endpoints to fetch (subset of profile/perf/trade_rules/holdings/manager)
         use_cache: use cached data when available
         max_workers: concurrent thread count (default 10, safe up to ~40)
+        cookies: JD auth cookies (loaded automatically if not provided)
 
     Returns:
         dict: {fund_code: {endpoint_name: result_or_None, ...}, ...}
     """
-    endpoint_map = {
-        "profile": ("fund_profile", lambda c: get_fund_profile(c, use_cache=use_cache)),
-        "perf": ("fund_perf", lambda c: get_fund_performance(c, use_cache=use_cache)),
-        "trade_rules": ("trade_rules", lambda c: get_fund_trade_rules(c, use_cache=use_cache)),
-        "holdings": ("holdings", lambda c: get_fund_holdings_distribution(c, use_cache=use_cache)),
-        "manager": ("manager", lambda c: get_fund_manager(c)),
-    }
-
     # Enable batch mode to skip global throttle (threads manage their own timing)
     global _BATCH_MODE
     _BATCH_MODE = True
 
     def fetch_one(code):
         row = {"code": code}
-        for key in include:
-            if key not in endpoint_map:
-                continue
-            label, func = endpoint_map[key]
-            try:
-                row[label] = func(code)
-            except Exception as e:
-                row[label] = {"error": str(e)}
+        try:
+            # Single API call replaces get_fund_profile + get_fund_performance + get_fund_holdings_distribution
+            detail = get_fund_detail(code, use_cache=use_cache, cookies=cookies)
+            if detail:
+                if "profile" in include:
+                    row["fund_profile"] = detail.get("profile")
+                if "perf" in include:
+                    row["fund_perf"] = detail.get("performance")
+                if "holdings" in include:
+                    row["holdings"] = detail.get("holdings_distribution")
+                if "manager" in include:
+                    row["manager"] = detail.get("manager")
+            # trade_rules still needs a separate call (not in getFundDetailPageInfo)
+            if "trade_rules" in include:
+                row["trade_rules"] = get_fund_trade_rules(code, use_cache=use_cache)
+        except Exception as e:
+            row["error"] = str(e)
         return row
 
     results = {}
@@ -378,6 +396,13 @@ def batch_get_fund_data(fund_codes, include=("profile", "perf", "trade_rules", "
 # ============================================================
 # API Methods: User Holdings & Trading
 # ============================================================
+def _text(v):
+    """Extract text from JD API field (supports both old {'text':'x'} and new 'x' formats)."""
+    if isinstance(v, dict):
+        return v.get("text", "")
+    return str(v) if v else ""
+
+
 def get_user_holdings(target_uid=None, cookies=None, use_cache=False):
     cache_key = target_uid or "self"
     if use_cache:
@@ -389,7 +414,7 @@ def get_user_holdings(target_uid=None, cookies=None, use_cache=False):
         cookies = _ensure_cookies()
     body = {
         "firmOfferType": "fund",
-        "searchType": 2,
+        "searchType": 3 if not target_uid else 2,
         "extParams": {"requestFrom": "pc"},
         "clientVersion": "9.9.9",
         "clientType": "android",
@@ -403,11 +428,11 @@ def get_user_holdings(target_uid=None, cookies=None, use_cache=False):
     fund_info = rd.get("data", {}).get("fundHoldItemInfo", {}).get("itemList", [])
     for item in fund_info:
         items.append({
-            "name": item.get("fundName", {}).get("text", ""),
-            "code": item.get("fundCode", {}).get("text", ""),
-            "amount": item.get("amount", {}).get("text", ""),
-            "profit_rate": item.get("holdingProfitRate", {}).get("text", ""),
-            "profit": item.get("holdingProfit", {}).get("text", ""),
+            "name": _text(item.get("fundName")),
+            "code": _text(item.get("fundCode")),
+            "amount": _text(item.get("amount", {}).get("text", "")),
+            "profit_rate": _text(item.get("holdingProfitRate", {}).get("text", "")),
+            "profit": _text(item.get("holdingProfit", {}).get("text", "")),
         })
 
     result = {"holdings": items, "raw": data}
@@ -416,10 +441,66 @@ def get_user_holdings(target_uid=None, cookies=None, use_cache=False):
     return result
 
 
-def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5):
+def get_user_fund_holding_info(target_uid, cookies=None):
+    """获取大佬的基金持仓明细（含收益率、行业标签等）。
+
+    Args:
+        target_uid: "jimu_user_info-{numeric_id}"
+
+    Returns: {fund_code: {name, amount, profit, profit_rate, yesterday_profit, sector}}
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form(
+        "gw2/generic/CreatorSer/h5/m/queryUserFundHoldingInfo",
+        {
+            "targetUid": target_uid,
+            "firmOfferType": "fund",
+            "channel": "null",
+            "channelfrom": "grouppc",
+            "searchType": 2,
+            "extParams": {"requestFrom": "pc", "inAppName": ""},
+            "clientVersion": "9.9.9",
+            "clientType": "android",
+        },
+        cookies=cookies,
+    )
+    rd = data.get("resultData", {})
+    d = rd.get("data", {})
+    items = d.get("fundHoldItemInfo", {}).get("itemList", [])
+    result = {}
+    for item in items:
+        code = item.get("fundCode", "")
+        if not code:
+            continue
+        result[code] = {
+            "name": item.get("fundName", {}).get("text", ""),
+            "amount": float(str(item.get("amount", {}).get("text", "0")).replace(",", "")),
+            "profit": float(str(item.get("holdingProfit", {}).get("text", "0")).replace(",", "").replace("+", "")),
+            "profit_rate": float(str(item.get("holdingProfitRate", {}).get("text", "0%")).replace("%", "").replace("+", "")),
+            "yesterday_profit": float(str(item.get("yesterdayProfit", {}).get("text", "0")).replace(",", "").replace("+", "")),
+            "sector": item.get("sectorTag", {}).get("text", ""),
+        }
+
+    # 提取期间收益率（近1周/近1月/近1年）
+    pp = d.get("fundHoldInfo", {}).get("periodicProfit", {})
+    period_returns = {}
+    for period_key, period_label in [("weekly", "近1周"), ("monthly", "近1月"), ("yearly", "近1年")]:
+        if period_key in pp:
+            pct_text = pp[period_key].get("percentage", {}).get("text", "0%")
+            try:
+                period_returns[period_label] = float(pct_text.replace("%", "").replace("+", ""))
+            except ValueError:
+                period_returns[period_label] = 0.0
+
+    return {"holdings": result, "period_returns": period_returns}
+
+
+def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5, today_only=False):
     """Fetch trading records with pagination support.
 
     Iterates pages until end=True or max_pages reached.
+    When today_only=True, filters records to only include today's trades.
     """
     if cookies is None:
         cookies = _ensure_cookies()
@@ -427,6 +508,12 @@ def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5):
     last_id = ""
     is_end = False
     page = 1
+
+    # Precompute today's MM-DD prefix for filtering
+    _today_prefix = ""
+    if today_only:
+        from datetime import date
+        _today_prefix = date.today().strftime("%m-%d")
 
     while not is_end and page <= max_pages:
         body = {
@@ -450,28 +537,79 @@ def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5):
 
         data = _api_form("gw2/generic/aladdin/h5/m/getPageMutilData?pageId=11568", body, cookies)
         rd = data.get("resultData", {})
-        feed_list = rd.get("data", {}).get("data", [])
 
-        # Update pagination state from response busData
-        resp_bus = rd.get("data", {}).get("busData", {})
+        # Try new format (resultList) first, fallback to old format (data.data)
+        feed_list = rd.get("resultList", [])
+        new_format = bool(feed_list)
+        if not new_format:
+            feed_list = rd.get("data", {}).get("data", [])
+
+        # Update pagination state
+        if new_format:
+            resp_bus = rd.get("busData", {})
+        else:
+            resp_bus = rd.get("data", {}).get("busData", {})
         last_id = resp_bus.get("lastId", "")
         is_end = resp_bus.get("end", True)
 
+        # Track if any records on this page are from today
+        page_has_today = False
+
         for feed in feed_list:
             template = feed.get("templateData", {})
-            trade = template.get("contentData", {}).get("tradeRecordData", [])
-            user_name = template.get("titleData", {}).get("title1", {}).get("text", "")
-            summary = template.get("contentData", {}).get("contentTitle2", {}).get("text", "")
-            for t in trade:
+            if new_format:
+                # New format: transactionData
+                trans = template.get("transactionData", {})
+                card = trans.get("cardHead", {})
+                fund1 = trans.get("fundData", {}).get("fund1", {})
+                time_str = _text(card.get("tradeTime"))
+                amount_str = _text(card.get("tradeAmount"))
+                fund_name = _text(fund1.get("fundName"))
+                fund_id = fund1.get("fundId", "")
+                # tradeType: 1=buy, 2=sell, 3=conversion, etc.
+                ttype = trans.get("tradeType", "")
+                action = "买入" if ttype == "1" else "卖出" if ttype == "2" else "转换" if ttype == "3" else f"类型{ttype}"
+                rec_date = time_str[:5] if time_str and len(time_str) >= 5 else ""
+                if today_only and rec_date != _today_prefix:
+                    continue  # skip old records
+                if rec_date == _today_prefix:
+                    page_has_today = True
                 all_records.append({
-                    "user": user_name,
-                    "summary": summary,
-                    "action": t.get("title1", {}).get("text", ""),
-                    "detail": t.get("title2", {}).get("text", ""),
-                    "fund_name": t.get("title3", {}).get("text", ""),
-                    "amount": t.get("title4", {}).get("text", ""),
+                    "user": "",
+                    "summary": time_str,
+                    "action": action,
+                    "detail": f"基金{fund_id}",
+                    "fund_name": fund_name,
+                    "amount": amount_str,
+                    "_fund_id": fund_id,
+                    "_date_prefix": rec_date,
                 })
+            else:
+                # Old format: tradeRecordData
+                trade = template.get("contentData", {}).get("tradeRecordData", [])
+                user_name = template.get("titleData", {}).get("title1", {}).get("text", "")
+                summary = template.get("contentData", {}).get("contentTitle2", {}).get("text", "")
+                for t in trade:
+                    all_records.append({
+                        "user": user_name,
+                        "summary": summary,
+                        "action": t.get("title1", {}).get("text", ""),
+                        "detail": t.get("title2", {}).get("text", ""),
+                        "fund_name": t.get("title3", {}).get("text", ""),
+                        "amount": t.get("title4", {}).get("text", ""),
+                        "_fund_id": "",
+                        "_date_prefix": "",
+                    })
+
+        # Stop early if today_only and this page had no today records (all older)
+        if today_only and not page_has_today:
+            break
+
         page += 1
+
+    # If today_only, final filter pass to ensure no stray old records
+    if today_only:
+        all_records = [r for r in all_records if r.get("_date_prefix", "") == _today_prefix]
 
     return {"records": all_records}
 
@@ -664,6 +802,215 @@ def get_fund_performance(fund_code, use_cache=False):
     return result
 
 
+def get_fund_detail(fund_code, use_cache=False, cookies=None):
+    """One-call replacement for get_fund_profile + get_fund_performance + get_fund_holdings_distribution.
+
+    Calls getFundDetailPageInfo which returns everything in a single request.
+    Note: this endpoint requires auth cookies (unlike the individual endpoints).
+
+    Returns dict with keys: profile, performance, holdings_distribution, manager, chart.
+    """
+    if use_cache:
+        cached = _read_cache("fund_detail", fund_code, max_age_days=1)
+        if cached:
+            return cached
+
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_post("gw/generic/jj/h5/m/getFundDetailPageInfo", {"fundCode": fund_code}, cookies=cookies)
+    rd = data.get("resultData", {})
+    datas = rd.get("datas", {})
+    if not datas:
+        return None
+
+    # --- Profile (replaces get_fund_profile) ---
+    header = datas.get("headerOfItem", {})
+    profile_section = datas.get("fundProfileOfItem", {})
+    profile = {
+        "fund_code": fund_code,
+        "full_name": header.get("fundName", ""),
+        "fund_type": header.get("fundTypeName", ""),
+        "risk_level": header.get("riskLevel"),
+        "morningstar_rating": header.get("morningstarRating"),
+        "established": profile_section.get("establishedDate", ""),
+        "scale": profile_section.get("fundScale", ""),
+        "manager_company": profile_section.get("company_name", ""),
+        "company_scale": profile_section.get("companyManageScale", ""),
+        "manage_count": profile_section.get("manageNumber"),
+        "is_for_sale": datas.get("isForSale", False),
+        "wealth_rank": header.get("wealthRank", ""),
+    }
+
+    # --- Performance (replaces get_fund_performance) ---
+    perf_section = datas.get("performanceOfItem", {})
+    hist_perf = perf_section.get("historyPerformanceMap", {})
+    perf_list = []
+    for item in hist_perf.get("historyPerformanceList", []):
+        rank_str = item.get("rank", "")
+        try:
+            parts = rank_str.split("/")
+            rank_pct = int(parts[0]) / int(parts[1]) if len(parts) == 2 else None
+        except Exception:
+            rank_pct = None
+        perf_list.append({
+            "period": item.get("name", ""),
+            "return": float(item.get("rate", 0)) if item.get("rate") else None,
+            "avg": float(item.get("avg", 0)) if item.get("avg") else None,
+            "rank": rank_str,
+            "rank_pct": rank_pct,
+        })
+
+    # Annual returns
+    year_perf = perf_section.get("yearPerformanceMap", {})
+    year_list = []
+    for item in year_perf.get("yearPerformanceList", []):
+        year_list.append({
+            "year": item.get("year", ""),
+            "return": float(item.get("rate", 0)) if item.get("rate") else None,
+            "avg": float(item.get("avg", 0)) if item.get("avg") else None,
+        })
+
+    # DCA (定投) returns
+    aip_perf = perf_section.get("aipPerformanceMap", {})
+    aip_list = []
+    for item in aip_perf.get("aipPerformanceList", []):
+        pt_rate = item.get("ptRate", "--")
+        aip_list.append({
+            "period": item.get("name", ""),
+            "return": float(pt_rate) if pt_rate and pt_rate != "--" else None,
+        })
+
+    performance = {
+        "fund_code": fund_code,
+        "performance": perf_list,
+        "year_performance": year_list,
+        "aip_performance": aip_list,
+    }
+
+    # --- Holdings Distribution (replaces get_fund_holdings_distribution) ---
+    dist_section = datas.get("investmentDistributionNewOfItem", {})
+    dist = dist_section.get("investmentDistribution", dist_section)
+    allocation = {}
+    for item in dist.get("proportionList", []):
+        allocation[item.get("name", "")] = float(item.get("fundValue", 0))
+
+    top_stocks = []
+    for stock in dist.get("stock", [])[:10]:
+        top_stocks.append({
+            "name": stock.get("name", ""),
+            "code": stock.get("code", ""),
+            "ratio": stock.get("ratio", ""),
+            "change": stock.get("holdingSharesChange", ""),
+            "rate": stock.get("rate", ""),
+            "industry": stock.get("industryName", ""),
+            "quarters_held": stock.get("positionQuarters", ""),
+        })
+
+    holdings_dist = {
+        "fund_code": fund_code,
+        "report_date": dist.get("investDate", ""),
+        "total_asset": dist.get("totalAsset", 0),
+        "allocation": allocation,
+        "top_stocks": top_stocks,
+        "stock_nav_ratio": dist.get("stockNavRatio", ""),
+        "invest_date": dist.get("investDate", ""),
+    }
+
+    # --- Manager (replaces get_fund_manager) ---
+    mgr_section = datas.get("fundManagerOfItem", {})
+    managers = []
+    for m in mgr_section.get("managerInfoList", []):
+        managers.append({
+            "name": m.get("managerName", ""),
+            "year_performance": m.get("yearPerformance", ""),
+            "employ_performance": m.get("employPerformance", ""),
+            "manage_scale": m.get("manageScale", ""),
+            "employment_date": m.get("employmentDate", ""),
+            "accession_date": m.get("accessionDateDesc", ""),
+        })
+    manager = {"fund_code": fund_code, "managers": managers}
+
+    # --- Chart (replaces get_fund_chart_data) ---
+    chart_section = datas.get("trendChartOfItem", {})
+    chart = {
+        "fund_code": fund_code,
+        "income_trend": chart_section.get("incomeTrendTip", ""),
+        "chart_points": chart_section.get("majorChartPointList", []),
+        "index_name": chart_section.get("indexName", ""),
+    }
+
+    # --- Notices (fund announcements) ---
+    notices = []
+    for n in datas.get("noticeList", []):
+        notices.append({
+            "date": n.get("noteDate", ""),
+            "title": n.get("noticeTitle", ""),
+            "url": n.get("noticeHtmlUrl", ""),
+        })
+
+    # --- Fee info from buttonTips ---
+    btn_tips = datas.get("bottomButtonOfItem", {}).get("buttonTips", {})
+    fee_info = {
+        "buy_fee": btn_tips.get("leftDescHoldCard", ""),
+        "buy_fee_new": btn_tips.get("leftDescNew", ""),
+        "min_purchase": btn_tips.get("rightDescNew", ""),
+    }
+
+    # --- Recent quotations (近1年涨跌幅 etc) ---
+    quotations = []
+    for q in header.get("quotationsMap", []):
+        quotations.append({
+            "name": q.get("name", ""),
+            "value": q.get("value", ""),
+        })
+
+    # --- NAV History (daily net values, separate API call) ---
+    nav_history = []
+    try:
+        nav_data = _api_post("gw/generic/jj/h5/m/getFundHistoryNetValuePageInfo",
+                             {"fundCode": fund_code}, cookies=cookies)
+        nav_list = nav_data.get("resultData", {}).get("datas", {}).get("netValueList", [])
+        for n in nav_list:
+            nav_history.append({
+                "date": n.get("date", ""),
+                "nav": n.get("netValue", ""),
+                "daily_return": n.get("dailyProfit", ""),
+                "total_nav": n.get("totalNetValue", ""),
+            })
+    except Exception:
+        pass
+
+    # --- Profit History (daily profit, separate API call) ---
+    profit_history = []
+    try:
+        profit_data = _api_post("gw/generic/jj/h5/m/getFundHistoryProfitPageInfo",
+                                {"fundCode": fund_code}, cookies=cookies)
+        profit_list = profit_data.get("resultData", {}).get("datas", {}).get("netValueList", [])
+        for p in profit_list:
+            profit_history.append({
+                "date": p.get("date", ""),
+            })
+    except Exception:
+        pass
+
+    result = {
+        "fund_code": fund_code,
+        "profile": profile,
+        "performance": performance,
+        "holdings_distribution": holdings_dist,
+        "manager": manager,
+        "chart": chart,
+        "notices": notices,
+        "fee_info": fee_info,
+        "quotations": quotations,
+        "nav_history": nav_history,
+        "profit_history": profit_history,
+    }
+    if use_cache:
+        _write_cache("fund_detail", fund_code, result)
+    return result
+
+
 def get_fund_manager(fund_code):
     data = _api_post("gw/generic/jj/h5/m/getFundManagerListPageInfo", {"fundCode": fund_code})
     rd = data.get("resultData", {})
@@ -704,39 +1051,262 @@ def get_manager_detail(manager_id):
     return {"radar": radar, "total_score": float(datas.get("totalScore", 0))}
 
 
-def get_followed_users_from_circle(cookies=None):
+def get_followed_users_from_circle(cookies=None, max_pages=3):
+    """Discover active users from JD Finance investment circle.
+
+    Args:
+        cookies: auth cookies
+        max_pages: number of feed pages to scan (default 3)
+
+    Returns:
+        list of {"name": str, "uid": str, "summary": str}
+    """
     if cookies is None:
         cookies = _ensure_cookies()
     import urllib.parse as _up
-    req_data = _up.quote(json.dumps({
-        "tagId": 112, "contentId": "2689640",
-        "iosType": "", "extParams": {"requestFrom": "h5"},
-    }))
-    url = f"{_JD_BASE}/gw/generic/jimu/h5/m/feedFlowOfCircle?reqData={req_data}"
-    req = urllib.request.Request(url, headers={
-        "User-Agent": _USER_AGENT, "Accept": "application/json",
+
+    users = []
+    seen = set()
+    last_id = None
+
+    for _ in range(max_pages):
+        body = {
+            "tagId": 112, "contentId": "2689640",
+            "iosType": "", "extParams": {"requestFrom": "h5"},
+        }
+        if last_id:
+            body["lastId"] = last_id
+        req_data = _up.quote(json.dumps(body, ensure_ascii=False))
+        url = f"{_JD_BASE}/gw/generic/jimu/h5/m/feedFlowOfCircle?reqData={req_data}"
+        req = urllib.request.Request(url, headers={
+            "User-Agent": _USER_AGENT, "Accept": "application/json",
+        })
+        if cookies:
+            cookie_str = "; ".join(f"{k}={v}" for k, v in cookies.items())
+            req.add_header("Cookie", cookie_str)
+        try:
+            resp = urllib.request.urlopen(req, timeout=15)
+            data = json.loads(resp.read())
+        except Exception as e:
+            return users or {"error": str(e)}
+
+        rd = data.get("resultData", {}).get("data", {})
+        items = rd.get("resultList", [])
+        if not items:
+            break
+
+        for feed in items:
+            td = feed.get("templateData", {})
+            # Try multiple paths to find user info
+            cd = td.get("contentData", {})
+            uid = None
+            user_name = ""
+            summary = ""
+
+            # Path 1: repostData has jumpData with user info
+            rd2 = cd.get("repostData", {}) or cd.get("fundTrendData", {})
+            jump = rd2.get("jumpData", {}).get("jumpUrl", "")
+            import re as _re
+            m = _re.search(r"contentId=(\d+)", jump)
+            if m:
+                uid = f"content_{m.group(1)}"
+
+            # Path 2: look for description/title text
+            desc = cd.get("description", {}).get("text", "")
+            title = cd.get("title", {}).get("text", "")
+            if desc:
+                user_name = desc[:30]
+            if title:
+                summary = title[:100]
+
+            if uid and uid not in seen:
+                seen.add(uid)
+                users.append({"name": user_name, "uid": uid, "summary": summary})
+
+        last_id = rd.get("lastId")
+
+    return users
+
+
+# ============================================================
+# Fund Notices & Daily News
+# ============================================================
+def get_fund_notices(fund_code, cookies=None, use_cache=False):
+    """Fetch fund announcements from getFundNoticesPageInfo."""
+    if use_cache:
+        cached = _read_cache("fund_notices", fund_code, max_age_days=1)
+        if cached:
+            return cached
+
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_post("gw/generic/jj/h5/m/getFundNoticesPageInfo",
+                     {"fundCode": fund_code}, cookies=cookies)
+    rd = data.get("resultData", {})
+    datas = rd.get("datas", {})
+    notices = []
+    for n in datas.get("noticeList", []):
+        notices.append({
+            "date": n.get("noteDate", ""),
+            "title": n.get("noticeTitle", ""),
+            "url": n.get("noticeHtmlUrl", ""),
+            "type": n.get("noticeTypeCode", ""),
+        })
+    result = {"fund_code": fund_code, "notices": notices}
+    if use_cache and notices:
+        _write_cache("fund_notices", fund_code, result)
+    return result
+
+
+def get_daily_news(cookies=None, use_cache=False):
+    """Fetch official fund news from JD Finance community (pageId=11575).
+
+    Returns fund company posts and financial media content.
+    """
+    if use_cache:
+        cached = _read_cache("daily_news", "main", max_age_days=0)
+        if cached:
+            return cached
+
+    if cookies is None:
+        cookies = _ensure_cookies()
+
+    body = {
+        "pageId": "11575", "pageType": "11575",
+        "buildCodes": ["common", "feeds", "errorConfig", "topData"],
+        "pageSize": 20,
+        "busData": {"isFirstFeed": True, "pageSize": "20", "lastId": "", "end": False},
+        "extParams": {"requestFrom": "pc"},
+        "pageNum": 1, "clientVersion": "9.9.9", "clientType": "android",
+    }
+    data = _api_form("gw2/generic/aladdin/h5/m/getPageMutilData?pageId=11575",
+                     body, cookies=cookies)
+    rd = data.get("resultData", {})
+    feeds = rd.get("resultList", []) or rd.get("data", {}).get("data", [])
+
+    items = []
+    for feed in feeds:
+        if not isinstance(feed, dict):
+            continue
+        td = feed.get("templateData", {})
+        title_data = td.get("titleData", {})
+        content_data = td.get("contentData", {})
+        jump_data = td.get("jumpData", {})
+
+        title1 = title_data.get("title1", {})
+        author = title1.get("text", "") if isinstance(title1, dict) else ""
+
+        title2 = title_data.get("title2", {})
+        time_str = title2.get("text", "") if isinstance(title2, dict) else ""
+
+        content_title = content_data.get("contentTitle", {})
+        headline = content_title.get("text", "") if isinstance(content_title, dict) else ""
+        if not headline:
+            ct2 = content_data.get("contentTitle2", {})
+            headline = ct2.get("text", "") if isinstance(ct2, dict) else ""
+
+        content_id = content_data.get("contentId", "")
+        jump_url = jump_data.get("jumpUrl", "") if isinstance(jump_data, dict) else ""
+
+        if author or headline:
+            items.append({
+                "author": author,
+                "time": time_str,
+                "headline": headline,
+                "content_id": content_id,
+                "url": jump_url,
+            })
+
+    result = {"date": datetime.now().strftime("%Y-%m-%d"), "items": items}
+    if use_cache and items:
+        _write_cache("daily_news", "main", result)
+    return result
+
+
+def get_fund_ranking(cookies=None, rank_sort_by="2", time_cycle="401", last_id=None):
+    """Fetch fund ranking from JD Finance (实盘牛人 - 收益率榜).
+
+    Args:
+        cookies: JD auth cookies
+        rank_sort_by: "1"=收益榜(金额), "2"=收益率榜(百分比)
+        time_cycle: "101"=近一周, "201"=近一月, "401"=近一年
+        last_id: pagination cursor, None for first page
+
+    Returns dict with keys: users, roll_time, last_id, is_end, filters.
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+
+    # Get ranking filters (head)
+    body_head = f"reqData={urllib.parse.quote(json.dumps({}))}".encode("utf-8")
+    url_head = f"{_JD_BASE}/gw2/generic/redEnv001/h5/m/queryFundFirmOfferMultiRankHead"
+    req_head = urllib.request.Request(url_head, data=body_head, headers={
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "User-Agent": _USER_AGENT,
     })
     if cookies:
-        cookie_str = "; ".join(f"{k}={v}" for k, v in cookies.items())
-        req.add_header("Cookie", cookie_str)
+        req_head.add_header("Cookie", "; ".join(f"{k}={v}" for k, v in cookies.items()))
+
+    filters = {}
+    try:
+        resp_head = urllib.request.urlopen(req_head, timeout=10)
+        head_data = json.loads(resp_head.read())
+        head_rd = head_data.get("resultData", {}).get("data", {})
+        filters = {
+            "rank_type_options": [o.get("label", "") for o in head_rd.get("rankTypeRadio", {}).get("options", []) if isinstance(o, dict)],
+            "time_cycle_options": [o.get("label", "") for o in head_rd.get("timeCycleRadio", {}).get("options", []) if isinstance(o, dict)],
+        }
+    except Exception:
+        pass
+
+    # Get ranking data (minimal params work best)
+    body_data = {"lastId": last_id}
+    body = f"reqData={urllib.parse.quote(json.dumps(body_data))}".encode("utf-8")
+    url = f"{_JD_BASE}/gw2/generic/redEnv001/h5/m/queryFundFirmOfferMultiRank"
+    req = urllib.request.Request(url, data=body, headers={
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "User-Agent": _USER_AGENT,
+    })
+    if cookies:
+        req.add_header("Cookie", "; ".join(f"{k}={v}" for k, v in cookies.items()))
+
     try:
         resp = urllib.request.urlopen(req, timeout=15)
         data = json.loads(resp.read())
     except Exception as e:
-        return {"error": str(e)}
+        return {"users": [], "error": str(e)}
 
-    rd = data.get("resultData", {})
+    rd = data.get("resultData", {}).get("data", {})
+    raw_users = rd.get("fundRankList", [])
+
     users = []
-    seen = set()
-    for feed in rd.get("data", {}).get("data", []):
-        template = feed.get("templateData", {})
-        user_name = template.get("titleData", {}).get("title1", {}).get("text", "")
-        uid = template.get("avatarData", {}).get("createdPin", "")
-        summary = template.get("contentData", {}).get("contentTitle2", {}).get("text", "")
-        if uid and uid not in seen:
-            seen.add(uid)
-            users.append({"name": user_name, "uid": uid, "summary": summary})
-    return users
+    for u in raw_users:
+        info = u.get("userInfo", {})
+
+        def _text(v):
+            """Extract text from {text, textColor} format."""
+            if isinstance(v, dict):
+                return v.get("text", "")
+            return str(v) if v else ""
+
+        users.append({
+            "rank": len(users) + 1,
+            "name": info.get("userName", ""),
+            "pin": info.get("createdPin", ""),
+            "total_return": _text(u.get("rankColumnValue", "")),
+            "return_rate": _text(u.get("rankColumnName", "")),
+            "holdings_value": _text(u.get("showColumnValue", "")),
+            "rank_position": _text(u.get("showColumnValue2", "")),
+            "tag": _text(u.get("showColumnValue", "")),
+        })
+
+    return {
+        "users": users,
+        "roll_time": rd.get("rollTime", ""),
+        "last_id": rd.get("lastId", ""),
+        "is_end": rd.get("isEnd", True),
+        "filters": filters,
+    }
 
 
 # ============================================================
@@ -753,6 +1323,698 @@ def batch_get_holdings(cookies=None, use_cache=False):
         count = len(holdings.get("holdings", []))
         print(f"  [{name}] {count} funds")
     return results
+
+
+# ============================================================
+# Fund Chart Data (from demo.md verified)
+# ============================================================
+
+def get_fund_chart_data(fund_code):
+    """getFundDetailChartPageInfo — drawdown, recovery, chart points."""
+    data = _api_post("gw/generic/jj/h5/m/getFundDetailChartPageInfo",
+                     {"fundCode": fund_code})
+    rd = data.get("resultData", {})
+    ds = rd.get("datas", {})
+    return {
+        "fund_code": fund_code,
+        "income_trend": ds.get("incomeTrendTip", ""),
+        "chart_points": ds.get("majorChartPointList", []),
+        "index_name": ds.get("indexName", ""),
+        "_raw": ds,
+    }
+
+
+# ============================================================
+# Stock Quote API (穿透持仓估值用)
+# ============================================================
+
+def get_stock_quotes(stock_codes):
+    """Fetch stock/index simple quotes (price, change %).
+    No cookie required.
+
+    Args:
+        stock_codes: list like ["SH-000001", "NASDAQ-TSM"]
+
+    Returns:
+        dict of {uniqueCode: {name, last_price, change_pct}}
+    """
+    body = json.dumps({
+        "ticket": "jd-jr-pc",
+        "uniqueCodes": stock_codes,
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        f"{_JD_BASE}/gw/generic/opdataapi/h5/m/getSimpleQuoteUseUniqueCodes",
+        data=body,
+        headers={"Content-Type": "application/json", "User-Agent": _USER_AGENT},
+    )
+    result = {}
+    try:
+        resp = urllib.request.urlopen(req, timeout=10)
+        data = json.loads(resp.read())
+        for item in data.get("resultData", {}).get("data", {}).get("data", []):
+            result[item["uniqueCode"]] = {
+                "name": item.get("name", ""),
+                "last_price": float(item.get("lastPrice", 0)),
+                "change_pct": float(item.get("raisePercent", 0)) * 100,
+            }
+    except Exception:
+        pass
+    return result
+
+
+def get_stock_quotes_extended(stock_codes):
+    """Fetch extended stock quotes with PE/PB/市值.
+    No cookie required.
+
+    Args:
+        stock_codes: list like ["SH-688041", "NASDAQ-TSM"]
+
+    Returns:
+        dict of {uniqueCode: {pe_ratio, pb_ratio, market_value, ...}}
+    """
+    result = {}
+    for code in stock_codes:
+        try:
+            body = json.dumps({
+                "ticket": "jd-jr-pc",
+                "uniqueCode": code,
+            }).encode("utf-8")
+            req = urllib.request.Request(
+                "https://ms.jr.jd.com/gw2/generic/CaiFuPC/pc/m/getQuoteExtendUseUniqueCodeWithCache",
+                data=body,
+                headers={"Content-Type": "application/json", "User-Agent": _USER_AGENT},
+            )
+            resp = urllib.request.urlopen(req, timeout=10)
+            data = json.loads(resp.read())
+            raw = data.get("resultData", {}).get("data", "{}")
+            parsed = json.loads(raw) if isinstance(raw, str) else raw
+            result[code] = {
+                "name": parsed.get("name", ""),
+                "last_price": float(parsed.get("lastPrice", 0)),
+                "pe_ratio": float(parsed.get("peRatio", 0)),
+                "pb_ratio": float(parsed.get("pnaRatio", 0)),
+                "market_value": float(parsed.get("marketValue", 0)),
+                "change_pct": float(parsed.get("raisePercent", 0)) * 100,
+            }
+        except Exception:
+            pass
+    return result
+
+
+# ============================================================
+# NEW APIs
+# ============================================================
+
+def get_fund_fee_and_discount_data_list(fund_code, cookies=None):
+    """Get fund fee and discount data (费率优惠).
+    Requires auth cookies.
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form("gw2/generic/jj/h5/m/getFundFeeAndDiscountDataList",
+                     {"fundCode": fund_code}, cookies=cookies)
+    rd = data.get("resultData", {})
+    if not rd:
+        return None
+    fee_info = {
+        "fund_code": fund_code,
+        "manage_fee": rd.get("data", {}).get("manageFeeRate"),
+        "custody_fee": rd.get("data", {}).get("custodyFeeRate"),
+        "purchase_fee": rd.get("data", {}).get("purchaseFeeRate"),
+        "redeem_fee": rd.get("data", {}).get("redeemFeeRate"),
+        "discounts": [],
+    }
+    for d in rd.get("data", {}).get("discountVos", []):
+        fee_info["discounts"].append({
+            "channel": d.get("channelName"),
+            "discount": d.get("discount"),
+            "actual_rate": d.get("actualRate"),
+        })
+    return fee_info
+
+
+def get_fund_label(fund_code, cookies=None):
+    """Get fund badges/labels (热搜标签等). Requires auth cookies.
+    Returns list of badge strings like "连续上榜11天"."""
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form("gw2/generic/opdataapi/newh5/m/getFundLabel",
+                     {"fundCode": fund_code}, cookies=cookies)
+    rd = data.get("resultData", {})
+    label_text = rd.get("data", "")
+    labels = [lbl.strip() for lbl in label_text.replace("，", ",").split(",") if lbl.strip()] if label_text else []
+    return {"fund_code": fund_code, "labels": labels}
+
+
+def get_index_valuation_trend_chart(index_code, date_range=3):
+    """Get index PE/PB valuation trend. No auth required.
+    Args:
+        index_code: CSI index code e.g. "H30184.CSI" (中证行业指数代码)
+        date_range: 1=近1年, 3=近3年
+    """
+    data = _api_form("gw2/generic/wealthBase/newh5/m/getIndexValuationTrendChart",
+                     {"indexCode": index_code, "trackId": "", "bkId": "", "dateRange": date_range})
+    rd = data.get("resultData", {})
+    if not rd or rd.get("status") == "FAIL":
+        return None
+    datas = rd.get("datas", {})
+    chart_list = datas.get("indexValuationTrendChatList", [])
+    # Get latest data point
+    latest = chart_list[-1] if chart_list else {}
+    return {
+        "index_code": index_code,
+        "current_pe": latest.get("pe"),
+        "current_pb": latest.get("pb"),
+        "pe_percentile": latest.get("valuePeRank"),
+        "pb_percentile": latest.get("valuePbRank"),
+        "top_title": datas.get("topTitle"),
+        "history": [{"date": p.get("dateTime","")[:10], "pe": p.get("pe"), "pb": p.get("pb"),
+                     "pe_pct": p.get("valuePeRank"), "pb_pct": p.get("valuePbRank")}
+                    for p in chart_list],
+    }
+
+
+def get_buy_index_related_fund(index_code, cookies=None):
+    """Get funds tracking the same CSI index. Requires auth cookies.
+    Args:
+        index_code: CSI index code e.g. "H30184.CSI"
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form("gw2/generic/wealthBase/newh5/m/getBuyIndexRelatedFund",
+                     {"indexCode": index_code, "trackId": "", "bkId": ""}, cookies=cookies)
+    rd = data.get("resultData", {})
+    result = {"index_code": index_code, "etf_funds": [], "otc_funds": []}
+    if rd and rd.get("status") != "FAIL":
+        datas = rd.get("datas", {})
+        for item in datas.get("relatedExchangeFundList", []):
+            result["etf_funds"].append({
+                "code": item.get("fundCode"),
+                "name": item.get("fundName"),
+                "rate": item.get("dayRate"),
+            })
+        for item in datas.get("relatedOTCFundList", []):
+            result["otc_funds"].append({
+                "code": item.get("fundCode"),
+                "name": item.get("fundName"),
+                "year_rate": item.get("fundYearRate"),
+                "tags": item.get("tagList", []),
+            })
+    return result
+
+
+def get_fund_data(fund_code, use_cache=True, cookies=None):
+    """Unified fund data fetch - merges all fund data into one cache file.
+    Uses get_fund_detail as primary source, falls back to individual APIs.
+
+    Cache: fund_data_{fund_code}.json (1 day TTL)
+
+    Returns dict with keys: profile, performance, holdings, manager, rules, labels
+    """
+    cache_path = _CACHE_DIR / f"fund_data_{fund_code}.json"
+    now = datetime.now()
+
+    # Check cache
+    if use_cache and cache_path.exists():
+        try:
+            cached = json.loads(cache_path.read_text("utf-8"))
+            if "fetch_time" in cached:
+                fetch_time = datetime.fromisoformat(cached["fetch_time"])
+                if (now - fetch_time).days < 1:
+                    return cached
+        except:
+            pass
+
+    result = {"fund_code": fund_code, "fetch_time": now.isoformat()}
+
+    # Primary: get_fund_detail (comprehensive, needs cookie)
+    if cookies is None:
+        cookies = _ensure_cookies()
+    detail = get_fund_detail(fund_code, use_cache=False, cookies=cookies)
+    if detail:
+        result["profile"] = detail.get("profile", {})
+        result["performance"] = detail.get("performance", {})
+        result["holdings"] = detail.get("holdings_distribution", {})
+        result["manager"] = detail.get("manager", {})
+    else:
+        # Fallback: individual APIs
+        result["profile"] = get_fund_profile(fund_code, use_cache=False) or {}
+        result["performance"] = get_fund_performance(fund_code, use_cache=False) or {}
+
+    # Supplement: trade rules (no cookie needed)
+    result["rules"] = get_fund_trade_rules(fund_code, use_cache=False) or {}
+
+    # Supplement: manager detail if missing
+    if not result.get("manager") or not result["manager"].get("managers"):
+        result["manager"] = get_fund_manager(fund_code) or {}
+
+    # Save unified cache
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    return result
+
+
+# ============================================================
+# NEW: Index Block Info — industry-level valuation + investment signals
+# ============================================================
+def get_index_block_info(index_code, cookies=None):
+    """Get industry index PE/PB daily percentiles (10-year) + 3D resonance investment signal.
+
+    This is THE critical missing piece for sector-level market timing. It provides:
+    - PE/PB daily percentile history (2016-present)
+    - Three-dimensional resonance model: trend(10%) + sentiment(30%) + valuation(60%) → 0-100 score
+    - Investment signal tiers: 0-50=观望, 51-75=中性, 76-100=有机会
+    - Valuation judgment: 高估/中性/低估
+
+    Args:
+        index_code: Industry index code (e.g. "BK0447" for 半导体)
+    Returns:
+        dict with: index_code, signal_score, signal_grade, valuation_status,
+                   pe_percentile, pb_percentile, pe_history, pb_history, top_title
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form("gw2/generic/wealthBase/newh5/m/getIndexBlockInfo",
+                     {"indexCode": index_code, "trackId": "", "bkId": ""}, cookies=cookies)
+    rd = data.get("resultData", {})
+    if not rd or rd.get("status") == "FAIL":
+        return {"index_code": index_code, "error": "API returned failure"}
+    datas = rd.get("datas", {})
+
+    # Valuation data is nested under indexValuationInfo
+    val_info = datas.get("indexValuationInfo", {})
+    chart_list = val_info.get("indexValuationTrendChatList", [])
+    latest = chart_list[-1] if chart_list else {}
+
+    # Signal score from totalScore field (string, e.g. "52")
+    raw_score = datas.get("totalScore", "0")
+    try:
+        signal_score = float(raw_score)
+    except (ValueError, TypeError):
+        signal_score = 0
+    signal_grade = "观望" if signal_score <= 50 else ("中性" if signal_score <= 75 else "有机会")
+
+    # PE/PB percentiles
+    pe_pct = float(latest.get("valuePeRank", 0)) if latest.get("valuePeRank") else None
+    pb_pct = float(latest.get("valuePbRank", 0)) if latest.get("valuePbRank") else None
+
+    # Valuation status from API's own topTitle
+    valuation_status = val_info.get("topTitle", "")
+
+    # Radar scores (趋势/景气/估值) from radar list
+    trend_score = None
+    sentiment_score = None
+    valuation_score = None
+    for radar in datas.get("indexBlockInfoRadarInfoList", []):
+        name = radar.get("name", "")
+        score = radar.get("score")
+        if "趋势" in name:
+            trend_score = float(score) if score else None
+        elif "景气" in name:
+            sentiment_score = float(score) if score else None
+        elif "估值" in name:
+            valuation_score = float(score) if score else None
+
+    result = {
+        "index_code": index_code,
+        "description": datas.get("description", ""),
+        "signal_score": signal_score,
+        "signal_grade": signal_grade,
+        "valuation_status": valuation_status,
+        "current_pe": float(latest.get("pe", 0)) if latest.get("pe") else None,
+        "current_pb": float(latest.get("pb", 0)) if latest.get("pb") else None,
+        "pe_percentile": pe_pct,
+        "pb_percentile": pb_pct,
+        "trend_score": trend_score,
+        "sentiment_score": sentiment_score,
+        "valuation_score": valuation_score,
+        # Full daily history (2016-present, ~2500 trading days)
+        "pe_history": [{"date": p.get("dateTime","")[:10], "pe": float(p.get("pe",0)),
+                        "pb": float(p.get("pb",0)),
+                        "pe_pct": float(p.get("valuePeRank",0)),
+                        "pb_pct": float(p.get("valuePbRank",0))}
+                       for p in chart_list],
+    }
+    return result
+
+
+# ============================================================
+# NEW: Fund Detail (Logged-in version) — most comprehensive single endpoint
+# ============================================================
+def get_fund_detail_pin(fund_code, use_cache=False, cookies=None):
+    """Logged-in version of fund detail — the most comprehensive single endpoint.
+
+    Returns more data than get_fund_detail including:
+    - fundDiagnosisOfItem: returns/volatility/drawdown/Sharpe scores
+    - fundProfileOfItem: full company info, inception date, scale
+    - purchaseProcessOfItem: fee details with discounts
+    - All the same sections as get_fund_detail (performance, holdings, manager, chart, notices)
+
+    Args:
+        fund_code: 6-digit fund code
+        use_cache: use cached data (1 day TTL)
+        cookies: auth cookies (auto-loaded if None)
+    Returns:
+        dict with keys: profile, performance, holdings_distribution, manager,
+                        diagnosis, fee_info, chart, notices, nav_history
+    """
+    if use_cache:
+        cached = _read_cache("fund_detail_pin", fund_code, max_age_days=1)
+        if cached:
+            return cached
+
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_post("gw/generic/life/h5/m/getFundDetailPageInfoWithPin",
+                     {"fundCode": fund_code}, cookies=cookies)
+    rd = data.get("resultData", {})
+    datas = rd.get("datas", {})
+    if not datas:
+        return None
+
+    # --- Profile ---
+    header = datas.get("headerOfItem", {})
+    profile_section = datas.get("fundProfileOfItem", {})
+    profile = {
+        "fund_code": fund_code,
+        "full_name": header.get("fundName", ""),
+        "fund_type": header.get("fundTypeName", ""),
+        "risk_level": header.get("riskLevel"),
+        "morningstar_rating": header.get("morningstarRating"),
+        "established": profile_section.get("establishedDate", ""),
+        "scale": profile_section.get("fundScale", ""),
+        "manager_company": profile_section.get("company_name", ""),
+        "company_scale": profile_section.get("companyManageScale", ""),
+        "manager_count": profile_section.get("manageNumber"),
+        "wealth_rank": header.get("wealthRank", ""),
+    }
+
+    # --- Performance ---
+    perf_section = datas.get("performanceOfItem", {})
+    perf_list = []
+    for item in perf_section.get("historyPerformanceMap", {}).get("historyPerformanceList", []):
+        rank_str = item.get("rank", "")
+        try:
+            parts = rank_str.split("/")
+            rank_pct = int(parts[0]) / int(parts[1]) if len(parts) == 2 else None
+        except Exception:
+            rank_pct = None
+        perf_list.append({
+            "period": item.get("name", ""),
+            "return": float(item.get("rate", 0)) if item.get("rate") else None,
+            "avg": float(item.get("avg", 0)) if item.get("avg") else None,
+            "rank": rank_str,
+            "rank_pct": rank_pct,
+        })
+    year_list = []
+    for item in perf_section.get("yearPerformanceMap", {}).get("yearPerformanceList", []):
+        year_list.append({
+            "year": item.get("year", ""),
+            "return": float(item.get("rate", 0)) if item.get("rate") else None,
+            "avg": float(item.get("avg", 0)) if item.get("avg") else None,
+        })
+    performance = {"fund_code": fund_code, "performance": perf_list, "year_performance": year_list}
+
+    # --- Holdings Distribution ---
+    dist_section = datas.get("investmentDistributionNewOfItem", {})
+    dist = dist_section.get("investmentDistribution", dist_section)
+    allocation = {}
+    for item in dist.get("proportionList", []):
+        allocation[item.get("name", "")] = float(item.get("fundValue", 0))
+    top_stocks = []
+    for stock in dist.get("stock", [])[:10]:
+        top_stocks.append({
+            "name": stock.get("name", ""),
+            "code": stock.get("code", ""),
+            "ratio": stock.get("ratio", ""),
+            "change": stock.get("holdingSharesChange", ""),
+            "rate": stock.get("rate", ""),
+            "industry": stock.get("industryName", ""),
+            "quarters_held": stock.get("positionQuarters", ""),
+        })
+    holdings_dist = {
+        "fund_code": fund_code,
+        "report_date": dist.get("investDate", ""),
+        "allocation": allocation,
+        "top_stocks": top_stocks,
+        "stock_nav_ratio": dist.get("stockNavRatio", ""),
+    }
+
+    # --- Manager ---
+    mgr_section = datas.get("fundManagerOfItem", {})
+    managers = []
+    for m in mgr_section.get("managerInfoList", []):
+        managers.append({
+            "name": m.get("managerName", ""),
+            "year_performance": m.get("yearPerformance", ""),
+            "employ_performance": m.get("employPerformance", ""),
+            "manage_scale": m.get("manageScale", ""),
+            "employment_date": m.get("employmentDate", ""),
+            "accession_date": m.get("accessionDateDesc", ""),
+        })
+    manager = {"fund_code": fund_code, "managers": managers}
+
+    # --- Diagnosis (KEY NEW ADDITION from Pin endpoint) ---
+    diag_section = datas.get("fundDiagnosisOfItem", {})
+    diagnosis = {}
+    if diag_section:
+        diagnosis = {
+            "ability": float(diag_section.get("ability", 0)),           # 收益能力
+            "ability_desc": diag_section.get("abilityDesc", ""),
+            "performance_ratio": float(diag_section.get("performanceRatio", 0)),  # 投资性价比
+            "ratio_desc": diag_section.get("ratioDesc", ""),
+            "anti_risk": float(diag_section.get("antiRisk", 0)),         # 抗跌能力
+            "anti_risk_desc": diag_section.get("antiRiskDesc", ""),
+            "anti_fluctuation": float(diag_section.get("antiFluctuation", 0)),  # 抗波动能力
+            "fluctuation_desc": diag_section.get("fluctuationDesc", ""),
+            "sharpe": float(diag_section.get("sharpe", 0)) if diag_section.get("sharpe") else None,
+            "max_drawdown": float(diag_section.get("maxDrawdown", 0)) if diag_section.get("maxDrawdown") else None,
+            "volatility": float(diag_section.get("volatility", 0)) if diag_section.get("volatility") else None,
+            "advantage_index_name": diag_section.get("advantageIndexName", ""),
+            "advantage_index_val": diag_section.get("advantageIndexVal", ""),
+            "disadvantage_index_name": diag_section.get("disadvantageIndexName", ""),
+            "disadvantage_index_val": diag_section.get("disadvantageIndexVal", ""),
+        }
+
+    # --- Chart ---
+    chart_section = datas.get("trendChartOfItem", {})
+    chart = {
+        "fund_code": fund_code,
+        "income_trend": chart_section.get("incomeTrendTip", ""),
+        "chart_points": chart_section.get("majorChartPointList", []),
+        "index_name": chart_section.get("indexName", ""),
+    }
+
+    # --- Fee info ---
+    btn_tips = datas.get("bottomButtonOfItem", {}).get("buttonTips", {})
+    fee_info = {
+        "buy_fee": btn_tips.get("leftDescHoldCard", ""),
+        "buy_fee_new": btn_tips.get("leftDescNew", ""),
+        "min_purchase": btn_tips.get("rightDescNew", ""),
+    }
+
+    # --- Notices ---
+    notices = []
+    for n in datas.get("noticeList", []):
+        notices.append({
+            "date": n.get("noteDate", ""),
+            "title": n.get("noticeTitle", ""),
+            "url": n.get("noticeHtmlUrl", ""),
+        })
+
+    # --- NAV History ---
+    nav_history = []
+    try:
+        nav_data = _api_post("gw/generic/jj/h5/m/getFundHistoryNetValuePageInfo",
+                             {"fundCode": fund_code}, cookies=cookies)
+        for n in nav_data.get("resultData", {}).get("datas", {}).get("netValueList", []):
+            nav_history.append({
+                "date": n.get("date", ""),
+                "nav": n.get("netValue", ""),
+                "daily_return": n.get("dailyProfit", ""),
+            })
+    except Exception:
+        pass
+
+    result = {
+        "fund_code": fund_code,
+        "profile": profile,
+        "performance": performance,
+        "holdings_distribution": holdings_dist,
+        "manager": manager,
+        "diagnosis": diagnosis,
+        "fee_info": fee_info,
+        "chart": chart,
+        "notices": notices,
+        "nav_history": nav_history,
+    }
+    if use_cache:
+        _write_cache("fund_detail_pin", fund_code, result)
+    return result
+
+
+# ============================================================
+# NEW: Watchlist (自选列表)
+# ============================================================
+def get_watchlist(cookies=None, use_cache=False):
+    """Get user's watchlist (自选基金列表) with performance metrics.
+
+    Returns each fund's: fundNo, fundName, latest NAV, daily/weekly/monthly/yearly returns,
+    and cumulative P&L% since added to watchlist.
+
+    Requires auth cookies.
+
+    Returns:
+        dict with: groups (list of group names), funds (list of fund items)
+    """
+    if use_cache:
+        cached = _read_cache("watchlist", "mine", max_age_days=1)
+        if cached:
+            return cached
+
+    if cookies is None:
+        cookies = _ensure_cookies()
+
+    # Note: this endpoint uses a different format (jdtwt namespace on gw2)
+    data = _api_form("gw2/generic/jdtwt/h5/m/queryZxProductList",
+                     {"type": 1, "page": 1, "pageSize": 200}, cookies=cookies)
+
+    rd = data.get("resultData", {})
+    datas = rd.get("datas", {}) if rd else {}
+
+    groups = []
+    for g in datas.get("groupList", []):
+        groups.append({
+            "group_name": g.get("groupName", ""),
+            "group_id": g.get("groupId", ""),
+            "count": g.get("count", 0),
+        })
+
+    funds = []
+    for f in datas.get("productList", []):
+        funds.append({
+            "fund_code": f.get("fundNo", ""),
+            "fund_name": f.get("fundName", ""),
+            "fund_type": f.get("fundType", ""),
+            "latest_nav": f.get("newValue", ""),
+            "day_return": float(f.get("dayRiseRate", 0)) if f.get("dayRiseRate") else None,
+            "week_return": float(f.get("weekRiseRate", 0)) if f.get("weekRiseRate") else None,
+            "month_return": float(f.get("monthRiseRate", 0)) if f.get("monthRiseRate") else None,
+            "year_return": float(f.get("yearRiseRate", 0)) if f.get("yearRiseRate") else None,
+            "total_pnl_pct": float(f.get("allIncome", 0)) if f.get("allIncome") else None,
+            "fund_id": f.get("fundId", ""),
+            "url": f.get("url", ""),
+        })
+
+    result = {"groups": groups, "funds": funds, "total_count": len(funds)}
+
+    if use_cache:
+        _write_cache("watchlist", "mine", result)
+    return result
+
+
+# ============================================================
+# NEW: Player Trading Feed (大佬实盘交易feed)
+# ============================================================
+def get_player_trading_feed(cookies=None, page_id="11567"):
+    """Get real-time trading feed from the funded player square (实盘广场).
+
+    More reliable than get_trading_records because it directly reads the
+    community feed instead of scraping user trade history.
+
+    Key fields per trade:
+    - allAmount: trade amount/shares
+    - tradeType: 1=buy, 2=sell
+    - tradeTime: timestamp (ms)
+    - statusCode: COMPLETE/PAY_SUCC/REDEEM
+    - productId: JD internal code (map to 6-digit fund code)
+    - jumpUrl: contains public fund code
+
+    Returns:
+        list of trade feed items
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+
+    data = _api_form("gw/generic/aladdin/h5/m/getPageMutilData",
+                     {"pageId": page_id, "extParams": {}}, cookies=cookies)
+    rd = data.get("resultData", {})
+    if not rd:
+        return []
+
+    datas = rd.get("datas", {})
+    items = datas.get("itemList", [])
+
+    trades = []
+    for item in items:
+        ext = item.get("extInfo", {})
+        trades.append({
+            "user_name": item.get("userName", ""),
+            "user_id": item.get("userId", ""),
+            "fund_name": item.get("productName", ""),
+            "product_id": item.get("productId", ""),
+            "amount": ext.get("allAmount", ""),
+            "trade_type": 1 if ext.get("tradeType") == "1" else (2 if ext.get("tradeType") == "2" else None),
+            "trade_time": ext.get("tradeTime", ""),
+            "status": ext.get("statusCode", ""),
+            "jump_url": ext.get("jumpUrl", ""),
+            "order_type": item.get("orderType", ""),
+        })
+
+    return trades
+
+
+# ============================================================
+# NEW: Index Detail (行业指数详情)
+# ============================================================
+def get_index_detail(index_code, cookies=None):
+    """Get industry index detail including linked ETFs and OTC funds.
+
+    Returns:
+        dict with: index_code, index_name, description, track_type,
+                   linked_etfs (with returns/volume), linked_otc_funds (with 1yr/3yr/5yr returns)
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    data = _api_form("gw2/generic/wealthBase/newh5/m/getIndexDetail",
+                     {"indexCode": index_code, "trackId": "", "bkId": ""}, cookies=cookies)
+    rd = data.get("resultData", {})
+    if not rd or rd.get("status") == "FAIL":
+        return {"index_code": index_code, "error": "API returned failure"}
+
+    datas = rd.get("datas", {})
+    index_info = datas.get("indexInfo", {})
+
+    etfs = []
+    for e in datas.get("relatedExchangeFundList", []):
+        etfs.append({
+            "code": e.get("fundCode"),
+            "name": e.get("fundName"),
+            "day_return": e.get("dayRate"),
+            "volume": e.get("dayTurnover"),
+            "month_return": e.get("day30Rate"),
+        })
+
+    otc_funds = []
+    for f in datas.get("relatedOTCFundList", []):
+        otc_funds.append({
+            "code": f.get("fundCode"),
+            "name": f.get("fundName"),
+            "year_return": f.get("fundYearRate"),
+            "excess_return_vs_index": f.get("excessReturnRate"),
+            "return_3y": f.get("fundYear3Rate"),
+            "return_5y": f.get("fundYear5Rate"),
+            "tags": f.get("tagList", []),
+        })
+
+    return {
+        "index_code": index_code,
+        "index_name": index_info.get("name", ""),
+        "description": index_info.get("desc", ""),
+        "track_type": index_info.get("trackTypeName", ""),
+        "linked_etfs": etfs,
+        "linked_otc_funds": otc_funds,
+    }
 
 
 # ============================================================
@@ -801,6 +2063,16 @@ def main():
     parser.add_argument("--batch-fund", type=str, nargs="+", help="Batch fetch all data for multiple fund codes (concurrent)")
     parser.add_argument("--batch-holdings", action="store_true", help="Batch get all followed holdings")
     parser.add_argument("--save-cookies", type=str, help="Manually paste cookie string to save")
+    parser.add_argument("--fund-fees", type=str, help="Get fund fee and discount data (code)")
+    parser.add_argument("--fund-label", type=str, help="Get fund official classification labels (code)")
+    parser.add_argument("--index-valuation", type=str, help="Get index PE/PB valuation (e.g. SH-000300)")
+    parser.add_argument("--index-related-funds", type=str, help="Get funds tracking an index (code)")
+    parser.add_argument("--fund-data", type=str, help="Get unified fund data (code)")
+    parser.add_argument("--index-block-info", type=str, help="Get industry index investment signal + 10yr PE/PB percentile (e.g. BK0447)")
+    parser.add_argument("--index-detail", type=str, help="Get industry index detail with linked ETFs/funds (code)")
+    parser.add_argument("--fund-detail-pin", type=str, help="Get fund detail (logged-in version, includes diagnosis)")
+    parser.add_argument("--watchlist", action="store_true", help="Get your watchlist (自选基金列表)")
+    parser.add_argument("--player-trading-feed", action="store_true", help="Get real-time trading feed from player square")
     args = parser.parse_args()
 
     if args.save_cookies:
@@ -855,7 +2127,7 @@ def main():
 
         elif args.trading_records_all:
             print("\\nTrading records for all followed users...")
-            for name, numeric_id in FOLLOWED_USERS.items():
+            for numeric_id, name in FOLLOWED_USERS.items():
                 uid = f"jimu_user_info-{numeric_id}"
                 try:
                     result = get_trading_records(uid, cookies=cookies)
@@ -1015,6 +2287,141 @@ def main():
                     print(f"    Total score: {m.get('total_score', 0)}")
         else:
             print("Failed to get fund manager")
+
+    # New APIs
+    if args.fund_fees:
+        fees = get_fund_fee_and_discount_data_list(args.fund_fees)
+        if fees:
+            print(f"\nFund {args.fund_fees} fees:")
+            print(f"  管理费: {fees.get('manage_fee', 'N/A')}")
+            print(f"  托管费: {fees.get('custody_fee', 'N/A')}")
+            print(f"  申购费: {fees.get('purchase_fee', 'N/A')}")
+            print(f"  赎回费: {fees.get('redeem_fee', 'N/A')}")
+            for d in fees.get('discounts', []):
+                print(f"  优惠: {d.get('channel')} -> {d.get('discount')}折 (实付{d.get('actual_rate')})")
+        else:
+            print("Failed to get fee data")
+
+    if args.fund_label:
+        label = get_fund_label(args.fund_label)
+        if label:
+            print(f"\nFund {args.fund_label} labels: {', '.join(label['labels'])}")
+        else:
+            print("Failed to get labels")
+
+    if args.index_valuation:
+        val = get_index_valuation_trend_chart(args.index_valuation)
+        if val:
+            print(f"\nIndex {args.index_valuation} valuation:")
+            print(f"  当前PE: {val.get('current_pe')}")
+            print(f"  当前PB: {val.get('current_pb')}")
+            print(f"  PE百分位: {val.get('pe_percentile')}")
+            print(f"  PB百分位: {val.get('pb_percentile')}")
+        else:
+            print("Failed to get valuation data")
+
+    if args.index_related_funds:
+        funds = get_buy_index_related_fund(args.index_related_funds)
+        if funds:
+            print(f"\nFunds tracking {args.index_related_funds}:")
+            print(f"  ETF funds:")
+            for f in funds.get('etf_funds', []):
+                print(f"    {f.get('code')} - {f.get('name')} ({f.get('rate')}%)")
+            print(f"  OTC funds:")
+            for f in funds.get('otc_funds', []):
+                print(f"    {f.get('code')} - {f.get('name')} ({f.get('year_rate')}%)")
+        else:
+            print("Failed to get related funds")
+
+    if args.fund_data:
+        data = get_fund_data(args.fund_data)
+        if data:
+            p = data.get("profile", {})
+            print(f"\nFund {args.fund_data} data:")
+            print(f"  名称: {p.get('full_name', 'N/A')}")
+            print(f"  类型: {p.get('fund_type', 'N/A')}")
+            print(f"  规模: {p.get('scale', 'N/A')}")
+            perf = data.get("performance", {}).get("performance", [])
+            if perf:
+                for item in perf[:5]:
+                    print(f"  {item['period']}: {item.get('return','?')}%")
+            mgr = data.get("manager", {}).get("managers", [])
+            if mgr:
+                for m in mgr[:2]:
+                    print(f"  经理: {m.get('name','')}")
+            print(f"  Cache: fund_data_{args.fund_data}.json")
+        else:
+            print("Failed to get fund data")
+
+    if args.index_block_info:
+        block = get_index_block_info(args.index_block_info)
+        if block and "error" not in block:
+            print(f"\nIndex {args.index_block_info} industry signal:")
+            print(f"  综合评分: {block.get('signal_score')} ({block.get('signal_grade')})")
+            print(f"  估值状态: {block.get('valuation_status')}")
+            print(f"  PE百分位: {block.get('pe_percentile')}")
+            print(f"  PB百分位: {block.get('pb_percentile')}")
+            print(f"  趋势: {block.get('trend_score')}, 景气: {block.get('sentiment_score')}, 估值: {block.get('valuation_score')}")
+        else:
+            print("Failed to get index block info")
+
+    if args.index_detail:
+        detail = get_index_detail(args.index_detail)
+        if detail and "error" not in detail:
+            print(f"\nIndex {args.index_detail} detail:")
+            print(f"  名称: {detail.get('index_name')}")
+            print(f"  类型: {detail.get('track_type')}")
+            etfs = detail.get('linked_etfs', [])
+            if etfs:
+                print(f"  关联ETF ({len(etfs)}):")
+                for e in etfs[:5]:
+                    print(f"    {e['code']} {e['name']}: 日涨幅={e['day_return']}%")
+            otc = detail.get('linked_otc_funds', [])
+            if otc:
+                print(f"  关联场外基金 ({len(otc)}):")
+                for f in otc[:5]:
+                    print(f"    {f['code']} {f['name']}: 1年={f.get('year_return')}% 超额={f.get('excess_return_vs_index')}%")
+        else:
+            print("Failed to get index detail")
+
+    if args.fund_detail_pin:
+        detail = get_fund_detail_pin(args.fund_detail_pin)
+        if detail:
+            p = detail.get("profile", {})
+            print(f"\nFund {args.fund_detail_pin} (Pin):")
+            print(f"  名称: {p.get('full_name', 'N/A')}")
+            print(f"  类型: {p.get('fund_type', 'N/A')}, 规模: {p.get('scale', 'N/A')}")
+            diag = detail.get("diagnosis", {})
+            if diag:
+                print(f"  诊断: 收益={diag.get('ability')} 抗回撤={diag.get('anti_risk')} 夏普={diag.get('sharpe')} 最大回撤={diag.get('max_drawdown')}")
+                adv = diag.get('advantage_index_name', '')
+                dis = diag.get('disadvantage_index_name', '')
+                if adv or dis:
+                    print(f"  优势={adv}({diag.get('advantage_index_val')}) 劣势={dis}({diag.get('disadvantage_index_val')})")
+            perf = detail.get("performance", {}).get("performance", [])
+            if perf:
+                for item in perf[:3]:
+                    print(f"  {item['period']}: {item.get('return','?')}%")
+        else:
+            print("Failed to get fund detail (Pin)")
+
+    if args.watchlist:
+        wl = get_watchlist()
+        if wl:
+            print(f"\n自选列表 ({wl.get('total_count', 0)} funds):")
+            for g in wl.get('groups', []):
+                print(f"  分组: {g['group_name']} ({g['count']}只)")
+            for f in wl.get('funds', []):
+                print(f"  {f['fund_code']} {f['fund_name']}: 净值={f['latest_nav']} 日涨跌={f.get('day_return')}% 自选盈亏={f.get('total_pnl_pct')}%")
+        else:
+            print("Failed to get watchlist")
+
+    if args.player_trading_feed:
+        trades = get_player_trading_feed()
+        print(f"\n实盘交易feed ({len(trades) if trades else 0} trades):")
+        for t in (trades or [])[:10]:
+            direction = "买入" if t.get('trade_type') == 1 else ("卖出" if t.get('trade_type') == 2 else "?")
+            print(f"  {t.get('user_name')}: {direction} {t.get('fund_name')} {t.get('amount')}")
 
 
 if __name__ == "__main__":

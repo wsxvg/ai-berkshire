@@ -1,0 +1,69 @@
+{
+  "fund_code": "018147",
+  "report_date": null,
+  "total_asset": 4568908925.33,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "10.26%",
+      "change": "1.19%"
+    },
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "10.14%",
+      "change": "0.28%"
+    },
+    {
+      "name": "海力士半导体公司",
+      "code": "KR7000660001",
+      "ratio": "8.65%",
+      "change": "1.14%"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "8.52%",
+      "change": "0.54%"
+    },
+    {
+      "name": "三星电子",
+      "code": "KR7005930003",
+      "ratio": "6.76%",
+      "change": "1.32%"
+    },
+    {
+      "name": "Sandisk Corporation",
+      "code": "SNDK",
+      "ratio": "4.91%",
+      "change": "新增"
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "4.29%",
+      "change": "0.16%"
+    },
+    {
+      "name": "西部数据",
+      "code": "WDC",
+      "ratio": "3.73%",
+      "change": "新增"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "3.58%",
+      "change": "0.21%"
+    },
+    {
+      "name": "芯源系统",
+      "code": "MPWR",
+      "ratio": "3.49%",
+      "change": "0.40%"
+    }
+  ],
+  "invest_date": ""
+}

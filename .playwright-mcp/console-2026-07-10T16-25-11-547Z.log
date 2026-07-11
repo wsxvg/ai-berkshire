@@ -1,0 +1,10 @@
+[     384ms] [WARNING] registerCode上报埋点失败，但不影响后续流程: {status: -101, msg: 不在京东app内} @ https://res.jr.jd.com/cf-local-jssdk/babelnode/jd-jssdk/4.7.8/jd-jssdk.js:2
+[     700ms] [LOG] 2024-05-29 cfYxCompCyticket @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[     754ms] [LOG] BASE_API== //ms.jr.jd.com @ https://res.jr.jd.com/fundcomp/cf-fund-comp-invest-edu/1.0.0/static.umd.js:9
+[     878ms] [LOG] 跳出率埋点验证 ~ T1｜T2:  jinketiyan_bounce|jinketiyan_c0703e5d @ https://storage.360buyimg.com/jdpay-oss/jinke-tiyan/release/bounce/0.0.4/bounce.min.js:0
+[    1126ms] [LOG] element JSHandle@node @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[    1127ms] [LOG] props 2024-05-27.21 Proxy(Object) @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[    1128ms] [LOG] 获取数据 @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[    1403ms] [LOG] 风控设备指纹脚本加载成功[{"success":true,"isCache":false,"repeatCount":0}] @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:26
+[    1404ms] [LOG] getRiskInfo++++++=》{"jsToken":"","fp":"25ee55edb898e43c53258dbce182de8c","sdkToken":"","eid":"DO34XYHK7QT3K2E5ADVUEELFRPQYZTHJYCF7C6KCSFDSURWUH2G63GLJGLQ7V56JNW2A3ODO5P4L4DODAC4ZU5G24Y"} @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:26
+[    1404ms] [LOG] 风控deviceInfo参数 {jsToken: , fp: 25ee55edb898e43c53258dbce182de8c, sdkToken: , eid: DO34XYHK7QT3K2E5ADVUEELFRPQYZTHJYCF7C6KCSFDSURWUH2G63GLJGLQ7V56JNW2A3ODO5P4L4DODAC4ZU5G24Y} @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49

@@ -1,0 +1,20 @@
+{
+  "fund_code": "017491",
+  "buy_date": "07-06 15:00前",
+  "confirm_date": "07-07",
+  "manage_fee": 1.2,
+  "custody_fee": 0.2,
+  "sale_fee": 0.8,
+  "purchase_fee": 0.0,
+  "purchase_fee_original": 0.0,
+  "day_limit": 1000.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 0.0,
+      "interval": "持有天数≥0天"
+    }
+  ],
+  "purchase_status": "暂停申购",
+  "redeem_status": "开放赎回"
+}

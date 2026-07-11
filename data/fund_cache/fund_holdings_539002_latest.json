@@ -1,0 +1,106 @@
+{
+  "fund_code": "539002",
+  "report_date": "2026-03-31",
+  "total_asset": 4568908925.33,
+  "allocation": {
+    "股票": 70.97,
+    "现金": 39.72,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "10.26%",
+      "change": "1.19%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "10.14%",
+      "change": "0.28%",
+      "rate": "-1.39%",
+      "industry": "",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "海力士半导体公司",
+      "code": "KR7000660001",
+      "ratio": "8.65%",
+      "change": "1.14%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓11个季度"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "8.52%",
+      "change": "0.54%",
+      "rate": "-2.41%",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "三星电子",
+      "code": "KR7005930003",
+      "ratio": "6.76%",
+      "change": "1.32%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "Sandisk Corporation",
+      "code": "SNDK",
+      "ratio": "4.91%",
+      "change": "新增",
+      "rate": "-14.13%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "4.29%",
+      "change": "0.16%",
+      "rate": "-10.81%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "西部数据",
+      "code": "WDC",
+      "ratio": "3.73%",
+      "change": "新增",
+      "rate": "-9.92%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "3.58%",
+      "change": "0.21%",
+      "rate": "-9.09%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "芯源系统",
+      "code": "MPWR",
+      "ratio": "3.49%",
+      "change": "0.40%",
+      "rate": "-3.27%",
+      "industry": "",
+      "quarters_held": "重仓5个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比64.33%",
+  "invest_date": "2026-03-31"
+}

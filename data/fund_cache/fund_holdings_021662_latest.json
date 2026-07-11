@@ -1,0 +1,106 @@
+{
+  "fund_code": "021662",
+  "report_date": "2026-03-31",
+  "total_asset": 1856911571.03,
+  "allocation": {
+    "股票": 83.25,
+    "现金": 17.27,
+    "债券": 5.83,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "台积电",
+      "code": "2330",
+      "ratio": "5.48%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "三星电子有限公司",
+      "code": "005930KS",
+      "ratio": "5.28%",
+      "change": "1.14%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "阿里巴巴-W",
+      "code": "09988",
+      "ratio": "5.03%",
+      "change": "0.29%",
+      "rate": "-0.42%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "4.89%",
+      "change": "1.09%",
+      "rate": "-2.27%",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "海力士半导体公司",
+      "code": "000660KS",
+      "ratio": "4.32%",
+      "change": "1.09%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "欢聚",
+      "code": "JOYY",
+      "ratio": "3.00%",
+      "change": "0.63%",
+      "rate": "0.00%",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "联发科",
+      "code": "2454",
+      "ratio": "2.94%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "台达电",
+      "code": "2308",
+      "ratio": "2.86%",
+      "change": "0.50%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "智邦科技",
+      "code": "2345",
+      "ratio": "2.79%",
+      "change": "0.57%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "揖斐电株式会社",
+      "code": "4062JP",
+      "ratio": "2.73%",
+      "change": "1.20%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比39.32%",
+  "invest_date": "2026-03-31"
+}

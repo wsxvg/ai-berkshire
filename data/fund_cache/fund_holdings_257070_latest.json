@@ -1,0 +1,106 @@
+{
+  "fund_code": "257070",
+  "report_date": "2026-03-31",
+  "total_asset": 723525437.17,
+  "allocation": {
+    "股票": 91.51,
+    "现金": 8.98,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "鼎泰高科",
+      "code": "301377",
+      "ratio": "7.30%",
+      "change": "2.35%",
+      "rate": "-2.44%",
+      "industry": "通用设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "南亚新材",
+      "code": "688519",
+      "ratio": "6.94%",
+      "change": "新增",
+      "rate": "5.16%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "广合科技",
+      "code": "001389",
+      "ratio": "6.87%",
+      "change": "新增",
+      "rate": "3.15%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "大族数控",
+      "code": "301200",
+      "ratio": "6.51%",
+      "change": "新增",
+      "rate": "-1.61%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "鹏鼎控股",
+      "code": "002938",
+      "ratio": "6.04%",
+      "change": "新增",
+      "rate": "4.59%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "沪电股份",
+      "code": "002463",
+      "ratio": "5.80%",
+      "change": "新增",
+      "rate": "3.71%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "胜宏科技",
+      "code": "300476",
+      "ratio": "5.75%",
+      "change": "0.41%",
+      "rate": "0.65%",
+      "industry": "元件",
+      "quarters_held": "重仓5个季度"
+    },
+    {
+      "name": "深南电路",
+      "code": "002916",
+      "ratio": "5.75%",
+      "change": "新增",
+      "rate": "7.42%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "长芯博创",
+      "code": "300548",
+      "ratio": "5.44%",
+      "change": "0.47%",
+      "rate": "-0.45%",
+      "industry": "通信设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "5.39%",
+      "change": "4.13%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比61.79%",
+  "invest_date": "2026-03-31"
+}

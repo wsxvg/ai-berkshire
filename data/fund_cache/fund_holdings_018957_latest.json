@@ -1,0 +1,106 @@
+{
+  "fund_code": "018957",
+  "report_date": "2026-03-31",
+  "total_asset": 12167219965.78,
+  "allocation": {
+    "股票": 92.33,
+    "现金": 7.83,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "9.75%",
+      "change": "0.50%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓11个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "9.72%",
+      "change": "0.29%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓11个季度"
+    },
+    {
+      "name": "罗博特科",
+      "code": "300757",
+      "ratio": "9.69%",
+      "change": "新增",
+      "rate": "-3.13%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "9.66%",
+      "change": "0.13%",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": "重仓11个季度"
+    },
+    {
+      "name": "长光华芯",
+      "code": "688048",
+      "ratio": "7.74%",
+      "change": "新增",
+      "rate": "-4.29%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "英维克",
+      "code": "002837",
+      "ratio": "6.93%",
+      "change": "1.18%",
+      "rate": "0.04%",
+      "industry": "专用设备",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "6.06%",
+      "change": "1.62%",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "东田微",
+      "code": "301183",
+      "ratio": "4.84%",
+      "change": "新增",
+      "rate": "-0.58%",
+      "industry": "光学光电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "可川科技",
+      "code": "603052",
+      "ratio": "4.50%",
+      "change": "新增",
+      "rate": "2.67%",
+      "industry": "消费电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "仕佳光子",
+      "code": "688313",
+      "ratio": "4.21%",
+      "change": "0.75%",
+      "rate": "-1.45%",
+      "industry": "通信设备",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比73.10%",
+  "invest_date": "2026-03-31"
+}

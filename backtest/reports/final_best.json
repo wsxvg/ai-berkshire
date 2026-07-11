@@ -1,0 +1,34 @@
+{
+  "best_strategy": "排末3+行业24%分散",
+  "parameters": {
+    "exclude_uids": [4968958, 16020895, 14345330],
+    "max_sector_pct": 24,
+    "stop_loss": "无（牛市不止损）",
+    "take_profit": "无（不止盈）",
+    "momentum_sell": "无",
+    "min_consensus": 2,
+    "fund_type_filter": "all"
+  },
+  "dca_monthly_3000_18months": {
+    "total_invested": 60000,
+    "final_value": 133162,
+    "net_profit": 73162,
+    "return_pct": 121.94,
+    "max_drawdown_pct": 10.18,
+    "sharpe": 11.98,
+    "total_trades": 63
+  },
+  "period": "2025-01-05 ~ 2026-07-01",
+  "benchmark_csi300": "+27.37%",
+  "conclusion": "所有止损、止盈、动量卖出、阶梯止盈策略均无法超越简单排除末3+行业24%分散。在牛市中，减少交易频率、让利润奔跑是最优策略。",
+  "tested_variants_count": 65,
+  "overnight_tested": [
+    "浮动止损(-5%到-20%)",
+    "动量卖出(1.5到2.5)",
+    "动量+行业分散交叉组合",
+    "止盈(15%到100%, half/quarter)",
+    "阶梯止盈+行业分散",
+    "四分止盈+行业分散"
+  ],
+  "none_beat_baseline": true
+}

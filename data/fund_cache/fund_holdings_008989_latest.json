@@ -1,0 +1,106 @@
+{
+  "fund_code": "008989",
+  "report_date": "2026-03-31",
+  "total_asset": 4075182632.47,
+  "allocation": {
+    "股票": 92.61,
+    "现金": 9.39,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "长飞光纤光缆",
+      "code": "06869",
+      "ratio": "10.74%",
+      "change": "新增",
+      "rate": "1.64%",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "9.40%",
+      "change": "0.29%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "8.95%",
+      "change": "0.88%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "6.48%",
+      "change": "新增",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "招商轮船",
+      "code": "601872",
+      "ratio": "6.26%",
+      "change": "新增",
+      "rate": "2.84%",
+      "industry": "港口航运",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国巨石",
+      "code": "600176",
+      "ratio": "6.04%",
+      "change": "新增",
+      "rate": "4.54%",
+      "industry": "建筑材料",
+      "quarters_held": ""
+    },
+    {
+      "name": "思源电气",
+      "code": "002028",
+      "ratio": "5.35%",
+      "change": "新增",
+      "rate": "7.86%",
+      "industry": "电网设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "沪电股份",
+      "code": "002463",
+      "ratio": "5.24%",
+      "change": "1.81%",
+      "rate": "3.71%",
+      "industry": "元件",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "5.17%",
+      "change": "1.23%",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "亨通光电",
+      "code": "600487",
+      "ratio": "3.79%",
+      "change": "新增",
+      "rate": "-4.71%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比67.42%",
+  "invest_date": "2026-03-31"
+}

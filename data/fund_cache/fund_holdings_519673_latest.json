@@ -1,0 +1,106 @@
+{
+  "fund_code": "519673",
+  "report_date": "2026-03-31",
+  "total_asset": 161075329.01,
+  "allocation": {
+    "股票": 93.63,
+    "现金": 6.8,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "华大基因",
+      "code": "300676",
+      "ratio": "8.01%",
+      "change": "2.96%",
+      "rate": "2.15%",
+      "industry": "医疗服务",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "司太立",
+      "code": "603520",
+      "ratio": "7.54%",
+      "change": "0.91%",
+      "rate": "-0.29%",
+      "industry": "化学制药",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "东诚药业",
+      "code": "002675",
+      "ratio": "7.37%",
+      "change": "新增",
+      "rate": "0.54%",
+      "industry": "化学制药",
+      "quarters_held": ""
+    },
+    {
+      "name": "科锐国际",
+      "code": "300662",
+      "ratio": "6.56%",
+      "change": "0.59%",
+      "rate": "3.14%",
+      "industry": "其他社会服务",
+      "quarters_held": "重仓29个季度"
+    },
+    {
+      "name": "睿智医药",
+      "code": "300149",
+      "ratio": "6.53%",
+      "change": "新增",
+      "rate": "0.53%",
+      "industry": "医疗服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "澳华内镜",
+      "code": "688212",
+      "ratio": "5.79%",
+      "change": "1.03%",
+      "rate": "0.21%",
+      "industry": "医疗器械",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "*ST益通",
+      "code": "300430",
+      "ratio": "5.44%",
+      "change": "0.49%",
+      "rate": "1.32%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "通策医疗",
+      "code": "600763",
+      "ratio": "5.24%",
+      "change": "新增",
+      "rate": "0.85%",
+      "industry": "医疗服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "新华医疗",
+      "code": "600587",
+      "ratio": "5.15%",
+      "change": "0.08%",
+      "rate": "1.72%",
+      "industry": "医疗器械",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "健民集团",
+      "code": "600976",
+      "ratio": "5.06%",
+      "change": "0.33%",
+      "rate": "3.94%",
+      "industry": "中药",
+      "quarters_held": "重仓18个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比62.69%",
+  "invest_date": "2026-03-31"
+}

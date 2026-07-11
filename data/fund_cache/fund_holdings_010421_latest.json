@@ -1,0 +1,106 @@
+{
+  "fund_code": "010421",
+  "report_date": "2026-03-31",
+  "total_asset": 1766724432.45,
+  "allocation": {
+    "股票": 89.04,
+    "现金": 12.5,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "潮宏基",
+      "code": "002345",
+      "ratio": "6.71%",
+      "change": "0.83%",
+      "rate": "5.73%",
+      "industry": "服装家纺",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "万辰集团",
+      "code": "300972",
+      "ratio": "5.73%",
+      "change": "1.38%",
+      "rate": "2.89%",
+      "industry": "零售",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "法拉电子",
+      "code": "600563",
+      "ratio": "5.50%",
+      "change": "1.52%",
+      "rate": "-4.41%",
+      "industry": "元件",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "沪电股份",
+      "code": "002463",
+      "ratio": "4.29%",
+      "change": "新增",
+      "rate": "3.71%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "安井食品",
+      "code": "603345",
+      "ratio": "4.19%",
+      "change": "新增",
+      "rate": "2.90%",
+      "industry": "食品加工制造",
+      "quarters_held": ""
+    },
+    {
+      "name": "春秋航空",
+      "code": "601021",
+      "ratio": "3.89%",
+      "change": "1.01%",
+      "rate": "-0.11%",
+      "industry": "机场航运",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "亿纬锂能",
+      "code": "300014",
+      "ratio": "3.59%",
+      "change": "新增",
+      "rate": "-0.18%",
+      "industry": "电池",
+      "quarters_held": ""
+    },
+    {
+      "name": "立讯精密",
+      "code": "002475",
+      "ratio": "2.99%",
+      "change": "新增",
+      "rate": "5.81%",
+      "industry": "消费电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "三七互娱",
+      "code": "002555",
+      "ratio": "2.83%",
+      "change": "新增",
+      "rate": "-0.82%",
+      "industry": "游戏",
+      "quarters_held": ""
+    },
+    {
+      "name": "博汇纸业",
+      "code": "600966",
+      "ratio": "2.79%",
+      "change": "新增",
+      "rate": "1.61%",
+      "industry": "造纸",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比42.51%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "002207",
+  "report_date": "2026-03-31",
+  "total_asset": 10941706146.26,
+  "allocation": {
+    "股票": 90.8,
+    "现金": 9.75,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "赤峰黄金",
+      "code": "600988",
+      "ratio": "9.87%",
+      "change": "1.08%",
+      "rate": "10.00%",
+      "industry": "贵金属",
+      "quarters_held": "重仓24个季度"
+    },
+    {
+      "name": "山金国际",
+      "code": "000975",
+      "ratio": "8.09%",
+      "change": "0.92%",
+      "rate": "9.98%",
+      "industry": "贵金属",
+      "quarters_held": "重仓34个季度"
+    },
+    {
+      "name": "湖南黄金",
+      "code": "002155",
+      "ratio": "7.94%",
+      "change": "0.19%",
+      "rate": "5.58%",
+      "industry": "贵金属",
+      "quarters_held": "重仓18个季度"
+    },
+    {
+      "name": "西部黄金",
+      "code": "601069",
+      "ratio": "7.83%",
+      "change": "0.08%",
+      "rate": "10.02%",
+      "industry": "贵金属",
+      "quarters_held": "重仓6个季度"
+    },
+    {
+      "name": "中金黄金",
+      "code": "600489",
+      "ratio": "7.57%",
+      "change": "1.52%",
+      "rate": "6.55%",
+      "industry": "贵金属",
+      "quarters_held": "重仓41个季度"
+    },
+    {
+      "name": "盛达资源",
+      "code": "000603",
+      "ratio": "7.53%",
+      "change": "新增",
+      "rate": "-1.21%",
+      "industry": "工业金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "恒邦股份",
+      "code": "002237",
+      "ratio": "6.86%",
+      "change": "新增",
+      "rate": "0.15%",
+      "industry": "贵金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "紫金矿业",
+      "code": "601899",
+      "ratio": "6.60%",
+      "change": "3.19%",
+      "rate": "5.78%",
+      "industry": "贵金属",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "山东黄金",
+      "code": "600547",
+      "ratio": "5.98%",
+      "change": "1.14%",
+      "rate": "7.86%",
+      "industry": "贵金属",
+      "quarters_held": "重仓41个季度"
+    },
+    {
+      "name": "株冶集团",
+      "code": "600961",
+      "ratio": "5.78%",
+      "change": "2.26%",
+      "rate": "-8.26%",
+      "industry": "工业金属",
+      "quarters_held": "重仓5个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比74.05%",
+  "invest_date": "2026-03-31"
+}

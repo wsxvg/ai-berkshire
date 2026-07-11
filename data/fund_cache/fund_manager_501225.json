@@ -1,0 +1,21 @@
+{
+  "fund_code": "501225",
+  "managers": [
+    {
+      "name": "汪洋",
+      "year_performance": "11.81",
+      "employ_performance": "202.56",
+      "manage_scale": "322.59亿元",
+      "employment_date": "12年294天",
+      "accession_date": "2023.06.30-至今"
+    },
+    {
+      "name": "金璜",
+      "year_performance": "16.58",
+      "employ_performance": "194.16",
+      "manage_scale": "326.91亿元",
+      "employment_date": "2年295天",
+      "accession_date": "2024.01.19-至今"
+    }
+  ]
+}

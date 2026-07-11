@@ -1,0 +1,106 @@
+{
+  "fund_code": "019593",
+  "report_date": "2026-03-31",
+  "total_asset": 398882085.86,
+  "allocation": {
+    "基金": 94.64,
+    "现金": 6.97,
+    "股票": 0.3,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "长江电力",
+      "code": "600900",
+      "ratio": "0.03%",
+      "change": "0.16%",
+      "rate": "0.37%",
+      "industry": "电力",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "国电南瑞",
+      "code": "600406",
+      "ratio": "0.02%",
+      "change": "0.11%",
+      "rate": "0.97%",
+      "industry": "电网设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中国核电",
+      "code": "601985",
+      "ratio": "0.02%",
+      "change": "0.08%",
+      "rate": "0.57%",
+      "industry": "电力",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中国铝业",
+      "code": "601600",
+      "ratio": "0.02%",
+      "change": "0.11%",
+      "rate": "1.96%",
+      "industry": "工业金属",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "东方电气",
+      "code": "600875",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "3.51%",
+      "industry": "其他电源设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国电建",
+      "code": "601669",
+      "ratio": "0.01%",
+      "change": "0.05%",
+      "rate": "0.84%",
+      "industry": "建筑装饰",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中国神华",
+      "code": "601088",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-0.17%",
+      "industry": "煤炭开采加工",
+      "quarters_held": ""
+    },
+    {
+      "name": "三峡能源",
+      "code": "600905",
+      "ratio": "0.01%",
+      "change": "0.07%",
+      "rate": "0.27%",
+      "industry": "电力",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "云铝股份",
+      "code": "000807",
+      "ratio": "0.01%",
+      "change": "0.09%",
+      "rate": "2.99%",
+      "industry": "工业金属",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "国电电力",
+      "code": "600795",
+      "ratio": "0.01%",
+      "change": "0.05%",
+      "rate": "0.43%",
+      "industry": "电力",
+      "quarters_held": "重仓5个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比0.15%",
+  "invest_date": "2026-03-31"
+}

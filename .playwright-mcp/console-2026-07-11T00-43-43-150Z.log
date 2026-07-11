@@ -1,0 +1,5 @@
+[     338ms] [LOG] 不是金融股票APP @ https://stock-sr.jd.com/static/bridge/jdstock/1.2.0/bridge.js:49
+[     382ms] [LOG] 2024-05-29 cfYxCompCyticket @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[     589ms] [LOG] BASE_API== //ms.jr.jd.com @ https://res.jr.jd.com/fundcomp/cf-fund-comp-invest-edu/1.0.0/static.umd.js:9
+[     668ms] [LOG] https://ms.jr.jd.com @ https://lc.jr.jd.com/finance/fund/latestdetail/js/main_f054b49ce2.js:0
+[     668ms] [LOG] https://ms.jr.jd.com @ https://lc.jr.jd.com/finance/fund/latestdetail/js/main_f054b49ce2.js:0

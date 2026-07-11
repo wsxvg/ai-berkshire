@@ -1,0 +1,106 @@
+{
+  "fund_code": "013840",
+  "report_date": "2026-03-31",
+  "total_asset": 7917328169.66,
+  "allocation": {
+    "股票": 94.74,
+    "债券": 3.13,
+    "现金": 2.69,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "拓荆科技",
+      "code": "688072",
+      "ratio": "9.83%",
+      "change": "0.94%",
+      "rate": "0.00%",
+      "industry": "半导体",
+      "quarters_held": "重仓16个季度"
+    },
+    {
+      "name": "北方华创",
+      "code": "002371",
+      "ratio": "9.28%",
+      "change": "0.02%",
+      "rate": "-2.98%",
+      "industry": "半导体",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "芯源微",
+      "code": "688037",
+      "ratio": "8.79%",
+      "change": "1.11%",
+      "rate": "-1.36%",
+      "industry": "半导体",
+      "quarters_held": "重仓15个季度"
+    },
+    {
+      "name": "华海清科",
+      "code": "688120",
+      "ratio": "8.70%",
+      "change": "0.05%",
+      "rate": "-4.80%",
+      "industry": "半导体",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "中科飞测",
+      "code": "688361",
+      "ratio": "8.67%",
+      "change": "0.85%",
+      "rate": "-3.93%",
+      "industry": "半导体",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "8.61%",
+      "change": "0.85%",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": "重仓17个季度"
+    },
+    {
+      "name": "精测电子",
+      "code": "300567",
+      "ratio": "8.34%",
+      "change": "1.29%",
+      "rate": "-2.23%",
+      "industry": "通用设备",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "富创精密",
+      "code": "688409",
+      "ratio": "7.57%",
+      "change": "0.62%",
+      "rate": "-1.30%",
+      "industry": "半导体",
+      "quarters_held": "重仓14个季度"
+    },
+    {
+      "name": "华虹宏力",
+      "code": "688347",
+      "ratio": "3.38%",
+      "change": "1.01%",
+      "rate": "0.18%",
+      "industry": "半导体",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中芯国际",
+      "code": "00981",
+      "ratio": "3.19%",
+      "change": "2.77%",
+      "rate": "-3.48%",
+      "industry": "",
+      "quarters_held": "重仓5个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比76.36%",
+  "invest_date": "2026-03-31"
+}

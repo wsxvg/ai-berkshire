@@ -1,0 +1,106 @@
+{
+  "fund_code": "008763",
+  "report_date": "2026-03-31",
+  "total_asset": 4434359724.83,
+  "allocation": {
+    "股票": 93.86,
+    "现金": 6.74,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "和发集团",
+      "code": "VN000000HPG4",
+      "ratio": "8.91%",
+      "change": "1.31%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓12个季度"
+    },
+    {
+      "name": "军队股份制商业银行",
+      "code": "VN000000MBB5",
+      "ratio": "7.65%",
+      "change": "1.28%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓10个季度"
+    },
+    {
+      "name": "移动世界投资公司",
+      "code": "VN000000MWG0",
+      "ratio": "7.50%",
+      "change": "0.08%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "FPT公司",
+      "code": "VN000000FPT1",
+      "ratio": "6.99%",
+      "change": "0.87%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "越南繁荣银行",
+      "code": "VN000000VPB6",
+      "ratio": "6.46%",
+      "change": "0.45%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓24个季度"
+    },
+    {
+      "name": "西贡商信贸易股份银行",
+      "code": "VN000000STB4",
+      "ratio": "5.83%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    },
+    {
+      "name": "MaSAn Group Corp",
+      "code": "VN000000MSN4",
+      "ratio": "5.03%",
+      "change": "0.17%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "越南工商股份制商业银行",
+      "code": "VN000000CTG7",
+      "ratio": "4.64%",
+      "change": "持平",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "越南科技商业银行",
+      "code": "VN000000TCB8",
+      "ratio": "4.63%",
+      "change": "0.29%",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "Vingroup Jsc",
+      "code": "VN000000VIC9",
+      "ratio": "4.60%",
+      "change": "新增",
+      "rate": "--",
+      "industry": "",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比62.24%",
+  "invest_date": "2026-03-31"
+}

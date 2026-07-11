@@ -1,0 +1,106 @@
+{
+  "fund_code": "022364",
+  "report_date": "2026-03-31",
+  "total_asset": 17489394511.58,
+  "allocation": {
+    "股票": 85.27,
+    "现金": 18.01,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "9.85%",
+      "change": "1.00%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "9.73%",
+      "change": "0.98%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "沪电股份",
+      "code": "002463",
+      "ratio": "8.80%",
+      "change": "0.04%",
+      "rate": "3.71%",
+      "industry": "元件",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "深南电路",
+      "code": "002916",
+      "ratio": "7.37%",
+      "change": "1.35%",
+      "rate": "7.42%",
+      "industry": "元件",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "4.24%",
+      "change": "0.26%",
+      "rate": "4.98%",
+      "industry": "元件",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "腾景科技",
+      "code": "688195",
+      "ratio": "3.40%",
+      "change": "新增",
+      "rate": "-3.39%",
+      "industry": "光学光电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "江丰电子",
+      "code": "300666",
+      "ratio": "2.91%",
+      "change": "新增",
+      "rate": "-3.00%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "博迁新材",
+      "code": "605376",
+      "ratio": "2.81%",
+      "change": "新增",
+      "rate": "-3.25%",
+      "industry": "能源金属",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国巨石",
+      "code": "600176",
+      "ratio": "2.77%",
+      "change": "新增",
+      "rate": "4.54%",
+      "industry": "建筑材料",
+      "quarters_held": ""
+    },
+    {
+      "name": "鼎泰高科",
+      "code": "301377",
+      "ratio": "2.67%",
+      "change": "新增",
+      "rate": "-2.44%",
+      "industry": "通用设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比54.55%",
+  "invest_date": "2026-03-31"
+}

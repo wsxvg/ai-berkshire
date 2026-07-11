@@ -1,0 +1,21 @@
+{
+  "fund_code": "002611",
+  "managers": [
+    {
+      "name": "赵云阳",
+      "year_performance": "8.64",
+      "employ_performance": "186.16",
+      "manage_scale": "1048.87亿元",
+      "employment_date": "13年233天",
+      "accession_date": "2016.05.27-至今"
+    },
+    {
+      "name": "王祥",
+      "year_performance": "6.41",
+      "employ_performance": "189.17",
+      "manage_scale": "981.63亿元",
+      "employment_date": "9年244天",
+      "accession_date": "2016.11.02-至今"
+    }
+  ]
+}

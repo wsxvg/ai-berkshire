@@ -1,0 +1,106 @@
+{
+  "fund_code": "017057",
+  "report_date": "2026-03-31",
+  "total_asset": 1332035761.46,
+  "allocation": {
+    "基金": 94.64,
+    "现金": 7.38,
+    "股票": 0.14,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "国投电力",
+      "code": "600886",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "-0.96%",
+      "industry": "电力",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "川能动力",
+      "code": "000155",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-0.66%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "长江电力",
+      "code": "600900",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "0.37%",
+      "industry": "电力",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "电投绿能",
+      "code": "000875",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "0.78%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "协鑫能科",
+      "code": "002015",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-1.27%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "三峡能源",
+      "code": "600905",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "0.27%",
+      "industry": "电力",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "中国核电",
+      "code": "601985",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "0.57%",
+      "industry": "电力",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "太阳能",
+      "code": "000591",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-1.09%",
+      "industry": "电力",
+      "quarters_held": ""
+    },
+    {
+      "name": "中国广核",
+      "code": "003816",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "1.04%",
+      "industry": "电力",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "露笑科技",
+      "code": "002617",
+      "ratio": "0.00%",
+      "change": "新增",
+      "rate": "-4.69%",
+      "industry": "电力",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比0.09%",
+  "invest_date": "2026-03-31"
+}

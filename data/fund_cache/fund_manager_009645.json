@@ -1,0 +1,21 @@
+{
+  "fund_code": "009645",
+  "managers": [
+    {
+      "name": "周谧",
+      "year_performance": "11.94",
+      "employ_performance": "76.66",
+      "manage_scale": "44.68亿元",
+      "employment_date": "8年121天",
+      "accession_date": "2025.11.05-至今"
+    },
+    {
+      "name": "吴秋松",
+      "year_performance": "14.36",
+      "employ_performance": "56.15",
+      "manage_scale": "26.60亿元",
+      "employment_date": "5年118天",
+      "accession_date": "2026.01.28-至今"
+    }
+  ]
+}

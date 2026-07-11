@@ -1,0 +1,2 @@
+[    1050ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://misc.360buyimg.com/??jdf/lib/jquery-1.6.4.js,jdf/1.0.0/unit/base/5.0.0/base.js:5
+[    1568ms] [ERROR] Mixed Content: The page at 'https://www.jd.com/error2.aspx' was loaded over HTTPS, but requested an insecure script 'http://www.jd.com/error2.aspx'. This request has been blocked; the content must be served over HTTPS. @ https://www.jd.com/error2.aspx:0

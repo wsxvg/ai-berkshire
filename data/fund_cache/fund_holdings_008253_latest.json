@@ -1,0 +1,69 @@
+{
+  "fund_code": "008253",
+  "report_date": null,
+  "total_asset": 619259219.92,
+  "allocation": {},
+  "top_stocks": [
+    {
+      "name": "英伟达",
+      "code": "NVDA",
+      "ratio": "7.79%",
+      "change": "2.21%"
+    },
+    {
+      "name": "Lumentum Holdings, Inc.",
+      "code": "LITE",
+      "ratio": "7.07%",
+      "change": "3.27%"
+    },
+    {
+      "name": "Sandisk Corporation",
+      "code": "SNDK",
+      "ratio": "5.47%",
+      "change": "新增"
+    },
+    {
+      "name": "美光科技",
+      "code": "MU",
+      "ratio": "4.53%",
+      "change": "0.30%"
+    },
+    {
+      "name": "博通",
+      "code": "AVGO",
+      "ratio": "4.15%",
+      "change": "2.99%"
+    },
+    {
+      "name": "谷歌-C",
+      "code": "GOOG",
+      "ratio": "3.96%",
+      "change": "2.11%"
+    },
+    {
+      "name": "台积电",
+      "code": "TSM",
+      "ratio": "3.89%",
+      "change": "0.41%"
+    },
+    {
+      "name": "康宁",
+      "code": "GLW",
+      "ratio": "2.96%",
+      "change": "新增"
+    },
+    {
+      "name": "Coherent Corp.",
+      "code": "COHR",
+      "ratio": "2.66%",
+      "change": "新增"
+    },
+    {
+      "name": "阿斯麦",
+      "code": "ASML",
+      "ratio": "2.36%",
+      "change": "新增"
+    }
+  ],
+  "invest_date": ""
+}

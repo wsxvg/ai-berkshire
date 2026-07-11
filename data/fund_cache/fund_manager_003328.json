@@ -1,0 +1,21 @@
+{
+  "fund_code": "003328",
+  "managers": [
+    {
+      "name": "周潜玮",
+      "year_performance": "4.44",
+      "employ_performance": "39.10",
+      "manage_scale": "36.06亿元",
+      "employment_date": "8年125天",
+      "accession_date": "2018.07.11-至今"
+    },
+    {
+      "name": "周慧",
+      "year_performance": "2.80",
+      "employ_performance": "11.81",
+      "manage_scale": "58.75亿元",
+      "employment_date": "3年174天",
+      "accession_date": "2023.01.11-至今"
+    }
+  ]
+}

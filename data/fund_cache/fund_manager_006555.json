@@ -1,0 +1,21 @@
+{
+  "fund_code": "006555",
+  "managers": [
+    {
+      "name": "IKEDA KAE",
+      "year_performance": "16.21",
+      "employ_performance": "282.45",
+      "manage_scale": "30.07亿元",
+      "employment_date": "8年161天",
+      "accession_date": "2019.01.29-至今"
+    },
+    {
+      "name": "俞瑾",
+      "year_performance": "8.59",
+      "employ_performance": "182.81",
+      "manage_scale": "30.50亿元",
+      "employment_date": "3年327天",
+      "accession_date": "2022.08.11-至今"
+    }
+  ]
+}

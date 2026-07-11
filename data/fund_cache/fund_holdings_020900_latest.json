@@ -1,0 +1,106 @@
+{
+  "fund_code": "020900",
+  "report_date": "2026-03-31",
+  "total_asset": 1228649367.23,
+  "allocation": {
+    "股票": 94.9,
+    "现金": 5.82,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "14.30%",
+      "change": "0.15%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中际旭创",
+      "code": "300308",
+      "ratio": "13.09%",
+      "change": "1.43%",
+      "rate": "-2.36%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "工业富联",
+      "code": "601138",
+      "ratio": "9.86%",
+      "change": "2.62%",
+      "rate": "1.09%",
+      "industry": "消费电子",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "天孚通信",
+      "code": "300394",
+      "ratio": "6.92%",
+      "change": "2.12%",
+      "rate": "-0.27%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "亨通光电",
+      "code": "600487",
+      "ratio": "5.37%",
+      "change": "2.90%",
+      "rate": "-4.71%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中兴通讯",
+      "code": "000063",
+      "ratio": "5.04%",
+      "change": "1.13%",
+      "rate": "3.00%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "中天科技",
+      "code": "600522",
+      "ratio": "4.18%",
+      "change": "1.68%",
+      "rate": "-2.64%",
+      "industry": "通信设备",
+      "quarters_held": "重仓8个季度"
+    },
+    {
+      "name": "信维通信",
+      "code": "300136",
+      "ratio": "2.97%",
+      "change": "0.07%",
+      "rate": "1.57%",
+      "industry": "消费电子",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "烽火通信",
+      "code": "600498",
+      "ratio": "2.34%",
+      "change": "新增",
+      "rate": "-2.84%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "光迅科技",
+      "code": "002281",
+      "ratio": "1.93%",
+      "change": "新增",
+      "rate": "-0.39%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比66.00%",
+  "invest_date": "2026-03-31"
+}

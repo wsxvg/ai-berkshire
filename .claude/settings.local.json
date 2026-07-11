@@ -1,0 +1,8 @@
+{
+  "workingDirectory": "C:\\项目\\A基金",
+  "allowTools": {
+    "Bash": {
+      "workingDirectory": "C:\\项目\\A基金"
+    }
+  }
+}

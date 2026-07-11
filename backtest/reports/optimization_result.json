@@ -1,0 +1,35 @@
+{
+  "best_params": {
+    "min_score": 2.5,
+    "take_profit_pct": 30,
+    "take_profit_sell_pct": 0.5,
+    "stop_loss_pct": -8,
+    "momentum_sell": 2.0,
+    "cash_reserve_pct": 0.2,
+    "max_position_pct": 25,
+    "kelly_cap": 0.2,
+    "weights": {
+      "quality": 25,
+      "cost": 20,
+      "manager": 20,
+      "momentum": 15,
+      "smart_money": 20
+    }
+  },
+  "dca_2500": {
+    "return": 31.57746666666666,
+    "dd": 5.871895440337797,
+    "trades": 283,
+    "fees": 696.71,
+    "holdings": 24,
+    "sharpe": 5.377729727566484
+  },
+  "one_time_10k": {
+    "return": 49.746399999999994,
+    "dd": 6.7955548873503915,
+    "trades": 243,
+    "fees": 633.61,
+    "holdings": 22,
+    "sharpe": 7.32043237449242
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "fund_code": "004406",
+  "report_date": "2026-03-31",
+  "total_asset": 67683303.44,
+  "allocation": {
+    "债券": 68.65,
+    "股票": 24.18,
+    "现金": 7.55,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "比亚迪",
+      "code": "002594",
+      "ratio": "1.56%",
+      "change": "新增",
+      "rate": "5.86%",
+      "industry": "汽车整车",
+      "quarters_held": ""
+    },
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "ratio": "1.48%",
+      "change": "1.15%",
+      "rate": "-0.61%",
+      "industry": "电池",
+      "quarters_held": "重仓13个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "1.31%",
+      "change": "新增",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "隆鑫通用",
+      "code": "603766",
+      "ratio": "1.12%",
+      "change": "新增",
+      "rate": "2.63%",
+      "industry": "汽车服务及其他",
+      "quarters_held": ""
+    },
+    {
+      "name": "亚钾国际",
+      "code": "000893",
+      "ratio": "1.10%",
+      "change": "新增",
+      "rate": "7.46%",
+      "industry": "农化制品",
+      "quarters_held": ""
+    },
+    {
+      "name": "沧州大化",
+      "code": "600230",
+      "ratio": "1.10%",
+      "change": "新增",
+      "rate": "-0.94%",
+      "industry": "化学制品",
+      "quarters_held": ""
+    },
+    {
+      "name": "中信证券",
+      "code": "600030",
+      "ratio": "1.07%",
+      "change": "新增",
+      "rate": "1.15%",
+      "industry": "证券",
+      "quarters_held": ""
+    },
+    {
+      "name": "圣农发展",
+      "code": "002299",
+      "ratio": "1.05%",
+      "change": "新增",
+      "rate": "0.06%",
+      "industry": "养殖业",
+      "quarters_held": ""
+    },
+    {
+      "name": "三一重工",
+      "code": "600031",
+      "ratio": "1.03%",
+      "change": "新增",
+      "rate": "4.45%",
+      "industry": "工程机械",
+      "quarters_held": ""
+    },
+    {
+      "name": "新和成",
+      "code": "002001",
+      "ratio": "1.02%",
+      "change": "新增",
+      "rate": "-0.73%",
+      "industry": "化学制药",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比11.84%",
+  "invest_date": "2026-03-31"
+}

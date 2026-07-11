@@ -1,0 +1,106 @@
+{
+  "fund_code": "005359",
+  "report_date": "2026-03-31",
+  "total_asset": 134210706.58,
+  "allocation": {
+    "股票": 93.98,
+    "债券": 5.78,
+    "现金": 3.56,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "宏景科技",
+      "code": "301396",
+      "ratio": "9.15%",
+      "change": "新增",
+      "rate": "1.71%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "网宿科技",
+      "code": "300017",
+      "ratio": "6.68%",
+      "change": "新增",
+      "rate": "-0.93%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "协创数据",
+      "code": "300857",
+      "ratio": "5.79%",
+      "change": "新增",
+      "rate": "2.32%",
+      "industry": "计算机设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "优刻得",
+      "code": "688158",
+      "ratio": "5.53%",
+      "change": "新增",
+      "rate": "-2.18%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "东方国信",
+      "code": "300166",
+      "ratio": "5.06%",
+      "change": "新增",
+      "rate": "-3.14%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "泰豪科技",
+      "code": "600590",
+      "ratio": "4.85%",
+      "change": "新增",
+      "rate": "4.41%",
+      "industry": "军工电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "大位科技",
+      "code": "600589",
+      "ratio": "4.72%",
+      "change": "新增",
+      "rate": "-0.83%",
+      "industry": "IT服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "润建股份",
+      "code": "002929",
+      "ratio": "4.71%",
+      "change": "新增",
+      "rate": "-0.95%",
+      "industry": "通信服务",
+      "quarters_held": ""
+    },
+    {
+      "name": "东阳光",
+      "code": "600673",
+      "ratio": "4.68%",
+      "change": "新增",
+      "rate": "-0.58%",
+      "industry": "综合",
+      "quarters_held": ""
+    },
+    {
+      "name": "海鸥股份",
+      "code": "603269",
+      "ratio": "4.35%",
+      "change": "新增",
+      "rate": "-0.87%",
+      "industry": "通用设备",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比55.52%",
+  "invest_date": "2026-03-31"
+}

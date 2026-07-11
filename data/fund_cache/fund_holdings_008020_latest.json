@@ -1,0 +1,106 @@
+{
+  "fund_code": "008020",
+  "report_date": "2026-03-31",
+  "total_asset": 2289801013.85,
+  "allocation": {
+    "基金": 94.7,
+    "现金": 5.82,
+    "股票": 0.07,
+    "债券": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "澜起科技",
+      "code": "688008",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-0.87%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "天准科技",
+      "code": "688003",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "-4.43%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "寒武纪",
+      "code": "688256",
+      "ratio": "0.01%",
+      "change": "新增",
+      "rate": "-1.38%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "凌云光",
+      "code": "688400",
+      "ratio": "0.01%",
+      "change": "持平",
+      "rate": "9.02%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "金山办公",
+      "code": "688111",
+      "ratio": "0.01%",
+      "change": "0.01%",
+      "rate": "-1.88%",
+      "industry": "软件开发",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "奥比中光",
+      "code": "688322",
+      "ratio": "0.00%",
+      "change": "新增",
+      "rate": "13.32%",
+      "industry": "光学光电子",
+      "quarters_held": ""
+    },
+    {
+      "name": "芯原股份",
+      "code": "688521",
+      "ratio": "0.00%",
+      "change": "新增",
+      "rate": "-2.10%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "电科数字",
+      "code": "600850",
+      "ratio": "0.00%",
+      "change": "0.01%",
+      "rate": "0.47%",
+      "industry": "IT服务",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "掌阅科技",
+      "code": "603533",
+      "ratio": "0.00%",
+      "change": "持平",
+      "rate": "-6.50%",
+      "industry": "文化传媒",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "新点软件",
+      "code": "688232",
+      "ratio": "0.00%",
+      "change": "持平",
+      "rate": "0.00%",
+      "industry": "软件开发",
+      "quarters_held": "重仓3个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比0.05%",
+  "invest_date": "2026-03-31"
+}

@@ -1,0 +1,63 @@
+{
+  "fund_code": "968061",
+  "performance": [
+    {
+      "period": "近1周",
+      "return": -7.69,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近1月",
+      "return": 1.13,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近3月",
+      "return": 59.77,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近6月",
+      "return": 58.79,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近1年",
+      "return": 97.34,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "今年以来",
+      "return": 58.79,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "近3年",
+      "return": 132.97,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    },
+    {
+      "period": "成立以来",
+      "return": 159.3,
+      "avg": null,
+      "rank": "",
+      "rank_pct": null
+    }
+  ],
+  "year_performance": [],
+  "aip_performance": []
+}

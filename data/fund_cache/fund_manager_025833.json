@@ -1,0 +1,21 @@
+{
+  "fund_code": "025833",
+  "managers": [
+    {
+      "name": "刘笑明",
+      "year_performance": "8.11",
+      "employ_performance": "35.49",
+      "manage_scale": "143.09亿元",
+      "employment_date": "7年280天",
+      "accession_date": "2025.11.25-至今"
+    },
+    {
+      "name": "张戈",
+      "year_performance": "12.03",
+      "employ_performance": "31.39",
+      "manage_scale": "160.40亿元",
+      "employment_date": "3年209天",
+      "accession_date": "2025.12.12-至今"
+    }
+  ]
+}

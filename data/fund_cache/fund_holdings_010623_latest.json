@@ -1,0 +1,106 @@
+{
+  "fund_code": "010623",
+  "report_date": "2026-03-31",
+  "total_asset": 1024754799.37,
+  "allocation": {
+    "股票": 93.95,
+    "现金": 6.2,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "振华股份",
+      "code": "603067",
+      "ratio": "6.42%",
+      "change": "1.60%",
+      "rate": "-2.08%",
+      "industry": "化学原料",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "6.13%",
+      "change": "0.63%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "潍柴动力",
+      "code": "000338",
+      "ratio": "4.25%",
+      "change": "新增",
+      "rate": "6.59%",
+      "industry": "汽车零部件",
+      "quarters_held": ""
+    },
+    {
+      "name": "强一股份",
+      "code": "688809",
+      "ratio": "4.11%",
+      "change": "新增",
+      "rate": "-3.61%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "长川科技",
+      "code": "300604",
+      "ratio": "3.48%",
+      "change": "1.63%",
+      "rate": "0.41%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "北京君正",
+      "code": "300223",
+      "ratio": "3.27%",
+      "change": "新增",
+      "rate": "10.61%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "罗博特科",
+      "code": "300757",
+      "ratio": "3.13%",
+      "change": "新增",
+      "rate": "-3.13%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "芯碁微装",
+      "code": "688630",
+      "ratio": "3.05%",
+      "change": "0.55%",
+      "rate": "2.63%",
+      "industry": "专用设备",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "鹏辉能源",
+      "code": "300438",
+      "ratio": "2.78%",
+      "change": "新增",
+      "rate": "-2.76%",
+      "industry": "电池",
+      "quarters_held": ""
+    },
+    {
+      "name": "中稀有色",
+      "code": "600259",
+      "ratio": "2.59%",
+      "change": "新增",
+      "rate": "4.98%",
+      "industry": "小金属",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比39.21%",
+  "invest_date": "2026-03-31"
+}

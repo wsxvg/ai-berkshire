@@ -1,0 +1,21 @@
+{
+  "fund_code": "017091",
+  "managers": [
+    {
+      "name": "汪洋",
+      "year_performance": "11.81",
+      "employ_performance": "179.51",
+      "manage_scale": "322.59亿元",
+      "employment_date": "12年294天",
+      "accession_date": "2022.12.09-至今"
+    },
+    {
+      "name": "张晓南",
+      "year_performance": "9.17",
+      "employ_performance": "181.91",
+      "manage_scale": "296.13亿元",
+      "employment_date": "10年311天",
+      "accession_date": "2023.02.10-至今"
+    }
+  ]
+}

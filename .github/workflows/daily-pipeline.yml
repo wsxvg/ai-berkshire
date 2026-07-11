@@ -1,0 +1,73 @@
+name: AI Berkshire Daily Pipeline
+on:
+  schedule:
+    # Beijing 12:00 = UTC 04:00, runs every 30min until 14:30
+    - cron: '0 4 * * 1-5'   # 12:00 Beijing
+    - cron: '30 4 * * 1-5'  # 12:30
+    - cron: '0 5 * * 1-5'   # 13:00
+    - cron: '30 5 * * 1-5'  # 13:30
+    - cron: '0 6 * * 1-5'   # 14:00
+    - cron: '30 6 * * 1-5'  # 14:30 - final run + push
+  workflow_dispatch:
+
+env:
+  PYTHONIOENCODING: utf-8
+  FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+  FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+  FEISHU_USER_ID: ${{ secrets.FEISHU_USER_ID }}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install chinese_calendar
+
+      - name: Setup JD Cookie
+        run: |
+          echo '${{ secrets.JD_COOKIES_JSON }}' > data/jd_auth/cookies.json
+
+      - name: Run Pipeline
+        id: pipeline
+        run: |
+          python scripts/auto-pipeline.py 2>&1 | tee pipeline_output.log
+          echo "exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+
+      - name: Push to Feishu (14:30 Beijing)
+        if: ${{ github.event.schedule == '30 6 * * 1-5' || github.event_name == 'workflow_dispatch' }}
+        env:
+          FEISHU_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+        run: |
+          python tools/feishu_push.py --webhook "$FEISHU_URL"
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-report
+          path: |
+            reports/auto/latest.md
+            reports/auto/penetration_report.json
+            data/auto/status.json
+            pipeline_output.log
+          retention-days: 7
+
+      - name: Commit daily data
+        run: |
+          git config user.name "AI Berkshire Bot"
+          git config user.email "bot@ai-berkshire"
+          git add data/holdings_snapshot*.json data/trading_records*.json data/fund_scores_history.jsonl data/auto/status.json reports/auto/
+          git diff --cached --quiet || git commit -m "chore: daily pipeline data $(date +'%Y-%m-%d')"
+          git push

@@ -1,0 +1,355 @@
+- generic [ref=f38e3]:
+  - generic [ref=f38e4]:
+    - img "京东金融" [ref=f38e7]
+    - generic [ref=f38e8]:
+      - generic [ref=f38e291] [cursor=pointer]:
+        - img "模式切换" [ref=f38e292]
+        - generic [ref=f38e293]: 夜间模式
+      - generic [ref=f38e9] [cursor=pointer]: 切回旧版
+  - generic [ref=f38e11]:
+    - generic [ref=f38e12]:
+      - generic [ref=f38e13]:
+        - paragraph [ref=f38e15] [cursor=pointer]: jd_9b2u5ec8t4pmtb
+        - generic [ref=f38e38] [cursor=pointer]: 退出登录
+      - generic [ref=f38e16]:
+        - generic [ref=f38e17] [cursor=pointer]: 自选
+        - generic [ref=f38e20] [cursor=pointer]: 自定义
+        - generic [ref=f38e23] [cursor=pointer]: 积存金
+        - generic [ref=f38e26] [cursor=pointer]: 基金
+        - generic [ref=f38e29] [cursor=pointer]: 发现
+        - generic [ref=f38e32] [cursor=pointer]: 下载
+    - generic [ref=f38e294]:
+      - generic [ref=f38e295]:
+        - generic [ref=f38e296]:
+          - generic [ref=f38e297]:
+            - generic [ref=f38e298] [cursor=pointer]:
+              - generic [ref=f38e299]: 默认布局
+              - button "删除标签页" [ref=f38e300]
+            - generic [ref=f38e303] [cursor=pointer]:
+              - generic [ref=f38e304]: 大神布局 古风吹沙
+              - button "删除标签页" [ref=f38e305]
+          - button "添加新标签页" [ref=f38e308] [cursor=pointer]
+        - button "编辑图标 编辑" [ref=f38e312] [cursor=pointer]:
+          - img "编辑图标" [ref=f38e313]
+          - generic [ref=f38e314]: 编辑
+      - generic [ref=f38e319]:
+        - generic [ref=f38e322]:
+          - generic [ref=f38e324]: 行情看板
+          - generic [ref=f38e330]:
+            - generic [ref=f38e332]:
+              - generic [ref=f38e334] [cursor=pointer]:
+                - generic [ref=f38e335]: 上证指数
+                - generic [ref=f38e337]:
+                  - generic [ref=f38e338]: "0"
+                  - generic [ref=f38e339]: 00%
+              - generic [ref=f38e345] [cursor=pointer]:
+                - generic [ref=f38e346]: 深证成指
+                - generic [ref=f38e348]:
+                  - generic [ref=f38e349]: "0"
+                  - generic [ref=f38e350]: 00%
+              - generic [ref=f38e356] [cursor=pointer]:
+                - generic [ref=f38e357]: 创业板指
+                - generic [ref=f38e359]:
+                  - generic [ref=f38e360]: "0"
+                  - generic [ref=f38e361]: 00%
+            - generic [ref=f38e367]:
+              - generic [ref=f38e369] [cursor=pointer]:
+                - generic [ref=f38e370]: 中证500
+                - generic [ref=f38e372]:
+                  - generic [ref=f38e373]: "0"
+                  - generic [ref=f38e374]: 00%
+              - generic [ref=f38e380] [cursor=pointer]:
+                - generic [ref=f38e381]: 沪深300
+                - generic [ref=f38e383]:
+                  - generic [ref=f38e384]: "0"
+                  - generic [ref=f38e385]: 00%
+              - generic [ref=f38e391] [cursor=pointer]:
+                - generic [ref=f38e392]: 科创50
+                - generic [ref=f38e394]:
+                  - generic [ref=f38e395]: "0"
+                  - generic [ref=f38e396]: 00%
+            - generic [ref=f38e402]:
+              - generic [ref=f38e404] [cursor=pointer]:
+                - generic [ref=f38e405]: 上证50
+                - generic [ref=f38e407]:
+                  - generic [ref=f38e408]: "0"
+                  - generic [ref=f38e409]: 00%
+              - generic [ref=f38e415] [cursor=pointer]:
+                - generic [ref=f38e416]: 黄金9999
+                - generic [ref=f38e418]:
+                  - generic [ref=f38e419]: "0"
+                  - generic [ref=f38e420]: 00%
+              - generic [ref=f38e426] [cursor=pointer]:
+                - generic [ref=f38e427]: 黄金T+D
+                - generic [ref=f38e429]:
+                  - generic [ref=f38e430]: "0"
+                  - generic [ref=f38e431]: 00%
+            - generic [ref=f38e437]:
+              - generic [ref=f38e439] [cursor=pointer]:
+                - generic [ref=f38e440]: 伦敦金
+                - generic [ref=f38e442]:
+                  - generic [ref=f38e443]: "0"
+                  - generic [ref=f38e444]: 00%
+              - generic [ref=f38e450] [cursor=pointer]:
+                - generic [ref=f38e451]: 现货白银
+                - generic [ref=f38e453]:
+                  - generic [ref=f38e454]: "0"
+                  - generic [ref=f38e455]: 00%
+              - generic [ref=f38e461] [cursor=pointer]:
+                - generic [ref=f38e462]: 美元指数
+                - generic [ref=f38e464]:
+                  - generic [ref=f38e465]: "0"
+                  - generic [ref=f38e466]: 00%
+            - generic [ref=f38e472]:
+              - generic [ref=f38e474] [cursor=pointer]:
+                - generic [ref=f38e475]: 离岸人民币
+                - generic [ref=f38e477]:
+                  - generic [ref=f38e478]: "0"
+                  - generic [ref=f38e479]: 00%
+              - generic [ref=f38e485] [cursor=pointer]:
+                - generic [ref=f38e486]: 京东24h金价
+                - generic [ref=f38e488]:
+                  - generic [ref=f38e489]: "0"
+                  - generic [ref=f38e490]: 00%
+        - generic [ref=f38e497]:
+          - generic [ref=f38e499]: 热门板块
+          - generic [ref=f38e502]:
+            - generic [ref=f38e503]:
+              - button "全部" [ref=f38e505] [cursor=pointer]
+              - button "涨幅优先" [ref=f38e509] [cursor=pointer]
+            - generic [ref=f38e513]:
+              - generic [ref=f38e515]:
+                - generic [ref=f38e516] [cursor=pointer]:
+                  - generic [ref=f38e517]: 航天装备主题
+                  - generic [ref=f38e518]: +10.21%
+                - generic [ref=f38e519] [cursor=pointer]:
+                  - generic [ref=f38e520]: 风电整机
+                  - generic [ref=f38e521]: +6.89%
+                - generic [ref=f38e522] [cursor=pointer]:
+                  - generic [ref=f38e523]: 风电设备主题
+                  - generic [ref=f38e524]: +4.40%
+                - generic [ref=f38e525] [cursor=pointer]:
+                  - generic [ref=f38e526]: 减肥药概念
+                  - generic [ref=f38e527]: +4.34%
+                - generic [ref=f38e528] [cursor=pointer]:
+                  - generic [ref=f38e529]: 国产航母概念
+                  - generic [ref=f38e530]: +4.26%
+                - generic [ref=f38e531] [cursor=pointer]:
+                  - generic [ref=f38e532]: 广告营销
+                  - generic [ref=f38e533]: +4.18%
+              - generic [ref=f38e535]:
+                - generic [ref=f38e536] [cursor=pointer]:
+                  - generic [ref=f38e537]: 医疗服务主题
+                  - generic [ref=f38e538]: +4.02%
+                - generic [ref=f38e539] [cursor=pointer]:
+                  - generic [ref=f38e540]: 航海装备
+                  - generic [ref=f38e541]: +4.01%
+                - generic [ref=f38e542] [cursor=pointer]:
+                  - generic [ref=f38e543]: 音频媒体
+                  - generic [ref=f38e544]: +3.96%
+                - generic [ref=f38e545] [cursor=pointer]:
+                  - generic [ref=f38e546]: 影视院线主题
+                  - generic [ref=f38e547]: +3.82%
+                - generic [ref=f38e548] [cursor=pointer]:
+                  - generic [ref=f38e549]: 其他养殖
+                  - generic [ref=f38e550]: +3.81%
+                - generic [ref=f38e551] [cursor=pointer]:
+                  - generic [ref=f38e552]: 宠物食品
+                  - generic [ref=f38e553]: +3.72%
+              - generic [ref=f38e555]:
+                - generic [ref=f38e556] [cursor=pointer]:
+                  - generic [ref=f38e557]: DRG/DIP概念
+                  - generic [ref=f38e558]: +3.72%
+                - generic [ref=f38e559] [cursor=pointer]:
+                  - generic [ref=f38e560]: 生物科技
+                  - generic [ref=f38e561]: +3.70%
+                - generic [ref=f38e562] [cursor=pointer]:
+                  - generic [ref=f38e563]: 细胞免疫治疗概念
+                  - generic [ref=f38e564]: +3.62%
+                - generic [ref=f38e565] [cursor=pointer]:
+                  - generic [ref=f38e566]: 疫苗
+                  - generic [ref=f38e567]: +3.61%
+                - generic [ref=f38e568] [cursor=pointer]:
+                  - generic [ref=f38e569]: 租售同权概念
+                  - generic [ref=f38e570]: +3.34%
+                - generic [ref=f38e571] [cursor=pointer]:
+                  - generic [ref=f38e572]: 军工信息化概念
+                  - generic [ref=f38e573]: +3.33%
+              - generic [ref=f38e575]:
+                - generic [ref=f38e576] [cursor=pointer]:
+                  - generic [ref=f38e577]: 电视广播
+                  - generic [ref=f38e578]: +3.18%
+                - generic [ref=f38e579] [cursor=pointer]:
+                  - generic [ref=f38e580]: 生物疫苗概念
+                  - generic [ref=f38e581]: +3.15%
+                - generic [ref=f38e582] [cursor=pointer]:
+                  - generic [ref=f38e583]: 短剧游戏概念
+                  - generic [ref=f38e584]: +3.12%
+                - generic [ref=f38e585] [cursor=pointer]:
+                  - generic [ref=f38e586]: 乘用车
+                  - generic [ref=f38e587]: +3.06%
+                - generic [ref=f38e588] [cursor=pointer]:
+                  - generic [ref=f38e589]: 猪肉概念
+                  - generic [ref=f38e590]: +3.05%
+                - generic [ref=f38e591] [cursor=pointer]:
+                  - generic [ref=f38e592]: 小红书概念
+                  - generic [ref=f38e593]: +3.02%
+              - generic [ref=f38e595]:
+                - generic [ref=f38e596] [cursor=pointer]:
+                  - generic [ref=f38e597]: 重组蛋白概念
+                  - generic [ref=f38e598]: +2.91%
+                - generic [ref=f38e599] [cursor=pointer]:
+                  - generic [ref=f38e600]: 时空大数据概念
+                  - generic [ref=f38e601]: +2.90%
+                - generic [ref=f38e602] [cursor=pointer]:
+                  - generic [ref=f38e603]: 赛马概念
+                  - generic [ref=f38e604]: +2.89%
+                - generic [ref=f38e605] [cursor=pointer]:
+                  - generic [ref=f38e606]: 基因测序概念
+                  - generic [ref=f38e607]: +2.86%
+                - generic [ref=f38e608] [cursor=pointer]:
+                  - generic [ref=f38e609]: 肝炎概念
+                  - generic [ref=f38e610]: +2.86%
+                - generic [ref=f38e611] [cursor=pointer]:
+                  - generic [ref=f38e612]: 焦炭
+                  - generic [ref=f38e613]: +2.85%
+              - generic [ref=f38e615]:
+                - generic [ref=f38e616] [cursor=pointer]:
+                  - generic [ref=f38e617]: 高压氧舱概念
+                  - generic [ref=f38e618]: +2.83%
+                - generic [ref=f38e619] [cursor=pointer]:
+                  - generic [ref=f38e620]: 农业综合行业
+                  - generic [ref=f38e621]: +2.79%
+                - generic [ref=f38e622] [cursor=pointer]:
+                  - generic [ref=f38e623]: 房屋检测概念
+                  - generic [ref=f38e624]: +2.79%
+                - generic [ref=f38e625] [cursor=pointer]:
+                  - generic [ref=f38e626]: 快手概念
+                  - generic [ref=f38e627]: +2.79%
+                - generic [ref=f38e628] [cursor=pointer]:
+                  - generic [ref=f38e629]: Sora概念
+                  - generic [ref=f38e630]: +2.77%
+                - generic [ref=f38e631] [cursor=pointer]:
+                  - generic [ref=f38e632]: 无人零售概念
+                  - generic [ref=f38e633]: +2.73%
+              - generic [ref=f38e635]:
+                - generic [ref=f38e636] [cursor=pointer]:
+                  - generic [ref=f38e637]: 渔业
+                  - generic [ref=f38e638]: +2.71%
+                - generic [ref=f38e639] [cursor=pointer]:
+                  - generic [ref=f38e640]: 白酒主题
+                  - generic [ref=f38e641]: +2.69%
+                - generic [ref=f38e642] [cursor=pointer]:
+                  - generic [ref=f38e643]: 海洋捕捞
+                  - generic [ref=f38e644]: +2.65%
+                - generic [ref=f38e645] [cursor=pointer]:
+                  - generic [ref=f38e646]: 地面兵装主题
+                  - generic [ref=f38e647]: +2.63%
+        - generic [ref=f38e650]:
+          - generic [ref=f38e652]: 指数排行
+          - table [ref=f38e655]:
+            - generic [ref=f38e656]: 更新于2026/07/11
+            - generic [ref=f38e657]:
+              - rowgroup [ref=f38e658]:
+                - row [ref=f38e659]:
+                  - columnheader "指数名称" [ref=f38e660]
+                  - columnheader [ref=f38e661] [cursor=pointer]
+                  - columnheader [ref=f38e665] [cursor=pointer]
+                  - columnheader [ref=f38e669] [cursor=pointer]
+                  - columnheader [ref=f38e673] [cursor=pointer]
+                  - columnheader [ref=f38e677] [cursor=pointer]
+              - rowgroup [ref=f38e681]:
+                - row [ref=f38e682] [cursor=pointer]:
+                  - cell "中证白酒 399997" [ref=f38e683]:
+                    - generic "中证白酒" [ref=f38e685]
+                    - generic [ref=f38e686]: "399997"
+                  - cell "18.15" [ref=f38e687]
+                  - cell "7.07%" [ref=f38e688]
+                  - cell "3.53" [ref=f38e689]
+                  - cell "4.75%" [ref=f38e690]
+                  - cell "19.46%" [ref=f38e691]
+                - row [ref=f38e692] [cursor=pointer]:
+                  - cell "中证消费 000932" [ref=f38e693]:
+                    - generic "中证消费" [ref=f38e695]
+                    - generic [ref=f38e696]: "000932"
+                  - cell "19.24" [ref=f38e697]
+                  - cell "9.89%" [ref=f38e698]
+                  - cell "3.07" [ref=f38e699]
+                  - cell "3.20%" [ref=f38e700]
+                  - cell "15.95%" [ref=f38e701]
+                - row [ref=f38e702] [cursor=pointer]:
+                  - cell "内地资源 000944" [ref=f38e703]:
+                    - generic "内地资源" [ref=f38e705]
+                    - generic [ref=f38e706]: "000944"
+                  - cell "21.23" [ref=f38e707]
+                  - cell "61.27%" [ref=f38e708]
+                  - cell "1.09" [ref=f38e709]
+                  - cell "10.44%" [ref=f38e710]
+                  - cell "5.12%" [ref=f38e711]
+                - row [ref=f38e712] [cursor=pointer]:
+                  - cell "中证医疗 399989" [ref=f38e713]:
+                    - generic "中证医疗" [ref=f38e715]
+                    - generic [ref=f38e716]: "399989"
+                  - cell "28.46" [ref=f38e717]
+                  - cell "10.93%" [ref=f38e718]
+                  - cell "3.17" [ref=f38e719]
+                  - cell "3.65%" [ref=f38e720]
+                  - cell "11.15%" [ref=f38e721]
+                - row [ref=f38e722] [cursor=pointer]:
+                  - cell "消费红利 H30094" [ref=f38e723]:
+                    - generic "消费红利" [ref=f38e725]
+                    - generic [ref=f38e726]: H30094
+                  - cell "17.49" [ref=f38e727]
+                  - cell "11.50%" [ref=f38e728]
+                  - cell "3.10" [ref=f38e729]
+                  - cell "10.77%" [ref=f38e730]
+                  - cell "17.73%" [ref=f38e731]
+                - row [ref=f38e732] [cursor=pointer]:
+                  - cell "中证金融 000934" [ref=f38e733]:
+                    - generic "中证金融" [ref=f38e735]
+                    - generic [ref=f38e736]: "000934"
+                  - cell "7.86" [ref=f38e737]
+                  - cell "39.24%" [ref=f38e738]
+                  - cell "0.74" [ref=f38e739]
+                  - cell "14.12%" [ref=f38e740]
+                  - cell "9.43%" [ref=f38e741]
+                - row [ref=f38e742] [cursor=pointer]:
+                  - cell "证券公司 399975" [ref=f38e743]:
+                    - generic "证券公司" [ref=f38e745]
+                    - generic [ref=f38e746]: "399975"
+                  - cell "15.28" [ref=f38e747]
+                  - cell "8.73%" [ref=f38e748]
+                  - cell "1.31" [ref=f38e749]
+                  - cell "16.53%" [ref=f38e750]
+                  - cell "8.55%" [ref=f38e751]
+                - row [ref=f38e752] [cursor=pointer]:
+                  - cell "上证周期 000063" [ref=f38e753]:
+                    - generic "上证周期" [ref=f38e755]
+                    - generic [ref=f38e756]: "000063"
+                  - cell "8.37" [ref=f38e757]
+                  - cell "39.29%" [ref=f38e758]
+                  - cell "0.86" [ref=f38e759]
+                  - cell "16.59%" [ref=f38e760]
+                  - cell "10.25%" [ref=f38e761]
+                - row [ref=f38e762] [cursor=pointer]:
+                  - cell "中证银行 399986" [ref=f38e763]:
+                    - generic "中证银行" [ref=f38e765]
+                    - generic [ref=f38e766]: "399986"
+                  - cell "6.68" [ref=f38e767]
+                  - cell "73.67%" [ref=f38e768]
+                  - cell "0.63" [ref=f38e769]
+                  - cell "21.59%" [ref=f38e770]
+                  - cell "9.47%" [ref=f38e771]
+                - row [ref=f38e772] [cursor=pointer]:
+                  - cell "中证传媒 399971" [ref=f38e773]:
+                    - generic "中证传媒" [ref=f38e775]
+                    - generic [ref=f38e776]: "399971"
+                  - cell "34.09" [ref=f38e777]
+                  - cell "36.18%" [ref=f38e778]
+                  - cell "2.22" [ref=f38e779]
+                  - cell "22.95%" [ref=f38e780]
+                  - cell "6.50%" [ref=f38e781]
+        - generic [ref=f38e784]:
+          - generic [ref=f38e786]: 上证指数
+          - iframe [ref=f38e790]
+        - iframe [ref=f38e798]

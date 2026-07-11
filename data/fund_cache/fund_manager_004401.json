@@ -1,0 +1,21 @@
+{
+  "fund_code": "004401",
+  "managers": [
+    {
+      "name": "杨杰",
+      "year_performance": "3.95",
+      "employ_performance": "120.40",
+      "manage_scale": "166.97亿元",
+      "employment_date": "8年118天",
+      "accession_date": "2018.05.03-至今"
+    },
+    {
+      "name": "刘雨卉",
+      "year_performance": "3.54",
+      "employ_performance": "8.52",
+      "manage_scale": "163.76亿元",
+      "employment_date": "5年54天",
+      "accession_date": "2024.05.20-至今"
+    }
+  ]
+}

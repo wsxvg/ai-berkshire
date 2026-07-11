@@ -1,0 +1,106 @@
+{
+  "fund_code": "024074",
+  "report_date": "2026-03-31",
+  "total_asset": 369273845.73,
+  "allocation": {
+    "股票": 92.02,
+    "现金": 8.06,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "上汽集团",
+      "code": "600104",
+      "ratio": "9.14%",
+      "change": "0.98%",
+      "rate": "2.33%",
+      "industry": "汽车整车",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中国海油",
+      "code": "600938",
+      "ratio": "9.01%",
+      "change": "0.58%",
+      "rate": "3.51%",
+      "industry": "油气开采及服务",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "格力电器",
+      "code": "000651",
+      "ratio": "8.89%",
+      "change": "0.51%",
+      "rate": "0.87%",
+      "industry": "白色家电",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中远海控",
+      "code": "601919",
+      "ratio": "4.22%",
+      "change": "0.06%",
+      "rate": "4.02%",
+      "industry": "港口航运",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "长城汽车",
+      "code": "601633",
+      "ratio": "3.35%",
+      "change": "0.19%",
+      "rate": "2.47%",
+      "industry": "汽车整车",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "宝钢股份",
+      "code": "600019",
+      "ratio": "3.02%",
+      "change": "0.20%",
+      "rate": "-0.36%",
+      "industry": "钢铁",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "中国铝业",
+      "code": "601600",
+      "ratio": "2.80%",
+      "change": "0.57%",
+      "rate": "1.96%",
+      "industry": "工业金属",
+      "quarters_held": "重仓3个季度"
+    },
+    {
+      "name": "中国联通",
+      "code": "600050",
+      "ratio": "2.74%",
+      "change": "持平",
+      "rate": "0.25%",
+      "industry": "通信服务",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "潍柴动力",
+      "code": "000338",
+      "ratio": "2.71%",
+      "change": "0.13%",
+      "rate": "6.59%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "正泰电器",
+      "code": "601877",
+      "ratio": "2.52%",
+      "change": "0.26%",
+      "rate": "1.86%",
+      "industry": "电网设备",
+      "quarters_held": "重仓3个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比48.40%",
+  "invest_date": "2026-03-31"
+}

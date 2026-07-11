@@ -1,0 +1,106 @@
+{
+  "fund_code": "005959",
+  "report_date": "2026-03-31",
+  "total_asset": 1483847351.09,
+  "allocation": {
+    "股票": 94.81,
+    "债券": 3.73,
+    "现金": 1.88,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "芯源微",
+      "code": "688037",
+      "ratio": "8.75%",
+      "change": "2.30%",
+      "rate": "-1.36%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "源杰科技",
+      "code": "688498",
+      "ratio": "8.59%",
+      "change": "新增",
+      "rate": "1.23%",
+      "industry": "半导体",
+      "quarters_held": ""
+    },
+    {
+      "name": "新易盛",
+      "code": "300502",
+      "ratio": "7.75%",
+      "change": "1.45%",
+      "rate": "3.34%",
+      "industry": "通信设备",
+      "quarters_held": "重仓7个季度"
+    },
+    {
+      "name": "伟测科技",
+      "code": "688372",
+      "ratio": "6.74%",
+      "change": "0.77%",
+      "rate": "-5.78%",
+      "industry": "半导体",
+      "quarters_held": "重仓4个季度"
+    },
+    {
+      "name": "中微公司",
+      "code": "688012",
+      "ratio": "6.66%",
+      "change": "1.47%",
+      "rate": "1.17%",
+      "industry": "半导体",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "长芯博创",
+      "code": "300548",
+      "ratio": "6.51%",
+      "change": "新增",
+      "rate": "-0.45%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "永鼎股份",
+      "code": "600105",
+      "ratio": "6.10%",
+      "change": "新增",
+      "rate": "-2.99%",
+      "industry": "通信设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "延江股份",
+      "code": "300658",
+      "ratio": "6.08%",
+      "change": "新增",
+      "rate": "-0.25%",
+      "industry": "美容护理",
+      "quarters_held": ""
+    },
+    {
+      "name": "东山精密",
+      "code": "002384",
+      "ratio": "5.82%",
+      "change": "新增",
+      "rate": "4.98%",
+      "industry": "元件",
+      "quarters_held": ""
+    },
+    {
+      "name": "东材科技",
+      "code": "601208",
+      "ratio": "5.74%",
+      "change": "新增",
+      "rate": "0.00%",
+      "industry": "塑料制品",
+      "quarters_held": ""
+    }
+  ],
+  "stock_nav_ratio": "前10大占比68.74%",
+  "invest_date": "2026-03-31"
+}

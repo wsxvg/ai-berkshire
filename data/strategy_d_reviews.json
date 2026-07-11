@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-07-04",
+    "quarter": "2026Q3",
+    "market_state": "bull",
+    "holdings": {
+      "024239": {
+        "name": "华夏全球科技先锋(QDII)C",
+        "30d_return": 40.69,
+        "total_return": 112.53
+      },
+      "013841": {
+        "name": "银华集成电路混合C",
+        "30d_return": 115.43,
+        "total_return": 282.51
+      },
+      "012922": {
+        "name": "易方达全球成长精选(QDII)C",
+        "30d_return": 83.34,
+        "total_return": 226.36
+      }
+    },
+    "recommendation": "核心持有(024239), 卫星部分止盈(013841,012922), 设-15%回撤止损",
+    "next_review": "2026-09-30"
+  }
+]

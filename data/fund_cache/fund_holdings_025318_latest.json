@@ -1,0 +1,106 @@
+{
+  "fund_code": "025318",
+  "report_date": "2026-03-31",
+  "total_asset": 1962540079.2,
+  "allocation": {
+    "股票": 90.68,
+    "现金": 8.95,
+    "其他": 0.37,
+    "债券": 0.0,
+    "基金": 0.0
+  },
+  "top_stocks": [
+    {
+      "name": "绿的谐波",
+      "code": "688017",
+      "ratio": "5.84%",
+      "change": "0.62%",
+      "rate": "18.15%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "双环传动",
+      "code": "002472",
+      "ratio": "4.24%",
+      "change": "0.74%",
+      "rate": "9.99%",
+      "industry": "汽车零部件",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "机器人",
+      "code": "300024",
+      "ratio": "4.00%",
+      "change": "0.42%",
+      "rate": "2.92%",
+      "industry": "自动化设备",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "石头科技",
+      "code": "688169",
+      "ratio": "3.73%",
+      "change": "0.51%",
+      "rate": "4.46%",
+      "industry": "小家电",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "科沃斯",
+      "code": "603486",
+      "ratio": "2.95%",
+      "change": "0.51%",
+      "rate": "6.67%",
+      "industry": "小家电",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "富临精工",
+      "code": "300432",
+      "ratio": "2.90%",
+      "change": "新增",
+      "rate": "2.80%",
+      "industry": "汽车零部件",
+      "quarters_held": ""
+    },
+    {
+      "name": "科大讯飞",
+      "code": "002230",
+      "ratio": "2.77%",
+      "change": "新增",
+      "rate": "1.05%",
+      "industry": "软件开发",
+      "quarters_held": ""
+    },
+    {
+      "name": "三花智控",
+      "code": "002050",
+      "ratio": "2.73%",
+      "change": "0.38%",
+      "rate": "9.06%",
+      "industry": "白色家电",
+      "quarters_held": "重仓2个季度"
+    },
+    {
+      "name": "汇川技术",
+      "code": "300124",
+      "ratio": "2.67%",
+      "change": "新增",
+      "rate": "5.48%",
+      "industry": "自动化设备",
+      "quarters_held": ""
+    },
+    {
+      "name": "鸣志电器",
+      "code": "603728",
+      "ratio": "2.62%",
+      "change": "0.32%",
+      "rate": "7.34%",
+      "industry": "电机",
+      "quarters_held": "重仓2个季度"
+    }
+  ],
+  "stock_nav_ratio": "前10大占比34.45%",
+  "invest_date": "2026-03-31"
+}

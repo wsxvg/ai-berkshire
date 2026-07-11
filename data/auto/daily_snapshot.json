@@ -1,0 +1,71 @@
+{
+  "date": "2026-07-02",
+  "summary": {
+    "total_scored": 271,
+    "buy_verdict": 0,
+    "watch_verdict": 0,
+    "strong_buy_signals": 0,
+    "total_signals": 1
+  },
+  "top_scores": [
+    {
+      "code": "016452",
+      "total": 2.95,
+      "verdict": "pass"
+    },
+    {
+      "code": "002112",
+      "total": 2.9,
+      "verdict": "pass"
+    },
+    {
+      "code": "011452",
+      "total": 2.8,
+      "verdict": "pass"
+    },
+    {
+      "code": "021528",
+      "total": 2.8,
+      "verdict": "pass"
+    },
+    {
+      "code": "008253",
+      "total": 2.77,
+      "verdict": "pass"
+    },
+    {
+      "code": "013841",
+      "total": 2.63,
+      "verdict": "pass"
+    },
+    {
+      "code": "012922",
+      "total": 2.61,
+      "verdict": "pass"
+    },
+    {
+      "code": "018147",
+      "total": 2.58,
+      "verdict": "pass"
+    },
+    {
+      "code": "008888",
+      "total": 2.57,
+      "verdict": "pass"
+    },
+    {
+      "code": "016665",
+      "total": 2.57,
+      "verdict": "pass"
+    }
+  ],
+  "buy_signals": [],
+  "trending": [],
+  "changes": {
+    "000043": -0.0,
+    "000217": -0.0,
+    "000480": -0.0,
+    "000834": -0.16,
+    "001480": 0.0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "fund_code": "011609",
+  "managers": [
+    {
+      "name": "林伟斌",
+      "year_performance": "8.92",
+      "employ_performance": "49.98",
+      "manage_scale": "847.89亿元",
+      "employment_date": "13年120天",
+      "accession_date": "2021.03.01-至今"
+    },
+    {
+      "name": "成曦",
+      "year_performance": "3.64",
+      "employ_performance": "49.98",
+      "manage_scale": "1659.73亿元",
+      "employment_date": "10年58天",
+      "accession_date": "2021.03.01-至今"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "fund_code": "024328",
+  "buy_date": "07-06 15:00前",
+  "confirm_date": "07-07",
+  "manage_fee": 0.15,
+  "custody_fee": 0.05,
+  "sale_fee": 0.0,
+  "purchase_fee": 0.12,
+  "purchase_fee_original": 1.2,
+  "day_limit": Infinity,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 1.5,
+      "interval": "持有期限≤6日"
+    },
+    {
+      "rate": 0.0,
+      "interval": "持有期限≥7日"
+    }
+  ],
+  "purchase_status": "开放申购",
+  "redeem_status": "开放赎回"
+}

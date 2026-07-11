@@ -1,0 +1,14 @@
+[    2822ms] [LOG] window._READMISSION-- {setOption: , setElementHide: , setReceiveMissionModel: , setMissionId: , setMissionIdInner: } @ https://storage.jd.com/static-page/mission/forever/readmult/2.2.4/readPluginv2.2.4.js:1
+[    2840ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/06/01 14:43:49 
+- 当前页面: https://roma.jd.com/content/shipan-page?targetUid=jimu_user_info-14345330&firmOfferType=fund&channel=null&channelfrom=grouppc @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:464
+[    2846ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:1983
+[    7771ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/content/shipan-page/js/vendor_c8ecfe7e5c.js:14
+[    7785ms] [LOG] %cpageCommunityShiPanPage.js:14 params color: #007acc; {targetUid: jimu_user_info-14345330, firmOfferType: fund, channel: null, channelfrom: grouppc} @ https://roma.jd.com/content/shipan-page/js/main_193d322e33.js:0
+[    8407ms] [WARNING] %c 奇点已开启了自动上报页面PV，禁止手动上报，如需手动上报，请先关闭自动上报。 color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[   11613ms] [LOG] Download mq sdk failed ReferenceError: JOYER_ENV_ROMA_MQTT_APP_CODE is not defined
+    at ge (https://roma.jd.com/content/shipan-page/js/vendor_c8ecfe7e5c.js:20:138582)
+    at https://roma.jd.com/content/shipan-page/js/vendor_c8ecfe7e5c.js:20:141998 @ https://roma.jd.com/content/shipan-page/js/vendor_c8ecfe7e5c.js:19

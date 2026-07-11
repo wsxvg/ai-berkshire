@@ -1,0 +1,21 @@
+{
+  "fund_code": "014674",
+  "managers": [
+    {
+      "name": "蔡卡尔",
+      "year_performance": "4.84",
+      "employ_performance": "-38.39",
+      "manage_scale": "731.96亿元",
+      "employment_date": "9年179天",
+      "accession_date": "2022.01.11-至今"
+    },
+    {
+      "name": "田希蒙",
+      "year_performance": "-2.79",
+      "employ_performance": "-30.91",
+      "manage_scale": "778.62亿元",
+      "employment_date": "3年154天",
+      "accession_date": "2023.01.31-至今"
+    }
+  ]
+}

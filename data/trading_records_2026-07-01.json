@@ -1,0 +1,2604 @@
+{
+  "date": "2026-07-01",
+  "funds": {
+    "大成纳斯达克100ETF联接(QDII)A": {
+      "fund_name": "大成纳斯达克100ETF联接(QDII)A",
+      "fund_code": "000834",
+      "_fund_ids": [
+        "107857"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "晴空万里理财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金107857",
+          "_fund_id": "107857"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金107857",
+          "_fund_id": "107857"
+        }
+      ]
+    },
+    "摩根标普500指数(QDII)人民币A": {
+      "fund_name": "摩根标普500指数(QDII)人民币A",
+      "fund_code": "017641",
+      "_fund_ids": [
+        "1017641"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1017641",
+          "_fund_id": "1017641"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1017641",
+          "_fund_id": "1017641"
+        }
+      ]
+    },
+    "建信纳斯达克100指数(QDII)A人民币": {
+      "fund_name": "建信纳斯达克100指数(QDII)A人民币",
+      "fund_code": "539001",
+      "_fund_ids": [
+        "106160"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金106160",
+          "_fund_id": "106160"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金106160",
+          "_fund_id": "106160"
+        }
+      ]
+    },
+    "建信纳斯达克100指数(QDII)C人民币": {
+      "fund_name": "建信纳斯达克100指数(QDII)C人民币",
+      "fund_code": "012752",
+      "_fund_ids": [
+        "1012752"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1012752",
+          "_fund_id": "1012752"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1012752",
+          "_fund_id": "1012752"
+        }
+      ]
+    },
+    "摩根纳斯达克100指数(QDII)人民币A": {
+      "fund_name": "摩根纳斯达克100指数(QDII)人民币A",
+      "fund_code": "019172",
+      "_fund_ids": [
+        "1019172"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "晴空万里理财",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019172",
+          "_fund_id": "1019172"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019172",
+          "_fund_id": "1019172"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019172",
+          "_fund_id": "1019172"
+        }
+      ]
+    },
+    "天弘全球高端制造混合(QDII)A": {
+      "fund_name": "天弘全球高端制造混合(QDII)A",
+      "fund_code": "016664",
+      "_fund_ids": [
+        "1016664"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "家庭的温暖",
+        "王晴阳的活财之路"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016664",
+          "_fund_id": "1016664"
+        },
+        {
+          "user": "王晴阳的活财之路",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016664",
+          "_fund_id": "1016664"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016664",
+          "_fund_id": "1016664"
+        }
+      ]
+    },
+    "天弘全球新能源汽车股票(QDII-LOF)C": {
+      "fund_name": "天弘全球新能源汽车股票(QDII-LOF)C",
+      "fund_code": "016823",
+      "_fund_ids": [
+        "1016823"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016823",
+          "_fund_id": "1016823"
+        }
+      ]
+    },
+    "招商纳斯达克100ETF发起式联接(QDII)A": {
+      "fund_name": "招商纳斯达克100ETF发起式联接(QDII)A",
+      "fund_code": "019547",
+      "_fund_ids": [
+        "1019547"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "招财小猫",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019547",
+          "_fund_id": "1019547"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019547",
+          "_fund_id": "1019547"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019547",
+          "_fund_id": "1019547"
+        }
+      ]
+    },
+    "长城全球新能源车股票发起式(QDII)A": {
+      "fund_name": "长城全球新能源车股票发起式(QDII)A",
+      "fund_code": "501226",
+      "_fund_ids": [
+        "1501226"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "晴空万里理财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "500.00元",
+          "detail": "基金1501226",
+          "_fund_id": "1501226"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "500.00元",
+          "detail": "基金1501226",
+          "_fund_id": "1501226"
+        }
+      ]
+    },
+    "南方纳斯达克100指数发起(QDII)A": {
+      "fund_name": "南方纳斯达克100指数发起(QDII)A",
+      "fund_code": "016452",
+      "_fund_ids": [
+        "1016452"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "晴空万里理财",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016452",
+          "_fund_id": "1016452"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016452",
+          "_fund_id": "1016452"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016452",
+          "_fund_id": "1016452"
+        }
+      ]
+    },
+    "华宝致远混合A": {
+      "fund_name": "华宝致远混合A",
+      "fund_code": "008253",
+      "_fund_ids": [
+        "110355"
+      ],
+      "buy_count": 4,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基",
+        "小猫咪爱黄金",
+        "晴空万里理财",
+        "西西的金算盘"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "20.00元",
+          "detail": "基金110355",
+          "_fund_id": "110355"
+        },
+        {
+          "user": "西西的金算盘",
+          "action": "买入",
+          "amount": "20.00元",
+          "detail": "基金110355",
+          "_fund_id": "110355"
+        },
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "20.00元",
+          "detail": "基金110355",
+          "_fund_id": "110355"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "20.00元",
+          "detail": "基金110355",
+          "_fund_id": "110355"
+        }
+      ]
+    },
+    "国富亚洲机会股票(QDII)A": {
+      "fund_name": "国富亚洲机会股票(QDII)A",
+      "fund_code": "457001",
+      "_fund_ids": [
+        "107683"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "Z先生养基"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "Z先生养基",
+          "action": "买入",
+          "amount": "200.00元",
+          "detail": "基金107683",
+          "_fund_id": "107683"
+        }
+      ]
+    },
+    "富国上证科创板芯片ETF发起式联接C": {
+      "fund_name": "富国上证科创板芯片ETF发起式联接C",
+      "fund_code": "023652",
+      "_fund_ids": [
+        "1023652"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "蓝鲸跃财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "蓝鲸跃财",
+          "action": "买入",
+          "amount": "50,000.00元",
+          "detail": "基金1023652",
+          "_fund_id": "1023652"
+        }
+      ]
+    },
+    "宏利半导体产业混合发起C": {
+      "fund_name": "宏利半导体产业混合发起C",
+      "fund_code": "021511",
+      "_fund_ids": [
+        "1021511"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "蓝鲸跃财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "蓝鲸跃财",
+          "action": "买入",
+          "amount": "50,000.00元",
+          "detail": "基金1021511",
+          "_fund_id": "1021511"
+        }
+      ]
+    },
+    "富国上海金ETF联接C": {
+      "fund_name": "富国上海金ETF联接C",
+      "fund_code": "009505",
+      "_fund_ids": [
+        "1009505"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "小猫咪爱黄金",
+        "蓝鲸跃财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "蓝鲸跃财",
+          "action": "买入",
+          "amount": "50,000.00元",
+          "detail": "基金1009505",
+          "_fund_id": "1009505"
+        },
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1009505",
+          "_fund_id": "1009505"
+        }
+      ]
+    },
+    "华泰柏瑞质量成长混合C": {
+      "fund_name": "华泰柏瑞质量成长混合C",
+      "fund_code": "011452",
+      "_fund_ids": [
+        "113303"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫",
+        "晴空万里理财",
+        "蓝鲸跃财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "蓝鲸跃财",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金113303",
+          "_fund_id": "113303"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金113303",
+          "_fund_id": "113303"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金113303",
+          "_fund_id": "113303"
+        }
+      ]
+    },
+    "泰信医疗服务混合发起式C": {
+      "fund_name": "泰信医疗服务混合发起式C",
+      "fund_code": "013073",
+      "_fund_ids": [
+        "1013073"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "蓝鲸跃财"
+      ],
+      "records": [
+        {
+          "user": "蓝鲸跃财",
+          "action": "卖出",
+          "amount": "50,000.00份",
+          "detail": "基金1013073",
+          "_fund_id": "1013073"
+        }
+      ]
+    },
+    "万家纳斯达克100指数发起式(QDII)A": {
+      "fund_name": "万家纳斯达克100指数发起式(QDII)A",
+      "fund_code": "019441",
+      "_fund_ids": [
+        "1019441"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷",
+        "西西的金算盘"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "西西的金算盘",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1019441",
+          "_fund_id": "1019441"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1019441",
+          "_fund_id": "1019441"
+        }
+      ]
+    },
+    "东方人工智能主题混合C": {
+      "fund_name": "东方人工智能主题混合C",
+      "fund_code": "017811",
+      "_fund_ids": [
+        "1017811"
+      ],
+      "buy_count": 3,
+      "sell_count": 1,
+      "buy_users": [
+        "水手的梦想",
+        "赚自己认知内的钱",
+        "金蟾仙人"
+      ],
+      "sell_users": [
+        "西西的金算盘"
+      ],
+      "records": [
+        {
+          "user": "西西的金算盘",
+          "action": "卖出",
+          "amount": "800.00份",
+          "detail": "基金1017811",
+          "_fund_id": "1017811"
+        },
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "45,000.00元",
+          "detail": "基金1017811",
+          "_fund_id": "1017811"
+        },
+        {
+          "user": "金蟾仙人",
+          "action": "买入",
+          "amount": "3,449.00元",
+          "detail": "基金1017811",
+          "_fund_id": "1017811"
+        },
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金1017811",
+          "_fund_id": "1017811"
+        }
+      ]
+    },
+    "南方纳斯达克100指数发起(QDII)C": {
+      "fund_name": "南方纳斯达克100指数发起(QDII)C",
+      "fund_code": "016453",
+      "_fund_ids": [
+        "1016453"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财",
+        "杜康的菠萝爷",
+        "西西的金算盘"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "西西的金算盘",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016453",
+          "_fund_id": "1016453"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016453",
+          "_fund_id": "1016453"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1016453",
+          "_fund_id": "1016453"
+        }
+      ]
+    },
+    "天弘全球高端制造混合(QDII)C": {
+      "fund_name": "天弘全球高端制造混合(QDII)C",
+      "fund_code": "016665",
+      "_fund_ids": [
+        "1016665"
+      ],
+      "buy_count": 4,
+      "sell_count": 0,
+      "buy_users": [
+        "南山隐士",
+        "晴空万里理财",
+        "王晴阳的活财之路",
+        "西西的金算盘"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "西西的金算盘",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016665",
+          "_fund_id": "1016665"
+        },
+        {
+          "user": "南山隐士",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016665",
+          "_fund_id": "1016665"
+        },
+        {
+          "user": "王晴阳的活财之路",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016665",
+          "_fund_id": "1016665"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1016665",
+          "_fund_id": "1016665"
+        }
+      ]
+    },
+    "英大策略优选C": {
+      "fund_name": "英大策略优选C",
+      "fund_code": "001608",
+      "_fund_ids": [
+        "110988"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "南山隐士"
+      ],
+      "records": [
+        {
+          "user": "南山隐士",
+          "action": "卖出",
+          "amount": "1,246.67份",
+          "detail": "基金110988",
+          "_fund_id": "110988"
+        }
+      ]
+    },
+    "泰信低碳经济混合发起式C": {
+      "fund_name": "泰信低碳经济混合发起式C",
+      "fund_code": "013470",
+      "_fund_ids": [
+        "114663"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "南山隐士"
+      ],
+      "records": [
+        {
+          "user": "南山隐士",
+          "action": "卖出",
+          "amount": "11,958.20份",
+          "detail": "基金114663",
+          "_fund_id": "114663"
+        }
+      ]
+    },
+    "恒越成长精选混合C": {
+      "fund_name": "恒越成长精选混合C",
+      "fund_code": "010623",
+      "_fund_ids": [
+        "113784"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "南山隐士"
+      ],
+      "records": [
+        {
+          "user": "南山隐士",
+          "action": "卖出",
+          "amount": "9,596.45份",
+          "detail": "基金113784",
+          "_fund_id": "113784"
+        }
+      ]
+    },
+    "国富全球科技互联混合(QDII)人民币C": {
+      "fund_name": "国富全球科技互联混合(QDII)人民币C",
+      "fund_code": "021842",
+      "_fund_ids": [
+        "1021842"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "南山隐士",
+        "晴空万里理财",
+        "王晴阳的活财之路"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "南山隐士",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1021842",
+          "_fund_id": "1021842"
+        },
+        {
+          "user": "王晴阳的活财之路",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1021842",
+          "_fund_id": "1021842"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1021842",
+          "_fund_id": "1021842"
+        }
+      ]
+    },
+    "宏利先进制造股票C": {
+      "fund_name": "宏利先进制造股票C",
+      "fund_code": "014300",
+      "_fund_ids": [
+        "1014300"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "柠檬茶1983",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "柠檬茶1983",
+          "action": "买入",
+          "amount": "50,000.00元",
+          "detail": "基金1014300",
+          "_fund_id": "1014300"
+        },
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金1014300",
+          "_fund_id": "1014300"
+        }
+      ]
+    },
+    "东方人工智能主题混合A": {
+      "fund_name": "东方人工智能主题混合A",
+      "fund_code": "005844",
+      "_fund_ids": [
+        "111760"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "柠檬茶1983"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "柠檬茶1983",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金111760",
+          "_fund_id": "111760"
+        }
+      ]
+    },
+    "永赢新能源智选混合发起C": {
+      "fund_name": "永赢新能源智选混合发起C",
+      "fund_code": "015829",
+      "_fund_ids": [
+        "1015829"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1015829",
+          "_fund_id": "1015829"
+        }
+      ]
+    },
+    "永赢数字经济智选混合发起C": {
+      "fund_name": "永赢数字经济智选混合发起C",
+      "fund_code": "018123",
+      "_fund_ids": [
+        "1018123"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金1018123",
+          "_fund_id": "1018123"
+        }
+      ]
+    },
+    "德邦半导体产业混合发起式C": {
+      "fund_name": "德邦半导体产业混合发起式C",
+      "fund_code": "014320",
+      "_fund_ids": [
+        "1014320"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金1014320",
+          "_fund_id": "1014320"
+        }
+      ]
+    },
+    "银河创新混合C": {
+      "fund_name": "银河创新混合C",
+      "fund_code": "014143",
+      "_fund_ids": [
+        "114957"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金114957",
+          "_fund_id": "114957"
+        }
+      ]
+    },
+    "易方达上证科创50ETF联接C": {
+      "fund_name": "易方达上证科创50ETF联接C",
+      "fund_code": "011609",
+      "_fund_ids": [
+        "113284"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金113284",
+          "_fund_id": "113284"
+        }
+      ]
+    },
+    "华夏国证半导体芯片ETF联接C": {
+      "fund_name": "华夏国证半导体芯片ETF联接C",
+      "fund_code": "008888",
+      "_fund_ids": [
+        "111121"
+      ],
+      "buy_count": 4,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫",
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金111121",
+          "_fund_id": "111121"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金111121",
+          "_fund_id": "111121"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金111121",
+          "_fund_id": "111121"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金111121",
+          "_fund_id": "111121"
+        }
+      ]
+    },
+    "永赢制造升级智选混合发起C": {
+      "fund_name": "永赢制造升级智选混合发起C",
+      "fund_code": "024203",
+      "_fund_ids": [
+        "1024203"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金1024203",
+          "_fund_id": "1024203"
+        }
+      ]
+    },
+    "华夏半导体材料设备ETF联接C": {
+      "fund_name": "华夏半导体材料设备ETF联接C",
+      "fund_code": "020357",
+      "_fund_ids": [
+        "1020357"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "50,000.00元",
+          "detail": "基金1020357",
+          "_fund_id": "1020357"
+        }
+      ]
+    },
+    "永赢科技智选混合发起C": {
+      "fund_name": "永赢科技智选混合发起C",
+      "fund_code": "022365",
+      "_fund_ids": [
+        "1022365"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫",
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金1022365",
+          "_fund_id": "1022365"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1022365",
+          "_fund_id": "1022365"
+        }
+      ]
+    },
+    "东方阿尔法科技智选混合发起C": {
+      "fund_name": "东方阿尔法科技智选混合发起C",
+      "fund_code": "025500",
+      "_fund_ids": [
+        "1025500"
+      ],
+      "buy_count": 4,
+      "sell_count": 1,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫",
+        "柠檬小金库",
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [
+        "杜康的菠萝爷"
+      ],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "45,000.00元",
+          "detail": "基金1025500",
+          "_fund_id": "1025500"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金1025500",
+          "_fund_id": "1025500"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1025500",
+          "_fund_id": "1025500"
+        },
+        {
+          "user": "柠檬小金库",
+          "action": "买入",
+          "amount": "3,000.00元",
+          "detail": "基金1025500",
+          "_fund_id": "1025500"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "卖出",
+          "amount": "21,184.00份",
+          "detail": "基金1025500",
+          "_fund_id": "1025500"
+        }
+      ]
+    },
+    "国泰中证全指通信设备ETF联接C": {
+      "fund_name": "国泰中证全指通信设备ETF联接C",
+      "fund_code": "007818",
+      "_fund_ids": [
+        "109922"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫",
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "20,000.00元",
+          "detail": "基金109922",
+          "_fund_id": "109922"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金109922",
+          "_fund_id": "109922"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "8,000.00元",
+          "detail": "基金109922",
+          "_fund_id": "109922"
+        }
+      ]
+    },
+    "金信民兴债券A": {
+      "fund_name": "金信民兴债券A",
+      "fund_code": "004400",
+      "_fund_ids": [
+        "109180"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "500.00元",
+          "detail": "基金109180",
+          "_fund_id": "109180"
+        }
+      ]
+    },
+    "金信民兴债券C": {
+      "fund_name": "金信民兴债券C",
+      "fund_code": "004401",
+      "_fund_ids": [
+        "109179"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "赚自己认知内的钱"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "赚自己认知内的钱",
+          "action": "买入",
+          "amount": "500.00元",
+          "detail": "基金109179",
+          "_fund_id": "109179"
+        }
+      ]
+    },
+    "西部利得CES芯片指数增强C": {
+      "fund_name": "西部利得CES芯片指数增强C",
+      "fund_code": "014419",
+      "_fund_ids": [
+        "115062"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "小猫咪爱黄金"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金115062",
+          "_fund_id": "115062"
+        }
+      ]
+    },
+    "富国中证沪港深创新药产业ETF发起式联接C": {
+      "fund_name": "富国中证沪港深创新药产业ETF发起式联接C",
+      "fund_code": "019898",
+      "_fund_ids": [
+        "1019898"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "小猫咪爱黄金"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1019898",
+          "_fund_id": "1019898"
+        }
+      ]
+    },
+    "平安半导体领航精选混合发起式C": {
+      "fund_name": "平安半导体领航精选混合发起式C",
+      "fund_code": "026633",
+      "_fund_ids": [
+        "1026633"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "小猫咪爱黄金"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1026633",
+          "_fund_id": "1026633"
+        }
+      ]
+    },
+    "银华中证5G通信主题ETF联接C": {
+      "fund_name": "银华中证5G通信主题ETF联接C",
+      "fund_code": "010524",
+      "_fund_ids": [
+        "113000"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "小猫咪爱黄金"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金113000",
+          "_fund_id": "113000"
+        }
+      ]
+    },
+    "财通成长优选混合C": {
+      "fund_name": "财通成长优选混合C",
+      "fund_code": "021528",
+      "_fund_ids": [
+        "1021528"
+      ],
+      "buy_count": 5,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "小猫咪爱黄金",
+        "招财小猫",
+        "晴空万里理财",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "小猫咪爱黄金",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021528",
+          "_fund_id": "1021528"
+        },
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021528",
+          "_fund_id": "1021528"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021528",
+          "_fund_id": "1021528"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021528",
+          "_fund_id": "1021528"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021528",
+          "_fund_id": "1021528"
+        }
+      ]
+    },
+    "国富全球科技互联混合(QDII)人民币A": {
+      "fund_name": "国富全球科技互联混合(QDII)人民币A",
+      "fund_code": "006373",
+      "_fund_ids": [
+        "109166"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财",
+        "王晴阳的活财之路"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "王晴阳的活财之路",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金109166",
+          "_fund_id": "109166"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金109166",
+          "_fund_id": "109166"
+        }
+      ]
+    },
+    "华夏上证科创板半导体材料设备主题ETF发起式联接C": {
+      "fund_name": "华夏上证科创板半导体材料设备主题ETF发起式联接C",
+      "fund_code": "024418",
+      "_fund_ids": [
+        "1024418"
+      ],
+      "buy_count": 1,
+      "sell_count": 1,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [
+        "杜康的菠萝爷"
+      ],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金1024418",
+          "_fund_id": "1024418"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "卖出",
+          "amount": "19,000.00份",
+          "detail": "基金1024418",
+          "_fund_id": "1024418"
+        }
+      ]
+    },
+    "华润元大核心动力混合C": {
+      "fund_name": "华润元大核心动力混合C",
+      "fund_code": "009883",
+      "_fund_ids": [
+        "1009883"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金1009883",
+          "_fund_id": "1009883"
+        }
+      ]
+    },
+    "国泰中证半导体材料设备主题ETF发起联接C": {
+      "fund_name": "国泰中证半导体材料设备主题ETF发起联接C",
+      "fund_code": "019633",
+      "_fund_ids": [
+        "1019633"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金1019633",
+          "_fund_id": "1019633"
+        },
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1019633",
+          "_fund_id": "1019633"
+        }
+      ]
+    },
+    "平安睿享成长混合C": {
+      "fund_name": "平安睿享成长混合C",
+      "fund_code": "011829",
+      "_fund_ids": [
+        "1011829"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1011829",
+          "_fund_id": "1011829"
+        }
+      ]
+    },
+    "财通价值动量混合C": {
+      "fund_name": "财通价值动量混合C",
+      "fund_code": "021523",
+      "_fund_ids": [
+        "1021523"
+      ],
+      "buy_count": 4,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫",
+        "晴空万里理财",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021523",
+          "_fund_id": "1021523"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021523",
+          "_fund_id": "1021523"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021523",
+          "_fund_id": "1021523"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021523",
+          "_fund_id": "1021523"
+        }
+      ]
+    },
+    "华商均衡成长混合C": {
+      "fund_name": "华商均衡成长混合C",
+      "fund_code": "011370",
+      "_fund_ids": [
+        "113387"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金113387",
+          "_fund_id": "113387"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金113387",
+          "_fund_id": "113387"
+        }
+      ]
+    },
+    "易方达信息产业混合C": {
+      "fund_name": "易方达信息产业混合C",
+      "fund_code": "019018",
+      "_fund_ids": [
+        "1019018"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1019018",
+          "_fund_id": "1019018"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1019018",
+          "_fund_id": "1019018"
+        }
+      ]
+    },
+    "财通品质甄选混合C": {
+      "fund_name": "财通品质甄选混合C",
+      "fund_code": "024481",
+      "_fund_ids": [
+        "1024481"
+      ],
+      "buy_count": 4,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫",
+        "晴空万里理财",
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1024481",
+          "_fund_id": "1024481"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1024481",
+          "_fund_id": "1024481"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1024481",
+          "_fund_id": "1024481"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1024481",
+          "_fund_id": "1024481"
+        }
+      ]
+    },
+    "弘毅远方汽车产业升级混合C": {
+      "fund_name": "弘毅远方汽车产业升级混合C",
+      "fund_code": "015528",
+      "_fund_ids": [
+        "1015528"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1015528",
+          "_fund_id": "1015528"
+        }
+      ]
+    },
+    "方正富邦核心优势混合C": {
+      "fund_name": "方正富邦核心优势混合C",
+      "fund_code": "018816",
+      "_fund_ids": [
+        "1018816"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "水手的梦想"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "水手的梦想",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1018816",
+          "_fund_id": "1018816"
+        }
+      ]
+    },
+    "信澳业绩驱动混合C": {
+      "fund_name": "信澳业绩驱动混合C",
+      "fund_code": "016371",
+      "_fund_ids": [
+        "1016371"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "30,000.00元",
+          "detail": "基金1016371",
+          "_fund_id": "1016371"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1016371",
+          "_fund_id": "1016371"
+        }
+      ]
+    },
+    "永赢科技智选混合发起A": {
+      "fund_name": "永赢科技智选混合发起A",
+      "fund_code": "022364",
+      "_fund_ids": [
+        "1022364"
+      ],
+      "buy_count": 0,
+      "sell_count": 2,
+      "buy_users": [],
+      "sell_users": [
+        "家庭的温暖"
+      ],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "转换",
+          "amount": "1,365.09份",
+          "detail": "基金1022364",
+          "_fund_id": "1022364"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "转换",
+          "amount": "5,460.36份",
+          "detail": "基金1022364",
+          "_fund_id": "1022364"
+        }
+      ]
+    },
+    "财通周期优选混合C": {
+      "fund_name": "财通周期优选混合C",
+      "fund_code": "025547",
+      "_fund_ids": [
+        "1025547"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "家庭的温暖"
+      ],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "转换",
+          "amount": "157,699.27份",
+          "detail": "基金1025547",
+          "_fund_id": "1025547"
+        }
+      ]
+    },
+    "银河创新混合A": {
+      "fund_name": "银河创新混合A",
+      "fund_code": "519674",
+      "_fund_ids": [
+        "105561"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金105561",
+          "_fund_id": "105561"
+        }
+      ]
+    },
+    "银华集成电路混合C": {
+      "fund_name": "银华集成电路混合C",
+      "fund_code": "013841",
+      "_fund_ids": [
+        "114880"
+      ],
+      "buy_count": 5,
+      "sell_count": 1,
+      "buy_users": [
+        "家庭的温暖",
+        "招财小猫"
+      ],
+      "sell_users": [
+        "杜康的菠萝爷"
+      ],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "卖出",
+          "amount": "1,311.40份",
+          "detail": "基金114880",
+          "_fund_id": "114880"
+        }
+      ]
+    },
+    "华夏半导体龙头混合发起式C": {
+      "fund_name": "华夏半导体龙头混合发起式C",
+      "fund_code": "016501",
+      "_fund_ids": [
+        "1016501"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金1016501",
+          "_fund_id": "1016501"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金1016501",
+          "_fund_id": "1016501"
+        },
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金1016501",
+          "_fund_id": "1016501"
+        }
+      ]
+    },
+    "永赢先锋半导体智选混合发起C": {
+      "fund_name": "永赢先锋半导体智选混合发起C",
+      "fund_code": "025209",
+      "_fund_ids": [
+        "1025209"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100,000.00元",
+          "detail": "基金1025209",
+          "_fund_id": "1025209"
+        }
+      ]
+    },
+    "华泰柏瑞质量精选混合C": {
+      "fund_name": "华泰柏瑞质量精选混合C",
+      "fund_code": "010416",
+      "_fund_ids": [
+        "113458"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金113458",
+          "_fund_id": "113458"
+        }
+      ]
+    },
+    "华宝纳斯达克精选股票发起式(QDII)A": {
+      "fund_name": "华宝纳斯达克精选股票发起式(QDII)A",
+      "fund_code": "017436",
+      "_fund_ids": [
+        "1017436"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金1017436",
+          "_fund_id": "1017436"
+        }
+      ]
+    },
+    "财通成长优选混合A": {
+      "fund_name": "财通成长优选混合A",
+      "fund_code": "001480",
+      "_fund_ids": [
+        "105244"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金105244",
+          "_fund_id": "105244"
+        }
+      ]
+    },
+    "财通价值动量混合A": {
+      "fund_name": "财通价值动量混合A",
+      "fund_code": "720001",
+      "_fund_ids": [
+        "105274"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "家庭的温暖"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "家庭的温暖",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金105274",
+          "_fund_id": "105274"
+        }
+      ]
+    },
+    "国泰黄金ETF联接C": {
+      "fund_name": "国泰黄金ETF联接C",
+      "fund_code": "004253",
+      "_fund_ids": [
+        "111947"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "晴空万里理财"
+      ],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "卖出",
+          "amount": "53,507.69份",
+          "detail": "基金111947",
+          "_fund_id": "111947"
+        }
+      ]
+    },
+    "前海开源黄金ETF联接C": {
+      "fund_name": "前海开源黄金ETF联接C",
+      "fund_code": "021740",
+      "_fund_ids": [
+        "1021740"
+      ],
+      "buy_count": 0,
+      "sell_count": 2,
+      "buy_users": [],
+      "sell_users": [
+        "晴空万里理财"
+      ],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "转换",
+          "amount": "4,760.00份",
+          "detail": "基金1021740",
+          "_fund_id": "1021740"
+        },
+        {
+          "user": "晴空万里理财",
+          "action": "转换",
+          "amount": "4,760.00份",
+          "detail": "基金1021740",
+          "_fund_id": "1021740"
+        }
+      ]
+    },
+    "中航机遇领航混合发起C": {
+      "fund_name": "中航机遇领航混合发起C",
+      "fund_code": "018957",
+      "_fund_ids": [
+        "1018957"
+      ],
+      "buy_count": 0,
+      "sell_count": 1,
+      "buy_users": [],
+      "sell_users": [
+        "晴空万里理财"
+      ],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "转换",
+          "amount": "1,431.91份",
+          "detail": "基金1018957",
+          "_fund_id": "1018957"
+        }
+      ]
+    },
+    "天弘全球新能源汽车股票(QDII-LOF)A": {
+      "fund_name": "天弘全球新能源汽车股票(QDII-LOF)A",
+      "fund_code": "164212",
+      "_fund_ids": [
+        "1164212"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1164212",
+          "_fund_id": "1164212"
+        }
+      ]
+    },
+    "宝盈纳斯达克100指数发起(QDII)A人民币": {
+      "fund_name": "宝盈纳斯达克100指数发起(QDII)A人民币",
+      "fund_code": "019736",
+      "_fund_ids": [
+        "1019736"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019736",
+          "_fund_id": "1019736"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019736",
+          "_fund_id": "1019736"
+        }
+      ]
+    },
+    "广发全球精选股票(QDII)A": {
+      "fund_name": "广发全球精选股票(QDII)A",
+      "fund_code": "270023",
+      "_fund_ids": [
+        "104558"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫",
+        "晴空万里理财"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金104558",
+          "_fund_id": "104558"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金104558",
+          "_fund_id": "104558"
+        }
+      ]
+    },
+    "广发纳指100ETF联接(QDII)A": {
+      "fund_name": "广发纳指100ETF联接(QDII)A",
+      "fund_code": "270042",
+      "_fund_ids": [
+        "104492"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "晴空万里理财",
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "晴空万里理财",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金104492",
+          "_fund_id": "104492"
+        },
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金104492",
+          "_fund_id": "104492"
+        }
+      ]
+    },
+    "天弘中证人工智能C": {
+      "fund_name": "天弘中证人工智能C",
+      "fund_code": "011840",
+      "_fund_ids": [
+        "114164"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "142,000.00元",
+          "detail": "基金114164",
+          "_fund_id": "114164"
+        }
+      ]
+    },
+    "平安科技精选混合发起式C": {
+      "fund_name": "平安科技精选混合发起式C",
+      "fund_code": "026211",
+      "_fund_ids": [
+        "1026211"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金1026211",
+          "_fund_id": "1026211"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1026211",
+          "_fund_id": "1026211"
+        }
+      ]
+    },
+    "财通智慧成长混合C": {
+      "fund_name": "财通智慧成长混合C",
+      "fund_code": "009063",
+      "_fund_ids": [
+        "110852"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金110852",
+          "_fund_id": "110852"
+        }
+      ]
+    },
+    "德邦鑫星价值C": {
+      "fund_name": "德邦鑫星价值C",
+      "fund_code": "002112",
+      "_fund_ids": [
+        "105109"
+      ],
+      "buy_count": 2,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金105109",
+          "_fund_id": "105109"
+        },
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "5,000.00元",
+          "detail": "基金105109",
+          "_fund_id": "105109"
+        }
+      ]
+    },
+    "嘉实上证科创板芯片ETF发起联接C": {
+      "fund_name": "嘉实上证科创板芯片ETF发起联接C",
+      "fund_code": "017470",
+      "_fund_ids": [
+        "1017470"
+      ],
+      "buy_count": 3,
+      "sell_count": 0,
+      "buy_users": [
+        "招财小猫",
+        "柠檬小金库"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "招财小猫",
+          "action": "买入",
+          "amount": "10,000.00元",
+          "detail": "基金1017470",
+          "_fund_id": "1017470"
+        },
+        {
+          "user": "柠檬小金库",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金1017470",
+          "_fund_id": "1017470"
+        },
+        {
+          "user": "柠檬小金库",
+          "action": "买入",
+          "amount": "2,500.00元",
+          "detail": "基金1017470",
+          "_fund_id": "1017470"
+        }
+      ]
+    },
+    "前海开源高端装备制造混合C": {
+      "fund_name": "前海开源高端装备制造混合C",
+      "fund_code": "016721",
+      "_fund_ids": [
+        "1016721"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "名字长我骄傲了吗"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "名字长我骄傲了吗",
+          "action": "买入",
+          "amount": "1,000.00元",
+          "detail": "基金1016721",
+          "_fund_id": "1016721"
+        }
+      ]
+    },
+    "天弘中证全指通信设备指数发起C": {
+      "fund_name": "天弘中证全指通信设备指数发起C",
+      "fund_code": "020900",
+      "_fund_ids": [
+        "1020900"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "柠檬小金库"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "柠檬小金库",
+          "action": "买入",
+          "amount": "2,000.00元",
+          "detail": "基金1020900",
+          "_fund_id": "1020900"
+        }
+      ]
+    },
+    "万家纳斯达克100指数发起式(QDII)C": {
+      "fund_name": "万家纳斯达克100指数发起式(QDII)C",
+      "fund_code": "019442",
+      "_fund_ids": [
+        "1019442"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "50.00元",
+          "detail": "基金1019442",
+          "_fund_id": "1019442"
+        }
+      ]
+    },
+    "广发全球精选股票(QDII)C": {
+      "fund_name": "广发全球精选股票(QDII)C",
+      "fund_code": "021277",
+      "_fund_ids": [
+        "1021277"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1021277",
+          "_fund_id": "1021277"
+        }
+      ]
+    },
+    "摩根标普500指数(QDII)人民币C": {
+      "fund_name": "摩根标普500指数(QDII)人民币C",
+      "fund_code": "019305",
+      "_fund_ids": [
+        "1019305"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019305",
+          "_fund_id": "1019305"
+        }
+      ]
+    },
+    "大成纳斯达克100ETF联接(QDII)C": {
+      "fund_name": "大成纳斯达克100ETF联接(QDII)C",
+      "fund_code": "008971",
+      "_fund_ids": [
+        "1008971"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1008971",
+          "_fund_id": "1008971"
+        }
+      ]
+    },
+    "华泰柏瑞纳斯达克100ETF发起式联接（QDII）C": {
+      "fund_name": "华泰柏瑞纳斯达克100ETF发起式联接（QDII）C",
+      "fund_code": "019525",
+      "_fund_ids": [
+        "1019525"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019525",
+          "_fund_id": "1019525"
+        }
+      ]
+    },
+    "招商纳斯达克100ETF发起式联接(QDII)C": {
+      "fund_name": "招商纳斯达克100ETF发起式联接(QDII)C",
+      "fund_code": "019548",
+      "_fund_ids": [
+        "1019548"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019548",
+          "_fund_id": "1019548"
+        }
+      ]
+    },
+    "摩根纳斯达克100指数(QDII)人民币C": {
+      "fund_name": "摩根纳斯达克100指数(QDII)人民币C",
+      "fund_code": "019173",
+      "_fund_ids": [
+        "1019173"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1019173",
+          "_fund_id": "1019173"
+        }
+      ]
+    },
+    "汇添富纳斯达克100ETF发起式联接(QDII)人民币C": {
+      "fund_name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币C",
+      "fund_code": "018967",
+      "_fund_ids": [
+        "1018967"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "100.00元",
+          "detail": "基金1018967",
+          "_fund_id": "1018967"
+        }
+      ]
+    },
+    "华安纳斯达克100ETF联接(QDII)C": {
+      "fund_name": "华安纳斯达克100ETF联接(QDII)C",
+      "fund_code": "014978",
+      "_fund_ids": [
+        "1014978"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金1014978",
+          "_fund_id": "1014978"
+        }
+      ]
+    },
+    "华安纳斯达克100ETF联接(QDII)A": {
+      "fund_name": "华安纳斯达克100ETF联接(QDII)A",
+      "fund_code": "040046",
+      "_fund_ids": [
+        "106437"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金106437",
+          "_fund_id": "106437"
+        }
+      ]
+    },
+    "广发纳指100ETF联接(QDII)C": {
+      "fund_name": "广发纳指100ETF联接(QDII)C",
+      "fund_code": "006479",
+      "_fund_ids": [
+        "110862"
+      ],
+      "buy_count": 1,
+      "sell_count": 0,
+      "buy_users": [
+        "杜康的菠萝爷"
+      ],
+      "sell_users": [],
+      "records": [
+        {
+          "user": "杜康的菠萝爷",
+          "action": "买入",
+          "amount": "10.00元",
+          "detail": "基金110862",
+          "_fund_id": "110862"
+        }
+      ]
+    }
+  }
+}

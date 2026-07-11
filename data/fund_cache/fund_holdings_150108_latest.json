@@ -1,0 +1,15 @@
+{
+  "fund_code": "150108",
+  "report_date": "2017-06-30",
+  "total_asset": 26364904.44,
+  "allocation": {
+    "股票": 93.17,
+    "现金": 7.34,
+    "债券": 0.0,
+    "基金": 0.0,
+    "其他": 0.0
+  },
+  "top_stocks": [],
+  "stock_nav_ratio": "",
+  "invest_date": "2017-06-30"
+}

@@ -1,0 +1,29 @@
+{
+  "fund_code": "501205",
+  "managers": [
+    {
+      "name": "王宗合",
+      "year_performance": "6.74",
+      "employ_performance": "",
+      "manage_scale": "107.33亿元",
+      "employment_date": "15年188天",
+      "accession_date": "2022.03.30-至今"
+    },
+    {
+      "name": "闫思倩",
+      "year_performance": "18.02",
+      "employ_performance": "100.27",
+      "manage_scale": "134.64亿元",
+      "employment_date": "8年260天",
+      "accession_date": "2023.03.25-至今"
+    },
+    {
+      "name": "王子建",
+      "year_performance": "12.54",
+      "employ_performance": "107.28",
+      "manage_scale": "23.86亿元",
+      "employment_date": "5年151天",
+      "accession_date": "2025.07.09-至今"
+    }
+  ]
+}

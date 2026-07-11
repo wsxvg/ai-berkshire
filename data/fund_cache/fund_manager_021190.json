@@ -1,0 +1,21 @@
+{
+  "fund_code": "021190",
+  "managers": [
+    {
+      "name": "张其思",
+      "year_performance": "15.16",
+      "employ_performance": "44.99",
+      "manage_scale": "290.36亿元",
+      "employment_date": "5年100天",
+      "accession_date": "2025.04.18-至今"
+    },
+    {
+      "name": "王鑫",
+      "year_performance": "11.31",
+      "employ_performance": "44.99",
+      "manage_scale": "101.28亿元",
+      "employment_date": "1年84天",
+      "accession_date": "2025.04.18-至今"
+    }
+  ]
+}
