@@ -22,6 +22,20 @@ body {
   min-height: 100vh;
 }
 
+/* 亮色主题 */
+html.light {
+  --bg-primary: #f5f7fa;
+  --bg-card: rgba(255,255,255,0.8);
+  --bg-card-hover: rgba(255,255,255,0.95);
+  --glass-border: rgba(0,0,0,0.1);
+  --text-primary: #1a1a2e;
+  --text-secondary: #666;
+  --accent-green: #00a878;
+  --accent-red: #e53e3e;
+  --accent-blue: #2b6cb0;
+  --accent-gold: #d48b00;
+}
+
 /* 玻璃拟态 */
 .glass {
   background: var(--bg-card);

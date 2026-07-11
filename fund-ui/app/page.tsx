@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { fetchWatchlist, fetchScores, FundInfo, FundScore } from './lib/jd-api'
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts'
 
 const COLORS = ['#ff5577','#5b8def','#f0b90b','#00d4aa','#ff8c42','#a855f7','#ec4899','#14b8a6']
 
@@ -29,6 +29,8 @@ export default function Home() {
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [compareData, setCompareData] = useState<any[]>([])
   const [comparing, setComparing] = useState(false)
+  const [feed, setFeed] = useState<any[]>([])
+  const [showRadar, setShowRadar] = useState<string | null>(null)
 
   useEffect(() => {
     fetchWatchlist().then(setFunds).catch(e => setError(e.message)).finally(() => setLoading(false))
@@ -47,6 +49,13 @@ export default function Home() {
     const n = new Set(selected)
     n.has(code) ? n.delete(code) : n.add(code)
     setSelected(n)
+  }
+
+  useEffect(() => { fetch('/api/feed').then(r => r.json()).then(setFeed).catch(()=>{}) }, [])
+
+  const radarData = (code: string) => {
+    const s = scores[code]; if (!s) return []
+    return [{dim:'质量',v:s.quality},{dim:'成本',v:s.cost},{dim:'经理',v:s.manager},{dim:'动量',v:s.momentum},{dim:'聪明钱',v:s.smartMoney}]
   }
 
   const loadCompare = async () => {
@@ -101,6 +110,41 @@ export default function Home() {
         </div>
       )}
 
+      {/* 大佬动态 */}
+      {feed.length > 0 && (
+        <div className="glass" style={{ padding: '12px 16px', marginBottom: '24px', display: 'flex', gap: '12px', overflowX: 'auto', fontSize: '13px', alignItems: 'center' }}>
+          <span style={{ fontWeight: 600, whiteSpace: 'nowrap', color: 'var(--accent-gold)', marginRight: '8px' }}>大佬动态</span>
+          {feed.slice(0, 15).map((f, i) => (
+            <span key={i} style={{ whiteSpace: 'nowrap', padding: '4px 10px', borderRadius: '12px',
+              background: f.action?.includes('买入') ? 'rgba(255,85,119,0.1)' : 'rgba(0,168,120,0.1)',
+              color: f.action?.includes('买入') ? 'var(--accent-red)' : 'var(--accent-green)',
+              display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+              <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{f.user?.slice(0,4)}</span>
+              <span>{f.action?.includes('买入') ? '买入' : '卖出'}</span>
+              <span style={{ fontSize: '11px' }}>{f.fund?.slice(0,8)}</span>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* radar chart modal */}
+      {showRadar && scores[showRadar] && (
+        <div className="glass" style={{ padding: '16px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 600 }}>{scores[showRadar].name} 五维雷达</h3>
+            <button onClick={() => setShowRadar(null)} style={{ background:'none', border:'none', color:'var(--text-secondary)', cursor:'pointer' }}>关闭</button>
+          </div>
+          <ResponsiveContainer width="100%" height={280}>
+            <RadarChart data={radarData(showRadar)}>
+              <PolarGrid stroke="rgba(255,255,255,0.1)" />
+              <PolarAngleAxis dataKey="dim" tick={{ fontSize: 12, fill: 'var(--text-secondary)' }} />
+              <PolarRadiusAxis domain={[0, 5]} tick={{ fontSize: 10 }} />
+              <Radar name={scores[showRadar].name} dataKey="v" stroke="#ff5577" fill="#ff5577" fillOpacity={0.2} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
       {/* fund cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px' }}>
         {funds.map(f => {
@@ -151,6 +195,8 @@ export default function Home() {
                   <span>RSI: {score.rsi ?? 'N/A'}</span>
                   <span>成本: {score.cost.toFixed(1)}</span>
                   <span>经理: {score.manager.toFixed(1)}</span>
+                  <span onClick={(e) => { e.stopPropagation(); setShowRadar(f.code) }}
+                    style={{ cursor: 'pointer', color: 'var(--accent-blue)', marginLeft: 'auto' }}>雷达图</span>
                 </div>
               </div>}
             </div>
