@@ -131,3 +131,24 @@ LightGBM分类器，16维特征（五维评分+近期收益+回撤+波动率+规
 4. **AGENTS.md** 已存在，包含兼容性规则和研究质量规则。CODEBUDDY.md补充技术架构信息。
 
 5. **ai-berkshire-main是初始基准版本，不要修改**。所有改进只在当前项目(基金)中进行。
+
+## 实盘模拟 + SKILL AI审计（新增）
+
+### 自动流水线（GitHub Actions 每日 14:30）
+```
+自选列表 → Layer1风控(RSI/超买) → 五维评分(含大佬smart_money)
+→ 相关性过滤 → Portfolio仓位管理(T+N/费率/冷却期)
+→ 生成日报 reports/sim/YYYY-MM-DD.md + 机器报告 YYYY-MM-DD.json
+```
+
+### 本地 SKILL AI审计（你打开日报时）
+日报末尾有 AI 审计入口，CodeBuddy 读取后自动调用：
+- `fund-checklist {codes}` — 买入前六关深度审计
+- `fund-penetration {codes}` — 穿透持仓看底层资产
+- `fund-analyze {codes}` — 风控拦截基金复查
+- `fund-sell {codes}` — 持仓卖出信号检查
+
+### 关键配置
+- 回测验证参数: `data/evolution/best_config.json` (年化24.1%, 夏普1.52)
+- 虚拟持仓: `reports/sim/virtual_portfolio.json`
+- 交易数据含 fund_code 匹配 (A/C份额独立)
