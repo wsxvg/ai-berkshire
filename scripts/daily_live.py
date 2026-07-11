@@ -218,22 +218,35 @@ def run():
         if days < 30:
             continue  # 最低持有期
 
-        # 从自选数据拿当前盈亏
+        # day_ret 从自选数据拿（动量崩溃需要实时涨跌幅）
         info = funds.get(code, {})
-        pnl = info.get("total_pnl_pct") or 0
         day_ret = info.get("day_return") or 0
 
+        # 用 chart 数据算真实盈亏
+        pts = fund_charts.get(code, [])
+        mv = h["cost"]  # 默认成本
+        actual_pnl = 0
+        if pts and len(pts) > 0:
+            latest_yaxis = float(pts[-1].get("yAxis", 0))
+            latest_nav = (100 + latest_yaxis) / 100
+            buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
+            if buy_pts:
+                buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
+                buy_nav = (100 + buy_yaxis) / 100
+                mv = h["cost"] * (latest_nav / buy_nav)
+                actual_pnl = (mv - h["cost"]) / h["cost"] * 100
+
         # 止盈
-        if pnl >= GENE.get("take_profit_pct", 80):
+        if actual_pnl >= GENE.get("take_profit_pct", 80):
             portfolio.sell(code, h["cost"], 1.0, TODAY, "take_profit", False)
             sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": 1.0}
-            print(f"   SELL_TP {h['name'][:25]}: +{pnl:.0f}%")
+            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}%")
 
         # 止损
-        elif pnl <= GENE.get("stop_loss_pct", -15):
+        elif actual_pnl <= GENE.get("stop_loss_pct", -15):
             portfolio.sell(code, h["cost"], 1.0, TODAY, "stop_loss", True)
             sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": 1.0}
-            print(f"   SELL_SL {h['name'][:25]}: {pnl:.0f}%")
+            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}%")
 
         # 动量崩溃
         elif day_ret < -8:
@@ -269,20 +282,48 @@ def run():
 
         available = portfolio.cash * (1 - cash_reserve)
         per_position = available * max_pos / 100
-        amount = min(per_position, 5000)
+        # 动态仓位：用 kelly_cap 限制单笔上限
+        kelly = GENE.get("kelly_cap", 0.4)
+        amount = min(per_position, available * kelly)
+        amount = round(amount / 100) * 100  # 取整
+        if amount < 100:
+            continue
 
         if portfolio.buy(c["code"], c["name"], amount, 1.0, TODAY):
             print(f"   BUY {c['name'][:30]}: {amount:,.0f} (评分{c['score']:.1f})")
 
-    # 8. 同步回 VP
+    # 8. 同步回 VP（含市值盯市）
     vp["cash"] = portfolio.cash
     vp["total_fees"] = portfolio.total_fees
-    vp["holdings"] = {code: {"name": h["name"], "cost_basis": h["cost"],
-                              "buy_date": h["buy_date"], "buy_score": 3.0}
-                      for code, h in portfolio.holdings.items()}
-    vp["pending"] = portfolio.pending_buys
 
-    total_val = portfolio.cash + sum(h["cost"] for h in portfolio.holdings.values()) + sum(p["amount"] for p in portfolio.pending_buys)
+    # 计算持仓当前市值（基金累计收益 → 净值）
+    holdings_market_value = 0
+    vp_holdings = {}
+    for code, h in portfolio.holdings.items():
+        cb = h["cost"]
+        mv = cb  # 默认按成本
+        pts = fund_charts.get(code, [])
+        if pts:
+            latest_yaxis = float(pts[-1].get("yAxis", 0))
+            latest_nav = (100 + latest_yaxis) / 100
+            # 估算买入时净值
+            buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
+            if buy_pts:
+                buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
+                buy_nav = (100 + buy_yaxis) / 100
+                if buy_nav > 0:
+                    mv = cb * (latest_nav / buy_nav)
+        holdings_market_value += mv
+        vp_holdings[code] = {
+            "name": h["name"], "cost_basis": cb,
+            "market_value": round(mv, 2),
+            "buy_date": h.get("buy_date", TODAY), "buy_score": 3.0,
+            "pnl_pct": round((mv - cb) / cb * 100, 2) if cb > 0 else 0,
+        }
+    vp["holdings"] = vp_holdings
+
+    pending_value = sum(p.get("amount", 0) for p in portfolio.pending_buys)
+    total_val = portfolio.cash + holdings_market_value + pending_value
     vp["snapshots"].append({"date": TODAY, "total_value": round(total_val, 2),
                             "cash": round(portfolio.cash, 2),
                             "holdings": len(portfolio.holdings),
@@ -315,9 +356,12 @@ def run():
         lines.append(f"| {c['name']} ({c['code']}) | {c['score']:.1f} |")
 
     if portfolio.holdings:
-        lines += ["", "## 当前持仓", "", "| 基金 | 成本 | 买入日期 |", "|------|------|----------|"]
+        lines += ["", "## 当前持仓", "", "| 基金 | 成本 | 市值 | 盈亏 | 买入日期 |", "|------|------|------|------|----------|"]
         for code, h in portfolio.holdings.items():
-            lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {h.get('buy_date','?')} |")
+            vh = vp["holdings"].get(code, {})
+            pnl_str = f"{vh.get('pnl_pct',0):+.1f}%" if vh.get('pnl_pct') is not None else "N/A"
+            mv_str = f"{vh.get('market_value',h['cost']):,.0f}"
+            lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {mv_str} | {pnl_str} | {h.get('buy_date','?')} |")
 
     lines += ["", "---", f"*{TODAY_CN} 14:30 CST*"]
     (SIM_DIR / f"{TODAY}.md").write_text("\n".join(lines), encoding="utf-8")
