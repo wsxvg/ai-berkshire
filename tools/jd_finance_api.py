@@ -1872,6 +1872,13 @@ def get_watchlist(cookies=None, use_cache=False):
         if cached:
             return cached
 
+    def _to_num(v):
+        """安全转 float，处理 '--' 等非数字值"""
+        if v is None or v == "--" or v == "":
+            return None
+        try: return float(v)
+        except: return None
+
     if cookies is None:
         cookies = _ensure_cookies()
 
@@ -1891,17 +1898,18 @@ def get_watchlist(cookies=None, use_cache=False):
         })
 
     funds = []
-    for f in datas.get("productList", []):
+    product_list = datas.get("zxProductInfoList", datas.get("productList", []))
+    for f in product_list:
         funds.append({
             "fund_code": f.get("fundNo", ""),
             "fund_name": f.get("fundName", ""),
             "fund_type": f.get("fundType", ""),
             "latest_nav": f.get("newValue", ""),
-            "day_return": float(f.get("dayRiseRate", 0)) if f.get("dayRiseRate") else None,
-            "week_return": float(f.get("weekRiseRate", 0)) if f.get("weekRiseRate") else None,
-            "month_return": float(f.get("monthRiseRate", 0)) if f.get("monthRiseRate") else None,
-            "year_return": float(f.get("yearRiseRate", 0)) if f.get("yearRiseRate") else None,
-            "total_pnl_pct": float(f.get("allIncome", 0)) if f.get("allIncome") else None,
+            "day_return": _to_num(f.get("dayRiseRate")),
+            "week_return": _to_num(f.get("weekRiseRate")),
+            "month_return": _to_num(f.get("monthRiseRate")),
+            "year_return": _to_num(f.get("yearRiseRate")),
+            "total_pnl_pct": _to_num(f.get("allIncome")),
             "fund_id": f.get("fundId", ""),
             "url": f.get("url", ""),
         })
