@@ -137,6 +137,10 @@ def run():
     print("0.5 重建排行缓存...")
     from tools.build_ranking_cache import main as _build_ranking
     _build_ranking()
+    # 0.6 重建评分预计算 (自选基金的 score)
+    print("0.6 重建评分缓存...")
+    from tools.build_score_cache import main as _build_score
+    _build_score()
 
     # 1. 自选 + 大佬信号
     print("1. 数据...")"}
