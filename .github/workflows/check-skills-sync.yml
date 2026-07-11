@@ -1,0 +1,41 @@
+name: SKILL 同步校验
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-skills-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: 校验三方 SKILL 同步
+        run: python scripts/check-skills-sync.py
+
+  check-skills-fresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: 跑 sync 后 git diff 应为空
+        run: |
+          python scripts/sync-codex-skills.py
+          python scripts/sync-opencode-skills.py
+          python scripts/sync-codex-prompts.py
+          if [[ -n "$(git status --porcelain codex-skills opencode-skills codex-prompts)" ]]; then
+            echo "ERROR: SKILL 未同步! 请本地跑 scripts/sync-all-skills.py 后再 push"
+            git status codex-skills opencode-skills codex-prompts
+            exit 1
+          fi
