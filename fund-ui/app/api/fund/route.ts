@@ -30,5 +30,6 @@ function readWatchlistCache() {
 export const GET = cachedJson('fund.json', 30 * 60 * 1000, () => {
   const cached = readWatchlistCache()
   if (cached) return cached
-  return { error: 'watchlist cache missing, run: py -3.10 tools/jd_finance_api.py --watchlist' }
+  // 缓存缺失时仍返回空数组, 而不是 error 对象, 避免前端 funds.map 崩溃
+  return []
 })

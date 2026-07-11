@@ -44,13 +44,24 @@ const API = '/api'
 export async function fetchWatchlist(): Promise<FundInfo[]> {
   const res = await fetch(`${API}/fund`)
   if (!res.ok) throw new Error('Failed to fetch watchlist')
-  return res.json()
+  const data = await res.json()
+  // 防御: API 可能返 error 对象或非数组
+  if (!Array.isArray(data)) {
+    console.warn('fetchWatchlist: API returned non-array', data)
+    return []
+  }
+  return data
 }
 
 export async function fetchScores(codes: string[]): Promise<FundScore[]> {
   const res = await fetch(`${API}/score?codes=${codes.join(',')}`)
   if (!res.ok) throw new Error('Failed to fetch scores')
-  return res.json()
+  const data = await res.json()
+  if (!Array.isArray(data)) {
+    console.warn('fetchScores: API returned non-array', data)
+    return []
+  }
+  return data
 }
 
 export async function fetchDailyReport(): Promise<DailyReport | null> {

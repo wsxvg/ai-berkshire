@@ -171,7 +171,9 @@ def run():
 
     # 1. 自选 + 大佬信号
     print("1. 数据...")
-    wl = get_watchlist(cookies=cookies)
+    # simulate 模式: use_cache=True (避免重复抓, 用上次缓存)
+    # 实时模式: use_cache=True (抓一次存盘供前端 /api/fund 读)
+    wl = get_watchlist(cookies=cookies, use_cache=True)
     if not wl or not wl.get("funds"):
         print("[ERROR] 自选列表为空"); return
     funds = {f["fund_code"]: f for f in wl["funds"]}
