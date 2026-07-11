@@ -557,6 +557,76 @@ def compute_player_rankings(all_records, fund_charts, name_to_code, cutoff_date,
     return weights
 
 
+# ── 4433法则评分（investool参考集成）──
+def score_4433(fund_code, cutoff_date, fund_charts):
+    """4433法则: 基于排名筛选基金。
+    规则:
+      - 近1年排名前1/4
+      - 近2/3/5年排名前1/4
+      - 近6月排名前1/3
+      - 近3月排名前1/3
+    返回: 修正值 (正=加分, 负=扣分), 通过数
+    """
+    pts = fund_charts.get(fund_code, [])
+    valid = [p for p in pts if p.get("xAxis", "") <= cutoff_date]
+    if len(valid) < 63:  # 至少3个月数据
+        return 0.0, 0
+
+    # yAxis=累计收益率% → 净值化: nav = (100 + yAxis) / 100
+    yaxis_raw = [float(p.get("yAxis", 0)) for p in valid]
+    navs = [(100 + v) / 100 for v in yaxis_raw]
+    cur_nav = navs[-1]
+    n = len(navs)
+
+    periods = {
+        "3mo": (63, 0.33),
+        "6mo": (126, 0.33),
+    }
+
+    rets = {}
+    for name, (days, _) in periods.items():
+        if n > days:
+            start_nav = navs[-days]
+            rets[name] = (cur_nav - start_nav) / start_nav * 100
+        else:
+            rets[name] = None
+
+    # 排名
+    all_rets = {}
+    for code, pts_all in fund_charts.items():
+        v_raw = [float(p.get("yAxis", 0)) for p in pts_all if p.get("xAxis", "") <= cutoff_date]
+        if len(v_raw) < 252:
+            continue
+        v_nav = [(100 + v) / 100 for v in v_raw]
+        cv_nav = v_nav[-1]
+        for name, (days, _) in periods.items():
+            if len(v_nav) > days:
+                sv_nav = v_nav[-days]
+                r = (cv_nav - sv_nav) / sv_nav * 100
+                all_rets.setdefault(name, []).append((code, r))
+
+    passes = 0
+    for name, (days, threshold) in periods.items():
+        fund_ret = rets.get(name)
+        if fund_ret is None:
+            continue
+        others = sorted(all_rets.get(name, []), key=lambda x: x[1], reverse=True)
+        total = len(others)
+        if total < 10:
+            continue
+        rank = sum(1 for _, r in others if r > fund_ret) + 1
+        pct = rank / total
+        if pct <= threshold:
+            passes += 1
+
+    # 得分: 3个通过=加分, 1个以下=扣分
+    if passes >= 3:
+        return 0.5 * passes, passes
+    elif passes <= 1:
+        return -0.5, passes
+    return 0.0, passes
+
+
 def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         cutoff_date, trading_by_date, profile=None,
                         allocation_data=None, fund_data_cache=None,
@@ -698,6 +768,11 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
 
     # 应用资产配置+规模修正
     total_modifier = alloc_modifier + scale_modifier
+
+    # ===== 新增: 4433法则评分 =====
+    if charts:
+        s4433, p4433 = score_4433(fund_code, cutoff_date, charts)
+        total_modifier += s4433
 
     # ===== 新增: 行业估值评分（防高位接盘）=====
     if industry_data:
