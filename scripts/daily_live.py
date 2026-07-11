@@ -95,7 +95,13 @@ def save_vp(vp):
 
 
 def fetch_today_trades(cookies):
-    """从10个大佬抓取最新交易，合并到 trading_by_date"""
+    """从10个大佬抓取最新交易，合并到 trading_by_date
+
+    --simulate-date 模式下: 跳过, 用历史缓存 (trading_by_date_fixed.json)
+    避免真实拉取(网络慢, 且不反映历史)
+    """
+    if _args.simulate_date:
+        return {}
     fresh = {}
     for uid, name in list(FOLLOWED_USERS.items())[:10]:
         full = f"jimu_user_info-{uid}"
@@ -124,13 +130,19 @@ def run():
     if not cookies:
         print("[ERROR] 无 Cookie"); return
 
-    valid, info = _verify_cookies(cookies)
-    print(f"Cookie: {'有效' if valid else '无效'}")
+    # simulate 模式跳过 cookie 验证 (避免真实网络)
+    if not _args.simulate_date:
+        valid, info = _verify_cookies(cookies)
+        print(f"Cookie: {'有效' if valid else '无效'}")
+    else:
+        print("Cookie: 跳过验证 (simulate 模式)")
 
     # 0. 自动扩展：扫描新基金加入清单（异步, 不阻塞）
     print("0. 扫描新基金...")
-    from tools.fund_data_manager import expand_from_trading
-    new_codes = expand_from_trading() or set()
+    new_codes = set()
+    if not _args.simulate_date:
+        from tools.fund_data_manager import expand_from_trading
+        new_codes = expand_from_trading() or set()
     if new_codes:
         # 写入待抓清单 (后台)
         todo_file = PROJECT / "data" / "fund_charts_todo.json"
@@ -145,13 +157,17 @@ def run():
         print("   无新基金")
 
     # 0.5 重建排行预计算缓存 (供 /api/ranking 直接读, 不 spawn python)
-    print("0.5 重建排行缓存...")
-    from tools.build_ranking_cache import main as _build_ranking
-    _build_ranking()
     # 0.6 重建评分预计算 (自选基金的 score)
-    print("0.6 重建评分缓存...")
-    from tools.build_score_cache import main as _build_score
-    _build_score()
+    # simulate 模式跳过 (用昨日缓存即可, 跑历史日不会改变实时数据)
+    if not _args.simulate_date:
+        print("0.5 重建排行缓存...")
+        from tools.build_ranking_cache import main as _build_ranking
+        _build_ranking()
+        print("0.6 重建评分缓存...")
+        from tools.build_score_cache import main as _build_score
+        _build_score()
+    else:
+        print("0.5/0.6 跳过 (simulate 模式用缓存)")
 
     # 1. 自选 + 大佬信号
     print("1. 数据...")
@@ -367,6 +383,7 @@ def run():
                             "holdings": len(portfolio.holdings),
                             "pending": len(portfolio.pending_buys)})
     vp["sell_history"] = portfolio.sell_history  # 持久化冷却期
+    vp["pending"] = list(portfolio.pending_buys)  # 持久化待确认（T+N 关键）
     save_vp(vp)
 
     # 9. 日报

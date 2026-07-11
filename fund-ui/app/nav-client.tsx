@@ -21,6 +21,7 @@ export function NavClient() {
       <a href="/feed" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>动态</a>
       <a href="/news" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>资讯</a>
       <a href="/ranking" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>排行</a>
+      <a href="/sector" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>行业</a>
       <a href="/dca" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>定投</a>
       <a href="/backtest" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>回测</a>
       <a href="/report" style={{ fontSize: '14px', color: dark ? '#8892b0' : '#666' }}>日报</a>

@@ -51,7 +51,18 @@ export default function Home() {
     setSelected(n)
   }
 
+  const [notices, setNotices] = useState<any[]>([])
+
   useEffect(() => { fetch('/api/feed').then(r => r.json()).then(setFeed).catch(()=>{}) }, [])
+
+  useEffect(() => {
+    if (funds.length === 0) return
+    const codes = funds.map(f => f.code).slice(0, 50).join(',')
+    fetch(`/api/notices?codes=${codes}`)
+      .then(r => r.json())
+      .then(d => setNotices(d.filter((n: any) => n.is_critical).slice(0, 5)))
+      .catch(() => {})
+  }, [funds])
 
   const radarData = (code: string) => {
     const s = scores[code]; if (!s) return []
@@ -131,6 +142,37 @@ export default function Home() {
                   ¥{f.amt_num >= 10000 ? Math.round(f.amt_num/10000)/10 + '万' : f.amt_num.toFixed(0)}
                 </span>}
               </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 公告警告 banner */}
+      {notices.length > 0 && (
+        <div style={{
+          background: 'rgba(255, 85, 119, 0.08)', border: '1px solid rgba(255, 85, 119, 0.3)',
+          borderRadius: '12px', padding: '12px 16px', marginBottom: '16px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <span style={{ fontSize: '16px' }}>⚠️</span>
+            <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--accent-red)' }}>
+              关键公告 ({notices.length})
+            </span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            {notices.map((n: any, i: number) => (
+              <a key={i} href={n.url || '#'} target="_blank"
+                style={{ fontSize: '12px', color: 'var(--text-primary)', textDecoration: 'none',
+                  display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span style={{ padding: '1px 6px', background: 'rgba(255, 85, 119, 0.15)',
+                  color: 'var(--accent-red)', borderRadius: '3px', fontSize: '10px', fontWeight: 600 }}>
+                  {n.code}
+                </span>
+                <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {n.title}
+                </span>
+                {n.date && <span style={{ color: 'var(--text-secondary)', fontSize: '10px' }}>{n.date}</span>}
+              </a>
             ))}
           </div>
         </div>

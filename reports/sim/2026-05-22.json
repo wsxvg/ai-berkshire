@@ -1,0 +1,38 @@
+{
+  "date": "2026-05-22",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 3.326187511559239
+    },
+    {
+      "code": "501226",
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "score": 2.8504145975523123
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.8296698520183043
+    }
+  ],
+  "buy_recommendations": [
+    {
+      "action": "BUY",
+      "code": "501226",
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "amount": 500.0
+    }
+  ],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {},
+  "portfolio": {
+    "total_value": 100000.0,
+    "cash": 99500.0,
+    "fees": 75.0
+  }
+}
