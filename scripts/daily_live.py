@@ -277,19 +277,21 @@ def run():
         info = funds.get(code, {})
         day_ret = info.get("day_return") or 0
 
-        # 用 chart 数据算真实盈亏
+        # 用 chart 数据算真实盈亏 (用 <=TODAY 的最近点, 避免未来函数)
         pts = fund_charts.get(code, [])
         mv = h["cost"]  # 默认成本
         actual_pnl = 0
         if pts and len(pts) > 0:
-            latest_yaxis = float(pts[-1].get("yAxis", 0))
-            latest_nav = (100 + latest_yaxis) / 100
-            buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
-            if buy_pts:
-                buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
-                buy_nav = (100 + buy_yaxis) / 100
-                mv = h["cost"] * (latest_nav / buy_nav)
-                actual_pnl = (mv - h["cost"]) / h["cost"] * 100
+            today_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+            if today_pts:
+                latest_yaxis = float(today_pts[-1].get("yAxis", 0))
+                latest_nav = (100 + latest_yaxis) / 100
+                buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
+                if buy_pts:
+                    buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
+                    buy_nav = (100 + buy_yaxis) / 100
+                    mv = h["cost"] * (latest_nav / buy_nav)
+                    actual_pnl = (mv - h["cost"]) / h["cost"] * 100
 
         # 止盈
         if actual_pnl >= GENE.get("take_profit_pct", 80):
@@ -360,15 +362,18 @@ def run():
         mv = cb  # 默认按成本
         pts = fund_charts.get(code, [])
         if pts:
-            latest_yaxis = float(pts[-1].get("yAxis", 0))
-            latest_nav = (100 + latest_yaxis) / 100
-            # 估算买入时净值
-            buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
-            if buy_pts:
-                buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
-                buy_nav = (100 + buy_yaxis) / 100
-                if buy_nav > 0:
-                    mv = cb * (latest_nav / buy_nav)
+            # 用 <=TODAY 的最近点 (避免未来函数)
+            today_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+            if today_pts:
+                latest_yaxis = float(today_pts[-1].get("yAxis", 0))
+                latest_nav = (100 + latest_yaxis) / 100
+                # 估算买入时净值
+                buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
+                if buy_pts:
+                    buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
+                    buy_nav = (100 + buy_yaxis) / 100
+                    if buy_nav > 0:
+                        mv = cb * (latest_nav / buy_nav)
         holdings_market_value += mv
         vp_holdings[code] = {
             "name": h["name"], "cost_basis": cb,

@@ -1158,12 +1158,25 @@ def get_fund_notices(fund_code, cookies=None, use_cache=False):
     return result
 
 
-def get_daily_news(cookies=None, use_cache=False):
+def get_daily_news(cookies=None, use_cache=False, asof_date=None):
     """Fetch official fund news from JD Finance community (pageId=11575).
+
+    Args:
+        asof_date: 归档日期 YYYY-MM-DD (默认今天). 每天拉到的新闻存到
+            data/fund_cache/daily_news/{asof_date}.json, 不覆盖历史数据.
+            这是修复未来函数的关键: 回测某天的 LLM 决策时, 只看 <= 那天的快照.
 
     Returns fund company posts and financial media content.
     """
+    if asof_date is None:
+        asof_date = datetime.now().strftime("%Y-%m-%d")
+
+    # 历史快照优先: daily_news/{date}.json (按日期分目录)
     if use_cache:
+        hist = _read_dated_news(asof_date)
+        if hist is not None:
+            return hist
+        # 兼容旧 main.json (一次性迁移)
         cached = _read_cache("daily_news", "main", max_age_days=0)
         if cached:
             return cached
@@ -1217,10 +1230,75 @@ def get_daily_news(cookies=None, use_cache=False):
                 "url": jump_url,
             })
 
-    result = {"date": datetime.now().strftime("%Y-%m-%d"), "items": items}
+    result = {"date": asof_date, "items": items, "_asof": asof_date}
     if use_cache and items:
+        # 写到按日期分目录
+        _write_dated_news(asof_date, result)
+        # 同步写 main.json 供前端用
         _write_cache("daily_news", "main", result)
     return result
+
+
+# ── 按日期归档的新闻 (修复未来函数) ──
+def _news_archive_dir():
+    d = _CACHE_DIR / "daily_news"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def _read_dated_news(date_str):
+    p = _news_archive_dir() / f"{date_str}.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def _write_dated_news(date_str, data):
+    p = _news_archive_dir() / f"{date_str}.json"
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def get_news_asof(asof_date, lookback_days=7):
+    """读取截至 asof_date 的所有新闻 (修复未来函数核心 API)
+
+    Args:
+        asof_date: 截至日期 YYYY-MM-DD (含)
+        lookback_days: 向前回溯天数 (默认 7 天)
+
+    Returns:
+        list of news items, 每条含 author / time / headline / url / _date
+
+    Example:
+        # 回测 5-22 当天的 LLM 决策, 只看 5-16 ~ 5-22 的新闻
+        news = get_news_asof("2026-05-22", lookback_days=7)
+    """
+    from datetime import timedelta as _td
+    try:
+        asof = datetime.strptime(asof_date, "%Y-%m-%d")
+    except ValueError:
+        asof = datetime.now()
+    start = asof - _td(days=lookback_days)
+    all_items = []
+    archive = _news_archive_dir()
+    if not archive.exists():
+        return all_items
+    for f in archive.glob("*.json"):
+        try:
+            d = datetime.strptime(f.stem, "%Y-%m-%d")
+        except ValueError:
+            continue
+        if start <= d <= asof:
+            try:
+                data = json.loads(f.read_text(encoding="utf-8"))
+                for it in data.get("items", []):
+                    all_items.append({**it, "_date": f.stem})
+            except Exception:
+                pass
+    all_items.sort(key=lambda x: x.get("_date", ""), reverse=True)
+    return all_items
 
 
 def get_fund_ranking(cookies=None, rank_sort_by="2", time_cycle="401", last_id=None):
