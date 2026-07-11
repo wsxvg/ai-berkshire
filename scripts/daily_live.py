@@ -7,12 +7,26 @@
 参数 = data/evolution/best_config.json
 """
 
-import json, sys, os, glob
+import json, sys, os, glob, argparse
 from datetime import datetime, timedelta
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT))
+
+# ── 参数解析 (支持 --simulate-date YYYY-MM-DD 模拟历史日跑) ──
+_ap = argparse.ArgumentParser(add_help=False)
+_ap.add_argument("--simulate-date", default=None, help="模拟指定日期跑 (格式 YYYY-MM-DD)")
+_args, _ = _ap.parse_known_args()
+
+if _args.simulate_date:
+    _dt = datetime.strptime(_args.simulate_date, "%Y-%m-%d")
+    print(f"[SIM] simulate-date={_args.simulate_date} (force TODAY to this date)")
+else:
+    _dt = datetime.now()
+
+TODAY = _dt.strftime("%Y-%m-%d")
+TODAY_CN = _dt.strftime("%Y年%m月%d日")
 
 from tools.jd_finance_api import get_watchlist, get_trading_records, _ensure_cookies, _verify_cookies, FOLLOWED_USERS
 
@@ -22,9 +36,6 @@ from backtest.engine.backtest import (
     compute_correlation_matrix,
 )
 from tools.technical_indicators import compute_entry_timing_score
-
-TODAY = datetime.now().strftime("%Y-%m-%d")
-TODAY_CN = datetime.now().strftime("%Y年%m月%d日")
 
 # ── 进化最优参数 ──
 EVO_PATH = PROJECT / "data" / "evolution" / "best_config.json"
@@ -143,7 +154,7 @@ def run():
     _build_score()
 
     # 1. 自选 + 大佬信号
-    print("1. 数据...")"}
+    print("1. 数据...")
     wl = get_watchlist(cookies=cookies)
     if not wl or not wl.get("funds"):
         print("[ERROR] 自选列表为空"); return
@@ -293,7 +304,8 @@ def run():
 
     # 冷却期检查
     active_codes = set()
-    for code in candidates:
+    for c in candidates:
+        code = c["code"] if isinstance(c, dict) else c
         if code in sell_cooldown:
             continue
         if portfolio.is_in_cooldown(code, TODAY, cooldown_cfg):
@@ -388,6 +400,27 @@ def run():
             pnl_str = f"{vh.get('pnl_pct',0):+.1f}%" if vh.get('pnl_pct') is not None else "N/A"
             mv_str = f"{vh.get('market_value',h['cost']):,.0f}"
             lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {mv_str} | {pnl_str} | {h.get('buy_date','?')} |")
+
+    # 构造 AI 审计需要的数据 (必须在 if 外, 否则空仓时 NameError)
+    today_actions = []
+    # 已确认的 (今日买入 + 已 T+N)
+    for code, h in portfolio.holdings.items():
+        if h.get('buy_date') == TODAY:
+            today_actions.append({"action": "BUY", "code": code, "name": h['name'], "amount": h['cost']})
+    # 待确认的 (T+N 流程中)
+    for p in portfolio.pending_buys:
+        today_actions.append({"action": "BUY", "code": p.get('code', ''), "name": p.get('name', ''), "amount": p.get('amount', 0)})
+    sell_actions = [a for a in today_actions if a.get('action') == 'SELL']
+    # 找 BLOCKED 的 (从评分过程结果)
+    blocked_set = set()
+    for line in []:  # 日志里没存 blocked list, 改从 candidates 提取
+        if line: pass
+    # 实际 blocked 不在 candidates (candidates 是过滤后的, blocked 在更早被排除)
+    # 看评分时的输出日志难以解析, 直接从 candidates 里找 score < min_score 的或 has block_reason 字段
+    results = []
+    for c in candidates:
+        if c.get('block_reason'):
+            results.append({"code": c['code'], "name": c['name'], "blocked": True, "reason": c['block_reason']})
 
     # AI 审计入口
     buy_codes = [a["code"] for a in today_actions if a["action"] == "BUY"]
