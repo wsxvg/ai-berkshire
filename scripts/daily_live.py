@@ -133,6 +133,11 @@ def run():
     else:
         print("   无新基金")
 
+    # 0.5 重建排行预计算缓存 (供 /api/ranking 直接读, 不 spawn python)
+    print("0.5 重建排行缓存...")
+    from tools.build_ranking_cache import main as _build_ranking
+    _build_ranking()
+
     # 1. 自选 + 大佬信号
     print("1. 数据...")"}
     wl = get_watchlist(cookies=cookies)

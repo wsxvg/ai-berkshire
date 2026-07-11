@@ -1,40 +1,24 @@
 import { NextResponse } from 'next/server'
-import { exec } from 'child_process'
 import path from 'path'
 import fs from 'fs'
+import { cachedJson } from '../_cache'
 
 const ROOT = path.resolve(process.cwd(), '..')
 
-function runPy(file: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    exec(`python "${file}"`, {
-      cwd: ROOT, timeout: 30000, encoding: 'buffer',
-      env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
-    }, (err, stdout, stderr) => {
-      if (err) reject(new Error(stderr?.toString('utf-8') || err.message))
-      else resolve(stdout.toString('utf-8'))
-    })
-  })
+async function loadNews() {
+  // 1. 优先读最新缓存 (jd_finance_api.py 内部生成)
+  const cacheDir = path.join(ROOT, 'data', 'fund_cache')
+  const files = fs.readdirSync(cacheDir)
+    .filter(f => f.startsWith('daily_news_') && f.endsWith('.json'))
+    .map(f => ({ f, mtime: fs.statSync(path.join(cacheDir, f)).mtimeMs }))
+    .sort((a, b) => b.mtime - a.mtime)
+  if (files.length > 0) {
+    const latest = files[0]
+    const data = JSON.parse(fs.readFileSync(path.join(cacheDir, latest.f), 'utf-8'))
+    return { ...data, source: latest.f, _cache_age: Math.round((Date.now() - latest.mtime) / 1000) }
+  }
+  // 2. fallback: 调 python (冷启动, 不阻塞主线程)
+  return { date: '', items: [], error: 'no cache' }
 }
 
-export async function GET() {
-  const tmp = path.join(ROOT, '_api_news.py')
-  try {
-    fs.writeFileSync(tmp, `import json, sys
-from pathlib import Path
-sys.path.insert(0, '.')
-from tools.jd_finance_api import get_daily_news, _ensure_cookies
-try:
-    c = _ensure_cookies(offline=True)
-    news = get_daily_news(cookies=c, use_cache=True)
-    print(json.dumps(news, ensure_ascii=False))
-except Exception as e:
-    print(json.dumps({"date": "", "items": [], "error": str(e)}, ensure_ascii=False))`, 'utf-8')
-    const stdout = await runPy(tmp)
-    fs.unlinkSync(tmp)
-    return NextResponse.json(JSON.parse(stdout.trim()))
-  } catch (e: any) {
-    try { fs.unlinkSync(tmp) } catch {}
-    return NextResponse.json({ date: '', items: [], error: e.message }, { status: 500 })
-  }
-}
+export const GET = cachedJson('news.json', 5 * 60 * 1000, loadNews)
