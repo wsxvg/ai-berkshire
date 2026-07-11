@@ -57,3 +57,25 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(100,140,255,0.2); border-radius: 3px; }
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .glass { border-radius: 12px; }
+  
+  [style*="grid-template-columns: repeat(auto-fill"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  nav { padding: 10px 16px !important; }
+  nav h1 { font-size: 16px !important; }
+  main { padding: 16px !important; }
+  
+  [style*="display: flex"][style*="gap: 16px"][style*="flex-wrap: wrap"] {
+    flex-direction: column;
+  }
+}
