@@ -21,6 +21,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <span className="gold">AI</span> Berkshire Fund
           </h1>
           <a href="/" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>首页</a>
+          <a href="/ranking" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>排行</a>
+          <a href="/dca" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>定投</a>
+          <a href="/backtest" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>回测</a>
           <a href="/report" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>日报</a>
           <a href="https://github.com/wsxvg/ai-berkshire" target="_blank"
              style={{ color: 'var(--text-secondary)', fontSize: '14px', marginLeft: 'auto' }}>
