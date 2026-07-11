@@ -2026,34 +2026,22 @@ def get_index_detail(index_code, cookies=None):
 
 
 # ============================================================
-# NEW: Featured Rankings — 12 主题榜 + 5 人气榜 TOP20
-# 数据源: jj/h5/m/queryFullRanking + getInvestResearchRank + getRankingProductListV2
-# 特点: 不需要 cookie (多数榜是 public 的)
+# Featured Rankings — queryFullRanking 端点
+# 数据源: jj/h5/m/queryFullRanking (返 12+5 榜, TOP20)
+# 端点: ms.jr.jd.com/gw2/generic/jj/h5/m/queryFullRanking
+# 真实响应结构: resultData.datas.primRanking[].secRanking[]
+# 特点: 需要 cookie, 实测可拉到 17 个榜单 (12 主题 + 5 人气)
 # ============================================================
-RANKING_TYPES = [
-    # 主题榜 (8 个)
-    {"code": "1m_return", "name": "近1月收益榜", "sort_by": "2", "cycle": "301"},
-    {"code": "3m_return", "name": "近3月收益榜", "sort_by": "2", "cycle": "303"},
-    {"code": "6m_return", "name": "近6月收益榜", "sort_by": "2", "cycle": "306"},
-    {"code": "1y_return", "name": "近1年收益榜", "sort_by": "2", "cycle": "401"},
-    {"code": "2y_return", "name": "近2年收益榜", "sort_by": "2", "cycle": "601"},
-    {"code": "3y_return", "name": "近3年收益榜", "sort_by": "2", "cycle": "801"},
-    {"code": "5y_return", "name": "近5年收益榜", "sort_by": "2", "cycle": "1001"},
-    {"code": "this_year_return", "name": "今年来收益榜", "sort_by": "2", "cycle": "1101"},
-    # 人气认证榜 (5 个)
-    {"code": "search_hot", "name": "今日热搜榜", "sort_by": "6", "cycle": "401"},
-    {"code": "stay_profitable", "name": "季季正收益榜", "sort_by": "2", "cycle": "401"},
-    {"code": "beat_market", "name": "连续跑赢大盘榜", "sort_by": "2", "cycle": "401"},
-    {"code": "high_holdings_profit", "name": "持仓盈利多榜", "sort_by": "2", "cycle": "401"},
-    {"code": "user_focus", "name": "用户关注榜", "sort_by": "6", "cycle": "401"},
-]
 
 
 def get_featured_rankings(cookies=None, use_cache=True, max_items=20):
     """拉取 12 主题榜 + 5 人气认证榜 TOP20。
 
     Returns:
-        dict: {rank_code: {name, code, top20: [{rank, code, name, value, returns...}]}}
+        dict: {
+            "header": [一级分类列表 (业绩排行/定投排行/净值排行)],
+            "boards": {secRankCode: {name, code, prim, top20: [{rank, code, name, value, ...}]}}
+        }
     """
     if use_cache:
         cached = _read_cache("featured_rankings", "main", max_age_days=0)
@@ -2061,32 +2049,60 @@ def get_featured_rankings(cookies=None, use_cache=True, max_items=20):
             return cached
     if cookies is None:
         cookies = _ensure_cookies()
-    results = {}
-    for rt in RANKING_TYPES:
-        try:
-            r = get_fund_ranking(cookies=cookies, rank_sort_by=rt["sort_by"], time_cycle=rt["cycle"])
+
+    # 调用 queryFullRanking (设备标识, 必带, 否则偶尔返空)
+    body = {"deviceType": "h5", "clientVersion": "11.0.0"}
+    raw = _api_form("gw2/generic/jj/h5/m/queryFullRanking", body, cookies)
+    rd = raw.get("resultData", {}).get("datas", {}) if isinstance(raw, dict) else {}
+
+    # header (一级分类)
+    header_raw = _api_form("gw2/generic/jj/h5/m/getRankingHeaderInfoV2", {}, cookies)
+    header_inner = header_raw.get("resultData", {}).get("resultData", {}) if isinstance(header_raw, dict) else {}
+    header = header_inner.get("rankingList", [])
+
+    # 解析榜单
+    boards = {}
+    for prim in rd.get("primRanking", []):
+        prim_name = prim.get("primRankName", "")
+        for sec in prim.get("secRanking", []):
+            code = sec.get("secRankCode", "")
+            name = sec.get("secRankName", "")
             top = []
-            for item in r.get("list", [])[:max_items]:
+            for idx, item in enumerate(sec.get("rankingContent", [])[:max_items]):
                 top.append({
-                    "rank": item.get("rankNo"),
+                    "rank": idx + 1,
                     "code": item.get("fundCode"),
                     "name": item.get("fundName"),
-                    "value": item.get("rate"),
-                    "return_1m": item.get("month1Rate"),
-                    "return_3m": item.get("month3Rate"),
-                    "return_6m": item.get("month6Rate"),
-                    "return_1y": item.get("year1Rate"),
-                    "return_this_year": item.get("yearRate"),
-                    "return_3y": item.get("year3Rate"),
-                    "return_5y": item.get("year5Rate"),
-                    "tags": item.get("tagList", []),
+                    "prim_inv_key": item.get("primInvKey"),
+                    "prim_inv_value": item.get("primInvValue"),
+                    "sec_inv_key": item.get("secInvKey"),
+                    "sec_inv_value": item.get("secInvValue"),
+                    "risk_level": item.get("riskLevel"),
+                    "sub_rank_name": item.get("subRankName"),
+                    "detail_url": item.get("fundDetailUrl"),
                 })
-            results[rt["code"]] = {"name": rt["name"], "code": rt["code"], "top20": top}
-        except Exception:
-            results[rt["code"]] = {"name": rt["name"], "code": rt["code"], "top20": [], "error": "fetch failed"}
-    if use_cache and results:
-        _write_cache("featured_rankings", "main", results)
-    return results
+            boards[code] = {
+                "code": code,
+                "name": name,
+                "prim": prim_name,
+                "rec_content": sec.get("recContent", ""),
+                "rank_subtitle": sec.get("rankSubtitle", ""),
+                "hot": sec.get("hot", False),
+                "rank_no": sec.get("secRankNo"),
+                "rank_hot_no": sec.get("rankHotNo"),
+                "top20": top,
+            }
+
+    result = {"header": header, "boards": boards}
+    if use_cache and boards:
+        _write_cache("featured_rankings", "main", result)
+    return result
+
+
+def get_board_by_code(sec_rank_code, cookies=None, use_cache=True, max_items=20):
+    """从已缓存/重新拉取 featured_rankings, 取单个榜。"""
+    all_data = get_featured_rankings(cookies=cookies, use_cache=use_cache, max_items=max_items)
+    return all_data.get("boards", {}).get(sec_rank_code)
 
 
 # ============================================================
