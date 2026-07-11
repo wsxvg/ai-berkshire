@@ -1,57 +1,64 @@
 {
-  "date": "2026-07-11",
+  "date": "2026-06-04",
   "items": [
     {
       "author": "投资热点-财联社",
       "time": "5小时前 · 1.5万粉丝",
       "headline": "MLCC涨价潮下的华强北“众生相”：结构性紧缺下渠道躁动 商户喜忧分化",
       "content_id": "734619040",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734619040&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734619040&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "证券市场周刊",
       "time": "4小时前",
       "headline": "逆变器出口增长25%！这几家公司在二季度涨幅翻倍",
       "content_id": "734619277",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734619277&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734619277&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "投资热点-财联社",
       "time": "11小时前 · 1.5万粉丝",
       "headline": "段永平再度增持泡泡玛特 Labubu世界杯联名产品已在“促销”",
       "content_id": "734614936",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734614936&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734614936&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "第一财经",
       "time": "11小时前",
       "headline": "SK海力士点燃存储芯片！英伟达市值重返5万亿美元，中概股冲高回落",
       "content_id": "734615076",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734615076&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734615076&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "投资热点-财联社",
       "time": "21小时前 · 1.5万粉丝",
       "headline": "SK海力士创纪录赴美上市 美股期指涨跌不一 芯片股盘前普遍下跌 | 今夜看点",
       "content_id": "734608670",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734608670&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734608670&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "证券市场周刊",
       "time": "5小时前",
       "headline": "民间智慧丨市场进入混沌期",
       "content_id": "734618768",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734618768&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734618768&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     },
     {
       "author": "投资热点-财联社",
       "time": "15小时前 · 1.5万粉丝",
       "headline": "华尔街看好SpaceX“影子股” 分析师称当前估值存在明显折价",
       "content_id": "734614330",
-      "url": "https://content.jr.jd.com/article/index.html?pageId=734614330&channelType="
+      "url": "https://content.jr.jd.com/article/index.html?pageId=734614330&channelType=",
+      "_asof_proxy_date": "2026-06-04"
     }
   ],
-  "is_asof_proxy": false,
-  "_proxy_source": null,
-  "_warning": null
+  "is_asof_proxy": true,
+  "_proxy_source": "2026-07-11",
+  "_warning": "JD 不提供历史新闻 API, 此快照是 7-11 实际拉取数据的代理, LLM 应知悉"
 }

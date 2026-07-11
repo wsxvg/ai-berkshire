@@ -1,0 +1,232 @@
+{
+  "version": "v3 with portfolio constraints",
+  "constraint": "asof 截断, 新闻代理, 4 大师, 持仓/现金/相关性约束",
+  "total_actual_buys": 10,
+  "total_llm_hits": 2,
+  "hit_rate": 0.2,
+  "details": [
+    {
+      "asof": "2026-06-01",
+      "holdings_count": 0,
+      "cash": 80600.0,
+      "llm_top3": [
+        {
+          "code": "013841",
+          "name": "银华集成电路混合C",
+          "total": 13.5
+        },
+        {
+          "code": "024239",
+          "name": "华夏全球科技先锋混合(QDII)C",
+          "total": 13.5
+        },
+        {
+          "code": "016664",
+          "name": "天弘全球高端制造混合(QDII)A",
+          "total": 13.5
+        }
+      ],
+      "actual_buys": [
+        "024239",
+        "024663",
+        "016664",
+        "017731",
+        "501226"
+      ],
+      "overlap": [
+        "016664",
+        "024239"
+      ]
+    },
+    {
+      "asof": "2026-06-02",
+      "holdings_count": 1,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [
+        "024239",
+        "016664",
+        "013841",
+        "017731",
+        "501226"
+      ],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-03",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-04",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-05",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-08",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-09",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-10",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-11",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-12",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-15",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-16",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-17",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-18",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-19",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-22",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-23",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-24",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-25",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-26",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-29",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-06-30",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-07-01",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    },
+    {
+      "asof": "2026-07-11",
+      "holdings_count": 6,
+      "cash": 66100.0,
+      "llm_top3": [],
+      "actual_buys": [],
+      "overlap": []
+    }
+  ]
+}
