@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
-"""每日实盘模拟 — 自选列表 + 大佬信号 + 回测引擎同款评分
+"""每日实盘模拟 — 复用回测引擎全部风控逻辑
 
 每天 14:30 由 GitHub Actions 自动运行。
-评分逻辑 = backtest/engine/backtest.py 的 score_fund_backtest()
-大佬信号 = backtest/data/trading_by_date_fixed.json
+组件：Portfolio(仓位/T+N/费率)、score_fund_backtest(五维+大佬)、
+      detect_market_state、correlation_filter、行业估值
 参数 = data/evolution/best_config.json
 """
 
 import json, sys, os, glob
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT))
 
-from tools.jd_finance_api import get_watchlist, _ensure_cookies, _verify_cookies
+from tools.jd_finance_api import get_watchlist, get_trading_records, _ensure_cookies, _verify_cookies, FOLLOWED_USERS
+
+# ── 回测引擎组件 ──
+from backtest.engine.backtest import (
+    Portfolio, score_fund_backtest, detect_market_state,
+    compute_correlation_matrix,
+)
 from tools.technical_indicators import compute_entry_timing_score
 
 TODAY = datetime.now().strftime("%Y-%m-%d")
@@ -24,313 +30,295 @@ TODAY_CN = datetime.now().strftime("%Y年%m月%d日")
 EVO_PATH = PROJECT / "data" / "evolution" / "best_config.json"
 if EVO_PATH.exists():
     evo = json.loads(EVO_PATH.read_text("utf-8"))
-    BEST_GENE = evo["gene"]
-    print(f"进化参数: 年化={evo['annualized']:.1f}% 夏普={evo['sharpe']:.2f}")
+    GENE = evo["gene"]
+    print(f"参数: 年化={evo['annualized']:.1f}% 夏普={evo['sharpe']:.2f}")
 else:
-    BEST_GENE = {"bear_market_no_buy": False, "take_profit_pct": 80, "stop_loss_pct": -15, "ml_weight": 1.5,
-                 "min_score_bull": 2.5, "min_score_neutral": 3.0, "min_score_bear": 3.5}
+    GENE = {"bear_market_no_buy": False, "take_profit_pct": 80, "stop_loss_pct": -15,
+            "ml_weight": 1.5, "min_score_bull": 2.5, "min_score_neutral": 3.0, "min_score_bear": 3.5,
+            "trailing_tp_activate": 15, "trailing_tp_drawdown": 8,
+            "cooldown_days": 15, "cooldown_profit_days": 10, "cooldown_loss_days": 30,
+            "max_correlation": 0.85, "dynamic_ranking": True,
+            "momentum_sell": 2.0, "slippage_pct": 0.1, "cash_reserve_pct": 0.1,
+            "max_position_pct": 20, "max_sector_pct": 50, "max_qdii_pct": 50}
 
-# ── 大佬交易记录（回测同款）──
-trading_by_date = {}
-tp = PROJECT / "backtest" / "data" / "trading_by_date_fixed.json"
-if tp.exists():
-    trading_by_date = json.loads(tp.read_text("utf-8"))
-    print(f"大佬交易: {len(trading_by_date)} 个交易日")
-else:
-    print("[WARN] 无大佬交易记录")
-
-# ── 基金数据 ──
-CACHE_DIR = PROJECT / "data" / "fund_cache"
+# ── 数据加载 ──
+CACHE = PROJECT / "data" / "fund_cache"
 def load_cache(prefix):
     data = {}
-    for f in glob.glob(str(CACHE_DIR / f"{prefix}_*.json")):
+    for f in glob.glob(str(CACHE / f"{prefix}_*.json")):
         code = Path(f).stem.replace(f"{prefix}_", "", 1)
-        try: data[code] = json.loads(open(f, "r", encoding="utf-8").read())
+        try: data[code] = json.loads(open(f, encoding="utf-8").read())
         except: pass
     return data
 
 fund_rules = load_cache("trade_rules")
 fund_managers = load_cache("fund_manager")
 fund_profiles = load_cache("fund_profile")
+fund_charts = json.loads((PROJECT / "data" / "fund_charts.json").read_text("utf-8"))
 
-charts_path = PROJECT / "data" / "fund_charts.json"
-fund_charts = json.loads(charts_path.read_text("utf-8")) if charts_path.exists() else {}
+tp = PROJECT / "backtest" / "data" / "trading_by_date_fixed.json"
+trading_by_date = json.loads(tp.read_text("utf-8")) if tp.exists() else {}
+
+# 名称映射
+name_map = json.loads((PROJECT / "data" / "fund_name_map.json").read_text("utf-8"))
+code_to_name = {}
+for nm, cd in name_map.items():
+    if cd not in code_to_name: code_to_name[cd] = nm
 
 # ── 虚拟持仓 ──
 SIM_DIR = PROJECT / "reports" / "sim"
 SIM_DIR.mkdir(parents=True, exist_ok=True)
 VP_PATH = SIM_DIR / "virtual_portfolio.json"
-
 INITIAL_CASH = 100000
-BUY_AMOUNT = 5000
-MAX_POSITIONS = 8
-
-
-def get_t_plus_n(code):
-    """获取基金 T+N 确认天数（从 fund_rules 缓存）"""
-    rules = fund_rules.get(code, {})
-    confirm = rules.get("confirm_date", "")
-    buy_date = rules.get("buy_date", "")
-    if confirm and buy_date:
-        try:
-            c_day = int(confirm.split("-")[-1])
-            b_day = int(buy_date.split(" ")[0].split("-")[-1])
-            diff = (c_day - b_day) % 30
-            if diff <= 1: return 1
-            if diff <= 2: return 2
-            return diff
-        except: pass
-    # Fallback: 根据基金类型判断
-    profile = fund_profiles.get(code, {})
-    ft = profile.get("fund_type", "")
-    if "QDII" in ft: return 2
-    return 1
-
-
-def add_biz_days(date_str, n):
-    """简单加 N 个日历日（近似交易日）"""
-    try:
-        from datetime import timedelta
-        dt = datetime.strptime(date_str[:10], "%Y-%m-%d")
-        return (dt + timedelta(days=n + max(0, n // 5 * 2))).strftime("%Y-%m-%d")
-    except:
-        return date_str
-
-
-def redemption_fee(days_held, code):
-    """赎回费率（按持有天数）"""
-    rules = fund_rules.get(code, {})
-    tiers = rules.get("redeem_fees", [])
-    for t in tiers:
-        interval = t.get("interval", "")
-        rate = float(t.get("rate", 0))
-        # 简化为: 直接用费率区分
-        if days_held < 7 and "＜7" in interval:
-            return rate / 100
-        elif 7 <= days_held < 365 and "7日≤" in interval and "＜365" in interval:
-            return rate / 100
-    # 兜底
-    if days_held < 7: return 0.015
-    if days_held < 30: return 0.0075
-    if days_held < 365: return 0.005
-    return 0.0
 
 
 def load_vp():
     if VP_PATH.exists():
-        vp = json.loads(VP_PATH.read_text("utf-8"))
-        vp.setdefault("pending", [])
-        for h in vp.get("holdings", {}).values():
-            h.setdefault("confirmed", True)
-        return vp
-    return {"created": TODAY, "initial_cash": INITIAL_CASH, "cash": INITIAL_CASH,
-            "total_invested": 0, "total_fees": 0,
+        return json.loads(VP_PATH.read_text("utf-8"))
+    return {"created": TODAY, "initial_cash": INITIAL_CASH,
+            "cash": INITIAL_CASH, "total_fees": 0,
             "holdings": {}, "pending": [], "history": [], "snapshots": []}
 
 def save_vp(vp):
     VP_PATH.write_text(json.dumps(vp, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def score_fund(code, name, cutoff):
-    """回测引擎同款评分 — 包含大佬 smart_money 维度"""
-    from backtest.engine.backtest import score_fund_backtest
-    fs = score_fund_backtest(
-        code, name, fund_charts, None,
-        fund_rules.get(code), fund_managers.get(code),
-        cutoff, trading_by_date,  # ← 大佬交易信号！
-        fund_profiles.get(code),
-    )
-    return fs.total if hasattr(fs, 'total') else 3.0
-
-
-def layer1_check(code, cutoff):
-    chart_pts = fund_charts.get(code, [])
-    if len(chart_pts) < 60:
-        return True, ""
-    timing = compute_entry_timing_score(chart_pts, cutoff)
-    if timing.get("should_warn"):
-        return False, f"RSI超买 择时={timing.get('entry_score',0):.1f}"
-    return True, ""
+def fetch_today_trades(cookies):
+    """从10个大佬抓取最新交易，合并到 trading_by_date"""
+    fresh = {}
+    for uid, name in list(FOLLOWED_USERS.items())[:10]:
+        full = f"jimu_user_info-{uid}"
+        try:
+            r = get_trading_records(full, cookies=cookies, max_pages=2)
+            for rec in r.get("records", []):
+                detail = rec.get("detail", "")
+                date = detail[:10] if detail and len(detail) >= 10 else TODAY
+                fresh.setdefault(date, []).append({
+                    "fund_name": rec.get("fund_name", ""),
+                    "action": rec.get("action", ""),
+                    "amount": rec.get("amount", ""),
+                    "_user": name,
+                })
+        except Exception as e:
+            print(f"  {name}: ERR {e}")
+    return fresh
 
 
 def run():
     print(f"=== 实盘模拟 {TODAY_CN} ===")
-
-    # Cookie
     cookies = _ensure_cookies(offline=True)
     if not cookies:
         cp = PROJECT / "data" / "jd_auth" / "cookies.json"
-        if cp.exists():
-            cookies = json.loads(cp.read_text("utf-8"))
+        if cp.exists(): cookies = json.loads(cp.read_text("utf-8"))
     if not cookies:
         print("[ERROR] 无 Cookie"); return
 
     valid, info = _verify_cookies(cookies)
     print(f"Cookie: {'有效' if valid else '无效'}")
 
-    # 自选列表
-    print("1. 自选列表...")
+    # 1. 自选 + 大佬信号
+    print("1. 数据...")
     wl = get_watchlist(cookies=cookies)
     if not wl or not wl.get("funds"):
-        print(f"   DEBUG: {json.dumps(wl, ensure_ascii=False)[:500]}")
-        print("[ERROR] 自选列表为空 (Cookie可能过期或API变更)"); return
+        print("[ERROR] 自选列表为空"); return
     funds = {f["fund_code"]: f for f in wl["funds"]}
-    print(f"   {len(funds)} 只")
+    print(f"   自选 {len(funds)} 只")
 
-    # 虚拟持仓
+    fresh = fetch_today_trades(cookies)
+    total_new = sum(len(v) for v in fresh.values())
+    print(f"   大佬信号 {total_new} 笔 (今日)")
+    # 合并到历史数据
+    merged_trades = dict(trading_by_date)
+    for d, items in fresh.items():
+        merged_trades.setdefault(d, []).extend(items)
+
+    # 2. 市场状态
+    market = detect_market_state(TODAY, fund_charts)
+    min_score = GENE.get(f"min_score_{market}", 3.0)
+    print(f"2. 市场: {market} (门槛={min_score})")
+
+    # 3. 组合状态
     vp = load_vp()
-
-    # ── T+N 结算: 确认到期的待确认买入 ──
-    settled_count = 0
-    remaining = []
+    portfolio = Portfolio(INITIAL_CASH)
+    portfolio.set_fund_rules(fund_rules)
+    portfolio._profiles = fund_profiles
+    portfolio.slippage_pct = GENE.get("slippage_pct", 0.1)
+    # 恢复之前的持仓
+    for code, h in vp.get("holdings", {}).items():
+        cb = h.get("cost_basis", 5000)
+        portfolio.holdings[code] = {
+            "name": h["name"], "shares": cb, "cost": cb,
+            "buy_date": h.get("buy_date", TODAY), "buy_nav": 1.0,
+        }
+    portfolio.cash = vp.get("cash", INITIAL_CASH)
+    portfolio.total_fees = vp.get("total_fees", 0)
+    # 恢复待确认
     for pb in vp.get("pending", []):
-        if pb.get("confirm_date", "9999") <= TODAY:
-            code = pb["code"]
-            vp["holdings"][code] = {
-                "name": pb["name"], "cost_basis": pb["amount"],
-                "buy_date": pb["date"], "buy_score": pb.get("buy_score", 0),
-                "confirmed": True, "t_plus_n": pb.get("t_plus_n", 1),
-            }
-            settled_count += 1
-        else:
-            remaining.append(pb)
-    vp["pending"] = remaining
-    if settled_count > 0:
-        print(f"   T+N 确认: {settled_count} 笔")
+        portfolio.pending_buys.append(pb)
+    # 恢复冷却期记录
+    portfolio.sell_history = vp.get("sell_history", {})
 
-    print(f"   持仓 {len(vp['holdings'])} 只 (含待确认{len(vp['pending'])}笔), 现金 {vp['cash']:,.0f}")
+    # T+N 结算
+    portfolio.settle_pending(TODAY)
+    print(f"   持仓 {len(portfolio.holdings)} 只, 待确认 {len(portfolio.pending_buys)} 笔, 现金 {portfolio.cash:,.0f}")
 
-    # 评分
-    print("2. 评分 (五维+大佬信号)...")
-    results = []
+    # 4. 评分
+    print("3. 评分...")
+    candidates = []
     for code, info in funds.items():
         name = info.get("fund_name", code)
-        ok, warn = layer1_check(code, TODAY)
-        if not ok:
-            results.append({"code": code, "name": name, "score": 0, "blocked": True, "reason": warn})
-            print(f"   BLOCKED {name}: {warn}")
-            continue
-        if code in fund_charts:
-            s = score_fund(code, name, TODAY)
-        else:
-            mo = info.get("month_return", 0) or 0
-            s = max(1.0, min(5.0, 3.0 + mo * 0.05))
-        results.append({"code": code, "name": name, "score": s, "blocked": False, "reason": ""})
-        print(f"   {name} ({code}): {s:.1f}")
-    results.sort(key=lambda x: -x["score"])
+        # RSI 超买
+        pts = fund_charts.get(code, [])
+        if len(pts) >= 60:
+            timing = compute_entry_timing_score(pts, TODAY)
+            if timing.get("should_warn"):
+                print(f"   BLOCKED {name[:25]}: RSI超买")
+                continue
 
-    # 决策
-    print("3. 决策...")
-    today_actions = []
-
-    # 卖出检查 (含 T+N 锁定 + 赎回费)
-    confirmed_count = sum(1 for h in vp["holdings"].values() if h.get("confirmed", True))
-    for code, h in list(vp["holdings"].items()):
-        if not h.get("confirmed", True):
-            continue  # 待确认，不能卖
-        info = funds.get(code, {})
-        day_ret = info.get("day_return", 0) or 0
-        buy_date = h.get("buy_date", TODAY)
         try:
-            days_held = (datetime.strptime(TODAY, "%Y-%m-%d") - datetime.strptime(buy_date, "%Y-%m-%d")).days
+            fs = score_fund_backtest(code, name, fund_charts, None,
+                fund_rules.get(code), fund_managers.get(code),
+                TODAY, merged_trades, fund_profiles.get(code))
+            s = fs.total if hasattr(fs, 'total') else 3.0
         except:
-            days_held = 0
-        redeem_rate = redemption_fee(days_held, code)
+            s = max(1.0, min(5.0, 3.0 + (info.get("month_return", 0) or 0) * 0.05))
 
-        sell_reason = None
-        if day_ret < -12:
-            sell_reason = f"大跌 {day_ret:.1f}% (赎回费{redeem_rate*100:.1f}%)"
-        elif days_held >= 30 and (info.get("total_pnl_pct") or 0) > 30:
-            sell_reason = f"止盈 {info['total_pnl_pct']:.0f}% (持有{days_held}天)"
+        if s < min_score: continue
+        candidates.append({"code": code, "name": name, "score": s})
+        print(f"   {name[:30]} ({code}): {s:.1f}")
 
-        if sell_reason:
-            amount = h["cost_basis"] * (1 + (info.get("total_pnl_pct", 0) or 0) / 100)
-            fee = amount * redeem_rate
-            t_n = get_t_plus_n(code)
-            today_actions.append({
-                "action": "SELL", "code": code, "name": h["name"],
-                "amount": round(amount, 2), "reason": sell_reason,
-                "fee": round(fee, 2), "redeem_t_plus": t_n,
-            })
-            vp["cash"] += amount - fee
-            vp["total_fees"] += fee
-            del vp["holdings"][code]
+    candidates.sort(key=lambda x: -x["score"])
 
-    # 买入 (T+N 确认)
-    available = MAX_POSITIONS - len(vp["holdings"]) - len(vp["pending"])
-    for r in results:
-        if available <= 0: break
-        if r["blocked"] or r["code"] in vp["holdings"]: continue
-        # 检查是否已在待确认队列
-        if any(p["code"] == r["code"] for p in vp["pending"]): continue
-        if r["score"] < 3.0: continue
+    # 5. 相关性过滤
+    if len(portfolio.holdings) > 0 and len(candidates) > 0:
+        held_codes = list(portfolio.holdings.keys()) + [c["code"] for c in candidates]
+        corr = compute_correlation_matrix(fund_charts, held_codes, TODAY, lookback=60)
+        filtered = []
+        for c in candidates:
+            add = True
+            for hc in portfolio.holdings:
+                if corr.get(c["code"], {}).get(hc, 0) > GENE.get("max_correlation", 0.85):
+                    add = False
+                    print(f"   FILTERED {c['name'][:25]}: 与持仓 {code_to_name.get(hc, hc)[:15]} 相关{corr[c['code']][hc]:.2f}")
+                    break
+            if add: filtered.append(c)
+        candidates = filtered
 
-        t_n = get_t_plus_n(r["code"])
-        confirm_date = add_biz_days(TODAY, t_n)
-        fee = BUY_AMOUNT * 0.0015  # 申购费 0.15%
-        today_actions.append({
-            "action": "BUY", "code": r["code"], "name": r["name"],
-            "amount": BUY_AMOUNT, "reason": f"评分 {r['score']:.1f} (T+{t_n})",
-            "t_plus_n": t_n, "confirm_date": confirm_date,
-        })
-        vp["cash"] -= BUY_AMOUNT + fee
-        vp["total_invested"] += BUY_AMOUNT
-        vp["total_fees"] += fee
-        vp["pending"].append({
-            "code": r["code"], "name": r["name"], "amount": BUY_AMOUNT,
-            "date": TODAY, "buy_score": r["score"],
-            "t_plus_n": t_n, "confirm_date": confirm_date,
-        })
-        available -= 1
+    # 6. 卖出决策（回测引擎同款逻辑）
+    print("4. 卖出检查...")
+    sell_cooldown = {}
+    for code in list(portfolio.holdings.keys()):
+        h = portfolio.holdings[code]
+        days = portfolio._holding_days(code, TODAY)
+        if days < 30:
+            continue  # 最低持有期
 
-    # 保存
-    for a in today_actions:
-        vp["history"].append({**a, "date": TODAY})
-    # 总资产 = 现金 + 已确认持仓成本 + 待确认买入金额
-    total_val = vp["cash"] + sum(h["cost_basis"] for h in vp["holdings"].values()) + sum(p["amount"] for p in vp["pending"])
+        # 从自选数据拿当前盈亏
+        info = funds.get(code, {})
+        pnl = info.get("total_pnl_pct") or 0
+        day_ret = info.get("day_return") or 0
+
+        # 止盈
+        if pnl >= GENE.get("take_profit_pct", 80):
+            portfolio.sell(code, h["cost"], 1.0, TODAY, "take_profit", False)
+            sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": 1.0}
+            print(f"   SELL_TP {h['name'][:25]}: +{pnl:.0f}%")
+
+        # 止损
+        elif pnl <= GENE.get("stop_loss_pct", -15):
+            portfolio.sell(code, h["cost"], 1.0, TODAY, "stop_loss", True)
+            sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": 1.0}
+            print(f"   SELL_SL {h['name'][:25]}: {pnl:.0f}%")
+
+        # 动量崩溃
+        elif day_ret < -8:
+            pts = fund_charts.get(code, [])
+            if len(pts) >= 20:
+                timing = compute_entry_timing_score(pts, TODAY)
+                if timing.get("entry_score", 0) < 1.0:
+                    portfolio.sell(code, h["cost"], 1.0, TODAY, "momentum_crash", True)
+                    sell_cooldown[code] = {"date": TODAY, "reason": "momentum_crash", "nav": 1.0}
+                    print(f"   SELL_MC {h['name'][:25]}: 动量崩塌")
+
+    # 7. 买入决策
+    print("5. 买入...")
+    max_pos = GENE.get("max_position_pct", 20)
+    cash_reserve = GENE.get("cash_reserve_pct", 0.1)
+    cooldown_cfg = {"profit_days": GENE.get("cooldown_profit_days", 10),
+                    "loss_days": GENE.get("cooldown_loss_days", 30)}
+
+    # 冷却期检查
+    active_codes = set()
+    for code in candidates:
+        if code in sell_cooldown:
+            continue
+        if portfolio.is_in_cooldown(code, TODAY, cooldown_cfg):
+            print(f"   COOLED {code}: 冷却期未过")
+            continue
+        active_codes.add(code)
+
+    for c in candidates:
+        if c["code"] not in active_codes: continue
+        if c["code"] in portfolio.holdings: continue
+        if any(p["code"] == c["code"] for p in portfolio.pending_buys): continue
+
+        available = portfolio.cash * (1 - cash_reserve)
+        per_position = available * max_pos / 100
+        amount = min(per_position, 5000)
+
+        if portfolio.buy(c["code"], c["name"], amount, 1.0, TODAY):
+            print(f"   BUY {c['name'][:30]}: {amount:,.0f} (评分{c['score']:.1f})")
+
+    # 8. 同步回 VP
+    vp["cash"] = portfolio.cash
+    vp["total_fees"] = portfolio.total_fees
+    vp["holdings"] = {code: {"name": h["name"], "cost_basis": h["cost"],
+                              "buy_date": h["buy_date"], "buy_score": 3.0}
+                      for code, h in portfolio.holdings.items()}
+    vp["pending"] = portfolio.pending_buys
+
+    total_val = portfolio.cash + sum(h["cost"] for h in portfolio.holdings.values()) + sum(p["amount"] for p in portfolio.pending_buys)
     vp["snapshots"].append({"date": TODAY, "total_value": round(total_val, 2),
-                            "cash": round(vp["cash"], 2), "holdings": len(vp["holdings"]),
-                            "pending": len(vp["pending"]), "actions": len(today_actions)})
+                            "cash": round(portfolio.cash, 2),
+                            "holdings": len(portfolio.holdings),
+                            "pending": len(portfolio.pending_buys)})
+    vp["sell_history"] = portfolio.sell_history  # 持久化冷却期
     save_vp(vp)
 
-    # 日报
-    print("4. 日报...")
+    # 9. 日报
+    print("6. 日报...")
     lines = [
         f"# 实盘模拟日报 {TODAY_CN}",
         f"",
-        f"> 自选 {len(funds)} 只 | 大佬信号 {len(trading_by_date)}天 | 进化参数",
+        f"> 自选 {len(funds)} 只 | 大佬 {total_new} 笔 | 市场 {market} | 门槛 {min_score}",
         f"",
-        f"## 今日操作", "",
+        f"## 组合状态",
+        f"| 指标 | 值 |",
+        f"|------|------|",
+        f"| 总资产 | {total_val:,.2f} |",
+        f"| 现金 | {portfolio.cash:,.2f} |",
+        f"| 持仓 | {len(portfolio.holdings)} 只 |",
+        f"| 待确认 | {len(portfolio.pending_buys)} 笔 |",
+        f"| 手续费 | {portfolio.total_fees:,.2f} |",
+        f"| 收益率 | {((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}% |",
+        f"",
+        f"## 评分 TOP 5",
+        f"| 基金 | 评分 |",
+        f"|------|------|",
     ]
-    if today_actions:
-        lines.append("| 操作 | 基金 | 金额 | 原因 |")
-        lines.append("|------|------|------|------|")
-        for a in today_actions:
-            act = "买入" if a["action"] == "BUY" else "卖出"
-            lines.append(f"| {act} | {a['name']} ({a['code']}) | {a['amount']:,.0f} | {a['reason']} |")
-    else:
-        lines.append("无操作")
+    for c in candidates[:5]:
+        lines.append(f"| {c['name']} ({c['code']}) | {c['score']:.1f} |")
 
-    lines += ["", "## 组合", "| 指标 | 值 |", "|------|------|",
-              f"| 总资产 | {total_val:,.2f} |", f"| 现金 | {vp['cash']:,.2f} |",
-              f"| 持仓 | {len(vp['holdings'])} 只 |",
-              f"| 收益率 | {((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}% |",
-              "", "## 评分 TOP 5", "| 基金 | 评分 |", "|------|------|"]
-    for r in results[:5]:
-        flag = " ⚠️" if r["blocked"] else ""
-        lines.append(f"| {r['name']} ({r['code']}){flag} | {r['score']:.1f} |")
-
-    blocked = [r for r in results if r["blocked"]]
-    if blocked:
-        lines += ["", "## 风控拦截", ""]
-        for r in blocked:
-            lines.append(f"- {r['name']} ({r['code']}): {r['reason']}")
+    if portfolio.holdings:
+        lines += ["", "## 当前持仓", "", "| 基金 | 成本 | 买入日期 |", "|------|------|----------|"]
+        for code, h in portfolio.holdings.items():
+            lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {h.get('buy_date','?')} |")
 
     lines += ["", "---", f"*{TODAY_CN} 14:30 CST*"]
     (SIM_DIR / f"{TODAY}.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"   日报已保存")
 
-    print(f"\n=== 完成: 总资产 {total_val:,.0f} ({((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}%) 操作 {len(today_actions)} 笔 ===")
+    print(f"\n=== 完成: 总资产 {total_val:,.0f} ({((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}%) ===")
 
 
 if __name__ == "__main__":
