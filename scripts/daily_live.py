@@ -66,11 +66,66 @@ BUY_AMOUNT = 5000
 MAX_POSITIONS = 8
 
 
+def get_t_plus_n(code):
+    """获取基金 T+N 确认天数（从 fund_rules 缓存）"""
+    rules = fund_rules.get(code, {})
+    confirm = rules.get("confirm_date", "")
+    buy_date = rules.get("buy_date", "")
+    if confirm and buy_date:
+        try:
+            c_day = int(confirm.split("-")[-1])
+            b_day = int(buy_date.split(" ")[0].split("-")[-1])
+            diff = (c_day - b_day) % 30
+            if diff <= 1: return 1
+            if diff <= 2: return 2
+            return diff
+        except: pass
+    # Fallback: 根据基金类型判断
+    profile = fund_profiles.get(code, {})
+    ft = profile.get("fund_type", "")
+    if "QDII" in ft: return 2
+    return 1
+
+
+def add_biz_days(date_str, n):
+    """简单加 N 个日历日（近似交易日）"""
+    try:
+        from datetime import timedelta
+        dt = datetime.strptime(date_str[:10], "%Y-%m-%d")
+        return (dt + timedelta(days=n + max(0, n // 5 * 2))).strftime("%Y-%m-%d")
+    except:
+        return date_str
+
+
+def redemption_fee(days_held, code):
+    """赎回费率（按持有天数）"""
+    rules = fund_rules.get(code, {})
+    tiers = rules.get("redeem_fees", [])
+    for t in tiers:
+        interval = t.get("interval", "")
+        rate = float(t.get("rate", 0))
+        # 简化为: 直接用费率区分
+        if days_held < 7 and "＜7" in interval:
+            return rate / 100
+        elif 7 <= days_held < 365 and "7日≤" in interval and "＜365" in interval:
+            return rate / 100
+    # 兜底
+    if days_held < 7: return 0.015
+    if days_held < 30: return 0.0075
+    if days_held < 365: return 0.005
+    return 0.0
+
+
 def load_vp():
     if VP_PATH.exists():
-        return json.loads(VP_PATH.read_text("utf-8"))
+        vp = json.loads(VP_PATH.read_text("utf-8"))
+        vp.setdefault("pending", [])
+        for h in vp.get("holdings", {}).values():
+            h.setdefault("confirmed", True)
+        return vp
     return {"created": TODAY, "initial_cash": INITIAL_CASH, "cash": INITIAL_CASH,
-            "total_invested": 0, "total_fees": 0, "holdings": {}, "history": [], "snapshots": []}
+            "total_invested": 0, "total_fees": 0,
+            "holdings": {}, "pending": [], "history": [], "snapshots": []}
 
 def save_vp(vp):
     VP_PATH.write_text(json.dumps(vp, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -124,7 +179,26 @@ def run():
 
     # 虚拟持仓
     vp = load_vp()
-    print(f"   持仓 {len(vp['holdings'])} 只, 现金 {vp['cash']:,.0f}")
+
+    # ── T+N 结算: 确认到期的待确认买入 ──
+    settled_count = 0
+    remaining = []
+    for pb in vp.get("pending", []):
+        if pb.get("confirm_date", "9999") <= TODAY:
+            code = pb["code"]
+            vp["holdings"][code] = {
+                "name": pb["name"], "cost_basis": pb["amount"],
+                "buy_date": pb["date"], "buy_score": pb.get("buy_score", 0),
+                "confirmed": True, "t_plus_n": pb.get("t_plus_n", 1),
+            }
+            settled_count += 1
+        else:
+            remaining.append(pb)
+    vp["pending"] = remaining
+    if settled_count > 0:
+        print(f"   T+N 确认: {settled_count} 笔")
+
+    print(f"   持仓 {len(vp['holdings'])} 只 (含待确认{len(vp['pending'])}笔), 现金 {vp['cash']:,.0f}")
 
     # 评分
     print("2. 评分 (五维+大佬信号)...")
@@ -148,38 +222,75 @@ def run():
     # 决策
     print("3. 决策...")
     today_actions = []
+
+    # 卖出检查 (含 T+N 锁定 + 赎回费)
+    confirmed_count = sum(1 for h in vp["holdings"].values() if h.get("confirmed", True))
     for code, h in list(vp["holdings"].items()):
+        if not h.get("confirmed", True):
+            continue  # 待确认，不能卖
         info = funds.get(code, {})
         day_ret = info.get("day_return", 0) or 0
+        buy_date = h.get("buy_date", TODAY)
+        try:
+            days_held = (datetime.strptime(TODAY, "%Y-%m-%d") - datetime.strptime(buy_date, "%Y-%m-%d")).days
+        except:
+            days_held = 0
+        redeem_rate = redemption_fee(days_held, code)
+
+        sell_reason = None
         if day_ret < -12:
-            today_actions.append({"action": "SELL", "code": code, "name": h["name"],
-                                  "amount": h["cost_basis"], "reason": f"大跌 {day_ret:.1f}%"})
-            vp["cash"] += h["cost_basis"] * 0.995
-            vp["total_fees"] += h["cost_basis"] * 0.005
+            sell_reason = f"大跌 {day_ret:.1f}% (赎回费{redeem_rate*100:.1f}%)"
+        elif days_held >= 30 and (info.get("total_pnl_pct") or 0) > 30:
+            sell_reason = f"止盈 {info['total_pnl_pct']:.0f}% (持有{days_held}天)"
+
+        if sell_reason:
+            amount = h["cost_basis"] * (1 + (info.get("total_pnl_pct", 0) or 0) / 100)
+            fee = amount * redeem_rate
+            t_n = get_t_plus_n(code)
+            today_actions.append({
+                "action": "SELL", "code": code, "name": h["name"],
+                "amount": round(amount, 2), "reason": sell_reason,
+                "fee": round(fee, 2), "redeem_t_plus": t_n,
+            })
+            vp["cash"] += amount - fee
+            vp["total_fees"] += fee
             del vp["holdings"][code]
 
-    available = MAX_POSITIONS - len(vp["holdings"])
+    # 买入 (T+N 确认)
+    available = MAX_POSITIONS - len(vp["holdings"]) - len(vp["pending"])
     for r in results:
         if available <= 0: break
         if r["blocked"] or r["code"] in vp["holdings"]: continue
+        # 检查是否已在待确认队列
+        if any(p["code"] == r["code"] for p in vp["pending"]): continue
         if r["score"] < 3.0: continue
-        today_actions.append({"action": "BUY", "code": r["code"], "name": r["name"],
-                              "amount": BUY_AMOUNT, "reason": f"评分 {r['score']:.1f}"})
-        fee = BUY_AMOUNT * 0.0015
+
+        t_n = get_t_plus_n(r["code"])
+        confirm_date = add_biz_days(TODAY, t_n)
+        fee = BUY_AMOUNT * 0.0015  # 申购费 0.15%
+        today_actions.append({
+            "action": "BUY", "code": r["code"], "name": r["name"],
+            "amount": BUY_AMOUNT, "reason": f"评分 {r['score']:.1f} (T+{t_n})",
+            "t_plus_n": t_n, "confirm_date": confirm_date,
+        })
         vp["cash"] -= BUY_AMOUNT + fee
         vp["total_invested"] += BUY_AMOUNT
         vp["total_fees"] += fee
-        vp["holdings"][r["code"]] = {"name": r["name"], "cost_basis": BUY_AMOUNT,
-                                      "buy_date": TODAY, "buy_score": r["score"]}
+        vp["pending"].append({
+            "code": r["code"], "name": r["name"], "amount": BUY_AMOUNT,
+            "date": TODAY, "buy_score": r["score"],
+            "t_plus_n": t_n, "confirm_date": confirm_date,
+        })
         available -= 1
 
     # 保存
     for a in today_actions:
         vp["history"].append({**a, "date": TODAY})
-    total_val = vp["cash"] + sum(h["cost_basis"] for h in vp["holdings"].values())
+    # 总资产 = 现金 + 已确认持仓成本 + 待确认买入金额
+    total_val = vp["cash"] + sum(h["cost_basis"] for h in vp["holdings"].values()) + sum(p["amount"] for p in vp["pending"])
     vp["snapshots"].append({"date": TODAY, "total_value": round(total_val, 2),
                             "cash": round(vp["cash"], 2), "holdings": len(vp["holdings"]),
-                            "actions": len(today_actions)})
+                            "pending": len(vp["pending"]), "actions": len(today_actions)})
     save_vp(vp)
 
     # 日报
