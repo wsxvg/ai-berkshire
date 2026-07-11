@@ -1,4 +1,4 @@
-# 参考项目（嵌套 git 仓库，不提交）
+# 参考项目
 reference_projects/
 
 # Python
@@ -14,12 +14,22 @@ venv/
 *.swp
 
 # 临时文件
-_tmp_*
+_tmp*
 *.tmp
-nul; echo
-nul; echo ---versions---
+_optimize*
+_test*
+_bt_*
+_check*
+_debug*
+_collect*
+_evolve*
+_validate*
+_sim*.*
+*.har
+.coverage
+1.txt
 
-# GitHub Actions 自动生成，不需要手动提交
+# 虚拟持仓 (Actions 生成)
 reports/sim/virtual_portfolio.json
 
 # 环境
