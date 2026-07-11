@@ -170,14 +170,10 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
     sorted_dates = sorted(d for d in trading_by_date if d <= cutoff_date)
 
     def _match(record):
-        """匹配: fund_code 优先 → fund_name → 包含"""
+        """匹配: fund_code 精确匹配 → fund_name 精确匹配"""
         if fund_code and record.get("fund_code") == fund_code:
             return True
         if record.get("fund_name", "") == fund_name:
-            return True
-        # 模糊: 名称包含（处理份额后缀差异）
-        rn = record.get("fund_name", "")
-        if rn and (fund_name in rn or rn in fund_name):
             return True
         return False
 
@@ -1110,6 +1106,19 @@ def run_backtest(config):
         data_file = DATA_DIR / "trading_by_date.json"
     with open(data_file, "r", encoding="utf-8") as f:
         trading_by_date = json.load(f)
+
+    # 为交易记录补充 fund_code（基于 name_map）
+    _name_map_path = PROJECT_DIR / "data" / "fund_name_map.json"
+    _name_to_code = {}
+    if _name_map_path.exists():
+        _name_to_code = json.loads(_name_map_path.read_text("utf-8"))
+    for date in trading_by_date:
+        for r in trading_by_date[date]:
+            if r.get("fund_code"):
+                continue
+            name = r.get("fund_name", "")
+            if name in _name_to_code:
+                r["fund_code"] = _name_to_code[name]
 
     hist_file = DATA_DIR / "trading_history_fixed.json"
     if not hist_file.exists():
