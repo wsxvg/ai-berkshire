@@ -25,6 +25,7 @@ _collect*
 _evolve*
 _validate*
 _sim*.*
+_api_*.py
 *.har
 .coverage
 1.txt

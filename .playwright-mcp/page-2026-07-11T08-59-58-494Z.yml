@@ -1,0 +1,171 @@
+- generic [ref=f6e2]:
+  - region "跳到主要内容":
+    - link "跳到主要内容" [ref=f6e3] [cursor=pointer]:
+      - /url: "#__docusaurus_skipToContent_fallback"
+  - navigation "主导航" [ref=f6e4]:
+    - generic [ref=f6e5]:
+      - generic [ref=f6e6]:
+        - link "基估宝" [ref=f6e7] [cursor=pointer]:
+          - /url: /home/
+        - link "文档" [ref=f6e9] [cursor=pointer]:
+          - /url: /home/docs/help
+        - link "CLI 文档" [ref=f6e10] [cursor=pointer]:
+          - /url: /home/docs/cli/intro
+        - link [ref=f6e11] [cursor=pointer]:
+          - /url: https://fund.cc.cd
+          - text: 在线体验
+          - img "(opens in new tab)" [ref=f6e12]
+      - generic [ref=f6e14]:
+        - link [ref=f6e15] [cursor=pointer]:
+          - /url: https://github.com/hzm0321/jgb-doc
+          - text: GitHub
+          - img "(opens in new tab)" [ref=f6e16]
+        - button "切换浅色/暗黑模式（当前为system mode）" [disabled] [ref=f6e19]
+  - generic [ref=f6e22]:
+    - banner [ref=f6e23]:
+      - generic [ref=f6e24]:
+        - heading "基估宝" [level=1] [ref=f6e25]
+        - paragraph [ref=f6e27]:
+          - generic [ref=f6e28]: 实时基金估值与重仓股追踪工具
+          - text: —— 一站式基金估值、重仓追踪、持仓管理工具，让你的投资决策更从容。
+        - generic [ref=f6e29]:
+          - link [ref=f6e30] [cursor=pointer]:
+            - /url: https://fund.cc.cd
+          - link "查看文档" [ref=f6e38] [cursor=pointer]:
+            - /url: /home/docs/help
+        - generic [ref=f6e39]:
+          - generic [ref=f6e41]:
+            - generic [ref=f6e42]: 15+
+            - generic [ref=f6e43]: 核心特性
+          - generic [ref=f6e45]:
+            - generic [ref=f6e46]: 实时
+            - generic [ref=f6e47]: 数据同步
+          - generic [ref=f6e49]:
+            - generic [ref=f6e50]: Serverless
+            - generic [ref=f6e51]: 云端架构
+    - main [ref=f6e52]:
+      - generic [ref=f6e58]:
+        - generic [ref=f6e59]:
+          - img "基估宝 PC 端主界面" [ref=f6e60]
+          - img "基估宝 PC 端详情界面" [ref=f6e61]
+        - img "基估宝 移动端主界面" [ref=f6e63]
+      - generic [ref=f6e65]:
+        - generic [ref=f6e66]:
+          - heading "核心特性" [level=2] [ref=f6e67]
+          - paragraph [ref=f6e69]: 从实时行情到持仓管理，基估宝提供完整的基金投资追踪体验
+        - generic [ref=f6e70]:
+          - generic [ref=f6e73] [cursor=pointer]:
+            - heading "实时估值" [level=3] [ref=f6e78]
+            - paragraph [ref=f6e79]: 通过基金编号实时获取单位净值、估值净值及涨跌幅，数据每秒刷新，把握每一个市场脉搏。
+          - generic [ref=f6e82] [cursor=pointer]:
+            - heading "重仓追踪" [level=3] [ref=f6e88]
+            - paragraph [ref=f6e89]: 自动获取基金前 10 大重仓股票，实时追踪盘中涨跌，清晰展示持仓结构与行业分布。
+          - generic [ref=f6e92] [cursor=pointer]:
+            - heading "持仓管理" [level=3] [ref=f6e98]
+            - paragraph [ref=f6e99]: 记录持有份额和成本价，自动计算持仓收益与累计收益，支持买入/卖出交易记录。
+          - generic [ref=f6e102] [cursor=pointer]:
+            - heading "云端同步" [level=3] [ref=f6e106]
+            - paragraph [ref=f6e107]: 通过 Supabase 云端备份，支持多设备间数据同步与冲突处理，随时随地管理你的基金。
+          - generic [ref=f6e110] [cursor=pointer]:
+            - heading "响应式设计" [level=3] [ref=f6e114]
+            - paragraph [ref=f6e115]: 完美适配 PC 与移动端，针对小屏优化文字展示、间距及交互体验，随地查看行情。
+          - generic [ref=f6e118] [cursor=pointer]:
+            - heading "Serverless 全栈架构" [level=3] [ref=f6e123]
+            - paragraph [ref=f6e124]: 结合 Next.js 与 Supabase 云原生技术，提供实时数据同步、可靠的数据库存储和更安全的云端体验。
+      - generic [ref=f6e126]:
+        - generic [ref=f6e127]:
+          - heading "基估宝命令行接口 (@jigubao/cli)" [level=2] [ref=f6e128]
+          - paragraph [ref=f6e130]: 无需打开浏览器，在终端、Shell 脚本或 AI Agent 中毫秒级触达全网行情与个人持仓
+        - generic [ref=f6e135]:
+          - generic [ref=f6e136]: zsh — jgb holding list — 80×24
+          - generic [ref=f6e142]:
+            - generic [ref=f6e143]: ~jgb holding list
+            - generic [ref=f6e144]:
+              - generic [ref=f6e145]: 代码 名称 份额 成本净值 持仓金额 持有收益 收益率
+              - generic [ref=f6e146]: ──────────────────────────────────────────────────────────────────────────────────────────
+              - generic [ref=f6e147]: 005827 易方达蓝筹精选混合 10000.00 1.1500 ¥12400.00 +900.00 +7.83%
+              - generic [ref=f6e148]: 012345 半导体先锋股票A 50000.00 1.5000 ¥92800.00 +17800.00 +23.73%
+              - generic [ref=f6e149]: "合计: 持仓金额 ¥105,200.00 总收益 +18,700.00 收益率 +21.62%"
+            - generic [ref=f6e150]: ~jgb info 005827 --text
+            - generic [ref=f6e151]:
+              - generic [ref=f6e152]: "基金名称: 易方达蓝筹精选混合"
+              - generic [ref=f6e153]: "最新估值: 1.2400 (涨幅: +0.45%)"
+            - generic [ref=f6e154]: ~jgb market --filter a-share
+        - generic [ref=f6e156]:
+          - generic [ref=f6e159] [cursor=pointer]:
+            - heading "⚡️ 极速只读行情" [level=3] [ref=f6e163]
+            - paragraph [ref=f6e164]: 覆盖基金搜索、实时估值、历史净值、阶段涨跌、重仓股、分红与全市场排行，v1 全量命令零副作用只读，毫秒级响应，生产环境安全无忧。
+          - generic [ref=f6e167] [cursor=pointer]:
+            - heading "🌐 全球行情与板块归因" [level=3] [ref=f6e172]
+            - paragraph [ref=f6e173]: 批量获取 A 股、美股、港股及全球核心指数实时报价，查询 A 股交易日历，并按行业/概念板块追踪主力资金流向，辅助宏观归因研判。
+          - generic [ref=f6e176] [cursor=pointer]:
+            - heading "💼 持仓盈亏全景对账" [level=3] [ref=f6e181]
+            - paragraph [ref=f6e182]: 一条命令把账户搬进终端：持仓列表与实时估值、自选池、分组标签、交易流水、待处理队列、定投计划及每日盈亏，全程只读对账零修改。
+          - generic [ref=f6e185] [cursor=pointer]:
+            - heading "🤖 AI Agent 原生支持" [level=3] [ref=f6e190]
+            - paragraph [ref=f6e191]: 统一 JSON 响应信封与 --json/--text 双模式输出，配合分级退出码与管道流式操作，无缝接入 OpenClaw、LangChain 与 Shell 自动化管道。
+          - generic [ref=f6e194] [cursor=pointer]:
+            - heading "🩺 智能自检与诊断" [level=3] [ref=f6e199]
+            - paragraph [ref=f6e200]: describe 输出全量命令树元数据与 JSON Schema 供智能体能力发现，doctor 一键自检运行时、权限、缓存库、会员身份与多数据源连通延迟。
+          - generic [ref=f6e203] [cursor=pointer]:
+            - heading "🔐 跨端云数据同步" [level=3] [ref=f6e208]
+            - paragraph [ref=f6e209]: 登录联动 Supabase 云端账号，终端与 PC/Web 端共享同一份账户数据，查询结果即云端最新，无需手动导入导出或来回切换设备。
+        - generic [ref=f6e211]:
+          - link "📖 浏览 CLI 手册" [ref=f6e212] [cursor=pointer]:
+            - /url: /home/docs/cli/intro
+          - button [ref=f6e216] [cursor=pointer]:
+            - code [ref=f6e217]: $ npm install -g @jigubao/cli
+            - button "复制指令" [ref=f6e218]
+      - generic [ref=f6e224]:
+        - generic [ref=f6e225]:
+          - heading "技术栈" [level=2] [ref=f6e226]
+          - paragraph [ref=f6e228]: 现代、可靠的 Serverless 全栈技术选型
+        - generic [ref=f6e229]:
+          - generic [ref=f6e230]: Next.js
+          - generic [ref=f6e232]: React
+          - generic [ref=f6e234]: Supabase
+          - generic [ref=f6e236]: Glassmorphism
+          - generic [ref=f6e238]: PostgreSQL
+          - generic [ref=f6e240]: Serverless
+          - generic [ref=f6e242]: Responsive
+  - contentinfo [ref=f6e244]:
+    - generic [ref=f6e245]:
+      - generic [ref=f6e246]:
+        - generic [ref=f6e247]:
+          - generic [ref=f6e248]: 产品
+          - list [ref=f6e249]:
+            - listitem [ref=f6e250]:
+              - link [ref=f6e251] [cursor=pointer]:
+                - /url: https://fund.cc.cd
+                - text: 在线体验
+                - img "(opens in new tab)" [ref=f6e252]
+            - listitem [ref=f6e254]:
+              - link "使用文档" [ref=f6e255] [cursor=pointer]:
+                - /url: /home/docs/help
+        - generic [ref=f6e256]:
+          - generic [ref=f6e257]: 社区
+          - list [ref=f6e258]:
+            - listitem [ref=f6e259]:
+              - link [ref=f6e260] [cursor=pointer]:
+                - /url: https://github.com/hzm0321/jgb-doc
+                - text: GitHub
+                - img "(opens in new tab)" [ref=f6e261]
+            - listitem [ref=f6e263]:
+              - link [ref=f6e264] [cursor=pointer]:
+                - /url: https://github.com/hzm0321/jgb-doc/issues
+                - text: 问题反馈
+                - img "(opens in new tab)" [ref=f6e265]
+        - generic [ref=f6e267]:
+          - generic [ref=f6e268]: 技术栈
+          - list [ref=f6e269]:
+            - listitem [ref=f6e270]:
+              - link [ref=f6e271] [cursor=pointer]:
+                - /url: https://nextjs.org/
+                - text: Next.js
+                - img "(opens in new tab)" [ref=f6e272]
+            - listitem [ref=f6e274]:
+              - link [ref=f6e275] [cursor=pointer]:
+                - /url: https://supabase.com/
+                - text: Supabase
+                - img "(opens in new tab)" [ref=f6e276]
+      - generic [ref=f6e278]: Copyright © 2026 基估宝. Built with Docusaurus.

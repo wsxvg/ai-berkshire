@@ -1,0 +1,47 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 基估宝
+      - region "添加基金" [ref=e14]:
+        - generic [ref=e18]:
+          - textbox "搜索基金名称或代码..." [ref=e19]
+          - button [ref=e21] [cursor=pointer]
+      - generic [ref=e25]:
+        - img "项目Github地址" [ref=e27] [cursor=pointer]
+        - button "立即刷新" [disabled] [ref=e29] [cursor=pointer]
+        - button "切换到亮色主题" [ref=e35] [cursor=pointer]
+        - button "登录" [ref=e40] [cursor=pointer]
+    - generic [ref=e44]: 加载大盘指数…
+    - generic [ref=e46]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e53]:
+            - button "全部 (0)" [ref=e54] [cursor=pointer]
+            - button [ref=e55] [cursor=pointer]
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - button [ref=e60] [cursor=pointer]
+              - button [ref=e66] [cursor=pointer]
+            - generic [ref=e70]:
+              - button "排序" [ref=e71] [cursor=pointer]
+              - generic [ref=e76]:
+                - button "默认" [ref=e77] [cursor=pointer]
+                - button "涨跌幅" [ref=e79] [cursor=pointer]
+                - button "持有收益" [ref=e81] [cursor=pointer]
+                - button "名称" [ref=e83] [cursor=pointer]
+        - generic [ref=e85]:
+          - generic [ref=e86]: 📂
+          - generic [ref=e87]: 尚未添加基金，请从顶部搜索基金名称添加到分组
+      - generic [ref=e88]:
+        - paragraph [ref=e89]: 数据源：实时估值与重仓直连东方财富，仅供个人学习及参考使用。数据可能存在延迟，不作为任何投资建议
+        - paragraph [ref=e90]: 注：估算数据与真实结算数据会有1%左右误差，非股票型基金误差较大
+        - generic [ref=e91]:
+          - paragraph [ref=e92]:
+            - text: 遇到任何问题或需求建议可
+            - button "点此提交反馈" [ref=e93] [cursor=pointer]
+            - text: ，或
+            - button "加入微信用户支持群" [ref=e94] [cursor=pointer]
+          - button "☕ 点此请作者喝杯咖啡" [ref=e95] [cursor=pointer]:
+            - generic [ref=e96]: ☕
+            - generic [ref=e97]: 点此请作者喝杯咖啡
+  - region "Notifications alt+T"

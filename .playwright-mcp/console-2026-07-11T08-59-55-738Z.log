@@ -1,0 +1,31 @@
+[     353ms] [LOG] Sentry Logger [log]: Recording outcome: "no_parent_span:span" @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     355ms] [LOG] Sentry Logger [log]: Flushing outcomes... @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     355ms] [LOG] Sentry Logger [log]: Sending outcomes: [Object] @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     356ms] [WARNING] Sentry Logger [warn]: Dropping client report. Will not send outcomes (reason: network_error). @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     357ms] [ERROR] Sentry Logger [error]: Encountered error running transport request: TypeError: Failed to fetch
+    at a (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:17:22185)
+    at https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:9451
+    at Object.add (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:7732)
+    at Object.send (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:9443)
+    at tD.sendEnvelope (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:15906)
+    at tD._flushOutcomes (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:14:878)
+    at HTMLDocument.<anonymous> (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:14:6759) @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     357ms] [LOG] Sentry Logger [log]: Recording outcome: "no_parent_span:span" @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[     358ms] [ERROR] Sentry Logger [error]: Error while sending envelope: TypeError: Failed to fetch
+    at a (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:17:22185)
+    at https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:9451
+    at Object.add (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:7732)
+    at Object.send (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:9443)
+    at tD.sendEnvelope (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:13:15906)
+    at tD._flushOutcomes (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:14:878)
+    at HTMLDocument.<anonymous> (https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:14:6759) @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    1493ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap:0
+[    1499ms] [INFO] Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113 @ https://fund.cc.cd/home/:3
+[    2941ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/aba21aa0.854bbb96.js:0
+[    2942ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/5e95c892.f8872cac.js:0
+[    3009ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/a7bd4aaa.b5a9a70d.js:0
+[    3012ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/a94703ab.4ae62fcf.js:0
+[    3109ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/17896441.b2b7fa99.js:0
+[    3110ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/49491008.257d8134.js:0
+[    3177ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/08c490b2.a0945ab1.js:0
+[    3196ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://fund.cc.cd/home/assets/js/def29a06.53fea097.js:0

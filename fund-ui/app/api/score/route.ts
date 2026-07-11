@@ -1,23 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { spawn } from 'child_process'
+import { exec } from 'child_process'
 import path from 'path'
+import fs from 'fs'
 
-const PY = 'py'
 const ROOT = path.resolve(process.cwd(), '..')
-const ROOT_PY = ROOT.replace(/\\/g, '\\\\')
 
-function runPython(script: string): Promise<string> {
+function runPy(file: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const proc = spawn(PY, ['-W', 'ignore', '-c', script], { timeout: 60000, maxBuffer: 10*1024*1024 })
-    let stdout = ''
-    let stderr = ''
-    proc.stdout.on('data', (d) => { stdout += d })
-    proc.stderr.on('data', (d) => { stderr += d })
-    proc.on('close', (code) => {
-      if (code === 0) resolve(stdout)
-      else reject(new Error(stderr || `exit ${code}`))
-    })
-    proc.on('error', reject)
+    exec(`python "${file}"`, { cwd: ROOT, timeout: 60000, maxBuffer: 10*1024*1024 },
+      (err, stdout, stderr) => {
+        if (err) reject(new Error(stderr || err.message))
+        else resolve(stdout)
+      })
   })
 }
 
@@ -25,31 +19,28 @@ export async function GET(req: NextRequest) {
   const codes = req.nextUrl.searchParams.get('codes') || ''
   if (!codes) return NextResponse.json({ error: 'missing codes' }, { status: 400 })
 
+  const tmp = path.join(ROOT, '_api_score.py')
   try {
-    const script = `import json as _json, sys, glob
+    fs.writeFileSync(tmp, `import json, sys, glob
 from pathlib import Path
-sys.path.insert(0, r'${ROOT_PY}')
+sys.path.insert(0, '.')
 from backtest.engine.backtest import score_fund_backtest, score_4433, detect_market_state
 from tools.technical_indicators import compute_entry_timing_score, compute_rsi
 from datetime import datetime
 
-ROOT = Path(r'${ROOT_PY}')
-fc = _json.loads((ROOT / 'data' / 'fund_charts.json').read_text('utf-8'))
-trades = _json.loads((ROOT / 'backtest' / 'data' / 'trading_by_date_fixed.json').read_text('utf-8'))
-
-CACHE = ROOT / 'data' / 'fund_cache'
+fc = json.loads(Path('data/fund_charts.json').read_text('utf-8'))
+trades = json.loads(Path('backtest/data/trading_by_date_fixed.json').read_text('utf-8'))
+CACHE = Path('data/fund_cache')
 def load(prefix):
     d = {}
     for f in glob.glob(str(CACHE / f'{prefix}_*.json')):
         c = Path(f).stem.replace(f'{prefix}_', '', 1)
-        try: d[c] = _json.loads(open(f, encoding='utf-8').read())
+        try: d[c] = json.loads(open(f, encoding='utf-8').read())
         except: pass
     return d
-
 fr = load('trade_rules'); fm = load('fund_manager'); fp = load('fund_profile')
 TODAY = datetime.now().strftime('%Y-%m-%d')
 market = detect_market_state(TODAY, fc)
-
 results = []
 for code in '${codes}'.split(','):
     code = code.strip()
@@ -78,10 +69,12 @@ for code in '${codes}'.split(','):
         except: pass
     results.append({'code': code, 'name': name, **s, 'pass4433': p4433, 'rsi': rsi_val, 'blocked': blocked, 'blockReason': block_reason})
 results.sort(key=lambda x: -x['total'])
-print(_json.dumps(results, ensure_ascii=False))`
-    const stdout = await runPython(script)
-    return NextResponse.json(JSON.parse(stdout))
+print(json.dumps(results, ensure_ascii=False))`, 'utf-8')
+    const stdout = await runPy(tmp)
+    fs.unlinkSync(tmp)
+    return NextResponse.json(JSON.parse(stdout.trim()))
   } catch (e: any) {
+    try { fs.unlinkSync(tmp) } catch {}
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
 }

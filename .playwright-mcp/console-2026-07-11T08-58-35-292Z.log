@@ -1,0 +1,639 @@
+[    2412ms] [INFO] Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113 @ https://fund.cc.cd/:0
+[    4045ms] [LOG] [Sentry Debug] SENTRY_DSN: https://8204fb0e180cbf4a8fcb15fb47f0aff1@o4511392043892736.ingest.us.sentry.io/4511392053526528 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:493
+[    4046ms] [LOG] [Sentry Debug] Sentry module: object @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:493
+[    4046ms] [LOG] [Sentry Debug] Initializing Sentry with DSN... @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:493
+[    4054ms] [LOG] Sentry Logger [log]: Integration installed: InboundFilters @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4055ms] [LOG] Sentry Logger [log]: Integration installed: FunctionToString @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4055ms] [LOG] Sentry Logger [log]: Integration installed: ConversationId @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4056ms] [LOG] Sentry Logger [log]: Integration installed: BrowserApiErrors @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4058ms] [LOG] Sentry Logger [log]: Integration installed: Breadcrumbs @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4059ms] [LOG] Sentry Logger [log]: Global Handler attached: onerror @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4059ms] [LOG] Sentry Logger [log]: Global Handler attached: onunhandledrejection @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4060ms] [LOG] Sentry Logger [log]: Integration installed: GlobalHandlers @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4060ms] [LOG] Sentry Logger [log]: Integration installed: LinkedErrors @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4060ms] [LOG] Sentry Logger [log]: Integration installed: Dedupe @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4060ms] [LOG] Sentry Logger [log]: Integration installed: HttpContext @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4060ms] [LOG] Sentry Logger [log]: Integration installed: CultureContext @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4065ms] [LOG] Sentry Logger [log]: Integration installed: BrowserSession @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4069ms] [LOG] Sentry Logger [log]: Integration installed: BrowserTracing @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4070ms] [LOG] Sentry Logger [log]: Integration installed: NextjsClientStackFrameNormalization @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4070ms] [LOG] Sentry Logger [log]: Integration installed: Replay @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4078ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled root span
+  op: pageload
+  name: /
+  ID: 90e242ed09e9755e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4080ms] [LOG] Sentry Logger [log]: [Tracing] Started span is an idle span @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4083ms] [LOG] Sentry Logger [log]: [Replay]  Creating new session @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4083ms] [LOG] Sentry Logger [log]: [Replay]  Starting replay in buffer mode @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4085ms] [LOG] Sentry Logger [log]: [Replay]  Using compression worker @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4092ms] [LOG] Sentry Logger [log]: [Replay]  Updating session start time to earliest event in buffer to Sat Jul 11 2026 16:58:39 GMT+0800 (香港标准时间) @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4150ms] [LOG] [Sentry Debug] Sentry initialized successfully @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:16
+[    4465ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: ba1c80dbf26b20cf
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4465ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID ba1c80dbf26b20cf @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4470ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: http.client
+  name: POST /cdn-cgi/rum
+  ID: b53f3f06c1432ebb
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4475ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://fund.cc.cd/:0
+[    4504ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: 8dd8789322cf7b29
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4504ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID 8dd8789322cf7b29 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4598ms] [LOG] PWA 支持: true @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:16
+[    4772ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "http.client" span "POST /cdn-cgi/rum" with ID b53f3f06c1432ebb @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    4846ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: http.client
+  name: POST https://www.google-analytics.com/g/collect
+  ID: a9d91899e30a349b
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5006ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: 8fbcbbdf93e34f2d
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5006ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID 8fbcbbdf93e34f2d @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5011ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: b8cd3b37a86e0769
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5012ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID b8cd3b37a86e0769 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5016ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: b1789a45de3dc52d
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5016ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID b1789a45de3dc52d @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5087ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "http.client" span "POST https://www.google-analytics.com/g/collect" with ID a9d91899e30a349b @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5264ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: http.client
+  name: GET https://api.github.com/repos/hzm0321/real-time-fund/releases/latest
+  ID: 80e833feb9f79f5a
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5278ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: ui.long-animation-frame
+  name: Main UI thread blocked
+  ID: 8779580ddd2a0e91
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5279ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "ui.long-animation-frame" span "Main UI thread blocked" with ID 8779580ddd2a0e91 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5298ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ https://api.github.com/repos/hzm0321/real-time-fund/releases/latest:0
+[    5299ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "http.client" span "GET https://api.github.com/repos/hzm0321/real-time-fund/releases/latest" with ID 80e833feb9f79f5a @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5810ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: http.client
+  name: GET https://api.github.com/repos/hzm0321/real-time-fund/releases/latest
+  ID: 90e6251e7109727e
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    5826ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ https://api.github.com/repos/hzm0321/real-time-fund/releases/latest:0
+[    5827ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "http.client" span "GET https://api.github.com/repos/hzm0321/real-time-fund/releases/latest" with ID 90e6251e7109727e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6841ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.domContentLoadedEvent
+  name: https://fund.cc.cd/
+  ID: bda1d0cd0089a3b8
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6841ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.domContentLoadedEvent" span "https://fund.cc.cd/" with ID bda1d0cd0089a3b8 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6842ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.loadEvent
+  name: https://fund.cc.cd/
+  ID: a773dd0861e27aa7
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6842ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.loadEvent" span "https://fund.cc.cd/" with ID a773dd0861e27aa7 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6842ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.connect
+  name: https://fund.cc.cd/
+  ID: a5555e05d328a232
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6842ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.connect" span "https://fund.cc.cd/" with ID a5555e05d328a232 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6843ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.TLS/SSL
+  name: https://fund.cc.cd/
+  ID: 9de87aed8080a22f
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6843ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.TLS/SSL" span "https://fund.cc.cd/" with ID 9de87aed8080a22f @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6843ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.cache
+  name: https://fund.cc.cd/
+  ID: b59332922a302a86
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6843ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.cache" span "https://fund.cc.cd/" with ID b59332922a302a86 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6843ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.DNS
+  name: https://fund.cc.cd/
+  ID: 8bccdc45fbf54b89
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6844ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.DNS" span "https://fund.cc.cd/" with ID 8bccdc45fbf54b89 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6844ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.request
+  name: https://fund.cc.cd/
+  ID: b28629887c6f05a1
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6844ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.request" span "https://fund.cc.cd/" with ID b28629887c6f05a1 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6844ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: browser.response
+  name: https://fund.cc.cd/
+  ID: b14fcd5c92e46a7b
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6844ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "browser.response" span "https://fund.cc.cd/" with ID b14fcd5c92e46a7b @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6845ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.other
+  name: /cdn-cgi/speculation
+  ID: aa04f3c1ea9526b6
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6845ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.other" span "/cdn-cgi/speculation" with ID aa04f3c1ea9526b6 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6846ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.link
+  name: /real-time-fund/_next/static/chunks/e77285b626f360fb.css
+  ID: 98716ac1392bde47
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6846ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.link" span "/real-time-fund/_next/static/chunks/e77285b626f360fb.css" with ID 98716ac1392bde47 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6846ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.link
+  name: /real-time-fund/_next/static/chunks/464cdb0d88f16370.css
+  ID: 847c2cb4bb42a15b
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6847ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.link" span "/real-time-fund/_next/static/chunks/464cdb0d88f16370.css" with ID 847c2cb4bb42a15b @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6847ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.link
+  name: /real-time-fund/_next/static/chunks/ad5829e45717afc0.js
+  ID: a47b432c7129d48d
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6847ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.link" span "/real-time-fund/_next/static/chunks/ad5829e45717afc0.js" with ID a47b432c7129d48d @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6847ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/bf76506db65b0851.js
+  ID: b72223f0f7c6bf11
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6848ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/bf76506db65b0851.js" with ID b72223f0f7c6bf11 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6848ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js
+  ID: 986c4221adb27095
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6848ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js" with ID 986c4221adb27095 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6849ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/9746d76ecb40835c.js
+  ID: a6c871c6d355469f
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6849ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/9746d76ecb40835c.js" with ID a6c871c6d355469f @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6849ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/turbopack-f237dd9662d7f870.js
+  ID: b56c002e9fe380e2
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6849ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/turbopack-f237dd9662d7f870.js" with ID b56c002e9fe380e2 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6850ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/488a21c3462fa7df.js
+  ID: 8218fe0c3a3ba2ec
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6850ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/488a21c3462fa7df.js" with ID 8218fe0c3a3ba2ec @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6850ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/ce1ec7dd1178940c.js
+  ID: 95b3fc31d874770a
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6851ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/ce1ec7dd1178940c.js" with ID 95b3fc31d874770a @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6851ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/43234649a78985e5.js
+  ID: 861c6ba06928b7e5
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6851ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/43234649a78985e5.js" with ID 861c6ba06928b7e5 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6852ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/33bcf08973eb34cf.js
+  ID: af0a7d5e0195ec86
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6852ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/33bcf08973eb34cf.js" with ID af0a7d5e0195ec86 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6852ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/7875b3c241ea6ab6.js
+  ID: a454421d4b7240f0
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6852ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/7875b3c241ea6ab6.js" with ID a454421d4b7240f0 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6853ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/83152d120b778658.js
+  ID: 9f6e43c846821edb
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6853ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/83152d120b778658.js" with ID 9f6e43c846821edb @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6853ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/7155e40400299ecd.js
+  ID: a36a45ce7ffa4393
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6853ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/7155e40400299ecd.js" with ID a36a45ce7ffa4393 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6854ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/30190256494a5d50.js
+  ID: a09d52b59d75cace
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6854ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/30190256494a5d50.js" with ID a09d52b59d75cace @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6854ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/6a78b0eede25728f.js
+  ID: af4bff5887526485
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6854ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/6a78b0eede25728f.js" with ID af4bff5887526485 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6855ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/c8d6eb943c10ac47.js
+  ID: a25f03f787aa38a2
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6855ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/c8d6eb943c10ac47.js" with ID a25f03f787aa38a2 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6855ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/3d15aca850e81c7c.js
+  ID: bcaf507892b8bdb1
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6855ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/3d15aca850e81c7c.js" with ID bcaf507892b8bdb1 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6856ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/5cba84a6fc1160e3.js
+  ID: b0edb42a1395c385
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6856ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/5cba84a6fc1160e3.js" with ID b0edb42a1395c385 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6856ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/366c4e360ce28b23.js
+  ID: 8faf00893e5616ba
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6857ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/366c4e360ce28b23.js" with ID 8faf00893e5616ba @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6857ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/2a17417a43890d37.js
+  ID: 85ca7b0ce799dbba
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6857ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/2a17417a43890d37.js" with ID 85ca7b0ce799dbba @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6857ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/021eda6ea949046a.js
+  ID: 84de7d4348612e2c
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6858ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/021eda6ea949046a.js" with ID 84de7d4348612e2c @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6858ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/5be1210a03126723.js
+  ID: bb77df0738b6c194
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6858ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/5be1210a03126723.js" with ID bb77df0738b6c194 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6858ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/9e8ce3b89b77fae5.js
+  ID: 9c27706cc07b0b8e
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6859ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/9e8ce3b89b77fae5.js" with ID 9c27706cc07b0b8e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6859ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/9e758cdef44746f3.js
+  ID: 854d5aeec104839d
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6859ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/9e758cdef44746f3.js" with ID 854d5aeec104839d @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6859ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/204f4ab0c34819e5.js
+  ID: b50b1071e3e706f3
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6859ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/204f4ab0c34819e5.js" with ID b50b1071e3e706f3 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6860ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/d2432a89a650882d.js
+  ID: a8505cd37abb541a
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6860ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/d2432a89a650882d.js" with ID a8505cd37abb541a @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6860ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/7d7babefa634aaa9.js
+  ID: 9b84938b0ac1f9b3
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6860ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/7d7babefa634aaa9.js" with ID 9b84938b0ac1f9b3 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6861ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/4256bacd132fa550.js
+  ID: 9404fe15f5ef7a8f
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6861ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/4256bacd132fa550.js" with ID 9404fe15f5ef7a8f @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6862ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/7016d6650c75dd10.js
+  ID: ba73e782034b3e86
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6862ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/7016d6650c75dd10.js" with ID ba73e782034b3e86 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6862ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/b8fb78930f9a5000.js
+  ID: 8af6de9af1c51c02
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6862ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/b8fb78930f9a5000.js" with ID 8af6de9af1c51c02 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6863ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.link
+  name: https://www.googletagmanager.com/gtag/js?id=G-PD2JWJHVEM
+  ID: a5978852437f521e
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6863ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.link" span "https://www.googletagmanager.com/gtag/js?id=G-PD2JWJHVEM" with ID a5978852437f521e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6863ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496
+  ID: 96a4ec00a9a0c6e8
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6863ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" with ID 96a4ec00a9a0c6e8 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6864ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.link
+  name: /manifest.webmanifest
+  ID: abe4d02b91b13166
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6864ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.link" span "/manifest.webmanifest" with ID abe4d02b91b13166 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6864ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.img
+  name: /real-time-fund/_next/static/media/github.bd743092.svg
+  ID: b81643990b1afe3e
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6864ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.img" span "/real-time-fund/_next/static/media/github.bd743092.svg" with ID b81643990b1afe3e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6865ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: paint
+  name: first-paint
+  ID: aefad1cf2b523634
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6865ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "paint" span "first-paint" with ID aefad1cf2b523634 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6866ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: paint
+  name: first-contentful-paint
+  ID: a67152ddb22d8656
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6866ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "paint" span "first-contentful-paint" with ID a67152ddb22d8656 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6866ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: mark
+  name: sentry-tracing-init
+  ID: 86ae2ce7224ebb52
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6867ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "mark" span "sentry-tracing-init" with ID 86ae2ce7224ebb52 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6867ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.other
+  name: /real-time-fund/icon.svg?icon.aaf42544.svg
+  ID: a8ef08c3c8b62b00
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6867ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.other" span "/real-time-fund/icon.svg?icon.aaf42544.svg" with ID a8ef08c3c8b62b00 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6868ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.other
+  name: /Icon-60@3x.png
+  ID: bc523ddd8da51c5e
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6868ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.other" span "/Icon-60@3x.png" with ID bc523ddd8da51c5e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6868ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: https://qt.gtimg.cn/q=sh000001,sh000016,sz399001,sz399330,bj899050,sh000300,sz399006,sz399102,sz399673,sh000688,sz399005,sh000905,sh000906,sh000852,sh000903,sh000932,sz399303,usIXIC,usNDX,usINX,usDJI,hkHSI,hkHSTECH,gzFTSE,gzFCHI,gzGDAXI,gzN225,gzTPX,gzKS11,gzKOSDAQ&_t=1783760319892
+  ID: b1d27df235517890
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6869ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "https://qt.gtimg.cn/q=sh000001,sh000016,sz399001,sz399330,bj899050,sh000300,sz399006,sz399102,sz399673,sh000688,sz399005,sh000905,sh000906,sh000852,sh000903,sh000932,sz399303,usIXIC,usNDX,usINX,usDJI,hkHSI,hkHSTECH,gzFTSE,gzFCHI,gzGDAXI,gzN225,gzTPX,gzKS11,gzKOSDAQ&_t=1783760319892" with ID b1d27df235517890 @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6869ms] [LOG] Sentry Logger [log]: [Tracing] Starting sampled span
+  op: resource.script
+  name: /real-time-fund/_next/static/chunks/c2f1eab35416711b.js
+  ID: 8349636cd4f4d54b
+  parent ID: 90e242ed09e9755e
+  root ID: 90e242ed09e9755e
+  root op: pageload
+  root description: / @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6869ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "resource.script" span "/real-time-fund/_next/static/chunks/c2f1eab35416711b.js" with ID 8349636cd4f4d54b @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6870ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: lcp = 3096 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6870ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: lcp @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6870ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: ttfb = 1351.5 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6870ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: ttfb @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6870ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: cls = 0.0213420112744967  @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: cls @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: fp = 3096 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: fp @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: fcp = 3096 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: fcp @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: connection.rtt = 400 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: connection.rtt @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Measurement] Setting measurement on root span: ttfb.requestTime = 574.5 millisecond @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6871ms] [LOG] Sentry Logger [log]: [Tracing] Adding an event to span: ttfb.requestTime @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6875ms] [LOG] Sentry Logger [log]: [Tracing] Idle span "pageload" finished @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6876ms] [LOG] Sentry Logger [log]: [Tracing] Finishing "pageload" root span "/" with ID 90e242ed09e9755e @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6877ms] [LOG] Sentry Logger [log]: [Measurements] Adding measurements to transaction event {
+  "lcp": {
+    "value": 3096,
+    "unit": "millisecond"
+  },
+  "ttfb": {
+    "value": 1351.5,
+    "unit": "millisecond"
+  },
+  "cls": {
+    "value": 0.0213420112744967,
+    "unit": ""
+  },
+  "fp": {
+    "value": 3096,
+    "unit": "millisecond"
+  },
+  "fcp": {
+    "value": 3096,
+    "unit": "millisecond"
+  },
+  "connection.rtt": {
+    "value": 400,
+    "unit": "millisecond"
+  },
+  "ttfb.requestTime": {
+    "value": 574.5,
+    "unit": "millisecond"
+  }
+} @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6895ms] [LOG] Sentry Logger [log]: Recording outcome: "no_parent_span:span" @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    6907ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ https://api.github.com/repos/hzm0321/real-time-fund/releases/latest:0
+[    6909ms] [ERROR] fetchLatestRelease failed after retries: Error: HTTP error! status: 503
+    at https://fund.cc.cd/real-time-fund/_next/static/chunks/021eda6ea949046a.js:2:33382
+    at async c (https://fund.cc.cd/real-time-fund/_next/static/chunks/021eda6ea949046a.js:2:675)
+    at async ey (https://fund.cc.cd/real-time-fund/_next/static/chunks/021eda6ea949046a.js:2:33260)
+    at async e (https://fund.cc.cd/real-time-fund/_next/static/chunks/c2f1eab35416711b.js:2:4651) @ https://fund.cc.cd/real-time-fund/_next/static/chunks/7221f3d3a82ff53c.js:16
+[    7595ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://o4511392043892736.ingest.us.sentry.io/api/4511392053526528/envelope/?sentry_version=7&sentry_key=8204fb0e180cbf4a8fcb15fb47f0aff1&sentry_client=sentry.javascript.nextjs%2F10.53.1:0
+[    7595ms] [WARNING] Sentry Logger [warn]: Sentry responded with status code 429 to sent event. @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
+[    9876ms] [LOG] Sentry Logger [log]: Recording outcome: "no_parent_span:span" @ https://fund.cc.cd/real-time-fund/_next/static/chunks/bf76506db65b0851.js:1
