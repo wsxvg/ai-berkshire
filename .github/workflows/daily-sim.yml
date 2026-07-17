@@ -9,10 +9,9 @@ permissions:
   contents: write
 
 env:
-  FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
-  FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
-  FEISHU_USER_ID: ${{ secrets.FEISHU_USER_ID }}
-  JD_COOKIES: ${{ secrets.JD_COOKIES }}
+  FEISHU_APP_ID: cli_a933badfd57bdbde
+  FEISHU_APP_SECRET: zliAQFZ61YOVdhSz8vecahozbGz6Ym5j
+  FEISHU_USER_ID: ou_67774e11bf8d8cf2b981cf2b09bac038
 
 jobs:
   daily-sim:
@@ -31,13 +30,7 @@ jobs:
           pip install lightgbm scikit-learn numpy
           pip install chinese_calendar
 
-      - name: 写入京东Cookie
-        if: env.JD_COOKIES != ''
-        run: |
-          mkdir -p data/jd_auth
-          echo '${{ secrets.JD_COOKIES }}' > data/jd_auth/cookies.json
-
-      - name: 运行冠军策略实盘模拟
+      - name: 运行冠军策略实盘模拟 (含飞书推送)
         run: python scripts/daily_live.py
 
       - name: 提交日报

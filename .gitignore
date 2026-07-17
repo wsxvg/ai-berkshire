@@ -49,7 +49,7 @@ data/cache/ranking.json
 data/cache/scores.json
 
 # Cookie (含用户身份)
-data/jd_auth/cookies.json
+# data/jd_auth/cookies.json  -- 需要推送到GitHub供Actions使用
 data/jd_auth/cookies_backup.json
 
 # 注意: data/fund_cache/daily_news/{YYYY-MM-DD}.json 不 ignore

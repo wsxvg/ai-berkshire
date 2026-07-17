@@ -641,8 +641,12 @@ def run():
 
     print(f"\n=== 完成: 总资产 {total_val:,.0f} ({((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}%) ===")
 
-    # 10. 推送飞书日报
-    _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown)
+    # 10. 推送飞书日报 (仅当天推送, 历史回放不推)
+    real_today = datetime.now().strftime("%Y-%m-%d")
+    if TODAY == real_today:
+        _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown)
+    else:
+        print(f"[FEISHU] 跳过 (历史回放 {TODAY} != 今天 {real_today})")
     return vp, portfolio
 
 

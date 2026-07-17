@@ -85,21 +85,20 @@
       "10542838",
       "2804244"
     ],
-    "pyramiding_enabled": true,
+    "pyramiding_enabled": false,
     "dynamic_stop_loss": true
   },
-  "note": "冠军策略 V2: TOP60+active+sec40+金字塔补仓+动态止损: 69.25%/9.16%dd/331trades — 定向噪音剔除+主动型过滤+行业限制+越跌越买+浮盈锁利 (2026-07-17)",
+  "note": "冠军策略 (最优): TOP60+active+sec40+动态止损(单独): 70.23%/9.20%dd/307trades — 金字塔补仓与动态止损互斥(组合仅69.25%), 故关闭金字塔用单独dynSL (2026-07-17)",
   "performance": {
-    "total_return": 69.25,
-    "max_drawdown": 9.16,
-    "trade_count": 331,
+    "total_return": 70.23,
+    "max_drawdown": 9.20,
+    "trade_count": 307,
     "baseline_return": 57.97,
     "baseline_dd": 12.40,
-    "improvement_pp": 11.28,
-    "dd_reduction_pp": 3.24,
+    "improvement_pp": 12.26,
+    "dd_reduction_pp": 3.20,
     "v1_return": 65.84,
-    "v2_uplift_pp": 3.41,
-    "full_cycle_return": 68.68,
-    "full_cycle_dd": 9.30
+    "dynsl_uplift_pp": 4.39,
+    "note": "单独dynSL > V2(金字塔+dynSL=69.25%), 金字塔在动态止损下被提前锁利抵消收益"
   }
 }

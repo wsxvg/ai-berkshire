@@ -1,32 +1,32 @@
 {
-  "date": "2026-07-17",
+  "date": "2026-07-08",
   "market": "neutral",
   "min_score": 0.0,
   "candidates_top5": [
     {
       "code": "016664",
       "name": "天弘全球高端制造混合(QDII)A",
-      "score": 3.189823923999054
-    },
-    {
-      "code": "539002",
-      "name": "建信新兴市场混合(QDII)A",
-      "score": 2.9135636836393535
+      "score": 2.9145319558717424
     },
     {
       "code": "021842",
       "name": "国富全球科技互联混合(QDII)人民币C",
-      "score": 2.7864510827715456
+      "score": 2.733714674633546
     },
     {
-      "code": "018147",
-      "name": "建信新兴市场混合(QDII)C",
-      "score": 2.5939015757209596
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 2.707960708015961
     },
     {
       "code": "024239",
       "name": "华夏全球科技先锋混合(QDII)C",
-      "score": 2.371220115234376
+      "score": 2.593990371782977
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.3657509767877736
     }
   ],
   "buy_recommendations": [],
@@ -36,44 +36,38 @@
     "016664": {
       "name": "天弘全球高端制造混合(QDII)A",
       "cost": 100.0,
-      "market_value": 90.98,
-      "pnl_pct": -9.02
+      "market_value": 85.89,
+      "pnl_pct": -14.11
     },
     "024239": {
       "name": "华夏全球科技先锋混合(QDII)C",
       "cost": 1000.0,
-      "market_value": 906.75,
-      "pnl_pct": -9.33
+      "market_value": 855.94,
+      "pnl_pct": -14.41
     },
     "501226": {
       "name": "长城全球新能源车股票发起式(QDII)A",
       "cost": 500.0,
-      "market_value": 479.3,
-      "pnl_pct": -4.14
+      "market_value": 466.82,
+      "pnl_pct": -6.64
     },
     "022184": {
       "name": "富国全球科技互联网股票(QDII)C",
       "cost": 1000.0,
-      "market_value": 948.67,
-      "pnl_pct": -5.13
+      "market_value": 930.9,
+      "pnl_pct": -6.91
     },
     "017731": {
       "name": "嘉实全球产业升级股票发起式(QDII)C",
       "cost": 100.0,
-      "market_value": 104.44,
-      "pnl_pct": 4.44
-    },
-    "013841": {
-      "name": "银华集成电路混合C",
-      "cost": 17500,
-      "market_value": 17500.0,
-      "pnl_pct": 0.0
+      "market_value": 99.06,
+      "pnl_pct": -0.94
     }
   },
   "fund_notices": {},
   "portfolio": {
-    "total_value": 99830.13,
-    "cash": 79800.0,
+    "total_value": 99738.61,
+    "cash": 97300.0,
     "fees": 76.5
   }
 }
