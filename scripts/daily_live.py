@@ -698,12 +698,8 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
 
     # ══════ 指标计算 ══════
     total_return = (total_val - INITIAL_CASH) / INITIAL_CASH * 100
-    july1_val = INITIAL_CASH
-    for snap in vp.get("snapshots", []):
-        if snap.get("date", "") >= "2026-07-01":
-            if july1_val == INITIAL_CASH:
-                july1_val = snap.get("total_value", INITIAL_CASH)
-    july1_return = (total_val - july1_val) / july1_val * 100 if july1_val > 0 else 0
+    # 7月至今 = 用 INITIAL_CASH 作为基准 (创建日=7月1日)
+    july1_return = (total_val - INITIAL_CASH) / INITIAL_CASH * 100
 
     # 本周/本月 统计 (从累积 trade_log)
     trade_log = vp.get("trade_log", [])
@@ -795,6 +791,21 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
         alerts.append(f"⏳ {name[:12]} 冷却期 ({info.get('reason','?')})")
     alert_text = "\n".join(alerts) if alerts else ""
 
+    # ══════ 金字塔开关对比 (每月1号显示) ══════
+    pyramid_note = ""
+    today_day = int(TODAY[-2:])
+    if today_day == 1:
+        pyramid_on = GENE.get("pyramiding_enabled", False)
+        status = "🟢 开启" if pyramid_on else "🔴 关闭"
+        if pyramid_on:
+            pyramid_note = (f"**🏗️ 金字塔补仓**: {status}\n"
+                           f"  浮亏5-10%加仓x0.5 | 10-15%加仓x0.3 | >15%不加\n"
+                           f"  ⚠️ 与动态止损互斥(约-2.9pp), 下月1号对比收益决定")
+        else:
+            pyramid_note = (f"**🏗️ 金字塔补仓**: {status}\n"
+                           f"  当前用单独dynSL(70.23%) | 开金字塔约69.25%\n"
+                           f"  震荡/熊市若需摊平成本可开启")
+
     # ══════ 构建卡片 ══════
     elements = [
         {"tag": "div", "text": {"tag": "lark_md",
@@ -811,6 +822,11 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
         {"tag": "div", "text": {"tag": "lark_md",
             "content": f"**📋 今日操作**\n{ops_text}"}},
     ]
+
+    # 每月1号插入金字塔开关提示
+    if pyramid_note:
+        elements.append({"tag": "hr"})
+        elements.append({"tag": "div", "text": {"tag": "lark_md", "content": pyramid_note}})
 
     # 大佬买卖风向 (有数据才显示)
     if wind_text:
