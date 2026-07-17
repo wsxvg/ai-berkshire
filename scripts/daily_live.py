@@ -90,7 +90,8 @@ def load_vp():
         return json.loads(VP_PATH.read_text("utf-8"))
     return {"created": TODAY, "initial_cash": INITIAL_CASH,
             "cash": INITIAL_CASH, "total_fees": 0,
-            "holdings": {}, "pending": [], "history": [], "snapshots": []}
+            "holdings": {}, "pending": [], "history": [], "snapshots": [],
+            "trade_log": [], "sell_history": {}}
 
 def save_vp(vp):
     VP_PATH.write_text(json.dumps(vp, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -405,6 +406,9 @@ def run():
             continue
         active_codes.add(code)
 
+    # 当日交易跟踪 (独立记录名字和金额, 供 trade_log 用)
+    daily_trades = []
+
     for c in candidates:
         if c["code"] not in active_codes: continue
         # 金字塔补仓：已持仓 + 浮亏5-15% + 大佬信号持续 → 加仓
@@ -426,6 +430,7 @@ def run():
             available = portfolio.cash * (1 - cash_reserve)
             amount = round(available * kelly * pyramid_mult / 100) * 100
             if amount >= 100 and portfolio.buy(c["code"], c["name"], amount, current_nav, TODAY):
+                daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": amount})
                 print(f"   PYRAMID {c['name'][:25]}: loss={loss_pct:.1f}% mult={pyramid_mult} amt={amount:.0f}")
             continue
         if any(p["code"] == c["code"] for p in portfolio.pending_buys): continue
@@ -448,6 +453,7 @@ def run():
                 buy_price = (100 + float(valid[-1].get("yAxis", 0))) / 100
 
         if portfolio.buy(c["code"], c["name"], amount, buy_price, TODAY):
+            daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": amount})
             print(f"   BUY {c['name'][:30]}: {amount:,.0f} @{buy_price:.4f} (评分{c['score']:.1f})")
 
     # 8. 同步回 VP（含市值盯市）
@@ -491,6 +497,12 @@ def run():
                             "pending": len(portfolio.pending_buys)})
     vp["sell_history"] = portfolio.sell_history  # 持久化冷却期
     vp["pending"] = list(portfolio.pending_buys)  # 持久化待确认（T+N 关键）
+
+    # 持久化交易日志 (累积, 用于周/月统计)
+    trade_log = vp.get("trade_log", [])
+    trade_log.extend(daily_trades)
+    vp["trade_log"] = trade_log
+
     save_vp(vp)
 
     # 9. 日报
@@ -663,25 +675,16 @@ def run():
     # 10. 推送飞书日报 (仅当天推送, 历史回放不推)
     real_today = datetime.now().strftime("%Y-%m-%d")
     if TODAY == real_today:
-        # 本周/本月交易汇总
-        week_buys = week_sells = week_buy_amt = 0
-        for t in portfolio.trades:
-            td = t.get("date", "")
-            if td >= (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d"):
-                if t.get("action") == "buy":
-                    week_buys += 1; week_buy_amt += t.get("amount", 0)
-                elif t.get("action") == "sell":
-                    week_sells += 1
         _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market,
-                          sell_cooldown, total_new, week_buys, week_sells, week_buy_amt)
+                          sell_cooldown, total_new, fresh)
     else:
         print(f"[FEISHU] 跳过 (历史回放 {TODAY} != 今天 {real_today})")
     return vp, portfolio
 
 
 def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market,
-                      sell_cooldown, total_new, week_buys, week_sells, week_buy_amt):
-    """生成并推送飞书日报卡片 (A+C合并风格: 紧凑信息 + 进度条 + 操作日志)"""
+                      sell_cooldown, total_new, fresh):
+    """生成并推送飞书日报卡片 (A+C合并: 紧凑指标+进度条+大佬风向+操作日志)"""
     try:
         from tools.feishu_push import _get_token, _send_card
     except ImportError:
@@ -693,7 +696,7 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
         print("[FEISHU] token 获取失败, 跳过推送")
         return
 
-    # ── 计算各项指标 ──
+    # ══════ 指标计算 ══════
     total_return = (total_val - INITIAL_CASH) / INITIAL_CASH * 100
     july1_val = INITIAL_CASH
     for snap in vp.get("snapshots", []):
@@ -702,22 +705,30 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
                 july1_val = snap.get("total_value", INITIAL_CASH)
     july1_return = (total_val - july1_val) / july1_val * 100 if july1_val > 0 else 0
 
-    month_buys = month_sells = month_buy_amt = 0
-    for t in portfolio.trades:
-        if t.get("date", "")[:7] == TODAY[:7]:
-            if t.get("action") == "buy":
-                month_buys += 1; month_buy_amt += t.get("amount", 0)
-            elif t.get("action") == "sell":
-                month_sells += 1
+    # 本周/本月 统计 (从累积 trade_log)
+    trade_log = vp.get("trade_log", [])
+    week_cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    week_buys = week_sells = week_buy_amt = 0
+    month_buys = month_sells = month_buy_amt = month_sell_amt = 0
+    month_prefix = TODAY[:7]
+    for t in trade_log:
+        td = t.get("date", "")
+        if t.get("action") == "buy":
+            amt = t.get("amount", 0) or 0
+            if td >= week_cutoff: week_buys += 1; week_buy_amt += amt
+            if td[:7] == month_prefix: month_buys += 1; month_buy_amt += amt
+        elif t.get("action") == "sell":
+            if td >= week_cutoff: week_sells += 1
+            if td[:7] == month_prefix: month_sells += 1
 
     market_emoji = {"bull": "🐂 牛市", "neutral": "⚖️ 震荡", "bear": "🐻 熊市"}.get(market, market)
 
-    # ── 生成进度条 ──
+    # ══════ 进度条 ══════
     def bar(pct, width=10):
         filled = max(0, min(width, int((pct + 20) / 40 * width) if pct > -100 else 0))
         return "█" * filled + "░" * max(0, width - filled)
 
-    # ── 持仓列表 (带进度条+颜色) ──
+    # ══════ 持仓列表 ══════
     holding_rows = []
     for code, h in portfolio.holdings.items():
         vh = vp.get("holdings", {}).get(code, {})
@@ -725,10 +736,10 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
         mv = vh.get("market_value", h.get("cost", 0))
         emoji = "🟢" if pnl > 5 else "🟡" if pnl > 0 else "🔴" if pnl < -5 else "🟠"
         b = bar(pnl)
-        holding_rows.append(f"{emoji} {h['name'][:14]:<14s} {pnl:+5.1f}% {b} ¥{mv:,.0f}")
+        holding_rows.append(f"{emoji} {code} {h['name'][:12]:<12s} {pnl:+5.1f}% {b} ¥{mv:,.0f}")
     holding_text = "\n".join(holding_rows) if holding_rows else "暂无持仓"
 
-    # ── 今日操作列表 ──
+    # ══════ 今日操作 ══════
     buy_ops = [a for a in today_actions if a.get("action") == "BUY"]
     sell_ops = [a for a in today_actions if a.get("action") == "SELL"]
     ops_lines = []
@@ -739,55 +750,81 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
             ops_lines.append(f"🔴 卖出 {a.get('name','')[:16]}")
     ops_text = "\n".join(ops_lines) if ops_lines else "今日无操作"
 
-    # ── TOP3候选 ──
+    # ══════ 大佬今日买卖风向 ══════
+    wind_lines = []
+    if fresh:
+        from collections import Counter
+        buy_counter = Counter()
+        sell_counter = Counter()
+        for day, recs in fresh.items():
+            for r in recs:
+                fn = r.get("fund_name", "") or "未知"
+                action = r.get("action", "")
+                if action and "买入" in str(action):
+                    buy_counter[fn] += 1
+                elif action and "卖出" in str(action):
+                    sell_counter[fn] += 1
+
+        if buy_counter:
+            wind_lines.append("**🔥 大佬买入 TOP3**")
+            for fn, cnt in buy_counter.most_common(3):
+                wind_lines.append(f"  🟢 {fn[:20]:<20s} {cnt}人买入")
+        if sell_counter:
+            wind_lines.append("**❄️ 大佬卖出 TOP3**")
+            for fn, cnt in sell_counter.most_common(3):
+                wind_lines.append(f"  🔴 {fn[:20]:<20s} {cnt}人卖出")
+        if not buy_counter and not sell_counter:
+            wind_lines.append("今日大佬无买卖信号")
+    wind_text = "\n".join(wind_lines) if wind_lines else ""
+
+    # ══════ TOP3候选 ══════
     top_lines = []
     for i, c in enumerate(candidates[:3]):
         star = "⭐" if c['score'] >= 3.0 else "◎" if c['score'] >= 2.0 else "○"
         top_lines.append(f"{i+1}. {star} {c['code']} {c['name'][:14]:<14s} {c['score']:.1f}分")
     top_text = "\n".join(top_lines) if top_lines else "无候选"
 
-    # ── 风险提示 ──
+    # ══════ 风险提示 ══════
     alerts = []
-    if total_new == 0 and not _args.simulate_date:
-        alerts.append("⚠️ 今日大佬无新交易信号")
-    if july1_return < -3:
-        alerts.append(f"🔻 7月回撤 {july1_return:.1f}%")
+    if july1_return < -3 and market != "bear":
+        alerts.append(f"🔻 7月回撤 {july1_return:.1f}%, 注意防守")
     if market == "bear":
-        alerts.append("🐻 熊市 — 持仓防御为主")
+        alerts.append("🐻 熊市 — 暂缓买入, 持仓防御")
     for code, info in list(sell_cooldown.items())[:2]:
         name = portfolio.holdings.get(code, {}).get("name", code)
         alerts.append(f"⏳ {name[:12]} 冷却期 ({info.get('reason','?')})")
     alert_text = "\n".join(alerts) if alerts else ""
 
-    # ── 构建卡片 (A+C风格) ──
+    # ══════ 构建卡片 ══════
     elements = [
-        # 标题区
         {"tag": "div", "text": {"tag": "lark_md",
             "content": f"**📊 {TODAY_CN}  {market_emoji}**\n总资产 **¥{total_val:,.0f}**  |  总收益 {total_return:+.2f}%"}},
         {"tag": "hr"},
-        # 概览指标行
         {"tag": "div", "text": {"tag": "lark_md",
             "content": (f"7月至今 {july1_return:+.2f}%  |  "
                        f"现金 ¥{portfolio.cash:,.0f}  |  "
                        f"持仓 **{len(portfolio.holdings)}**只  |  "
-                       f"信号 {total_new}笔\n"
+                       f"信号 **{total_new}**笔\n"
                        f"本周 买{week_buys}笔(¥{week_buy_amt:,.0f}) 卖{week_sells}笔  |  "
                        f"本月 买{month_buys}笔(¥{month_buy_amt:,.0f}) 卖{month_sells}笔")}},
         {"tag": "hr"},
-        # 今日操作
         {"tag": "div", "text": {"tag": "lark_md",
             "content": f"**📋 今日操作**\n{ops_text}"}},
-        {"tag": "hr"},
-        # 持仓列表 (带进度条)
-        {"tag": "div", "text": {"tag": "lark_md",
-            "content": f"**📂 持仓盈亏**\n{holding_text}"}},
-        {"tag": "hr"},
-        # TOP3
-        {"tag": "div", "text": {"tag": "lark_md",
-            "content": f"**⭐ 评分TOP3**\n{top_text}"}},
     ]
 
-    # 风险提示
+    # 大佬买卖风向 (有数据才显示)
+    if wind_text:
+        elements.append({"tag": "hr"})
+        elements.append({"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**🌪️ 大佬今日买卖风向**\n{wind_text}"}})
+
+    elements.append({"tag": "hr"})
+    elements.append({"tag": "div", "text": {"tag": "lark_md",
+        "content": f"**📂 持仓盈亏**\n{holding_text}"}})
+    elements.append({"tag": "hr"})
+    elements.append({"tag": "div", "text": {"tag": "lark_md",
+        "content": f"**⭐ 评分TOP3**\n{top_text}"}})
+
     if alert_text:
         elements.append({"tag": "hr"})
         elements.append({"tag": "div", "text": {"tag": "lark_md",
