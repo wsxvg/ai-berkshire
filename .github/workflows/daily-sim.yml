@@ -1,17 +1,23 @@
-name: 每日实盘模拟 (14:30 CST)
+name: 每日实盘模拟 + 飞书推送 (14:30 CST)
 
 on:
   schedule:
-    - cron: '30 6 * * 1-5'
-  workflow_dispatch:
+    - cron: '30 6 * * 1-5'   # 工作日 14:30 CST (UTC+8 = 06:30 UTC)
+  workflow_dispatch:            # 手动触发
 
 permissions:
   contents: write
 
+env:
+  FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+  FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+  FEISHU_USER_ID: ${{ secrets.FEISHU_USER_ID }}
+  JD_COOKIES: ${{ secrets.JD_COOKIES }}
+
 jobs:
   daily-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -21,9 +27,17 @@ jobs:
           python-version: '3.10'
 
       - name: 安装依赖
-        run: pip install lightgbm scikit-learn numpy
+        run: |
+          pip install lightgbm scikit-learn numpy
+          pip install chinese_calendar
 
-      - name: 运行实盘模拟
+      - name: 写入京东Cookie
+        if: env.JD_COOKIES != ''
+        run: |
+          mkdir -p data/jd_auth
+          echo '${{ secrets.JD_COOKIES }}' > data/jd_auth/cookies.json
+
+      - name: 运行冠军策略实盘模拟
         run: python scripts/daily_live.py
 
       - name: 提交日报

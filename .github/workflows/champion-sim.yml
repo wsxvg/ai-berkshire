@@ -1,4 +1,4 @@
-name: 每日冠军策略模拟
+name: 每日冠军策略模拟 (V2 增强)
 
 on:
   schedule:
@@ -8,10 +8,15 @@ on:
 permissions:
   contents: write
 
+env:
+  FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+  FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+  FEISHU_USER_ID: ${{ secrets.FEISHU_USER_ID }}
+
 jobs:
   champion-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -21,17 +26,20 @@ jobs:
           python-version: '3.10'
 
       - name: 安装依赖
-        run: pip install lightgbm scikit-learn numpy
-
-      - name: 运行冠军策略模拟
         run: |
-          python scripts/daily_live_enhanced.py \
-            --config data/evolution/best_config.json \
-            --paper-mode auto
+          pip install lightgbm scikit-learn numpy
+          pip install chinese_calendar
 
-      - name: 检查偏差
+      - name: 写入京东Cookie
+        if: env.JD_COOKIES != ''
+        env:
+          JD_COOKIES: ${{ secrets.JD_COOKIES }}
         run: |
-          python scripts/check_deviation.py || echo "WARNING: deviation exceeded"
+          mkdir -p data/jd_auth
+          echo "$JD_COOKIES" > data/jd_auth/cookies.json
+
+      - name: 运行冠军策略实盘模拟 (含飞书推送)
+        run: python scripts/daily_live.py
 
       - name: 提交日报
         if: success()
@@ -39,6 +47,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add reports/sim/
-          STATUS=$(python -c "import json; d=json.load(open('reports/sim/champion_status.json')); print(d.get('status','ok'))" 2>/dev/null || echo "ok")
-          git commit -m "冠军策略日报 $(date +%Y-%m-%d) [$STATUS]" || true
-          git push || true
+          git diff --cached --quiet || git commit -m "冠军策略日报 $(date +%Y-%m-%d)"
+          git push

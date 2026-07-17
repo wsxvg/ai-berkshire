@@ -37,20 +37,22 @@ from backtest.engine.backtest import (
 )
 from tools.technical_indicators import compute_entry_timing_score
 
-# ── 进化最优参数 ──
+# ── 冠军策略参数 (强制从 best_config.json 加载, 无 fallback) ──
 EVO_PATH = PROJECT / "data" / "evolution" / "best_config.json"
-if EVO_PATH.exists():
-    evo = json.loads(EVO_PATH.read_text("utf-8"))
-    GENE = evo["gene"]
-    print(f"参数: 年化={evo['annualized']:.1f}% 夏普={evo['sharpe']:.2f}")
-else:
-    GENE = {"bear_market_no_buy": False, "take_profit_pct": 80, "stop_loss_pct": -15,
-            "ml_weight": 1.5, "min_score_bull": 2.5, "min_score_neutral": 3.0, "min_score_bear": 3.5,
-            "trailing_tp_activate": 15, "trailing_tp_drawdown": 8,
-            "cooldown_days": 15, "cooldown_profit_days": 10, "cooldown_loss_days": 30,
-            "max_correlation": 0.85, "dynamic_ranking": True,
-            "momentum_sell": 2.0, "slippage_pct": 0.1, "cash_reserve_pct": 0.1,
-            "max_position_pct": 20, "max_sector_pct": 50, "max_qdii_pct": 50}
+if not EVO_PATH.exists():
+    print("[FATAL] best_config.json 不存在, 无法运行实盘模拟")
+    sys.exit(1)
+
+evo = json.loads(EVO_PATH.read_text("utf-8"))
+GENE = evo.get("config", evo.get("gene", {}))
+# 确保关键参数存在 (gene字段是旧格式, config字段才是冠军V2完整配置)
+if "take_profit_pct" not in GENE:
+    GENE.update(evo.get("gene", {}))
+print(f"[CONFIG] 冠军V2: 年化={evo.get('annualized',evo.get('performance',{}).get('total_return','?'))}%")
+print(f"  take_profit={GENE.get('take_profit_pct')}% stop_loss={GENE.get('stop_loss_pct')}%")
+print(f"  max_position={GENE.get('max_position_pct')}% kelly_cap={GENE.get('kelly_cap')}")
+print(f"  pyramiding={GENE.get('pyramiding_enabled')} dyn_stop_loss={GENE.get('dynamic_stop_loss')}")
+print(f"  fund_type_filter={GENE.get('fund_type_filter')} exclude_uids={len(GENE.get('exclude_uids',[]))}")
 
 # ── 数据加载 ──
 CACHE = PROJECT / "data" / "fund_cache"
@@ -131,9 +133,19 @@ def run():
         print("[ERROR] 无 Cookie"); return
 
     # simulate 模式跳过 cookie 验证 (避免真实网络)
+    cookie_valid = True
     if not _args.simulate_date:
         valid, info = _verify_cookies(cookies)
+        cookie_valid = valid
         print(f"Cookie: {'有效' if valid else '无效'}")
+        if not valid:
+            print("[WARN] Cookie 已过期!")
+            # 飞书告警
+            try:
+                from tools.feishu_push import push_text
+                push_text("⚠ Cookie 过期", f"京东金融 Cookie 已失效\n请重新登录 https://jdjr.jd.com/\n时间: {TODAY_CN}\n{info}")
+            except Exception as e:
+                print(f"  飞书告警失败: {e}")
     else:
         print("Cookie: 跳过验证 (simulate 模式)")
 
@@ -202,7 +214,7 @@ def run():
     portfolio = Portfolio(INITIAL_CASH)
     portfolio.set_fund_rules(fund_rules)
     portfolio._profiles = fund_profiles
-    portfolio.slippage_pct = GENE.get("slippage_pct", 0.1)
+    portfolio.slippage_pct = GENE.get("slippage_pct", 0.0)
     # 恢复之前的持仓
     for code, h in vp.get("holdings", {}).items():
         cb = h.get("cost_basis", 5000)
@@ -225,8 +237,25 @@ def run():
     # 4. 评分
     print("3. 评分...")
     candidates = []
+
+    # 冠军配置: fund_type_filter + exclude_uids
+    fund_type_filter = GENE.get("fund_type_filter", "")
+    exclude_uids = set(GENE.get("exclude_uids", []))
+
     for code, info in funds.items():
         name = info.get("fund_name", code)
+
+        # 排除噪音大佬
+        if exclude_uids:
+            # uid 排除在交易信号阶段生效, 此处跳过
+            pass
+
+        # 基金类型过滤 (active=只买主动型, 排除指数/ETF)
+        if fund_type_filter == "active":
+            ftype = info.get("fund_type", "")
+            if ftype and "指数" in str(ftype):
+                continue
+
         # RSI 超买
         pts = fund_charts.get(code, [])
         if len(pts) >= 60:
@@ -258,15 +287,16 @@ def run():
 
     candidates.sort(key=lambda x: -x["score"])
 
-    # 5. 相关性过滤
-    if len(portfolio.holdings) > 0 and len(candidates) > 0:
+    # 5. 相关性过滤（max_correlation=0 表示不限制）
+    _max_corr = GENE.get("max_correlation", 0)
+    if _max_corr > 0 and len(portfolio.holdings) > 0 and len(candidates) > 0:
         held_codes = list(portfolio.holdings.keys()) + [c["code"] for c in candidates]
         corr = compute_correlation_matrix(fund_charts, held_codes, TODAY, lookback=60)
         filtered = []
         for c in candidates:
             add = True
             for hc in portfolio.holdings:
-                if corr.get(c["code"], {}).get(hc, 0) > GENE.get("max_correlation", 0.85):
+                if corr.get(c["code"], {}).get(hc, 0) > _max_corr:
                     add = False
                     print(f"   FILTERED {c['name'][:25]}: 与持仓 {code_to_name.get(hc, hc)[:15]} 相关{corr[c['code']][hc]:.2f}")
                     break
@@ -308,6 +338,20 @@ def run():
             sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": 1.0}
             print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}%")
 
+        # 动态止损：浮盈>20%时从高点回撤15%止盈，浮盈>40%时回撤10%止盈
+        elif GENE.get("dynamic_stop_loss") and actual_pnl > 20:
+            # 计算从最高点回撤
+            peak_nav = latest_nav
+            if pts:
+                hist_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+                if hist_pts:
+                    peak_nav = max((100 + float(p.get("yAxis", 0))) / 100 for p in hist_pts)
+            dd_from_peak = (latest_nav / peak_nav - 1) * 100 if peak_nav > 0 else 0
+            if (actual_pnl > 40 and dd_from_peak < -10) or dd_from_peak < -15:
+                portfolio.sell(code, h["cost"], 1.0, TODAY, "dyn_stop_loss", False)
+                sell_cooldown[code] = {"date": TODAY, "reason": "dyn_stop_loss", "nav": 1.0}
+                print(f"   SELL_DSL {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd_from_peak:.1f}%")
+
         # 止损
         elif actual_pnl <= GENE.get("stop_loss_pct", -15):
             portfolio.sell(code, h["cost"], 1.0, TODAY, "stop_loss", True)
@@ -344,20 +388,48 @@ def run():
 
     for c in candidates:
         if c["code"] not in active_codes: continue
-        if c["code"] in portfolio.holdings: continue
+        # 金字塔补仓：已持仓 + 浮亏5-15% + 大佬信号持续 → 加仓
+        if c["code"] in portfolio.holdings:
+            if not GENE.get("pyramiding_enabled"):
+                continue
+            h = portfolio.holdings[c["code"]]
+            pts = fund_charts.get(c["code"], [])
+            current_nav = 1.0
+            buy_nav = h.get("buy_nav", 1.0)
+            if pts:
+                valid = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+                if valid:
+                    current_nav = (100 + float(valid[-1].get("yAxis", 0))) / 100
+            loss_pct = (current_nav / buy_nav - 1) * 100 if buy_nav > 0 else 0
+            if loss_pct > -5 or loss_pct < -15:
+                continue
+            pyramid_mult = 0.5 if loss_pct > -10 else 0.3
+            available = portfolio.cash * (1 - cash_reserve)
+            amount = round(available * kelly * pyramid_mult / 100) * 100
+            if amount >= 100 and portfolio.buy(c["code"], c["name"], amount, current_nav, TODAY):
+                print(f"   PYRAMID {c['name'][:25]}: loss={loss_pct:.1f}% mult={pyramid_mult} amt={amount:.0f}")
+            continue
         if any(p["code"] == c["code"] for p in portfolio.pending_buys): continue
 
         available = portfolio.cash * (1 - cash_reserve)
         per_position = available * max_pos / 100
         # 动态仓位：用 kelly_cap 限制单笔上限
-        kelly = GENE.get("kelly_cap", 0.4)
+        kelly = GENE.get("kelly_cap", 0.2)
         amount = min(per_position, available * kelly)
         amount = round(amount / 100) * 100  # 取整
         if amount < 100:
             continue
 
-        if portfolio.buy(c["code"], c["name"], amount, 1.0, TODAY):
-            print(f"   BUY {c['name'][:30]}: {amount:,.0f} (评分{c['score']:.1f})")
+        # 用实际净值买入 (不是 1.0)
+        buy_price = 1.0
+        pts = fund_charts.get(c["code"], [])
+        if pts:
+            valid = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+            if valid:
+                buy_price = (100 + float(valid[-1].get("yAxis", 0))) / 100
+
+        if portfolio.buy(c["code"], c["name"], amount, buy_price, TODAY):
+            print(f"   BUY {c['name'][:30]}: {amount:,.0f} @{buy_price:.4f} (评分{c['score']:.1f})")
 
     # 8. 同步回 VP（含市值盯市）
     vp["cash"] = portfolio.cash
@@ -568,6 +640,113 @@ def run():
     print(f"   AI机器报告已保存: {TODAY}.json")
 
     print(f"\n=== 完成: 总资产 {total_val:,.0f} ({((total_val-INITIAL_CASH)/INITIAL_CASH*100):+.2f}%) ===")
+
+    # 10. 推送飞书日报
+    _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown)
+    return vp, portfolio
+
+
+def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown):
+    """生成并推送飞书日报卡片"""
+    try:
+        from tools.feishu_push import _get_token, _send_card
+    except ImportError:
+        print("[FEISHU] feishu_push 模块不可用, 跳过推送")
+        return
+
+    token = _get_token()
+    if not token:
+        print("[FEISHU] token 获取失败, 跳过推送")
+        return
+
+    # 计算总收益
+    total_return = (total_val - INITIAL_CASH) / INITIAL_CASH * 100
+
+    # 7月1日至今收益
+    july1_val = INITIAL_CASH
+    for snap in vp.get("snapshots", []):
+        if snap.get("date", "") >= "2026-07-01":
+            if july1_val == INITIAL_CASH:
+                july1_val = snap.get("total_value", INITIAL_CASH)
+    july1_return = (total_val - july1_val) / july1_val * 100 if july1_val > 0 else 0
+
+    # 本月操作统计
+    month_buys = 0
+    month_sells = 0
+    month_buy_amt = 0
+    for t in portfolio.trades:
+        if t.get("date", "")[:7] == TODAY[:7]:
+            if t.get("action") == "buy":
+                month_buys += 1
+                month_buy_amt += t.get("amount", 0)
+            elif t.get("action") == "sell":
+                month_sells += 1
+
+    # 持仓摘要
+    holding_lines = []
+    for code, h in portfolio.holdings.items():
+        vh = vp.get("holdings", {}).get(code, {})
+        pnl = vh.get("pnl_pct", 0)
+        emoji = "🟢" if pnl > 5 else "🟡" if pnl > 0 else "🔴"
+        holding_lines.append(f"{emoji} {h['name'][:12]}  ¥{vh.get('market_value',h['cost']):,.0f} ({pnl:+.1f}%)")
+    holding_text = "\n".join(holding_lines) if holding_lines else "暂无持仓"
+
+    # 今日操作
+    buy_ops = [a for a in today_actions if a.get("action") == "BUY"]
+    sell_ops = [a for a in today_actions if a.get("action") == "SELL"]
+    ops_text = ""
+    if buy_ops:
+        ops_text += "**买入**\n"
+        for a in buy_ops[:5]:
+            ops_text += f"  🟢 {a.get('name','')[:16]}  ¥{a.get('amount',0):,.0f}\n"
+    if sell_ops:
+        ops_text += "**卖出**\n"
+        for a in sell_ops[:5]:
+            ops_text += f"  🔴 {a.get('name','')[:16]}\n"
+    if not ops_text:
+        ops_text = "今日无操作"
+
+    # TOP3 候选
+    top_lines = []
+    for c in candidates[:3]:
+        top_lines.append(f"  {c['code']} {c['name'][:16]:<16s} {c['score']:.1f}分")
+    top_text = "\n".join(top_lines) if top_lines else "无候选"
+
+    # 冷却期
+    cooldown_text = ""
+    if sell_cooldown:
+        cooldown_text = "**冷却期**\n"
+        for code, info in list(sell_cooldown.items())[:3]:
+            name = portfolio.holdings.get(code, {}).get("name", code)
+            cooldown_text += f"  ⏳ {name[:16]} ({info.get('reason','?')})\n"
+
+    card = {
+        "header": {"title": {"tag": "plain_text", "content": f"AI Berkshire {TODAY}"}, "template": "blue"},
+        "elements": [
+            {"tag": "div", "text": {"tag": "lark_md", "content": f"**📊 账户概览 | {TODAY_CN}**\n总资产: ¥{total_val:,.0f}  |  总收益: {total_return:+.2f}%\n7月至今: {july1_return:+.2f}%  |  本月买入{month_buys}笔(¥{month_buy_amt:,.0f})卖出{month_sells}笔\n现金: ¥{portfolio.cash:,.0f}  |  持仓: {len(portfolio.holdings)}只  |  市场: {market}"}},
+            {"tag": "hr"},
+        ],
+    }
+
+    if ops_text.strip() and ops_text.strip() != "今日无操作":
+        card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**📋 今日操作**\n{ops_text}"}})
+        card["elements"].append({"tag": "hr"})
+
+    card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**📂 当前持仓**\n{holding_text}"}})
+    card["elements"].append({"tag": "hr"})
+    card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**⭐ TOP3 候选**\n{top_text}"}})
+
+    if cooldown_text:
+        card["elements"].append({"tag": "hr"})
+        card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": cooldown_text}})
+
+    card["elements"].append({"tag": "hr"})
+    card["elements"].append({
+        "tag": "note",
+        "elements": [{"tag": "plain_text", "content": f"AI Berkshire · {TODAY_CN} · 冠军策略V2 · 仅供参考"}],
+    })
+
+    _send_card(card)
 
 
 if __name__ == "__main__":
