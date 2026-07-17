@@ -1,0 +1,1583 @@
+{
+  "full": {
+    "config": {
+      "start": "2024-03-11",
+      "end": "2026-07-01",
+      "use_tp": true,
+      "use_trail": true,
+      "use_time_tp": true,
+      "use_dynamic": false,
+      "use_scorer": false,
+      "tp_pct": 15.0,
+      "trail_pct": 8.0,
+      "hold_days": 60
+    },
+    "result": {
+      "final_value": 214284.88,
+      "total_return": 114.28,
+      "annualized": 39.18,
+      "sharpe": 1.64,
+      "max_drawdown": -13.44,
+      "trading_days": 842,
+      "n_buys": 63,
+      "n_sells": 60,
+      "win_rate": 55.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 21.98
+    },
+    "reason_stats": {
+      "consensus_sell": {
+        "count": 9,
+        "avg_pnl": 0.0
+      },
+      "time_tp": {
+        "count": 9,
+        "avg_pnl": 0.34
+      },
+      "take_profit": {
+        "count": 23,
+        "avg_pnl": 17.48
+      },
+      "trail_stop": {
+        "count": 10,
+        "avg_pnl": -1.48
+      },
+      "stop_loss": {
+        "count": 9,
+        "avg_pnl": -11.99
+      }
+    },
+    "trades": {
+      "buys": [
+        {
+          "date": "2024-03-11",
+          "action": "buy",
+          "code": "007874",
+          "name": "华宝科技ETF联接C",
+          "amount": 25000.0,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-01",
+          "action": "buy",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "amount": 24918.516122611465,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-02",
+          "action": "buy",
+          "code": "016453",
+          "name": "南方纳斯达克100指数发起(QDII)C",
+          "amount": 24825.265731780135,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-16",
+          "action": "buy",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "amount": 24599.880032739413,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-05-11",
+          "action": "buy",
+          "code": "161128",
+          "name": "易方达标普信息科技指数(QDII-LOF)A",
+          "amount": 24846.250508638335,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-01",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 25221.305130774857,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-15",
+          "action": "buy",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "amount": 26266.459108032075,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-17",
+          "action": "buy",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "amount": 26518.119454969834,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-07-26",
+          "action": "buy",
+          "code": "016702",
+          "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+          "amount": 24714.2612032612,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-07-26",
+          "action": "buy",
+          "code": "015311",
+          "name": "华泰柏瑞恒生科技ETF联接(QDII)C",
+          "amount": 23549.89164164949,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-09-13",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 24471.858628355465,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 26684.17222918121,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "amount": 25349.963617722144,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "021842",
+          "name": "国富全球科技互联混合(QDII)人民币C",
+          "amount": 17322.4751387768,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-06",
+          "action": "buy",
+          "code": "017811",
+          "name": "东方人工智能主题混合C",
+          "amount": 27217.002326592963,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-06",
+          "action": "buy",
+          "code": "005629",
+          "name": "汇安趋势动力股票C",
+          "amount": 27217.002326592963,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-10",
+          "action": "buy",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "amount": 27430.774943377473,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-02-10",
+          "action": "buy",
+          "code": "012863",
+          "name": "汇添富中证电池主题ETF发起式联接C",
+          "amount": 29377.97004658609,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-02-18",
+          "action": "buy",
+          "code": "015528",
+          "name": "弘毅远方汽车产业升级混合C",
+          "amount": 29471.91931800301,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-05-06",
+          "action": "buy",
+          "code": "015916",
+          "name": "永赢医药创新智选混合发起C",
+          "amount": 30548.035763218628,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-05-07",
+          "action": "buy",
+          "code": "011609",
+          "name": "易方达上证科创50ETF联接C",
+          "amount": 30298.601905303825,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-07-01",
+          "action": "buy",
+          "code": "002112",
+          "name": "德邦鑫星价值C",
+          "amount": 31860.695503438506,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-07-28",
+          "action": "buy",
+          "code": "021740",
+          "name": "前海开源黄金ETF联接C",
+          "amount": 33246.50609405794,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-01",
+          "action": "buy",
+          "code": "021893",
+          "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+          "amount": 33200.12574619059,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-13",
+          "action": "buy",
+          "code": "009645",
+          "name": "东方阿尔法优势产业混合C",
+          "amount": 33561.62821494567,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-22",
+          "action": "buy",
+          "code": "022365",
+          "name": "永赢科技智选混合发起C",
+          "amount": 35978.26387965161,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-28",
+          "action": "buy",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "amount": 38243.7936457801,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-28",
+          "action": "buy",
+          "code": "024663",
+          "name": "富国创业板人工智能ETF发起式联接C",
+          "amount": 38243.7936457801,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-09-04",
+          "action": "buy",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "amount": 36685.23511243245,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-09-11",
+          "action": "buy",
+          "code": "014674",
+          "name": "富国中证港股通互联网ETF发起式联接C",
+          "amount": 39466.67571474015,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        }
+      ],
+      "sells": [
+        {
+          "date": "2024-04-16",
+          "action": "sell",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 25559.258068810534
+        },
+        {
+          "date": "2024-05-10",
+          "action": "sell",
+          "code": "007874",
+          "name": "华宝科技ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.960987261146487,
+          "amount": 24009.75318471338
+        },
+        {
+          "date": "2024-06-01",
+          "action": "sell",
+          "code": "016453",
+          "name": "南方纳斯达克100指数发起(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 1.9517272786415907,
+          "amount": 25309.787215062548
+        },
+        {
+          "date": "2024-06-15",
+          "action": "sell",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.020737045886601,
+          "amount": 23856.782343346793
+        },
+        {
+          "date": "2024-06-17",
+          "action": "sell",
+          "code": "161128",
+          "name": "易方达标普信息科技指数(QDII-LOF)A",
+          "reason": "take_profit",
+          "pnl_pct": 15.80983157070115,
+          "amount": 28774.40086568853
+        },
+        {
+          "date": "2024-07-24",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "trail_stop",
+          "pnl_pct": 2.136599320579302,
+          "amount": 25760.183364840224
+        },
+        {
+          "date": "2024-07-25",
+          "action": "sell",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "reason": "stop_loss",
+          "pnl_pct": -12.442465856787132,
+          "amount": 23218.611495923185
+        },
+        {
+          "date": "2024-08-05",
+          "action": "sell",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "reason": "stop_loss",
+          "pnl_pct": -11.843314123444415,
+          "amount": 23155.639846761762
+        },
+        {
+          "date": "2024-09-24",
+          "action": "sell",
+          "code": "016702",
+          "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 3.159557661927326,
+          "amount": 25495.122536697574
+        },
+        {
+          "date": "2024-09-26",
+          "action": "sell",
+          "code": "015311",
+          "name": "华泰柏瑞恒生科技ETF联接(QDII)C",
+          "reason": "take_profit",
+          "pnl_pct": 19.93868647565147,
+          "amount": 28245.430701433634
+        },
+        {
+          "date": "2024-10-08",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "take_profit",
+          "pnl_pct": 15.575720200863374,
+          "amount": 28283.52685625895
+        },
+        {
+          "date": "2024-12-27",
+          "action": "sell",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 0.6394372951802341,
+          "amount": 25512.06073940848
+        },
+        {
+          "date": "2024-12-30",
+          "action": "sell",
+          "code": "021842",
+          "name": "国富全球科技互联混合(QDII)人民币C",
+          "reason": "time_tp",
+          "pnl_pct": 4.361715344336803,
+          "amount": 18078.03219492376
+        },
+        {
+          "date": "2025-01-02",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "time_tp",
+          "pnl_pct": 4.548262548262549,
+          "amount": 27897.838440994936
+        },
+        {
+          "date": "2025-02-06",
+          "action": "sell",
+          "code": "005629",
+          "name": "汇安趋势动力股票C",
+          "reason": "take_profit",
+          "pnl_pct": 15.303668069753474,
+          "amount": 31382.202021191828
+        },
+        {
+          "date": "2025-02-18",
+          "action": "sell",
+          "code": "012863",
+          "name": "汇添富中证电池主题ETF发起式联接C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 29626.64184028751
+        },
+        {
+          "date": "2025-02-21",
+          "action": "sell",
+          "code": "017811",
+          "name": "东方人工智能主题混合C",
+          "reason": "take_profit",
+          "pnl_pct": 16.242574806552913,
+          "amount": 31637.74428959107
+        },
+        {
+          "date": "2025-03-31",
+          "action": "sell",
+          "code": "015528",
+          "name": "弘毅远方汽车产业升级混合C",
+          "reason": "trail_stop",
+          "pnl_pct": 0.7324381311730077,
+          "amount": 29687.782893076605
+        },
+        {
+          "date": "2025-04-01",
+          "action": "sell",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "reason": "take_profit",
+          "pnl_pct": 15.579788500151203,
+          "amount": 31704.431663508156
+        },
+        {
+          "date": "2025-06-09",
+          "action": "sell",
+          "code": "015916",
+          "name": "永赢医药创新智选混合发起C",
+          "reason": "take_profit",
+          "pnl_pct": 20.1794065782412,
+          "amount": 36712.44810154504
+        },
+        {
+          "date": "2025-07-06",
+          "action": "sell",
+          "code": "011609",
+          "name": "易方达上证科创50ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.9169065198348174,
+          "amount": 29111.833991856187
+        },
+        {
+          "date": "2025-07-28",
+          "action": "sell",
+          "code": "002112",
+          "name": "德邦鑫星价值C",
+          "reason": "take_profit",
+          "pnl_pct": 18.255210084320915,
+          "amount": 37676.932401916994
+        },
+        {
+          "date": "2025-08-22",
+          "action": "sell",
+          "code": "009645",
+          "name": "东方阿尔法优势产业混合C",
+          "reason": "take_profit",
+          "pnl_pct": 18.311557788944732,
+          "amount": 39707.28516043622
+        },
+        {
+          "date": "2025-08-28",
+          "action": "sell",
+          "code": "021893",
+          "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+          "reason": "take_profit",
+          "pnl_pct": 18.733058929826328,
+          "amount": 39419.524867000924
+        },
+        {
+          "date": "2025-08-28",
+          "action": "sell",
+          "code": "022365",
+          "name": "永赢科技智选混合发起C",
+          "reason": "take_profit",
+          "pnl_pct": 20.28318724467537,
+          "amount": 43275.802509744746
+        },
+        {
+          "date": "2025-09-04",
+          "action": "sell",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "reason": "stop_loss",
+          "pnl_pct": -11.540920071582994,
+          "amount": 33830.107988779484
+        },
+        {
+          "date": "2025-09-11",
+          "action": "sell",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "reason": "take_profit",
+          "pnl_pct": 16.43598615916957,
+          "amount": 42714.81527797066
+        },
+        {
+          "date": "2025-09-23",
+          "action": "sell",
+          "code": "021740",
+          "name": "前海开源黄金ETF联接C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 36610.30695942649
+        },
+        {
+          "date": "2025-10-14",
+          "action": "sell",
+          "code": "014674",
+          "name": "富国中证港股通互联网ETF发起式联接C",
+          "reason": "trail_stop",
+          "pnl_pct": -3.944504896626777,
+          "amount": 37909.91075863641
+        },
+        {
+          "date": "2025-10-17",
+          "action": "sell",
+          "code": "024663",
+          "name": "富国创业板人工智能ETF发起式联接C",
+          "reason": "stop_loss",
+          "pnl_pct": -10.01232509243819,
+          "amount": 34414.70069828338
+        }
+      ]
+    }
+  },
+  "train": {
+    "config": {
+      "start": "2024-03-11",
+      "end": "2026-03-11",
+      "use_tp": true,
+      "use_trail": true,
+      "use_time_tp": true,
+      "use_dynamic": false,
+      "use_scorer": false,
+      "tp_pct": 15.0,
+      "trail_pct": 8.0,
+      "hold_days": 60
+    },
+    "result": {
+      "final_value": 166831.41,
+      "total_return": 66.83,
+      "annualized": 29.19,
+      "sharpe": 1.39,
+      "max_drawdown": -13.44,
+      "trading_days": 730,
+      "n_buys": 51,
+      "n_sells": 48,
+      "win_rate": 52.1,
+      "benchmark_return": 35.99,
+      "benchmark_annualized": 16.63,
+      "alpha": 12.56
+    },
+    "reason_stats": {
+      "consensus_sell": {
+        "count": 8,
+        "avg_pnl": 0.0
+      },
+      "time_tp": {
+        "count": 9,
+        "avg_pnl": 0.34
+      },
+      "take_profit": {
+        "count": 15,
+        "avg_pnl": 17.54
+      },
+      "trail_stop": {
+        "count": 9,
+        "avg_pnl": -1.03
+      },
+      "stop_loss": {
+        "count": 7,
+        "avg_pnl": -12.17
+      }
+    },
+    "trades": {
+      "buys": [
+        {
+          "date": "2024-03-11",
+          "action": "buy",
+          "code": "007874",
+          "name": "华宝科技ETF联接C",
+          "amount": 25000.0,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-01",
+          "action": "buy",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "amount": 24918.516122611465,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-02",
+          "action": "buy",
+          "code": "016453",
+          "name": "南方纳斯达克100指数发起(QDII)C",
+          "amount": 24825.265731780135,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-04-16",
+          "action": "buy",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "amount": 24599.880032739413,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-05-11",
+          "action": "buy",
+          "code": "161128",
+          "name": "易方达标普信息科技指数(QDII-LOF)A",
+          "amount": 24846.250508638335,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-01",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 25221.305130774857,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-15",
+          "action": "buy",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "amount": 26266.459108032075,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-06-17",
+          "action": "buy",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "amount": 26518.119454969834,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-07-26",
+          "action": "buy",
+          "code": "016702",
+          "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+          "amount": 24714.2612032612,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-07-26",
+          "action": "buy",
+          "code": "015311",
+          "name": "华泰柏瑞恒生科技ETF联接(QDII)C",
+          "amount": 23549.89164164949,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-09-13",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 24471.858628355465,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "amount": 26684.17222918121,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "amount": 25349.963617722144,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2024-10-28",
+          "action": "buy",
+          "code": "021842",
+          "name": "国富全球科技互联混合(QDII)人民币C",
+          "amount": 17322.4751387768,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-06",
+          "action": "buy",
+          "code": "017811",
+          "name": "东方人工智能主题混合C",
+          "amount": 27217.002326592963,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-06",
+          "action": "buy",
+          "code": "005629",
+          "name": "汇安趋势动力股票C",
+          "amount": 27217.002326592963,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-01-10",
+          "action": "buy",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "amount": 27430.774943377473,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-02-10",
+          "action": "buy",
+          "code": "012863",
+          "name": "汇添富中证电池主题ETF发起式联接C",
+          "amount": 29377.97004658609,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-02-18",
+          "action": "buy",
+          "code": "015528",
+          "name": "弘毅远方汽车产业升级混合C",
+          "amount": 29471.91931800301,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-05-06",
+          "action": "buy",
+          "code": "015916",
+          "name": "永赢医药创新智选混合发起C",
+          "amount": 30548.035763218628,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-05-07",
+          "action": "buy",
+          "code": "011609",
+          "name": "易方达上证科创50ETF联接C",
+          "amount": 30298.601905303825,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-07-01",
+          "action": "buy",
+          "code": "002112",
+          "name": "德邦鑫星价值C",
+          "amount": 31860.695503438506,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-07-28",
+          "action": "buy",
+          "code": "021740",
+          "name": "前海开源黄金ETF联接C",
+          "amount": 33246.50609405794,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-01",
+          "action": "buy",
+          "code": "021893",
+          "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+          "amount": 33200.12574619059,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-13",
+          "action": "buy",
+          "code": "009645",
+          "name": "东方阿尔法优势产业混合C",
+          "amount": 33561.62821494567,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-22",
+          "action": "buy",
+          "code": "022365",
+          "name": "永赢科技智选混合发起C",
+          "amount": 35978.26387965161,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-28",
+          "action": "buy",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "amount": 38243.7936457801,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-08-28",
+          "action": "buy",
+          "code": "024663",
+          "name": "富国创业板人工智能ETF发起式联接C",
+          "amount": 38243.7936457801,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-09-04",
+          "action": "buy",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "amount": 36685.23511243245,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2025-09-11",
+          "action": "buy",
+          "code": "014674",
+          "name": "富国中证港股通互联网ETF发起式联接C",
+          "amount": 39466.67571474015,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        }
+      ],
+      "sells": [
+        {
+          "date": "2024-04-16",
+          "action": "sell",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 25559.258068810534
+        },
+        {
+          "date": "2024-05-10",
+          "action": "sell",
+          "code": "007874",
+          "name": "华宝科技ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.960987261146487,
+          "amount": 24009.75318471338
+        },
+        {
+          "date": "2024-06-01",
+          "action": "sell",
+          "code": "016453",
+          "name": "南方纳斯达克100指数发起(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 1.9517272786415907,
+          "amount": 25309.787215062548
+        },
+        {
+          "date": "2024-06-15",
+          "action": "sell",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.020737045886601,
+          "amount": 23856.782343346793
+        },
+        {
+          "date": "2024-06-17",
+          "action": "sell",
+          "code": "161128",
+          "name": "易方达标普信息科技指数(QDII-LOF)A",
+          "reason": "take_profit",
+          "pnl_pct": 15.80983157070115,
+          "amount": 28774.40086568853
+        },
+        {
+          "date": "2024-07-24",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "trail_stop",
+          "pnl_pct": 2.136599320579302,
+          "amount": 25760.183364840224
+        },
+        {
+          "date": "2024-07-25",
+          "action": "sell",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "reason": "stop_loss",
+          "pnl_pct": -12.442465856787132,
+          "amount": 23218.611495923185
+        },
+        {
+          "date": "2024-08-05",
+          "action": "sell",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "reason": "stop_loss",
+          "pnl_pct": -11.843314123444415,
+          "amount": 23155.639846761762
+        },
+        {
+          "date": "2024-09-24",
+          "action": "sell",
+          "code": "016702",
+          "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 3.159557661927326,
+          "amount": 25495.122536697574
+        },
+        {
+          "date": "2024-09-26",
+          "action": "sell",
+          "code": "015311",
+          "name": "华泰柏瑞恒生科技ETF联接(QDII)C",
+          "reason": "take_profit",
+          "pnl_pct": 19.93868647565147,
+          "amount": 28245.430701433634
+        },
+        {
+          "date": "2024-10-08",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "take_profit",
+          "pnl_pct": 15.575720200863374,
+          "amount": 28283.52685625895
+        },
+        {
+          "date": "2024-12-27",
+          "action": "sell",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "reason": "time_tp",
+          "pnl_pct": 0.6394372951802341,
+          "amount": 25512.06073940848
+        },
+        {
+          "date": "2024-12-30",
+          "action": "sell",
+          "code": "021842",
+          "name": "国富全球科技互联混合(QDII)人民币C",
+          "reason": "time_tp",
+          "pnl_pct": 4.361715344336803,
+          "amount": 18078.03219492376
+        },
+        {
+          "date": "2025-01-02",
+          "action": "sell",
+          "code": "012920",
+          "name": "易方达全球成长精选混合(QDII)A",
+          "reason": "time_tp",
+          "pnl_pct": 4.548262548262549,
+          "amount": 27897.838440994936
+        },
+        {
+          "date": "2025-02-06",
+          "action": "sell",
+          "code": "005629",
+          "name": "汇安趋势动力股票C",
+          "reason": "take_profit",
+          "pnl_pct": 15.303668069753474,
+          "amount": 31382.202021191828
+        },
+        {
+          "date": "2025-02-18",
+          "action": "sell",
+          "code": "012863",
+          "name": "汇添富中证电池主题ETF发起式联接C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 29626.64184028751
+        },
+        {
+          "date": "2025-02-21",
+          "action": "sell",
+          "code": "017811",
+          "name": "东方人工智能主题混合C",
+          "reason": "take_profit",
+          "pnl_pct": 16.242574806552913,
+          "amount": 31637.74428959107
+        },
+        {
+          "date": "2025-03-31",
+          "action": "sell",
+          "code": "015528",
+          "name": "弘毅远方汽车产业升级混合C",
+          "reason": "trail_stop",
+          "pnl_pct": 0.7324381311730077,
+          "amount": 29687.782893076605
+        },
+        {
+          "date": "2025-04-01",
+          "action": "sell",
+          "code": "004253",
+          "name": "国泰黄金ETF联接C",
+          "reason": "take_profit",
+          "pnl_pct": 15.579788500151203,
+          "amount": 31704.431663508156
+        },
+        {
+          "date": "2025-06-09",
+          "action": "sell",
+          "code": "015916",
+          "name": "永赢医药创新智选混合发起C",
+          "reason": "take_profit",
+          "pnl_pct": 20.1794065782412,
+          "amount": 36712.44810154504
+        },
+        {
+          "date": "2025-07-06",
+          "action": "sell",
+          "code": "011609",
+          "name": "易方达上证科创50ETF联接C",
+          "reason": "time_tp",
+          "pnl_pct": -3.9169065198348174,
+          "amount": 29111.833991856187
+        },
+        {
+          "date": "2025-07-28",
+          "action": "sell",
+          "code": "002112",
+          "name": "德邦鑫星价值C",
+          "reason": "take_profit",
+          "pnl_pct": 18.255210084320915,
+          "amount": 37676.932401916994
+        },
+        {
+          "date": "2025-08-22",
+          "action": "sell",
+          "code": "009645",
+          "name": "东方阿尔法优势产业混合C",
+          "reason": "take_profit",
+          "pnl_pct": 18.311557788944732,
+          "amount": 39707.28516043622
+        },
+        {
+          "date": "2025-08-28",
+          "action": "sell",
+          "code": "021893",
+          "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+          "reason": "take_profit",
+          "pnl_pct": 18.733058929826328,
+          "amount": 39419.524867000924
+        },
+        {
+          "date": "2025-08-28",
+          "action": "sell",
+          "code": "022365",
+          "name": "永赢科技智选混合发起C",
+          "reason": "take_profit",
+          "pnl_pct": 20.28318724467537,
+          "amount": 43275.802509744746
+        },
+        {
+          "date": "2025-09-04",
+          "action": "sell",
+          "code": "011452",
+          "name": "华泰柏瑞质量成长混合C",
+          "reason": "stop_loss",
+          "pnl_pct": -11.540920071582994,
+          "amount": 33830.107988779484
+        },
+        {
+          "date": "2025-09-11",
+          "action": "sell",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "reason": "take_profit",
+          "pnl_pct": 16.43598615916957,
+          "amount": 42714.81527797066
+        },
+        {
+          "date": "2025-09-23",
+          "action": "sell",
+          "code": "021740",
+          "name": "前海开源黄金ETF联接C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 36610.30695942649
+        },
+        {
+          "date": "2025-10-14",
+          "action": "sell",
+          "code": "014674",
+          "name": "富国中证港股通互联网ETF发起式联接C",
+          "reason": "trail_stop",
+          "pnl_pct": -3.944504896626777,
+          "amount": 37909.91075863641
+        },
+        {
+          "date": "2025-10-17",
+          "action": "sell",
+          "code": "024663",
+          "name": "富国创业板人工智能ETF发起式联接C",
+          "reason": "stop_loss",
+          "pnl_pct": -10.01232509243819,
+          "amount": 34414.70069828338
+        }
+      ]
+    }
+  },
+  "val": {
+    "config": {
+      "start": "2026-03-11",
+      "end": "2026-07-01",
+      "use_tp": true,
+      "use_trail": true,
+      "use_time_tp": true,
+      "use_dynamic": false,
+      "use_scorer": false,
+      "tp_pct": 15.0,
+      "trail_pct": 8.0,
+      "hold_days": 60
+    },
+    "result": {
+      "final_value": 137435.43,
+      "total_return": 37.44,
+      "annualized": 182.07,
+      "sharpe": 3.16,
+      "max_drawdown": -5.8,
+      "trading_days": 112,
+      "n_buys": 16,
+      "n_sells": 13,
+      "win_rate": 84.6,
+      "benchmark_return": 6.03,
+      "benchmark_annualized": 21.05,
+      "alpha": 161.02
+    },
+    "reason_stats": {
+      "consensus_sell": {
+        "count": 1,
+        "avg_pnl": 0.0
+      },
+      "take_profit": {
+        "count": 9,
+        "avg_pnl": 16.26
+      },
+      "stop_loss": {
+        "count": 1,
+        "avg_pnl": -10.59
+      },
+      "trail_stop": {
+        "count": 2,
+        "avg_pnl": 3.57
+      }
+    },
+    "trades": {
+      "buys": [
+        {
+          "date": "2026-03-11",
+          "action": "buy",
+          "code": "024239",
+          "name": "华夏全球科技先锋混合(QDII)C",
+          "amount": 25000.0,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-03-11",
+          "action": "buy",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "amount": 23750.0,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-03-11",
+          "action": "buy",
+          "code": "008254",
+          "name": "华宝致远混合C",
+          "amount": 16229.166666666666,
+          "consensus": 1,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-04-06",
+          "action": "buy",
+          "code": "019118",
+          "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+          "amount": 24844.27432228747,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-04-16",
+          "action": "buy",
+          "code": "013073",
+          "name": "泰信医疗服务混合发起式C",
+          "amount": 27222.034468882637,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-04-22",
+          "action": "buy",
+          "code": "008888",
+          "name": "华夏国证半导体芯片ETF联接C",
+          "amount": 27500.642539703716,
+          "consensus": 3,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-04-22",
+          "action": "buy",
+          "code": "290008",
+          "name": "泰信发展主题混合",
+          "amount": 26490.728976800434,
+          "consensus": 2,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-04-30",
+          "action": "buy",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "amount": 28850.179208933812,
+          "consensus": 3,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-05-06",
+          "action": "buy",
+          "code": "002891",
+          "name": "华夏移动互联混合(QDII)",
+          "amount": 29741.18857886126,
+          "consensus": 3,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-05-18",
+          "action": "buy",
+          "code": "005698",
+          "name": "华夏全球科技先锋混合(QDII)A",
+          "amount": 29526.20085004251,
+          "consensus": 3,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-05-25",
+          "action": "buy",
+          "code": "160213",
+          "name": "国泰纳斯达克100指数(QDII)",
+          "amount": 31314.615669025923,
+          "consensus": 4,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-06-02",
+          "action": "buy",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "amount": 32679.274498071853,
+          "consensus": 6,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-06-05",
+          "action": "buy",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "amount": 31207.3894035607,
+          "consensus": 5,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-06-15",
+          "action": "buy",
+          "code": "005698",
+          "name": "华夏全球科技先锋混合(QDII)A",
+          "amount": 34033.753971351645,
+          "consensus": 5,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-06-22",
+          "action": "buy",
+          "code": "002891",
+          "name": "华夏移动互联混合(QDII)",
+          "amount": 35670.27101594077,
+          "consensus": 5,
+          "market": "fixed",
+          "score": 0
+        },
+        {
+          "date": "2026-06-23",
+          "action": "buy",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "amount": 33947.02381942152,
+          "consensus": 5,
+          "market": "fixed",
+          "score": 0
+        }
+      ],
+      "sells": [
+        {
+          "date": "2026-04-06",
+          "action": "sell",
+          "code": "024239",
+          "name": "华夏全球科技先锋混合(QDII)C",
+          "reason": "consensus_sell",
+          "pnl_pct": 0,
+          "amount": 25314.743124445515
+        },
+        {
+          "date": "2026-04-16",
+          "action": "sell",
+          "code": "016665",
+          "name": "天弘全球高端制造混合(QDII)C",
+          "reason": "take_profit",
+          "pnl_pct": 16.575166986915548,
+          "amount": 27686.60215939244
+        },
+        {
+          "date": "2026-04-22",
+          "action": "sell",
+          "code": "008254",
+          "name": "华宝致远混合C",
+          "reason": "take_profit",
+          "pnl_pct": 15.170366181252648,
+          "amount": 18691.190678165793
+        },
+        {
+          "date": "2026-04-22",
+          "action": "sell",
+          "code": "019118",
+          "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+          "reason": "take_profit",
+          "pnl_pct": 15.211808583563391,
+          "amount": 28623.537776169233
+        },
+        {
+          "date": "2026-04-30",
+          "action": "sell",
+          "code": "290008",
+          "name": "泰信发展主题混合",
+          "reason": "take_profit",
+          "pnl_pct": 15.597014925373154,
+          "amount": 30622.49192915215
+        },
+        {
+          "date": "2026-05-06",
+          "action": "sell",
+          "code": "008888",
+          "name": "华夏国证半导体芯片ETF联接C",
+          "reason": "take_profit",
+          "pnl_pct": 15.08649672962894,
+          "amount": 31649.526077083065
+        },
+        {
+          "date": "2026-05-18",
+          "action": "sell",
+          "code": "013073",
+          "name": "泰信医疗服务混合发起式C",
+          "reason": "stop_loss",
+          "pnl_pct": -10.585078760602396,
+          "amount": 24340.560680113078
+        },
+        {
+          "date": "2026-05-25",
+          "action": "sell",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "reason": "take_profit",
+          "pnl_pct": 17.610398360517678,
+          "amount": 33930.81069535031
+        },
+        {
+          "date": "2026-06-02",
+          "action": "sell",
+          "code": "002891",
+          "name": "华夏移动互联混合(QDII)",
+          "reason": "take_profit",
+          "pnl_pct": 15.935079306528976,
+          "amount": 34480.47056560714
+        },
+        {
+          "date": "2026-06-05",
+          "action": "sell",
+          "code": "005698",
+          "name": "华夏全球科技先锋混合(QDII)A",
+          "reason": "trail_stop",
+          "pnl_pct": 5.557920340529021,
+          "amount": 31167.24357287248
+        },
+        {
+          "date": "2026-06-15",
+          "action": "sell",
+          "code": "021528",
+          "name": "财通成长优选混合C",
+          "reason": "take_profit",
+          "pnl_pct": 18.098021582733814,
+          "amount": 36855.3094732249
+        },
+        {
+          "date": "2026-06-22",
+          "action": "sell",
+          "code": "012922",
+          "name": "易方达全球成长精选混合(QDII)C",
+          "reason": "take_profit",
+          "pnl_pct": 17.06326304106549,
+          "amount": 38255.42506558968
+        },
+        {
+          "date": "2026-06-23",
+          "action": "sell",
+          "code": "005698",
+          "name": "华夏全球科技先锋混合(QDII)A",
+          "reason": "trail_stop",
+          "pnl_pct": 1.582629798879509,
+          "amount": 34572.38230337959
+        }
+      ]
+    }
+  }
+}

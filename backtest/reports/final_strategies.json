@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-07-16T21:00:00",
+  "baseline": {
+    "name": "K无脑跟投",
+    "return": 62.43,
+    "annualized": 28.1,
+    "dd": 11.55,
+    "trades": 116,
+    "sharpe": 2.43,
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "fund_type_filter": "all"
+    }
+  },
+  "old_engine_comparison": {
+    "note": "旧引擎(8397a15)结果 vs 新引擎(4eff0f1)结果",
+    "old_k_return": 82.64,
+    "old_k_annualized": 49.42,
+    "old_k_dd": 4.35,
+    "new_k_return": 62.43,
+    "new_k_annualized": 28.1,
+    "new_k_dd": 11.55,
+    "difference": "新引擎包含4个修复提交(smart_money匹配/A-C份额/最低持有60天/4433法则), 结果更准确"
+  },
+  "phase1_experiments": {
+    "status": "running",
+    "total_experiments": 28,
+    "batches": {
+      "A": {"experiments": 6, "focus": "否决层+止盈止损"},
+      "B": {"experiments": 6, "focus": "仓位+卖出+动量"},
+      "C": {"experiments": 6, "focus": "移动止盈+组合"},
+      "D": {"experiments": 10, "focus": "单大佬跟随TOP10"}
+    },
+    "results": "待实验完成后更新"
+  },
+  "phase2_analysis": {
+    "holding_period": {
+      "total_buy_records": 31362,
+      "long_term_leaders": 43,
+      "short_term_leaders": 1,
+      "top_long_term": [
+        {"uid": "432038", "avg180": 47.9},
+        {"uid": "1078493", "avg180": 43.8},
+        {"uid": "14155320", "avg180": 41.9}
+      ]
+    },
+    "fund_type": {
+      "QDII": {"buys": 13419, "avg30d": 3.06, "avg90d": 8.59},
+      "active_mixed": {"buys": 10520, "avg30d": 4.53, "avg90d": 11.10},
+      "active_stock": {"buys": 3551, "avg30d": 4.83, "avg90d": 12.76},
+      "ETF": {"buys": 1954, "avg30d": 1.59, "avg90d": 2.94},
+      "passive_index": {"buys": 1244, "avg30d": 3.84, "avg90d": 9.71},
+      "bond": {"buys": 306, "avg30d": -0.11, "avg90d": -0.54}
+    },
+    "rotation": {
+      "total_events": 16126,
+      "top_direction": "QDII→QDII (2131次)"
+    },
+    "sell_consensus": {
+      "total_events": 116,
+      "strong_sell": 12,
+      "negative_net": 100
+    }
+  },
+  "phase3_otc_features": {
+    "status": "已实现",
+    "location": "scripts/daily_live_enhanced.py",
+    "features": [
+      "费率感知（持有<7天赎回费1.5%）",
+      "A/C份额智能推荐（预期持有<1年推荐C类）",
+      "限额检测（检查申购状态和日限额）",
+      "时间止损（持仓>30天亏损>3%卖出）",
+      "60天最低持有期（引擎内置）",
+      "T+N确认（引擎内置）",
+      "赎回费计算（引擎内置）"
+    ]
+  },
+  "phase5_live_deployment": {
+    "status": "已更新",
+    "config_file": "data/evolution/best_config.json",
+    "daily_live_script": "scripts/daily_live.py",
+    "config_format": "gene + config 双层结构"
+  },
+  "phase6_llm_integration": {
+    "status": "已实现",
+    "module": "tools/llm_skill_integration.py",
+    "features": [
+      "六关检查（规模/费率/经理/业绩/集中度/交易规则）",
+      "Skill调用生成（fund-checklist/fund-penetration/fund-analyze/fund-sell）",
+      "24小时缓存",
+      "批量分析"
+    ]
+  },
+  "engine_modifications": [
+    {
+      "name": "follow_only_uid 参数",
+      "lines": 3,
+      "purpose": "支持单大佬跟随实验",
+      "impact": "不影响现有逻辑，仅在config中设置follow_only_uid时生效"
+    },
+    {
+      "name": "min_consensus 硬编码修复",
+      "lines": 1,
+      "purpose": "修复第1483行硬编码 buy_count < 2 为 config.get('min_consensus', 2)",
+      "impact": "对K基线(min_consensus=2)无影响，使min_consensus=1可正常工作"
+    }
+  ],
+  "key_findings": [
+    "K策略核心优势：完全信任大佬共识+极宽止损+极高止盈=最低干预最高收益",
+    "绝大多数大佬是长线投资者(43/44)，验证K策略高止盈(50%)方向正确",
+    "主动混合和QDII是大佬最偏好的基金类型，ETF联接表现最差",
+    "卖出共识是稀有但高价值信号(116次/18个月)，可用于exit timing",
+    "引擎存在min_consensus硬编码bug，已修复",
+    "新引擎(含4个修复提交)的K基线为62.43%/28.1%/11.55%，旧引擎为82.64%/49.42%/4.35%"
+  ]
+}

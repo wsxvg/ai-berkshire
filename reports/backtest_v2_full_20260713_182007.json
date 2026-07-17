@@ -1,0 +1,108 @@
+{
+  "config": {
+    "start": "2025-06-01",
+    "end": "2025-08-31",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 25.0,
+    "trail_pct": 10.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 111610.93,
+    "total_return": 11.61,
+    "annualized": 55.41,
+    "sharpe": 4.44,
+    "max_drawdown": -0.57,
+    "trading_days": 91,
+    "n_buys": 5,
+    "n_sells": 2,
+    "win_rate": 100.0,
+    "benchmark_return": 18.0,
+    "benchmark_annualized": 94.33,
+    "alpha": -38.92
+  },
+  "reason_stats": {
+    "take_profit": {
+      "count": 2,
+      "avg_pnl": 29.83
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-07-01",
+        "action": "buy",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-07-28",
+        "action": "buy",
+        "code": "021740",
+        "name": "前海开源黄金ETF联接C",
+        "amount": 15410.742226897219,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-01",
+        "action": "buy",
+        "code": "021893",
+        "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+        "amount": 15569.33263690238,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-13",
+        "action": "buy",
+        "code": "009645",
+        "name": "东方阿尔法优势产业混合C",
+        "amount": 15670.800384538112,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-28",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 16836.521118186025,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2025-07-29",
+        "action": "sell",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "reason": "take_profit",
+        "pnl_pct": 25.876970555487834,
+        "amount": 18881.54558332317
+      },
+      {
+        "date": "2025-08-28",
+        "action": "sell",
+        "code": "009645",
+        "name": "东方阿尔法优势产业混合C",
+        "reason": "take_profit",
+        "pnl_pct": 33.782244556113916,
+        "amount": 20964.748494343217
+      }
+    ]
+  }
+}

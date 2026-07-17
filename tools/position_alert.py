@@ -34,11 +34,11 @@ def check_portfolio():
 
             try:
                 amount = float(amount_str) if amount_str else 0
-            except:
+            except (ValueError, TypeError):
                 amount = 0
             try:
                 profit = float(profit_str) if profit_str else 0
-            except:
+            except (ValueError, TypeError):
                 profit = 0
 
             # market_value = amount + profit (当前市值)
@@ -83,7 +83,7 @@ def check_portfolio():
     for f in fund_details:
         try:
             rate = float(str(f['profit_rate']).replace('%', '').strip())
-        except:
+        except (ValueError, TypeError):
             rate = 0
         if rate <= hard_stop:
             alerts.append(

@@ -10,7 +10,7 @@ sys.path.insert(0, str(_PROJECT_ROOT))
 # 加载股票行业映射
 try:
     _STOCK_SECTOR = json.loads((_PROJECT_ROOT / "backtest" / "data" / "stock_sector_map.json").read_text(encoding="utf-8"))
-except:
+except (json.JSONDecodeError, OSError, FileNotFoundError):
     _STOCK_SECTOR = {}
 
 def _get_stock_sector(code, name=""):
@@ -92,7 +92,7 @@ def generate_penetration_report(holdings_codes=None):
         try:
             quotes = get_stock_quotes_extended(batch)
             valuations.update(quotes)
-        except:
+        except Exception:
             pass
 
     # 估值预警

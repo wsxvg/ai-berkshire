@@ -1,0 +1,677 @@
+[
+  {
+    "label": "b=1 h=3 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 266670.32,
+      "total_return": 166.67,
+      "annualized": 53.03,
+      "sharpe": 2.02,
+      "max_drawdown": -9.38,
+      "trading_days": 842,
+      "n_buys": 11,
+      "n_sells": 8,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 35.83
+    }
+  },
+  {
+    "label": "b=1 h=8 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 222796.66,
+      "total_return": 122.8,
+      "annualized": 84.67,
+      "sharpe": 1.86,
+      "max_drawdown": -14.72,
+      "trading_days": 477,
+      "n_buys": 37,
+      "n_sells": 29,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 63.36
+    }
+  },
+  {
+    "label": "b=1 h=8 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 276008.0,
+      "total_return": 176.01,
+      "annualized": 55.33,
+      "sharpe": 1.7,
+      "max_drawdown": -14.11,
+      "trading_days": 842,
+      "n_buys": 41,
+      "n_sells": 33,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 38.13
+    }
+  },
+  {
+    "label": "b=1 h=3 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 195484.55,
+      "total_return": 95.48,
+      "annualized": 67.08,
+      "sharpe": 1.67,
+      "max_drawdown": -17.92,
+      "trading_days": 477,
+      "n_buys": 20,
+      "n_sells": 17,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 45.77
+    }
+  },
+  {
+    "label": "b=1 h=5 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 208759.45,
+      "total_return": 108.76,
+      "annualized": 75.7,
+      "sharpe": 1.67,
+      "max_drawdown": -16.23,
+      "trading_days": 477,
+      "n_buys": 25,
+      "n_sells": 20,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 54.39
+    }
+  },
+  {
+    "label": "b=2 h=5 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 309191.68,
+      "total_return": 209.19,
+      "annualized": 63.18,
+      "sharpe": 1.67,
+      "max_drawdown": -23.25,
+      "trading_days": 842,
+      "n_buys": 12,
+      "n_sells": 7,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 45.97
+    }
+  },
+  {
+    "label": "b=2 h=8 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 308436.83,
+      "total_return": 208.44,
+      "annualized": 63.0,
+      "sharpe": 1.67,
+      "max_drawdown": -23.25,
+      "trading_days": 842,
+      "n_buys": 16,
+      "n_sells": 8,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 45.8
+    }
+  },
+  {
+    "label": "b=2 h=3 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 161103.4,
+      "total_return": 61.1,
+      "annualized": 44.07,
+      "sharpe": 1.66,
+      "max_drawdown": -7.87,
+      "trading_days": 477,
+      "n_buys": 8,
+      "n_sells": 5,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 22.77
+    }
+  },
+  {
+    "label": "b=2 h=5 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 171503.87,
+      "total_return": 71.5,
+      "annualized": 51.14,
+      "sharpe": 1.54,
+      "max_drawdown": -10.39,
+      "trading_days": 477,
+      "n_buys": 13,
+      "n_sells": 8,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 29.84
+    }
+  },
+  {
+    "label": "b=1 h=5 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 239405.6,
+      "total_return": 139.41,
+      "annualized": 46.04,
+      "sharpe": 1.53,
+      "max_drawdown": -17.77,
+      "trading_days": 842,
+      "n_buys": 28,
+      "n_sells": 23,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 28.83
+    }
+  },
+  {
+    "label": "b=2 h=8 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 169726.27,
+      "total_return": 69.73,
+      "annualized": 49.94,
+      "sharpe": 1.51,
+      "max_drawdown": -10.39,
+      "trading_days": 477,
+      "n_buys": 18,
+      "n_sells": 10,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": 28.63
+    }
+  },
+  {
+    "label": "b=2 h=3 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 238697.91,
+      "total_return": 138.7,
+      "annualized": 45.85,
+      "sharpe": 1.47,
+      "max_drawdown": -20.57,
+      "trading_days": 842,
+      "n_buys": 9,
+      "n_sells": 6,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": 28.64
+    }
+  },
+  {
+    "label": "b=2 h=3 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 161103.4,
+      "total_return": 61.1,
+      "annualized": 29.79,
+      "sharpe": 1.4,
+      "max_drawdown": -7.87,
+      "trading_days": 668,
+      "n_buys": 8,
+      "n_sells": 5,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 4.23
+    }
+  },
+  {
+    "label": "b=2 h=5 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 171503.87,
+      "total_return": 71.5,
+      "annualized": 34.31,
+      "sharpe": 1.3,
+      "max_drawdown": -10.39,
+      "trading_days": 668,
+      "n_buys": 13,
+      "n_sells": 8,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 8.74
+    }
+  },
+  {
+    "label": "b=2 h=8 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 2,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 169726.27,
+      "total_return": 69.73,
+      "annualized": 33.54,
+      "sharpe": 1.28,
+      "max_drawdown": -10.39,
+      "trading_days": 668,
+      "n_buys": 18,
+      "n_sells": 10,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 7.98
+    }
+  },
+  {
+    "label": "b=1 h=3 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 188257.56,
+      "total_return": 88.26,
+      "annualized": 41.33,
+      "sharpe": 1.18,
+      "max_drawdown": -15.33,
+      "trading_days": 668,
+      "n_buys": 26,
+      "n_sells": 23,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 15.76
+    }
+  },
+  {
+    "label": "b=1 h=8 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 189158.94,
+      "total_return": 89.16,
+      "annualized": 41.7,
+      "sharpe": 1.12,
+      "max_drawdown": -19.86,
+      "trading_days": 668,
+      "n_buys": 50,
+      "n_sells": 42,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 16.13
+    }
+  },
+  {
+    "label": "b=3 h=3 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128542.65,
+      "total_return": 28.54,
+      "annualized": 21.2,
+      "sharpe": 1.12,
+      "max_drawdown": -7.07,
+      "trading_days": 477,
+      "n_buys": 4,
+      "n_sells": 1,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": -0.11
+    }
+  },
+  {
+    "label": "b=1 h=5 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 1,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 189645.75,
+      "total_return": 89.65,
+      "annualized": 41.9,
+      "sharpe": 1.11,
+      "max_drawdown": -19.86,
+      "trading_days": 668,
+      "n_buys": 35,
+      "n_sells": 30,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": 16.33
+    }
+  },
+  {
+    "label": "b=3 h=8 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128044.59,
+      "total_return": 28.04,
+      "annualized": 20.84,
+      "sharpe": 0.96,
+      "max_drawdown": -8.61,
+      "trading_days": 477,
+      "n_buys": 10,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": -0.47
+    }
+  },
+  {
+    "label": "b=3 h=3 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128542.65,
+      "total_return": 28.54,
+      "annualized": 14.72,
+      "sharpe": 0.94,
+      "max_drawdown": -7.07,
+      "trading_days": 668,
+      "n_buys": 4,
+      "n_sells": 1,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": -10.85
+    }
+  },
+  {
+    "label": "b=3 h=5 25-03",
+    "config": {
+      "start_date": "2025-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 126604.85,
+      "total_return": 26.6,
+      "annualized": 19.8,
+      "sharpe": 0.86,
+      "max_drawdown": -9.79,
+      "trading_days": 477,
+      "n_buys": 7,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 28.69,
+      "benchmark_annualized": 21.31,
+      "alpha": -1.51
+    }
+  },
+  {
+    "label": "b=3 h=3 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 3,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128542.65,
+      "total_return": 28.54,
+      "annualized": 11.51,
+      "sharpe": 0.84,
+      "max_drawdown": -7.07,
+      "trading_days": 842,
+      "n_buys": 4,
+      "n_sells": 1,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": -5.7
+    }
+  },
+  {
+    "label": "b=3 h=8 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128044.59,
+      "total_return": 28.04,
+      "annualized": 14.47,
+      "sharpe": 0.81,
+      "max_drawdown": -8.61,
+      "trading_days": 668,
+      "n_buys": 10,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": -11.09
+    }
+  },
+  {
+    "label": "b=3 h=5 24-09",
+    "config": {
+      "start_date": "2024-09-01",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 126604.85,
+      "total_return": 26.6,
+      "annualized": 13.77,
+      "sharpe": 0.73,
+      "max_drawdown": -9.79,
+      "trading_days": 668,
+      "n_buys": 7,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 51.64,
+      "benchmark_annualized": 25.56,
+      "alpha": -11.8
+    }
+  },
+  {
+    "label": "b=3 h=8 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 8,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 128044.59,
+      "total_return": 28.04,
+      "annualized": 11.32,
+      "sharpe": 0.72,
+      "max_drawdown": -8.61,
+      "trading_days": 842,
+      "n_buys": 10,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": -5.89
+    }
+  },
+  {
+    "label": "b=3 h=5 24-03",
+    "config": {
+      "start_date": "2024-03-11",
+      "end_date": "2026-07-01",
+      "initial_cash": 100000,
+      "max_holdings": 5,
+      "min_buyers": 3,
+      "require_industry_low": false
+    },
+    "result": {
+      "final_value": 126604.85,
+      "total_return": 26.6,
+      "annualized": 10.78,
+      "sharpe": 0.65,
+      "max_drawdown": -9.79,
+      "trading_days": 842,
+      "n_buys": 7,
+      "n_sells": 2,
+      "win_rate": 0.0,
+      "benchmark_return": 44.19,
+      "benchmark_annualized": 17.21,
+      "alpha": -6.43
+    }
+  }
+]

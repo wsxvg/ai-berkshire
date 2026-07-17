@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { exec } from 'child_process'
 import path from 'path'
 import fs from 'fs'
@@ -17,13 +17,30 @@ function runPy(file: string): Promise<string> {
   })
 }
 
-// 缓存 5 分钟
+// 进程内缓存
 let cache: { data: any; time: number } | null = null
 const CACHE_TTL = 5 * 60 * 1000
 
-export async function GET() {
-  if (cache && Date.now() - cache.time < CACHE_TTL) {
-    return NextResponse.json(cache.data, { headers: { 'X-Cache': 'HIT' } })
+/**
+ * 大佬交易动态 feed
+ * GET /api/feed
+ *   ?limit=N          单用户最大记录数 (默认 10, 最大 50)
+ *   ?users=N          抓取多少个用户 (默认 12, 最大 50)
+ *   ?action=buy|sell  仅返回指定方向
+ *   ?page=N           分页 (页码从 1 开始, 每页 pageSize=20)
+ *   ?pageSize=N       每页大小 (默认 20, 最大 100)
+ */
+export async function GET(req: NextRequest) {
+  const limit = Math.max(1, Math.min(parseInt(req.nextUrl.searchParams.get('limit') || '10', 10) || 10, 50))
+  const users = Math.max(1, Math.min(parseInt(req.nextUrl.searchParams.get('users') || '12', 10) || 12, 50))
+  const action = req.nextUrl.searchParams.get('action') || ''  // buy / sell / ''
+  const page = Math.max(1, parseInt(req.nextUrl.searchParams.get('page') || '1', 10) || 1)
+  const pageSize = Math.max(1, Math.min(parseInt(req.nextUrl.searchParams.get('pageSize') || '20', 10) || 20, 100))
+
+  // 5min 内复用相同 (limit, users) 的全量结果
+  const cacheKey = `${limit}|${users}`
+  if (cache && cache.data._key === cacheKey && Date.now() - cache.time < CACHE_TTL) {
+    return applyFilter(cache.data.items, { action, page, pageSize })
   }
 
   const tmp = path.join(ROOT, '_api_feed.py')
@@ -49,17 +66,16 @@ try:
 except: pass
 
 results = []
-for uid, name in list(FOLLOWED_USERS.items())[:12]:
+for uid, name in list(FOLLOWED_USERS.items())[:${users}]:
     full = f'jimu_user_info-{uid}'
     try:
-        r = get_trading_records(full, cookies=c, max_pages=2, size=10)
+        r = get_trading_records(full, cookies=c, max_pages=2, size=${limit})
         for rec in r.get('records', []):
             fid = rec.get('_fund_id', '')
             code = fid_to_code.get(fid, '')
             action_str = rec.get('action', '')
             is_buy = '买入' in action_str
             amount = rec.get('amount', '')
-            # 解析金额数字
             amt_num = 0
             try:
                 s = str(amount).replace(',', '')
@@ -70,33 +86,57 @@ for uid, name in list(FOLLOWED_USERS.items())[:12]:
                 else:
                     amt_num = float(s.replace('元','')) if s else 0
             except: pass
-
             time_str = rec.get('summary', '') or rec.get('detail', '')
-            # time_str 格式: "MM-DD HH:MM" 或其他
             results.append({
-                'user': name,
-                'uid': uid,
-                'fund': rec.get('fund_name',''),
-                'code': code,
-                'action': action_str,
-                'amount': amount,
-                'amt_num': amt_num,
-                'time': time_str,
-                'isBuy': is_buy,
+                'user': name, 'uid': uid,
+                'fund': rec.get('fund_name',''), 'code': code,
+                'action': action_str, 'amount': amount, 'amt_num': amt_num,
+                'time': time_str, 'isBuy': is_buy,
             })
-    except Exception as e:
-        pass
+    except: pass
 
-# 按时间倒序
 results.sort(key=lambda x: x.get('time',''), reverse=True)
 print(json.dumps(results, ensure_ascii=False))`, 'utf-8')
     const stdout = await runPy(tmp)
     fs.unlinkSync(tmp)
-    const data = JSON.parse(stdout.trim())
-    cache = { data, time: Date.now() }
-    return NextResponse.json(data)
+    const items = JSON.parse(stdout.trim())
+    cache = { data: { _key: cacheKey, items }, time: Date.now() }
+    return applyFilter(items, { action, page, pageSize })
   } catch (e: any) {
     try { fs.unlinkSync(tmp) } catch {}
-    return NextResponse.json({ error: e.message }, { status: 500 })
+    // 缓存失败, 返上一次缓存 (如有过期)
+    if (cache) {
+      return applyFilter(cache.data.items, { action, page, pageSize, warning: e.message })
+    }
+    return NextResponse.json({
+      error: e.message || 'fetch feed failed',
+      hint: '检查 data/jd_auth/cookies.json 或运行 scripts/auto-pipeline.py',
+    }, { status: 500 })
   }
+}
+
+function applyFilter(items: any[], opts: { action: string; page: number; pageSize: number; warning?: string }) {
+  let filtered = items
+  if (opts.action === 'buy') filtered = filtered.filter(x => x.isBuy)
+  else if (opts.action === 'sell') filtered = filtered.filter(x => !x.isBuy)
+
+  const total = filtered.length
+  const start = (opts.page - 1) * opts.pageSize
+  const paged = filtered.slice(start, start + opts.pageSize)
+
+  const body: any = {
+    items: paged,
+    pagination: {
+      page: opts.page,
+      page_size: opts.pageSize,
+      total,
+      total_pages: Math.ceil(total / opts.pageSize),
+    },
+    filters: { action: opts.action || 'all' },
+  }
+  if (opts.warning) body.warning = opts.warning
+
+  return NextResponse.json(body, {
+    headers: opts.warning ? { 'X-Cache': 'stale', 'X-Warning': opts.warning } : { 'X-Cache': 'fresh' }
+  })
 }

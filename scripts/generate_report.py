@@ -176,7 +176,7 @@ def _gen_per_user_breakdown(strong_buy, buy_signal):
     return user_ops
 
 
-def _generate_report(strong_buy, buy_signal, others):
+def _build_consensus_report(strong_buy, buy_signal, others):
     today = _today_str()
     lines = []
 
@@ -637,7 +637,7 @@ def main():
         print(f"    [{item['buy_count']}人] {item['name']} ({item['code']})")
 
     # ── Generate fund-monitor report ──
-    report = _generate_report(strong_buy, buy_signal, others)
+    report = _build_consensus_report(strong_buy, buy_signal, others)
     today = _today_str()
 
     report_path = REPORTS_DIR / "auto" / f"daily-{today}.md"

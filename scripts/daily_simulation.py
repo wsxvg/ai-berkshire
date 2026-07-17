@@ -89,7 +89,7 @@ def compute_fund_score(code, name, cookies):
                 import re
                 nums = re.findall(r'[\d.]+', mf_text)
                 mf = float(nums[0]) if nums else 1.0
-            except:
+            except (ValueError, IndexError):
                 mf = 1.0
             if mf < 0.5: score += 0.5
             elif mf > 1.5: score -= 0.5

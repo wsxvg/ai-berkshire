@@ -1,0 +1,24 @@
+{
+  "phase": "shadow",
+  "start_date": "2026-07-17",
+  "initial_cash": 100000,
+  "backtest_return": 62.43,
+  "deployed_cash": 0,
+  "daily_snapshots": [
+    {
+      "date": "2026-07-17",
+      "elapsed_days": 0,
+      "actual_nav": 100000,
+      "actual_return_pct": 0.0,
+      "theoretical_return_pct": 0.0,
+      "deviation_pct": 0.0,
+      "signals": 13,
+      "executed": 2,
+      "execution_rate": 15.4,
+      "current_dd": 0
+    }
+  ],
+  "deviation_log": [],
+  "frozen": false,
+  "circuit_breaker_count": 0
+}

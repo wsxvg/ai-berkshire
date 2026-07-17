@@ -8,7 +8,7 @@ Features:
   - 27 core API wrappers (holdings/trade/fund detail/rules/distribution/manager
     + NEW: index_block_info/fund_detail_pin/watchlist/player_trading_feed/index_detail)
   - Local cache (trade rules 30d / fund detail 7d / holdings 1d)
-  - Rate limiting (0.15s interval, bypass in batch mode)
+  - Rate limiting (0.15s interval, thread-safe global limiter for concurrent batch)
   - --offline fallback mode (cache only)
 
 Dependencies: Python stdlib only (urllib/json/os/time/datetime/pathlib)
@@ -40,12 +40,22 @@ import json
 import os
 import ssl
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
 import urllib.parse
 from datetime import datetime, timedelta
 from pathlib import Path
+
+# 统一日志入口（stderr + logs/jd_finance_api.log 轮转）
+try:  # 兼容 tools 作为包导入（项目根在 sys.path）
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("jd_finance_api")
+
 
 # ============================================================
 # Path constants
@@ -64,24 +74,174 @@ _USER_AGENT = (
 
 # Known followed users (numeric_id -> name)
 FOLLOWED_USERS = {
-    "3546208": "\u84dd\u9cb8\u8dc3\u8d22",
-    "14345330": "Z\u5148\u751f\u517b\u57fa",
-    "16020895": "\u738b\u6674\u9633\u7684\u6d3b\u8d22\u4e4b\u8def",
-    "2690580": "\u9ed1\u591c\u94f6\u7ffc",
-    "4063754": "\u5357\u5c71\u9690\u58eb",
-    "3642504": "\u8d5a\u81ea\u5df1\u8ba4\u77e5\u5185\u7684\u94b1",
-    "3748946": "\u6674\u7a7a\u4e07\u91cc\u7406\u8d22",
-    "10458335": "\u5c0f\u732b\u54aa\u7231\u9ec4\u91d1",
-    "11979538": "\u5bb6\u5ead\u7684\u6e29\u6696",
-    "4968958": "\u897f\u897f\u7684\u91d1\u7b97\u76d8",
-    "11953905": "\u62db\u8d22\u5c0f\u732b",
+    "3546208": "蓝鲸跃财",
+    "14345330": "Z先生养基",
+    "16020895": "王晴阳的活财之路",
+    "2690580": "黑夜银翼",
+    "4063754": "南山隐士",
+    "3642504": "赚自己认知内的钱",
+    "3748946": "晴空万里理财",
+    "10458335": "小猫咪爱赚钱",
+    "11979538": "家庭的温暖",
+    "4968958": "西西的金算盘",
+    "11953905": "招财小猫",
+    # 2026-07-14 关注流/个人页新增
+    "17490486": "布布养基吃肉版",
+    "11768823": "璎珞儿姐姐",
+    "13265973": "布丁爱理财",
+    "1136595": "京东-和路雪",
+    "11679592": "天海长风",
+    "10597865": "瀚仔",
+    "11832508": "红豆的甜美",
+    "15456499": "萧笑笑儿",
+    "10597647": "小虎爱理财",
+    "9914015": "Daydayup哆啦咪",
+    "92408": "丹辰无双",
+    "8708038": "无聊透顶",
+    "868100": "金京有位",
+    "1118910": "纸飞机起航",
+    "13575815": "枪手日日野",
+    "9649553": "阔爷88",
+    # 2026-07-14 收益率榜 TOP50 (rankSortBy=1, 近一年)
+    "3340681": "SunSpear_",
+    "12970014": "酷睿-陈",
+    "11036788": "吼吼拉拉",
+    "1133558": "jd_187217ygz",
+    "11857780": "Merci",
+    "273591": "那风飘飘",
+    "1126861": "jd_无限宽容2015",
+    "1164775": "jd_zxsm",
+    "185759": "L***6",
+    "1064219": "野生月光",
+    "1264266": "善其事利其器",
+    "3757670": "45895uqombpypx",
+    "432038": "jd332099ifj",
+    "13566933": "r2b4mm433m54wi",
+    "14155320": "59106b4s1qx9m8",
+    "384397": "嘻嘻哈哈112",
+    "3786598": "茅年斌",
+    "277615": "s***4",
+    "2960245": "j***F",
+    "904812": "bobzxj",
+    "1202693": "万今888",
+    "80841": "道申一",
+    "412456": "江***月",
+    "987020": "S***3",
+    "1094463": "jd_139311kaq",
+    "13033071": "eswd64rgqhcx04",
+    "1078493": "热烈的心愿",
+    "15522603": "xuelou123",
+    "11025669": "9j1a9wf38qlj05",
+    "12254649": "欣欣来了",
+    "14215625": "jd_心琪无忧",
+    "1040927": "中***手",
+    "2804244": "-咫尺-天涯-",
+    "13877467": "西门喷血1981",
+    "12396062": "甜甜圈521",
+    "13440316": "illkid87",
+    "397676": "z***7",
+    "10951797": "风云42号",
+    "3519894": "彤彤w",
+    "10435185": "Chen纯白黑",
+    "2750587": "ZHCZJN",
+    "1129067": "mai下京东",
+    "4972373": "羊小米米",
+    "1224896": "无影天尊",
+    "8390340": "时令的香气",
+    "4452314": "jd_136395apy",
+    "3202582": "h***g",
+    "47850": "s种花家",
+    "4409771": "jd_153130wko",
+    "6401658": "和平的使命延续",
 }
+
+
+# 大佬权重配置 — 从 data/user_weight_config.json 加载
+# 配置文件含 4 组测试场景 (baseline/flat/extreme/conservative)
+# 默认使用 baseline: VIP=3.0, 集中=1.5, 单吊=0.5
+def _load_user_weights(scenario="baseline"):
+    """加载用户权重配置。scenario: baseline|flat|extreme|conservative"""
+    import json as _json
+    config_path = _DATA_DIR / "user_weight_config.json"
+    if not config_path.exists():
+        return {}
+    try:
+        config = _json.loads(config_path.read_text("utf-8"))
+        # 读取测试场景
+        scenarios = config.get("test_scenarios", [])
+        scenario_weights = {}
+        for s in scenarios:
+            if s.get("name") == scenario:
+                scenario_weights = {
+                    "vip": s.get("vip", 3.0),
+                    "concentrated": s.get("concentrated", 1.5),
+                    "single_bet": s.get("single_bet", 0.5),
+                }
+                break
+        if not scenario_weights:
+            scenario_weights = {"vip": 3.0, "concentrated": 1.5, "single_bet": 0.5}
+        # 构建 user_id -> weight 映射
+        user_weights = {}
+        tiers = config.get("tiers", {})
+        for tier_key, tier_weight_key in [("vip", "vip"), ("concentrated", "concentrated"), ("single_bet", "single_bet")]:
+            tier_data = tiers.get(tier_key, {})
+            w = scenario_weights.get(tier_weight_key, 3.0)
+            for uid in tier_data.get("users", {}):
+                user_weights[uid] = w
+        return user_weights
+    except Exception:
+        return {}
+
+# 默认加载 baseline 配置
+USER_WEIGHT = _load_user_weights()
+
+
+# ============================================================
+# Helpers
+# ============================================================
+def _to_num(v):
+    """安全转 float，处理 '--' 等非数字值（模块级，供 get_simple_quote 等使用）"""
+    if v is None or v == "--" or v == "":
+        return None
+    try:
+        return float(v)
+    except (ValueError, TypeError):
+        return None
 
 
 # ============================================================
 # Cookie / Auth Management
 # ============================================================
 def _load_cookies():
+    """Load JD cookies: JD_COOKIES env var (base64 JSON) → cookies_full.json → cookies.json"""
+    import base64
+
+    # 1. JD_COOKIES 环境变量（CI 模式优先，解码后写入本地文件供后续复用）
+    env_cookie = os.environ.get("JD_COOKIES", "")
+    if env_cookie:
+        try:
+            decoded = base64.b64decode(env_cookie).decode("utf-8")
+            data = json.loads(decoded)
+            if isinstance(data, dict) and len(data) >= 3:
+                # 也写入本地文件，这样后续调用（无 env var）也能用
+                _AUTH_DIR.mkdir(parents=True, exist_ok=True)
+                with open(_COOKIES_PATH, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False)
+                _logger.info("Cookie loaded from JD_COOKIES env var")
+                return data
+        except Exception:
+            _logger.warning("Failed to decode JD_COOKIES, falling back to file")
+
+    # 2. 优先用完整 cookies (29 条, 从 HAR 抓包提取, 2026-07-13)
+    full_path = _AUTH_DIR / "cookies_full.json"
+    if full_path.exists():
+        try:
+            with open(full_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, dict) and len(data) >= 5:
+                return data
+        except (json.JSONDecodeError, OSError):
+            pass
     if not _COOKIES_PATH.exists():
         return {}
     try:
@@ -196,19 +356,41 @@ def _ensure_cookies(offline=False):
     if offline:
         if cookies:
             return cookies
-        print("[WARN] offline mode but no local cookie. Some features unavailable.")
+        _logger.info("offline mode but no local cookie. Some features unavailable.")
         return {}
     if cookies:
         valid, _ = _verify_cookies(cookies)
         if valid:
             return cookies
-        print("[INFO] Cookie expired, attempting auto-refresh...")
+        _logger.info("Cookie expired, attempting auto-refresh...")
+    # 无头环境检测：CI / 无 DISPLAY / 非交互式终端 → 不尝试 Playwright（会超时 10 分钟）
+    if _is_headless():
+        _logger.warning(
+            "Headless environment detected (CI/no-display). "
+            "Cannot auto-login via browser. Set JD_COOKIES env var for non-interactive auth."
+        )
+        return cookies or {}
     try:
         cookies = asyncio.run(_auto_login_with_playwright())
     except Exception as e:
-        print(f"[ERROR] Auto-login failed: {e}")
+        _logger.error(f"Auto-login failed: {e}")
         cookies = None
     return cookies or {}
+
+
+def _is_headless():
+    """Detect if we're in a non-interactive environment (CI, no display)."""
+    # CI 环境变量
+    if os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS"):
+        return True
+    # 无图形界面
+    if not os.environ.get("DISPLAY") and os.name == "posix":
+        # Windows 下不靠 DISPLAY 判断（可能正常有桌面）
+        pass
+    # 标准输入不是终端 → 可能通过管道/scheduled task 运行
+    if not sys.stdin.isatty() and not sys.stdout.isatty():
+        return True
+    return False
 
 
 # ============================================================
@@ -244,18 +426,46 @@ def _write_cache(cache_type, key, data):
 # ============================================================
 # API Request Core
 # ============================================================
-_last_request_time = 0
-_BATCH_MODE = False  # set True to skip throttle for concurrent batch operations
+# 线程安全的全局节流器：用锁 + 共享时间戳串行化所有请求（含并发批处理），
+# 避免此前 _BATCH_MODE 全局开关在并发时既竞态、又导致批处理零间隔（更易触发京东风控）。
+_throttle_lock = threading.Lock()
+_last_request_time = 0.0  # 受 _throttle_lock 保护
 
 
 def _throttle(delay=0.15):
+    """线程安全的全局节流：所有请求（含并发批处理）都按 delay 间隔自对齐。
+
+    锁在 sleep 期间保持持有，等价于"同一时刻仅一个线程可通过节流闸门"，
+    批处理线程因此自动错峰（max_workers=10 时约每 1.5s 发出 10 个请求），
+    既保留并发吞吐，又不突破京东 IP 风控频率。
+    """
     global _last_request_time
-    if _BATCH_MODE:
-        return  # skip throttle in concurrent batch mode
-    elapsed = time.time() - _last_request_time
-    if elapsed < delay:
-        time.sleep(delay - elapsed)
-    _last_request_time = time.time()
+    with _throttle_lock:
+        elapsed = time.time() - _last_request_time
+        if elapsed < delay:
+            time.sleep(delay - elapsed)
+        _last_request_time = time.time()
+
+
+def _request_json(req, timeout):
+    """发送 HTTP 请求，对传输层错误做有限重试（指数退避）。
+
+    仅对传输层异常重试（URLError / OSError / TimeoutError，含京东 IP 风控
+    导致的连接中断），不对"HTTP 200 + 业务层 error JSON"重试。
+    最多 3 次（退避 1s、2s），持续失败返回 {"error": "<msg>"}。
+    """
+    last_err = None
+    for attempt in range(3):
+        try:
+            resp = urllib.request.urlopen(req, timeout=timeout)
+            return json.loads(resp.read())
+        except (urllib.error.URLError, OSError, TimeoutError) as e:
+            last_err = e
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+    _logger.warning("JD API 请求重试 3 次仍失败: %s", last_err)
+    return {"error": str(last_err)}
 
 
 def _api_post(path, body, cookies=None, base_url=None):
@@ -270,11 +480,7 @@ def _api_post(path, body, cookies=None, base_url=None):
     if cookies:
         cookie_str = "; ".join(f"{k}={v}" for k, v in cookies.items())
         req.add_header("Cookie", cookie_str)
-    try:
-        resp = urllib.request.urlopen(req, timeout=15)
-        return json.loads(resp.read())
-    except Exception as e:
-        return {"error": str(e)}
+    return _request_json(req, 15)
 
 
 def _api_form(path, body_dict, cookies=None, base_url=None):
@@ -283,18 +489,16 @@ def _api_form(path, body_dict, cookies=None, base_url=None):
     req_data = json.dumps(body_dict)
     payload = f"reqData={urllib.parse.quote(req_data)}".encode("utf-8")
     req = urllib.request.Request(url, data=payload, headers={
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         "User-Agent": _USER_AGENT,
-        "Accept": "application/json",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://jdjr.jd.com/",  # 2026-07-13: 新端点需要 jdjr.jd.com referer
+        "Origin": "https://jdjr.jd.com",
     })
     if cookies:
         cookie_str = "; ".join(f"{k}={v}" for k, v in cookies.items())
         req.add_header("Cookie", cookie_str)
-    try:
-        resp = urllib.request.urlopen(req, timeout=30)
-        return json.loads(resp.read())
-    except Exception as e:
-        return {"error": str(e)}
+    return _request_json(req, 30)
 
 
 # ============================================================
@@ -312,11 +516,7 @@ def _api_post_batch(path, body):
         "User-Agent": _USER_AGENT,
         "Accept": "application/json",
     })
-    try:
-        resp = urllib.request.urlopen(req, timeout=15)
-        return json.loads(resp.read())
-    except Exception as e:
-        return {"error": str(e)}
+    return _request_json(req, 15)
 
 
 def _api_form_batch(path, body_dict):
@@ -329,11 +529,7 @@ def _api_form_batch(path, body_dict):
         "User-Agent": _USER_AGENT,
         "Accept": "application/json",
     })
-    try:
-        resp = urllib.request.urlopen(req, timeout=30)
-        return json.loads(resp.read())
-    except Exception as e:
-        return {"error": str(e)}
+    return _request_json(req, 30)
 
 
 def batch_get_fund_data(fund_codes, include=("profile", "perf", "trade_rules", "holdings", "manager"),
@@ -353,9 +549,8 @@ def batch_get_fund_data(fund_codes, include=("profile", "perf", "trade_rules", "
     Returns:
         dict: {fund_code: {endpoint_name: result_or_None, ...}, ...}
     """
-    # Enable batch mode to skip global throttle (threads manage their own timing)
-    global _BATCH_MODE
-    _BATCH_MODE = True
+    # 批处理不再跳过节流：_throttle 已是线程安全的全局限速器，
+    # 各线程会自动错峰，无需（也不应）用全局开关临时关掉节流。
 
     def fetch_one(code):
         row = {"code": code}
@@ -389,7 +584,6 @@ def batch_get_fund_data(fund_codes, include=("profile", "perf", "trade_rules", "
             except Exception as e:
                 results[code] = {"code": code, "error": str(e)}
 
-    _BATCH_MODE = False
     return results
 
 
@@ -1051,6 +1245,69 @@ def get_manager_detail(manager_id):
     return {"radar": radar, "total_score": float(datas.get("totalScore", 0))}
 
 
+def follow_user(numeric_id, follow=True, cookies=None):
+    """关注/取关 基金圈牛人 — jimu/h5/m/followOperate
+    ✅ 2026-07-15 抓包实测
+
+    Args:
+        numeric_id: 交易者数字ID, e.g. "10458335" (小猫爱黄金)
+        follow: True=关注, False=取关
+        cookies: 登录态 (必需)
+
+    Returns:
+        bool: True=成功, False=失败
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    if not cookies:
+        return False
+    body = {
+        "bizType": 17,
+        "followChannel": 0,
+        "content": f"jimu_user_info-{numeric_id}",
+        "followOperate": 1 if follow else 0,
+        "JDJRRISK_BIZID": "JDJR-GCS",
+        "clientType": "android",
+        "extParams": {"requestFrom": "h5", "inAppName": ""},
+        "clientVersion": "9.9.9",
+    }
+    # URL query string: followOperate=0 or 1
+    op = 1 if follow else 0
+    raw = _api_form(f"gw/generic/jimu/h5/m/followOperate?followOperate={op}", body, cookies)
+    if not raw:
+        return False
+    rd = raw.get("resultData", {})
+    return isinstance(rd, dict) and rd.get("success") in (True, "true", 1)
+
+
+def get_follow_status(numeric_id, cookies=None):
+    """查询是否已关注某交易者 — integActive/h5/m/getFollowOptionsStatus
+    ✅ 2026-07-15 抓包实测
+
+    Args:
+        numeric_id: 交易者数字ID
+        cookies: 登录态
+
+    Returns:
+        dict/None: 关注状态信息, None=失败
+    """
+    if cookies is None:
+        cookies = _ensure_cookies()
+    if not cookies:
+        return None
+    body = {
+        "targetUid": f"jimu_user_info-{numeric_id}",
+        "extParams": {"requestFrom": "pc", "inAppName": ""},
+        "clientType": "android",
+        "clientVersion": "9.9.9",
+    }
+    raw = _api_form("gw2/generic/inteActive/h5/m/getFollowOptionsStatus", body, cookies)
+    if not raw or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    return rd if isinstance(rd, dict) else None
+
+
 def get_followed_users_from_circle(cookies=None, max_pages=3):
     """Discover active users from JD Finance investment circle.
 
@@ -1131,8 +1388,23 @@ def get_followed_users_from_circle(cookies=None, max_pages=3):
 # ============================================================
 # Fund Notices & Daily News
 # ============================================================
-def get_fund_notices(fund_code, cookies=None, use_cache=False):
-    """Fetch fund announcements from getFundNoticesPageInfo."""
+def get_fund_notices(fund_code, cookies=None, use_cache=False, notice_type_code="0", page_size=30, max_pages=20):
+    """Fetch fund announcements from getFundNoticesPageInfo.
+
+    2026-07-12 修复:
+    - 必填 noticeTypeCode (默认 0=全部)
+    - 真实字段是 noticeContentList (原代码找 noticeList, 错!)
+    - 支持多页抓取 (max_pages 默认 20 页 × 30 = 600 条)
+
+    typeCode 含义:
+    - 0: 全部
+    - 11: 发行运作
+    - 12: 定期报告
+    - 13: 分红配送
+    - 14: 人事调整 (经理变更)  ← LLM 重点
+    - 15: 基金销售
+    - 99: 其他公告
+    """
     if use_cache:
         cached = _read_cache("fund_notices", fund_code, max_age_days=1)
         if cached:
@@ -1140,20 +1412,29 @@ def get_fund_notices(fund_code, cookies=None, use_cache=False):
 
     if cookies is None:
         cookies = _ensure_cookies()
-    data = _api_post("gw/generic/jj/h5/m/getFundNoticesPageInfo",
-                     {"fundCode": fund_code}, cookies=cookies)
-    rd = data.get("resultData", {})
-    datas = rd.get("datas", {})
-    notices = []
-    for n in datas.get("noticeList", []):
-        notices.append({
-            "date": n.get("noteDate", ""),
-            "title": n.get("noticeTitle", ""),
-            "url": n.get("noticeHtmlUrl", ""),
-            "type": n.get("noticeTypeCode", ""),
-        })
-    result = {"fund_code": fund_code, "notices": notices}
-    if use_cache and notices:
+    all_notices = []
+    for page in range(1, max_pages + 1):
+        data = _api_post("gw/generic/jj/h5/m/getFundNoticesPageInfo",
+                         {"fundCode": fund_code, "pageSize": page_size,
+                          "noticeTypeCode": notice_type_code, "pageNum": page}, cookies=cookies)
+        rd = data.get("resultData", {})
+        if rd.get("code") != "0000":
+            break
+        datas = rd.get("datas", {})
+        page_list = datas.get("noticeContentList", []) or datas.get("noticeList", [])
+        if not page_list:
+            break
+        for n in page_list:
+            all_notices.append({
+                "date": n.get("noteDate", ""),
+                "title": n.get("noticeTitle", ""),
+                "url": n.get("noticeHtmlUrl", ""),
+                "type": str(n.get("noticeTypeCode", "")),
+            })
+        if len(page_list) < page_size:
+            break  # 末页
+    result = {"fund_code": fund_code, "notices": all_notices}
+    if use_cache and all_notices:
         _write_cache("fund_notices", fund_code, result)
     return result
 
@@ -1301,12 +1582,12 @@ def get_news_asof(asof_date, lookback_days=7):
     return all_items
 
 
-def get_fund_ranking(cookies=None, rank_sort_by="2", time_cycle="401", last_id=None):
+def get_fund_ranking(cookies=None, rank_sort_by="1", time_cycle="401", last_id=None):
     """Fetch fund ranking from JD Finance (实盘牛人 - 收益率榜).
 
     Args:
         cookies: JD auth cookies
-        rank_sort_by: "1"=收益榜(金额), "2"=收益率榜(百分比)
+        rank_sort_by: "1"=收益率榜(百分比), "2"=收益榜(金额)
         time_cycle: "101"=近一周, "201"=近一月, "401"=近一年
         last_id: pagination cursor, None for first page
 
@@ -1337,8 +1618,8 @@ def get_fund_ranking(cookies=None, rank_sort_by="2", time_cycle="401", last_id=N
     except Exception:
         pass
 
-    # Get ranking data (minimal params work best)
-    body_data = {"lastId": last_id}
+    # Get ranking data
+    body_data = {"lastId": last_id, "rankSortBy": rank_sort_by, "timeCycle": time_cycle}
     body = f"reqData={urllib.parse.quote(json.dumps(body_data))}".encode("utf-8")
     url = f"{_JD_BASE}/gw2/generic/redEnv001/h5/m/queryFundFirmOfferMultiRank"
     req = urllib.request.Request(url, data=body, headers={
@@ -1367,12 +1648,18 @@ def get_fund_ranking(cookies=None, rank_sort_by="2", time_cycle="401", last_id=N
                 return v.get("text", "")
             return str(v) if v else ""
 
+        user_uid = info.get("userUid", "")
+        # 从 jimu_user_info-XXXXX 提取数字部分
+        numeric_id = user_uid.replace("jimu_user_info-", "") if "jimu_user_info-" in str(user_uid) else user_uid
         users.append({
             "rank": len(users) + 1,
             "name": info.get("userName", ""),
             "pin": info.get("createdPin", ""),
-            "total_return": _text(u.get("rankColumnValue", "")),
-            "return_rate": _text(u.get("rankColumnName", "")),
+            "user_uid": user_uid,
+            "numeric_id": numeric_id,
+            # rankSortBy=1时: rankColumnValue=收益率%, rankColumnName=金额
+            "return_rate": _text(u.get("rankColumnValue" if rank_sort_by == "1" else "rankColumnName")),
+            "total_return": _text(u.get("rankColumnName" if rank_sort_by == "1" else "rankColumnValue")),
             "holdings_value": _text(u.get("showColumnValue", "")),
             "rank_position": _text(u.get("showColumnValue2", "")),
             "tag": _text(u.get("showColumnValue", "")),
@@ -1407,19 +1694,70 @@ def batch_get_holdings(cookies=None, use_cache=False):
 # Fund Chart Data (from demo.md verified)
 # ============================================================
 
-def get_fund_chart_data(fund_code):
-    """getFundDetailChartPageInfo — drawdown, recovery, chart points."""
+def get_fund_chart_data(fund_code, full_history=True, page_size=2000):
+    """getFundDetailChartPageInfo — drawdown, recovery, chart points.
+
+    2026-07-12 修复: 原 API 默认只返近 1 年 (~243 条).
+    通过额外调用 getFundHistoryNetValuePageInfo (pageSize=2000) 拿全量历史净值,
+    转换为 JD chart 格式 {xAxis, yAxis}, yAxis = 自成立来累计收益率%.
+    """
+    # 1) 主接口 (含 incomeTrendTip, majorChartPointList 近 1 年, performance)
     data = _api_post("gw/generic/jj/h5/m/getFundDetailChartPageInfo",
                      {"fundCode": fund_code})
     rd = data.get("resultData", {})
     ds = rd.get("datas", {})
-    return {
+
+    result = {
         "fund_code": fund_code,
         "income_trend": ds.get("incomeTrendTip", ""),
         "chart_points": ds.get("majorChartPointList", []),
         "index_name": ds.get("indexName", ""),
+        "establishment_cycle": ds.get("establishmentCycleDesc", ""),
         "_raw": ds,
     }
+
+    # 2) 拉全量历史净值 (翻多页, 累计抓取所有)
+    if full_history:
+        all_nav = []
+        for page in range(1, 10):  # 最多 10 页 × 2000 = 20000 条 (~80 年, 足够)
+            nav_data = _api_post("gw/generic/jj/h5/m/getFundHistoryNetValuePageInfo",
+                                 {"fundCode": fund_code, "pageNum": page, "pageSize": page_size})
+            nav_list = nav_data.get("resultData", {}).get("datas", {}).get("netValueList", [])
+            if not nav_list:
+                break
+            all_nav.extend(nav_list)
+            if len(nav_list) < page_size:
+                break  # 末页
+
+        # NAV → yAxis 累计收益率%
+        if all_nav:
+            # 按日期升序
+            all_nav.sort(key=lambda x: x.get("date", ""))
+            # 用最早一天的 NAV 作为基准 (京东没有"成立时 NAV", 近似用起点)
+            base_nav = None
+            for n in all_nav:
+                try:
+                    v = float(n.get("netValue", 0))
+                    if v > 0:
+                        base_nav = v
+                        break
+                except (ValueError, TypeError):
+                    continue
+            if base_nav:
+                full_pts = []
+                for n in all_nav:
+                    try:
+                        v = float(n.get("netValue", 0))
+                        if v <= 0:
+                            continue
+                        yaxis = (v / base_nav - 1.0) * 100
+                        full_pts.append({"xAxis": n.get("date", ""), "yAxis": round(yaxis, 4)})
+                    except (ValueError, TypeError):
+                        continue
+                result["chart_points_full"] = full_pts
+                result["nav_history_count"] = len(full_pts)
+
+    return result
 
 
 # ============================================================
@@ -1618,9 +1956,9 @@ def get_fund_data(fund_code, use_cache=True, cookies=None):
             cached = json.loads(cache_path.read_text("utf-8"))
             if "fetch_time" in cached:
                 fetch_time = datetime.fromisoformat(cached["fetch_time"])
-                if (now - fetch_time).days < 1:
-                    return cached
-        except:
+            if (now - fetch_time).days < 1:
+                return cached
+        except (json.JSONDecodeError, OSError, KeyError):
             pass
 
     result = {"fund_code": fund_code, "fetch_time": now.isoformat()}
@@ -2184,7 +2522,197 @@ def get_board_by_code(sec_rank_code, cookies=None, use_cache=True, max_items=20)
 
 
 # ============================================================
-# Snapshot Management
+# 1.txt 新发现端点 (2026-07-12):
+#   1) getSimpleQuoteUseUniqueCodes — A股/港股/美股9大指数实时报价
+#   2) queryStallNew — 板块/市场实时行情 (param: stallNo)
+#   3) getIndexDetail — 指数详情(已实现, 见上)
+# 这 3 个端点是 **实时** 数据,无法直接用于历史回测.
+# 下方提供 (a) 实时拉取封装 + (b) 历史代理 (供回测引擎用 fund_charts / industry_valuation
+# 作为同语义历史数据),两类方法共享一个统一接口,让融合策略在回测和实盘上行为一致.
+# ============================================================
+
+
+# 默认关注的指数 uniqueCode → (中文名, 标的类型)
+QUOTE_UNIQUE_CODES = {
+    "SH-000001": ("上证指数", "A-大盘"),
+    "SZ-399001": ("深证成指", "A-大盘"),
+    "SZ-399006": ("创业板指", "A-成长"),
+    "HK-HSI":    ("恒生指数", "港股-大盘"),
+    "AMEX-IXIC": ("纳斯达克", "美股-科技"),
+    "SH-000905": ("中证500", "A-中盘"),
+    "SH-000300": ("沪深300", "A-大盘"),
+    "SH-000688": ("科创50", "A-科技"),
+    "SH-000016": ("上证50", "A-大盘"),
+}
+
+
+def get_simple_quote(unique_codes=None, cookies=None):
+    """1.txt 端点 1: 实时报价 (getSimpleQuoteUseUniqueCodes).
+
+    Args:
+        unique_codes: list[str]  默认关注 9 大指数
+        cookies:      JD cookies dict (None 则自动加载)
+
+    Returns:
+        dict: { uniqueCode: {"name", "current", "change", "change_pct", ...} }
+
+    备注: 该端点**只支持实时**拉取,无法用于历史回测. 实时数据用于:
+        - 大盘择时: 多指数共振/背离判断
+        - 当日板块走势: 触发紧急止盈/止损
+        - 监控 fund_charts 与大市的同步性
+    """
+    if unique_codes is None:
+        unique_codes = list(QUOTE_UNIQUE_CODES.keys())
+    if cookies is None:
+        cookies = _load_cookies()
+
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": unique_codes,
+    }
+    data = _api_form("gw/generic/opdataapi/h5/m/getSimpleQuoteUseUniqueCodes", body, cookies)
+    rd = data.get("resultData", {}) if isinstance(data, dict) else {}
+
+    # 兼容两种返回格式:
+    # 格式1 (旧): resultData.datas → {SH-000001: {current, changePct, ...}}  (key-value dict)
+    # 格式2 (新): resultData.data.data → [{uniqueCode, lastPrice, raisePercent, ...}]  (array)
+    items = rd.get("datas", None) if isinstance(rd, dict) else None
+    if items is None:
+        inner_data = rd.get("data", {}) if isinstance(rd, dict) else {}
+        rows = inner_data.get("data", []) if isinstance(inner_data, dict) else []
+        items = {r.get("uniqueCode"): r for r in rows if isinstance(r, dict) and r.get("uniqueCode")}
+
+    if not items:
+        inner_d = rd.get("data", {}) if isinstance(rd, dict) else {}
+        return {"error": "no quote data", "rd_code": rd.get("code", "?"),
+                "inner_keys": list(inner_d.keys()) if isinstance(inner_d, dict) else "not_dict"}
+
+    result = {}
+    for code, q in items.items():
+        # 统一字段名: 新格式用 lastPrice/raisePercent, 旧格式用 current/changePct
+        result[code] = {
+            "name": q.get("name", QUOTE_UNIQUE_CODES.get(code, ("?",""))[0]),
+            "current": _to_num(q.get("lastPrice", q.get("current"))),
+            "change": _to_num(q.get("raise", q.get("change"))),
+            "change_pct": _to_num(q.get("raisePercent", q.get("changePct"))),
+            "open": _to_num(q.get("openPrice", q.get("open"))),
+            "high": _to_num(q.get("highPrice", q.get("high"))),
+            "low": _to_num(q.get("lowPrice", q.get("low"))),
+            "prev_close": _to_num(q.get("preClose", q.get("prevClose"))),
+            "turnover": _to_num(q.get("turnover")),
+            "ts": q.get("timestamp", ""),
+        }
+    return {"quotes": result, "ts": data.get("ts", "")}
+
+
+def query_stall_new(stall_no, system_code="cf-component", cookies=None):
+    """1.txt 端点 2: 板块实时行情 (queryStallNew).
+
+    Args:
+        stall_no: 板块编号 (如 "60250902152459000889")
+        system_code: 固定 "cf-component"
+        cookies: JD cookies dict
+
+    Returns:
+        dict: 板块成分、涨幅、领涨股、ETF 列表
+
+    备注: 该端点**只支持实时**. 历史代理: 用同板块 ETF 的 fund_charts 作为
+    板块走势等价信号. 在回测中用 fund_charts 的收益率差替代.
+    """
+    if cookies is None:
+        cookies = _load_cookies()
+    body = {"systemCode": system_code, "stallNo": stall_no}
+    data = _api_form("gw/generic/jrm/h5/m/queryStallNew", body, cookies)
+    rd = data.get("resultData", {}) if isinstance(data, dict) else {}
+    if not rd:
+        return {"error": "no resultData", "stall_no": stall_no, "raw": data}
+    return rd
+
+
+# --- 历史代理 (供回测引擎使用) ---
+
+# 关注的指数 uniqueCode → 京东内部 fund_code (回测时用此基金当指数代理)
+# 沪深300 (SH-000300) → 110020 易方达沪深300ETF联接 (回测引擎默认)
+# 创业板 (SZ-399006)  → 110023 易方达创业板ETF联接
+# 中证500 (SH-000905) → 110030 易方达中证500ETF联接
+# 港股 (HK-HSI)       → 159920 恒生ETF
+# 美股 (AMEX-IXIC)    → 513100 纳指ETF
+INDEX_TO_FUND_PROXY = {
+    "SH-000300": "110020",
+    "SZ-399006": "110023",
+    "SH-000905": "110030",
+    "HK-HSI":    "159920",
+    "AMEX-IXIC": "513100",
+    "SH-000688": "110043",
+}
+
+
+def get_index_quote_history(unique_code, fund_charts, cutoff_date, lookback_days=20):
+    """回测代理: 从 fund_charts 提取指定 unique_code 对应 ETF 基金截至 cutoff_date 的近期行情.
+
+    Args:
+        unique_code: 如 "SH-000300"
+        fund_charts: dict[code → [{xAxis, yAxis, ...}]]
+        cutoff_date: 截止日 (YYYY-MM-DD)
+        lookback_days: 回看天数
+
+    Returns:
+        dict: {"unique_code", "name", "current", "trend_5d", "trend_20d",
+               "above_ma20", "rs_score"}
+        失败返回 None
+    """
+    proxy_code = INDEX_TO_FUND_PROXY.get(unique_code)
+    if not proxy_code or proxy_code not in fund_charts:
+        return None
+    pts = [p for p in fund_charts[proxy_code] if p.get("xAxis", "") <= cutoff_date]
+    if len(pts) < 5:
+        return None
+
+    name, _ = QUOTE_UNIQUE_CODES.get(unique_code, (proxy_code, "A"))
+    current = _to_num(pts[-1].get("yAxis", 0))
+    if len(pts) >= 5:
+        v5 = _to_num(pts[-5].get("yAxis", 0))
+        trend_5d = current - v5
+    else:
+        trend_5d = 0
+    if len(pts) >= 20:
+        v20 = _to_num(pts[-20].get("yAxis", 0))
+        trend_20d = current - v20
+    else:
+        trend_20d = 0
+    if len(pts) >= 20:
+        ma20 = sum(_to_num(p.get("yAxis", 0)) for p in pts[-20:]) / 20
+        above_ma20 = 1 if current > ma20 else 0
+    else:
+        above_ma20 = 0
+    rs_score = 0
+    bm_code = "110020"
+    if proxy_code != bm_code and bm_code in fund_charts:
+        bm_pts = [p for p in fund_charts[bm_code] if p.get("xAxis", "") <= cutoff_date]
+        if len(bm_pts) >= 20:
+            bm_trend = _to_num(bm_pts[-1].get("yAxis", 0)) - _to_num(bm_pts[-20].get("yAxis", 0))
+            rs_score = round(trend_20d - bm_trend, 2)
+    return {
+        "unique_code": unique_code,
+        "name": name,
+        "current": round(current, 2),
+        "trend_5d": round(trend_5d, 2),
+        "trend_20d": round(trend_20d, 2),
+        "above_ma20": above_ma20,
+        "rs_score": rs_score,
+    }
+
+
+def get_index_quote_panel(fund_charts, cutoff_date):
+    """回测代理: 拉取 6 大指数在 cutoff_date 的实时面板 (历史代理).
+
+    Returns:
+        dict: {unique_code: quote_history_dict}
+    """
+    return {
+        code: q for code in INDEX_TO_FUND_PROXY
+        if (q := get_index_quote_history(code, fund_charts, cutoff_date)) is not None
+    }
 
 
 # ============================================================
@@ -2207,6 +2735,418 @@ def load_latest_snapshot(tag):
         return None
     with open(files[0], "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+# ============================================================
+# NEW: Manager Rating / Fund Label / Index Valuation (2026-07-13)
+# 端点来源: HAR 抓包 (1.txt), 已实测
+# 端点路径: gw2/generic/jj/newh5 + gw2/generic/wealthBase/newh5 + gw2/generic/opdataapi/newh5
+# ============================================================
+
+
+def get_invest_research_rank(rank_type="stable_jjzsy", cookies=None, use_cache=True):
+    """投研精选榜单 — gw2/generic/jj/newh5/m/getInvestResearchRank
+    ✅ 已实测修复 (2026-07-15 Playwright 抓包)
+
+    参数来源: 页面首次加载时发起的两个请求
+    请求体: {"rankType":"stable_jjzsy"} 或 {"rankType":"lxpydp"}
+
+    已知 rankType (实测):
+        stable_jjzsy — 季季正收益 (20只, 偏债类)
+        lxpydp     — 连续跑赢大盘 (20只)
+
+    Returns:
+        dict: {
+            "rank_name": "追求季度稳健回报...",
+            "funds": [{fundCode, fundName, riskLevel, firstIndexDesc, firstIndexVal,
+                       secondIndexDesc, secondIndexVal, tagList, ...}],
+            "rank_type": "stable_jjzsy",
+            "asof": "...",
+        }
+        None: 端点失败
+    """
+    cache_key = f"invest_research_{rank_type}"
+    if use_cache:
+        cached = _read_cache("invest_research_rank", cache_key, max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    # 真实参数: 只需要 rankType
+    body = {"rankType": rank_type}
+    raw = _api_form("gw2/generic/jj/newh5/m/getInvestResearchRank", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    # 实测返回结构: datas.status=SUCCESS, datas.productTabList[0].productList[]
+    if isinstance(datas, dict) and datas.get("status") == "FAIL":
+        return None
+    product_tab_list = datas.get("productTabList", [])
+    funds = []
+    for tab in product_tab_list:
+        funds.extend(tab.get("productList", []))
+    rank_header = datas.get("rankHeader", {})
+    result = {
+        "rank_name": rank_header.get("rankName", ""),
+        "funds": funds,
+        "total": len(funds),
+        "rank_type": rank_type,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "more_url": rank_header.get("moreUrl", ""),
+    }
+    if use_cache:
+        _write_cache("invest_research_rank", cache_key, result)
+    return result
+
+
+def get_fund_label(cookies=None, use_cache=True):
+    """基金/指数标签 — 抓包端点 gw2/generic/opdataapi/newh5/m/getFundLabel
+
+    Returns:
+        dict: {code: [{label, score, type}]}
+        None: 端点失败
+    """
+    if use_cache:
+        cached = _read_cache("fund_label", "main", max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": ["SH-000001", "SZ-399001", "SZ-399006", "HK-HSI",
+                        "AMEX-IXIC", "SH-000905", "SH-000300", "SH-000688", "SH-000016"]
+    }
+    raw = _api_form("gw2/generic/opdataapi/newh5/m/getFundLabel", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    result = {
+        "labels": datas.get("labelList", datas.get("list", [])),
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("fund_label", "main", result)
+    return result
+
+
+def get_index_valuation_trend(cookies=None, use_cache=True):
+    """指数估值百分位历史 — 抓包端点 gw2/generic/wealthBase/newh5/m/getIndexValuationTrendChart
+
+    Returns:
+        dict: {
+            "indices": [
+                {"unique_code", "name", "pe", "pe_pct", "pb", "pb_pct",
+                 "history": [{"date", "pe", "pe_pct"}, ...]}
+            ]
+        }
+        None: 端点失败
+    """
+    if use_cache:
+        cached = _read_cache("index_valuation_trend", "main", max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": ["SH-000001", "SZ-399001", "SZ-399006", "HK-HSI",
+                        "AMEX-IXIC", "SH-000905", "SH-000300", "SH-000688", "SH-000016"]
+    }
+    raw = _api_form("gw2/generic/wealthBase/newh5/m/getIndexValuationTrendChart", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    # 兼容多种返回结构
+    indices = datas.get("indexList", datas.get("list", []))
+    if not indices and isinstance(datas, list):
+        indices = datas
+    result = {
+        "indices": indices,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("index_valuation_trend", "main", result)
+    return result
+
+
+def get_plate_rank(plate_type="INDUSTRY", rank_type="changerange", 
+                   start_row=0, page_size=20, order="DESC",
+                   cookies=None, use_cache=True):
+    """板块排行 (行业/概念涨跌幅) — touchFish/h5/m/getPlateRank
+    端点来源: 111.txt 抓包 (2026-07-15, 44次调用, 使用频率最高)
+
+    Args:
+        plate_type: "INDUSTRY" (行业) or "CONCEPT" (概念)
+        rank_type: "changerange" (涨跌幅), 可扩展
+        start_row: 起始行
+        page_size: 每页数量
+        order: "DESC" (降序) or "ASC" (升序)
+        cookies: 登录态 (需 cookie)
+        use_cache: 是否使用缓存
+
+    Returns:
+        dict: {"plates": [...], "asof": "2026-07-15"}
+        None: 端点失败
+    """
+    cache_key = f"plate_rank_{plate_type}_{rank_type}"
+    if use_cache:
+        cached = _read_cache("plate_rank", cache_key, max_age_days=0.1)  # 2.4h
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    body = {
+        "plateType": plate_type,
+        "rankType": rank_type,
+        "pageableReq": {
+            "startRow": start_row,
+            "pageSize": page_size,
+        },
+        "order": order,
+    }
+    raw = _api_post("gw2/generic/touchFish/h5/m/getPlateRank", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    # 实测返回结构: {"code": 200, "data": {"result": [...], "pageNo": 1, "pageSize": 20, "rowCount": ...}}
+    data = rd.get("data", {}) if isinstance(rd, dict) else {}
+    plates = data.get("result", [])
+    result = {
+        "plates": plates,
+        "total": data.get("rowCount", len(plates)),
+        "page_no": data.get("pageNo", 1),
+        "page_size": data.get("pageSize", page_size),
+        "plate_type": plate_type,
+        "rank_type": rank_type,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+    }
+    if use_cache:
+        _write_cache("plate_rank", cache_key, result)
+    return result
+
+
+def get_index_history_win_rate(unique_codes=None, cookies=None, use_cache=True):
+    """指数历史胜率 — wealthBase/newh5/m/getIndexHistoryWinRate
+    端点来源: 111.txt 抓包 (2026-07-15)
+
+    Args:
+        unique_codes: 指数代码列表, 默认 ["SH-000300", "SH-000001", "SZ-399001", ...]
+        cookies: 登录态 (不需要cookie)
+        use_cache: 是否使用缓存
+
+    Returns:
+        dict: {"win_rates": [...], "asof": "2026-07-15"}
+        None: 端点失败
+    """
+    if use_cache:
+        cached = _read_cache("index_history_win_rate", "main", max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    if unique_codes is None:
+        unique_codes = ["SH-000001", "SZ-399001", "SZ-399006", "HK-HSI",
+                        "AMEX-IXIC", "SH-000905", "SH-000300", "SH-000688", "SH-000016"]
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": unique_codes,
+    }
+    raw = _api_form("gw2/generic/wealthBase/newh5/m/getIndexHistoryWinRate", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    if isinstance(rd, dict) and rd.get("status") == "FAIL":
+        return None  # 端点可连通但参数/ticket不匹配
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    result = {
+        "win_rates": datas.get("winRateList", datas.get("list", datas if isinstance(datas, list) else [])),
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("index_history_win_rate", "main", result)
+    return result
+
+
+def get_index_related_fund(index_code, cookies=None, use_cache=True):
+    """指数关联基金列表 — wealthBase/newh5/m/getIndexRelatedFund
+    端点来源: 111.txt 抓包 (2026-07-15)
+
+    Args:
+        index_code: 指数代码, e.g. "SH-000300"
+        cookies: 登录态 (不需要cookie)
+        use_cache: 是否使用缓存
+
+    Returns:
+        dict: {"funds": [...], "index_code": "SH-000300", "asof": "..."}
+        None: 端点失败
+    """
+    cache_key = f"index_related_fund_{index_code}"
+    if use_cache:
+        cached = _read_cache("index_related_fund", cache_key, max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": [index_code],
+    }
+    raw = _api_form("gw2/generic/wealthBase/newh5/m/getIndexRelatedFund", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    if isinstance(rd, dict) and rd.get("status") == "FAIL":
+        return None  # 端点可连通但参数/ticket不匹配
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    funds = datas.get("fundList", datas.get("list", datas if isinstance(datas, list) else []))
+    result = {
+        "funds": funds,
+        "index_code": index_code,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("index_related_fund", cache_key, result)
+    return result
+
+
+def get_index_trade_hot(unique_codes=None, cookies=None, use_cache=True):
+    """指数交易热度 — wealthBase/newh5/m/getIndexTradeHot
+    端点来源: 111.txt 抓包 (2026-07-15)
+
+    Args:
+        unique_codes: 指数代码列表, 默认 9大指数
+        cookies: 登录态
+
+    Returns:
+        dict: {"hot_data": [...], "asof": "..."}
+        None: 端点失败
+    """
+    if use_cache:
+        cached = _read_cache("index_trade_hot", "main", max_age_days=1)
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    if unique_codes is None:
+        unique_codes = ["SH-000001", "SZ-399001", "SZ-399006", "HK-HSI",
+                        "AMEX-IXIC", "SH-000905", "SH-000300", "SH-000688", "SH-000016"]
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": unique_codes,
+    }
+    raw = _api_form("gw2/generic/wealthBase/newh5/m/getIndexTradeHot", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    if isinstance(rd, dict) and rd.get("status") == "FAIL":
+        return None  # 端点可连通但参数/ticket不匹配
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    result = {
+        "hot_data": datas.get("hotList", datas.get("list", datas if isinstance(datas, list) else [])),
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("index_trade_hot", "main", result)
+    return result
+
+
+def get_index_news(index_code, cookies=None, use_cache=True):
+    """指数相关新闻 — wealthBase/newh5/m/getIndexNews
+    端点来源: 111.txt 抓包 (2026-07-15, 2次调用)
+
+    Args:
+        index_code: 指数代码, e.g. "SH-000300"
+        cookies: 登录态
+
+    Returns:
+        dict: {"news": [...], "index_code": "...", "asof": "..."}
+        None: 端点失败
+    """
+    cache_key = f"index_news_{index_code}"
+    if use_cache:
+        cached = _read_cache("index_news", cache_key, max_age_days=0.5)  # 12h
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    body = {
+        "ticket": "jdt-wealth-tools",
+        "uniqueCodes": [index_code],
+    }
+    raw = _api_form("gw2/generic/wealthBase/newh5/m/getIndexNews", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    if isinstance(rd, dict) and rd.get("status") == "FAIL":
+        return None  # 端点可连通但参数/ticket不匹配
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    news = datas.get("newsList", datas.get("list", datas if isinstance(datas, list) else []))
+    result = {
+        "news": news,
+        "index_code": index_code,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("index_news", cache_key, result)
+    return result
+
+
+def get_time_sharing_dots(unique_code="SH-000001", data_type="m1", cookies=None, use_cache=True):
+    """指数分时图数据 — opdataapi/h5/m/getTimeSharingDots
+    ✅ 已实测修复 (2026-07-15 Playwright 抓包)
+
+    真实请求体: {"uniqueCode":"SH-000001","type":"m1","minType":"m1","ticket":"jd-jr-pc"}
+
+    Args:
+        unique_code: 指数代码, 默认 SH-000001 (上证指数)
+        data_type: 数据类型, m1=1分钟
+        cookies: 登录态
+
+    Returns:
+        dict: {"dots": [...], "unique_code": "...", "asof": "..."}
+        None: 端点失败
+    """
+    cache_key = f"time_sharing_{unique_code}"
+    if use_cache:
+        cached = _read_cache("time_sharing_dots", cache_key, max_age_days=0.01)  # ~15min
+        if cached:
+            return cached
+    if cookies is None:
+        cookies = _ensure_cookies()
+    # 真实参数: uniqueCode+type+minType+ticket
+    body = {
+        "uniqueCode": unique_code,
+        "type": data_type,
+        "minType": data_type,
+        "ticket": "jd-jr-pc",
+    }
+    raw = _api_form("gw2/generic/opdataapi/h5/m/getTimeSharingDots", body, cookies)
+    if not raw or raw.get("error") or "resultData" not in raw:
+        return None
+    rd = raw["resultData"]
+    datas = rd.get("datas", {}) if isinstance(rd, dict) else {}
+    dots = datas.get("dotsList", datas.get("list", datas if isinstance(datas, list) else []))
+    result = {
+        "dots": dots,
+        "unique_code": unique_code,
+        "data_type": data_type,
+        "asof": datetime.now().strftime("%Y-%m-%d"),
+        "_raw_keys": list(datas.keys()) if isinstance(datas, dict) else None,
+    }
+    if use_cache:
+        _write_cache("time_sharing_dots", cache_key, result)
+    return result
+
 
 
 # ============================================================
@@ -2243,6 +3183,8 @@ def main():
     parser.add_argument("--fund-detail-pin", type=str, help="Get fund detail (logged-in version, includes diagnosis)")
     parser.add_argument("--watchlist", action="store_true", help="Get your watchlist (自选基金列表)")
     parser.add_argument("--player-trading-feed", action="store_true", help="Get real-time trading feed from player square")
+    parser.add_argument("--quote", action="store_true", help="Get real-time quote of 9 major indices (1.txt 端点 1)")
+    parser.add_argument("--stall", type=str, default=None, help="Get block/sector real-time data (1.txt 端点 2), e.g. --stall 60250902152459000889")
     args = parser.parse_args()
 
     if args.save_cookies:
@@ -2592,6 +3534,27 @@ def main():
         for t in (trades or [])[:10]:
             direction = "买入" if t.get('trade_type') == 1 else ("卖出" if t.get('trade_type') == 2 else "?")
             print(f"  {t.get('user_name')}: {direction} {t.get('fund_name')} {t.get('amount')}")
+
+    if args.quote:
+        data = get_simple_quote()
+        if data.get("error"):
+            print(f"Failed: {data.get('error')}")
+        else:
+            print(f"\n9大指数实时报价:")
+            for code, q in data.get("quotes", {}).items():
+                pct = q.get('change_pct')
+                pct_str = f"{pct:+.2f}%" if isinstance(pct, (int, float)) else "N/A"
+                print(f"  [{code}] {q.get('name','?')}: {q.get('current','?')} ({pct_str})")
+
+    if args.stall:
+        data = query_stall_new(args.stall)
+        if data.get("error"):
+            print(f"Failed: {data.get('error')}")
+        else:
+            print(f"\n板块实时数据 (stall={args.stall}):")
+            for k, v in list(data.items())[:8]:
+                vstr = str(v)[:150] if not isinstance(v, (dict, list)) else json.dumps(v, ensure_ascii=False)[:150]
+                print(f"  {k}: {vstr}")
 
 
 if __name__ == "__main__":

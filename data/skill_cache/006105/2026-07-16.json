@@ -1,0 +1,81 @@
+{
+  "code": "006105",
+  "name": "006105",
+  "date": "2026-07-16",
+  "overall_score": 3.0,
+  "verdict": "warn",
+  "checks": {
+    "scale": {
+      "pass": true,
+      "score": 4,
+      "note": "规模15.87亿适中"
+    },
+    "fees": {
+      "pass": true,
+      "score": 3,
+      "note": "总费率1.90%适中"
+    },
+    "manager": {
+      "pass": true,
+      "score": 3,
+      "note": "经理数据缺失"
+    },
+    "performance": {
+      "pass": true,
+      "score": 3,
+      "note": "近1年排名前50%一般"
+    },
+    "concentration": {
+      "pass": true,
+      "score": 3,
+      "note": "无重仓股数据"
+    },
+    "trading_rules": {
+      "pass": true,
+      "score": 2,
+      "note": "持有<7天赎回费1.5%"
+    }
+  },
+  "has_holdings": true,
+  "is_held": false,
+  "skill_commands": [
+    {
+      "skill": "fund-checklist",
+      "command": "fund-checklist 006105",
+      "description": "六关检查完整分析",
+      "priority": 1
+    },
+    {
+      "skill": "fund-penetration",
+      "command": "穿透分析 006105",
+      "description": "底层重仓股穿透分析",
+      "priority": 2
+    },
+    {
+      "skill": "fund-analyze",
+      "command": "基金综合分析 006105",
+      "description": "AI深度解读评分原因",
+      "priority": 3
+    }
+  ],
+  "data_completeness": {
+    "has_profile": true,
+    "has_rules": false,
+    "has_holdings": true,
+    "has_performance": true,
+    "has_manager": false,
+    "has_charts": false
+  },
+  "raw_data_summary": {
+    "fund_type": "",
+    "fund_scale": "15.87亿元(2026-03-31)",
+    "establish_date": "",
+    "risk_level": "",
+    "purchase_fee": "",
+    "manage_fee": "",
+    "trustee_fee": "",
+    "confirm_days": "",
+    "purchase_status": "",
+    "day_limit": ""
+  }
+}

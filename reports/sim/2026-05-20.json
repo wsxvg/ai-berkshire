@@ -1,0 +1,51 @@
+{
+  "date": "2026-05-20",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 3.303687511559239
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.80319926378301
+    }
+  ],
+  "buy_recommendations": [],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1211.49,
+      "pnl_pct": 21.15
+    },
+    "016664": {
+      "name": "天弘全球高端制造混合(QDII)A",
+      "cost": 100.0,
+      "market_value": 124.51,
+      "pnl_pct": 24.51
+    },
+    "013841": {
+      "name": "银华集成电路混合C",
+      "cost": 17800,
+      "market_value": 24571.14,
+      "pnl_pct": 38.04
+    },
+    "022184": {
+      "name": "富国全球科技互联网股票(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1016.94,
+      "pnl_pct": 1.69
+    }
+  },
+  "portfolio": {
+    "total_value": 107024.09,
+    "cash": 80100.0,
+    "fees": 1.5
+  }
+}

@@ -2,6 +2,13 @@
 from __future__ import annotations
 from scripts.pipeline.engine import PipelineEngine, PipelineTask
 
+try:
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("pipeline.holdings")
+
 
 @PipelineEngine.register
 class TaskHoldings(PipelineTask):
@@ -14,7 +21,7 @@ class TaskHoldings(PipelineTask):
         cookie_ok = context.get("auth", {}).get("cookie_ok", False)
 
         if not cookie_ok or not cookies:
-            print("  Holdings: skipped (no cookie)")
+            _logger.info("Holdings: skipped (no cookie)")
             return {"holdings": {}, "holdings_ok": False, "holdings_diff": {}}
 
         from tools.jd_finance_api import FOLLOWED_USERS, get_user_holdings
@@ -36,7 +43,7 @@ class TaskHoldings(PipelineTask):
                     if items:
                         current_holdings[name] = items
                 except Exception as e:
-                    print(f"    [{name}] failed: {e}")
+                    _logger.warning(f"[{name}] failed: {e}")
 
         # 计算 diff（与前次对比）
         from pathlib import Path
@@ -59,9 +66,9 @@ class TaskHoldings(PipelineTask):
             "removed_funds": list(prev_codes - curr_codes),
         }
 
-        print(f"  Holdings: {len(current_holdings)} users, "
-              f"{len(holdings_diff.get('new_funds', []))} new, "
-              f"{len(holdings_diff.get('removed_funds', []))} removed")
+        _logger.info(f"Holdings: {len(current_holdings)} users, "
+                     f"{len(holdings_diff.get('new_funds', []))} new, "
+                     f"{len(holdings_diff.get('removed_funds', []))} removed")
 
         return {
             "holdings": current_holdings,

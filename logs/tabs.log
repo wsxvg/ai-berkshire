@@ -1,0 +1,4 @@
+﻿num_tabs: 1
+  tab[0] keys: ['openStatus', 'trackData', 'isSelf', 'firmOfferType']
+  full: {"openStatus": 0, "trackData": {"paramJson": "{\"isSelf\":true}", "bid": "ShiPanPage|liveAccountPage_tab", "spj": "{\"tabName\":\"����ֲ�\"}", "ctp": "jrTransUI_pageCommunityShiPanPage"}, "isSelf": 1, "firmOfferType": "fund"}
+

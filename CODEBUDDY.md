@@ -1,8 +1,21 @@
 # CODEBUDDY.md This file provides guidance to CodeBuddy when working with code in this repository.
 
+## ⭐ 项目深度文档（先读这俩，再决定要不要读代码）
+京东金融的正确域名是 jdjr.jd.com（Web 端），不是 ms.jr.jd.com（那只是 API 网关域名）。浏览器登录地址必须是 https://jdjr.jd.com/。API 调用仍然用 ms.jr.jd.com 网关。
+Memory "京东金融正确 API 域名" has been created successfully.
+- **`PROJECT_DEEP_DIVE.md`** (根目录, 40KB/798 行) — **完整项目地图**（架构/核心文件/30 SKILL/12 策略/命令速查/数据文件清单/常见坑）
+- **`docs/AI_DATA_GUIDE.md`** (22KB) — **数据地图**（必读，按 SKILL 找数据位置）
+
+> **黄金工作流**: 读 PROJECT_DEEP_DIVE.md → 读 AI_DATA_GUIDE.md → 用 `py -3.10 scripts/gen-prompt-context.py --mini` 拿迷你摘要 → 跑命令
+
 ## 常用命令
 
 ```bash
+# 生成 AI 上下文（首次或大改动后跑）
+py -3.10 scripts/gen-prompt-context.py --mini      # 迷你版摘要 (< 3KB)
+py -3.10 scripts/gen-prompt-context.py --stats     # 项目统计
+py -3.10 scripts/gen-prompt-context.py --checklist # 文件清单
+
 # 一键监控（每日运行，输出持仓择时分析）
 py -3.10 run.py
 

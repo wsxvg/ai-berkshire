@@ -1,0 +1,301 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - text: 
+        - link "京东首页" [ref=e6] [cursor=pointer]:
+          - /url: //www.jd.com/
+      - listitem [ref=e7]:
+        - generic [ref=e8]:  浙江
+    - list [ref=e9]:
+      - listitem [ref=e10]:
+        - link "你好，请登录" [ref=e11] [cursor=pointer]:
+          - /url: javascript:login();
+        - link "免费注册" [ref=e12] [cursor=pointer]:
+          - /url: javascript:regist();
+      - listitem [ref=e13]
+      - listitem [ref=e14]:
+        - link "我的订单" [ref=e16] [cursor=pointer]:
+          - /url: //order.jd.com/center/list.action
+      - listitem [ref=e17]
+      - listitem [ref=e18]:
+        - generic [ref=e19]:
+          - link "我的京东" [ref=e20] [cursor=pointer]:
+            - /url: //home.jd.com/
+          - generic [ref=e21]: 
+      - listitem [ref=e22]
+      - listitem [ref=e23]:
+        - link "京东会员" [ref=e25] [cursor=pointer]:
+          - /url: //vip.jd.com/
+      - listitem [ref=e26]
+      - listitem [ref=e27]:
+        - generic [ref=e28]:
+          - link "企业采购" [ref=e29] [cursor=pointer]:
+            - /url: //b.jd.com/
+          - generic [ref=e30]: 
+      - listitem [ref=e31]
+      - listitem [ref=e32]:
+        - generic [ref=e33]:
+          - text: 客户服务
+          - generic [ref=e34]: 
+      - listitem [ref=e35]
+      - listitem [ref=e36]:
+        - generic [ref=e37]:
+          - text: 网站导航
+          - generic [ref=e38]: 
+      - listitem [ref=e39]
+      - listitem [ref=e40]:
+        - link "手机京东" [ref=e42] [cursor=pointer]:
+          - /url: //app.jd.com/
+  - generic [ref=e43]:
+    - link "京东" [ref=e45] [cursor=pointer]:
+      - /url: //www.jd.com/
+    - generic [ref=e47]:
+      - textbox [ref=e48]
+      - button "Choose File" [ref=e52] [cursor=pointer]
+      - button "搜索" [ref=e53] [cursor=pointer]
+    - generic [ref=e56]:
+      - generic [ref=e57]: 
+      - generic [ref=e58]: "0"
+      - link "我的购物车" [ref=e59] [cursor=pointer]:
+        - /url: //cart.jd.com/cart.action
+  - generic [ref=e62]:
+    - link "全部商品分类" [ref=e65] [cursor=pointer]:
+      - /url: //www.jd.com/allSort.aspx
+    - generic [ref=e66]:
+      - list [ref=e67]:
+        - listitem [ref=e68]:
+          - link "京东服饰" [ref=e69] [cursor=pointer]:
+            - /url: //channel.jd.com/fashion.html
+        - listitem [ref=e70]:
+          - link "美妆馆" [ref=e71] [cursor=pointer]:
+            - /url: //channel.jd.com/beautysale.html
+        - listitem [ref=e72]:
+          - link "超市" [ref=e73] [cursor=pointer]:
+            - /url: //channel.jd.com/chaoshi.html
+        - listitem [ref=e74]:
+          - link "生鲜" [ref=e75] [cursor=pointer]:
+            - /url: //fresh.jd.com
+      - list [ref=e77]:
+        - listitem [ref=e78]:
+          - link "全球购" [ref=e79] [cursor=pointer]:
+            - /url: //www.jd.hk/
+        - listitem [ref=e80]:
+          - link "闪购" [ref=e81] [cursor=pointer]:
+            - /url: //red.jd.com/
+        - listitem [ref=e82]:
+          - link "拍卖" [ref=e83] [cursor=pointer]:
+            - /url: //paimai.jd.com/
+      - list [ref=e85]:
+        - listitem [ref=e86]:
+          - link "金融" [ref=e87] [cursor=pointer]:
+            - /url: //jr.jd.com/
+  - generic [ref=e89]:
+    - link [ref=e91] [cursor=pointer]:
+      - /url: //try.jd.com
+    - generic [ref=e96]:
+      - paragraph [ref=e98]: 抱歉! 您访问的页面失联啦...
+      - generic [ref=e99]:
+        - text: "您可以逛逛 :"
+        - link "京东首页" [ref=e100] [cursor=pointer]:
+          - /url: //www.jd.com
+        - link "京东试用" [ref=e101] [cursor=pointer]:
+          - /url: //try.jd.com
+        - link "京东会员" [ref=e102] [cursor=pointer]:
+          - /url: //vip.jd.com
+  - generic [ref=e103]:
+    - list [ref=e105]:
+      - listitem [ref=e106]:
+        - generic [ref=e107]: 多
+        - text: 品类齐全，轻松购物
+      - listitem [ref=e108]:
+        - generic [ref=e109]: 快
+        - text: 多仓直发，极速配送
+      - listitem [ref=e110]:
+        - generic [ref=e111]: 好
+        - text: 正品行货，精致服务
+      - listitem [ref=e112]:
+        - generic [ref=e113]: 省
+        - text: 天天低价，畅选无忧
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - term [ref=e118]: 购物指南
+        - definition [ref=e119]:
+          - link "购物流程" [ref=e120] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-29.html
+        - definition [ref=e121]:
+          - link "会员介绍" [ref=e122] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-151.html
+        - definition [ref=e123]:
+          - link "生活旅行/团购" [ref=e124] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-297.html
+        - definition [ref=e125]:
+          - link "常见问题" [ref=e126] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue.html
+        - definition [ref=e127]:
+          - link "大家电" [ref=e128] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-136.html
+        - definition [ref=e129]:
+          - link "联系客服" [ref=e130] [cursor=pointer]:
+            - /url: //help.jd.com/user/index.html
+      - generic [ref=e131]:
+        - term [ref=e132]: 配送方式
+        - definition [ref=e133]:
+          - link "上门自提" [ref=e134] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-81-100.html
+        - definition [ref=e135]:
+          - link "211限时达" [ref=e136] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-81.html
+        - definition [ref=e137]:
+          - link "配送服务查询" [ref=e138] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/103-983.html
+        - definition [ref=e139]:
+          - link "配送费收取标准" [ref=e140] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/109-188.html
+        - definition [ref=e141]:
+          - link "海外配送" [ref=e142] [cursor=pointer]:
+            - /url: //help.joybuy.com/help/question-list-201.html
+      - generic [ref=e143]:
+        - term [ref=e144]: 支付方式
+        - definition [ref=e145]:
+          - link "货到付款" [ref=e146] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-172.html
+        - definition [ref=e147]:
+          - link "在线支付" [ref=e148] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-173.html
+        - definition [ref=e149]:
+          - link "分期付款" [ref=e150] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-176.html
+        - definition [ref=e151]:
+          - link "邮局汇款" [ref=e152] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-174.html
+        - definition [ref=e153]:
+          - link "公司转账" [ref=e154] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-175.html
+      - generic [ref=e155]:
+        - term [ref=e156]: 售后服务
+        - definition [ref=e157]:
+          - link "售后政策" [ref=e158] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/321-981.html
+        - definition [ref=e159]:
+          - link "价格保护" [ref=e160] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-132.html
+        - definition [ref=e161]:
+          - link "退款说明" [ref=e162] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/130-978.html
+        - definition [ref=e163]:
+          - link "返修/退换货" [ref=e164] [cursor=pointer]:
+            - /url: //myjd.jd.com/repair/repairs.action
+        - definition [ref=e165]:
+          - link "取消订单" [ref=e166] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-50.html
+      - generic [ref=e167]:
+        - term [ref=e168]: 特色服务
+        - definition [ref=e169]:
+          - link "夺宝岛" [ref=e170] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-133.html
+        - definition [ref=e171]:
+          - link "DIY装机" [ref=e172] [cursor=pointer]:
+            - /url: //help.jd.com/user/issue/list-134.html
+        - definition [ref=e173]:
+          - link "延保服务" [ref=e174] [cursor=pointer]:
+            - /url: //fuwu.jd.com/
+        - definition [ref=e175]:
+          - link "京东E卡" [ref=e176] [cursor=pointer]:
+            - /url: //o.jd.com/market/index.action
+        - definition [ref=e177]:
+          - link "京东通信" [ref=e178] [cursor=pointer]:
+            - /url: //mobile.jd.com/
+        - definition [ref=e179]:
+          - link "京东JD+" [ref=e180] [cursor=pointer]:
+            - /url: //s.jd.com/
+  - generic [ref=e182]:
+    - paragraph [ref=e184]:
+      - link "关于我们" [ref=e185] [cursor=pointer]:
+        - /url: //about.jd.com
+      - text: "|"
+      - link "联系我们" [ref=e186] [cursor=pointer]:
+        - /url: //about.jd.com/contact/
+      - text: "|"
+      - link "联系客服" [ref=e187] [cursor=pointer]:
+        - /url: //help.jd.com/user/custom.html
+      - text: "|"
+      - link "合作招商" [ref=e188] [cursor=pointer]:
+        - /url: //vc.jd.com/cooperation.html
+      - text: "|"
+      - link "商家帮助" [ref=e189] [cursor=pointer]:
+        - /url: //helpcenter.jd.com/venderportal/index.html
+      - text: "|"
+      - link "营销中心" [ref=e190] [cursor=pointer]:
+        - /url: //jzt.jd.com
+      - text: "|"
+      - link "手机京东" [ref=e191] [cursor=pointer]:
+        - /url: //app.jd.com/
+      - text: "|"
+      - link "友情链接" [ref=e192] [cursor=pointer]:
+        - /url: //club.jd.com/links.aspx
+      - text: "|"
+      - link "销售联盟" [ref=e193] [cursor=pointer]:
+        - /url: //media.jd.com/
+      - text: "|"
+      - link "京东社区" [ref=e194] [cursor=pointer]:
+        - /url: //club.jd.com/
+      - text: "|"
+      - link "风险监测" [ref=e195] [cursor=pointer]:
+        - /url: //sale.jd.com/act/FTrWPesiDhXt5M6.html
+      - text: "|"
+      - link "隐私政策" [ref=e196] [cursor=pointer]:
+        - /url: //about.jd.com/privacy/
+      - text: "|"
+      - link "京东公益" [ref=e197] [cursor=pointer]:
+        - /url: //gongyi.jd.com
+      - text: "|"
+      - link "English Site" [ref=e198] [cursor=pointer]:
+        - /url: //en.jd.com/
+      - text: "|"
+      - link "Contact Us" [ref=e199] [cursor=pointer]:
+        - /url: //en.jd.com/help/question-58.html
+    - generic [ref=e200]:
+      - paragraph [ref=e201]:
+        - link "京公网安备 11000002000088号" [ref=e202] [cursor=pointer]:
+          - /url: https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000088
+        - text: "|京ICP证070359号|"
+        - link "药品医疗器械网络信息服务备案" [ref=e203] [cursor=pointer]:
+          - /url: //pro.jd.com/mall/active/2zRnBcZVhdAcWBMvBnoRcUdi3HBt/index.html
+        - text: "|新出发京零 字第大120007号"
+      - paragraph [ref=e204]:
+        - text: 互联网出版许可证编号新出网证(京)字150号|
+        - link "出版物经营许可证" [ref=e205] [cursor=pointer]:
+          - /url: //pro.jd.com/mall/active/3bVDLXHdwVmdQksGF8TtS7ocq1NY/index.html
+        - text: "|"
+        - link "网络文化经营许可证京网文[2020]6112-1201号" [ref=e206] [cursor=pointer]:
+          - /url: //img10.360buyimg.com/ling/jfs/t1/164806/19/5070/567736/6017d6d6Eab06ec9c/d8ca6e029f495447.jpg
+        - text: "|违法和不良信息举报电话：4006561155"
+      - paragraph [ref=e207]:
+        - generic [ref=e208]:
+          - text: Copyright © 2004 -
+          - emphasis [ref=e209]: "2026"
+          - text: 京东JD.com 版权所有
+        - text: "|消费者维权热线：4006067733"
+        - link "经营证照" [ref=e210] [cursor=pointer]:
+          - /url: //sale.jd.com/act/7Y0Rp81MwQqc.html
+      - paragraph [ref=e211]:
+        - text: 京东旗下网站：
+        - link "京东钱包" [ref=e212] [cursor=pointer]:
+          - /url: https://www.jdpay.com/
+        - text: "|"
+        - link "京东云" [ref=e213] [cursor=pointer]:
+          - /url: https://www.jcloud.com
+    - paragraph [ref=e214]:
+      - link "经营性网站备案中心" [ref=e215] [cursor=pointer]:
+        - /url: https://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026
+      - link "可信网站信用评估" [ref=e216] [cursor=pointer]:
+        - /url: https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&ct=df&pa=294005
+      - link "网络警察提醒你" [ref=e217] [cursor=pointer]:
+        - /url: https://www.cyberpolice.cn/
+      - link "诚信网站" [ref=e218] [cursor=pointer]:
+        - /url: https://search.szfw.org/cert/l/CX20120111001803001836
+      - link "中国互联网举报中心" [ref=e219] [cursor=pointer]:
+        - /url: https://www.12377.cn
+      - link "网络举报APP下载" [ref=e220] [cursor=pointer]:
+        - /url: http://www.12377.cn/node_548446.htm

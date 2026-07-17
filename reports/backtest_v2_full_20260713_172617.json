@@ -1,0 +1,523 @@
+{
+  "config": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 20.0,
+    "trail_pct": 6.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 111034.58,
+    "total_return": 11.03,
+    "annualized": 11.07,
+    "sharpe": 0.93,
+    "max_drawdown": -10.46,
+    "trading_days": 364,
+    "n_buys": 26,
+    "n_sells": 23,
+    "win_rate": 52.2,
+    "benchmark_return": 19.77,
+    "benchmark_annualized": 19.84,
+    "alpha": -8.77
+  },
+  "reason_stats": {
+    "trail_stop": {
+      "count": 9,
+      "avg_pnl": 2.3
+    },
+    "consensus_sell": {
+      "count": 2,
+      "avg_pnl": 0.0
+    },
+    "stop_loss": {
+      "count": 5,
+      "avg_pnl": -13.57
+    },
+    "take_profit": {
+      "count": 5,
+      "avg_pnl": 23.52
+    },
+    "time_tp": {
+      "count": 2,
+      "avg_pnl": -5.21
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-01-06",
+        "action": "buy",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2025-01-10",
+        "action": "buy",
+        "code": "004253",
+        "name": "国泰黄金ETF联接C",
+        "amount": 15074.413710162356,
+        "consensus": 1,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2025-01-16",
+        "action": "buy",
+        "code": "012863",
+        "name": "汇添富中证电池主题ETF发起式联接C",
+        "amount": 15221.861694394469,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-02-14",
+        "action": "buy",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "amount": 15508.815462570816,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-03-11",
+        "action": "buy",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "amount": 15570.025999232701,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-05-06",
+        "action": "buy",
+        "code": "015916",
+        "name": "永赢医药创新智选混合发起C",
+        "amount": 15505.475973561843,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-05-07",
+        "action": "buy",
+        "code": "011609",
+        "name": "易方达上证科创50ETF联接C",
+        "amount": 15429.511861416584,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-07-01",
+        "action": "buy",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "amount": 15905.01229691606,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-07-28",
+        "action": "buy",
+        "code": "021740",
+        "name": "前海开源黄金ETF联接C",
+        "amount": 16319.683007250414,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-01",
+        "action": "buy",
+        "code": "021893",
+        "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+        "amount": 16487.859290104254,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-13",
+        "action": "buy",
+        "code": "009645",
+        "name": "东方阿尔法优势产业混合C",
+        "amount": 16595.31290069874,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-08-25",
+        "action": "buy",
+        "code": "024663",
+        "name": "富国创业板人工智能ETF发起式联接C",
+        "amount": 17436.71805250435,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-04",
+        "action": "buy",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "amount": 17301.127626117966,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-04",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 17301.127626117966,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-08",
+        "action": "buy",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "amount": 17436.877851534493,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-09",
+        "action": "buy",
+        "code": "014674",
+        "name": "富国中证港股通互联网ETF发起式联接C",
+        "amount": 17328.8840129651,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-23",
+        "action": "buy",
+        "code": "024329",
+        "name": "易方达恒生港股通创新药ETF联接发起式C",
+        "amount": 17991.490278524263,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-09-24",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 18272.265639288107,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-10-13",
+        "action": "buy",
+        "code": "017470",
+        "name": "嘉实上证科创板芯片ETF发起联接C",
+        "amount": 17759.563039733457,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-10-14",
+        "action": "buy",
+        "code": "015740",
+        "name": "国泰中证港股通科技ETF发起联接C",
+        "amount": 17363.51466480176,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-10-23",
+        "action": "buy",
+        "code": "011036",
+        "name": "嘉实中证稀土产业ETF联接C",
+        "amount": 17297.07656461861,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-11-11",
+        "action": "buy",
+        "code": "014674",
+        "name": "富国中证港股通互联网ETF发起式联接C",
+        "amount": 17202.84824254687,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-11-17",
+        "action": "buy",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "amount": 17054.621347668344,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2025-11-21",
+        "action": "buy",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "amount": 16394.8815981698,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-15",
+        "action": "buy",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "amount": 16563.715462641077,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-16",
+        "action": "buy",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "amount": 16401.909300383595,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2025-02-14",
+        "action": "sell",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "reason": "trail_stop",
+        "pnl_pct": 9.360593305271593,
+        "amount": 16404.08899579074
+      },
+      {
+        "date": "2025-02-18",
+        "action": "sell",
+        "code": "012863",
+        "name": "汇添富中证电池主题ETF发起式联接C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 16029.105336152697
+      },
+      {
+        "date": "2025-03-04",
+        "action": "sell",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "reason": "trail_stop",
+        "pnl_pct": 3.92749244712991,
+        "amount": 16117.923018502603
+      },
+      {
+        "date": "2025-04-07",
+        "action": "sell",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "reason": "stop_loss",
+        "pnl_pct": -18.300518134715027,
+        "amount": 12720.630567663276
+      },
+      {
+        "date": "2025-04-16",
+        "action": "sell",
+        "code": "004253",
+        "name": "国泰黄金ETF联接C",
+        "reason": "take_profit",
+        "pnl_pct": 22.54678110328776,
+        "amount": 18473.208771996662
+      },
+      {
+        "date": "2025-06-09",
+        "action": "sell",
+        "code": "015916",
+        "name": "永赢医药创新智选混合发起C",
+        "reason": "take_profit",
+        "pnl_pct": 20.1794065782412,
+        "amount": 18634.38901215839
+      },
+      {
+        "date": "2025-07-06",
+        "action": "sell",
+        "code": "011609",
+        "name": "易方达上证科创50ETF联接C",
+        "reason": "time_tp",
+        "pnl_pct": -3.9169065198348174,
+        "amount": 14825.152305338072
+      },
+      {
+        "date": "2025-07-29",
+        "action": "sell",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "reason": "take_profit",
+        "pnl_pct": 25.876970555487834,
+        "amount": 20020.747645835745
+      },
+      {
+        "date": "2025-08-25",
+        "action": "sell",
+        "code": "009645",
+        "name": "东方阿尔法优势产业混合C",
+        "reason": "take_profit",
+        "pnl_pct": 23.484087102177554,
+        "amount": 20492.57063717774
+      },
+      {
+        "date": "2025-09-04",
+        "action": "sell",
+        "code": "021893",
+        "name": "易方达中证半导体材料设备主题ETF联接发起式A",
+        "reason": "trail_stop",
+        "pnl_pct": 6.7463106113843985,
+        "amount": 17600.181490982686
+      },
+      {
+        "date": "2025-09-04",
+        "action": "sell",
+        "code": "024663",
+        "name": "富国创业板人工智能ETF发起式联接C",
+        "reason": "trail_stop",
+        "pnl_pct": -2.7180589680589784,
+        "amount": 16962.7777737431
+      },
+      {
+        "date": "2025-09-08",
+        "action": "sell",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "reason": "trail_stop",
+        "pnl_pct": 0.9418127314311908,
+        "amount": 17464.071848781907
+      },
+      {
+        "date": "2025-09-09",
+        "action": "sell",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "reason": "trail_stop",
+        "pnl_pct": 0.40369088811995635,
+        "amount": 17370.97070188661
+      },
+      {
+        "date": "2025-09-23",
+        "action": "sell",
+        "code": "021740",
+        "name": "前海开源黄金ETF联接C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 17970.868959453095
+      },
+      {
+        "date": "2025-09-24",
+        "action": "sell",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "reason": "take_profit",
+        "pnl_pct": 25.515641113784792,
+        "amount": 21886.009025581065
+      },
+      {
+        "date": "2025-10-13",
+        "action": "sell",
+        "code": "014674",
+        "name": "富国中证港股通互联网ETF发起式联接C",
+        "reason": "trail_stop",
+        "pnl_pct": 0.13712405155863472,
+        "amount": 17352.646080813574
+      },
+      {
+        "date": "2025-10-14",
+        "action": "sell",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "reason": "stop_loss",
+        "pnl_pct": -14.628220140515236,
+        "amount": 15599.358396913321
+      },
+      {
+        "date": "2025-10-23",
+        "action": "sell",
+        "code": "024329",
+        "name": "易方达恒生港股通创新药ETF联接发起式C",
+        "reason": "stop_loss",
+        "pnl_pct": -10.56606838300983,
+        "amount": 16090.497112572824
+      },
+      {
+        "date": "2025-11-11",
+        "action": "sell",
+        "code": "011036",
+        "name": "嘉实中证稀土产业ETF联接C",
+        "reason": "trail_stop",
+        "pnl_pct": -0.1224589762429451,
+        "amount": 17275.89474173762
+      },
+      {
+        "date": "2025-11-17",
+        "action": "sell",
+        "code": "017470",
+        "name": "嘉实上证科创板芯片ETF发起联接C",
+        "reason": "stop_loss",
+        "pnl_pct": -10.06491945179131,
+        "amount": 15972.077324794185
+      },
+      {
+        "date": "2025-11-21",
+        "action": "sell",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "reason": "stop_loss",
+        "pnl_pct": -14.30803161183607,
+        "amount": 14614.440733965017
+      },
+      {
+        "date": "2025-12-13",
+        "action": "sell",
+        "code": "015740",
+        "name": "国泰中证港股通科技ETF发起联接C",
+        "reason": "time_tp",
+        "pnl_pct": -6.506694749511044,
+        "amount": 16233.723767776526
+      },
+      {
+        "date": "2025-12-16",
+        "action": "sell",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "reason": "trail_stop",
+        "pnl_pct": 2.0212853724940194,
+        "amount": 16726.268941751317
+      }
+    ]
+  }
+}

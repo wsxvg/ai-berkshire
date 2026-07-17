@@ -1,0 +1,9 @@
+﻿Total records: 8856
+Sample record keys: ['user', 'summary', 'action', 'detail', 'fund_name', 'amount', '_fund_id', '_date_prefix', '_user', '_uid', '_has_yyyy', '_full_date']
+Sample 1: {'user': '', 'summary': '07-01 14:11:56', 'action': '����', 'detail': '����1023652', 'fund_name': '������֤�ƴ���оƬETF����ʽ����C', 'amount': '50,000.00Ԫ', '_fund_id': '1023652', '_date_prefix': '07-01', '_user': '����Ծ��', '_uid': '3546208', '_has_yyyy': False, '_full_date': '2026-07-01'}
+
+Unique users: 0
+First 20: []
+
+Month     ActiveUsers  TotalTrades
+----------------------------------------

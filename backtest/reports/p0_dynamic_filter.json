@@ -1,0 +1,57 @@
+[
+  {
+    "name": "K_baseline",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0
+  },
+  {
+    "name": "K_dyn_monthly_A1",
+    "return": 25.890400000000007,
+    "dd": 14.610781125415476,
+    "trades": 385,
+    "sharpe": 0,
+    "diff_vs_base": -32.079699999999995
+  },
+  {
+    "name": "K_dyn_monthly_A2",
+    "return": 33.23459999999999,
+    "dd": 13.026071263241937,
+    "trades": 363,
+    "sharpe": 0,
+    "diff_vs_base": -24.73550000000001
+  },
+  {
+    "name": "K_dyn_monthly_A3",
+    "return": 40.36129999999999,
+    "dd": 15.20510132688907,
+    "trades": 375,
+    "sharpe": 0,
+    "diff_vs_base": -17.60880000000001
+  },
+  {
+    "name": "K_dyn_weighted_C1",
+    "return": 27.146100000000008,
+    "dd": 8.162536560856996,
+    "trades": 309,
+    "sharpe": 0,
+    "diff_vs_base": -30.823999999999995
+  },
+  {
+    "name": "K_dyn_winrate_B1",
+    "return": 42.1866,
+    "dd": 12.851244488102603,
+    "trades": 512,
+    "sharpe": 0,
+    "diff_vs_base": -15.783500000000004
+  },
+  {
+    "name": "K_dyn_weighted_B2",
+    "return": 48.86459999999999,
+    "dd": 11.216176641122047,
+    "trades": 513,
+    "sharpe": 0,
+    "diff_vs_base": -9.105500000000013
+  }
+]

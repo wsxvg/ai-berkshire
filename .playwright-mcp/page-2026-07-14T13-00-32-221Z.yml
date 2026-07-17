@@ -1,0 +1,17 @@
+- generic [ref=f20e3]:
+  - generic [ref=f20e4]: 基金圈
+  - generic [ref=f20e9]:
+    - tablist [ref=f20e13]:
+      - tab [selected] [ref=f20e14] [cursor=pointer]:
+        - emphasis [ref=f20e16]: 关注
+      - tab [ref=f20e17] [cursor=pointer]:
+        - emphasis [ref=f20e19]: 最新
+      - tab [ref=f20e20] [cursor=pointer]:
+        - emphasis [ref=f20e22]: 推荐
+      - tab [ref=f20e23] [cursor=pointer]:
+        - emphasis [ref=f20e25]: 资讯
+      - tab [ref=f20e26] [cursor=pointer]:
+        - emphasis [ref=f20e28]: 精华必读
+    - tabpanel [ref=f20e31]:
+      - feed [ref=f20e35]:
+        - generic [ref=f20e36]: 加载中...

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "champion_2025only",
+    "return": 14.74,
+    "dd": 8.4,
+    "trades": 135,
+    "time_sec": 85.0
+  },
+  {
+    "name": "baseline_2025only",
+    "return": 13.43,
+    "dd": 7.5,
+    "trades": 143,
+    "time_sec": 97.0
+  },
+  {
+    "name": "champion_for_winner",
+    "return": 65.84,
+    "dd": 9.21,
+    "trades": 314,
+    "time_sec": 741.0
+  },
+  {
+    "name": "p52_winner_analysis",
+    "top1_code": "022365",
+    "top1_profit": 547.76,
+    "top1_pct": 17.9
+  }
+]

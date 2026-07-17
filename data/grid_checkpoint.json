@@ -1,0 +1,127 @@
+{
+  "timestamp": "2026-07-15T16:17:36.243841",
+  "total": 5,
+  "grid": {
+    "user_weight_scenario": [
+      "baseline",
+      "extreme"
+    ],
+    "min_score": [
+      2.8,
+      3.5
+    ],
+    "stop_loss_pct": [
+      -8,
+      -12
+    ],
+    "take_profit_pct": [
+      15,
+      20
+    ],
+    "min_consensus": [
+      3,
+      5
+    ],
+    "pyramiding_enabled": [
+      false,
+      true
+    ],
+    "timing_filter": [
+      false,
+      true
+    ]
+  },
+  "base_annual": 24.1,
+  "results": [
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.8,
+      "stop_loss_pct": -8,
+      "take_profit_pct": 15,
+      "min_consensus": 3,
+      "pyramiding_enabled": false,
+      "timing_filter": false,
+      "hash": "38b4c781",
+      "annual_return": 4.44,
+      "sharpe": 0,
+      "max_drawdown": 2.53,
+      "total_return": 14.44,
+      "excess": -26.63,
+      "benchmark": 41.06,
+      "trades": 163,
+      "win_rate": 0
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.8,
+      "stop_loss_pct": -8,
+      "take_profit_pct": 15,
+      "min_consensus": 3,
+      "pyramiding_enabled": false,
+      "timing_filter": true,
+      "hash": "0df2fb87",
+      "annual_return": 0.6,
+      "sharpe": 0,
+      "max_drawdown": 2.58,
+      "total_return": 1.87,
+      "excess": -39.2,
+      "benchmark": 41.06,
+      "trades": 138,
+      "win_rate": 0
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.8,
+      "stop_loss_pct": -8,
+      "take_profit_pct": 15,
+      "min_consensus": 3,
+      "pyramiding_enabled": true,
+      "timing_filter": false,
+      "hash": "ba7f25e1",
+      "annual_return": 4.27,
+      "sharpe": 0,
+      "max_drawdown": 2.88,
+      "total_return": 13.85,
+      "excess": -27.21,
+      "benchmark": 41.06,
+      "trades": 163,
+      "win_rate": 0
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.8,
+      "stop_loss_pct": -8,
+      "take_profit_pct": 15,
+      "min_consensus": 3,
+      "pyramiding_enabled": true,
+      "timing_filter": true,
+      "hash": "55cc69f5",
+      "annual_return": 1.69,
+      "sharpe": 0,
+      "max_drawdown": 2.13,
+      "total_return": 5.32,
+      "excess": -35.74,
+      "benchmark": 41.06,
+      "trades": 141,
+      "win_rate": 0
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.8,
+      "stop_loss_pct": -8,
+      "take_profit_pct": 15,
+      "min_consensus": 5,
+      "pyramiding_enabled": false,
+      "timing_filter": false,
+      "hash": "913cca75",
+      "annual_return": 1.27,
+      "sharpe": 0,
+      "max_drawdown": 2.65,
+      "total_return": 3.99,
+      "excess": -37.08,
+      "benchmark": 41.06,
+      "trades": 88,
+      "win_rate": 0
+    }
+  ]
+}

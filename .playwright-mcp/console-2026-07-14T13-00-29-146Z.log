@@ -1,0 +1,973 @@
+[    1716ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: pc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    1717ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    2290ms] [LOG] 🚀 ~ created ~ this.$route: 11 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    2667ms] [WARNING] A preload for 'https://gias.jd.com/js/m.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[    2870ms] [WARNING] A preload for 'https://bps.jd.com/js/ts.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[    4326ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4334ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4342ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4350ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4356ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4364ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4379ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4386ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4400ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4407ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4411ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4420ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4424ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4432ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4436ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4437ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4437ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4438ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4438ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4438ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4438ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4603ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    4606ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    9957ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[    9957ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[   14621ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[   14621ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[   21296ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[   21297ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[   94017ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94025ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94031ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94040ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94055ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94064ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94081ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94089ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94103ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94111ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94129ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94137ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94151ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94160ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94173ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94173ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94174ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94174ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94175ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94176ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94320ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94335ms] [LOG] 使用本地存储的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   94338ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95375ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95385ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95403ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95412ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95418ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95426ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95442ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95451ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95456ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95465ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95483ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95491ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95513ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95523ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95540ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95540ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95540ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95541ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95541ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95542ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95543ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95671ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   95673ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97221ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97231ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97248ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97257ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97261ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97270ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97287ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97297ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97314ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97324ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97343ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97351ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97367ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97376ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97392ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97393ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97393ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97394ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97394ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97395ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97395ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   97580ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98526ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98535ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98552ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98562ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98569ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98579ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98585ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98595ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98610ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98620ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98628ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98637ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98642ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98653ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98669ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98669ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98669ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98670ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98670ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98670ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98671ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   98671ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100125ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100133ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100148ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100156ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100164ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100173ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100188ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100196ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100211ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100219ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100232ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100241ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100256ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100266ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100280ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100281ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100281ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100281ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100282ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100282ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100283ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100283ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100283ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100284ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  100284ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101801ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101810ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101825ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101833ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101847ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101856ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101869ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101878ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101883ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101890ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101905ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101915ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101931ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101940ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101953ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101954ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101954ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101954ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101955ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101955ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101956ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101956ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101956ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  101957ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  102430ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  102430ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  103698ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103712ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103728ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103737ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103750ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103758ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103776ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103784ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103789ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103797ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103809ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103817ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103832ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103841ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103856ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103856ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103857ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103857ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103858ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103858ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103858ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103859ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  103859ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  108000ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  108000ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  124277ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124288ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124309ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124319ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124339ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124348ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124357ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124370ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124377ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124394ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124415ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124428ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124435ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124452ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124458ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124459ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124459ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124459ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124461ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124462ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  124462ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  125144ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  125144ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  127036ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127045ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127052ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127061ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127066ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127075ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127093ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127104ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127121ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127131ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127136ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127147ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127164ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127175ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127190ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127190ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127191ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127191ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127191ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127192ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127193ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127194ms] [LOG] 红包模板 {eid: undefined, sysCode: undefined, tagId: undefined, contentData: undefined, titleData: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  127194ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  129920ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  129932ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  129950ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  129961ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  129982ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130006ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130041ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130058ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130085ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130096ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130103ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130115ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130133ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130144ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130161ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130161ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130162ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130162ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130163ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130163ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130164ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130164ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130165ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  130165ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131893ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131904ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131921ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131930ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131945ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131959ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131975ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131983ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  131997ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132007ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132012ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132024ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132035ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132049ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132069ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132069ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132069ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132070ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132070ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132070ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132071ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132071ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  132073ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133132ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  133132ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  133629ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133639ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133658ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133673ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133690ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133701ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133721ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133731ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133744ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133755ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133770ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133780ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133786ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133795ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133799ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133800ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133800ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133801ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133802ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133802ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  133803ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  134118ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135596ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135607ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135623ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135632ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135639ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135649ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135656ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135668ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135695ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135714ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135729ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135740ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135757ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135768ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135773ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135774ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135774ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135775ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135776ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135776ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135777ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  135777ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138030ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138039ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138055ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138065ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138082ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138095ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138110ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138123ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138136ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138144ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138149ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138159ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138164ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138174ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138190ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138191ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138191ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138192ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138192ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138193ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  138193ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139914ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139923ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139928ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139937ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139953ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139963ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139978ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  139989ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140005ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140019ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140041ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140053ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  undefined @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140068ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140077ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140094ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140095ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140095ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140096ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140098ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140098ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  140099ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  141179ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  141179ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  142239ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142249ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142269ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142285ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142307ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142334ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142353ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142364ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142381ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142391ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142411ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142422ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142440ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142451ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142465ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142465ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142466ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142466ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142467ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142467ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142468ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142468ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142469ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142845ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142922ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144875ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144889ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144898ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144911ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144934ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144946ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144951ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144961ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144981ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  144993ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145011ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145023ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145041ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145054ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145073ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145073ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145074ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145074ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145074ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145075ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145076ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145516ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  150599ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  150599ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  726100ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  726100ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc:0
+[  836454ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://jdjr.jd.com/:23
+[  836455ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://jdjr.jd.com/:23
+[  836544ms] [ERROR] Document policy violation: js-profiling is not allowed in this document. @ https://sgm-static.jd.com/sgm-web-4.1.3.js:0
+[  836632ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836643ms] [LOG] Vue app is being created @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836644ms] [LOG] %c========== 屏幕适配信息 ========== color: #ff4144; font-size: 16px; font-weight: bold; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836644ms] [TABLE] {CSS宽度 (逻辑像素): 1028px, CSS高度 (逻辑像素): 706px, 屏幕宽度: 1536px, 屏幕高度: 864px, 可用宽度: 1536px, 可用高度: 816px, 设备像素比 (DPR): 1.25, 物理宽度 (估算): 1285px, 物理高度 (估算): 883px} @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836644ms] [LOG] %c📏 当前屏幕类型: 超小屏（<1280px） color: #1db270; font-size: 14px; font-weight: bold; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836645ms] [LOG] %c💡 适配设计稿使用: CSS像素（逻辑像素）= 1028px color: #1890ff; font-size: 14px; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836645ms] [LOG] %c⚠️  物理像素仅供参考，不用于适配 color: #faad14; font-size: 12px; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836645ms] [LOG] ==================================
+ @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836653ms] [LOG] 分发渠道已初始化: 未知 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836653ms] [LOG] Vue app is being created @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836712ms] [LOG] unLogin changed: true @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  836713ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836715ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836715ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836726ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836726ms] [LOG] [HomeDarkMode] 系统主题监听器已初始化 @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  836821ms] [LOG] Titlebar 已移动到 document.documentElement 下，避免受 body transform 影响 @ https://jdjr.jd.com/static/titlebar.js:207
+[  836821ms] [LOG] Titlebar 显示条件检查: {isApp: false, versionSupported: false, isOldHomePage: false, shouldShow: false} @ https://jdjr.jd.com/static/titlebar.js:65
+[  836822ms] [LOG] Titlebar 已隐藏（不满足显示条件） @ https://jdjr.jd.com/static/titlebar.js:253
+[  836822ms] [LOG] Titlebar 显示条件检查: {isApp: false, versionSupported: false, isOldHomePage: false, shouldShow: false} @ https://jdjr.jd.com/static/titlebar.js:65
+[  836836ms] [LOG] generateClientId : BCGy55a23ksZDHBcQ2kW65WT3ETkX8Sr @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836881ms] [LOG] =========homePageHeadInfo========= {msg: 成功, fail: true, code: 0, data: Object, success: false} @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  836882ms] [LOG] unLogin changed: false @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  836882ms] [LOG] 用户已登录，种cookie @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  836891ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836892ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836892ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  836895ms] [WARNING] Mixed Content: The page at 'https://jdjr.jd.com/' was loaded over HTTPS, but requested an insecure element 'http://storage.360buyimg.com/default.image/6a645f6465665f696d675f393836323131373632333134353935323236_big.jpg'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html @ https://jdjr.jd.com/:0
+[  837009ms] [LOG] window.cryptico.setPublicKeyString @ https://jdjr.jd.com/release/goldpc2/js/chunk-vendors.f97314c6.js:34
+[  837012ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837013ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837013ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837013ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837028ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782:5
+[  837028ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782:5
+[  837029ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837030ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837030ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837030ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837044ms] [LOG] =========setCookies success========= @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  837048ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837049ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837049ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837050ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837081ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837081ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837082ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837082ms] [LOG] [FundDetailPanel] iframe 未就绪，消息已缓存等待 READY @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837097ms] [LOG] 打开指数详情: {} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837113ms] [LOG] --页面加载成功-- @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837127ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837128ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837128ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837128ms] [LOG] [FundDetailPanel] iframe 未就绪，消息已缓存等待 READY @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837252ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://jdjr.jd.com/:0
+[  837278ms] [LOG] iframe 栈初始化成功, 标题: 指数详情 , 显示导航栏: false , showPCfund: 1 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837286ms] [LOG] 打开指数详情: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  837302ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837302ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837302ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837302ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837303ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837304ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837305ms] [LOG] 系统设置加载完成 {autoStart: false, keepRunning: true, isNew: true, mainWindow: Ctrl+Shift+Z, tray: Ctrl+Shift+D} @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  837353ms] [LOG] initConnect======= onSuccess {msg: 订阅成功} @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837353ms] [LOG] [SGM] [info] pc_mqtt_connected — MQTT连接成功 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837395ms] [LOG] [SGM] [info] pc_mqtt_msg_parsed — MQTT消息解析成功, topic=$login @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  837440ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  837440ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  838145ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: pc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  838195ms] [WARNING] A preload for 'https://gias.jd.com/js/m.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  838221ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  838293ms] [LOG] 🚀 ~ created ~ this.$route: 11 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  838707ms] [WARNING] A preload for 'https://bps.jd.com/js/ts.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  838810ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784035166426&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  838840ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  839318ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  839318ms] [WARNING] The deviceorientation events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  839318ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  839319ms] [WARNING] The devicemotion events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  839350ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839365ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839399ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839409ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839417ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839427ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839436ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839447ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839470ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839480ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839500ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839512ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  undefined @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839517ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839528ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839533ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839533ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839534ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839534ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839535ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839535ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839535ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839691ms] [INFO] 未找到骨架屏配置，如果已经配置骨架屏，请关注最新的Api文档 @ https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784035166426&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app:0
+[  839772ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839776ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  839907ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  839907ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  839928ms] [LOG] [FundDetailPanel] iframe READY，重发缓存消息: SH-000001 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  845488ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  845488ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  848882ms] [LOG] 切换我的持仓 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  848986ms] [LOG] 持仓栈初始化成功, showPCfund: 1 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  849446ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://roma.jd.com/fund/hold/list/pc/?_t=1784035178232&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  849454ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  849820ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:14
+[  849839ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:14
+[  849931ms] [WARNING] [transCoreJS] using unregistered module "frameViewModule" @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:14
+[  849940ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  849942ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  849943ms] [INFO] Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113 @ https://jdjr.jd.com/:0
+[  849966ms] [LOG] filterData>>>>getPin>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  849969ms] [LOG] filterData>>>>requestnull @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  849973ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  849973ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  850025ms] [WARNING] %c 请接入奇点时设置pageId参数（未设置可能导致浏览数据统计不到），下一个版本如果未设置，将不再上报页面浏览数据，请尽快完成，感谢您的配合！如何设置，可以在这里查看：https://joyspace.jd.com/pages/puZEQL6Ct1T50FVq8NMH color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  850072ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  850072ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  850234ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850245ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850245ms] [LOG] allDataList [Object, Object, Object, Object, Object, Object, Object, Object, Object] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850246ms] [LOG] bottomLegoData [Object, Object, Object] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850246ms] [LOG] topLegoData [Object, Object, Object] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850247ms] [LOG] filterData>>>>getPin>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850247ms] [LOG] filterData>>>>getPin>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850253ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850254ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850256ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850257ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850265ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850266ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850267ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850268ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850269ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850270ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850271ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850272ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850272ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850273ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850275ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850276ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850276ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850277ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850279ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850280ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850281ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850282ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850286ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850288ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850289ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850290ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850374ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850413ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850413ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850414ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850415ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850416ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850419ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850420ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850439ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850450ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850451ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850452ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850456ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850458ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850459ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850459ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850469ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850471ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850471ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850472ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850482ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850484ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850485ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850486ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850490ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850491ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850492ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850493ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850494ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850495ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850496ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850497ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850498ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850499ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850501ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850502ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850503ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850503ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850505ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850506ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850507ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850508ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850548ms] [LOG] onscrollend cellanimationplayed:true @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850549ms] [LOG] getNeedRefreshFundColdList>>>[{"type":"productItem","data":{"salesType":"3","secondCategoryCode":"1201","fundManagerCode":"18","thirdCategoryCode":"120101","fundManager":"银华基金管理股份有限公司","yesterdayIncome":{"amt":-2.88,"text":"-2.88","textColor":"#31A385"},"tagText":{"borderColor":"#CC8C4E","bgColor":"#FFFFFF","textColor":"#CC8C4EFF"},"todayIncome":{"amt":-0.29,"text":"-0.29","textColor":"#31A385"},"productName":"银华集成电路混合C","fundType":"3","totalAmount":{"amt":91.82,"text":"91.82","textColor":"#000000"},"holdIncome":{"amt":-8.18,"text":"-8.18","textColor":"#31A385"},"rankTagData":{"imgUrl":"https://img30.360buyimg.com/imgcloud/jfs/t1/349176/5/13257/2701/68f1ee62F36c70e3f/66e555d6e4b7afd7.png","gradientBgColor":{"endColor":"#FFEEE0","startColor":"#FFE1CC"},"borderColor":"#F7D0AE","jumpData":{"jumpType":8,"jumpShare":0,"xviewType":0,"jumpUrl":"https://show.jd.com/m/ZL5vVEgDqrY4lBKr/?pageKey=ZL5vVEgDqrY4lBKr&rankCode=432126255181888&fundUtmSource=1677&fundUtmParam=310"},"title":{"text":"今日热度榜 No.3","textColor":"#D17A36"},"trackData":{"paramJson":"{\"fundUtmParam\":\"310\",\"fundUtmSource\":\"1677\",\"matid\":\"432126255181888\",\"skuId\":\"114880\"}","bid":"ERWT|RankItem"}},"firstCategoryCode":"12","jumpData":{"jumpType":5,"productId":"114880","param":{"buSku":"1_114880","productId":"114880","distinctCode":1,"orderId":"5222205415082907","extJson":"{\"productId\":\"114880\",\"distinctCode\":1,\"orderId\":\"5222205415082907\",\"distinctCodes\":[1],\"flowFlag\":1,\"type\":1,\"fromJumpType\":\"2\",\"buSku\":\"1_114880\",\"buSkus\":[\"1_114880\"]}","distinctCodes":[1],"buSkus":["1_114880"],"flowFlag":1,"type":1,"fromJumpType":"2"},"jumpShare":0,"xviewType":0,"jumpUrl":"229"},"skuId":"114880","holdRate":{"amt":-8.18,"text":"-8.18%","textColor":"#31A385"},"hasCoupon":false},"showTopRadius":true,"showBottomeRadius":false,"height":91,"originalHeight":91},{"type":"productItem","data":{"salesType":"3","secondCategoryCode":"1503","fundManagerCode":"11","thirdCategoryCode":"150302","fundManager":"易方达基金管理有限公司","yesterdayIncome":{"amt":-1.06,"text":"-1.06","textColor":"#31A385"},"tagText":{"borderColor":"#CC8C4E","bgColor":"#FFFFFF","textColor":"#CC8C4EFF"},"todayIncome":{"amt":-1.94,"text":"-1.94","textColor":"#31A385"},"productName":"易方达全球成长精选混合(QDII)C","fundType":"6","totalAmount":{"amt":34.27,"text":"34.27","textColor":"#000000"},"holdIncome":{"amt":-5.73,"text":"-5.73","textColor":"#31A385"},"firstCategoryCode":"15","jumpData":{"jumpType":5,"productId":"1012922","param":{"buSku":"1_1012922","productId":"1012922","distinctCode":1,"orderId":"5921960777242907","extJson":"{\"productId\":\"1012922\",\"distinctCode\":1,\"orderId\":\"5921960777242907\",\"distinctCodes\":[1],\"flowFlag\":1,\"type\":1,\"fromJumpType\":\"2\",\"buSku\":\"1_1012922\",\"buSkus\":[\"1_1012922\"]}","distinctCodes":[1],"buSkus":["1_1012922"],"flowFlag":1,"type":1,"fromJumpType":"2"},"jumpShare":0,"xviewType":0,"jumpUrl":"229"},"skuId":"1012922","holdRate":{"amt":-14.33,"text":"-14.33%","textColor":"#31A385"},"hasCoupon":false},"showTopRadius":false,"showBottomeRadius":false,"height":93,"originalHeight":93},{"type":"productItem","data":{"salesType":"3","secondCategoryCode":"1503","fundManagerCode":"03","thirdCategoryCode":"150302","fundManager":"华夏基金管理有限公司","yesterdayIncome":{"amt":-95.04,"text":"-95.04","textColor":"#31A385"},"tagText":{"borderColor":"#CC8C4E","bgColor":"#FFFFFF","textColor":"#CC8C4EFF"},"todayIncome":{"amt":-128.92,"text":"-128.92","textColor":"#31A385"},"productName":"华夏全球科技先锋混合(QDII)C","fundType":"6","totalAmount":{"amt":1867.43,"text":"1,867.43","textColor":"#000000"},"holdIncome":{"amt":-632.57,"text":"-632.57","textColor":"#31A385"},"firstCategoryCode":"15","jumpData":{"jumpType":5,"productId":"1024239","param":{"buSku":"1_1024239","productId":"1024239","distinctCode":1,"orderId":"5221815329962907","extJson":"{\"productId\":\"1024239\",\"distinctCode\":1,\"orderId\":\"5221815329962907\",\"distinctCodes\":[1],\"flowFlag\":1,\"type\":1,\"fromJumpType\":\"2\",\"buSku\":\"1_1024239\",\"buSkus\":[\"1_1024239\"]}","distinctCodes":[1],"buSkus":["1_1024239"],"flowFlag":1,"type":1,"fromJumpType":"2"},"jumpShare":0,"xviewType":0,"jumpUrl":"229"},"skuId":"1024239","holdRate":{"amt":-25.3,"text":"-25.30%","textColor":"#31A385"},"hasCoupon":false},"showTopRadius":false,"showBottomeRadius":true,"height":98.4,"originalHeight":93}] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850549ms] [LOG] requestItemCellAD>>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850599ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850600ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850600ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850601ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850601ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850601ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850602ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850602ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850603ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850604ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850604ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850605ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850605ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850605ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850606ms] [LOG] filterData>>>>getPin>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850606ms] [LOG] filterData>>>>saveSortKey{"sortKey":"1"} @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850606ms] [LOG] filterData>>>>getPin>> @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850607ms] [LOG] filterData>>>>setViewType{"sortKey":"1","viewType":"1"} @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850624ms] [LOG] {left: -142.5} @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:46
+[  850631ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850632ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850657ms] [LOG] #999999AD @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:14
+[  850831ms] [LOG] parseRichText>>>start本基金[jrstyle=color:#FF4144;]近1月涨超[/jrstyle][jrstyle=color:#FF4144;]37%！[/jrstyle] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850832ms] [LOG] parseRichText>>>end[{"text":"本基金","textColor":"#999999"},{"text":"近1月涨超","textColor":"#FF4144"},{"text":"37%！","textColor":"#FF4144"}] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850832ms] [LOG] parseRichText>>>start本基金[jrstyle=color:#FF4144;]近1月涨超[/jrstyle][jrstyle=color:#FF4144;]37%！[/jrstyle] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850832ms] [LOG] parseRichText>>>end[{"text":"本基金","textColor":"#999999"},{"text":"近1月涨超","textColor":"#FF4144"},{"text":"37%！","textColor":"#FF4144"}] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850841ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850842ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850843ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850844ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850849ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850850ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850851ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850852ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850852ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850853ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850855ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850856ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850856ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850857ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850859ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850859ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850860ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850861ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850863ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850864ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850864ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850865ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850868ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850869ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850869ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850870ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850887ms] [LOG] getHeaderTrackData>>>{"paramJson":"{\"itemId\":\"114880\",\"resCode\":\"ZY_847104143523504128\",\"fundUtmSource\":\"1757\",\"fundUtmParam\":\"ZY_847104143523504128\",\"resdata\":{\"abid\":{\"098066707834764\":{\"label\":\"MANUAL_SKU_A-rengong\",\"abtid\":\"0000+098066707834764+225589+109589\",\"type\":\"strategy\"}},\"rs_id\":\"\",\"qd_res\":{\"ressys\":\"bge\",\"type\":\"01\",\"resid\":\"ZY_847104143523504128\"},\"res_id\":{\"sysCode\":\"pageFundHoldList\",\"gearCode\":\"DW_56686276\",\"materialPoolCode\":\"SC_27151807\",\"imgCodes\":\"{\\\"leftImgUrl\\\":\\\"IMG_825023804148920320\\\"}\",\"mgCode\":\"MG_819293624215126016\",\"mgInfoCode\":\"MG_6FOX9M61GGE8\",\"sceneCode\":\"CJ_72751491\",\"distributePool\":\"on\",\"pageCodes\":{\"jumpUrl\":\"PG_832618428748193792\"},\"resFatherCode\":\"ZY_847076892908118016\",\"resCode\":\"ZY_847104143523504128\",\"userMgId\":\"304086\",\"skuCode\":\"013841\"},\"lqMktId\":\"020600000000011198186218161335562240\",\"resdata_uuid\":\"164a85f459b4439986d5e67712c9a7ca|SC_27151807|ZY_847104143523504128|MG_819293624215126016\"}}","bid":"ERWT|holdingAccompanyCard"} @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850888ms] [LOG] getHeaderTrackData>>>{"paramJson":"{\"itemId\":\"114880\",\"resCode\":\"ZY_847104143523504128\",\"fundUtmSource\":\"1757\",\"fundUtmParam\":\"ZY_847104143523504128\",\"resdata\":{\"abid\":{\"098066707834764\":{\"label\":\"MANUAL_SKU_A-rengong\",\"abtid\":\"0000+098066707834764+225589+109589\",\"type\":\"strategy\"}},\"rs_id\":\"\",\"qd_res\":{\"ressys\":\"bge\",\"type\":\"01\",\"resid\":\"ZY_847104143523504128\"},\"res_id\":{\"sysCode\":\"pageFundHoldList\",\"gearCode\":\"DW_56686276\",\"materialPoolCode\":\"SC_27151807\",\"imgCodes\":\"{\\\"leftImgUrl\\\":\\\"IMG_825023804148920320\\\"}\",\"mgCode\":\"MG_819293624215126016\",\"mgInfoCode\":\"MG_6FOX9M61GGE8\",\"sceneCode\":\"CJ_72751491\",\"distributePool\":\"on\",\"pageCodes\":{\"jumpUrl\":\"PG_832618428748193792\"},\"resFatherCode\":\"ZY_847076892908118016\",\"resCode\":\"ZY_847104143523504128\",\"userMgId\":\"304086\",\"skuCode\":\"013841\"},\"lqMktId\":\"020600000000011198186218161335562240\",\"resdata_uuid\":\"164a85f459b4439986d5e67712c9a7ca|SC_27151807|ZY_847104143523504128|MG_819293624215126016\"}}","bid":"ERWT|holdingAccompanyCard"} @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850901ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850929ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850929ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850930ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850931ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850931ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850933ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850934ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850935ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850936ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850937ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850938ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850940ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850942ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850942ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850943ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850945ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850946ms] [LOG] -dddd-height>>>201.41250000000002 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850947ms] [LOG] -dddd-todayTags[] @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850948ms] [LOG] -dddd-getFooterLiteViewHeight>>>230.0325 @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  850962ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850963ms] [LOG] --------chao-------- undefined @ https://roma.jd.com/fund/hold/js/vendor_1042eb81b3.js:19
+[  850977ms] [LOG] bottomdata>>>{"btnTitle":{"text":"去加仓"},"descIconUrl":"","bgImgUrl":"","descTitle":"本基金[jrstyle=color:#FF4144;]近1月涨超[/jrstyle][jrstyle=color:#FF4144;]37%！[/jrstyle]","jumpData":{},"title":"","trackData":{"paramJson":"{\"itemId\":\"114880\",\"resCode\":\"ZY_847104143523504128\",\"fundUtmSource\":\"1757\",\"fundUtmParam\":\"ZY_847104143523504128\"}","bid":"ERWT|holdingAccompanyButton"},"descTitleList":[{"text":"本基金","textColor":"#999999"},{"text":"近1月涨超","textColor":"#FF4144"},{"text":"37%！","textColor":"#FF4144"}]} @ https://roma.jd.com/fund/hold/js/main_3b4cc5cf3e.js:0
+[  854251ms] [LOG] 切换我的持仓 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  854572ms] [LOG] 持仓栈已销毁 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  857800ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  857800ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733914:0
+[  863421ms] [LOG] 点击基金: {fundCode: 025500, fundName: 东方阿尔法科技智选混合发起C, fundUtmSource: 1295} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  863422ms] [LOG] 打开基金详情: {fundCode: 025500, fundName: 东方阿尔法科技智选混合发起C, fundUtmSource: 1295} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  863442ms] [LOG] 销毁旧的 frameStack @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  863554ms] [LOG] iframe 栈初始化成功, 标题:  , 显示导航栏: true , showPCfund: 1 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  863556ms] [LOG] 打开: https://dingpan.jd.com/finance/funddetail/home/?fundCode=025500&fundUtmSource=1295 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  863788ms] [LOG] [API Proxy] 代理脚本已注入 @ https://dingpan.jd.com/finance/funddetail/home/?fundCode=025500&fundUtmSource=1295&_t=1784035192700&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app:4
+[  863788ms] [LOG] [API Proxy] 代理已启用，api.jdjygold.com 的 XHR 请求将被重定向到 /api-proxy @ https://dingpan.jd.com/finance/funddetail/home/?fundCode=025500&fundUtmSource=1295&_t=1784035192700&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app:21
+[  863990ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://dingpan.jd.com/finance/funddetail/home/?fundCode=025500&fundUtmSource=1295&_t=1784035192700&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034924:5
+[  864001ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034924:5
+[  864090ms] [WARNING] registerCode上报埋点失败，但不影响后续流程: {status: -101, msg: 不在京东app内} @ https://res.jr.jd.com/cf-local-jssdk/babelnode/jd-jssdk/4.7.8/jd-jssdk.js:2
+[  864192ms] [LOG] 跳出率埋点验证 ~ T1｜T2:  jinketiyan_bounce|jinketiyan_d03b709e @ https://storage.360buyimg.com/jdpay-oss/jinke-tiyan/release/bounce/0.0.4/bounce.min.js:0
+[  864205ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  864205ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  864322ms] [LOG] 2024-05-29 cfYxCompCyticket @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[  864366ms] [LOG] BASE_API== //ms.jr.jd.com @ https://res.jr.jd.com/fundcomp/cf-fund-comp-invest-edu/1.0.0/static.umd.js:9
+[  864873ms] [LOG] element JSHandle@node @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[  864880ms] [LOG] props 2024-05-27.21 Proxy(Object) @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[  864880ms] [LOG] 获取数据 @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[  865571ms] [LOG] 风控设备指纹脚本加载成功[{"success":true,"isCache":false,"repeatCount":0}] @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:26
+[  865572ms] [LOG] getRiskInfo++++++=》{"jsToken":"","fp":"PIxICD5qA81MnYHC8HiGT3smY2UXo570","sdkToken":"","eid":"NPY6ONIC5EVMFOR6GN6R6SKB5DHMLQ5XSBNPKE3DHPSXJRJANBV5DMC2RPH75U7EPMUEOKBQKUKY52DYKXQ7KMTRWM"} @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:26
+[  865573ms] [LOG] 风控deviceInfo参数 {jsToken: , fp: PIxICD5qA81MnYHC8HiGT3smY2UXo570, sdkToken: , eid: NPY6ONIC5EVMFOR6GN6R6SKB5DHMLQ5XSBNPKE3DHPSXJRJANBV5DMC2RPH75U7EPMUEOKBQKUKY52DYKXQ7KMTRWM} @ https://res.jr.jd.com/fundcomp/cyticket/1.0.0/static.umd.js:49
+[  872133ms] [LOG] 不是股票app @ https://res.jr.jd.com/cf-local-jssdk/h5/bridge/2.0.3/jdstock.js:0
+[  872135ms] [WARNING] registerCode上报埋点失败，但不影响后续流程: {status: -101, msg: 不在京东app内} @ https://res.jr.jd.com/cf-local-jssdk/babelnode/jd-jssdk/4.7.8/jd-jssdk.js:2
+[  872164ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  872164ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  873218ms] [LOG] lastJsUrl加载成功了 @ https://res.jr.jd.com/sdk/market-comp/lib/latest.umd.js:0
+[  873737ms] [LOG] 组件-prefixClass .market-comp-lac712820c323a5 market-comp-lac712820c323a5 #market-comp-lac712820c323a5 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  873752ms] [LOG] 组件入参 Proxy(Object) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  873759ms] [LOG] 成功订阅股票=====: SL-801081 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  873843ms] [LOG] 组件-prefixClass .market-comp-lac712820c323a5 market-comp-lac712820c323a5 #market-comp-lac712820c323a5 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  873847ms] [LOG] 行情库已连接不需要重复链接 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  873958ms] [LOG] [JdtWsClient]:  ws is connected. @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  874083ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  874163ms] [LOG] 昨日收盘价 12344.24 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874166ms] [LOG] 格式化分时数据 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874180ms] [LOG] dateTimes Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874181ms] [LOG] XTicks undefined @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874182ms] [LOG] 间隔设置 11716 12603 221.75 @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874183ms] [LOG] 间隔设置 100 300 11700 [11700, 12000, 12300, 12600, 12900] @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874190ms] [LOG] maxVolume.value 114724200 Proxy(Array) @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:27
+[  874472ms] [LOG] 报盘组件-数据更新 {tagList: Array(2)} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  875695ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  875695ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  876813ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  876814ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  877818ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  877819ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  878846ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  878846ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  879713ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  879714ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  880778ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  880778ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  881715ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  881715ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  882838ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  882838ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  883761ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  883761ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  884722ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  884723ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  885801ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  885801ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  886817ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  886818ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  887768ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  887768ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  888667ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  888667ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  889817ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  889818ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  890745ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  890746ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  891807ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  891808ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  892777ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  892778ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  893819ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  893819ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  894816ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  894816ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  895708ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  895708ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  896799ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  896799ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  897758ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  897758ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  898766ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  898767ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  899713ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  899714ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  900752ms] [LOG] websocket价格更新报盘: {qt: Object} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  900752ms] [LOG] 交易时间回调 {tradeTime: 已收盘 07-14 15:00:00} @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  900884ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  900885ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  900885ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  900885ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  900903ms] [LOG] [JdtWsClient]:  page visibility changed true @ https://res.jr.jd.com/sdk/market-comp/lib/1.0.4/static.umd.js:22
+[  900937ms] [LOG] 销毁旧的 frameStack @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  900968ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782:5
+[  900990ms] [LOG] =========setCookies success========= @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  901453ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/r0OvBYW582nz3gyG/?pageKey=r0OvBYW582nz3gyG&_t=1784035230451&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&ua=jdjr-app+jdjr-pc @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  901655ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  901662ms] [INFO] 未找到骨架屏配置，如果已经配置骨架屏，请关注最新的Api文档 @ https://show.jd.com/m/r0OvBYW582nz3gyG/?pageKey=r0OvBYW582nz3gyG&_t=1784035230451&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&ua=jdjr-app+jdjr-pc:0
+[  901840ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  901840ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  903146ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/product/js/vendor_e1801926ed.js:38
+[  903149ms] [WARNING] [transCoreJS] using unregistered module "sgm" @ https://roma.jd.com/fund/product/js/vendor_e1801926ed.js:38
+[  903303ms] [WARNING] %c 请接入奇点时设置pageId参数（未设置可能导致浏览数据统计不到），下一个版本如果未设置，将不再上报页面浏览数据，请尽快完成，感谢您的配合！如何设置，可以在这里查看：https://joyspace.jd.com/pages/puZEQL6Ct1T50FVq8NMH color:#ff9800 @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  903356ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  903356ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js?rel=105:6
+[  903857ms] [LOG] -dddd-showGuideAlert @ https://roma.jd.com/fund/product/js/main_131be83975.js:0
+[  906321ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  906321ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  906560ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/bvJNdnzrVwnW5keX/?pageKey=bvJNdnzrVwnW5keX&rankCode=432131472245440&channelfrom=grouppc&_t=1784035234707&parentOrigin=https%3A%2F%2Fjdjr.jd.com&ua=jdjr-app+jdjr-pc @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034935435:5
+[  906628ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034935435:5
+[  906641ms] TypeError: JrBridge.setTopBar is not a function
+    at https://show.jd.com/m/bvJNdnzrVwnW5keX/js/main_fa7f41a5e4.js:1:140710
+    at https://show.jd.com/m/bvJNdnzrVwnW5keX/js/vendor_e7f9f03870.js:15:242311
+    at Generator.<anonymous> (https://show.jd.com/m/bvJNdnzrVwnW5keX/js/vendor_e7f9f03870.js:3:1051)
+    at Generator.next (https://show.jd.com/m/bvJNdnzrVwnW5keX/js/vendor_e7f9f03870.js:9:124660)
+    at Ir (https://show.jd.com/m/bvJNdnzrVwnW5keX/js/main_fa7f41a5e4.js:1:130697)
+    at o (https://show.jd.com/m/bvJNdnzrVwnW5keX/js/main_fa7f41a5e4.js:1:130901)
+[  907351ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  907351ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  907634ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/bvJNdnzrVwnW5keX/?pageKey=bvJNdnzrVwnW5keX&rankCode=432129704944192&channelfrom=grouppc&_t=1784035236157&parentOrigin=https%3A%2F%2Fjdjr.jd.com&ua=jdjr-app+jdjr-pc @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034936463:5
+[  907661ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js?t=1784034936463:5
+[  909474ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  909475ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  909475ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  909475ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[  909503ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909504ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909504ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909504ms] [LOG] [FundDetailPanel] iframe 未就绪，消息已缓存等待 READY @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909514ms] [LOG] 打开指数详情: {} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909517ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946782:5
+[  909534ms] [LOG] =========setCookies success========= @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[  909587ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909587ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909587ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909588ms] [LOG] [FundDetailPanel] iframe 未就绪，消息已缓存等待 READY @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909615ms] [LOG] iframe 栈初始化成功, 标题: 指数详情 , 显示导航栏: false , showPCfund: 1 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909619ms] [LOG] 打开指数详情: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  909742ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  909742ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  909817ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: pc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733915 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  909838ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  910136ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784035238761&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  910307ms] [WARNING] A preload for 'https://gias.jd.com/js/m.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733915:0
+[  910312ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  910360ms] [LOG] 🚀 ~ created ~ this.$route: 11 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  910375ms] [INFO] 未找到骨架屏配置，如果已经配置骨架屏，请关注最新的Api文档 @ https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784035238761&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app:0
+[  910686ms] [WARNING] A preload for 'https://bps.jd.com/js/ts.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733915:0
+[  910759ms] [LOG] [FundDetailPanel] iframe READY，重发缓存消息: SH-000001 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[  910794ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  910794ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[  911071ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  911071ms] [WARNING] The deviceorientation events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  911071ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  911072ms] [WARNING] The devicemotion events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[  911144ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911155ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911173ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911181ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911186ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911193ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911197ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911204ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911218ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911227ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911243ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911253ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911258ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911266ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911270ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911271ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911271ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911271ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911272ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911272ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911272ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911373ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  911375ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  915092ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733915:0
+[  915092ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733915:0

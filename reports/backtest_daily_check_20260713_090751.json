@@ -1,0 +1,28 @@
+{
+  "config": {
+    "start_date": "2024-06-01",
+    "end_date": "2026-06-01",
+    "initial_cash": 100000,
+    "max_holdings": 5,
+    "min_buyers": 2,
+    "require_industry_low": false
+  },
+  "result": {
+    "final_value": 100000,
+    "total_return": 0.0,
+    "annualized": 0.0,
+    "sharpe": 0,
+    "max_drawdown": 0,
+    "trading_days": 730,
+    "n_buys": 0,
+    "n_sells": 0,
+    "win_rate": 0,
+    "benchmark_return": 143.29,
+    "benchmark_annualized": 56.03,
+    "alpha": -56.03
+  },
+  "trades": {
+    "buys": [],
+    "sells": []
+  }
+}

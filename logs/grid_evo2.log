@@ -1,0 +1,12 @@
+﻿python : object address  : 0000028E21506FE0
+所在位置 行:1 字符: 243
++ ... t-Location C:\fund; $t0 = Get-Date; python _grid_evo2.py 2>&1 | Out-F ...
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (object address  : 0000028E21506FE0:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+object refcount : 2
+object type     : 00007FF81EC65850
+object type name: ValueError
+object repr     : ValueError('I/O operation on closed file.')
+lost sys.stderr

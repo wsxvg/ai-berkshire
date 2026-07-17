@@ -17,9 +17,18 @@ function runPy(file: string, timeoutMs = 60000): Promise<string> {
   })
 }
 
+// 进程内缓存
+let cache: { ts: number; data: any } | null = null
+const CACHE_TTL = 30 * 60 * 1000  // 30min
+
 export async function GET(req: NextRequest) {
-  // 数据源: queryFullRanking 端点 (京东金融)
-  // 26 个榜单 (人气认证5 + 主题榜单12 + 业绩优秀9), 每榜 TOP20
+  const forceRefresh = req.nextUrl.searchParams.get('refresh') === 'true'
+
+  // 缓存命中 (非强制刷新)
+  if (!forceRefresh && cache && Date.now() - cache.ts < CACHE_TTL) {
+    return NextResponse.json(cache.data, { headers: { 'X-Cache': 'memory' } })
+  }
+
   const tmp = path.join(ROOT, '_api_feat_rankings.py')
   try {
     fs.writeFileSync(tmp, `import json
@@ -28,7 +37,6 @@ import sys
 sys.path.insert(0, '.')
 from tools.jd_finance_api import get_featured_rankings
 
-# 读持仓方向缓存 (fund_type)
 fund_types = {}
 import glob
 for f in glob.glob('data/fund_cache/fund_profile_*.json'):
@@ -38,16 +46,12 @@ for f in glob.glob('data/fund_cache/fund_profile_*.json'):
         fund_types[code] = d.get('fund_type', '') or d.get('fund_type_name', '') or ''
     except: pass
 
-# 读 name_map (name -> code), 反向 code -> name
 nm = json.loads(Path('data/fund_name_map.json').read_text('utf-8'))
 code_to_name = {}
 for n, c in nm.items():
     if c not in code_to_name: code_to_name[c] = n
 
-# 拉真实数据
 data = get_featured_rankings(use_cache=True, max_items=20)
-
-# 给每只基金补 type/name
 for code, b in data.get('boards', {}).items():
     for f in b.get('top20', []):
         fc = f.get('code')
@@ -59,9 +63,21 @@ print(json.dumps(data, ensure_ascii=False))
 `, 'utf-8')
     const stdout = await runPy(tmp)
     fs.unlinkSync(tmp)
-    return NextResponse.json(JSON.parse(stdout.trim()))
+    const data = JSON.parse(stdout.trim())
+    cache = { ts: Date.now(), data }
+    return NextResponse.json(data, { headers: { 'X-Cache': 'fresh' } })
   } catch (e: any) {
     try { fs.unlinkSync(tmp) } catch {}
-    return NextResponse.json({ error: e.message }, { status: 500 })
+    // 缓存失败, 返上一次缓存
+    if (cache) {
+      return NextResponse.json({
+        ...cache.data,
+        _warning: e.message,
+      }, { headers: { 'X-Cache': 'stale' } })
+    }
+    return NextResponse.json({
+      error: e.message,
+      hint: '检查 jd_finance_api.get_featured_rankings 是否正常, 跑一次 tools/build_ranking_cache.py 预热',
+    }, { status: 500 })
   }
 }

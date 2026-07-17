@@ -240,7 +240,16 @@ def run():
                 fund_rules.get(code), fund_managers.get(code),
                 TODAY, merged_trades, fund_profiles.get(code))
             s = fs.total if hasattr(fs, 'total') else 3.0
-        except:
+            # 公告信号修正 (2026-07-12 接入, 经理变更/估值调整/合同修订)
+            from backtest.engine.notice_signal import score_notice_signal
+            notice = score_notice_signal(code, TODAY, name)
+            notice_adj = notice.get("adjust", 0.0)
+            if notice_adj != 0:
+                s = max(0.5, min(5.0, s + notice_adj))
+                ns = notice.get("signals", [])
+                if ns:
+                    print(f"   NOTICE {name[:20]}: {ns[0]} (adj={notice_adj})")
+        except Exception:
             s = max(1.0, min(5.0, 3.0 + (info.get("month_return", 0) or 0) * 0.05))
 
         if s < min_score: continue
@@ -426,14 +435,33 @@ def run():
             lines.append(f"| {h['name']} ({code}) | {h['cost']:,.0f} | {mv_str} | {pnl_str} | {h.get('buy_date','?')} |")
 
     # 构造 AI 审计需要的数据 (必须在 if 外, 否则空仓时 NameError)
+    # 从 portfolio.trades 拿今日实际 buy 调用 (而非 pending/确认后)
     today_actions = []
-    # 已确认的 (今日买入 + 已 T+N)
-    for code, h in portfolio.holdings.items():
-        if h.get('buy_date') == TODAY:
-            today_actions.append({"action": "BUY", "code": code, "name": h['name'], "amount": h['cost']})
-    # 待确认的 (T+N 流程中)
-    for p in portfolio.pending_buys:
-        today_actions.append({"action": "BUY", "code": p.get('code', ''), "name": p.get('name', ''), "amount": p.get('amount', 0)})
+    for tr in portfolio.trades:
+        if tr.get("date") == TODAY and tr.get("action") == "buy":
+            code = tr.get("code", "")
+            # 找名称
+            name = ""
+            for c in candidates:
+                if c.get("code") == code:
+                    name = c.get("name", code)
+                    break
+            if not name:
+                for pc, ph in portfolio.holdings.items():
+                    if pc == code:
+                        name = ph.get("name", code)
+                        break
+            if not name and code in funds:
+                name = funds[code].get("fund_name", code)
+            today_actions.append({"action": "BUY", "code": code, "name": name,
+                                  "amount": tr.get("amount", 0)})
+    # 兼容旧逻辑: 兜底用 holdings + pending
+    if not today_actions:
+        for code, h in portfolio.holdings.items():
+            if h.get('buy_date') == TODAY:
+                today_actions.append({"action": "BUY", "code": code, "name": h['name'], "amount": h['cost']})
+        for p in portfolio.pending_buys:
+            today_actions.append({"action": "BUY", "code": p.get('code', ''), "name": p.get('name', ''), "amount": p.get('amount', 0)})
     sell_actions = [a for a in today_actions if a.get('action') == 'SELL']
     # 找 BLOCKED 的 (从评分过程结果)
     blocked_set = set()
@@ -498,6 +526,31 @@ def run():
     print(f"   日报已保存")
 
     # 保存 AI 可读的机器报告
+    # 加载 fund_notices (反未来函数: 只取 <=TODAY 的公告)
+    notices_for_ai = {}
+    if today_actions:
+        try:
+            from tools.jd_finance_api import get_fund_notices
+            for action in today_actions:
+                if action.get("action") != "BUY":
+                    continue
+                code = action.get("code", "")
+                if not code or code in notices_for_ai:
+                    continue
+                cache_path = CACHE / f"fund_notices_{code}.json"
+                if cache_path.exists():
+                    import time
+                    try:
+                        data = json.loads(cache_path.read_text(encoding="utf-8"))
+                        recent = [n for n in data.get("notices", [])
+                                  if n.get("date", "")[:10] <= TODAY]
+                        if recent:
+                            notices_for_ai[code] = recent[:3]  # 最近 3 条
+                    except Exception:
+                        pass
+        except Exception as e:
+            print(f"   notices 加载跳过: {e}")
+
     ai_report = {
         "date": TODAY,
         "market": market,
@@ -508,6 +561,7 @@ def run():
         "blocked_funds": [{"code": r["code"], "name": r["name"], "reason": r.get("reason")} for r in results if r.get("blocked")],
         "holdings": {code: {"name": h["name"], "cost": h["cost"], "market_value": hv.get("market_value"), "pnl_pct": hv.get("pnl_pct")}
                      for code, h in portfolio.holdings.items() for hv in [vp_holdings.get(code, {})]},
+        "fund_notices": notices_for_ai,  # 反未来函数: 只含 <=TODAY 的公告
         "portfolio": {"total_value": round(total_val, 2), "cash": round(portfolio.cash, 2), "fees": round(portfolio.total_fees, 2)},
     }
     (SIM_DIR / f"{TODAY}.json").write_text(json.dumps(ai_report, ensure_ascii=False, indent=2), encoding="utf-8")

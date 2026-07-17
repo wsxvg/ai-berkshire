@@ -1,0 +1,63 @@
+{
+  "date": "2026-05-29",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 3.0356875115592388
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.8561404402535984
+    },
+    {
+      "code": "024663",
+      "name": "富国创业板人工智能ETF发起式联接C",
+      "score": 2.693291615602348
+    }
+  ],
+  "buy_recommendations": [
+    {
+      "action": "BUY",
+      "code": "024663",
+      "name": "富国创业板人工智能ETF发起式联接C",
+      "amount": 14400
+    }
+  ],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1280.04,
+      "pnl_pct": 28.0
+    },
+    "016664": {
+      "name": "天弘全球高端制造混合(QDII)A",
+      "cost": 100.0,
+      "market_value": 136.74,
+      "pnl_pct": 36.74
+    },
+    "013841": {
+      "name": "银华集成电路混合C",
+      "cost": 17800,
+      "market_value": 23250.03,
+      "pnl_pct": 30.62
+    },
+    "022184": {
+      "name": "富国全球科技互联网股票(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1133.58,
+      "pnl_pct": 13.36
+    }
+  },
+  "portfolio": {
+    "total_value": 105900.4,
+    "cash": 65700.0,
+    "fees": 1.5
+  }
+}

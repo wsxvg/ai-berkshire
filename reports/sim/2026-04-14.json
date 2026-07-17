@@ -1,0 +1,15 @@
+{
+  "date": "2026-04-14",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [],
+  "buy_recommendations": [],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {},
+  "portfolio": {
+    "total_value": 100000,
+    "cash": 100000,
+    "fees": 0
+  }
+}

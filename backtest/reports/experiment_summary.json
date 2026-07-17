@@ -1,0 +1,72 @@
+[
+  {
+    "step": "step1",
+    "name": "champion+sec_0",
+    "return": 63.31,
+    "dd": 9.32,
+    "trades": 323
+  },
+  {
+    "step": "step1",
+    "name": "champion+sec_30",
+    "return": 57.04,
+    "dd": 9.32,
+    "trades": 311
+  },
+  {
+    "step": "step1",
+    "name": "champion+sec_50",
+    "return": 64.53,
+    "dd": 9.21,
+    "trades": 313
+  },
+  {
+    "step": "step45",
+    "name": "champion_full_2023_2026",
+    "return": 68.68,
+    "dd": 9.3,
+    "trades": 322
+  },
+  {
+    "step": "step45",
+    "name": "seg_A_bear",
+    "return": 0.29,
+    "dd": 0.28,
+    "trades": 2
+  },
+  {
+    "step": "step45",
+    "name": "seg_B_recovery",
+    "return": -0.24,
+    "dd": 1.34,
+    "trades": 37
+  },
+  {
+    "step": "step45",
+    "name": "seg_C_bull",
+    "return": 54.83,
+    "dd": 10.19,
+    "trades": 268
+  },
+  {
+    "step": "step5",
+    "name": "champion_2025only",
+    "return": 14.74,
+    "dd": 8.4,
+    "trades": 135
+  },
+  {
+    "step": "step5",
+    "name": "baseline_2025only",
+    "return": 13.43,
+    "dd": 7.5,
+    "trades": 143
+  },
+  {
+    "step": "step5",
+    "name": "champion_for_winner",
+    "return": 65.84,
+    "dd": 9.21,
+    "trades": 314
+  }
+]

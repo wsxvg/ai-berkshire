@@ -1706,7 +1706,16 @@ def run_backtest(config):
 
             # 🔴 止损: 亏损超过阈值（指数型或配置了no_stop_loss则跳过）
             no_sl = config.get("no_stop_loss", False)
-            if not no_sl and cum_return < sl_pct:
+            # 动态止损：浮盈 >20% 收紧到从高点回撤15%，浮盈 >40% 收紧到10%
+            effective_sl = sl_pct
+            if config.get("dynamic_stop_loss", False) and cum_return > 20:
+                if drawdown_from_peak < -15:
+                    should_sell = True
+                    sell_reason = f"dyn_stop_loss profit={cum_return:.1f}% dd={drawdown_from_peak:.1f}%"
+                elif cum_return > 40 and drawdown_from_peak < -10:
+                    should_sell = True
+                    sell_reason = f"dyn_stop_loss profit={cum_return:.1f}% dd={drawdown_from_peak:.1f}%"
+            elif not no_sl and cum_return < effective_sl:
                 should_sell = True
                 sell_reason = f"stop_loss {cum_return:.1f}%"
 
@@ -1931,8 +1940,33 @@ def run_backtest(config):
             # 这同时实现了"再入场机制"：止盈后基金再次走强可较快重新买入
             if _cooldown_cfg and portfolio.is_in_cooldown(c["code"], day, _cooldown_cfg):
                 continue
-            # 已持仓的基金不重复买入（加仓通过单独逻辑处理）
+            # 已持仓的基金：检查是否满足金字塔补仓条件
             if c["code"] in portfolio.holdings:
+                # 金字塔补仓：浮亏 >5% 且大佬信号持续 → 越跌越买
+                if not config.get("pyramiding_enabled", False):
+                    continue
+                h = portfolio.holdings[c["code"]]
+                buy_nav = h.get("buy_nav", 1.0)
+                current_nav = 1.0
+                pts = fund_charts.get(c["code"], [])
+                if pts:
+                    valid = [p for p in pts if p.get("xAxis", "") <= day]
+                    if valid:
+                        current_nav = (100 + _float(valid[-1].get("yAxis", 0))) / 100
+                loss_pct = (current_nav / buy_nav - 1) * 100 if buy_nav > 0 else 0
+                # 浮亏 >5% 才补仓，跌 15% 以上不再加
+                if loss_pct > -5 or loss_pct < -15:
+                    continue
+                # 补仓系数：跌5-10% → ×0.5，跌10-15% → ×0.3
+                if loss_pct > -10:
+                    pyramid_mult = 0.5
+                else:
+                    pyramid_mult = 0.3
+                pyramid_amt = c["_suggested"] * pyramid_mult
+                if pyramid_amt >= 100:
+                    portfolio.buy(c["code"], c["name"], pyramid_amt, price=current_nav,
+                                 day_str=day)
+                    print(f"  PYRAMID {c['code']} {c['name'][:16]} loss={loss_pct:.1f}% mult={pyramid_mult} amt={pyramid_amt:.0f}")
                 continue
             # 计算实际买入净值
             buy_price = 1.0

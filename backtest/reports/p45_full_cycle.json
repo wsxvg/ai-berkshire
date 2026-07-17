@@ -1,0 +1,36 @@
+[
+  {
+    "name": "champion_full_2023_2026",
+    "return": 68.68,
+    "dd": 9.3,
+    "trades": 322,
+    "time_sec": 894.0
+  },
+  {
+    "name": "seg_A_bear",
+    "return": 0.29,
+    "dd": 0.28,
+    "trades": 2,
+    "time_sec": 19.0
+  },
+  {
+    "name": "seg_B_recovery",
+    "return": -0.24,
+    "dd": 1.34,
+    "trades": 37,
+    "time_sec": 20.0
+  },
+  {
+    "name": "seg_C_bull",
+    "return": 54.83,
+    "dd": 10.19,
+    "trades": 268,
+    "time_sec": 971.0
+  },
+  {
+    "name": "max_dd_window",
+    "dd_pct": 9.3,
+    "start": "2026-01-28",
+    "end": "2026-04-02"
+  }
+]

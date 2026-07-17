@@ -3,6 +3,13 @@ from __future__ import annotations
 from scripts.pipeline.engine import PipelineEngine, PipelineTask
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+try:
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("pipeline.trading")
+
 
 @PipelineEngine.register
 class TaskTrading(PipelineTask):
@@ -15,7 +22,7 @@ class TaskTrading(PipelineTask):
         cookie_ok = context.get("auth", {}).get("cookie_ok", False)
 
         if not cookie_ok or not cookies:
-            print("  Trading: skipped (no cookie)")
+            _logger.info("Trading: skipped (no cookie)")
             return {"records": [], "signals": {}}
 
         from tools.jd_finance_api import FOLLOWED_USERS, get_trading_records
@@ -31,7 +38,7 @@ class TaskTrading(PipelineTask):
                     records = result.get("records", [])
                     if records:
                         all_records.extend(records)
-                        print(f"    [{name}] {len(records)} records")
+                        _logger.debug(f"[{name}] {len(records)} records")
                 except Exception as e:
                     pass
 
@@ -47,5 +54,5 @@ class TaskTrading(PipelineTask):
             elif "卖出" in action:
                 signals[fund_name]["sell_count"] += 1
 
-        print(f"  Trading: {len(all_records)} records, {len(signals)} funds with signals")
+        _logger.info(f"Trading: {len(all_records)} records, {len(signals)} funds with signals")
         return {"records": all_records, "signals": signals}

@@ -1,0 +1,1032 @@
+{
+  "holdings": [
+    {
+      "name": "易方达科讯混合",
+      "code": "110029",
+      "amount": "57,122.01",
+      "profit_rate": "+249.03%",
+      "profit": "+40,755.99"
+    },
+    {
+      "name": "易方达战略新兴产业股票C",
+      "code": "010392",
+      "amount": "47,313.64",
+      "profit_rate": "+259.00%",
+      "profit": "+34,134.64"
+    },
+    {
+      "name": "易方达积极成长混合",
+      "code": "110005",
+      "amount": "44,428.98",
+      "profit_rate": "+161.36%",
+      "profit": "+27,428.98"
+    },
+    {
+      "name": "易方达创新成长混合",
+      "code": "009808",
+      "amount": "19,129.43",
+      "profit_rate": "+149.60%",
+      "profit": "+11,465.43"
+    },
+    {
+      "name": "广发创新药ETF联接C",
+      "code": "012738",
+      "amount": "7,291.97",
+      "profit_rate": "+4.13%",
+      "profit": "+289.22"
+    },
+    {
+      "name": "博时信用优选债券A",
+      "code": "009271",
+      "amount": "6,083.13",
+      "profit_rate": "+5.23%",
+      "profit": "+302.29"
+    },
+    {
+      "name": "易方达医药生物股票A",
+      "code": "010387",
+      "amount": "4,008.06",
+      "profit_rate": "+0.20%",
+      "profit": "+8.06"
+    },
+    {
+      "name": "鹏华丰禄债券",
+      "code": "003547",
+      "amount": "3,976.73",
+      "profit_rate": "+8.99%",
+      "profit": "+327.91"
+    },
+    {
+      "name": "易方达中证1000量化增强A",
+      "code": "017094",
+      "amount": "2,895.51",
+      "profit_rate": "+44.77%",
+      "profit": "+895.51"
+    },
+    {
+      "name": "长盛安逸纯债E",
+      "code": "015439",
+      "amount": "2,132.83",
+      "profit_rate": "+3.83%",
+      "profit": "+78.67"
+    }
+  ],
+  "raw": {
+    "resultData": {
+      "msg": "成功",
+      "fail": true,
+      "code": 0,
+      "data": {
+        "userInfo": {
+          "userAvatar": "https://img12.360buyimg.com/jrpmobile/jfs/t4426/281/1409708693/5892/5bbc3547/58de20bbNbc584362.png",
+          "jumpData": {
+            "jumpType": "7",
+            "jumpUrl": "https://roma.jd.com/content/personal?romaFileName=pageCommunityPersonal&contentId=jimu_user_info-432038"
+          },
+          "userName": {
+            "textColor": "#333333",
+            "text": "jd332099ifj"
+          },
+          "isSelf": false
+        },
+        "tabInfo": {
+          "tabList": [
+            {
+              "openStatus": 1,
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "ShiPanPage|liveAccountPage_tab",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"tabName\":\"基金持仓\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanPage"
+              },
+              "isSelf": 0,
+              "firmOfferType": "fund"
+            }
+          ]
+        },
+        "fundTypeSelectData": {
+          "checkedIcon": "https://img14.360buyimg.com/img/jfs/t1/304923/1/10297/535/684bd380Fe0df08a2/efe486266912e13e.png",
+          "list": [
+            {
+              "name": "京东实盘",
+              "isSelect": 1,
+              "type": 1
+            }
+          ]
+        },
+        "fundHoldItemInfo": {
+          "operateData": {
+            "discussButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/325219/36/23887/590/68d3c854F3fcff061/1d54a1f10e3bdc68.png?width=42&height=42&_fs=590",
+            "addTitle": {
+              "textColor": "#666666",
+              "text": "加自选"
+            },
+            "discussTitle": {
+              "textColor": "#666666",
+              "text": "去讨论"
+            },
+            "discussButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/330367/22/16638/564/68d29586Fcbe496b6/9d49174d4d02ad84.png?width=42&height=42&_fs=564",
+            "selectedButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/346541/9/7038/558/68d3c855Fad45481f/05aad76c0810b38c.png?width=42&height=42&_fs=558",
+            "addButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/340328/25/14065/551/68d29586Fecb4c70f/1180794a35e22df5.png?width=42&height=42&_fs=551",
+            "addButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/343836/17/6825/551/68d3c854F3eaf88dd/42013c98b72d016e.png?width=42&height=42&_fs=551",
+            "selectedButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/348323/37/6706/568/68d29586F94d197c4/2ce6d44039540391.png?width=42&height=42&_fs=568",
+            "selectedTitle": {
+              "textColor": "#666666",
+              "text": "已添加"
+            }
+          },
+          "sortTypeData": {
+            "sortDirection": "DESC",
+            "confirmTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_confirm",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "titleTrackData": {
+              "bid": "pageCommunityShiPanFund|compareDetail_holdSortFilter",
+              "spj": "{\"text\":\"金额排序\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "resetTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_reset",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "closeXTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_close",
+              "spj": "{\"ifXcloseIcon\":\"1\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "list": [
+              {
+                "text": "近期交易排序",
+                "type": 1,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"近期交易排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "金额排序",
+                "type": 2,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"金额排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "昨日收益排序",
+                "type": 3,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"昨日收益排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "持有收益排序",
+                "type": 4,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"持有收益排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "持有收益率排序",
+                "type": 5,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"持有收益率排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              }
+            ],
+            "currentSortType": 2,
+            "closeTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_close",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            }
+          },
+          "title1": {
+            "textColor": "#000000",
+            "text": "持仓明细"
+          },
+          "title2": {
+            "textColor": "#999999",
+            "text": "金额/昨日收益"
+          },
+          "itemList": [
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "57,122.01"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106645\",\"productName\":\"易方达科讯混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106645\",\"productName\":\"易方达科讯混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+249.03%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106645\",\"productName\":\"易方达科讯混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106645\",\"productName\":\"易方达科讯混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "106645",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "共封装光学概念"
+              },
+              "fcFundCode": "fc106645",
+              "fundCode": "110029",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+40,755.99"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=106645&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-1,415.44"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达科讯混合"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "47,313.64"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112937\",\"productName\":\"易方达战略新兴产业股票C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112937\",\"productName\":\"易方达战略新兴产业股票C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+259.00%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112937\",\"productName\":\"易方达战略新兴产业股票C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112937\",\"productName\":\"易方达战略新兴产业股票C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "112937",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "电子"
+              },
+              "fcFundCode": "fc112937",
+              "fundCode": "010392",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+34,134.64"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=112937&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-1,270.59"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达战略新兴产业股票C"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "44,428.98"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106622\",\"productName\":\"易方达积极成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106622\",\"productName\":\"易方达积极成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+161.36%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106622\",\"productName\":\"易方达积极成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"106622\",\"productName\":\"易方达积极成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "106622",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "半导体主题"
+              },
+              "fcFundCode": "fc106622",
+              "fundCode": "110005",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+27,428.98"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=106622&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-1,238.90"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达积极成长混合"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "19,129.43"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"111664\",\"productName\":\"易方达创新成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"111664\",\"productName\":\"易方达创新成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+149.60%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"111664\",\"productName\":\"易方达创新成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"111664\",\"productName\":\"易方达创新成长混合\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "111664",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "科技"
+              },
+              "fcFundCode": "fc111664",
+              "fundCode": "009808",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+11,465.43"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=111664&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-838.56"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达创新成长混合"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "7,291.97"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"113900\",\"productName\":\"广发创新药ETF联接C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"113900\",\"productName\":\"广发创新药ETF联接C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+4.13%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"113900\",\"productName\":\"广发创新药ETF联接C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"113900\",\"productName\":\"广发创新药ETF联接C\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "113900",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "创新药主题"
+              },
+              "fcFundCode": "fc113900",
+              "fundCode": "012738",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+289.22"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=113900&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-47.41"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "广发创新药ETF联接C"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "6,083.13"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112572\",\"productName\":\"博时信用优选债券A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112572\",\"productName\":\"博时信用优选债券A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+5.23%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112572\",\"productName\":\"博时信用优选债券A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112572\",\"productName\":\"博时信用优选债券A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "112572",
+              "fcFundCode": "fc112572",
+              "fundCode": "009271",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+302.29"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=112572&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#FF4144",
+                "text": "+0.52"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "博时信用优选债券A"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "4,008.06"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112672\",\"productName\":\"易方达医药生物股票A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112672\",\"productName\":\"易方达医药生物股票A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+0.20%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112672\",\"productName\":\"易方达医药生物股票A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"112672\",\"productName\":\"易方达医药生物股票A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "112672",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "医药生物"
+              },
+              "fcFundCode": "fc112672",
+              "fundCode": "010387",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+8.06"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=112672&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-21.79"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达医药生物股票A"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "3,976.73"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"110067\",\"productName\":\"鹏华丰禄债券\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"110067\",\"productName\":\"鹏华丰禄债券\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+8.99%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"110067\",\"productName\":\"鹏华丰禄债券\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"110067\",\"productName\":\"鹏华丰禄债券\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "110067",
+              "fcFundCode": "fc110067",
+              "fundCode": "003547",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+327.91"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=110067&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-0.76"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "鹏华丰禄债券"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "2,895.51"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1017094\",\"productName\":\"易方达中证1000量化增强A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1017094\",\"productName\":\"易方达中证1000量化增强A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+44.77%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1017094\",\"productName\":\"易方达中证1000量化增强A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1017094\",\"productName\":\"易方达中证1000量化增强A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "1017094",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "中证1000主题"
+              },
+              "fcFundCode": "fc1017094",
+              "fundCode": "017094",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+895.51"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=1017094&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-151.72"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "易方达中证1000量化增强A"
+              }
+            },
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "2,132.83"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1015439\",\"productName\":\"长盛安逸纯债E\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1015439\",\"productName\":\"长盛安逸纯债E\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+3.83%"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1015439\",\"productName\":\"长盛安逸纯债E\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-432038\",\"productId\":\"1015439\",\"productName\":\"长盛安逸纯债E\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "1015439",
+              "fcFundCode": "fc1015439",
+              "fundCode": "015439",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+78.67"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-432038&jumpFundId=1015439&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-0.33"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "长盛安逸纯债E"
+              }
+            }
+          ],
+          "title3": {
+            "textColor": "#999999",
+            "text": "持仓收益/率"
+          },
+          "attentionData": {
+            "isAttention": false,
+            "attentionTitle": {
+              "textColorDark": "#FFFFFF",
+              "textColor": "#FFFFFF",
+              "bgColor": "#FF4144",
+              "text": "关注后查看"
+            },
+            "attentionInputData": {
+              "bizType": 17,
+              "content": "jimu_user_info-432038"
+            },
+            "tipsTitle": {
+              "textColorDark": "#A7A7A7",
+              "textColor": "#333333",
+              "text": "关注后可查看交易记录和持仓列表"
+            },
+            "bgImg": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/286229/35/24119/68958/69003539F1a11c51d/46db2689fee758b0.png?width=702&height=1300&_fs=68958",
+            "autoSubscribe": false,
+            "bgImgDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/341669/37/15392/89745/69003539Fad579bdf/a1f8ea6d32f76c56.png?width=702&height=1300&_fs=89745",
+            "trackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundTrade_follow",
+              "spj": "{\"uid\":\"jimu_user_info-432038\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            }
+          }
+        },
+        "fundHoldCommonTrackData": {
+          "holdDetailTabSwipeUpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_holdingDetail_tab",
+            "spj": "{\"uid\":\"jimu_user_info-432038\",\"tabName\":\"持仓明细\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "tradeTabSwipeUpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_holdingDetail_tab",
+            "spj": "{\"uid\":\"jimu_user_info-432038\",\"tabName\":\"基金交易\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          }
+        },
+        "fundTradeRecordData": {
+          "foldTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_close",
+            "spj": "{\"uid\":\"jimu_user_info-432038\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "extendTotalTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_expand",
+            "spj": "{\"uid\":\"jimu_user_info-432038\",\"buttonName\":\"查看全部\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "extendTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_expand",
+            "spj": "{\"uid\":\"jimu_user_info-432038\",\"buttonName\":\"展开\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "jumpData": {
+            "jumpType": "7",
+            "jumpUrl": "https://roma.jd.com/content/shipan-deal?targetUid=jimu_user_info-432038&channel=null&channelfrom=grouppc"
+          },
+          "jumpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_all",
+            "spj": "{\"uid\":\"jimu_user_info-432038\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          }
+        },
+        "fundHoldInfo": {
+          "periodicProfit": {
+            "monthly": {
+              "percentage": {
+                "textColor": "#FF4144",
+                "text": "+11.11%"
+              },
+              "title": {
+                "text": "近一月收益"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+18,936.33"
+              }
+            },
+            "yearly": {
+              "percentage": {
+                "textColor": "#FF4144",
+                "text": "+138.97%"
+              },
+              "title": {
+                "text": "近一年收益"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+111,139.09"
+              }
+            },
+            "weekly": {
+              "percentage": {
+                "textColor": "#1DB270",
+                "text": "-1.44%"
+              },
+              "title": {
+                "text": "近一周收益"
+              },
+              "value": {
+                "textColor": "#1DB270",
+                "text": "-2,765.32"
+              }
+            }
+          },
+          "portfolioOverview": {
+            "totalProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "累计收益(元)"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+116,208.68"
+              }
+            },
+            "portfolio": {
+              "title": {
+                "textColor": "#000000",
+                "text": "持仓总金额(元)"
+              },
+              "value": {
+                "textColor": "#000000",
+                "text": "194,382.29"
+              }
+            },
+            "bgImgUrl": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/338407/9/13979/144262/68d2563dF60b9e0c6/7726e07d3abe3791.png?width=1053&height=711&_fs=144262",
+            "holdingProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "持有收益(元)"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+115,686.70"
+              }
+            },
+            "bgImgUrlDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/340027/15/14209/199566/68d2562eF54d600cc/90d38aa310469fad.png?width=1053&height=711&_fs=199566",
+            "yesterdayProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "昨日收益(元)"
+              },
+              "value": {
+                "textColor": "#1DB270",
+                "text": "-4,984.98"
+              }
+            }
+          },
+          "notificationSettings": {
+            "openToast": "您会及时收到Ta的交易提醒",
+            "bookStatus": 2,
+            "closeSwitchTrackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundHolding_tradeSwitch_off",
+              "spj": "{\"uid\":\"jimu_user_info-432038\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "openSwitchTrackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundHolding_tradeSwitch_on",
+              "spj": "{\"uid\":\"jimu_user_info-432038\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "switchData": {
+              "reqData": {
+                "relationType": 9,
+                "targetId": "89dVrTrIrr91Mqs_O4Inkw",
+                "targetFirstLevelType": 26
+              },
+              "filterTipsData": {
+                "arrowIcon": "https://img10.360buyimg.com/imagetools/jfs/t1/309038/21/12444/281/685bc966F4cc8745e/d47a54778d4db4f3.png",
+                "icon": "https://img30.360buyimg.com/imgcloud/jfs/t1/268735/9/24895/283/67bf060cF57ab94f7/5416ac4782e53098.png",
+                "jumpData": {
+                  "schemeUrl": "openjdjrapp://com.jd.jrapp/jrdynamicprogram/openpage?jrlogin=true&jrcontainer=native&jrparam=%7B%22jueFileName%22%3A%22pageMessagesFollowList%22%7D"
+                },
+                "title1": {
+                  "text": "默认过滤10000元以下的黄金交易通知和1000元以下的基金申购通知",
+                  "textColor": "#FFFFFF"
+                },
+                "closeIcon": "https://img13.360buyimg.com/imagetools/jfs/t1/301318/1/17868/405/685b98c3F7487ee22/0d5f93bd333235f4.png",
+                "title2": {
+                  "text": "点击修改",
+                  "textColor": "#FFFFFF"
+                },
+                "trackData": {
+                  "bid": "3553|tradeNotification_amountSetting",
+                  "spj": "{\"tabName\":\"基金fund\"}",
+                  "ctp": "jrTransUI_pageCommunityFinanceTrader"
+                },
+                "closeTrackData": {
+                  "bid": "3553|tradeNotification_amountSetting_close",
+                  "spj": "{\"tabName\":\"基金fund\"}",
+                  "ctp": "jrTransUI_pageCommunityFinanceTrader"
+                }
+              }
+            },
+            "bookTips": "接收交易提醒",
+            "closeToast": "已关闭提醒"
+          }
+        }
+      },
+      "success": false,
+      "sgmFail": false,
+      "systime": 1784042365881,
+      "decode": 0,
+      "sgmSuccess": true
+    },
+    "success": true,
+    "resultCode": 0,
+    "resultMsg": "成功",
+    "channelEncrypt": 0
+  }
+}

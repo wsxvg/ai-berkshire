@@ -7,46 +7,46 @@
   "sell_recommendations": [],
   "blocked_funds": [],
   "holdings": {
-    "024663": {
-      "name": "富国创业板人工智能ETF发起式联接C",
-      "cost": 17700,
-      "market_value": 19378.81,
-      "pnl_pct": 9.48
-    },
-    "501226": {
-      "name": "长城全球新能源车股票发起式(QDII)A",
-      "cost": 500.0,
-      "market_value": 536.71,
-      "pnl_pct": 7.34
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1462.7,
+      "pnl_pct": 46.27
     },
     "016664": {
       "name": "天弘全球高端制造混合(QDII)A",
       "cost": 100.0,
-      "market_value": 113.95,
-      "pnl_pct": 13.95
-    },
-    "024239": {
-      "name": "华夏全球科技先锋混合(QDII)C",
-      "cost": 1000.0,
-      "market_value": 1162.13,
-      "pnl_pct": 16.21
-    },
-    "017731": {
-      "name": "嘉实全球产业升级股票发起式(QDII)C",
-      "cost": 100.0,
-      "market_value": 124.01,
-      "pnl_pct": 24.01
+      "market_value": 155.89,
+      "pnl_pct": 55.89
     },
     "013841": {
       "name": "银华集成电路混合C",
-      "cost": 14500,
-      "market_value": 22933.2,
-      "pnl_pct": 58.16
+      "cost": 17800,
+      "market_value": 35190.6,
+      "pnl_pct": 97.7
+    },
+    "022184": {
+      "name": "富国全球科技互联网股票(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1254.63,
+      "pnl_pct": 25.46
+    },
+    "024663": {
+      "name": "富国创业板人工智能ETF发起式联接C",
+      "cost": 14400,
+      "market_value": 15505.31,
+      "pnl_pct": 7.68
+    },
+    "501226": {
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "cost": 500.0,
+      "market_value": 503.09,
+      "pnl_pct": 0.62
     }
   },
   "portfolio": {
-    "total_value": 110348.81,
-    "cash": 66100.0,
+    "total_value": 119272.22,
+    "cash": 65200.0,
     "fees": 76.5
   }
 }

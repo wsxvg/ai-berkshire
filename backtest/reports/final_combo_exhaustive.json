@@ -1,0 +1,23 @@
+[
+  {
+    "name": "champion+sec_0",
+    "return": 63.31,
+    "dd": 9.32,
+    "trades": 323,
+    "time_sec": 589.0
+  },
+  {
+    "name": "champion+sec_30",
+    "return": 57.04,
+    "dd": 9.32,
+    "trades": 311,
+    "time_sec": 593.0
+  },
+  {
+    "name": "champion+sec_50",
+    "return": 64.53,
+    "dd": 9.21,
+    "trades": 313,
+    "time_sec": 816.0
+  }
+]

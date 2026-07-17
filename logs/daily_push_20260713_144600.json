@@ -1,0 +1,479 @@
+{
+  "ts": "2026-07-13T14:46:00.860371",
+  "daily_check": {
+    "date": "2026-07-13",
+    "ts": 1783925159235,
+    "api_base": "http://127.0.0.1:3456/api",
+    "watchlist": [
+      "013841",
+      "024663",
+      "024239",
+      "016416",
+      "011036",
+      "012922",
+      "012240",
+      "005660",
+      "002943",
+      "018736",
+      "011102",
+      "019280"
+    ],
+    "actions": [
+      {
+        "type": "follow_buy",
+        "summary": "30 笔买入, 共识 TOP3: 华夏全球科技先锋混合(QDII)A×3, 富国上海金ETF联接C×2, 华夏全球科技先锋混合(QDII)C×2"
+      },
+      {
+        "type": "risk_alert",
+        "summary": "23 笔卖出, 共识: 东兴兴福一年定开A×2, 泰信医疗服务混合发起式C×2, 万家鑫璟纯债C×2"
+      },
+      {
+        "type": "sector_rotation",
+        "summary": "低估 0 个行业 / 高估 3 个行业"
+      }
+    ],
+    "ranking_top5": [],
+    "_ranking_err": "{\"error\":\"ranking cache expired (>24h), run: py -3.10 tools/build_ranking_cache.py\",\"age_hours\":41}",
+    "feed_buy": [
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "永赢医药创新智选混合发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:45:25",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "易方达恒生港股通创新药ETF联接发起式A",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:45:03",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "景顺长城中证港股通创新药ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:44:49",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "东方人工智能主题混合C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:43:29",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "华夏上证科创板半导体材料设备主题ETF发起式联接A",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:42:58",
+        "isBuy": true
+      },
+      {
+        "user": "黑夜银翼",
+        "uid": "2690580",
+        "fund": "东方红医疗升级股票发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "100,000.00元",
+        "amt_num": 100000,
+        "time": "07-13 14:15:00",
+        "isBuy": true
+      },
+      {
+        "user": "黑夜银翼",
+        "uid": "2690580",
+        "fund": "天弘中证工业有色金属主题ETF发起联接A",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:14:20",
+        "isBuy": true
+      },
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:13:51",
+        "isBuy": true
+      },
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "富国上海金ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "20,000.00元",
+        "amt_num": 20000,
+        "time": "07-13 14:13:27",
+        "isBuy": true
+      },
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "华泰柏瑞质量成长混合C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:12:58",
+        "isBuy": true
+      },
+      {
+        "user": "小猫咪爱黄金",
+        "uid": "10458335",
+        "fund": "华夏全球科技先锋混合(QDII)C",
+        "code": "",
+        "action": "买入",
+        "amount": "2,000.00元",
+        "amt_num": 2000,
+        "time": "07-13 13:26:56",
+        "isBuy": true
+      },
+      {
+        "user": "小猫咪爱黄金",
+        "uid": "10458335",
+        "fund": "富国上海金ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 13:25:36",
+        "isBuy": true
+      },
+      {
+        "user": "小猫咪爱黄金",
+        "uid": "10458335",
+        "fund": "银华集成电路混合C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 13:23:12",
+        "isBuy": true
+      },
+      {
+        "user": "小猫咪爱黄金",
+        "uid": "10458335",
+        "fund": "富国创业板人工智能ETF发起式联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 13:18:56",
+        "isBuy": true
+      },
+      {
+        "user": "Z先生养基",
+        "uid": "14345330",
+        "fund": "华夏全球科技先锋混合(QDII)A",
+        "code": "",
+        "action": "买入",
+        "amount": "2,000.00元",
+        "amt_num": 2000,
+        "time": "07-13 11:13:17",
+        "isBuy": true
+      }
+    ],
+    "feed_buy_consensus": [
+      {
+        "key": "华夏全球科技先锋混合(QDII)A",
+        "buyers": 3,
+        "name": "华夏全球科技先锋混合(QDII)A"
+      },
+      {
+        "key": "富国上海金ETF联接C",
+        "buyers": 2,
+        "name": "富国上海金ETF联接C"
+      },
+      {
+        "key": "华夏全球科技先锋混合(QDII)C",
+        "buyers": 2,
+        "name": "华夏全球科技先锋混合(QDII)C"
+      },
+      {
+        "key": "银华集成电路混合C",
+        "buyers": 2,
+        "name": "银华集成电路混合C"
+      },
+      {
+        "key": "国富全球科技互联混合(QDII)人民币A",
+        "buyers": 2,
+        "name": "国富全球科技互联混合(QDII)人民币A"
+      }
+    ],
+    "feed_sell": [
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "上银国证自由现金流指数C",
+        "code": "",
+        "action": "卖出",
+        "amount": "209,112.68份",
+        "amt_num": 0,
+        "time": "07-13 14:12:33",
+        "isBuy": false
+      },
+      {
+        "user": "王晴阳的活财之路",
+        "uid": "16020895",
+        "fund": "国投瑞银白银期货(LOF)A",
+        "code": "",
+        "action": "卖出",
+        "amount": "65.04份",
+        "amt_num": 0,
+        "time": "07-13 13:56:57",
+        "isBuy": false
+      },
+      {
+        "user": "王晴阳的活财之路",
+        "uid": "16020895",
+        "fund": "华宝纳斯达克精选股票发起式(QDII)A",
+        "code": "",
+        "action": "卖出",
+        "amount": "134.84份",
+        "amt_num": 0,
+        "time": "07-13 13:55:32",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "大摩沪港深科技混合A",
+        "code": "",
+        "action": "卖出",
+        "amount": "174,077.09份",
+        "amt_num": 0,
+        "time": "07-13 11:37:30",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "华富人工智能ETF联接A",
+        "code": "",
+        "action": "卖出",
+        "amount": "59,792.76份",
+        "amt_num": 0,
+        "time": "07-13 11:34:35",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "东兴兴福一年定开A",
+        "code": "",
+        "action": "卖出",
+        "amount": "29,752.53份",
+        "amt_num": 0,
+        "time": "07-13 00:42:40",
+        "isBuy": false
+      },
+      {
+        "user": "晴空万里理财",
+        "uid": "3748946",
+        "fund": "东兴兴福一年定开A",
+        "code": "",
+        "action": "卖出",
+        "amount": "2,855.51份",
+        "amt_num": 0,
+        "time": "07-10 15:27:08",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "华泰柏瑞质量成长混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "50,521.15份",
+        "amt_num": 0,
+        "time": "07-10 15:14:56",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "广发远见智选混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "9,177.97份",
+        "amt_num": 0,
+        "time": "07-10 15:13:33",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "永赢中证沪深港黄金产业股票ETF发起联接C",
+        "code": "",
+        "action": "卖出",
+        "amount": "11,130.01份",
+        "amt_num": 0,
+        "time": "07-10 14:44:59",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "富荣信息技术混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "102,754.46份",
+        "amt_num": 0,
+        "time": "07-10 14:42:01",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通价值动量混合A",
+        "code": "",
+        "action": "转换",
+        "amount": "440.38份",
+        "amt_num": 0,
+        "time": "07-10 14:41:06",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通集成电路产业股票A",
+        "code": "",
+        "action": "转换",
+        "amount": "949.86份",
+        "amt_num": 0,
+        "time": "07-10 14:40:45",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通成长优选混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "1,673.67份",
+        "amt_num": 0,
+        "time": "07-10 14:40:27",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通成长优选混合A",
+        "code": "",
+        "action": "转换",
+        "amount": "123.81份",
+        "amt_num": 0,
+        "time": "07-10 14:40:08",
+        "isBuy": false
+      }
+    ],
+    "feed_sell_consensus": [
+      {
+        "key": "东兴兴福一年定开A",
+        "sellers": 2,
+        "name": "东兴兴福一年定开A"
+      },
+      {
+        "key": "泰信医疗服务混合发起式C",
+        "sellers": 2,
+        "name": "泰信医疗服务混合发起式C"
+      },
+      {
+        "key": "万家鑫璟纯债C",
+        "sellers": 2,
+        "name": "万家鑫璟纯债C"
+      },
+      {
+        "key": "长城短债A",
+        "sellers": 2,
+        "name": "长城短债A"
+      },
+      {
+        "key": "上银国证自由现金流指数C",
+        "sellers": 1,
+        "name": "上银国证自由现金流指数C"
+      }
+    ],
+    "sector_low": [],
+    "sector_high": [
+      [
+        "H30184.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势良好、景气度中等、高估]无明显机会和风险，可持续保持关注。",
+          "pe_pct": 99.6,
+          "pb_pct": 99.6,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 55
+        }
+      ],
+      [
+        "930712.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势良好、景气度中等、高估]无明显机会和风险，可持续保持关注。",
+          "pe_pct": 98.49,
+          "pb_pct": 98.49,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 55
+        }
+      ],
+      [
+        "930713.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势强度很好、景气度中等、较为高估]，投资价值开始显现，可积极配置。",
+          "pe_pct": 78.41,
+          "pb_pct": 98.89,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 82
+        }
+      ]
+    ],
+    "critical_notices": [],
+    "data_health": {
+      "watchlist_funds": 13,
+      "ranking_items": 271,
+      "scores_items": 13,
+      "reports_count": 56,
+      "issues": []
+    },
+    "suggested_position": null
+  },
+  "backtest_30d": {
+    "年化": "-9.08",
+    "夏普": "-0.02",
+    "胜率": "6",
+    "交易": "6",
+    "Alpha": "+7.63"
+  },
+  "score_position": null
+}

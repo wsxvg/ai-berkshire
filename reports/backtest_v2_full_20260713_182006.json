@@ -1,0 +1,79 @@
+{
+  "config": {
+    "start": "2025-03-01",
+    "end": "2025-05-31",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 25.0,
+    "trail_pct": 10.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 98280.27,
+    "total_return": -1.72,
+    "annualized": -6.73,
+    "sharpe": -1.05,
+    "max_drawdown": -4.4,
+    "trading_days": 91,
+    "n_buys": 3,
+    "n_sells": 1,
+    "win_rate": 0.0,
+    "benchmark_return": -0.94,
+    "benchmark_annualized": -3.73,
+    "alpha": -3.0
+  },
+  "reason_stats": {
+    "trail_stop": {
+      "count": 1,
+      "avg_pnl": -15.12
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-03-04",
+        "action": "buy",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-05-06",
+        "action": "buy",
+        "code": "015916",
+        "name": "永赢医药创新智选混合发起C",
+        "amount": 14659.883720930233,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-05-07",
+        "action": "buy",
+        "code": "011609",
+        "name": "易方达上证科创50ETF联接C",
+        "amount": 14588.062317129923,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2025-04-07",
+        "action": "sell",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "reason": "trail_stop",
+        "pnl_pct": -15.116279069767435,
+        "amount": 12732.558139534884
+      }
+    ]
+  }
+}

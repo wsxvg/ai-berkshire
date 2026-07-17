@@ -1,0 +1,772 @@
+[
+  {
+    "uid": "3642504",
+    "trades_in_data": 3823,
+    "total_return": 30.0609,
+    "annualized_return": 14.35,
+    "max_drawdown": 13.287020985153204,
+    "sharpe": 0,
+    "trade_count": 468,
+    "time_sec": 150.9
+  },
+  {
+    "uid": "11832508",
+    "trades_in_data": 3817,
+    "total_return": 8.672000000000008,
+    "annualized_return": 4.33,
+    "max_drawdown": 6.123957605739743,
+    "sharpe": 0,
+    "trade_count": 197,
+    "time_sec": 155.1
+  },
+  {
+    "uid": "14345330",
+    "trades_in_data": 3727,
+    "total_return": -3.5912999999999915,
+    "annualized_return": -1.85,
+    "max_drawdown": 18.5396,
+    "sharpe": 0,
+    "trade_count": 180,
+    "time_sec": 111.8
+  },
+  {
+    "uid": "3748946",
+    "trades_in_data": 3356,
+    "total_return": 13.166399999999994,
+    "annualized_return": 6.51,
+    "max_drawdown": 8.025170979943477,
+    "sharpe": 0,
+    "trade_count": 173,
+    "time_sec": 99.2
+  },
+  {
+    "uid": "10597647",
+    "trades_in_data": 3074,
+    "total_return": 5.451800000000003,
+    "annualized_return": 2.74,
+    "max_drawdown": 6.12364859626725,
+    "sharpe": 0,
+    "trade_count": 123,
+    "time_sec": 187.3
+  },
+  {
+    "uid": "9914015",
+    "trades_in_data": 2955,
+    "total_return": 13.214099999999998,
+    "annualized_return": 6.54,
+    "max_drawdown": 7.150658773397925,
+    "sharpe": 0,
+    "trade_count": 200,
+    "time_sec": 177.9
+  },
+  {
+    "uid": "11768823",
+    "trades_in_data": 2171,
+    "total_return": 14.124099999999999,
+    "annualized_return": 6.97,
+    "max_drawdown": 9.154343448052863,
+    "sharpe": 0,
+    "trade_count": 202,
+    "time_sec": 141.3
+  },
+  {
+    "uid": "92408",
+    "trades_in_data": 2161,
+    "total_return": 0.09649999999999637,
+    "annualized_return": 0.05,
+    "max_drawdown": 5.597235782570057,
+    "sharpe": 0,
+    "trade_count": 72,
+    "time_sec": 86.5
+  },
+  {
+    "uid": "1118910",
+    "trades_in_data": 1700,
+    "total_return": 1.0730999999999948,
+    "annualized_return": 0.55,
+    "max_drawdown": 1.801205424409839,
+    "sharpe": 0,
+    "trade_count": 28,
+    "time_sec": 85.5
+  },
+  {
+    "uid": "16020895",
+    "trades_in_data": 1490,
+    "total_return": 5.235900000000002,
+    "annualized_return": 2.64,
+    "max_drawdown": 6.263700000000008,
+    "sharpe": 0,
+    "trade_count": 114,
+    "time_sec": 92.0
+  },
+  {
+    "uid": "11953905",
+    "trades_in_data": 1480,
+    "total_return": 22.563099999999995,
+    "annualized_return": 10.94,
+    "max_drawdown": 9.510347678749294,
+    "sharpe": 0,
+    "trade_count": 179,
+    "time_sec": 116.4
+  },
+  {
+    "uid": "11979538",
+    "trades_in_data": 1447,
+    "total_return": 36.131299999999996,
+    "annualized_return": 17.04,
+    "max_drawdown": 9.280200000000004,
+    "sharpe": 0,
+    "trade_count": 245,
+    "time_sec": 110.7
+  },
+  {
+    "uid": "4968958",
+    "trades_in_data": 1375,
+    "total_return": 24.775100000000002,
+    "annualized_return": 11.95,
+    "max_drawdown": 4.046659215036033,
+    "sharpe": 0,
+    "trade_count": 77,
+    "time_sec": 43.9
+  },
+  {
+    "uid": "550027",
+    "trades_in_data": 1299,
+    "total_return": -3.3554000000000093,
+    "annualized_return": -1.73,
+    "max_drawdown": 3.388735678617082,
+    "sharpe": 0,
+    "trade_count": 25,
+    "time_sec": 49.3
+  },
+  {
+    "uid": "17490486",
+    "trades_in_data": 1216,
+    "total_return": 13.380300000000005,
+    "annualized_return": 6.62,
+    "max_drawdown": 5.60417027243473,
+    "sharpe": 0,
+    "trade_count": 49,
+    "time_sec": 28.6
+  },
+  {
+    "uid": "3546208",
+    "trades_in_data": 1139,
+    "total_return": 6.542199999999994,
+    "annualized_return": 3.29,
+    "max_drawdown": 9.22086029463989,
+    "sharpe": 0,
+    "trade_count": 266,
+    "time_sec": 151.9
+  },
+  {
+    "uid": "9649553",
+    "trades_in_data": 1071,
+    "total_return": 5.923999999999997,
+    "annualized_return": 2.98,
+    "max_drawdown": 3.8209000000000013,
+    "sharpe": 0,
+    "trade_count": 42,
+    "time_sec": 117.0
+  },
+  {
+    "uid": "8708038",
+    "trades_in_data": 905,
+    "total_return": 11.922000000000008,
+    "annualized_return": 5.91,
+    "max_drawdown": 5.764858704149874,
+    "sharpe": 0,
+    "trade_count": 82,
+    "time_sec": 85.1
+  },
+  {
+    "uid": "10108955",
+    "trades_in_data": 849,
+    "total_return": 1.8352000000000046,
+    "annualized_return": 0.93,
+    "max_drawdown": 6.198929666943605,
+    "sharpe": 0,
+    "trade_count": 123,
+    "time_sec": 81.2
+  },
+  {
+    "uid": "15456499",
+    "trades_in_data": 821,
+    "total_return": 10.197900000000008,
+    "annualized_return": 5.08,
+    "max_drawdown": 8.411267083752103,
+    "sharpe": 0,
+    "trade_count": 158,
+    "time_sec": 65.6
+  },
+  {
+    "uid": "13265973",
+    "trades_in_data": 803,
+    "total_return": 21.724500000000006,
+    "annualized_return": 10.55,
+    "max_drawdown": 8.14146167637538,
+    "sharpe": 0,
+    "trade_count": 129,
+    "time_sec": 102.5
+  },
+  {
+    "uid": "10458335",
+    "trades_in_data": 796,
+    "total_return": 12.953799999999994,
+    "annualized_return": 6.41,
+    "max_drawdown": 5.397429617064398,
+    "sharpe": 0,
+    "trade_count": 99,
+    "time_sec": 46.9
+  },
+  {
+    "uid": "13575815",
+    "trades_in_data": 765,
+    "total_return": 14.871800000000002,
+    "annualized_return": 7.33,
+    "max_drawdown": 7.1136920165381925,
+    "sharpe": 0,
+    "trade_count": 107,
+    "time_sec": 46.6
+  },
+  {
+    "uid": "4063754",
+    "trades_in_data": 698,
+    "total_return": 15.141800000000002,
+    "annualized_return": 7.46,
+    "max_drawdown": 6.292147825707783,
+    "sharpe": 0,
+    "trade_count": 42,
+    "time_sec": 35.5
+  },
+  {
+    "uid": "3032839",
+    "trades_in_data": 528,
+    "total_return": -1.8821999999999937,
+    "annualized_return": -0.96,
+    "max_drawdown": 2.1638282730070166,
+    "sharpe": 0,
+    "trade_count": 24,
+    "time_sec": 36.8
+  },
+  {
+    "uid": "1126861",
+    "trades_in_data": 519,
+    "total_return": 6.382800000000007,
+    "annualized_return": 3.21,
+    "max_drawdown": 0.8328364393664606,
+    "sharpe": 0,
+    "trade_count": 23,
+    "time_sec": 94.0
+  },
+  {
+    "uid": "10951797",
+    "trades_in_data": 491,
+    "total_return": -0.9179000000000088,
+    "annualized_return": -0.47,
+    "max_drawdown": 3.5945038204327178,
+    "sharpe": 0,
+    "trade_count": 33,
+    "time_sec": 88.9
+  },
+  {
+    "uid": "868100",
+    "trades_in_data": 446,
+    "total_return": 16.24290000000001,
+    "annualized_return": 7.98,
+    "max_drawdown": 3.7324075554439022,
+    "sharpe": 0,
+    "trade_count": 88,
+    "time_sec": 72.5
+  },
+  {
+    "uid": "10597865",
+    "trades_in_data": 415,
+    "total_return": 18.313500000000005,
+    "annualized_return": 8.96,
+    "max_drawdown": 8.081074841701234,
+    "sharpe": 0,
+    "trade_count": 125,
+    "time_sec": 53.5
+  },
+  {
+    "uid": "1078493",
+    "trades_in_data": 329,
+    "total_return": 3.035799999999999,
+    "annualized_return": 1.54,
+    "max_drawdown": 1.2689116165709302,
+    "sharpe": 0,
+    "trade_count": 29,
+    "time_sec": 49.0
+  },
+  {
+    "uid": "10502492",
+    "trades_in_data": 322,
+    "total_return": 1.4428000000000065,
+    "annualized_return": 0.73,
+    "max_drawdown": 4.254424766079243,
+    "sharpe": 0,
+    "trade_count": 66,
+    "time_sec": 35.1
+  },
+  {
+    "uid": "432038",
+    "trades_in_data": 228,
+    "total_return": 2.6627000000000045,
+    "annualized_return": 1.35,
+    "max_drawdown": 0.8924666947789311,
+    "sharpe": 0,
+    "trade_count": 14,
+    "time_sec": 56.7
+  },
+  {
+    "uid": "411788",
+    "trades_in_data": 224,
+    "total_return": -0.2844000000000051,
+    "annualized_return": -0.15,
+    "max_drawdown": 0.29889999999999417,
+    "sharpe": 0,
+    "trade_count": 2,
+    "time_sec": 35.7
+  },
+  {
+    "uid": "11679592",
+    "trades_in_data": 206,
+    "total_return": 6.013600000000006,
+    "annualized_return": 3.02,
+    "max_drawdown": 5.538600000000006,
+    "sharpe": 0,
+    "trade_count": 86,
+    "time_sec": 32.7
+  },
+  {
+    "uid": "1129067",
+    "trades_in_data": 188,
+    "total_return": 1.5621999999999934,
+    "annualized_return": 0.79,
+    "max_drawdown": 2.2069691571525114,
+    "sharpe": 0,
+    "trade_count": 16,
+    "time_sec": 44.0
+  },
+  {
+    "uid": "4019495",
+    "trades_in_data": 187,
+    "total_return": 10.416000000000004,
+    "annualized_return": 5.18,
+    "max_drawdown": 4.000599999999995,
+    "sharpe": 0,
+    "trade_count": 22,
+    "time_sec": 24.8
+  },
+  {
+    "uid": "3430161",
+    "trades_in_data": 179,
+    "total_return": 20.38290000000001,
+    "annualized_return": 9.93,
+    "max_drawdown": 6.180192403727467,
+    "sharpe": 0,
+    "trade_count": 48,
+    "time_sec": 42.0
+  },
+  {
+    "uid": "1136595",
+    "trades_in_data": 158,
+    "total_return": 5.026299999999992,
+    "annualized_return": 2.53,
+    "max_drawdown": 1.7534000000000014,
+    "sharpe": 0,
+    "trade_count": 25,
+    "time_sec": 25.4
+  },
+  {
+    "uid": "11857780",
+    "trades_in_data": 136,
+    "total_return": 15.891200000000008,
+    "annualized_return": 7.81,
+    "max_drawdown": 5.001225861626277,
+    "sharpe": 0,
+    "trade_count": 49,
+    "time_sec": 24.5
+  },
+  {
+    "uid": "12254649",
+    "trades_in_data": 136,
+    "total_return": 7.577999999999993,
+    "annualized_return": 3.8,
+    "max_drawdown": 3.553790574641095,
+    "sharpe": 0,
+    "trade_count": 36,
+    "time_sec": 33.7
+  },
+  {
+    "uid": "3123736",
+    "trades_in_data": 106,
+    "total_return": 6.679799999999996,
+    "annualized_return": 3.35,
+    "max_drawdown": 1.8247703597854996,
+    "sharpe": 0,
+    "trade_count": 24,
+    "time_sec": 35.4
+  },
+  {
+    "uid": "1224491",
+    "trades_in_data": 97,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 3.8
+  },
+  {
+    "uid": "3202582",
+    "trades_in_data": 96,
+    "total_return": 10.510900000000001,
+    "annualized_return": 5.23,
+    "max_drawdown": 5.041307018291942,
+    "sharpe": 0,
+    "trade_count": 29,
+    "time_sec": 12.9
+  },
+  {
+    "uid": "15522603",
+    "trades_in_data": 95,
+    "total_return": 3.1551000000000022,
+    "annualized_return": 1.6,
+    "max_drawdown": 0.4021348117574979,
+    "sharpe": 0,
+    "trade_count": 9,
+    "time_sec": 21.9
+  },
+  {
+    "uid": "2750587",
+    "trades_in_data": 90,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 3.8
+  },
+  {
+    "uid": "13033071",
+    "trades_in_data": 77,
+    "total_return": -0.22790000000000873,
+    "annualized_return": -0.12,
+    "max_drawdown": 2.134323380546947,
+    "sharpe": 0,
+    "trade_count": 8,
+    "time_sec": 13.6
+  },
+  {
+    "uid": "10381882",
+    "trades_in_data": 75,
+    "total_return": -0.08239999999999782,
+    "annualized_return": -0.04,
+    "max_drawdown": 1.8018496132716153,
+    "sharpe": 0,
+    "trade_count": 18,
+    "time_sec": 13.8
+  },
+  {
+    "uid": "11819815",
+    "trades_in_data": 75,
+    "total_return": 5.077999999999993,
+    "annualized_return": 2.56,
+    "max_drawdown": 2.142466970866832,
+    "sharpe": 0,
+    "trade_count": 15,
+    "time_sec": 30.2
+  },
+  {
+    "uid": "2690580",
+    "trades_in_data": 71,
+    "total_return": -1.1967000000000008,
+    "annualized_return": -0.61,
+    "max_drawdown": 2.3583613867014583,
+    "sharpe": 0,
+    "trade_count": 11,
+    "time_sec": 20.9
+  },
+  {
+    "uid": "8670487",
+    "trades_in_data": 65,
+    "total_return": -2.8165999999999984,
+    "annualized_return": -1.45,
+    "max_drawdown": 3.9265999999999988,
+    "sharpe": 0,
+    "trade_count": 27,
+    "time_sec": 13.1
+  },
+  {
+    "uid": "47850",
+    "trades_in_data": 62,
+    "total_return": 0.3679000000000087,
+    "annualized_return": 0.19,
+    "max_drawdown": 0.3246514639606139,
+    "sharpe": 0,
+    "trade_count": 3,
+    "time_sec": 6.7
+  },
+  {
+    "uid": "987020",
+    "trades_in_data": 55,
+    "total_return": 5.461399999999994,
+    "annualized_return": 2.75,
+    "max_drawdown": 2.6052924435975378,
+    "sharpe": 0,
+    "trade_count": 18,
+    "time_sec": 11.8
+  },
+  {
+    "uid": "11025669",
+    "trades_in_data": 46,
+    "total_return": 0.9446999999999934,
+    "annualized_return": 0.48,
+    "max_drawdown": 1.2456040839478206,
+    "sharpe": 0,
+    "trade_count": 20,
+    "time_sec": 15.1
+  },
+  {
+    "uid": "1133060",
+    "trades_in_data": 43,
+    "total_return": 0.12200000000000728,
+    "annualized_return": 0.06,
+    "max_drawdown": 1.0609000000000015,
+    "sharpe": 0,
+    "trade_count": 9,
+    "time_sec": 16.3
+  },
+  {
+    "uid": "570540",
+    "trades_in_data": 42,
+    "total_return": 6.023500000000004,
+    "annualized_return": 3.03,
+    "max_drawdown": 1.1196104514686822,
+    "sharpe": 0,
+    "trade_count": 11,
+    "time_sec": 14.5
+  },
+  {
+    "uid": "13566933",
+    "trades_in_data": 40,
+    "total_return": 2.1761000000000057,
+    "annualized_return": 1.1,
+    "max_drawdown": 1.4520050886457183,
+    "sharpe": 0,
+    "trade_count": 8,
+    "time_sec": 7.8
+  },
+  {
+    "uid": "3033603",
+    "trades_in_data": 40,
+    "total_return": 0.931299999999992,
+    "annualized_return": 0.47,
+    "max_drawdown": 1.3853874422096633,
+    "sharpe": 0,
+    "trade_count": 15,
+    "time_sec": 6.8
+  },
+  {
+    "uid": "183856",
+    "trades_in_data": 34,
+    "total_return": -0.7442000000000007,
+    "annualized_return": -0.38,
+    "max_drawdown": 1.120290424253051,
+    "sharpe": 0,
+    "trade_count": 7,
+    "time_sec": 16.8
+  },
+  {
+    "uid": "3714529",
+    "trades_in_data": 33,
+    "total_return": 2.7885000000000035,
+    "annualized_return": 1.41,
+    "max_drawdown": 3.746499999999996,
+    "sharpe": 0,
+    "trade_count": 19,
+    "time_sec": 11.4
+  },
+  {
+    "uid": "4409771",
+    "trades_in_data": 32,
+    "total_return": 3.093799999999992,
+    "annualized_return": 1.57,
+    "max_drawdown": 1.870936819515899,
+    "sharpe": 0,
+    "trade_count": 22,
+    "time_sec": 11.5
+  },
+  {
+    "uid": "12891831",
+    "trades_in_data": 30,
+    "total_return": 6.154099999999999,
+    "annualized_return": 3.09,
+    "max_drawdown": 1.560190979832858,
+    "sharpe": 0,
+    "trade_count": 10,
+    "time_sec": 11.3
+  },
+  {
+    "uid": "14155320",
+    "trades_in_data": 27,
+    "total_return": 0.9559000000000015,
+    "annualized_return": 0.49,
+    "max_drawdown": 1.0813999999999941,
+    "sharpe": 0,
+    "trade_count": 6,
+    "time_sec": 11.0
+  },
+  {
+    "uid": "985820",
+    "trades_in_data": 27,
+    "total_return": 4.318600000000005,
+    "annualized_return": 2.18,
+    "max_drawdown": 1.2759566963568147,
+    "sharpe": 0,
+    "trade_count": 11,
+    "time_sec": 10.8
+  },
+  {
+    "uid": "2664186",
+    "trades_in_data": 24,
+    "total_return": 2.6635000000000035,
+    "annualized_return": 1.35,
+    "max_drawdown": 1.611225111879961,
+    "sharpe": 0,
+    "trade_count": 9,
+    "time_sec": 9.2
+  },
+  {
+    "uid": "1064219",
+    "trades_in_data": 23,
+    "total_return": 2.301100000000006,
+    "annualized_return": 1.17,
+    "max_drawdown": 0.6172498441089078,
+    "sharpe": 0,
+    "trade_count": 6,
+    "time_sec": 6.9
+  },
+  {
+    "uid": "8390340",
+    "trades_in_data": 23,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 6.3
+  },
+  {
+    "uid": "4972373",
+    "trades_in_data": 21,
+    "total_return": 1.0343000000000029,
+    "annualized_return": 0.53,
+    "max_drawdown": 0.10875551069116104,
+    "sharpe": 0,
+    "trade_count": 1,
+    "time_sec": 4.1
+  },
+  {
+    "uid": "273591",
+    "trades_in_data": 21,
+    "total_return": 0.6614999999999964,
+    "annualized_return": 0.34,
+    "max_drawdown": 1.0164143117370208,
+    "sharpe": 0,
+    "trade_count": 9,
+    "time_sec": 8.6
+  },
+  {
+    "uid": "1094463",
+    "trades_in_data": 20,
+    "total_return": -0.618799999999992,
+    "annualized_return": -0.32,
+    "max_drawdown": 0.7603000000000065,
+    "sharpe": 0,
+    "trade_count": 3,
+    "time_sec": 4.3
+  },
+  {
+    "uid": "2804244",
+    "trades_in_data": 20,
+    "total_return": -0.4929000000000087,
+    "annualized_return": -0.25,
+    "max_drawdown": 0.5517000000000007,
+    "sharpe": 0,
+    "trade_count": 6,
+    "time_sec": 10.2
+  },
+  {
+    "uid": "3200056",
+    "trades_in_data": 12,
+    "total_return": -0.4205999999999949,
+    "annualized_return": -0.21,
+    "max_drawdown": 2.955699999999997,
+    "sharpe": 0,
+    "trade_count": 9,
+    "time_sec": 7.1
+  },
+  {
+    "uid": "11285806",
+    "trades_in_data": 7,
+    "total_return": -0.1205999999999949,
+    "annualized_return": -0.06,
+    "max_drawdown": 0.75,
+    "sharpe": 0,
+    "trade_count": 1,
+    "time_sec": 5.6
+  },
+  {
+    "uid": "10542838",
+    "trades_in_data": 6,
+    "total_return": -0.5561000000000058,
+    "annualized_return": -0.28,
+    "max_drawdown": 0.9249999999999999,
+    "sharpe": 0,
+    "trade_count": 4,
+    "time_sec": 5.7
+  },
+  {
+    "uid": "2880111",
+    "trades_in_data": 6,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 3.5
+  },
+  {
+    "uid": "1096064",
+    "trades_in_data": 5,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 4.4
+  },
+  {
+    "uid": "2705091",
+    "trades_in_data": 2,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 3.6
+  },
+  {
+    "uid": "1130028",
+    "trades_in_data": 2,
+    "total_return": 0.0,
+    "annualized_return": 0.0,
+    "max_drawdown": 0,
+    "sharpe": 0,
+    "trade_count": 0,
+    "time_sec": 3.4
+  }
+]

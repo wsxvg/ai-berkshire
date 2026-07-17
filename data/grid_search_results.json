@@ -1,0 +1,286 @@
+{
+  "timestamp": "2026-07-14T23:42:39.146348",
+  "total": 32,
+  "valid": 0,
+  "base_annual": 24.1,
+  "grid": {
+    "user_weight_scenario": [
+      "baseline",
+      "extreme"
+    ],
+    "min_score": [
+      2.5,
+      3.5
+    ],
+    "stop_loss_pct": [
+      -5,
+      -15
+    ],
+    "take_profit_pct": [
+      10,
+      20
+    ],
+    "timing_filter": [
+      false,
+      true
+    ]
+  },
+  "results": [
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "baseline",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 2.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -5,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 10,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": false,
+      "error": "name 'logger' is not defined"
+    },
+    {
+      "user_weight_scenario": "extreme",
+      "min_score": 3.5,
+      "stop_loss_pct": -15,
+      "take_profit_pct": 20,
+      "timing_filter": true,
+      "error": "name 'logger' is not defined"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "config": {
+    "start": "2025-12-01",
+    "end": "2026-02-28",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 20.0,
+    "trail_pct": 8.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 110501.64,
+    "total_return": 10.5,
+    "annualized": 50.65,
+    "sharpe": 2.98,
+    "max_drawdown": -2.15,
+    "trading_days": 89,
+    "n_buys": 7,
+    "n_sells": 4,
+    "win_rate": 75.0,
+    "benchmark_return": 3.18,
+    "benchmark_annualized": 13.69,
+    "alpha": 36.97
+  },
+  "reason_stats": {
+    "take_profit": {
+      "count": 2,
+      "avg_pnl": 22.72
+    },
+    "trail_stop": {
+      "count": 2,
+      "avg_pnl": 1.81
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-12-01",
+        "action": "buy",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-02",
+        "action": "buy",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "amount": 14997.9698637553,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-02",
+        "action": "buy",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "amount": 14997.9698637553,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-06",
+        "action": "buy",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "amount": 15820.276370667514,
+        "consensus": 2,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-16",
+        "action": "buy",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "amount": 15703.955493064741,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-27",
+        "action": "buy",
+        "code": "018957",
+        "name": "中航机遇领航混合发起C",
+        "amount": 16444.526006089924,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-06",
+        "action": "buy",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "amount": 16235.988476435952,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2026-01-06",
+        "action": "sell",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "reason": "take_profit",
+        "pnl_pct": 20.204757603131583,
+        "amount": 18028.273320117783
+      },
+      {
+        "date": "2026-01-16",
+        "action": "sell",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "reason": "trail_stop",
+        "pnl_pct": 6.1521856449001655,
+        "amount": 15920.672812739707
+      },
+      {
+        "date": "2026-01-27",
+        "action": "sell",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "reason": "take_profit",
+        "pnl_pct": 25.23760898593985,
+        "amount": 19667.258375730442
+      },
+      {
+        "date": "2026-02-06",
+        "action": "sell",
+        "code": "018957",
+        "name": "中航机遇领航混合发起C",
+        "reason": "trail_stop",
+        "pnl_pct": -2.53139382919485,
+        "amount": 16028.250289531423
+      }
+    ]
+  }
+}

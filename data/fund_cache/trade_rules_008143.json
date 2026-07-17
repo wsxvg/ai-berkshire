@@ -1,0 +1,28 @@
+{
+  "fund_code": "008143",
+  "buy_date": "07-16 15:00前",
+  "confirm_date": "07-17",
+  "manage_fee": 0.15,
+  "custody_fee": 0.05,
+  "sale_fee": 0.35,
+  "purchase_fee": 0.0,
+  "purchase_fee_original": 0.0,
+  "day_limit": Infinity,
+  "min_purchase": 0.1,
+  "redeem_fees": [
+    {
+      "rate": 1.5,
+      "interval": "持有期限＜7日"
+    },
+    {
+      "rate": 0.1,
+      "interval": "7日≤持有期限＜30日"
+    },
+    {
+      "rate": 0.0,
+      "interval": "持有期限≥30日"
+    }
+  ],
+  "purchase_status": "开放申购",
+  "redeem_status": "开放赎回"
+}

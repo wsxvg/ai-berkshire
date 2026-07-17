@@ -1,0 +1,326 @@
+{
+  "config": {
+    "start": "2025-12-01",
+    "end": "2026-02-28",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 15.0,
+    "trail_pct": 10.0,
+    "hold_days": 30
+  },
+  "result": {
+    "final_value": 121143.9,
+    "total_return": 21.14,
+    "annualized": 119.72,
+    "sharpe": 3.42,
+    "max_drawdown": -3.66,
+    "trading_days": 89,
+    "n_buys": 17,
+    "n_sells": 12,
+    "win_rate": 66.7,
+    "benchmark_return": 3.18,
+    "benchmark_annualized": 13.69,
+    "alpha": 106.03
+  },
+  "reason_stats": {
+    "time_tp": {
+      "count": 4,
+      "avg_pnl": -1.34
+    },
+    "take_profit": {
+      "count": 6,
+      "avg_pnl": 16.6
+    },
+    "consensus_sell": {
+      "count": 2,
+      "avg_pnl": 0.0
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-12-01",
+        "action": "buy",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-02",
+        "action": "buy",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "amount": 14997.9698637553,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-02",
+        "action": "buy",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "amount": 14997.9698637553,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-03",
+        "action": "buy",
+        "code": "014674",
+        "name": "富国中证港股通互联网ETF发起式联接C",
+        "amount": 14907.50061957117,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-03",
+        "action": "buy",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "amount": 14033.795878521381,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-12-31",
+        "action": "buy",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "amount": 15412.999422115257,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "019005",
+        "name": "国投瑞银白银期货(LOF)C",
+        "amount": 15933.928762169036,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "amount": 13522.39462096929,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 10367.169209409789,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-08",
+        "action": "buy",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "amount": 15985.612900902817,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-13",
+        "action": "buy",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "amount": 16237.307337871476,
+        "consensus": 2,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-21",
+        "action": "buy",
+        "code": "018957",
+        "name": "中航机遇领航混合发起C",
+        "amount": 16795.15905100049,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-23",
+        "action": "buy",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "amount": 16933.217138274616,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-27",
+        "action": "buy",
+        "code": "012620",
+        "name": "嘉实中证软件服务ETF联接C",
+        "amount": 17649.010087997103,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-30",
+        "action": "buy",
+        "code": "021876",
+        "name": "路博迈资源精选股票发起C",
+        "amount": 17818.305942487106,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-02",
+        "action": "buy",
+        "code": "002067",
+        "name": "诺安精选回报混合",
+        "amount": 17405.244590783725,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-26",
+        "action": "buy",
+        "code": "019118",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+        "amount": 18173.029962405766,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2025-12-31",
+        "action": "sell",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "reason": "time_tp",
+        "pnl_pct": 1.6511774790219258,
+        "amount": 15247.676621853288
+      },
+      {
+        "date": "2026-01-02",
+        "action": "sell",
+        "code": "014674",
+        "name": "富国中证港股通互联网ETF发起式联接C",
+        "reason": "time_tp",
+        "pnl_pct": -3.453913754342941,
+        "amount": 14392.608405243043
+      },
+      {
+        "date": "2026-01-05",
+        "action": "sell",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "reason": "take_profit",
+        "pnl_pct": 16.10960554049985,
+        "amount": 17414.08364788932
+      },
+      {
+        "date": "2026-01-05",
+        "action": "sell",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "reason": "take_profit",
+        "pnl_pct": 15.313887127457203,
+        "amount": 16182.915539055888
+      },
+      {
+        "date": "2026-01-08",
+        "action": "sell",
+        "code": "019005",
+        "name": "国投瑞银白银期货(LOF)C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 16566.018290325977
+      },
+      {
+        "date": "2026-01-13",
+        "action": "sell",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "reason": "take_profit",
+        "pnl_pct": 16.00234180611797,
+        "amount": 15686.294428588904
+      },
+      {
+        "date": "2026-01-21",
+        "action": "sell",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "reason": "take_profit",
+        "pnl_pct": 16.931530008453088,
+        "amount": 18986.53190234794
+      },
+      {
+        "date": "2026-01-23",
+        "action": "sell",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "reason": "take_profit",
+        "pnl_pct": 17.862924986508368,
+        "amount": 17677.04597001704
+      },
+      {
+        "date": "2026-01-27",
+        "action": "sell",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "reason": "take_profit",
+        "pnl_pct": 17.351783019909472,
+        "amount": 19871.432234398155
+      },
+      {
+        "date": "2026-01-30",
+        "action": "sell",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "reason": "time_tp",
+        "pnl_pct": 3.800335794046328,
+        "amount": 15998.745156090057
+      },
+      {
+        "date": "2026-02-02",
+        "action": "sell",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 11169.084043627909
+      },
+      {
+        "date": "2026-02-26",
+        "action": "sell",
+        "code": "012620",
+        "name": "嘉实中证软件服务ETF联接C",
+        "reason": "time_tp",
+        "pnl_pct": -7.3463621379797335,
+        "amount": 16352.449893164261
+      }
+    ]
+  }
+}

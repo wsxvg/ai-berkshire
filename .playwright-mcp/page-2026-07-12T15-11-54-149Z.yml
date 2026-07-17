@@ -1,0 +1,96 @@
+- generic [ref=f2e3]:
+  - generic [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - generic [ref=f2e6]:
+        - generic [ref=f2e7]:
+          - button [ref=f2e8] [cursor=pointer]: 
+          - button [ref=f2e9] [cursor=pointer]: 
+          - generic [ref=f2e14]: 查看详情
+          - generic [ref=f2e19]: 查看详情
+          - generic [ref=f2e24]: 查看详情
+        - list [ref=f2e29]:
+          - listitem [ref=f2e30] [cursor=pointer]:
+            - button [ref=f2e31]
+          - listitem [ref=f2e32] [cursor=pointer]:
+            - button [ref=f2e33]
+          - listitem [ref=f2e34] [cursor=pointer]:
+            - button [ref=f2e35]
+          - listitem [ref=f2e36] [cursor=pointer]:
+            - button [ref=f2e37]
+      - generic [ref=f2e41]:
+        - generic [ref=f2e42] [cursor=pointer]: 首页
+        - generic [ref=f2e43] [cursor=pointer]: 产品服务
+        - generic [ref=f2e44] [cursor=pointer]: 企业社会责任
+        - generic [ref=f2e45] [cursor=pointer]: 合作伙伴
+        - generic [ref=f2e46] [cursor=pointer]: 下载客户端
+        - generic [ref=f2e47]:
+          - text: 网络支持
+          - generic [ref=f2e48]: IPv6
+    - text: 
+  - generic [ref=f2e49]:
+    - generic [ref=f2e52]:
+      - generic [ref=f2e53]: 快速放款
+      - generic [ref=f2e54]: 随借随还
+      - generic [ref=f2e55]: 安全合规
+    - generic [ref=f2e58]:
+      - generic [ref=f2e59]: 先消费、后付款
+      - generic [ref=f2e60]: 实时审批
+      - generic [ref=f2e61]: 随心分期
+    - generic [ref=f2e64]:
+      - generic [ref=f2e65]: 灵活存取、乐享收益
+      - generic [ref=f2e66]: 支持理财产品购买
+      - generic [ref=f2e67]: 商城消费购物
+      - generic [ref=f2e68]: 金条、白条还款等场景
+    - generic [ref=f2e71]:
+      - generic [ref=f2e72]: 合规持牌基金代销平台
+      - generic [ref=f2e73]: 基金销售种类丰富
+      - generic [ref=f2e74]: 满足各类人群理财需求
+    - generic [ref=f2e77]:
+      - generic [ref=f2e78]: 稳健的保险合作渠道，满足多元化保险需求，
+      - generic [ref=f2e79]: 包含健康险、意外险、人寿险、重疾险、
+      - text: 财产险，车险等保险产品
+    - generic [ref=f2e80]: 下载京东金融APP体验
+  - generic [ref=f2e84]:
+    - generic [ref=f2e86]: “京东金融-订单公益”是京东践行企业CSR，发起全民公益新风尚的核心项目，倡导京东集团“有责任的消费”主旨 。在京东APP消费使用京东支付或白条交易完成的订单，均可选择将订单数兑换为公益物资，并由京东为您配捐到指定公益项目中。迄今为止，项目通过618、双11以及3.8三期传播，累计有效传播量超过3亿人次，公益涉及包括流浪动物救助、女性公益、乡村振兴、儿童教育等多个领域。
+    - generic [ref=f2e88]:
+      - generic [ref=f2e89]: 截至目前
+      - generic [ref=f2e90]:
+        - text: "1930"
+        - generic [ref=f2e91]: 万
+      - generic [ref=f2e92]: 累计参与人数
+      - generic [ref=f2e93]:
+        - text: "4159"
+        - generic [ref=f2e94]: 万
+      - generic [ref=f2e95]: 累计捐出订单笔数
+  - generic [ref=f2e227]:
+    - generic [ref=f2e228]:
+      - generic [ref=f2e229]: 京东金融总部 北京市亦庄经济开发区京东大厦A座
+      - generic [ref=f2e230]: 邮编 100110
+      - generic [ref=f2e231]: 客户服务咨询投诉热线
+      - generic [ref=f2e232]: "95118"
+      - generic [ref=f2e233]: Copyright © 2026 京东科技版权所有
+    - generic [ref=f2e234]:
+      - generic [ref=f2e235]:
+        - generic [ref=f2e236]: 网络语音服务(免话费)
+        - generic [ref=f2e238]: 京东金融公众号
+        - generic [ref=f2e240]: 白条公众号
+        - generic [ref=f2e242]: 金条公众号
+      - generic [ref=f2e244]:
+        - generic [ref=f2e245]:
+          - link "平台协议" [ref=f2e246] [cursor=pointer]:
+            - /url: https://storage.jd.com/protocols/format/2f4c7cc718135d2a8067e9230b3af814.html?_t=166813295129232
+          - text: "|"
+        - generic [ref=f2e247]:
+          - link "帮助中心" [ref=f2e248] [cursor=pointer]:
+            - /url: https://jrhelp.jd.com/show/getProblemInfo?id=688
+          - text: "|"
+        - generic [ref=f2e249]:
+          - link "营业执照" [ref=f2e250] [cursor=pointer]:
+            - /url: https://img14.360buyimg.com/imagetools/jfs/t1/146010/34/35387/537628/648a7179Fd4dfc96b/56dae54408f6bca8.png?v3
+          - text: "|"
+        - generic [ref=f2e251]:
+          - link "小贷“十不准”" [ref=f2e252] [cursor=pointer]:
+            - /url: https://storage.jd.com/protocols/format/b01c6c7c84fb5f2daf632d8b23e6a9f8.html
+          - text: "|"
+        - link "京ICP备11041704号" [ref=f2e253] [cursor=pointer]:
+          - /url: https://beian.miit.gov.cn/

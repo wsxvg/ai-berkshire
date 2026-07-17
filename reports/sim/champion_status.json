@@ -1,0 +1,12 @@
+{
+  "phase": "shadow",
+  "start_date": "2026-07-17",
+  "elapsed_days": 0,
+  "pending_advance": false,
+  "advance_at": null,
+  "advance_to": null,
+  "advance_log": [],
+  "circuit_breaker_count": 0,
+  "last_run": "2026-07-17",
+  "frozen": false
+}

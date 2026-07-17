@@ -1,0 +1,16 @@
+[
+  {
+    "name": "champion+pyramiding",
+    "return": 67.73,
+    "dd": 9.15,
+    "trades": 317,
+    "time_sec": 1120.0
+  },
+  {
+    "name": "champion+dyn_stop_loss",
+    "return": 70.23,
+    "dd": 9.2,
+    "trades": 330,
+    "time_sec": 1025.0
+  }
+]

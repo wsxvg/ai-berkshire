@@ -1,0 +1,20 @@
+{
+  "fund_code": "016644",
+  "buy_date": "07-16 15:00前",
+  "confirm_date": "07-21",
+  "manage_fee": 0.3,
+  "custody_fee": 0.1,
+  "sale_fee": 0.0,
+  "purchase_fee": 0.06,
+  "purchase_fee_original": 0.6,
+  "day_limit": 1000.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [
+    {
+      "rate": 0.0,
+      "interval": "持有天数≥0天"
+    }
+  ],
+  "purchase_status": "开放申购",
+  "redeem_status": "开放赎回"
+}

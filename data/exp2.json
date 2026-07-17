@@ -1,0 +1,11 @@
+[
+  {
+    "label": "E2-核心仓20%",
+    "total_return": 10.87839,
+    "annualized_return": 44.27,
+    "max_drawdown": 5.631606895490961,
+    "sharpe_ratio": 1.67,
+    "final_value": 110878.39,
+    "benchmark_return": 4.932007306677488
+  }
+]

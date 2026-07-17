@@ -1,0 +1,227 @@
+[
+  {
+    "code": "005698",
+    "name": "005698",
+    "pass_count": 4,
+    "total": 6,
+    "total_score": 19.0,
+    "gates": [
+      {
+        "name": "Profile (规模/类型)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+      },
+      {
+        "name": "Cost (费率)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+      },
+      {
+        "name": "Manager (经理)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "无; 无任职信息"
+      },
+      {
+        "name": "Holdings (持仓集中度)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "无 sector 数据 ✅"
+      },
+      {
+        "name": "Performance (1y 收益)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "1y 收益 +86.7% ✅"
+      },
+      {
+        "name": "Risk (1y 回撤)",
+        "pass": true,
+        "score": 3.0,
+        "reason": "1y 最大回撤 -16.3% ✅"
+      }
+    ]
+  },
+  {
+    "code": "013841",
+    "name": "013841",
+    "pass_count": 3,
+    "total": 6,
+    "total_score": 20.0,
+    "gates": [
+      {
+        "name": "Profile (规模/类型)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+      },
+      {
+        "name": "Cost (费率)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+      },
+      {
+        "name": "Manager (经理)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "无; 无任职信息"
+      },
+      {
+        "name": "Holdings (持仓集中度)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "无 sector 数据 ✅"
+      },
+      {
+        "name": "Performance (1y 收益)",
+        "pass": false,
+        "score": 5.0,
+        "reason": "1y 收益 +263.4%; 1y 收益 +263.4% 异常高 (> 200%, 可能是妖基)"
+      },
+      {
+        "name": "Risk (1y 回撤)",
+        "pass": true,
+        "score": 4.0,
+        "reason": "1y 最大回撤 -6.3% ✅"
+      }
+    ]
+  },
+  {
+    "code": "006373",
+    "name": "006373",
+    "pass_count": 4,
+    "total": 6,
+    "total_score": 19.0,
+    "gates": [
+      {
+        "name": "Profile (规模/类型)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+      },
+      {
+        "name": "Cost (费率)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+      },
+      {
+        "name": "Manager (经理)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "无; 无任职信息"
+      },
+      {
+        "name": "Holdings (持仓集中度)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "无 sector 数据 ✅"
+      },
+      {
+        "name": "Performance (1y 收益)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "1y 收益 +95.1% ✅"
+      },
+      {
+        "name": "Risk (1y 回撤)",
+        "pass": true,
+        "score": 3.0,
+        "reason": "1y 最大回撤 -12.3% ✅"
+      }
+    ]
+  },
+  {
+    "code": "024239",
+    "name": "华夏全球科技先锋混合(QDII)C",
+    "pass_count": 5,
+    "total": 6,
+    "total_score": 20.0,
+    "gates": [
+      {
+        "name": "Profile (规模/类型)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "规模 0 亿, 类型 QDII-偏股; 规模小 (0 亿 < 2 亿, 清盘风险)"
+      },
+      {
+        "name": "Cost (费率)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+      },
+      {
+        "name": "Manager (经理)",
+        "pass": true,
+        "score": 3.0,
+        "reason": "经理任职 1.2 年 ✅"
+      },
+      {
+        "name": "Holdings (持仓集中度)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "无 sector 数据 ✅"
+      },
+      {
+        "name": "Performance (1y 收益)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "1y 收益 +85.1% ✅"
+      },
+      {
+        "name": "Risk (1y 回撤)",
+        "pass": true,
+        "score": 3.0,
+        "reason": "1y 最大回撤 -16.3% ✅"
+      }
+    ]
+  },
+  {
+    "code": "009505",
+    "name": "009505",
+    "pass_count": 4,
+    "total": 6,
+    "total_score": 17.0,
+    "gates": [
+      {
+        "name": "Profile (规模/类型)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+      },
+      {
+        "name": "Cost (费率)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+      },
+      {
+        "name": "Manager (经理)",
+        "pass": false,
+        "score": 2.0,
+        "reason": "无; 无任职信息"
+      },
+      {
+        "name": "Holdings (持仓集中度)",
+        "pass": true,
+        "score": 5.0,
+        "reason": "无 sector 数据 ✅"
+      },
+      {
+        "name": "Performance (1y 收益)",
+        "pass": true,
+        "score": 4.0,
+        "reason": "1y 收益 +15.7% ✅"
+      },
+      {
+        "name": "Risk (1y 回撤)",
+        "pass": true,
+        "score": 2.0,
+        "reason": "1y 最大回撤 -27.7% ✅"
+      }
+    ]
+  }
+]

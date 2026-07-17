@@ -1,0 +1,42 @@
+[
+  {
+    "name": "champion+atr",
+    "group": "P6_ATR",
+    "return": 118.43,
+    "dd": 8.52,
+    "trades": 328,
+    "time_sec": 128.0
+  },
+  {
+    "name": "champion+hedge",
+    "group": "P7_Hedge",
+    "return": 58.12,
+    "dd": 8.75,
+    "trades": 403,
+    "time_sec": 130.0
+  },
+  {
+    "name": "champion+quality",
+    "group": "P8_Quality",
+    "return": 57.86,
+    "dd": 8.75,
+    "trades": 397,
+    "time_sec": 150.0
+  },
+  {
+    "name": "champion+dyn_sl",
+    "group": "P5.1_DynSL",
+    "return": 61.05,
+    "dd": 8.45,
+    "trades": 405,
+    "time_sec": 136.0
+  },
+  {
+    "name": "champion+all_ext",
+    "group": "P678_All",
+    "return": 121.26,
+    "dd": 8.47,
+    "trades": 332,
+    "time_sec": 146.0
+  }
+]

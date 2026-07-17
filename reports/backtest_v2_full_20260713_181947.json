@@ -1,0 +1,622 @@
+{
+  "config": {
+    "start": "2026-01-01",
+    "end": "2026-07-01",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 15.0,
+    "trail_pct": 10.0,
+    "hold_days": 30
+  },
+  "result": {
+    "final_value": 137385.33,
+    "total_return": 37.39,
+    "annualized": 89.83,
+    "sharpe": 2.18,
+    "max_drawdown": -8.92,
+    "trading_days": 181,
+    "n_buys": 45,
+    "n_sells": 40,
+    "win_rate": 55.0,
+    "benchmark_return": 7.85,
+    "benchmark_annualized": 16.48,
+    "alpha": 73.35
+  },
+  "reason_stats": {
+    "consensus_sell": {
+      "count": 5,
+      "avg_pnl": 0.0
+    },
+    "take_profit": {
+      "count": 15,
+      "avg_pnl": 17.07
+    },
+    "trail_stop": {
+      "count": 8,
+      "avg_pnl": -1.67
+    },
+    "time_tp": {
+      "count": 12,
+      "avg_pnl": -2.03
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "015740",
+        "name": "国泰中证港股通科技ETF发起联接C",
+        "amount": 14000.0,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "022364",
+        "name": "永赢科技智选混合发起A",
+        "amount": 12039.999999999998,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "amount": 10354.4,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "017470",
+        "name": "嘉实上证科创板芯片ETF发起联接C",
+        "amount": 8904.784,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-05",
+        "action": "buy",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "amount": 7658.11424,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-01-07",
+        "action": "buy",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "amount": 15156.874815658282,
+        "consensus": 2,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-09",
+        "action": "buy",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "amount": 15078.082923694861,
+        "consensus": 2,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-01-14",
+        "action": "buy",
+        "code": "021876",
+        "name": "路博迈资源精选股票发起C",
+        "amount": 15578.56987143048,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-02-02",
+        "action": "buy",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "amount": 15574.26037041275,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-02",
+        "action": "buy",
+        "code": "002067",
+        "name": "诺安精选回报混合",
+        "amount": 15574.26037041275,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-04",
+        "action": "buy",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "amount": 15783.110056664354,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-04",
+        "action": "buy",
+        "code": "012620",
+        "name": "嘉实中证软件服务ETF联接C",
+        "amount": 14378.05198755971,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-06",
+        "action": "buy",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "amount": 15070.483377733952,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-02-06",
+        "action": "buy",
+        "code": "021674",
+        "name": "国泰中证沪深港黄金产业股票ETF发起联接C",
+        "amount": 14178.536341120021,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-03-04",
+        "action": "buy",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "amount": 15152.256283650378,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-03-06",
+        "action": "buy",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "amount": 15234.504147363581,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-03-06",
+        "action": "buy",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "amount": 15234.504147363581,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-03-06",
+        "action": "buy",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "amount": 12681.43096656947,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2026-03-17",
+        "action": "buy",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "amount": 15301.085450791767,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-03-30",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 14882.30517760435,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-04-03",
+        "action": "buy",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "amount": 15197.51867161561,
+        "consensus": 2,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2026-04-06",
+        "action": "buy",
+        "code": "019118",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+        "amount": 14009.341320188614,
+        "consensus": 2,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2026-04-06",
+        "action": "buy",
+        "code": "017091",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)A人民币",
+        "amount": 10507.00599014146,
+        "consensus": 2,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2026-04-09",
+        "action": "buy",
+        "code": "017093",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)C人民币",
+        "amount": 15887.190148964157,
+        "consensus": 2,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2026-04-09",
+        "action": "buy",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "amount": 11981.651017563814,
+        "consensus": 1,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2026-04-16",
+        "action": "buy",
+        "code": "013073",
+        "name": "泰信医疗服务混合发起式C",
+        "amount": 16518.248537631865,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-04-22",
+        "action": "buy",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "amount": 16751.12993413511,
+        "consensus": 3,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-04-22",
+        "action": "buy",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "amount": 16751.12993413511,
+        "consensus": 2,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-04-30",
+        "action": "buy",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "amount": 17419.89371863333,
+        "consensus": 3,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2026-05-06",
+        "action": "buy",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "amount": 18057.69963628559,
+        "consensus": 3,
+        "market": "neutral",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2026-01-07",
+        "action": "sell",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 10774.343579541808
+      },
+      {
+        "date": "2026-01-09",
+        "action": "sell",
+        "code": "017470",
+        "name": "嘉实上证科创板芯片ETF发起联接C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 9422.52961828888
+      },
+      {
+        "date": "2026-01-14",
+        "action": "sell",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "reason": "take_profit",
+        "pnl_pct": 21.614432191913323,
+        "amount": 18337.12493307735
+      },
+      {
+        "date": "2026-02-02",
+        "action": "sell",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "reason": "trail_stop",
+        "pnl_pct": 0.37618942243857756,
+        "amount": 7686.9232557291425
+      },
+      {
+        "date": "2026-02-02",
+        "action": "sell",
+        "code": "021876",
+        "name": "路博迈资源精选股票发起C",
+        "reason": "trail_stop",
+        "pnl_pct": 0.9560229445506829,
+        "amount": 15727.504573834214
+      },
+      {
+        "date": "2026-02-04",
+        "action": "sell",
+        "code": "015740",
+        "name": "国泰中证港股通科技ETF发起联接C",
+        "reason": "time_tp",
+        "pnl_pct": -6.031081407520733,
+        "amount": 13155.648602947098
+      },
+      {
+        "date": "2026-02-04",
+        "action": "sell",
+        "code": "022364",
+        "name": "永赢科技智选混合发起A",
+        "reason": "time_tp",
+        "pnl_pct": -3.00223736927,
+        "amount": 11678.53062073989
+      },
+      {
+        "date": "2026-02-06",
+        "action": "sell",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "reason": "time_tp",
+        "pnl_pct": -4.448304906296075,
+        "amount": 14482.6508095922
+      },
+      {
+        "date": "2026-02-06",
+        "action": "sell",
+        "code": "161226",
+        "name": "国投瑞银白银期货(LOF)A",
+        "reason": "trail_stop",
+        "pnl_pct": -7.566462167689158,
+        "amount": 14395.839851588064
+      },
+      {
+        "date": "2026-03-04",
+        "action": "sell",
+        "code": "002067",
+        "name": "诺安精选回报混合",
+        "reason": "time_tp",
+        "pnl_pct": -0.9093971034018211,
+        "amount": 15432.62849772796
+      },
+      {
+        "date": "2026-03-06",
+        "action": "sell",
+        "code": "025209",
+        "name": "永赢先锋半导体智选混合发起C",
+        "reason": "time_tp",
+        "pnl_pct": 0.06042296072505948,
+        "amount": 15792.646679055086
+      },
+      {
+        "date": "2026-03-06",
+        "action": "sell",
+        "code": "012620",
+        "name": "嘉实中证软件服务ETF联接C",
+        "reason": "time_tp",
+        "pnl_pct": -5.078416728902157,
+        "amount": 13647.874590133228
+      },
+      {
+        "date": "2026-03-06",
+        "action": "sell",
+        "code": "021674",
+        "name": "国泰中证沪深港黄金产业股票ETF发起联接C",
+        "reason": "trail_stop",
+        "pnl_pct": 2.0075068243858185,
+        "amount": 14463.171425766028
+      },
+      {
+        "date": "2026-03-17",
+        "action": "sell",
+        "code": "024074",
+        "name": "上银国证自由现金流指数C",
+        "reason": "time_tp",
+        "pnl_pct": 4.368407939539898,
+        "amount": 15728.823570133924
+      },
+      {
+        "date": "2026-03-30",
+        "action": "sell",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "reason": "trail_stop",
+        "pnl_pct": -0.31115259812417584,
+        "amount": 12641.972364637664
+      },
+      {
+        "date": "2026-04-03",
+        "action": "sell",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "reason": "time_tp",
+        "pnl_pct": -0.5433922203387787,
+        "amount": 15069.920101799227
+      },
+      {
+        "date": "2026-04-05",
+        "action": "sell",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "reason": "time_tp",
+        "pnl_pct": 1.6574626486769883,
+        "amount": 15487.010363317278
+      },
+      {
+        "date": "2026-04-05",
+        "action": "sell",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "reason": "time_tp",
+        "pnl_pct": -0.7164598454694637,
+        "amount": 15125.355042491343
+      },
+      {
+        "date": "2026-04-09",
+        "action": "sell",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 15640.220567147182
+      },
+      {
+        "date": "2026-04-09",
+        "action": "sell",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 16652.55568164785
+      },
+      {
+        "date": "2026-04-16",
+        "action": "sell",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "reason": "take_profit",
+        "pnl_pct": 15.133489625249318,
+        "amount": 17497.433583079885
+      },
+      {
+        "date": "2026-04-22",
+        "action": "sell",
+        "code": "019118",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+        "reason": "take_profit",
+        "pnl_pct": 15.211808583563391,
+        "amount": 16140.41550563376
+      },
+      {
+        "date": "2026-04-22",
+        "action": "sell",
+        "code": "017091",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)A人民币",
+        "reason": "take_profit",
+        "pnl_pct": 15.225363227034293,
+        "amount": 12106.73581642675
+      },
+      {
+        "date": "2026-04-30",
+        "action": "sell",
+        "code": "290008",
+        "name": "泰信发展主题混合",
+        "reason": "take_profit",
+        "pnl_pct": 15.597014925373154,
+        "amount": 19363.806170130814
+      },
+      {
+        "date": "2026-05-06",
+        "action": "sell",
+        "code": "017093",
+        "name": "景顺长城纳斯达克科技ETF联接(QDII)C人民币",
+        "reason": "take_profit",
+        "pnl_pct": 18.794789741740647,
+        "amount": 18873.154133332504
+      },
+      {
+        "date": "2026-05-06",
+        "action": "sell",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "reason": "take_profit",
+        "pnl_pct": 21.610711999430965,
+        "amount": 14570.971111746421
+      },
+      {
+        "date": "2026-05-06",
+        "action": "sell",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "reason": "take_profit",
+        "pnl_pct": 15.08649672962894,
+        "amount": 19278.2886038243
+      },
+      {
+        "date": "2026-05-16",
+        "action": "sell",
+        "code": "013073",
+        "name": "泰信医疗服务混合发起式C",
+        "reason": "time_tp",
+        "pnl_pct": -8.611736195257047,
+        "amount": 15095.740549494105
+      },
+      {
+        "date": "2026-05-25",
+        "action": "sell",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "reason": "take_profit",
+        "pnl_pct": 17.610398360517678,
+        "amount": 20487.60639646346
+      },
+      {
+        "date": "2026-05-28",
+        "action": "sell",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "reason": "take_profit",
+        "pnl_pct": 15.637206395500236,
+        "amount": 18422.687322796843
+      }
+    ]
+  }
+}

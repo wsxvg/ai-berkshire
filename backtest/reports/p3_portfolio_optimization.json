@@ -1,0 +1,89 @@
+[
+  {
+    "name": "K_baseline",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0
+  },
+  {
+    "name": "max_sector_30",
+    "return": 52.00280000000001,
+    "dd": 13.729862010118946,
+    "trades": 422,
+    "sharpe": 0,
+    "diff_vs_base": -5.9672999999999945
+  },
+  {
+    "name": "max_sector_40",
+    "return": 60.74700000000001,
+    "dd": 12.418496445686495,
+    "trades": 439,
+    "sharpe": 0,
+    "diff_vs_base": 2.776900000000005
+  },
+  {
+    "name": "max_sector_50",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "diff_vs_base": 0.0
+  },
+  {
+    "name": "type_active",
+    "return": 63.41110000000001,
+    "dd": 10.257005909438886,
+    "trades": 361,
+    "sharpe": 0,
+    "diff_vs_base": 5.44100000000001
+  },
+  {
+    "name": "type_qdii",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "diff_vs_base": 0.0
+  },
+  {
+    "name": "type_index",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "diff_vs_base": 0.0
+  },
+  {
+    "name": "cash_0.05",
+    "return": 57.87610000000001,
+    "dd": 12.470923202159376,
+    "trades": 431,
+    "sharpe": 0,
+    "diff_vs_base": -0.09399999999999409
+  },
+  {
+    "name": "cash_0.1",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "diff_vs_base": 0.0
+  },
+  {
+    "name": "cash_0.15",
+    "return": 60.215599999999995,
+    "dd": 12.649610753513477,
+    "trades": 455,
+    "sharpe": 0,
+    "diff_vs_base": 2.2454999999999927
+  },
+  {
+    "name": "cash_0.2",
+    "return": 52.287499999999994,
+    "dd": 13.10152311735903,
+    "trades": 457,
+    "sharpe": 0,
+    "diff_vs_base": -5.682600000000008
+  }
+]

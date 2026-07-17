@@ -1,0 +1,54 @@
+{
+  "date": "2026-04-15",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [
+    {
+      "code": "024239",
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "score": 2.9592553742155587
+    },
+    {
+      "code": "021842",
+      "name": "国富全球科技互联混合(QDII)人民币C",
+      "score": 2.736236074215559
+    },
+    {
+      "code": "012920",
+      "name": "易方达全球成长精选混合(QDII)A",
+      "score": 2.726979526532132
+    },
+    {
+      "code": "012922",
+      "name": "易方达全球成长精选混合(QDII)C",
+      "score": 2.6743757343712455
+    },
+    {
+      "code": "016664",
+      "name": "天弘全球高端制造混合(QDII)A",
+      "score": 2.589659116554555
+    }
+  ],
+  "buy_recommendations": [
+    {
+      "action": "BUY",
+      "code": "024239",
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "amount": 1000.0
+    },
+    {
+      "action": "BUY",
+      "code": "016664",
+      "name": "天弘全球高端制造混合(QDII)A",
+      "amount": 100.0
+    }
+  ],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {},
+  "portfolio": {
+    "total_value": 100000.0,
+    "cash": 98900.0,
+    "fees": 1.5
+  }
+}

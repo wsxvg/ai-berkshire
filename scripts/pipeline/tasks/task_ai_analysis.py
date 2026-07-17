@@ -4,6 +4,13 @@ import json
 from pathlib import Path
 from scripts.pipeline.engine import PipelineEngine, PipelineTask
 
+try:
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("pipeline.ai_analysis")
+
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 
 
@@ -31,7 +38,7 @@ class TaskAIAnalysis(PipelineTask):
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
 
-        print(f"  AI data written to {output_path}")
-        print(f"  Run: /fund-analyze {', '.join(list(scores.keys())[:3])}")
+        _logger.info(f"AI data written to {output_path}")
+        _logger.info(f"Run: /fund-analyze {', '.join(list(scores.keys())[:3])}")
 
         return {"ai_output": str(output_path), "data": output}

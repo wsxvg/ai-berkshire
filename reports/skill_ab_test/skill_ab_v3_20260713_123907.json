@@ -1,0 +1,372 @@
+{
+  "experiments": [
+    {
+      "name": "A0_V2_baseline",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60
+      },
+      "full": {
+        "period": "full",
+        "annualized": 39.18,
+        "sharpe": 1.64,
+        "max_drawdown": -13.44,
+        "win_rate": 55.0,
+        "n_buys": 63,
+        "n_sells": 60,
+        "alpha": 21.98
+      },
+      "train": {
+        "period": "train",
+        "annualized": 29.19,
+        "sharpe": 1.39,
+        "max_drawdown": -13.44,
+        "win_rate": 52.1,
+        "n_buys": 51,
+        "n_sells": 48,
+        "alpha": 12.56
+      },
+      "val": {
+        "period": "val",
+        "annualized": 182.07,
+        "sharpe": 3.16,
+        "max_drawdown": -5.8,
+        "win_rate": 84.6,
+        "n_buys": 16,
+        "n_sells": 13,
+        "alpha": 161.02
+      },
+      "desc": "V2 baseline (P1 止盈, 无 SKILL)"
+    },
+    {
+      "name": "B1_RSI_75",
+      "desc": "+ RSI>75 不买 (防追高)",
+      "error": "float division by zero"
+    },
+    {
+      "name": "B1b_RSI_80",
+      "desc": "+ RSI>80 不买 (更严)",
+      "error": "float division by zero"
+    },
+    {
+      "name": "B2_concentration_60",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_concentration_filter": true,
+        "concentration_max": 0.6
+      },
+      "full": {
+        "period": "full",
+        "annualized": 39.18,
+        "sharpe": 1.64,
+        "max_drawdown": -13.44,
+        "win_rate": 55.0,
+        "n_buys": 63,
+        "n_sells": 60,
+        "alpha": 21.98
+      },
+      "train": {
+        "period": "train",
+        "annualized": 29.19,
+        "sharpe": 1.39,
+        "max_drawdown": -13.44,
+        "win_rate": 52.1,
+        "n_buys": 51,
+        "n_sells": 48,
+        "alpha": 12.56
+      },
+      "val": {
+        "period": "val",
+        "annualized": 182.07,
+        "sharpe": 3.16,
+        "max_drawdown": -5.8,
+        "win_rate": 84.6,
+        "n_buys": 16,
+        "n_sells": 13,
+        "alpha": 161.02
+      },
+      "desc": "+ 持仓行业集中度>60% 减仓"
+    },
+    {
+      "name": "B3_manager_1y",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_manager_filter": true,
+        "min_tenure_years": 1.0
+      },
+      "full": {
+        "period": "full",
+        "annualized": 39.18,
+        "sharpe": 1.64,
+        "max_drawdown": -13.44,
+        "win_rate": 55.0,
+        "n_buys": 63,
+        "n_sells": 60,
+        "alpha": 21.98
+      },
+      "train": {
+        "period": "train",
+        "annualized": 29.19,
+        "sharpe": 1.39,
+        "max_drawdown": -13.44,
+        "win_rate": 52.1,
+        "n_buys": 51,
+        "n_sells": 48,
+        "alpha": 12.56
+      },
+      "val": {
+        "period": "val",
+        "annualized": 121.23,
+        "sharpe": 2.76,
+        "max_drawdown": -6.12,
+        "win_rate": 75.0,
+        "n_buys": 15,
+        "n_sells": 12,
+        "alpha": 100.18
+      },
+      "desc": "+ 经理任职<1年 不买"
+    },
+    {
+      "name": "B3b_manager_2y",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_manager_filter": true,
+        "min_tenure_years": 2.0
+      },
+      "full": {
+        "period": "full",
+        "annualized": 39.18,
+        "sharpe": 1.64,
+        "max_drawdown": -13.44,
+        "win_rate": 55.0,
+        "n_buys": 63,
+        "n_sells": 60,
+        "alpha": 21.98
+      },
+      "train": {
+        "period": "train",
+        "annualized": 29.19,
+        "sharpe": 1.39,
+        "max_drawdown": -13.44,
+        "win_rate": 52.1,
+        "n_buys": 51,
+        "n_sells": 48,
+        "alpha": 12.56
+      },
+      "val": {
+        "period": "val",
+        "annualized": 121.23,
+        "sharpe": 2.76,
+        "max_drawdown": -6.12,
+        "win_rate": 75.0,
+        "n_buys": 15,
+        "n_sells": 12,
+        "alpha": 100.18
+      },
+      "desc": "+ 经理任职<2年 不买 (更严)"
+    },
+    {
+      "name": "B4_score_12.5",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_score_threshold": true,
+        "score_threshold": 12.5
+      },
+      "full": {
+        "period": "full",
+        "annualized": 30.0,
+        "sharpe": 1.42,
+        "max_drawdown": -11.7,
+        "win_rate": 48.0,
+        "n_buys": 53,
+        "n_sells": 50,
+        "alpha": 12.79
+      },
+      "train": {
+        "period": "train",
+        "annualized": 20.07,
+        "sharpe": 1.12,
+        "max_drawdown": -11.7,
+        "win_rate": 43.2,
+        "n_buys": 40,
+        "n_sells": 37,
+        "alpha": 3.44
+      },
+      "val": {
+        "period": "val",
+        "annualized": 194.49,
+        "sharpe": 3.16,
+        "max_drawdown": -6.9,
+        "win_rate": 85.7,
+        "n_buys": 17,
+        "n_sells": 14,
+        "alpha": 173.44
+      },
+      "desc": "+ score<12.5 不买 (中性门槛)"
+    },
+    {
+      "name": "B4b_score_15.0",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_score_threshold": true,
+        "score_threshold": 15.0
+      },
+      "full": {
+        "period": "full",
+        "annualized": 24.76,
+        "sharpe": 1.16,
+        "max_drawdown": -13.4,
+        "win_rate": 53.3,
+        "n_buys": 48,
+        "n_sells": 45,
+        "alpha": 7.56
+      },
+      "train": {
+        "period": "train",
+        "annualized": 13.83,
+        "sharpe": 0.81,
+        "max_drawdown": -13.4,
+        "win_rate": 53.3,
+        "n_buys": 33,
+        "n_sells": 30,
+        "alpha": -2.79
+      },
+      "val": {
+        "period": "val",
+        "annualized": 221.13,
+        "sharpe": 3.27,
+        "max_drawdown": -6.99,
+        "win_rate": 92.3,
+        "n_buys": 16,
+        "n_sells": 13,
+        "alpha": 200.08
+      },
+      "desc": "+ score<15.0 不买 (高质量)"
+    },
+    {
+      "name": "B5_score_position",
+      "config": {
+        "start": "2024-03-11",
+        "end": "2026-07-01",
+        "max_holdings": 3,
+        "min_buyers": 1,
+        "use_tp": true,
+        "use_trail": true,
+        "use_time_tp": true,
+        "use_dynamic": false,
+        "use_scorer": false,
+        "tp_pct": 15.0,
+        "trail_pct": 8.0,
+        "hold_days": 60,
+        "use_score_position": true
+      },
+      "full": {
+        "period": "full",
+        "annualized": 42.36,
+        "sharpe": 1.58,
+        "max_drawdown": -14.02,
+        "win_rate": 55.0,
+        "n_buys": 63,
+        "n_sells": 60,
+        "alpha": 25.15
+      },
+      "train": {
+        "period": "train",
+        "annualized": 30.29,
+        "sharpe": 1.35,
+        "max_drawdown": -14.02,
+        "win_rate": 52.1,
+        "n_buys": 51,
+        "n_sells": 48,
+        "alpha": 13.66
+      },
+      "val": {
+        "period": "val",
+        "annualized": 271.9,
+        "sharpe": 3.22,
+        "max_drawdown": -6.87,
+        "win_rate": 84.6,
+        "n_buys": 16,
+        "n_sells": 13,
+        "alpha": 250.85
+      },
+      "desc": "+ 评分做仓位调节 (score高多买)"
+    },
+    {
+      "name": "B6_filter_combo",
+      "desc": "B1+B2+B3 三层过滤",
+      "error": "float division by zero"
+    },
+    {
+      "name": "B7_RSI_score",
+      "desc": "B1 RSI + B4 评分门槛",
+      "error": "float division by zero"
+    }
+  ],
+  "ts": "2026-07-13T12:39:07.911838"
+}

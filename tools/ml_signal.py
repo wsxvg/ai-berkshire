@@ -120,7 +120,7 @@ class MLSignalEnhancer:
             first_dt = datetime.strptime(first_date, "%Y-%m-%d")
             cur_dt = datetime.strptime(cutoff_date[:10], "%Y-%m-%d")
             fund_age_days = (cur_dt - first_dt).days
-        except:
+        except (ValueError, TypeError):
             pass
 
         # Scores (from the five-dimension scoring)

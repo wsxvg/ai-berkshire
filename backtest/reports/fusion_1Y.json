@@ -1,0 +1,66 @@
+{
+  "period": "1Y",
+  "results": [
+    {
+      "strategy": "D-智能费用",
+      "desc": "高费用惩罚+标准止损+半仓止盈 (回测引擎原生策略D)",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1593, in run_backtest\n    fs = score_fund_backtest(\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 640, in score_fund_backtest\n    momentum = score_momentum_backtest(chart_pts, cutoff_date)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 72, in score_momentum_backtest\n    values = [(100 + _float(",
+      "elapsed_sec": 1.1
+    },
+    {
+      "strategy": "E-分批建仓",
+      "desc": "浅止损+25%止盈+1/4批止盈 (回测引擎原生策略E)",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1593, in run_backtest\n    fs = score_fund_backtest(\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 640, in score_fund_backtest\n    momentum = score_momentum_backtest(chart_pts, cutoff_date)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 72, in score_momentum_backtest\n    values = [(100 + _float(",
+      "elapsed_sec": 0.9
+    },
+    {
+      "strategy": "J-无脑跟投",
+      "desc": "2人买我就买,无评分门槛 (回测引擎原生策略J,机器五维弱化基线)",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1593, in run_backtest\n    fs = score_fund_backtest(\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 640, in score_fund_backtest\n    momentum = score_momentum_backtest(chart_pts, cutoff_date)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 72, in score_momentum_backtest\n    values = [(100 + _float(",
+      "elapsed_sec": 0.9
+    },
+    {
+      "strategy": "F-D-行业过滤",
+      "desc": "D基线 + 行业估值过滤(>70%扣分,>80%拦截) + ML信号",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1593, in run_backtest\n    fs = score_fund_backtest(\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 640, in score_fund_backtest\n    momentum = score_momentum_backtest(chart_pts, cutoff_date)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 72, in score_momentum_backtest\n    values = [(100 + _float(",
+      "elapsed_sec": 1.0
+    },
+    {
+      "strategy": "F-E-多指数择时",
+      "desc": "E基线 + 沪深300+创业板+中证500多指数共振过滤 + ML信号",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1593, in run_backtest\n    fs = score_fund_backtest(\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 640, in score_fund_backtest\n    momentum = score_momentum_backtest(chart_pts, cutoff_date)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 72, in score_momentum_backtest\n    values = [(100 + _float(",
+      "elapsed_sec": 0.9
+    },
+    {
+      "strategy": "F-AI-融合",
+      "desc": "五维评分+行业估值+多指数+ML信号,核心持仓20%, ATR仓位",
+      "start": "2025-07-01",
+      "end": "2026-07-01",
+      "status": "FAIL",
+      "error": "name '_float' is not defined",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\项目\\A基金\\基金\\tools\\fusion_strategy.py\", line 180, in run_one\n    r = run_backtest(cfg)\n  File \"C:\\项目\\A基金\\基金\\backtest\\engine\\backtest.py\", line 1427, in run_backtest\n    _core_y = _float(_first_pts[-1].get(\"yAxis\", 0))\nNameError: name '_float' is not defined\n",
+      "elapsed_sec": 1.1
+    }
+  ],
+  "total_sec": 6.5
+}

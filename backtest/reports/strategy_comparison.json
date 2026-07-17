@@ -1,86 +1,182 @@
-[
-  {
-    "name": "A 费用敏感",
-    "desc": "高费率惩罚+标准止损",
-    "return": 41.1876,
-    "annualized": 99.33938393759998,
-    "dd": 6.2805809658266805,
-    "trades": 176,
-    "holdings": 15,
-    "sharpe": 6.5579283547344085,
-    "vs_benchmark": 34.8376,
-    "fees": 532.76
+{
+  "generated_at": "2026-07-17T07:46:34.114370",
+  "period": "2025-01-05 ~ 2026-07-01",
+  "baseline": {
+    "return": 62.43,
+    "dd": 11.55
   },
-  {
-    "name": "B 指数优先",
-    "desc": "只买指数,低门槛,不止损",
-    "return": 0.0,
-    "annualized": 0.0,
-    "dd": 0,
-    "trades": 0,
-    "holdings": 0,
-    "sharpe": 0.0,
-    "vs_benchmark": -6.35,
-    "fees": 0
+  "gates": {
+    "gate1": 59.3,
+    "gate2": 17.3
   },
-  {
-    "name": "C 主动精选",
-    "desc": "只买主动,高门槛,高共识",
-    "return": 29.723099999999995,
-    "annualized": 68.28082673610001,
-    "dd": 7.266300707883495,
-    "trades": 98,
-    "holdings": 14,
-    "sharpe": 4.090540867342888,
-    "vs_benchmark": 23.373099999999994,
-    "fees": 225.48
-  },
-  {
-    "name": "D 智能费用",
-    "desc": "费用敏感+标准操作",
-    "return": 29.997000000000007,
-    "annualized": 68.99220009000003,
-    "dd": 7.092951044375018,
-    "trades": 176,
-    "holdings": 13,
-    "sharpe": 4.229128301088273,
-    "vs_benchmark": 23.647000000000006,
-    "fees": 508.34
-  },
-  {
-    "name": "E 分批建仓",
-    "desc": "低费用惩罚+浅止损",
-    "return": 34.7339,
-    "annualized": 81.53223809210002,
-    "dd": 7.935460620189863,
-    "trades": 204,
-    "holdings": 16,
-    "sharpe": 4.377049003510645,
-    "vs_benchmark": 28.383899999999997,
-    "fees": 449.35
-  },
-  {
-    "name": "F 趋势跟踪",
-    "desc": "不止损,阶梯止盈,动量优先",
-    "return": 38.8374,
-    "annualized": 92.7582363876,
-    "dd": 6.879024605945603,
-    "trades": 266,
-    "holdings": 18,
-    "sharpe": 5.645771344738684,
-    "vs_benchmark": 32.4874,
-    "fees": 703.61
-  },
-  {
-    "name": "G 绝对收益",
-    "desc": "严止损,早止盈,低仓位",
-    "return": 8.434300000000002,
-    "annualized": 17.5799741649,
-    "dd": 6.953380501464211,
-    "trades": 300,
-    "holdings": 10,
-    "sharpe": 1.2129783489086994,
-    "vs_benchmark": 2.0843000000000025,
-    "fees": 1390.08
-  }
-]
+  "results": [
+    {
+      "name": "K_baseline",
+      "return": 57.97,
+      "annualized": 26.3,
+      "dd": 12.4,
+      "sharpe": 1.3,
+      "calmar": 2.12,
+      "trades": 437,
+      "elapsed": 143.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_amount",
+      "return": 57.97,
+      "annualized": 26.3,
+      "dd": 12.4,
+      "sharpe": 1.3,
+      "calmar": 2.12,
+      "trades": 437,
+      "elapsed": 142.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_smartexit",
+      "return": 57.97,
+      "annualized": 26.3,
+      "dd": 12.4,
+      "sharpe": 1.3,
+      "calmar": 2.12,
+      "trades": 437,
+      "elapsed": 143.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_regime",
+      "return": 51.59,
+      "annualized": 23.6,
+      "dd": 12.81,
+      "sharpe": 1.15,
+      "calmar": 1.85,
+      "trades": 387,
+      "elapsed": 130.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_window7",
+      "return": 49.34,
+      "annualized": 22.7,
+      "dd": 11.86,
+      "sharpe": 1.17,
+      "calmar": 1.91,
+      "trades": 585,
+      "elapsed": 239.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_accel",
+      "return": 49.34,
+      "annualized": 22.7,
+      "dd": 11.86,
+      "sharpe": 1.17,
+      "calmar": 1.91,
+      "trades": 585,
+      "elapsed": 247.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_dualsig",
+      "return": 45.8,
+      "annualized": 21.2,
+      "dd": 11.23,
+      "sharpe": 1.03,
+      "calmar": 1.89,
+      "trades": 400,
+      "elapsed": 149.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_firstbuy",
+      "return": 43.26,
+      "annualized": 20.1,
+      "dd": 9.11,
+      "sharpe": 1.01,
+      "calmar": 2.21,
+      "trades": 327,
+      "elapsed": 96.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_conc",
+      "return": 40.41,
+      "annualized": 18.9,
+      "dd": 8.97,
+      "sharpe": 1.15,
+      "calmar": 2.11,
+      "trades": 405,
+      "elapsed": 201.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_adaptive",
+      "return": 38.49,
+      "annualized": 18.1,
+      "dd": 8.76,
+      "sharpe": 0.96,
+      "calmar": 2.06,
+      "trades": 289,
+      "elapsed": 92.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_conviction",
+      "return": 38.36,
+      "annualized": 18.0,
+      "dd": 8.44,
+      "sharpe": 0.97,
+      "calmar": 2.13,
+      "trades": 285,
+      "elapsed": 98.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_combo",
+      "return": 30.49,
+      "annualized": 14.5,
+      "dd": 10.33,
+      "sharpe": 0.74,
+      "calmar": 1.41,
+      "trades": 251,
+      "elapsed": 87.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_expert",
+      "return": 25.89,
+      "annualized": 12.5,
+      "dd": 14.61,
+      "sharpe": 0.58,
+      "calmar": 0.85,
+      "trades": 385,
+      "elapsed": 137.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    },
+    {
+      "name": "K_rotate",
+      "return": 25.89,
+      "annualized": 12.5,
+      "dd": 14.61,
+      "sharpe": 0.58,
+      "calmar": 0.85,
+      "trades": 385,
+      "elapsed": 147.0,
+      "gate1_pass": false,
+      "gate2_pass": true
+    }
+  ]
+}

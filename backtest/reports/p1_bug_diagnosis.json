@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-07-17T10:04:15.788357",
+  "K_baseline": {
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437
+  },
+  "K_amount": {
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "identical_to_baseline": true
+  },
+  "K_amount_v2": {
+    "return": 59.799899999999994,
+    "dd": 12.987554788201692,
+    "trades": 559
+  },
+  "K_smartexit": {
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "identical_to_baseline": true
+  },
+  "K_smartexit_v2": {
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437
+  },
+  "data_info": {
+    "total_trades": 49180,
+    "total_days": 969,
+    "date_range": "2023-07-14 ~ 2026-07-15"
+  }
+}

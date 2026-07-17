@@ -1,0 +1,2856 @@
+[
+  {
+    "config": {
+      "start_date": "2026-06-25",
+      "end_date": "2026-07-09",
+      "initial_cash": 100000,
+      "weights": {
+        "quality": 25,
+        "cost": 20,
+        "manager": 20,
+        "momentum": 15,
+        "smart_money": 20
+      },
+      "use_weighted_consensus": false,
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "top_n": 0,
+      "top_n_pct": 0,
+      "consensus_priority": false,
+      "net_signal": false,
+      "limit_boost": 0,
+      "max_sector_pct": 100,
+      "max_qdii_pct": 100,
+      "momentum_sell": 2.0,
+      "kelly_cap": 0.4,
+      "cash_reserve_pct": 0.1,
+      "max_holdings": 0,
+      "rebalance": false,
+      "monthly_injection": 0,
+      "fund_type_filter": "all",
+      "sell_consensus": 0,
+      "profit_mode": "half",
+      "no_stop_loss": false,
+      "cooldown_days": 10,
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 30,
+      "max_correlation": 0.85,
+      "ml_signal": true,
+      "ml_retrain_days": 30,
+      "timing_filter": true,
+      "block_overbought": false,
+      "min_score": 2.5,
+      "dynamic_ranking": true,
+      "max_position_pct": 20,
+      "verbose_ranking": false,
+      "ranking_window": 90,
+      "ranking_half_life": 45,
+      "risk_free_rate": 0.02,
+      "slippage_pct": 0.1,
+      "bear_market_no_buy": false,
+      "take_profit_pct": 10,
+      "stop_loss_pct": -14,
+      "trailing_tp_activate": 23,
+      "trailing_tp_drawdown": 10,
+      "min_score_bull": 2.91,
+      "min_score_neutral": 2.5,
+      "min_score_bear": 3.0,
+      "ml_weight": 1.97,
+      "downtrend_penalty": 0.73,
+      "use_atr_sizing": false
+    },
+    "final_value": 98126.45,
+    "total_return": -1.873550000000003,
+    "max_drawdown": 2.1384514258354113,
+    "annualized_return": -54.81,
+    "annualized_volatility": 25.25,
+    "sharpe_ratio": -2.27,
+    "calmar_ratio": -25.63,
+    "benchmark_return": -3.0988379357740903,
+    "benchmark_dd": 0,
+    "buyhold_return": 0,
+    "buyhold_code": "012920",
+    "trade_count": 20,
+    "final_holdings": 20,
+    "total_fees": 438.5,
+    "monthly_injections": 0,
+    "daily_values": [
+      {
+        "date": "2026-06-25",
+        "cash": 93000,
+        "holdings_value": 6886.61,
+        "total": 99886.61
+      },
+      {
+        "date": "2026-06-26",
+        "cash": 60400,
+        "holdings_value": 38709.64,
+        "total": 99109.64
+      },
+      {
+        "date": "2026-06-28",
+        "cash": 60400,
+        "holdings_value": 38709.64,
+        "total": 99109.64
+      },
+      {
+        "date": "2026-06-29",
+        "cash": 49200,
+        "holdings_value": 48961.32,
+        "total": 98161.32
+      },
+      {
+        "date": "2026-06-30",
+        "cash": 49100,
+        "holdings_value": 51170.69,
+        "total": 100270.69
+      },
+      {
+        "date": "2026-07-01",
+        "cash": 49100,
+        "holdings_value": 49026.45,
+        "total": 98126.45
+      }
+    ],
+    "trades": [
+      {
+        "date": "2026-06-25",
+        "code": "002891",
+        "action": "buy",
+        "amount": 100,
+        "fee": 15.0,
+        "nav": 3.0656,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002112",
+        "action": "buy",
+        "amount": 6000,
+        "fee": 0.0,
+        "nav": 6.0497000000000005,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016664",
+        "action": "buy",
+        "amount": 100,
+        "fee": 1.5,
+        "nav": 3.9602999999999997,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "501226",
+        "action": "buy",
+        "amount": 500,
+        "fee": 75.0,
+        "nav": 3.0547000000000004,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006503",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 9.767000000000001,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016665",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 3.9229000000000003,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "017730",
+        "action": "buy",
+        "amount": 100,
+        "fee": 15.0,
+        "nav": 4.9361,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011452",
+        "action": "buy",
+        "amount": 10000,
+        "fee": 0.0,
+        "nav": 2.1837999999999997,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016371",
+        "action": "buy",
+        "amount": 12100,
+        "fee": 0.0,
+        "nav": 3.5148,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "100055",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 150.0,
+        "nav": 4.0816,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "022184",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 0.0,
+        "nav": 2.7245,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "007818",
+        "action": "buy",
+        "amount": 6000,
+        "fee": 0.0,
+        "nav": 4.7655,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018229",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 150.0,
+        "nav": 2.5511,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008984",
+        "action": "buy",
+        "amount": 1300,
+        "fee": 0.0,
+        "nav": 2.3923,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270023",
+        "action": "buy",
+        "amount": 200,
+        "fee": 32.0,
+        "nav": 4.4347,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "010416",
+        "action": "buy",
+        "amount": 10000,
+        "fee": 0.0,
+        "nav": 2.7440999999999995,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024239",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 0.0,
+        "nav": 2.234,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021528",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 5.593,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024481",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 2.5272,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021523",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 4.87,
+        "confirm_date": "2026-07-01",
+        "t_plus_n": 1
+      }
+    ],
+    "scores": [
+      {
+        "date": "2026-06-25",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 3.12,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 3.22,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 2.81,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 2.45,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 3.16,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.51,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.1,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 2.54,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "270042",
+        "name": "广发纳指100ETF联接(QDII)A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.15,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.17,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 1.93,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 2.56,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.36,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 1.89,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "score": 2.28,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 2.09,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018957",
+        "name": "中航机遇领航混合发起C",
+        "score": 1.83,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "013340",
+        "name": "创金合信芯片产业股票发起C",
+        "score": 0.51,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 2.2,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 0.33,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 1.56,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.03,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.39,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 3.79,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 3.26,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.44,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.99,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 3.87,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 3.67,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270042",
+        "name": "广发纳指100ETF联接(QDII)A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.98,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 0.83,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.98,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.43,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.56,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "022184",
+        "name": "富国全球科技互联网股票(QDII)C",
+        "score": 3.03,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 3.27,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 1.95,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 2.54,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 1.71,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 1.53,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008984",
+        "name": "财通科技创新混合C",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.73,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 3.36,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 3.67,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 3.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 3.87,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.38,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "010416",
+        "name": "华泰柏瑞质量精选混合C",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "022184",
+        "name": "富国全球科技互联网股票(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 3.28,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.03,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 1.93,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "score": 3.26,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008989",
+        "name": "大成科技创新混合C",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.9,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "score": -0.12,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 2.79,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.1,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 2.99,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.25,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 1.84,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "017731",
+        "name": "嘉实全球产业升级股票发起式(QDII)C",
+        "score": 1.39,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.43,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.95,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 2.35,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.71,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.53,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.4,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.18,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "009505",
+        "name": "富国上海金ETF联接C",
+        "score": 1.6,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.39,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.9,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.53,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.05,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.91,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "score": 1.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "score": 2.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 1.44,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 3.22,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.34,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.71,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.95,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.72,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016501",
+        "name": "华夏半导体龙头混合发起式C",
+        "score": 0.49,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.69,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.45,
+        "verdict": "candidate"
+      }
+    ],
+    "label": "A.无ATR",
+    "duration_s": 29.5
+  },
+  {
+    "config": {
+      "start_date": "2026-06-25",
+      "end_date": "2026-07-09",
+      "initial_cash": 100000,
+      "weights": {
+        "quality": 25,
+        "cost": 20,
+        "manager": 20,
+        "momentum": 15,
+        "smart_money": 20
+      },
+      "use_weighted_consensus": false,
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "top_n": 0,
+      "top_n_pct": 0,
+      "consensus_priority": false,
+      "net_signal": false,
+      "limit_boost": 0,
+      "max_sector_pct": 100,
+      "max_qdii_pct": 100,
+      "momentum_sell": 2.0,
+      "kelly_cap": 0.4,
+      "cash_reserve_pct": 0.1,
+      "max_holdings": 0,
+      "rebalance": false,
+      "monthly_injection": 0,
+      "fund_type_filter": "all",
+      "sell_consensus": 0,
+      "profit_mode": "half",
+      "no_stop_loss": false,
+      "cooldown_days": 10,
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 30,
+      "max_correlation": 0.85,
+      "ml_signal": true,
+      "ml_retrain_days": 30,
+      "timing_filter": true,
+      "block_overbought": false,
+      "min_score": 2.5,
+      "dynamic_ranking": true,
+      "max_position_pct": 20,
+      "verbose_ranking": false,
+      "ranking_window": 90,
+      "ranking_half_life": 45,
+      "risk_free_rate": 0.02,
+      "slippage_pct": 0.1,
+      "bear_market_no_buy": false,
+      "take_profit_pct": 10,
+      "stop_loss_pct": -14,
+      "trailing_tp_activate": 23,
+      "trailing_tp_drawdown": 10,
+      "min_score_bull": 2.91,
+      "min_score_neutral": 2.5,
+      "min_score_bear": 3.0,
+      "ml_weight": 1.97,
+      "downtrend_penalty": 0.73,
+      "use_atr_sizing": true,
+      "atr_baseline": 0.015,
+      "atr_target_risk": 0.005
+    },
+    "final_value": 98826.63,
+    "total_return": -1.1733699999999954,
+    "max_drawdown": 1.1511685524568709,
+    "annualized_return": -39.09,
+    "annualized_volatility": 13.54,
+    "sharpe_ratio": -3.07,
+    "calmar_ratio": -33.95,
+    "benchmark_return": -3.0988379357740903,
+    "benchmark_dd": 0,
+    "buyhold_return": 0,
+    "buyhold_code": "012920",
+    "trade_count": 20,
+    "final_holdings": 20,
+    "total_fees": 438.5,
+    "monthly_injections": 0,
+    "daily_values": [
+      {
+        "date": "2026-06-25",
+        "cash": 96000,
+        "holdings_value": 3889.61,
+        "total": 99889.61
+      },
+      {
+        "date": "2026-06-26",
+        "cash": 78200,
+        "holdings_value": 21115.62,
+        "total": 99315.62
+      },
+      {
+        "date": "2026-06-28",
+        "cash": 78200,
+        "holdings_value": 21115.62,
+        "total": 99315.62
+      },
+      {
+        "date": "2026-06-29",
+        "cash": 71700,
+        "holdings_value": 27163.48,
+        "total": 98863.48
+      },
+      {
+        "date": "2026-06-30",
+        "cash": 71600,
+        "holdings_value": 28377.54,
+        "total": 99977.54
+      },
+      {
+        "date": "2026-07-01",
+        "cash": 71600,
+        "holdings_value": 27226.63,
+        "total": 98826.63
+      }
+    ],
+    "trades": [
+      {
+        "date": "2026-06-25",
+        "code": "002891",
+        "action": "buy",
+        "amount": 100,
+        "fee": 15.0,
+        "nav": 3.0656,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002112",
+        "action": "buy",
+        "amount": 3000,
+        "fee": 0.0,
+        "nav": 6.0497000000000005,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016664",
+        "action": "buy",
+        "amount": 100,
+        "fee": 1.5,
+        "nav": 3.9602999999999997,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "501226",
+        "action": "buy",
+        "amount": 500,
+        "fee": 75.0,
+        "nav": 3.0547000000000004,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006503",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 9.767000000000001,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016665",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 3.9229000000000003,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-25",
+        "code": "017730",
+        "action": "buy",
+        "amount": 100,
+        "fee": 15.0,
+        "nav": 4.9361,
+        "confirm_date": "2026-06-26",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011452",
+        "action": "buy",
+        "amount": 5500,
+        "fee": 0.0,
+        "nav": 2.1837999999999997,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016371",
+        "action": "buy",
+        "amount": 5500,
+        "fee": 0.0,
+        "nav": 3.5148,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "100055",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 150.0,
+        "nav": 4.0816,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "022184",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 0.0,
+        "nav": 2.7245,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "007818",
+        "action": "buy",
+        "amount": 3000,
+        "fee": 0.0,
+        "nav": 4.7655,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018229",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 150.0,
+        "nav": 2.5511,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008984",
+        "action": "buy",
+        "amount": 600,
+        "fee": 0.0,
+        "nav": 2.3923,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270023",
+        "action": "buy",
+        "amount": 200,
+        "fee": 32.0,
+        "nav": 4.4347,
+        "confirm_date": "2026-06-27",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "010416",
+        "action": "buy",
+        "amount": 5300,
+        "fee": 0.0,
+        "nav": 2.7440999999999995,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024239",
+        "action": "buy",
+        "amount": 1000,
+        "fee": 0.0,
+        "nav": 2.234,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021528",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 5.593,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024481",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 2.5272,
+        "confirm_date": "2026-06-30",
+        "t_plus_n": 1
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021523",
+        "action": "buy",
+        "amount": 100,
+        "fee": 0.0,
+        "nav": 4.87,
+        "confirm_date": "2026-07-01",
+        "t_plus_n": 1
+      }
+    ],
+    "scores": [
+      {
+        "date": "2026-06-25",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 3.12,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 3.22,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 2.81,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 2.45,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 3.16,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.51,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.1,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 2.54,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "270042",
+        "name": "广发纳指100ETF联接(QDII)A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.15,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.17,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 1.93,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 2.56,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.36,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 1.89,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "score": 2.28,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 2.09,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "018957",
+        "name": "中航机遇领航混合发起C",
+        "score": 1.83,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "013340",
+        "name": "创金合信芯片产业股票发起C",
+        "score": 0.51,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 2.2,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 0.33,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 1.56,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-25",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.03,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.39,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 3.79,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 3.26,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.44,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.99,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.72,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 3.87,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 3.67,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270042",
+        "name": "广发纳指100ETF联接(QDII)A",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.98,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 0.83,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.98,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.43,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.56,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "022184",
+        "name": "富国全球科技互联网股票(QDII)C",
+        "score": 3.03,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 3.27,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 1.95,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 2.54,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 1.71,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 1.53,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "008984",
+        "name": "财通科技创新混合C",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.73,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-26",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 3.36,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 3.67,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.69,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "score": 3.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 3.87,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.02,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.38,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "010416",
+        "name": "华泰柏瑞质量精选混合C",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "022184",
+        "name": "富国全球科技互联网股票(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 3.28,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.03,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 3.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.82,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 1.93,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "score": 3.26,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.25,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008989",
+        "name": "大成科技创新混合C",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.9,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "score": -0.12,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-29",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.66,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "score": 2.79,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "018229",
+        "name": "易方达全球优质企业混合(QDII)A",
+        "score": 2.49,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "score": 3.1,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "score": 2.99,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 3.25,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "017730",
+        "name": "嘉实全球产业升级股票发起式(QDII)A",
+        "score": 1.84,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "score": 2.93,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.64,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.61,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "017731",
+        "name": "嘉实全球产业升级股票发起式(QDII)C",
+        "score": 1.39,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "011370",
+        "name": "华商均衡成长混合C",
+        "score": 2.43,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.95,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 2.35,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.71,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "006503",
+        "name": "财通集成电路产业股票C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.53,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "100055",
+        "name": "富国全球科技互联网股票(QDII)A",
+        "score": 2.59,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.4,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 2.18,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-06-30",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "009505",
+        "name": "富国上海金ETF联接C",
+        "score": 1.6,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "score": 3.39,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "000834",
+        "name": "大成纳斯达克100ETF联接(QDII)A",
+        "score": 2.32,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "019172",
+        "name": "摩根纳斯达克100指数(QDII)人民币A",
+        "score": 2.52,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016664",
+        "name": "天弘全球高端制造混合(QDII)A",
+        "score": 3.31,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "019547",
+        "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+        "score": 2.42,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "501226",
+        "name": "长城全球新能源车股票发起式(QDII)A",
+        "score": 2.9,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016452",
+        "name": "南方纳斯达克100指数发起(QDII)A",
+        "score": 2.53,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "score": 3.05,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "006373",
+        "name": "国富全球科技互联混合(QDII)人民币A",
+        "score": 2.91,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "score": 3.04,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021842",
+        "name": "国富全球科技互联混合(QDII)人民币C",
+        "score": 2.92,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "score": 1.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "score": 2.23,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 1.44,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "007818",
+        "name": "国泰中证全指通信设备ETF联接C",
+        "score": 3.22,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021523",
+        "name": "财通价值动量混合C",
+        "score": 2.34,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "024481",
+        "name": "财通品质甄选混合C",
+        "score": 2.71,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "score": 2.95,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "270023",
+        "name": "广发全球精选股票(QDII)A",
+        "score": 2.19,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016371",
+        "name": "信澳业绩驱动混合C",
+        "score": 3.33,
+        "verdict": "candidate"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 0.72,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "016501",
+        "name": "华夏半导体龙头混合发起式C",
+        "score": 0.49,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "026211",
+        "name": "平安科技精选混合发起式C",
+        "score": 1.69,
+        "verdict": "pass"
+      },
+      {
+        "date": "2026-07-01",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "score": 2.45,
+        "verdict": "candidate"
+      }
+    ],
+    "label": "B.开ATR",
+    "duration_s": 29.1
+  }
+]

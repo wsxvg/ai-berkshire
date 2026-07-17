@@ -1,0 +1,12 @@
+{
+  "evolved": {
+    "total_return": -1.1208699999999954,
+    "annualized": -0.63,
+    "sharpe": -2.8,
+    "max_drawdown": 1.4544499999999971,
+    "trades": 14,
+    "final_value": 98879.13,
+    "benchmark": 44.20190995907232,
+    "alpha": -45.322779959072314
+  }
+}

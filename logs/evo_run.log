@@ -1,0 +1,26 @@
+﻿============================================================
+启动策略进化 — fast 启发式 10 代
+============================================================
+初始种群: 53 (50 随机 + 3 专家)
+  代  1  best_score=2.2251
+  代  2  best_score=2.2506
+  代  3  best_score=2.2909
+  代  4  best_score=2.2985
+  [已收敛, 提前结束]
+============================================================
+进化完成, 最优基因:
+============================================================
+  quality_weight         = 0.1941
+  cost_weight            = 0.183
+  manager_weight         = 0.1768
+  momentum_weight        = 0.1915
+  smart_money_weight     = 0.2472
+  buy_threshold          = 3.5237
+  sell_threshold         = 2.6291
+  max_single_pct         = 0.1989
+  cooling_days           = 5
+  cash_reserve_pct       = 0.143
+
+score = 2.1096
+history: 4 代
+落盘: data/evolution/best_gene.json + best_config.json

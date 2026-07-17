@@ -1,0 +1,26 @@
+{
+  "date": "2026-04-13",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 2.7736875115592388
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.547905146135951
+    }
+  ],
+  "buy_recommendations": [],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {},
+  "portfolio": {
+    "total_value": 100000,
+    "cash": 100000,
+    "fees": 0
+  }
+}

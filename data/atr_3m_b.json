@@ -1,0 +1,12 @@
+[
+  {
+    "label": "B.开ATR",
+    "total_return": 8.551880000000004,
+    "annualized_return": 33.81,
+    "max_drawdown": 4.202676673208123,
+    "sharpe_ratio": 1.7,
+    "final_value": 108551.88,
+    "trade_count": 66,
+    "duration_s": 182.5
+  }
+]

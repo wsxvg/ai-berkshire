@@ -1,0 +1,102 @@
+{
+  "config": {
+    "start": "2024-12-01",
+    "end": "2025-02-28",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 20.0,
+    "trail_pct": 8.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 103509.16,
+    "total_return": 3.51,
+    "annualized": 15.21,
+    "sharpe": 2.25,
+    "max_drawdown": -1.04,
+    "trading_days": 89,
+    "n_buys": 4,
+    "n_sells": 2,
+    "win_rate": 50.0,
+    "benchmark_return": -0.36,
+    "benchmark_annualized": -1.45,
+    "alpha": 16.66
+  },
+  "reason_stats": {
+    "trail_stop": {
+      "count": 1,
+      "avg_pnl": 8.25
+    },
+    "consensus_sell": {
+      "count": 1,
+      "avg_pnl": 0.0
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2025-01-06",
+        "action": "buy",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2025-01-10",
+        "action": "buy",
+        "code": "004253",
+        "name": "国泰黄金ETF联接C",
+        "amount": 15074.413710162356,
+        "consensus": 1,
+        "market": "bear",
+        "score": 0
+      },
+      {
+        "date": "2025-01-16",
+        "action": "buy",
+        "code": "012863",
+        "name": "汇添富中证电池主题ETF发起式联接C",
+        "amount": 15221.861694394469,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      },
+      {
+        "date": "2025-02-18",
+        "action": "buy",
+        "code": "015528",
+        "name": "弘毅远方汽车产业升级混合C",
+        "amount": 15475.579151822601,
+        "consensus": 1,
+        "market": "neutral",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2025-02-18",
+        "action": "sell",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "reason": "trail_stop",
+        "pnl_pct": 8.24814592102625,
+        "amount": 16237.22188815394
+      },
+      {
+        "date": "2025-02-18",
+        "action": "sell",
+        "code": "012863",
+        "name": "汇添富中证电池主题ETF发起式联接C",
+        "reason": "consensus_sell",
+        "pnl_pct": 0,
+        "amount": 16029.105336152697
+      }
+    ]
+  }
+}

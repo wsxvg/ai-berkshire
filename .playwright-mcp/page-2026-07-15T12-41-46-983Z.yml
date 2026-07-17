@@ -1,0 +1,571 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - img "京东金融" [ref=e7]
+    - generic [ref=e8]: 切回旧版
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e15] [cursor=pointer]: jd_9b2u5ec8t4pmtb
+        - generic [ref=e16] [cursor=pointer]: 退出登录
+      - generic [ref=e17]:
+        - generic [ref=e18] [cursor=pointer]: 自选
+        - generic [ref=e21] [cursor=pointer]: 自定义
+        - generic [ref=e25] [cursor=pointer]: 积存金
+        - generic [ref=e28] [cursor=pointer]: 基金
+        - generic [ref=e31] [cursor=pointer]: 发现
+        - generic [ref=e34] [cursor=pointer]: 下载
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e44]:
+          - generic [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]: 上证指数
+            - generic [ref=e47]: "3955.58"
+            - generic [ref=e48]: "-11.55-0.29%"
+          - generic [ref=e49] [cursor=pointer]:
+            - generic [ref=e50]: 深证成指
+            - generic [ref=e51]: "14779.40"
+            - generic [ref=e52]: "-145.47-0.97%"
+          - generic [ref=e53] [cursor=pointer]:
+            - generic [ref=e54]: 创业板指
+            - generic [ref=e55]: "3804.70"
+            - generic [ref=e56]: "-46.43-1.20%"
+          - generic [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: 恒生指数
+            - generic [ref=e59]: "24681.10"
+            - generic [ref=e60]: +340.37+1.39%
+          - generic [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]: 纳斯达克
+            - generic [ref=e63]: "26107.01"
+            - generic [ref=e64]: +233.83+0.90%
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]: 中证500
+            - generic [ref=e67]: "8147.58"
+            - generic [ref=e68]: "-128.36-1.55%"
+          - generic [ref=e69] [cursor=pointer]:
+            - generic [ref=e70]: 沪深300
+            - generic [ref=e71]: "4786.78"
+            - generic [ref=e72]: "-9.72-0.20%"
+          - generic [ref=e73] [cursor=pointer]:
+            - generic [ref=e74]: 科创50
+            - generic [ref=e75]: "1924.27"
+            - generic [ref=e76]: "-85.46-4.25%"
+          - generic [ref=e77] [cursor=pointer]:
+            - generic [ref=e78]: 上证50
+            - generic [ref=e79]: "2967.07"
+            - generic [ref=e80]: +11.52+0.38%
+        - generic [ref=e81]:
+          - generic [ref=e83]:
+            - generic [ref=e84]: 季季正收益榜
+            - generic [ref=e86]:
+              - generic [ref=e87]:
+                - generic [ref=e88]: 名称/代码
+                - generic [ref=e90] [cursor=pointer]:
+                  - generic [ref=e91]: 今年以来
+                  - generic [ref=e92]: 涨跌幅
+                - generic [ref=e97] [cursor=pointer]:
+                  - generic [ref=e98]: 近1年
+                  - generic [ref=e99]: 涨跌幅
+              - generic [ref=e103]:
+                - generic [ref=e104] [cursor=pointer]:
+                  - generic [ref=e105]:
+                    - generic [ref=e106]: 南方稳鑫6个月持有债券A
+                    - generic [ref=e107]: "016416"
+                  - generic [ref=e108]: +3.5%
+                  - generic [ref=e110]: +4.44%
+                - generic [ref=e112] [cursor=pointer]:
+                  - generic [ref=e113]:
+                    - generic [ref=e114]: 景顺长城景颐裕利债券A
+                    - generic [ref=e115]: "018736"
+                  - generic [ref=e116]: +3.29%
+                  - generic [ref=e118]: +7.34%
+                - generic [ref=e120] [cursor=pointer]:
+                  - generic [ref=e121]:
+                    - generic [ref=e122]: 南方晖元6个月持有期债券E
+                    - generic [ref=e123]: "020192"
+                  - generic [ref=e124]: +2.92%
+                  - generic [ref=e126]: +5.97%
+                - generic [ref=e128] [cursor=pointer]:
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: 南方佳元6个月持有债券E
+                    - generic [ref=e131]: "020325"
+                  - generic [ref=e132]: +2.9%
+                  - generic [ref=e134]: +6.62%
+                - generic [ref=e136] [cursor=pointer]:
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: 长盛盛逸9个月持有期债券A
+                    - generic [ref=e139]: "017137"
+                  - generic [ref=e140]: +2.17%
+                  - generic [ref=e142]: +3.03%
+                - generic [ref=e144] [cursor=pointer]:
+                  - generic [ref=e145]:
+                    - generic [ref=e146]: 中欧稳鑫180天持有债券A
+                    - generic [ref=e147]: "018530"
+                  - generic [ref=e148]: +2.11%
+                  - generic [ref=e150]: +3.26%
+                - generic [ref=e152] [cursor=pointer]:
+                  - generic [ref=e153]:
+                    - generic [ref=e154]: 国联融誉双华6个月持有债券A
+                    - generic [ref=e155]: "018260"
+                  - generic [ref=e156]: +2.06%
+                  - generic [ref=e158]: +3.3%
+                - generic [ref=e160] [cursor=pointer]:
+                  - generic [ref=e161]:
+                    - generic [ref=e162]: 长盛盛康纯债E
+                    - generic [ref=e163]: "019899"
+                  - generic [ref=e164]: +2.04%
+                  - generic [ref=e166]: +2.78%
+                - generic [ref=e168] [cursor=pointer]:
+                  - generic [ref=e169]:
+                    - generic [ref=e170]: 华富吉禄90天滚动持有债券A
+                    - generic [ref=e171]: "020135"
+                  - generic [ref=e172]: +2.03%
+                  - generic [ref=e174]: +3.49%
+                - generic [ref=e176] [cursor=pointer]:
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: 华泰保兴尊睿6个月持有债券发起A
+                    - generic [ref=e179]: "018846"
+                  - generic [ref=e180]: +2.02%
+                  - generic [ref=e182]: +4.54%
+                - generic [ref=e184] [cursor=pointer]:
+                  - generic [ref=e185]:
+                    - generic [ref=e186]: 国投瑞银和兴债券A
+                    - generic [ref=e187]: "021360"
+                  - generic [ref=e188]: +1.99%
+                  - generic [ref=e190]: +5%
+                - generic [ref=e192] [cursor=pointer]:
+                  - generic [ref=e193]:
+                    - generic [ref=e194]: 大成元丰多利债券A
+                    - generic [ref=e195]: "019372"
+                  - generic [ref=e196]: +1.88%
+                  - generic [ref=e198]: +3.59%
+                - generic [ref=e200] [cursor=pointer]:
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: 景顺长城60天持有期债券A
+                    - generic [ref=e203]: "020716"
+                  - generic [ref=e204]: +1.86%
+                  - generic [ref=e206]: +2.83%
+                - generic [ref=e208] [cursor=pointer]:
+                  - generic [ref=e209]:
+                    - generic [ref=e210]: 华夏稳健增利4个月债券A
+                    - generic [ref=e211]: "012099"
+                  - generic [ref=e212]: +1.85%
+                  - generic [ref=e214]: +2.63%
+                - generic [ref=e216] [cursor=pointer]:
+                  - generic [ref=e217]:
+                    - generic [ref=e218]: 华富吉富30天滚动持有中短债A
+                    - generic [ref=e219]: "016871"
+                  - generic [ref=e220]: +1.83%
+                  - generic [ref=e222]: +2.65%
+                - generic [ref=e224] [cursor=pointer]:
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: 中欧兴悦债券A
+                    - generic [ref=e227]: "012240"
+                  - generic [ref=e228]: +1.81%
+                  - generic [ref=e230]: +2.53%
+                - generic [ref=e232] [cursor=pointer]:
+                  - generic [ref=e233]:
+                    - generic [ref=e234]: 东方红6个月持有债券A
+                    - generic [ref=e235]: "018479"
+                  - generic [ref=e236]: +1.79%
+                  - generic [ref=e238]: +3.61%
+                - generic [ref=e240] [cursor=pointer]:
+                  - generic [ref=e241]:
+                    - generic [ref=e242]: 山证资管裕景30天持有期债券发起式A
+                    - generic [ref=e243]: "016881"
+                  - generic [ref=e244]: +1.78%
+                  - generic [ref=e246]: +2.88%
+                - generic [ref=e248] [cursor=pointer]:
+                  - generic [ref=e249]:
+                    - generic [ref=e250]: 鹏华双季乐180天持有期债券A
+                    - generic [ref=e251]: "021068"
+                  - generic [ref=e252]: +1.76%
+                  - generic [ref=e254]: +2.32%
+                - generic [ref=e256] [cursor=pointer]:
+                  - generic [ref=e257]:
+                    - generic [ref=e258]: 鹏华稳益180天持有期债券A
+                    - generic [ref=e259]: "020739"
+                  - generic [ref=e260]: +1.74%
+                  - generic [ref=e262]: +2.6%
+          - generic [ref=e265]:
+            - generic [ref=e266]: 连续跑赢大盘榜
+            - generic [ref=e268]:
+              - generic [ref=e269]:
+                - generic [ref=e270]: 名称/代码
+                - generic [ref=e272] [cursor=pointer]:
+                  - generic [ref=e273]: 近5年
+                  - generic [ref=e274]: 超额收益
+                - generic [ref=e279] [cursor=pointer]:
+                  - generic [ref=e280]: 近1年
+                  - generic [ref=e281]: 涨跌幅
+              - generic [ref=e285]:
+                - generic [ref=e286] [cursor=pointer]:
+                  - generic [ref=e287]:
+                    - generic [ref=e288]: 广发多因子混合
+                    - generic [ref=e289]: "002943"
+                  - generic [ref=e290]: +167.12%
+                  - generic [ref=e292]: +30.85%
+                - generic [ref=e294] [cursor=pointer]:
+                  - generic [ref=e295]:
+                    - generic [ref=e296]: 嘉实资源精选股票A
+                    - generic [ref=e297]: "005660"
+                  - generic [ref=e298]: +142.26%
+                  - generic [ref=e300]: +46.68%
+                - generic [ref=e302] [cursor=pointer]:
+                  - generic [ref=e303]:
+                    - generic [ref=e304]: 招商量化精选股票A
+                    - generic [ref=e305]: "001917"
+                  - generic [ref=e306]: +129.63%
+                  - generic [ref=e308]: +16.18%
+                - generic [ref=e310] [cursor=pointer]:
+                  - generic [ref=e311]:
+                    - generic [ref=e312]: 华商上游产业股票A
+                    - generic [ref=e313]: "005161"
+                  - generic [ref=e314]: +118.79%
+                  - generic [ref=e316]: +41.53%
+                - generic [ref=e318] [cursor=pointer]:
+                  - generic [ref=e319]:
+                    - generic [ref=e320]: 中欧红利优享灵活配置混合A
+                    - generic [ref=e321]: "004814"
+                  - generic [ref=e322]: +101.72%
+                  - generic [ref=e324]: +8.91%
+                - generic [ref=e326] [cursor=pointer]:
+                  - generic [ref=e327]:
+                    - generic [ref=e328]: 东方红京东大数据混合A
+                    - generic [ref=e329]: "001564"
+                  - generic [ref=e330]: +98.2%
+                  - generic [ref=e332]: +30.17%
+                - generic [ref=e334] [cursor=pointer]:
+                  - generic [ref=e335]:
+                    - generic [ref=e336]: 诺安低碳经济股票A
+                    - generic [ref=e337]: "001208"
+                  - generic [ref=e338]: +94.12%
+                  - generic [ref=e340]: +46.6%
+                - generic [ref=e342] [cursor=pointer]:
+                  - generic [ref=e343]:
+                    - generic [ref=e344]: 东方红新动力混合A
+                    - generic [ref=e345]: "000480"
+                  - generic [ref=e346]: +82.28%
+                  - generic [ref=e348]: +25.23%
+                - generic [ref=e350] [cursor=pointer]:
+                  - generic [ref=e351]:
+                    - generic [ref=e352]: 前海开源多元策略混合A
+                    - generic [ref=e353]: "004496"
+                  - generic [ref=e354]: +74.06%
+                  - generic [ref=e356]: +48.27%
+                - generic [ref=e358] [cursor=pointer]:
+                  - generic [ref=e359]:
+                    - generic [ref=e360]: 华泰柏瑞量化智慧混合A
+                    - generic [ref=e361]: "001244"
+                  - generic [ref=e362]: +48.42%
+                  - generic [ref=e364]: +45.28%
+                - generic [ref=e366] [cursor=pointer]:
+                  - generic [ref=e367]:
+                    - generic [ref=e368]: 博道伍佰智航A
+                    - generic [ref=e369]: "007831"
+                  - generic [ref=e370]: +47.51%
+                  - generic [ref=e372]: +29.52%
+                - generic [ref=e374] [cursor=pointer]:
+                  - generic [ref=e375]:
+                    - generic [ref=e376]: 中金中证优选300指数(LOF)A
+                    - generic [ref=e377]: "501060"
+                  - generic [ref=e378]: +45.47%
+                  - generic [ref=e380]: +4.52%
+                - generic [ref=e382] [cursor=pointer]:
+                  - generic [ref=e383]:
+                    - generic [ref=e384]: 华宝新飞跃混合
+                    - generic [ref=e385]: "004335"
+                  - generic [ref=e386]: +35.44%
+                  - generic [ref=e388]: +19.14%
+                - generic [ref=e390] [cursor=pointer]:
+                  - generic [ref=e391]:
+                    - generic [ref=e392]: 富国MSCI中国A股国际通指数增强A
+                    - generic [ref=e393]: "006034"
+                  - generic [ref=e394]: +34.75%
+                  - generic [ref=e396]: +26.5%
+                - generic [ref=e398] [cursor=pointer]:
+                  - generic [ref=e399]:
+                    - generic [ref=e400]: 汇添富沪深300安中指数A
+                    - generic [ref=e401]: "000368"
+                  - generic [ref=e402]: +34.06%
+                  - generic [ref=e404]: +31.92%
+                - generic [ref=e406] [cursor=pointer]:
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 华泰柏瑞中证500ETF联接A
+                    - generic [ref=e409]: "001214"
+                  - generic [ref=e410]: +32.86%
+                  - generic [ref=e412]: +38.2%
+                - generic [ref=e414] [cursor=pointer]:
+                  - generic [ref=e415]:
+                    - generic [ref=e416]: 易方达上证中盘ETF联接A
+                    - generic [ref=e417]: "110021"
+                  - generic [ref=e418]: +32.56%
+                  - generic [ref=e420]: +14.71%
+                - generic [ref=e422] [cursor=pointer]:
+                  - generic [ref=e423]:
+                    - generic [ref=e424]: 汇添富中证500指数增强A
+                    - generic [ref=e425]: "001050"
+                  - generic [ref=e426]: +31.56%
+                  - generic [ref=e428]: +26.5%
+                - generic [ref=e430] [cursor=pointer]:
+                  - generic [ref=e431]:
+                    - generic [ref=e432]: 华泰柏瑞量化先行混合A
+                    - generic [ref=e433]: "460009"
+                  - generic [ref=e434]: +30.97%
+                  - generic [ref=e436]: +42.88%
+                - generic [ref=e438] [cursor=pointer]:
+                  - generic [ref=e439]:
+                    - generic [ref=e440]: 易方达瑞弘混合A
+                    - generic [ref=e441]: "003882"
+                  - generic [ref=e442]: +27.55%
+                  - generic [ref=e444]: +8.62%
+          - generic [ref=e447]:
+            - generic [ref=e448]: 持仓盈利多榜
+            - generic [ref=e450]:
+              - generic [ref=e451]:
+                - generic [ref=e452]: 名称/代码
+                - generic [ref=e454] [cursor=pointer]:
+                  - generic [ref=e455]: 持仓盈利
+                  - generic [ref=e456]: 用户占比
+                - generic [ref=e461] [cursor=pointer]:
+                  - generic [ref=e462]: 近1年
+                  - generic [ref=e463]: 涨跌幅
+              - generic [ref=e467]:
+                - generic [ref=e468] [cursor=pointer]:
+                  - generic [ref=e469]:
+                    - generic [ref=e470]: 永赢添添悦6个月持有混合A
+                    - generic [ref=e471]: "014678"
+                  - generic [ref=e472]: +99.41%
+                  - generic [ref=e474]: +2.37%
+                - generic [ref=e476] [cursor=pointer]:
+                  - generic [ref=e477]:
+                    - generic [ref=e478]: 中泰开阳价值优选混合A
+                    - generic [ref=e479]: "007549"
+                  - generic [ref=e480]: +99.19%
+                  - generic [ref=e482]: +35.98%
+                - generic [ref=e484] [cursor=pointer]:
+                  - generic [ref=e485]:
+                    - generic [ref=e486]: 东方红睿泽三年持有混合A
+                    - generic [ref=e487]: "501054"
+                  - generic [ref=e488]: +99.08%
+                  - generic [ref=e490]: +83.93%
+                - generic [ref=e492] [cursor=pointer]:
+                  - generic [ref=e493]:
+                    - generic [ref=e494]: 天弘中证人工智能A
+                    - generic [ref=e495]: "011839"
+                  - generic [ref=e496]: +98.85%
+                  - generic [ref=e498]: +97.32%
+                - generic [ref=e500] [cursor=pointer]:
+                  - generic [ref=e501]:
+                    - generic [ref=e502]: 华安逆向策略混合A
+                    - generic [ref=e503]: "040035"
+                  - generic [ref=e504]: +98.79%
+                  - generic [ref=e506]: +52.36%
+                - generic [ref=e508] [cursor=pointer]:
+                  - generic [ref=e509]:
+                    - generic [ref=e510]: 交银先进制造混合A
+                    - generic [ref=e511]: "519704"
+                  - generic [ref=e512]: +98.60%
+                  - generic [ref=e514]: +58.26%
+                - generic [ref=e516] [cursor=pointer]:
+                  - generic [ref=e517]:
+                    - generic [ref=e518]: 博道成长智航股票A
+                    - generic [ref=e519]: "013641"
+                  - generic [ref=e520]: +98.55%
+                  - generic [ref=e522]: +49.09%
+                - generic [ref=e524] [cursor=pointer]:
+                  - generic [ref=e525]:
+                    - generic [ref=e526]: 国寿安保智慧生活股票A
+                    - generic [ref=e527]: "001672"
+                  - generic [ref=e528]: +98.54%
+                  - generic [ref=e530]: +111.81%
+                - generic [ref=e532] [cursor=pointer]:
+                  - generic [ref=e533]:
+                    - generic [ref=e534]: 汇丰晋信新动力混合A
+                    - generic [ref=e535]: "000965"
+                  - generic [ref=e536]: +98.37%
+                  - generic [ref=e538]: +24.53%
+                - generic [ref=e540] [cursor=pointer]:
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: 汇丰晋信大盘股票A
+                    - generic [ref=e543]: "540006"
+                  - generic [ref=e544]: +98.09%
+                  - generic [ref=e546]: +24.57%
+          - generic [ref=e549]:
+            - generic [ref=e550]: 今日热搜榜
+            - generic [ref=e552]:
+              - generic [ref=e553]:
+                - generic [ref=e554]: 名称/代码
+                - generic [ref=e556] [cursor=pointer]:
+                  - generic [ref=e557]: 近1年
+                  - generic [ref=e558]: 涨跌幅
+                - generic [ref=e563] [cursor=pointer]:
+                  - generic [ref=e564]: 今日搜
+                  - generic [ref=e565]: 索人数
+                - generic [ref=e570] [cursor=pointer]:
+                  - generic [ref=e571]: 成立以来
+                  - generic [ref=e572]: 涨跌幅
+              - generic [ref=e576]:
+                - generic [ref=e577] [cursor=pointer]:
+                  - generic [ref=e578]:
+                    - generic [ref=e579]: 财通成长优选混合C
+                    - generic [ref=e580]: "021528"
+                  - generic [ref=e581]: +297.60%
+                  - generic [ref=e583]: +7629.00%
+                  - generic [ref=e585]: +379.90%
+                - generic [ref=e587] [cursor=pointer]:
+                  - generic [ref=e588]:
+                    - generic [ref=e589]: 广发创新药ETF联接C
+                    - generic [ref=e590]: "012738"
+                  - generic [ref=e591]: +8.06%
+                  - generic [ref=e593]: +5142.00%
+                  - generic [ref=e595]: "-36.16%"
+                - generic [ref=e597] [cursor=pointer]:
+                  - generic [ref=e598]:
+                    - generic [ref=e599]: 东方人工智能主题混合C
+                    - generic [ref=e600]: "017811"
+                  - generic [ref=e601]: +246.65%
+                  - generic [ref=e603]: +3390.00%
+                  - generic [ref=e605]: +302.79%
+                - generic [ref=e607] [cursor=pointer]:
+                  - generic [ref=e608]:
+                    - generic [ref=e609]: 东方阿尔法科技智选混合发起C
+                    - generic [ref=e610]: "025500"
+                  - generic [ref=e611]: "--"
+                  - generic [ref=e613]: +3144.00%
+                  - generic [ref=e615]: +112.31%
+                - generic [ref=e617] [cursor=pointer]:
+                  - generic [ref=e618]:
+                    - generic [ref=e619]: 易方达中证创新药产业ETF联接发起式C
+                    - generic [ref=e620]: "019667"
+                  - generic [ref=e621]: +9.74%
+                  - generic [ref=e623]: +2832.00%
+                  - generic [ref=e625]: +7.87%
+                - generic [ref=e627] [cursor=pointer]:
+                  - generic [ref=e628]:
+                    - generic [ref=e629]: 华夏上证科创板半导体材料设备主题ETF发起式联接C
+                    - generic [ref=e630]: "024418"
+                  - generic [ref=e631]: "--"
+                  - generic [ref=e633]: +2112.00%
+                  - generic [ref=e635]: +165.07%
+                - generic [ref=e637] [cursor=pointer]:
+                  - generic [ref=e638]:
+                    - generic [ref=e639]: 华泰柏瑞质量成长混合C
+                    - generic [ref=e640]: "011452"
+                  - generic [ref=e641]: +233.12%
+                  - generic [ref=e643]: +2136.00%
+                  - generic [ref=e645]: +81.84%
+                - generic [ref=e647] [cursor=pointer]:
+                  - generic [ref=e648]:
+                    - generic [ref=e649]: 招商中证白酒指数C
+                    - generic [ref=e650]: "012414"
+                  - generic [ref=e651]: "-31.38%"
+                  - generic [ref=e653]: +2370.00%
+                  - generic [ref=e655]: "-63.11%"
+                - generic [ref=e657] [cursor=pointer]:
+                  - generic [ref=e658]:
+                    - generic [ref=e659]: 永赢先锋半导体智选混合发起C
+                    - generic [ref=e660]: "025209"
+                  - generic [ref=e661]: "--"
+                  - generic [ref=e663]: +2043.00%
+                  - generic [ref=e665]: +173.22%
+                - generic [ref=e667] [cursor=pointer]:
+                  - generic [ref=e668]:
+                    - generic [ref=e669]: 财通集成电路产业股票C
+                    - generic [ref=e670]: "006503"
+                  - generic [ref=e671]: +280.56%
+                  - generic [ref=e673]: +2238.00%
+                  - generic [ref=e675]: +673.86%
+                - generic [ref=e677] [cursor=pointer]:
+                  - generic [ref=e678]:
+                    - generic [ref=e679]: 永赢医药创新智选混合发起C
+                    - generic [ref=e680]: "015916"
+                  - generic [ref=e681]: +1.26%
+                  - generic [ref=e683]: +1830.00%
+                  - generic [ref=e685]: +72.34%
+                - generic [ref=e687] [cursor=pointer]:
+                  - generic [ref=e688]:
+                    - generic [ref=e689]: 华夏国证半导体芯片ETF联接C
+                    - generic [ref=e690]: "008888"
+                  - generic [ref=e691]: +122.80%
+                  - generic [ref=e693]: +1440.00%
+                  - generic [ref=e695]: +136.35%
+                - generic [ref=e697] [cursor=pointer]:
+                  - generic [ref=e698]:
+                    - generic [ref=e699]: 财通品质甄选混合C
+                    - generic [ref=e700]: "024481"
+                  - generic [ref=e701]: "--"
+                  - generic [ref=e703]: +1728.00%
+                  - generic [ref=e705]: +114.99%
+                - generic [ref=e707] [cursor=pointer]:
+                  - generic [ref=e708]:
+                    - generic [ref=e709]: 华夏全球科技先锋混合(QDII)C
+                    - generic [ref=e710]: "024239"
+                  - generic [ref=e711]: +71.04%
+                  - generic [ref=e713]: +1542.00%
+                  - generic [ref=e715]: +84.83%
+                - generic [ref=e717] [cursor=pointer]:
+                  - generic [ref=e718]:
+                    - generic [ref=e719]: 中欧医疗健康混合C
+                    - generic [ref=e720]: "003096"
+                  - generic [ref=e721]: +14.87%
+                  - generic [ref=e723]: +1461.00%
+                  - generic [ref=e725]: +120.69%
+                - generic [ref=e727] [cursor=pointer]:
+                  - generic [ref=e728]:
+                    - generic [ref=e729]: 银华集成电路混合C
+                    - generic [ref=e730]: "013841"
+                  - generic [ref=e731]: +248.71%
+                  - generic [ref=e733]: +1227.00%
+                  - generic [ref=e735]: +248.29%
+                - generic [ref=e737] [cursor=pointer]:
+                  - generic [ref=e738]:
+                    - generic [ref=e739]: 南方纳斯达克100指数发起(QDII)C
+                    - generic [ref=e740]: "016453"
+                  - generic [ref=e741]: +20.76%
+                  - generic [ref=e743]: +1515.00%
+                  - generic [ref=e745]: +129.16%
+                - generic [ref=e747] [cursor=pointer]:
+                  - generic [ref=e748]:
+                    - generic [ref=e749]: 中航优选领航混合发起C
+                    - generic [ref=e750]: "022853"
+                  - generic [ref=e751]: +0.18%
+                  - generic [ref=e753]: +1290.00%
+                  - generic [ref=e755]: +84.26%
+                - generic [ref=e757] [cursor=pointer]:
+                  - generic [ref=e758]:
+                    - generic [ref=e759]: 嘉实上证科创板芯片ETF发起联接C
+                    - generic [ref=e760]: "017470"
+                  - generic [ref=e761]: +172.10%
+                  - generic [ref=e763]: +1305.00%
+                  - generic [ref=e765]: +250.00%
+                - generic [ref=e767] [cursor=pointer]:
+                  - generic [ref=e768]:
+                    - generic [ref=e769]: 富国医药创新股票C
+                    - generic [ref=e770]: "019917"
+                  - generic [ref=e771]: +5.79%
+                  - generic [ref=e773]: +1368.00%
+                  - generic [ref=e775]: +82.47%
+      - generic [ref=e778]:
+        - generic [ref=e779] [cursor=pointer]:
+          - generic [ref=e780]: 我的持仓
+          - generic [ref=e781]: 点击查看
+        - iframe [ref=e786]:
+          
+      - iframe [ref=e791]:
+        - generic [ref=f1e3]:
+          - generic [ref=f1e4]: 基金圈
+          - generic [ref=f1e9]:
+            - tablist [ref=f1e13]:
+              - tab [selected] [ref=f1e14] [cursor=pointer]:
+                - emphasis [ref=f1e16]: 关注
+              - tab [ref=f1e17] [cursor=pointer]:
+                - emphasis [ref=f1e19]: 最新
+              - tab [ref=f1e20] [cursor=pointer]:
+                - emphasis [ref=f1e22]: 推荐
+              - tab [ref=f1e23] [cursor=pointer]:
+                - emphasis [ref=f1e25]: 资讯
+              - tab [ref=f1e26] [cursor=pointer]:
+                - emphasis [ref=f1e28]: 精华必读
+            - tabpanel [ref=f1e31]:
+              - feed [ref=f1e35]:
+                - generic [ref=f1e36]: 加载中...

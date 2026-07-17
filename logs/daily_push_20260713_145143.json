@@ -1,0 +1,813 @@
+{
+  "ts": "2026-07-13T14:51:43.814003",
+  "daily_check": {
+    "date": "2026-07-13",
+    "ts": 1783925491142,
+    "api_base": "http://127.0.0.1:3456/api",
+    "watchlist": [
+      "013841",
+      "024663",
+      "024239",
+      "016416",
+      "011036",
+      "012922",
+      "012240",
+      "005660",
+      "002943",
+      "018736",
+      "011102",
+      "019280"
+    ],
+    "actions": [
+      {
+        "type": "follow_buy",
+        "summary": "30 笔买入, 共识 TOP3: 华夏全球科技先锋混合(QDII)A×3, 东方阿尔法科技智选混合发起C×2, 富国上海金ETF联接C×2"
+      },
+      {
+        "type": "risk_alert",
+        "summary": "22 笔卖出, 共识: 东兴兴福一年定开A×2, 泰信医疗服务混合发起式C×2, 万家鑫璟纯债C×2"
+      },
+      {
+        "type": "sector_rotation",
+        "summary": "低估 0 个行业 / 高估 3 个行业"
+      }
+    ],
+    "ranking_top5": [],
+    "_ranking_err": "{\"error\":\"ranking cache expired (>24h), run: py -3.10 tools/build_ranking_cache.py\",\"age_hours\":41}",
+    "feed_buy": [
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "德邦半导体产业混合发起式C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:51:41",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "银河创新混合C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:51:05",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "东方阿尔法科技智选混合发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "20,000.00元",
+        "amt_num": 20000,
+        "time": "07-13 14:50:46",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "永赢医药创新智选混合发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "20,000.00元",
+        "amt_num": 20000,
+        "time": "07-13 14:49:54",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "易方达上证科创50ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:49:34",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "华夏国证半导体芯片ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:48:53",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "华夏半导体材料设备ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:48:35",
+        "isBuy": true
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "东方阿尔法科技智选混合发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:47:58",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "易方达恒生港股通创新药ETF联接发起式A",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:45:03",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "景顺长城中证港股通创新药ETF联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:44:49",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "东方人工智能主题混合C",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:43:29",
+        "isBuy": true
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "华夏上证科创板半导体材料设备主题ETF发起式联接A",
+        "code": "",
+        "action": "买入",
+        "amount": "10,000.00元",
+        "amt_num": 10000,
+        "time": "07-13 14:42:58",
+        "isBuy": true
+      },
+      {
+        "user": "黑夜银翼",
+        "uid": "2690580",
+        "fund": "东方红医疗升级股票发起C",
+        "code": "",
+        "action": "买入",
+        "amount": "100,000.00元",
+        "amt_num": 100000,
+        "time": "07-13 14:15:00",
+        "isBuy": true
+      },
+      {
+        "user": "黑夜银翼",
+        "uid": "2690580",
+        "fund": "天弘中证工业有色金属主题ETF发起联接A",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:14:20",
+        "isBuy": true
+      },
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
+        "code": "",
+        "action": "买入",
+        "amount": "50,000.00元",
+        "amt_num": 50000,
+        "time": "07-13 14:13:51",
+        "isBuy": true
+      }
+    ],
+    "feed_buy_consensus": [
+      {
+        "key": "华夏全球科技先锋混合(QDII)A",
+        "buyers": 3,
+        "name": "华夏全球科技先锋混合(QDII)A"
+      },
+      {
+        "key": "东方阿尔法科技智选混合发起C",
+        "buyers": 2,
+        "name": "东方阿尔法科技智选混合发起C"
+      },
+      {
+        "key": "富国上海金ETF联接C",
+        "buyers": 2,
+        "name": "富国上海金ETF联接C"
+      },
+      {
+        "key": "银华集成电路混合C",
+        "buyers": 2,
+        "name": "银华集成电路混合C"
+      },
+      {
+        "key": "德邦半导体产业混合发起式C",
+        "buyers": 1,
+        "name": "德邦半导体产业混合发起式C"
+      }
+    ],
+    "feed_sell": [
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "上银国证自由现金流指数C",
+        "code": "",
+        "action": "卖出",
+        "amount": "209,112.68份",
+        "amt_num": 0,
+        "time": "07-13 14:12:33",
+        "isBuy": false
+      },
+      {
+        "user": "王晴阳的活财之路",
+        "uid": "16020895",
+        "fund": "国投瑞银白银期货(LOF)A",
+        "code": "",
+        "action": "卖出",
+        "amount": "65.04份",
+        "amt_num": 0,
+        "time": "07-13 13:56:57",
+        "isBuy": false
+      },
+      {
+        "user": "王晴阳的活财之路",
+        "uid": "16020895",
+        "fund": "华宝纳斯达克精选股票发起式(QDII)A",
+        "code": "",
+        "action": "卖出",
+        "amount": "134.84份",
+        "amt_num": 0,
+        "time": "07-13 13:55:32",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "大摩沪港深科技混合A",
+        "code": "",
+        "action": "卖出",
+        "amount": "174,077.09份",
+        "amt_num": 0,
+        "time": "07-13 11:37:30",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "华富人工智能ETF联接A",
+        "code": "",
+        "action": "卖出",
+        "amount": "59,792.76份",
+        "amt_num": 0,
+        "time": "07-13 11:34:35",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "东兴兴福一年定开A",
+        "code": "",
+        "action": "卖出",
+        "amount": "29,752.53份",
+        "amt_num": 0,
+        "time": "07-13 00:42:40",
+        "isBuy": false
+      },
+      {
+        "user": "晴空万里理财",
+        "uid": "3748946",
+        "fund": "东兴兴福一年定开A",
+        "code": "",
+        "action": "卖出",
+        "amount": "2,855.51份",
+        "amt_num": 0,
+        "time": "07-10 15:27:08",
+        "isBuy": false
+      },
+      {
+        "user": "家庭的温暖",
+        "uid": "11979538",
+        "fund": "华泰柏瑞质量成长混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "50,521.15份",
+        "amt_num": 0,
+        "time": "07-10 15:14:56",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "永赢中证沪深港黄金产业股票ETF发起联接C",
+        "code": "",
+        "action": "卖出",
+        "amount": "11,130.01份",
+        "amt_num": 0,
+        "time": "07-10 14:44:59",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "富荣信息技术混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "102,754.46份",
+        "amt_num": 0,
+        "time": "07-10 14:42:01",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通价值动量混合A",
+        "code": "",
+        "action": "转换",
+        "amount": "440.38份",
+        "amt_num": 0,
+        "time": "07-10 14:41:06",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通集成电路产业股票A",
+        "code": "",
+        "action": "转换",
+        "amount": "949.86份",
+        "amt_num": 0,
+        "time": "07-10 14:40:45",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通成长优选混合C",
+        "code": "",
+        "action": "转换",
+        "amount": "1,673.67份",
+        "amt_num": 0,
+        "time": "07-10 14:40:27",
+        "isBuy": false
+      },
+      {
+        "user": "赚自己认知内的钱",
+        "uid": "3642504",
+        "fund": "财通成长优选混合A",
+        "code": "",
+        "action": "转换",
+        "amount": "123.81份",
+        "amt_num": 0,
+        "time": "07-10 14:40:08",
+        "isBuy": false
+      },
+      {
+        "user": "蓝鲸跃财",
+        "uid": "3546208",
+        "fund": "泰信医疗服务混合发起式C",
+        "code": "",
+        "action": "卖出",
+        "amount": "168,486.90份",
+        "amt_num": 0,
+        "time": "07-10 14:00:19",
+        "isBuy": false
+      }
+    ],
+    "feed_sell_consensus": [
+      {
+        "key": "东兴兴福一年定开A",
+        "sellers": 2,
+        "name": "东兴兴福一年定开A"
+      },
+      {
+        "key": "泰信医疗服务混合发起式C",
+        "sellers": 2,
+        "name": "泰信医疗服务混合发起式C"
+      },
+      {
+        "key": "万家鑫璟纯债C",
+        "sellers": 2,
+        "name": "万家鑫璟纯债C"
+      },
+      {
+        "key": "长城短债A",
+        "sellers": 2,
+        "name": "长城短债A"
+      },
+      {
+        "key": "上银国证自由现金流指数C",
+        "sellers": 1,
+        "name": "上银国证自由现金流指数C"
+      }
+    ],
+    "sector_low": [],
+    "sector_high": [
+      [
+        "H30184.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势良好、景气度中等、高估]无明显机会和风险，可持续保持关注。",
+          "pe_pct": 99.6,
+          "pb_pct": 99.6,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 55
+        }
+      ],
+      [
+        "930712.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势良好、景气度中等、高估]无明显机会和风险，可持续保持关注。",
+          "pe_pct": 98.49,
+          "pb_pct": 98.49,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 55
+        }
+      ],
+      [
+        "930713.CSI",
+        {
+          "name": "综合量化数据分析以及市场机构观点，该指数[趋势强度很好、景气度中等、较为高估]，投资价值开始显现，可积极配置。",
+          "pe_pct": 78.41,
+          "pb_pct": 98.89,
+          "valuation_status": "高估",
+          "valuation_code": "high",
+          "signal_score": 82
+        }
+      ]
+    ],
+    "critical_notices": [],
+    "data_health": {
+      "watchlist_funds": 13,
+      "ranking_items": 271,
+      "scores_items": 13,
+      "reports_count": 56,
+      "issues": []
+    },
+    "suggested_position": null
+  },
+  "backtest_30d": {
+    "年化": "-9.08",
+    "夏普": "-0.02",
+    "胜率": "6",
+    "交易": "6",
+    "Alpha": "+7.63"
+  },
+  "score_position": {
+    "positions": [
+      {
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "score": 17.87,
+        "position_pct": 0.236,
+        "score_breakdown": {
+          "q_ret_1y": 165.1,
+          "q_dd_1y": -16.32,
+          "manage_fee": 1.2,
+          "mgr_tenure_years": null,
+          "slope_60d_pct": 44.84,
+          "sm_buyers_14d": 5
+        }
+      },
+      {
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "score": 16.0,
+        "position_pct": 0.211,
+        "score_breakdown": {
+          "q_ret_1y": null,
+          "manage_fee": 1.2,
+          "mgr_tenure_years": null,
+          "slope_60d_pct": 51.59,
+          "sm_buyers_14d": 3
+        }
+      },
+      {
+        "code": "009505",
+        "name": "富国上海金ETF联接C",
+        "score": 10.0,
+        "position_pct": 0.132,
+        "score_breakdown": {
+          "q_ret_1y": 25.58,
+          "q_dd_1y": -27.65,
+          "manage_fee": 1.2,
+          "mgr_tenure_years": null,
+          "slope_60d_pct": -10.63,
+          "sm_buyers_14d": 2
+        }
+      },
+      {
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "score": 16.87,
+        "position_pct": 0.222,
+        "score_breakdown": {
+          "q_ret_1y": 270.98,
+          "q_dd_1y": -6.28,
+          "manage_fee": 1.2,
+          "mgr_tenure_years": null,
+          "slope_60d_pct": 45.7,
+          "sm_buyers_14d": 2
+        }
+      },
+      {
+        "code": "014320",
+        "name": "德邦半导体产业混合发起式C",
+        "score": 15.04,
+        "position_pct": 0.199,
+        "score_breakdown": {
+          "q_ret_1y": 225.08,
+          "q_dd_1y": -9.56,
+          "manage_fee": 1.2,
+          "mgr_tenure_years": null,
+          "slope_60d_pct": 36.8,
+          "sm_buyers_14d": 1
+        }
+      }
+    ],
+    "summary": {
+      "avg_score": 15.16,
+      "total_position": 1.0,
+      "n": 5
+    }
+  },
+  "ai_audit": [
+    {
+      "code": "005698",
+      "name": "华夏全球科技先锋混合(QDII)A",
+      "score": 17.87,
+      "position_pct": 0.236,
+      "audit": {
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "pass_count": 4,
+        "total": 6,
+        "total_score": 19.0,
+        "gates": [
+          {
+            "name": "Profile (规模/类型)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+          },
+          {
+            "name": "Cost (费率)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+          },
+          {
+            "name": "Manager (经理)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "无; 无任职信息"
+          },
+          {
+            "name": "Holdings (持仓集中度)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "无 sector 数据 ✅"
+          },
+          {
+            "name": "Performance (1y 收益)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "1y 收益 +86.7% ✅"
+          },
+          {
+            "name": "Risk (1y 回撤)",
+            "pass": true,
+            "score": 3.0,
+            "reason": "1y 最大回撤 -16.3% ✅"
+          }
+        ]
+      }
+    },
+    {
+      "code": "025500",
+      "name": "东方阿尔法科技智选混合发起C",
+      "score": 16.0,
+      "position_pct": 0.211,
+      "audit": {
+        "code": "025500",
+        "name": "东方阿尔法科技智选混合发起C",
+        "pass_count": 3,
+        "total": 6,
+        "total_score": 17.0,
+        "gates": [
+          {
+            "name": "Profile (规模/类型)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+          },
+          {
+            "name": "Cost (费率)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+          },
+          {
+            "name": "Manager (经理)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "无; 无任职信息"
+          },
+          {
+            "name": "Holdings (持仓集中度)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "无 sector 数据 ✅"
+          },
+          {
+            "name": "Performance (1y 收益)",
+            "pass": false,
+            "score": 3.0,
+            "reason": "无; 无 1y 数据"
+          },
+          {
+            "name": "Risk (1y 回撤)",
+            "pass": true,
+            "score": 3.0,
+            "reason": "1y 最大回撤 -12.0% ✅"
+          }
+        ]
+      }
+    },
+    {
+      "code": "009505",
+      "name": "富国上海金ETF联接C",
+      "score": 10.0,
+      "position_pct": 0.132,
+      "audit": {
+        "code": "009505",
+        "name": "富国上海金ETF联接C",
+        "pass_count": 4,
+        "total": 6,
+        "total_score": 17.0,
+        "gates": [
+          {
+            "name": "Profile (规模/类型)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+          },
+          {
+            "name": "Cost (费率)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+          },
+          {
+            "name": "Manager (经理)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "无; 无任职信息"
+          },
+          {
+            "name": "Holdings (持仓集中度)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "无 sector 数据 ✅"
+          },
+          {
+            "name": "Performance (1y 收益)",
+            "pass": true,
+            "score": 4.0,
+            "reason": "1y 收益 +15.7% ✅"
+          },
+          {
+            "name": "Risk (1y 回撤)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "1y 最大回撤 -27.7% ✅"
+          }
+        ]
+      }
+    },
+    {
+      "code": "013841",
+      "name": "银华集成电路混合C",
+      "score": 16.87,
+      "position_pct": 0.222,
+      "audit": {
+        "code": "013841",
+        "name": "银华集成电路混合C",
+        "pass_count": 3,
+        "total": 6,
+        "total_score": 20.0,
+        "gates": [
+          {
+            "name": "Profile (规模/类型)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+          },
+          {
+            "name": "Cost (费率)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+          },
+          {
+            "name": "Manager (经理)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "无; 无任职信息"
+          },
+          {
+            "name": "Holdings (持仓集中度)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "无 sector 数据 ✅"
+          },
+          {
+            "name": "Performance (1y 收益)",
+            "pass": false,
+            "score": 5.0,
+            "reason": "1y 收益 +263.4%; 1y 收益 +263.4% 异常高 (> 200%, 可能是妖基)"
+          },
+          {
+            "name": "Risk (1y 回撤)",
+            "pass": true,
+            "score": 4.0,
+            "reason": "1y 最大回撤 -6.3% ✅"
+          }
+        ]
+      }
+    },
+    {
+      "code": "014320",
+      "name": "德邦半导体产业混合发起式C",
+      "score": 15.04,
+      "position_pct": 0.199,
+      "audit": {
+        "code": "014320",
+        "name": "德邦半导体产业混合发起式C",
+        "pass_count": 4,
+        "total": 6,
+        "total_score": 20.0,
+        "gates": [
+          {
+            "name": "Profile (规模/类型)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "规模 0.0 亿, 类型 ; 规模小 (0.0 亿 < 2 亿, 清盘风险)"
+          },
+          {
+            "name": "Cost (费率)",
+            "pass": true,
+            "score": 2.0,
+            "reason": "管理 1.2% + 托管 0.2% + 申购 0.15% = 1.55% ✅"
+          },
+          {
+            "name": "Manager (经理)",
+            "pass": false,
+            "score": 2.0,
+            "reason": "无; 无任职信息"
+          },
+          {
+            "name": "Holdings (持仓集中度)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "无 sector 数据 ✅"
+          },
+          {
+            "name": "Performance (1y 收益)",
+            "pass": true,
+            "score": 5.0,
+            "reason": "1y 收益 +189.3% ✅"
+          },
+          {
+            "name": "Risk (1y 回撤)",
+            "pass": true,
+            "score": 4.0,
+            "reason": "1y 最大回撤 -9.6% ✅"
+          }
+        ]
+      }
+    }
+  ]
+}

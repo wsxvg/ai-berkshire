@@ -1,0 +1,19 @@
+# 场外基金量化项目 — Python 依赖清单
+# 运行环境: 必须 Python 3.10（不要用系统默认的 3.14，lightgbm/numpy 在 3.14 上不稳定）
+# 安装: py -3.10 -m pip install -r requirements.txt
+
+# ── 核心 ML / 数值依赖 ──
+numpy
+lightgbm
+scikit-learn
+# 交易日历（T+N 计算；缺失时引擎会自动降级为简单日历日差）
+chinese_calendar
+
+# ── 可选依赖 ──
+# 京东金融自动登录（非交互/CI 环境建议改用缓存的 cookies.json，避免 Playwright 卡登录）
+# playwright
+# 数据增强（部分扩展脚本用到东方财富/雪球抓取）
+# requests
+
+# 说明: 项目数据层 tools/jd_finance_api.py 零外部依赖（仅用标准库 urllib/json），
+#       因此基础运行只需 numpy + lightgbm + scikit-learn + chinese_calendar。

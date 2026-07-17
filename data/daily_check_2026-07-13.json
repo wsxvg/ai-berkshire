@@ -1,0 +1,34 @@
+{
+  "date": "2026-07-13",
+  "ts": 1783928892763,
+  "api_base": "http://127.0.0.1:3456/api",
+  "watchlist": [
+    "013841",
+    "024663",
+    "024239",
+    "016416",
+    "011036",
+    "012922",
+    "012240",
+    "005660",
+    "002943",
+    "018736",
+    "011102",
+    "019280"
+  ],
+  "actions": [
+    {
+      "type": "sector_rotation",
+      "summary": "低估 0 个行业 / 高估 0 个行业"
+    }
+  ],
+  "ranking_top5": [],
+  "_ranking_err": "<urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。>",
+  "feed_buy": [],
+  "feed_sell": [],
+  "sector_low": [],
+  "sector_high": [],
+  "critical_notices": [],
+  "data_health": {},
+  "suggested_position": null
+}

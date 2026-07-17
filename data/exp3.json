@@ -1,0 +1,11 @@
+[
+  {
+    "label": "E3-组合",
+    "total_return": 7.333350000000005,
+    "annualized_return": 28.55,
+    "max_drawdown": 4.455533906618924,
+    "sharpe_ratio": 1.28,
+    "final_value": 107333.35,
+    "benchmark_return": 4.932007306677488
+  }
+]

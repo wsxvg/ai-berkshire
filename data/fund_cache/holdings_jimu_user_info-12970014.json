@@ -1,0 +1,418 @@
+{
+  "holdings": [
+    {
+      "name": "嘉实中证半导体指数增强发起式A",
+      "code": "014854",
+      "amount": "817,791.25",
+      "profit_rate": "+2.22%",
+      "profit": "+17,791.25"
+    }
+  ],
+  "raw": {
+    "resultData": {
+      "msg": "成功",
+      "fail": true,
+      "code": 0,
+      "data": {
+        "userInfo": {
+          "userAvatar": "http://storage.360buyimg.com/i.imageUpload/6368656e6a6a6731343134373239313538313332_big.jpg",
+          "jumpData": {
+            "jumpType": "7",
+            "jumpUrl": "https://roma.jd.com/content/personal?romaFileName=pageCommunityPersonal&contentId=jimu_user_info-12970014"
+          },
+          "userName": {
+            "textColor": "#333333",
+            "text": "酷睿-陈"
+          },
+          "isSelf": false
+        },
+        "tabInfo": {
+          "tabList": [
+            {
+              "openStatus": 1,
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "ShiPanPage|liveAccountPage_tab",
+                "spj": "{\"uid\":\"jimu_user_info-12970014\",\"tabName\":\"基金持仓\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanPage"
+              },
+              "isSelf": 0,
+              "firmOfferType": "fund"
+            }
+          ]
+        },
+        "fundTypeSelectData": {
+          "checkedIcon": "https://img14.360buyimg.com/img/jfs/t1/304923/1/10297/535/684bd380Fe0df08a2/efe486266912e13e.png",
+          "list": [
+            {
+              "name": "京东实盘",
+              "isSelect": 1,
+              "type": 1
+            }
+          ]
+        },
+        "fundHoldItemInfo": {
+          "operateData": {
+            "discussButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/325219/36/23887/590/68d3c854F3fcff061/1d54a1f10e3bdc68.png?width=42&height=42&_fs=590",
+            "addTitle": {
+              "textColor": "#666666",
+              "text": "加自选"
+            },
+            "discussTitle": {
+              "textColor": "#666666",
+              "text": "去讨论"
+            },
+            "discussButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/330367/22/16638/564/68d29586Fcbe496b6/9d49174d4d02ad84.png?width=42&height=42&_fs=564",
+            "selectedButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/346541/9/7038/558/68d3c855Fad45481f/05aad76c0810b38c.png?width=42&height=42&_fs=558",
+            "addButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/340328/25/14065/551/68d29586Fecb4c70f/1180794a35e22df5.png?width=42&height=42&_fs=551",
+            "addButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/343836/17/6825/551/68d3c854F3eaf88dd/42013c98b72d016e.png?width=42&height=42&_fs=551",
+            "selectedButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/348323/37/6706/568/68d29586F94d197c4/2ce6d44039540391.png?width=42&height=42&_fs=568",
+            "selectedTitle": {
+              "textColor": "#666666",
+              "text": "已添加"
+            }
+          },
+          "sortTypeData": {
+            "sortDirection": "DESC",
+            "confirmTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_confirm",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "titleTrackData": {
+              "bid": "pageCommunityShiPanFund|compareDetail_holdSortFilter",
+              "spj": "{\"text\":\"金额排序\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "resetTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_reset",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "closeXTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_close",
+              "spj": "{\"ifXcloseIcon\":\"1\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "list": [
+              {
+                "text": "近期交易排序",
+                "type": 1,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"近期交易排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "金额排序",
+                "type": 2,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"金额排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "昨日收益排序",
+                "type": 3,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"昨日收益排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "持有收益排序",
+                "type": 4,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"持有收益排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              },
+              {
+                "text": "持有收益率排序",
+                "type": 5,
+                "trackData": {
+                  "bid": "pageCommunityShiPanFund|holdSortPopup_select",
+                  "spj": "{\"text\":\"持有收益率排序\"}",
+                  "ctp": "jrTransUI_pageCommunityShiPanFund"
+                }
+              }
+            ],
+            "currentSortType": 2,
+            "closeTrackData": {
+              "bid": "pageCommunityShiPanFund|holdSortPopup_close",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            }
+          },
+          "title1": {
+            "textColor": "#000000",
+            "text": "持仓明细"
+          },
+          "title2": {
+            "textColor": "#999999",
+            "text": "金额/昨日收益"
+          },
+          "itemList": [
+            {
+              "systemId": "SPCC0001",
+              "amount": {
+                "textColor": "#000000",
+                "text": "817,791.25"
+              },
+              "followTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_add",
+                "spj": "{\"uid\":\"jimu_user_info-12970014\",\"productId\":\"1014854\",\"productName\":\"嘉实中证半导体指数增强发起式A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "optional": false,
+              "holdingProfitRate": {
+                "textColor": "#FF4144",
+                "text": "+2.22%"
+              },
+              "cancelFollowTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_cancelAdd",
+                "spj": "{\"uid\":\"jimu_user_info-12970014\",\"productId\":\"1014854\",\"productName\":\"嘉实中证半导体指数增强发起式A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "trackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_productContent",
+                "spj": "{\"uid\":\"jimu_user_info-12970014\",\"productId\":\"1014854\",\"productName\":\"嘉实中证半导体指数增强发起式A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "discussTrackData": {
+                "paramJson": "{\"isSelf\":false}",
+                "bid": "pageCommunityShiPanFund|holdingDetails_discuss",
+                "spj": "{\"uid\":\"jimu_user_info-12970014\",\"productId\":\"1014854\",\"productName\":\"嘉实中证半导体指数增强发起式A\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanFund"
+              },
+              "itemId": "1014854",
+              "fcFundCode": "fc1014854",
+              "sectorTag": {
+                "textColor": "#FF4144",
+                "bgColor": "#FF414414",
+                "text": "半导体设备"
+              },
+              "fundCode": "014854",
+              "holdingProfit": {
+                "textColor": "#FF4144",
+                "text": "+17,791.25"
+              },
+              "jumpData": {
+                "jumpType": "7",
+                "jumpUrl": "https://roma.jd.com/content/shipan-detail?targetUid=jimu_user_info-12970014&jumpFundId=1014854&channel=null&channelfrom=grouppc"
+              },
+              "yesterdayProfit": {
+                "textColor": "#1DB270",
+                "text": "-28,759.36"
+              },
+              "fundName": {
+                "textColor": "#000000",
+                "text": "嘉实中证半导体指数增强发起式A"
+              }
+            }
+          ],
+          "title3": {
+            "textColor": "#999999",
+            "text": "持仓收益/率"
+          },
+          "attentionData": {
+            "isAttention": true,
+            "attentionTitle": {
+              "textColorDark": "#FFFFFF",
+              "textColor": "#FFFFFF",
+              "bgColor": "#FF4144",
+              "text": "关注后查看"
+            },
+            "attentionInputData": {
+              "bizType": 17,
+              "content": "jimu_user_info-12970014"
+            },
+            "tipsTitle": {
+              "textColorDark": "#A7A7A7",
+              "textColor": "#333333",
+              "text": "关注后可查看交易记录和持仓列表"
+            },
+            "bgImg": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/286229/35/24119/68958/69003539F1a11c51d/46db2689fee758b0.png?width=702&height=1300&_fs=68958",
+            "autoSubscribe": false,
+            "bgImgDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/341669/37/15392/89745/69003539Fad579bdf/a1f8ea6d32f76c56.png?width=702&height=1300&_fs=89745",
+            "trackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundTrade_follow",
+              "spj": "{\"uid\":\"jimu_user_info-12970014\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            }
+          }
+        },
+        "fundTradeRecordData": {
+          "foldTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_close",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "extendTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_expand",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\",\"buttonName\":\"展开\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "extendTotalTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_expand",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\",\"buttonName\":\"查看全部\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "jumpData": {
+            "jumpType": "7",
+            "jumpUrl": "https://roma.jd.com/content/shipan-deal?targetUid=jimu_user_info-12970014&channel=null&channelfrom=grouppc"
+          },
+          "jumpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_all",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          }
+        },
+        "fundHoldCommonTrackData": {
+          "holdDetailTabSwipeUpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_holdingDetail_tab",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\",\"tabName\":\"持仓明细\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          },
+          "tradeTabSwipeUpTrackData": {
+            "paramJson": "{\"isSelf\":false}",
+            "bid": "pageCommunityShiPanFund|fundTrade_holdingDetail_tab",
+            "spj": "{\"uid\":\"jimu_user_info-12970014\",\"tabName\":\"基金交易\"}",
+            "ctp": "jrTransUI_pageCommunityShiPanFund"
+          }
+        },
+        "fundHoldInfo": {
+          "periodicProfit": {
+            "monthly": {
+              "percentage": {
+                "textColor": "#FF4144",
+                "text": "+22.58%"
+              },
+              "title": {
+                "text": "近一月收益"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+216,495.04"
+              }
+            },
+            "yearly": {
+              "percentage": {
+                "textColor": "#FF4144",
+                "text": "+198.91%"
+              },
+              "title": {
+                "text": "近一年收益"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+640,307.40"
+              }
+            },
+            "weekly": {
+              "percentage": {
+                "textColor": "#FF4144",
+                "text": "+2.27%"
+              },
+              "title": {
+                "text": "近一周收益"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+18,173.60"
+              }
+            }
+          },
+          "portfolioOverview": {
+            "totalProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "累计收益(元)"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+564,944.53"
+              }
+            },
+            "portfolio": {
+              "title": {
+                "textColor": "#000000",
+                "text": "持仓总金额(元)"
+              },
+              "value": {
+                "textColor": "#000000",
+                "text": "817,791.25"
+              }
+            },
+            "bgImgUrl": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/338407/9/13979/144262/68d2563dF60b9e0c6/7726e07d3abe3791.png?width=1053&height=711&_fs=144262",
+            "holdingProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "持有收益(元)"
+              },
+              "value": {
+                "textColor": "#FF4144",
+                "text": "+17,791.25"
+              }
+            },
+            "bgImgUrlDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/340027/15/14209/199566/68d2562eF54d600cc/90d38aa310469fad.png?width=1053&height=711&_fs=199566",
+            "yesterdayProfit": {
+              "title": {
+                "textColor": "#00000099",
+                "text": "昨日收益(元)"
+              },
+              "value": {
+                "textColor": "#1DB270",
+                "text": "-28,759.36"
+              }
+            }
+          },
+          "notificationSettings": {
+            "openToast": "您会及时收到Ta的交易提醒",
+            "bookStatus": 1,
+            "closeSwitchTrackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundHolding_tradeSwitch_off",
+              "spj": "{\"uid\":\"jimu_user_info-12970014\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "openSwitchTrackData": {
+              "paramJson": "{\"isSelf\":false}",
+              "bid": "pageCommunityShiPanFund|fundHolding_tradeSwitch_on",
+              "spj": "{\"uid\":\"jimu_user_info-12970014\"}",
+              "ctp": "jrTransUI_pageCommunityShiPanFund"
+            },
+            "switchData": {
+              "reqData": {
+                "relationType": 9,
+                "targetId": "DFnHuq7MyBU",
+                "targetFirstLevelType": 26
+              }
+            },
+            "bookTips": "接收交易提醒",
+            "closeToast": "已关闭提醒"
+          }
+        }
+      },
+      "success": false,
+      "sgmFail": false,
+      "systime": 1784042361712,
+      "decode": 0,
+      "sgmSuccess": true
+    },
+    "success": true,
+    "resultCode": 0,
+    "resultMsg": "成功",
+    "channelEncrypt": 0
+  }
+}

@@ -20,6 +20,15 @@ from dataclasses import dataclass, field
 from datetime import datetime, date
 from pathlib import Path
 
+# 统一日志入口（stderr + logs/fund_scorer.log 轮转）
+try:
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("fund_scorer")
+
+
 
 def _get_index_valuation(index_code: str = "H30184.CSI") -> dict:
     """Fetch index PE/PB valuation data from JD Finance API.
@@ -924,7 +933,7 @@ def test_sharpe(fund_code: str):
 
     detail = get_fund_detail(fund_code, use_cache=False)
     if not detail:
-        print("[ERROR] No data returned")
+        _logger.error("No data returned")
         return
 
     # Chart data (232 points, daily cumulative returns)

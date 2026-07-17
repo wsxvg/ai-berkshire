@@ -1,0 +1,12 @@
+﻿python : object address  : 000001D109C741C0
+所在位置 行:1 字符: 227
++ ... SL_UTF8 = '1'; Set-Location C:\fund; python _grid_evo.py 2>&1 | Out-F ...
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (object address  : 000001D109C741C0:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+object refcount : 2
+object type     : 00007FF81EC65850
+object type name: ValueError
+object repr     : ValueError('I/O operation on closed file.')
+lost sys.stderr

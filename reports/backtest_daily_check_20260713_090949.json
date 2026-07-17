@@ -1,0 +1,182 @@
+{
+  "config": {
+    "start_date": "2024-03-11",
+    "end_date": "2026-07-01",
+    "initial_cash": 100000,
+    "max_holdings": 5,
+    "min_buyers": 1,
+    "require_industry_low": false
+  },
+  "result": {
+    "final_value": 108800.06,
+    "total_return": 8.8,
+    "annualized": 3.73,
+    "sharpe": 1.0,
+    "max_drawdown": -3.69,
+    "trading_days": 842,
+    "n_buys": 12,
+    "n_sells": 7,
+    "win_rate": 28.6,
+    "benchmark_return": 157.31,
+    "benchmark_annualized": 50.68,
+    "alpha": -46.95
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2024-03-11",
+        "action": "buy",
+        "code": "007874",
+        "name": "华宝科技ETF联接C",
+        "amount": 25000.0,
+        "consensus": 1
+      },
+      {
+        "date": "2024-03-20",
+        "action": "buy",
+        "code": "004253",
+        "name": "国泰黄金ETF联接C",
+        "amount": 17812.5,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-01",
+        "action": "buy",
+        "code": "011452",
+        "name": "华泰柏瑞质量成长混合C",
+        "amount": 18109.375,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-01",
+        "action": "buy",
+        "code": "016453",
+        "name": "南方纳斯达克100指数发起(QDII)C",
+        "amount": 18109.375,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-02",
+        "action": "buy",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "amount": 19920.3125,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-08",
+        "action": "buy",
+        "code": "002207",
+        "name": "前海开源金银珠宝混合C",
+        "amount": 22286.901041666664,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-16",
+        "action": "buy",
+        "code": "016874",
+        "name": "广发远见智选混合C",
+        "amount": 18315.112147875687,
+        "consensus": 1
+      },
+      {
+        "date": "2024-04-24",
+        "action": "buy",
+        "code": "016665",
+        "name": "天弘全球高端制造混合(QDII)C",
+        "amount": 18310.202914518555,
+        "consensus": 2
+      },
+      {
+        "date": "2024-06-12",
+        "action": "buy",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "amount": 22061.813529653897,
+        "consensus": 2
+      },
+      {
+        "date": "2025-07-24",
+        "action": "buy",
+        "code": "002112",
+        "name": "德邦鑫星价值C",
+        "amount": 18232.130824991295,
+        "consensus": 1
+      },
+      {
+        "date": "2025-10-21",
+        "action": "buy",
+        "code": "015740",
+        "name": "国泰中证港股通科技ETF发起联接C",
+        "amount": 18454.36964909067,
+        "consensus": 1
+      },
+      {
+        "date": "2026-06-29",
+        "action": "buy",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "amount": 18260.55876552887,
+        "consensus": 6
+      }
+    ],
+    "sells": [
+      {
+        "date": "2024-04-08",
+        "action": "sell",
+        "code": "007874",
+        "reason": "stop_loss",
+        "pnl_pct": -10.354166666666668,
+        "amount": 22411.458333333332
+      },
+      {
+        "date": "2024-04-16",
+        "action": "sell",
+        "code": "011452",
+        "reason": "consensus_sell",
+        "pnl_pct": -0.018246752580668376,
+        "amount": 18106.070627149846
+      },
+      {
+        "date": "2024-04-24",
+        "action": "sell",
+        "code": "016874",
+        "reason": "consensus_sell",
+        "pnl_pct": -0.028215028215028297,
+        "amount": 18309.94453381555
+      },
+      {
+        "date": "2024-06-12",
+        "action": "sell",
+        "code": "002207",
+        "reason": "consensus_sell",
+        "pnl_pct": -0.1239935587761675,
+        "amount": 22259.266719924177
+      },
+      {
+        "date": "2025-07-24",
+        "action": "sell",
+        "code": "004253",
+        "reason": "consensus_sell",
+        "pnl_pct": 1.2242446449261726,
+        "amount": 18030.568577377475
+      },
+      {
+        "date": "2025-10-21",
+        "action": "sell",
+        "code": "002112",
+        "reason": "consensus_sell",
+        "pnl_pct": 1.283095248496498,
+        "amount": 18466.066429306426
+      },
+      {
+        "date": "2026-06-29",
+        "action": "sell",
+        "code": "015740",
+        "reason": "consensus_sell",
+        "pnl_pct": -1.1054913294797688,
+        "amount": 18250.358192709828
+      }
+    ]
+  }
+}

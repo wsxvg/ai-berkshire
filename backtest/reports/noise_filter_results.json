@@ -1,0 +1,103 @@
+[
+  {
+    "name": "K_baseline_all77",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "exclude_count": 0
+  },
+  {
+    "name": "TOP_10",
+    "return": 35.361000000000004,
+    "dd": 7.471909023179038,
+    "trades": 185,
+    "sharpe": 0,
+    "diff_vs_base": -22.609099999999998,
+    "exclude_count": 60
+  },
+  {
+    "name": "TOP_20",
+    "return": 46.5898,
+    "dd": 11.01042669478359,
+    "trades": 338,
+    "sharpe": 0,
+    "diff_vs_base": -11.380300000000005,
+    "exclude_count": 50
+  },
+  {
+    "name": "TOP_30",
+    "return": 66.41650000000001,
+    "dd": 11.242256737774992,
+    "trades": 366,
+    "sharpe": 0,
+    "diff_vs_base": 8.446400000000011,
+    "exclude_count": 40
+  },
+  {
+    "name": "TOP_40",
+    "return": 64.58099999999999,
+    "dd": 12.026463223811339,
+    "trades": 397,
+    "sharpe": 0,
+    "diff_vs_base": 6.610899999999987,
+    "exclude_count": 30
+  },
+  {
+    "name": "TOP_50",
+    "return": 64.43220000000001,
+    "dd": 11.450794455764965,
+    "trades": 448,
+    "sharpe": 0,
+    "diff_vs_base": 6.462100000000007,
+    "exclude_count": 20
+  },
+  {
+    "name": "TOP_60",
+    "return": 66.33689999999999,
+    "dd": 10.601115165324272,
+    "trades": 443,
+    "sharpe": 0,
+    "diff_vs_base": 8.366799999999984,
+    "exclude_count": 10
+  },
+  {
+    "name": "TOP_70",
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437,
+    "sharpe": 0,
+    "diff_vs_base": 0.0,
+    "exclude_count": 0
+  },
+  {
+    "name": "exclude_lt_0",
+    "return": 65.06389999999999,
+    "dd": 10.797712476368645,
+    "trades": 440,
+    "sharpe": 0,
+    "diff_vs_base": 7.0937999999999874,
+    "exclude_count": 15,
+    "keep_count": 55
+  },
+  {
+    "name": "exclude_lt_5",
+    "return": 63.53190000000001,
+    "dd": 12.037585113043143,
+    "trades": 391,
+    "sharpe": 0,
+    "diff_vs_base": 5.561800000000005,
+    "exclude_count": 36,
+    "keep_count": 34
+  },
+  {
+    "name": "exclude_lt_10",
+    "return": 46.5898,
+    "dd": 11.01042669478359,
+    "trades": 338,
+    "sharpe": 0,
+    "diff_vs_base": -11.380300000000005,
+    "exclude_count": 50,
+    "keep_count": 20
+  }
+]

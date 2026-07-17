@@ -1,0 +1,84 @@
+﻿Top-level keys: ['holdings', 'raw']
+{
+  "holdings": [
+    {
+      "name": "����ȫ��Ƽ��ȷ���(QDII)C",
+      "code": "024239",
+      "amount": "2,091.39",
+      "profit_rate": "-16.34%",
+      "profit": "-408.61"
+    },
+    {
+      "name": "�������ɵ�·���C",
+      "code": "013841",
+      "amount": "95.00",
+      "profit_rate": "-5.00%",
+      "profit": "-5.00"
+    },
+    {
+      "name": "�׷���ȫ��ɳ���ѡ���(QDII)C",
+      "code": "012922",
+      "amount": "37.27",
+      "profit_rate": "-6.83%",
+      "profit": "-2.73"
+    }
+  ],
+  "raw": {
+    "resultData": {
+      "msg": "�ɹ�",
+      "fail": true,
+      "code": 0,
+      "data": {
+        "userInfo": {
+          "userAvatar": "http://storage.360buyimg.com/default.image/6a645f6465665f696d675f393836323131373632333134353935323236_big.jpg",
+          "jumpData": {
+            "jumpType": "7",
+            "jumpUrl": "https://roma.jd.com/content/personal?romaFileName=pageCommunityPersonal&contentId=null"
+          },
+          "userName": {
+            "textColor": "#333333",
+            "text": "jd_9b2u5ec8t4pmtb"
+          },
+          "isSelf": true
+        },
+        "tabInfo": {
+          "tabList": [
+            {
+              "openStatus": 0,
+              "trackData": {
+                "paramJson": "{\"isSelf\":true}",
+                "bid": "ShiPanPage|liveAccountPage_tab",
+                "spj": "{\"tabName\":\"����ֲ�\"}",
+                "ctp": "jrTransUI_pageCommunityShiPanPage"
+              },
+              "isSelf": 1,
+              "firmOfferType": "fund"
+            }
+          ]
+        },
+        "fundTypeSelectData": {
+          "checkedIcon": "https://img14.360buyimg.com/img/jfs/t1/304923/1/10297/535/684bd380Fe0df08a2/efe486266912e13e.png",
+          "list": [
+            {
+              "name": "����ʵ��",
+              "isSelect": 1,
+              "type": 1
+            }
+          ]
+        },
+        "fundHoldItemInfo": {
+          "operateData": {
+            "discussButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/325219/36/23887/590/68d3c854F3fcff061/1d54a1f10e3bdc68.png?width=42&height=42&_fs=590",
+            "addTitle": {
+              "textColor": "#666666",
+              "text": "����ѡ"
+            },
+            "discussTitle": {
+              "textColor": "#666666",
+              "text": "ȥ����"
+            },
+            "discussButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/330367/22/16638/564/68d29586Fcbe496b6/9d49174d4d02ad84.png?width=42&height=42&_fs=564",
+            "selectedButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/346541/9/7038/558/68d3c855Fad45481f/05aad76c0810b38c.png?width=42&height=42&_fs=558",
+            "addButtonIconDark": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/340328/25/14065/551/68d29586Fecb4c70f/1180794a35e22df5.png?width=42&height=42&_fs=551",
+            "addButtonIcon": "https://kjimg10.360buyimg.com/mcmktresadmin/jfs/t1/343836/17/6825/551/68d3c854F3eaf88dd/42013c98b72d016e.png?width=42&height=42&_fs=551",
+            "selectedButtonIconDa

@@ -20,7 +20,7 @@ def generate_emergency_plan(code, name, portfolio_total=0, position_value=0,
             buy_date = datetime.strptime(buy_date_str[:10], "%Y-%m-%d")
             days_held = (today - buy_date).days
             release_date = buy_date + timedelta(days=30)
-        except:
+        except (ValueError, TypeError):
             pass
 
     pct = position_value / max(portfolio_total, 1) * 100
@@ -139,7 +139,7 @@ if __name__ == "__main__":
             profit_rate = f.get("profit_rate","0")
             try:
                 loss = float(str(profit_rate).replace("%",""))
-            except:
+            except (ValueError, TypeError):
                 loss = 0
 
             generate_emergency_plan(

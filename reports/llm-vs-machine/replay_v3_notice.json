@@ -1,0 +1,404 @@
+{
+  "label": "v3_notice",
+  "start": "2026-04-13",
+  "end": "2026-07-11",
+  "initial_cash": 100000,
+  "final_total_value": 119090.34,
+  "pnl_pct": 19.09,
+  "machine_baseline_pct": 19.27,
+  "diff_pct": -0.18,
+  "daily": [
+    {
+      "date": "2026-04-13",
+      "total_value": 100000,
+      "cash": 100000,
+      "holdings": 0,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-14",
+      "total_value": 100000,
+      "cash": 100000,
+      "holdings": 0,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-15",
+      "total_value": 100000.0,
+      "cash": 98900.0,
+      "holdings": 0,
+      "pending": 2
+    },
+    {
+      "date": "2026-04-16",
+      "total_value": 100021.49,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-17",
+      "total_value": 100051.97,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-20",
+      "total_value": 100052.4,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-21",
+      "total_value": 100053.85,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-22",
+      "total_value": 100092.25,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-23",
+      "total_value": 100085.21,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-24",
+      "total_value": 100101.43,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-27",
+      "total_value": 100089.48,
+      "cash": 98900.0,
+      "holdings": 2,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-28",
+      "total_value": 100046.57,
+      "cash": 81100.0,
+      "holdings": 2,
+      "pending": 1
+    },
+    {
+      "date": "2026-04-29",
+      "total_value": 100095.63,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-30",
+      "total_value": 101219.31,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-06",
+      "total_value": 101673.36,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-07",
+      "total_value": 102224.64,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-08",
+      "total_value": 101555.27,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-11",
+      "total_value": 102412.19,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-12",
+      "total_value": 103235.03,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-13",
+      "total_value": 103648.88,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-14",
+      "total_value": 103190.33,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-15",
+      "total_value": 104096.32,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-18",
+      "total_value": 104291.68,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-19",
+      "total_value": 105211.9,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-20",
+      "total_value": 107007.15,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-21",
+      "total_value": 105739.87,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-22",
+      "total_value": 106119.26,
+      "cash": 81100.0,
+      "holdings": 3,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-25",
+      "total_value": 107730.73,
+      "cash": 80600.0,
+      "holdings": 3,
+      "pending": 1
+    },
+    {
+      "date": "2026-05-26",
+      "total_value": 107460.96,
+      "cash": 80600.0,
+      "holdings": 4,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-27",
+      "total_value": 106650.68,
+      "cash": 80600.0,
+      "holdings": 4,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-28",
+      "total_value": 107200.22,
+      "cash": 80600.0,
+      "holdings": 4,
+      "pending": 0
+    },
+    {
+      "date": "2026-05-29",
+      "total_value": 105789.9,
+      "cash": 66100.0,
+      "holdings": 4,
+      "pending": 1
+    },
+    {
+      "date": "2026-06-01",
+      "total_value": 104187.4,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-02",
+      "total_value": 105123.74,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-03",
+      "total_value": 106220.98,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-04",
+      "total_value": 106632.9,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-05",
+      "total_value": 104797.66,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-08",
+      "total_value": 103342.28,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-09",
+      "total_value": 105230.6,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-10",
+      "total_value": 104697.4,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-11",
+      "total_value": 105176.33,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-12",
+      "total_value": 105342.57,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-15",
+      "total_value": 107622.72,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-16",
+      "total_value": 107721.32,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-17",
+      "total_value": 109767.18,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-18",
+      "total_value": 110949.82,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-19",
+      "total_value": 110949.82,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-22",
+      "total_value": 111790.48,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-23",
+      "total_value": 111210.33,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-24",
+      "total_value": 113749.69,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-25",
+      "total_value": 115256.13,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-26",
+      "total_value": 115341.83,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-29",
+      "total_value": 117683.33,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-30",
+      "total_value": 119871.74,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-01",
+      "total_value": 119090.34,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-11",
+      "total_value": 119090.34,
+      "cash": 66100.0,
+      "holdings": 5,
+      "pending": 0
+    }
+  ]
+}

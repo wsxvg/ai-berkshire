@@ -1,0 +1,44 @@
+[
+  {
+    "name": "K_accel",
+    "return": 49.34,
+    "annualized": 22.7,
+    "dd": 11.86,
+    "sharpe": 1.17,
+    "calmar": 1.91,
+    "trades": 585,
+    "elapsed": 247.0
+  },
+  {
+    "name": "K_accel",
+    "error": "'annualized'"
+  },
+  {
+    "name": "K_conviction",
+    "return": 38.36,
+    "annualized": 18.0,
+    "dd": 8.44,
+    "sharpe": 0.97,
+    "calmar": 2.13,
+    "trades": 285,
+    "elapsed": 98.0
+  },
+  {
+    "name": "K_conviction",
+    "error": "'annualized'"
+  },
+  {
+    "name": "K_combo",
+    "return": 30.49,
+    "annualized": 14.5,
+    "dd": 10.33,
+    "sharpe": 0.74,
+    "calmar": 1.41,
+    "trades": 251,
+    "elapsed": 87.0
+  },
+  {
+    "name": "K_combo",
+    "error": "'annualized'"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "K_rotate",
+    "return": 25.89,
+    "annualized": 12.5,
+    "dd": 14.61,
+    "sharpe": 0.58,
+    "calmar": 0.85,
+    "trades": 385,
+    "elapsed": 147.0
+  },
+  {
+    "name": "K_rotate",
+    "error": "'annualized'"
+  },
+  {
+    "name": "K_firstbuy",
+    "return": 43.26,
+    "annualized": 20.1,
+    "dd": 9.11,
+    "sharpe": 1.01,
+    "calmar": 2.21,
+    "trades": 327,
+    "elapsed": 96.0
+  },
+  {
+    "name": "K_firstbuy",
+    "error": "'annualized'"
+  },
+  {
+    "name": "K_conc",
+    "return": 40.41,
+    "annualized": 18.9,
+    "dd": 8.97,
+    "sharpe": 1.15,
+    "calmar": 2.11,
+    "trades": 405,
+    "elapsed": 201.0
+  },
+  {
+    "name": "K_conc",
+    "error": "'annualized'"
+  }
+]

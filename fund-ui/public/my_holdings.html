@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html><html><head><meta charset=utf-8><title>我的基金持仓 - 2026-07-13</title><style>body{font-family:Arial,sans-serif;max-width:900px;margin:30px auto;padding:20px;background:#fafafa}h1{color:#333;border-bottom:2px solid #333;padding-bottom:10px}.summary{background:#fff;padding:20px;border-radius:8px;margin:20px 0;box-shadow:0 2px 4px rgba(0,0,0,0.1)}table{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1)}th,td{padding:12px;text-align:left;border-bottom:1px solid #eee}th{background:#333;color:#fff}.red{color:#d32f2f;font-weight:bold}.green{color:#388e3c;font-weight:bold}.orange{color:#f57c00;font-weight:bold}.advice{background:#fff3e0;padding:20px;border-left:5px solid #ff9800;margin:20px 0;border-radius:4px}.danger{background:#ffebee;padding:20px;border-left:5px solid #d32f2f;margin:20px 0;border-radius:4px}.ok{background:#e8f5e9;padding:20px;border-left:5px solid #388e3c;margin:20px 0;border-radius:4px}.step{background:#fff;padding:15px;margin:10px 0;border-radius:4px;border:1px solid #eee}</style></head><body>
+<h1>📊 我的基金持仓 - 2026-07-13 15:30</h1>
+<div class=summary><h2>💼 持仓总览</h2><p><b>总市值:</b> <span class=orange>¥2,224</span> | <b>总盈亏:</b> <span class=red>-¥360</span> | <b>平均:</b> <span class=red>-9.4%</span> | <b>持仓数:</b> 3 只</p></div>
+<table><tr><th>基金名</th><th>代码</th><th>金额(¥)</th><th>盈亏</th><th>建议</th></tr>
+<tr><td>华夏全球科技先锋混合(QDII)C</td><td>024239</td><td>2,091</td><td class=red>-16.3%</td><td>止损候选</td></tr>
+<tr><td>银华集成电路混合C</td><td>013841</td><td>95</td><td class=orange>-5.0%</td><td>持有</td></tr>
+<tr><td>易方达全球成长精选混合(QDII)C</td><td>012922</td><td>37</td><td class=orange>-6.8%</td><td>观望</td></tr></table>
+<div class=danger><h2>🔴 024239 关键决策</h2><p><b>当前:</b> -16.3% (亏 ¥360) | <b>回测规则:</b> V2 -10% 止损会立刻卖 | <b>大佬共识:</b> 6/26-7/4 共 358 笔全是买入, 没人卖</p>
+<h3>📊 7 月 1-2 日暴跌数据</h3><ul><li>2026-06-30: 129.99 (峰值)</li><li>2026-07-01: 120.95 (-7.0%)</li><li>2026-07-02: <b>101.48 (-16.1%)</b></li><li>2026-07-13 (今天): -16.3%</li></ul></div>
+<div class=advice><h2>🎯 修订后的操作建议</h2><p><b>关键修正:</b> 原建议"立即止损"未考虑 <b>1) 满 1 月手续费 1%</b> 和 <b>2) 大佬共识 6/29 还在加仓</b> 这两个因素。</p>
+<h3>024239 (华夏全球QDII C) 操作:</h3><ol><li><b>今天不卖</b> - 大佬共识强, 暴跌后可能反弹, 满 1 月手续费 1%</li><li><b>设条件单</b> - 京东 App 里设: <span class=red>跌 -20% 强制止损</span></li><li><b>反弹 -5% 卖 1/2</b> (¥1,000) - 收回部分本金</li><li><b>涨到 0% 卖剩余</b> - 收回本金落袋</li></ol></div>
+<div class=ok><h2>📈 013841 / 012922</h2><p>金额小 (¥95 + ¥37 = ¥132), 持有观察, 不操作。每 14:30 跑 <code>daily_push_v3.py</code> 看新建议。</p></div>
+<div class=step><h2>🔧 接下来的工具</h2><ul><li><b>py -3.10 scripts/daily_push_v3.py</b> - 每日 14:30 跑, 拉真实持仓 + 输出建议</li><li><b>py -3.10 scripts/gen_html.py</b> - 生成这个 HTML</li><li><b>访问 http://127.0.0.1:3456/my_holdings.html</b> - 看这个页面 (需 dev server 运行)</li></ul></div>
+</body></html>

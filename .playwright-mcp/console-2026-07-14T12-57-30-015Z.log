@@ -1,0 +1,236 @@
+[     524ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946779, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://jdjr.jd.com/:23
+[     525ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946779, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://jdjr.jd.com/:23
+[    1004ms] [ERROR] Document policy violation: js-profiling is not allowed in this document. @ https://sgm-static.jd.com/sgm-web-4.1.3.js:0
+[    1092ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1100ms] [LOG] Vue app is being created @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [LOG] %c========== 屏幕适配信息 ========== color: #ff4144; font-size: 16px; font-weight: bold; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [TABLE] {CSS宽度 (逻辑像素): 1028px, CSS高度 (逻辑像素): 706px, 屏幕宽度: 1536px, 屏幕高度: 864px, 可用宽度: 1536px, 可用高度: 816px, 设备像素比 (DPR): 1.25, 物理宽度 (估算): 1285px, 物理高度 (估算): 883px} @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [LOG] %c📏 当前屏幕类型: 超小屏（<1280px） color: #1db270; font-size: 14px; font-weight: bold; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [LOG] %c💡 适配设计稿使用: CSS像素（逻辑像素）= 1028px color: #1890ff; font-size: 14px; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [LOG] %c⚠️  物理像素仅供参考，不用于适配 color: #faad14; font-size: 12px; @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1101ms] [LOG] ==================================
+ @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1110ms] [LOG] 分发渠道已初始化: 未知 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1110ms] [LOG] Vue app is being created @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1176ms] [LOG] unLogin changed: true @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    1179ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1180ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1180ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1198ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1199ms] [LOG] [HomeDarkMode] 系统主题监听器已初始化 @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    1261ms] [LOG] generateClientId : E8RCGpbxbkXQK2N2i4RCG43D8WHAkMXH @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1268ms] [LOG] Titlebar 已移动到 document.documentElement 下，避免受 body transform 影响 @ https://jdjr.jd.com/static/titlebar.js:207
+[    1269ms] [LOG] Titlebar 显示条件检查: {isApp: false, versionSupported: false, isOldHomePage: false, shouldShow: false} @ https://jdjr.jd.com/static/titlebar.js:65
+[    1270ms] [LOG] Titlebar 已隐藏（不满足显示条件） @ https://jdjr.jd.com/static/titlebar.js:253
+[    1270ms] [LOG] Titlebar 显示条件检查: {isApp: false, versionSupported: false, isOldHomePage: false, shouldShow: false} @ https://jdjr.jd.com/static/titlebar.js:65
+[    1568ms] [LOG] =========homePageHeadInfo========= {msg: 成功, fail: true, code: 0, data: Object, success: false} @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    1570ms] [LOG] unLogin changed: false @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    1570ms] [LOG] 用户已登录，种cookie @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    1588ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1588ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1589ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1593ms] [WARNING] Mixed Content: The page at 'https://jdjr.jd.com/' was loaded over HTTPS, but requested an insecure element 'http://storage.360buyimg.com/default.image/6a645f6465665f696d675f393836323131373632333134353935323236_big.jpg'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html @ https://jdjr.jd.com/:0
+[    1868ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1870ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1870ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1872ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1882ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946779:5
+[    1883ms] [WARNING] [H5Adapter] 页面上没有找到 iframe，主题切换未执行 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-parent.js?t=5946779:5
+[    1884ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1884ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1885ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    1885ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2477ms] [LOG] =========setCookies success========= @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    2495ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2496ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2496ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2497ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2535ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2536ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: undefined, onlyPostMessage: true} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2537ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2537ms] [LOG] [FundDetailPanel] iframe 未就绪，消息已缓存等待 READY @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2554ms] [LOG] 打开指数详情: {} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2660ms] [LOG] iframe 栈初始化成功, 标题: 指数详情 , 显示导航栏: false , showPCfund: 1 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2669ms] [LOG] 打开指数详情: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    2854ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2855ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2855ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2855ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2855ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2855ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2856ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2856ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2861ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2861ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2862ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2862ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2863ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2863ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2863ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2863ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2864ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2864ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2864ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2864ms] [WARNING] isVersionSupported: 无法获取当前版本号 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    2868ms] [LOG] 系统设置加载完成 {autoStart: false, keepRunning: true, isNew: true, mainWindow: Ctrl+Shift+Z, tray: Ctrl+Shift+D} @ https://jdjr.jd.com/release/goldpc2/js/194.2fff5ad5.js:7
+[    3391ms] [LOG] --页面加载成功-- @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    3406ms] [LOG] 点击指数: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    3407ms] [LOG] 打开指数详情: {indexCode: SH-000001, indexName: 上证指数, indexData: Proxy(Object)} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    3407ms] [LOG] 当前已是指数详情页或仅发送消息，通过 postMessage 更新数据 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    3408ms] [LOG] [FundDetailPanel] 发送 postMessage: {type: INDEX_SECTOR_SET_SYMBOL, sourceType: stock, uCode: SH-000001, symbolName: 上证指数, quoteData: Object} @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    3422ms] [LOG] window.cryptico.setPublicKeyString @ https://jdjr.jd.com/release/goldpc2/js/chunk-vendors.f97314c6.js:34
+[    3625ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: grouppc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784034152676&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    3629ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    3972ms] [LOG] initConnect======= onSuccess {msg: 订阅成功} @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    3972ms] [LOG] [SGM] [info] pc_mqtt_connected — MQTT连接成功 @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    3997ms] [LOG] [SGM] [info] pc_mqtt_msg_parsed — MQTT消息解析成功, topic=$login @ https://jdjr.jd.com/release/goldpc2/js/Index.6b9611af.js:0
+[    5370ms] [INFO] 未找到骨架屏配置，如果已经配置骨架屏，请关注最新的Api文档 @ https://show.jd.com/m/XJ1jgYewzanMvpa4/?pageKey=XJ1jgYewzanMvpa4&_t=1784034152676&parentOrigin=https%3A%2F%2Fjdjr.jd.com&channelfrom=grouppc&showPCfund=1&ua=jdjr-app:0
+[    5476ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[    5476ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[    5893ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://qidian.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[    5893ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://minner.jr.jd.com') does not match the recipient window's origin ('https://jdjr.jd.com'). @ https://qdsdk.jd.com/2.0.0/qd.js:6
+[    6267ms] [LOG] [FundDetailPanel] iframe READY，重发缓存消息: SH-000001 @ https://jdjr.jd.com/release/goldpc2/js/145.ea8796a4.js:0
+[    9126ms] [LOG] %c[H5Adapter Child]%c 脚本已加载 color: #1890ff; font-weight: bold; color: inherit; 
+- 版本: 0.1.1 
+- 环境: 生产环境 (Production) 
+- 渠道: pc 
+- 构建时间: 2026/07/07 14:09:53 
+- 当前页面: https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    9176ms] [WARNING] A preload for 'https://gias.jd.com/js/m.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[    9184ms] [WARNING] [H5Adapter] 未找到可用的主题实例，且 AutoTheme 不可用。主题切换未执行。 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[    9660ms] [LOG] 🚀 ~ created ~ this.$route: 11 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[    9683ms] [WARNING] A preload for 'https://bps.jd.com/js/ts.js' is found, but is not used because the request credentials mode does not match. Consider taking a look at crossorigin attribute. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[   10789ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10801ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10816ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10825ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10846ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10855ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10870ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10879ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10885ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10895ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10900ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10909ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10915ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10924ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10929ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10930ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10931ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10931ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10931ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10932ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   10932ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   11045ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   11047ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[   11208ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://jdjr.jd.com/:0
+[   11466ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[   11466ms] [WARNING] The deviceorientation events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[   11467ms] [ERROR] Permissions policy violation: accelerometer is not allowed in this document. @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[   11467ms] [WARNING] The devicemotion events are blocked by permissions policy. See https://go.microsoft.com/fwlink/?linkid=2047894 @ https://storage.360buyimg.com/jssss/jdjr-pc-app/script/h5-adapter-child.js:5
+[   22524ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[   22525ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[   29202ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[   29202ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  142489ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142499ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142516ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142524ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142544ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142552ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142566ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142574ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142590ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142599ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142615ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142623ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142637ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142645ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142660ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142661ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142661ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142661ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142663ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142664ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  142777ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  145133ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  145133ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  149272ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  149272ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  152482ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152492ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152499ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152508ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152525ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152533ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152539ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152547ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152570ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152578ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152594ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152603ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152619ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateData: undefined, templateExtStyle: undefined, templateId: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152628ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152645ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152645ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152645ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152646ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152646ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152646ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152647ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152775ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  152778ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155308ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155316ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155323ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155333ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155349ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155358ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155373ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155383ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155398ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155406ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155420ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155428ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155442ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155451ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155464ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155465ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155465ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155466ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155466ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155467ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155467ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155630ms] [LOG] ------------------图片加载完成 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  155801ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  155801ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  159956ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  159965ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  159969ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  159977ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  159982ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  159990ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  0 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160003ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160011ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160021ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160029ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160034ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160043ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160059ms] [LOG] --------------> {templateType: undefined, templateInstanceKey: undefined, templateExtStyle: undefined, templateData: undefined, buildCode: undefined} @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160068ms] [LOG] this.propData.templateData.userExtendInfo.livingStatus ====>  -1 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160082ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160083ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160083ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160084ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160084ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160084ms] [LOG] 使用全局缓存的Lottie动画数据 @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160085ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160085ms] [LOG] this.getTheme----- --->  light @ https://content.jr.jd.com/jrq/js/app.4d2157ae.js:0
+[  160270ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://storage.360buyimg.com/animate-assets/font/JR-Medium2024-1.otf @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  170050ms] [WARNING] The resource https://bps.jd.com/js/ts.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0
+[  170050ms] [WARNING] The resource https://gias.jd.com/js/m.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://content.jr.jd.com/jrq/#/grouppc?id=2689640&channelfrom=pc&pcSource=newTabJrq&supportDarkMode=light&componentVersions=1&t=29733897:0

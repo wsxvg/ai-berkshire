@@ -1,96 +1,81 @@
 {
   "gene": {
-    "quality_weight": 0.2416,
-    "cost_weight": 0.1932,
-    "manager_weight": 0.2094,
-    "momentum_weight": 0.1497,
-    "smart_money_weight": 0.1825,
-    "buy_threshold": 3.7104,
-    "sell_threshold": 2.9188,
-    "max_single_pct": 0.1334,
-    "cooling_days": 7,
-    "cash_reserve_pct": 0.1797
+    "quality_weight": 0.1941,
+    "cost_weight": 0.183,
+    "manager_weight": 0.1768,
+    "momentum_weight": 0.1915,
+    "smart_money_weight": 0.2472,
+    "buy_threshold": 3.5237,
+    "sell_threshold": 2.6291,
+    "max_single_pct": 0.1989,
+    "cooling_days": 5,
+    "cash_reserve_pct": 0.143
   },
-  "generation": 5,
+  "score": 2.1096,
+  "generation": 4,
   "history": [
     {
       "generation": 1,
-      "best_score": 2.191,
+      "best_score": 2.2251,
       "best_gene": {
-        "quality_weight": 0.2,
-        "cost_weight": 0.15,
-        "manager_weight": 0.15,
-        "momentum_weight": 0.25,
-        "smart_money_weight": 0.25,
-        "buy_threshold": 3.5,
-        "sell_threshold": 2.5,
-        "max_single_pct": 0.2,
-        "cooling_days": 5,
-        "cash_reserve_pct": 0.1
+        "quality_weight": 0.25,
+        "cost_weight": 0.2,
+        "manager_weight": 0.2,
+        "momentum_weight": 0.15,
+        "smart_money_weight": 0.2,
+        "buy_threshold": 4.0,
+        "sell_threshold": 3.0,
+        "max_single_pct": 0.15,
+        "cooling_days": 7,
+        "cash_reserve_pct": 0.2
       }
     },
     {
       "generation": 2,
-      "best_score": 2.1472,
+      "best_score": 2.2506,
       "best_gene": {
-        "quality_weight": 0.225,
-        "cost_weight": 0.175,
-        "manager_weight": 0.175,
-        "momentum_weight": 0.2,
-        "smart_money_weight": 0.225,
-        "buy_threshold": 3.75,
-        "sell_threshold": 2.75,
-        "max_single_pct": 0.175,
+        "quality_weight": 0.2046,
+        "cost_weight": 0.185,
+        "manager_weight": 0.191,
+        "momentum_weight": 0.184,
+        "smart_money_weight": 0.2398,
+        "buy_threshold": 3.5124,
+        "sell_threshold": 2.5164,
+        "max_single_pct": 0.1869,
         "cooling_days": 5,
-        "cash_reserve_pct": 0.15
+        "cash_reserve_pct": 0.1544
       }
     },
     {
       "generation": 3,
-      "best_score": 2.2656,
+      "best_score": 2.2909,
       "best_gene": {
-        "quality_weight": 0.2,
-        "cost_weight": 0.15,
-        "manager_weight": 0.15,
-        "momentum_weight": 0.25,
-        "smart_money_weight": 0.25,
-        "buy_threshold": 3.5,
-        "sell_threshold": 2.5,
-        "max_single_pct": 0.2,
+        "quality_weight": 0.2023,
+        "cost_weight": 0.1675,
+        "manager_weight": 0.1705,
+        "momentum_weight": 0.217,
+        "smart_money_weight": 0.2449,
+        "buy_threshold": 3.5062,
+        "sell_threshold": 2.5082,
+        "max_single_pct": 0.1935,
         "cooling_days": 5,
-        "cash_reserve_pct": 0.1
+        "cash_reserve_pct": 0.1272
       }
     },
     {
       "generation": 4,
-      "best_score": 2.2596,
+      "best_score": 2.2985,
       "best_gene": {
-        "quality_weight": 0.1969,
-        "cost_weight": 0.1477,
-        "manager_weight": 0.1922,
-        "momentum_weight": 0.2375,
-        "smart_money_weight": 0.2142,
-        "buy_threshold": 3.7283,
-        "sell_threshold": 2.4539,
-        "max_single_pct": 0.1935,
-        "cooling_days": 5,
-        "cash_reserve_pct": 0.1318
-      }
-    },
-    {
-      "generation": 5,
-      "best_score": 2.2974,
-      "best_gene": {
-        "quality_weight": 0.2178,
-        "cost_weight": 0.1644,
-        "manager_weight": 0.1494,
-        "momentum_weight": 0.2102,
-        "smart_money_weight": 0.274,
-        "buy_threshold": 4.3016,
-        "sell_threshold": 3.16,
-        "max_single_pct": 0.1828,
+        "quality_weight": 0.2341,
+        "cost_weight": 0.2107,
+        "manager_weight": 0.2462,
+        "momentum_weight": 0.1428,
+        "smart_money_weight": 0.1906,
+        "buy_threshold": 4.0851,
+        "sell_threshold": 2.4022,
+        "max_single_pct": 0.1842,
         "cooling_days": 7,
-        "cash_reserve_pct": 0.1831
+        "cash_reserve_pct": 0.2051
       }
     }
   ]

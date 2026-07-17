@@ -1,0 +1,154 @@
+{
+  "config": {
+    "start": "2026-06-13",
+    "end": "2026-07-13",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": false,
+    "use_scorer": false,
+    "tp_pct": 20.0,
+    "trail_pct": 8.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 99247.43,
+    "total_return": -0.75,
+    "annualized": -9.08,
+    "sharpe": -0.02,
+    "max_drawdown": -10.19,
+    "trading_days": 29,
+    "n_buys": 6,
+    "n_sells": 6,
+    "win_rate": 50.0,
+    "benchmark_return": 0.59,
+    "benchmark_annualized": 7.63,
+    "alpha": -16.7
+  },
+  "reason_stats": {
+    "trail_stop": {
+      "count": 6,
+      "avg_pnl": -0.31
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2026-06-13",
+        "action": "buy",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "amount": 25000.0,
+        "consensus": 2,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-13",
+        "action": "buy",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "amount": 23750.0,
+        "consensus": 1,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-13",
+        "action": "buy",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "amount": 16229.166666666666,
+        "consensus": 1,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-23",
+        "action": "buy",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "amount": 26120.607562458412,
+        "consensus": 6,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-23",
+        "action": "buy",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "amount": 24814.577184335492,
+        "consensus": 6,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-23",
+        "action": "buy",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "amount": 16956.627742629254,
+        "consensus": 5,
+        "market": "fixed",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2026-06-23",
+        "action": "sell",
+        "code": "024239",
+        "name": "华夏全球科技先锋混合(QDII)C",
+        "reason": "trail_stop",
+        "pnl_pct": 10.10339745855957,
+        "amount": 27525.849364639893
+      },
+      {
+        "date": "2026-06-23",
+        "action": "sell",
+        "code": "018147",
+        "name": "建信新兴市场混合(QDII)C",
+        "reason": "trail_stop",
+        "pnl_pct": 2.2428730635695837,
+        "amount": 24282.682352597778
+      },
+      {
+        "date": "2026-06-23",
+        "action": "sell",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "reason": "trail_stop",
+        "pnl_pct": 8.77370084269662,
+        "amount": 17653.065199262637
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "reason": "trail_stop",
+        "pnl_pct": -6.731936074374234,
+        "amount": 24362.18495911555
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "reason": "trail_stop",
+        "pnl_pct": -9.129263457530612,
+        "amount": 22549.189057305222
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "reason": "trail_stop",
+        "pnl_pct": -7.142857142857151,
+        "amount": 15745.440046727164
+      }
+    ]
+  }
+}

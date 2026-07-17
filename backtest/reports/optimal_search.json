@@ -1,0 +1,125 @@
+{
+  "results": [
+    {
+      "label": "BASELINE",
+      "ret": 13.739279999999997,
+      "ann": 5.74,
+      "dd": 4.966198841151247,
+      "sharpe": 0.55,
+      "trades": 133,
+      "cfg": {}
+    },
+    {
+      "label": "A_大仓位",
+      "ret": 19.452899999999996,
+      "ann": 8.02,
+      "dd": 8.725774274522468,
+      "sharpe": 0.59,
+      "trades": 135,
+      "cfg": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05
+      }
+    },
+    {
+      "label": "B_大仓位+tp25",
+      "ret": 19.896259999999995,
+      "ann": 8.19,
+      "dd": 9.555360080596113,
+      "sharpe": 0.43,
+      "trades": 120,
+      "cfg": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 25
+      }
+    },
+    {
+      "label": "C_大仓位+tp25+hold8",
+      "ret": 13.607610000000001,
+      "ann": 5.69,
+      "dd": 11.258198421923925,
+      "sharpe": 0.21,
+      "trades": 157,
+      "cfg": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 25,
+        "max_holdings": 8
+      }
+    },
+    {
+      "label": "D_大仓位+不避熊市",
+      "ret": 23.291899999999995,
+      "ann": 9.51,
+      "dd": 7.930619971641771,
+      "sharpe": 0.74,
+      "trades": 147,
+      "cfg": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "bear_market_no_buy": false
+      }
+    },
+    {
+      "label": "E_全方位激进",
+      "ret": 24.332119999999996,
+      "ann": 9.91,
+      "dd": 6.918082632609904,
+      "sharpe": 0.81,
+      "trades": 160,
+      "cfg": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 25,
+        "max_holdings": 8,
+        "bear_market_no_buy": false,
+        "momentum_sell": 0
+      }
+    },
+    {
+      "label": "F_适度激进",
+      "ret": 26.103949999999998,
+      "ann": 10.58,
+      "dd": 7.521974535750177,
+      "sharpe": 0.82,
+      "trades": 145,
+      "cfg": {
+        "kelly_cap": 0.4,
+        "max_position_pct": 25,
+        "cash_reserve_pct": 0.1,
+        "take_profit_pct": 25,
+        "max_holdings": 8,
+        "bear_market_no_buy": false,
+        "momentum_sell": 1.5,
+        "trailing_tp_activate": 15,
+        "trailing_tp_drawdown": 10
+      }
+    },
+    {
+      "label": "G_最大投入",
+      "ret": 8.970190000000002,
+      "ann": 3.8,
+      "dd": 8.088286536520666,
+      "sharpe": 0.15,
+      "trades": 118,
+      "cfg": {
+        "kelly_cap": 0.8,
+        "max_position_pct": 40,
+        "cash_reserve_pct": 0.03,
+        "take_profit_pct": 30,
+        "max_holdings": 10,
+        "bear_market_no_buy": false,
+        "momentum_sell": 0,
+        "trailing_tp_activate": 20,
+        "trailing_tp_drawdown": 12,
+        "min_score": 3.0
+      }
+    }
+  ]
+}

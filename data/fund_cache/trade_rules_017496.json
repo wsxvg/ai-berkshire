@@ -1,0 +1,15 @@
+{
+  "fund_code": "017496",
+  "buy_date": "07-16 15:00前",
+  "confirm_date": "07-17",
+  "manage_fee": 0.0,
+  "custody_fee": 0.0,
+  "sale_fee": 0.0,
+  "purchase_fee": 0,
+  "purchase_fee_original": 0,
+  "day_limit": 10000.0,
+  "min_purchase": 1.0,
+  "redeem_fees": [],
+  "purchase_status": "暂停申购",
+  "redeem_status": "暂停赎回"
+}

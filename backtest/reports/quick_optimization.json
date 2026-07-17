@@ -1,0 +1,231 @@
+{
+  "timestamp": "2026-07-16 18:18:25",
+  "baseline": {
+    "ret": 3.958399999999994,
+    "ann": 1.7,
+    "dd": 3.6670880296075548,
+    "sharpe": -0.26
+  },
+  "best": {
+    "label": "H1_综合优化A",
+    "ret": 25.095179999999996,
+    "ann": 10.2,
+    "dd": 7.917755339845686,
+    "sharpe": 0.63,
+    "config": {
+      "kelly_cap": 0.5,
+      "max_position_pct": 30,
+      "cash_reserve_pct": 0.05,
+      "take_profit_pct": 35,
+      "bear_market_no_buy": false
+    }
+  },
+  "all_results": [
+    {
+      "label": "D1_高凯利(0.5)",
+      "ret": 17.39484,
+      "ann": 7.2,
+      "dd": 7.9144802114941015,
+      "sharpe": 0.55,
+      "trades": 134,
+      "elapsed": 155.14183926582336,
+      "config": {
+        "kelly_cap": 0.5
+      }
+    },
+    {
+      "label": "D2_大仓位(30%)",
+      "ret": 18.66925,
+      "ann": 7.71,
+      "dd": 4.966198841151247,
+      "sharpe": 0.78,
+      "trades": 192,
+      "elapsed": 279.94750022888184,
+      "config": {
+        "max_position_pct": 30
+      }
+    },
+    {
+      "label": "D3_低现金(5%)",
+      "ret": 20.7135,
+      "ann": 8.51,
+      "dd": 5.48453388609785,
+      "sharpe": 0.81,
+      "trades": 192,
+      "elapsed": 231.26086139678955,
+      "config": {
+        "cash_reserve_pct": 0.05
+      }
+    },
+    {
+      "label": "D4_组合优化(高凯利+大仓位+低现金)",
+      "ret": 19.909750000000003,
+      "ann": 8.19,
+      "dd": 8.990118036127766,
+      "sharpe": 0.57,
+      "trades": 183,
+      "elapsed": 176.19072341918945,
+      "config": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05
+      }
+    },
+    {
+      "label": "E1_止盈25%",
+      "ret": 14.416759999999995,
+      "ann": 6.02,
+      "dd": 5.86643239340815,
+      "sharpe": 0.39,
+      "trades": 118,
+      "elapsed": 175.14086079597473,
+      "config": {
+        "take_profit_pct": 25
+      }
+    },
+    {
+      "label": "E2_止盈35%",
+      "ret": 14.738460000000005,
+      "ann": 6.15,
+      "dd": 5.869902616290283,
+      "sharpe": 0.4,
+      "trades": 108,
+      "elapsed": 197.11591839790344,
+      "config": {
+        "take_profit_pct": 35
+      }
+    },
+    {
+      "label": "E3_无止盈",
+      "ret": 15.391199999999996,
+      "ann": 6.41,
+      "dd": 6.728265029165873,
+      "sharpe": 0.33,
+      "trades": 78,
+      "elapsed": 190.97310137748718,
+      "config": {
+        "take_profit_pct": 999,
+        "profit_mode": "all"
+      }
+    },
+    {
+      "label": "F1_开启熊市买入",
+      "ret": 16.06186,
+      "ann": 6.67,
+      "dd": 4.389724503070093,
+      "sharpe": 0.68,
+      "trades": 144,
+      "elapsed": 169.59538388252258,
+      "config": {
+        "bear_market_no_buy": false
+      }
+    },
+    {
+      "label": "G1_动量崩溃1.5",
+      "ret": 4.8375399999999935,
+      "ann": 2.07,
+      "dd": 4.428479135384774,
+      "sharpe": -0.13,
+      "trades": 100,
+      "elapsed": 147.06348824501038,
+      "config": {
+        "momentum_sell": 1.5
+      }
+    },
+    {
+      "label": "G2_关闭动量崩溃",
+      "ret": 3.958399999999994,
+      "ann": 1.7,
+      "dd": 3.6670880296075548,
+      "sharpe": -0.26,
+      "trades": 92,
+      "elapsed": 137.29158401489258,
+      "config": {
+        "momentum_sell": 0
+      }
+    },
+    {
+      "label": "H1_综合优化A",
+      "ret": 25.095179999999996,
+      "ann": 10.2,
+      "dd": 7.917755339845686,
+      "sharpe": 0.63,
+      "trades": 101,
+      "elapsed": 138.55291295051575,
+      "config": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 35,
+        "bear_market_no_buy": false
+      }
+    },
+    {
+      "label": "H2_综合优化B",
+      "ret": 11.06525,
+      "ann": 4.66,
+      "dd": 6.250978950386275,
+      "sharpe": 0.32,
+      "trades": 75,
+      "elapsed": 122.08301329612732,
+      "config": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 35,
+        "momentum_sell": 0
+      }
+    },
+    {
+      "label": "H3_综合优化C",
+      "ret": 12.951419999999999,
+      "ann": 5.43,
+      "dd": 5.7307791336113505,
+      "sharpe": 0.4,
+      "trades": 80,
+      "elapsed": 108.98306202888489,
+      "config": {
+        "kelly_cap": 0.5,
+        "max_position_pct": 30,
+        "cash_reserve_pct": 0.05,
+        "take_profit_pct": 35,
+        "bear_market_no_buy": false,
+        "momentum_sell": 0
+      }
+    },
+    {
+      "label": "H4_超激进",
+      "ret": 12.904279999999998,
+      "ann": 5.41,
+      "dd": 4.6329724952998275,
+      "sharpe": 0.46,
+      "trades": 70,
+      "elapsed": 105.14066433906555,
+      "config": {
+        "kelly_cap": 0.7,
+        "max_position_pct": 35,
+        "cash_reserve_pct": 0.03,
+        "take_profit_pct": 40,
+        "bear_market_no_buy": false,
+        "momentum_sell": 0
+      }
+    },
+    {
+      "label": "H5_平衡",
+      "ret": 24.177369999999996,
+      "ann": 9.85,
+      "dd": 7.695790370489037,
+      "sharpe": 0.63,
+      "trades": 100,
+      "elapsed": 127.30865263938904,
+      "config": {
+        "kelly_cap": 0.4,
+        "max_position_pct": 25,
+        "cash_reserve_pct": 0.08,
+        "take_profit_pct": 30,
+        "bear_market_no_buy": false,
+        "momentum_sell": 1.8
+      }
+    }
+  ]
+}

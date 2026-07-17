@@ -1,0 +1,135 @@
+{
+  "config": {
+    "start": "2024-09-01",
+    "end": "2024-11-30",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": true,
+    "use_scorer": true,
+    "tp_pct": 20.0,
+    "trail_pct": 8.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 101131.75,
+    "total_return": 1.13,
+    "annualized": 4.67,
+    "sharpe": 0.47,
+    "max_drawdown": -4.95,
+    "trading_days": 90,
+    "n_buys": 6,
+    "n_sells": 3,
+    "win_rate": 33.3,
+    "benchmark_return": 16.78,
+    "benchmark_annualized": 87.67,
+    "alpha": -83.0
+  },
+  "reason_stats": {
+    "take_profit": {
+      "count": 1,
+      "avg_pnl": 23.94
+    },
+    "trail_stop": {
+      "count": 1,
+      "avg_pnl": -3.89
+    },
+    "stop_loss": {
+      "count": 1,
+      "avg_pnl": -13.03
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2024-11-01",
+        "action": "buy",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "amount": 15000.0,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2024-11-08",
+        "action": "buy",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "amount": 15335.316217908578,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2024-11-12",
+        "action": "buy",
+        "code": "022365",
+        "name": "永赢科技智选混合发起C",
+        "amount": 15621.06110000189,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2024-11-13",
+        "action": "buy",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "amount": 15631.429873505132,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2024-11-15",
+        "action": "buy",
+        "code": "017811",
+        "name": "东方人工智能主题混合C",
+        "amount": 15054.762529639498,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      },
+      {
+        "date": "2024-11-28",
+        "action": "buy",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "amount": 15017.20906645968,
+        "consensus": 1,
+        "market": "bull",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2024-11-11",
+        "action": "sell",
+        "code": "005629",
+        "name": "汇安趋势动力股票C",
+        "reason": "take_profit",
+        "pnl_pct": 23.937740406118625,
+        "amount": 18590.66106091779
+      },
+      {
+        "date": "2024-11-15",
+        "action": "sell",
+        "code": "008888",
+        "name": "华夏国证半导体芯片ETF联接C",
+        "reason": "trail_stop",
+        "pnl_pct": -3.8887895583765486,
+        "amount": 14738.958042082524
+      },
+      {
+        "date": "2024-11-18",
+        "action": "sell",
+        "code": "015968",
+        "name": "永赢半导体产业智选混合发起C",
+        "reason": "stop_loss",
+        "pnl_pct": -13.029760382024392,
+        "amount": 13594.692016703235
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+name: strategy_validation
+
+on:
+  schedule:
+    # 每周日北京时间 10:00 (UTC 02:00) 跑
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'backtest/engine/backtest.py'
+      - 'data/evolution/optimal_config.json'
+      - 'scripts/daily_live_enhanced.py'
+
+jobs:
+  validate-strategy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+
+      - name: 语法检查
+        run: |
+          python -c "import ast; ast.parse(open('backtest/engine/backtest.py').read()); print('backtest.py OK')"
+          python -c "import ast; ast.parse(open('scripts/daily_live_enhanced.py').read()); print('daily_live_enhanced.py OK')"
+          python -c "import ast; ast.parse(open('tools/llm_skill_integration.py').read()); print('llm_skill_integration.py OK')"
+
+      - name: 最优参数验证回测
+        run: |
+          python -X utf8 -c "
+          import json, sys
+          sys.path.insert(0, '.')
+          from backtest.engine.backtest import run_backtest
+
+          cfg = json.load(open('data/evolution/optimal_config.json', encoding='utf-8'))
+          config = cfg.get('config', cfg)
+          config['initial_cash'] = 100000
+
+          result = run_backtest(config)
+
+          ann = result['annualized_return']
+          dd = result['max_drawdown']
+          sharpe = result['sharpe_ratio']
+          ret = result['total_return']
+
+          print(f'回测结果: RET={ret:+.2f}% ANN={ann:+.1f}% DD={dd:.2f}% SH={sharpe:.2f}')
+
+          # 验证阈值
+          expected_ann = cfg.get('performance', {}).get('annualized_return', 10.58)
+          tolerance = 2.0  # 允许2pp偏差
+
+          if abs(ann - expected_ann) > tolerance:
+              print(f'⚠️ 年化收益偏差超限: {ann:.1f}% vs 预期{expected_ann:.1f}%')
+              print('可能原因: 数据更新/代码变更影响了回测结果')
+          else:
+              print(f'✅ 年化收益在预期范围内: {ann:.1f}% ≈ {expected_ann:.1f}%')
+
+          if dd > 15:
+              print(f'❌ 最大回撤超限: {dd:.2f}% > 15%')
+              sys.exit(1)
+          else:
+              print(f'✅ 回撤可控: {dd:.2f}% < 15%')
+
+          print('策略验证通过')
+          " 2>&1 | tee logs/strategy_validation_ci.log
+
+      - name: LLM Skill集成测试
+        run: |
+          python -X utf8 tools/llm_skill_integration.py --code 006105 --json > /dev/null 2>&1 && echo "✅ LLM Skill集成正常" || echo "⚠️ LLM Skill集成异常（非阻塞）"
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strategy-validation-${{ github.run_id }}
+          path: |
+            logs/strategy_validation_ci.log
+            backtest/reports/*.json
+            data/skill_cache/

@@ -1,0 +1,28 @@
+{
+  "date": "2026-04-17",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [],
+  "buy_recommendations": [],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1048.31,
+      "pnl_pct": 4.83
+    },
+    "016664": {
+      "name": "天弘全球高端制造混合(QDII)A",
+      "cost": 100.0,
+      "market_value": 103.65,
+      "pnl_pct": 3.65
+    }
+  },
+  "portfolio": {
+    "total_value": 100051.97,
+    "cash": 98900.0,
+    "fees": 1.5
+  }
+}

@@ -1,0 +1,11 @@
+=== start ===
+imported
+returned: dict
+keys: ['holdings', 'raw']
+count: 3
+  024239 | 华夏全球科技先锋混合(QDII)C | amt=2,091.39 | rate=-16.34%
+  013841 | 银华集成电路混合C | amt=95.00 | rate=-5.00%
+  012922 | 易方达全球成长精选混合(QDII)C | amt=37.27 | rate=-6.83%
+rd keys: ['msg', 'fail', 'code', 'data', 'success']
+rd: {'msg': '成功', 'fail': True, 'code': 0, 'data': {'userInfo': {'userAvatar': 'http://storage.360buyimg.com/default.image/6a645f6465665f696d675f393836323131373632333134353935323236_big.jpg', 'jumpData': {'jumpType': '7', 'jumpUrl': 'https://roma.jd.com/content/personal?romaFileName=pageCommunityPersonal&contentId=null'}, 'userName': {'textColor': '#333333', 'text': 'jd_9b2u5ec8t4pmtb'}, 'isSelf': True}, 'tabInfo': {'tabList': [{'openStatus': 0, 'trackData': {'paramJson': '{"isSelf":true}', 'bid': '
+=== end ===

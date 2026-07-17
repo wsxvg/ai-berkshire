@@ -1,0 +1,86 @@
+{
+  "P678": [
+    {
+      "name": "champion+atr",
+      "group": "P6_ATR",
+      "return": 118.43,
+      "dd": 8.52,
+      "trades": 328,
+      "time_sec": 128.0
+    },
+    {
+      "name": "champion+hedge",
+      "group": "P7_Hedge",
+      "return": 58.12,
+      "dd": 8.75,
+      "trades": 403,
+      "time_sec": 130.0
+    },
+    {
+      "name": "champion+quality",
+      "group": "P8_Quality",
+      "return": 57.86,
+      "dd": 8.75,
+      "trades": 397,
+      "time_sec": 150.0
+    },
+    {
+      "name": "champion+dyn_sl",
+      "group": "P5.1_DynSL",
+      "return": 61.05,
+      "dd": 8.45,
+      "trades": 405,
+      "time_sec": 136.0
+    },
+    {
+      "name": "champion+all_ext",
+      "group": "P678_All",
+      "return": 121.26,
+      "dd": 8.47,
+      "trades": 332,
+      "time_sec": 146.0
+    }
+  ],
+  "P9": [
+    {
+      "name": "champion_2025only",
+      "group": "P9.1_2025年",
+      "return": 14.01,
+      "dd": 8.75,
+      "trades": 179,
+      "time_sec": 86.0
+    },
+    {
+      "name": "baseline_2025only",
+      "group": "P9.1_2025年",
+      "return": 14.54,
+      "dd": 9.0,
+      "trades": 209,
+      "time_sec": 100.0
+    },
+    {
+      "name": "champion_for_winner_removal",
+      "group": "P9.2_去赢家",
+      "return": 58.12,
+      "dd": 8.75,
+      "trades": 403,
+      "time_sec": 187.0
+    },
+    {
+      "name": "champion_2025Q1Q2",
+      "group": "P9.3_温和市场",
+      "return": 0.17,
+      "dd": 3.11,
+      "trades": 54,
+      "time_sec": 33.0
+    },
+    {
+      "name": "baseline_2025Q1Q2",
+      "group": "P9.3_温和市场",
+      "return": -0.05,
+      "dd": 3.52,
+      "trades": 58,
+      "time_sec": 34.0
+    }
+  ]
+}

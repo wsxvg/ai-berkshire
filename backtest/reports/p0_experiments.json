@@ -1,0 +1,74 @@
+[
+  {
+    "name": "TOP_35",
+    "group": "P0.1_梯度补测",
+    "return": 63.5,
+    "dd": 9.55,
+    "trades": 492,
+    "time_sec": 180.0
+  },
+  {
+    "name": "TOP_45",
+    "group": "P0.1_梯度补测",
+    "return": 63.76,
+    "dd": 9.51,
+    "trades": 561,
+    "time_sec": 200.0
+  },
+  {
+    "name": "K_active_only",
+    "group": "P0.2_组件隔离",
+    "return": 56.84,
+    "dd": 9.4,
+    "trades": 426,
+    "time_sec": 154.0
+  },
+  {
+    "name": "K_sec40_only",
+    "group": "P0.2_组件隔离",
+    "return": 62.65,
+    "dd": 9.88,
+    "trades": 591,
+    "time_sec": 166.0
+  },
+  {
+    "name": "K_active+sec40",
+    "group": "P0.2_组件隔离",
+    "return": 56.1,
+    "dd": 8.75,
+    "trades": 415,
+    "time_sec": 159.0
+  },
+  {
+    "name": "TOP30_sec40",
+    "group": "P0.2_组件隔离",
+    "return": 61.47,
+    "dd": 9.61,
+    "trades": 455,
+    "time_sec": 129.0
+  },
+  {
+    "name": "TOP60_sec40",
+    "group": "P0.2_组件隔离",
+    "return": 66.2,
+    "dd": 9.0,
+    "trades": 549,
+    "time_sec": 165.0
+  },
+  {
+    "name": "TOP60_active",
+    "group": "P0.2_组件隔离",
+    "return": 56.93,
+    "dd": 9.4,
+    "trades": 417,
+    "time_sec": 165.0
+  },
+  {
+    "name": "TOP60_active+sec40",
+    "group": "P0.2_组件隔离",
+    "return": 58.12,
+    "dd": 8.75,
+    "trades": 403,
+    "time_sec": 167.0
+  }
+]

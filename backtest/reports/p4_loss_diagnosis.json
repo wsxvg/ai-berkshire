@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-07-17T10:48:42.499528",
+  "full_period": {
+    "return": 57.9701,
+    "dd": 12.400779299922755,
+    "trades": 437
+  },
+  "first_half": {
+    "return": 15.247000000000007,
+    "dd": 8.430588327656077,
+    "trades": 89,
+    "annualized": 14.62,
+    "sharpe": 0
+  },
+  "second_half": {
+    "return": 40.8758,
+    "dd": 12.622634799371513,
+    "trades": 323,
+    "annualized": 45.1,
+    "sharpe": 0
+  },
+  "bear_no_buy": {
+    "return": 50.7757,
+    "dd": 13.330084480503787,
+    "trades": 427,
+    "diff_vs_base": -7.194400000000002
+  }
+}

@@ -123,7 +123,7 @@ def duanyongping_tag(code, holdings_data, profiles, akshare_holdings=None):
                         return (chr(0x1f7e1) + " 高周期暴露", f"持仓{bad_pct:.0f}%是周期/地产/大宗（{stocks_str}）", "yellow")
                     else:
                         return (chr(0x26aa) + " 混合型", f"无明显倾向（{stocks_str}）", "gray")
-    except:
+    except Exception:
         pass
 
     # Fallback to JD Finance data
@@ -138,7 +138,7 @@ def duanyongping_tag(code, holdings_data, profiles, akshare_holdings=None):
             months_lag = (now - rpt).days / 30
             if months_lag > 2:
                 return (chr(0x26a0) + " 数据滞后", f"持仓数据是{months_lag:.0f}个月前（{report_date[:10]}），可能已调仓", "gray")
-        except:
+        except (ValueError, TypeError):
             pass
     if not stocks:
         return (chr(0x26aa) + " 数据不足", "无持仓穿透数据", "gray")
@@ -165,11 +165,11 @@ def buffett_tag(code, rules):
     r = rules.get(code, {})
     try:
         mf = float(r.get("manage_fee", 1.2))
-    except:
+    except (ValueError, TypeError):
         mf = 1.2
     try:
         pf = float(r.get("purchase_fee", 0.15))
-    except:
+    except (ValueError, TypeError):
         pf = 0.15
     is_c_class = "C" in str(r.get("fund_code", ""))
 
@@ -244,7 +244,7 @@ def lilu_tag(code, managers, akshare_mgr=None):
             tenure = float(m.get("tenure_years", 0))
             if tenure > max_tenure:
                 max_tenure = tenure
-        except:
+        except (ValueError, TypeError):
             pass
 
     if max_tenure >= 8:
@@ -272,7 +272,7 @@ def load_akshare_managers(codes):
         if datetime.now() - mtime < timedelta(hours=24):
             try:
                 return json.loads(cache_path.read_text("utf-8"))
-            except:
+            except (json.JSONDecodeError, OSError):
                 pass
     try:
         df = ak.fund_manager_em()
@@ -293,7 +293,7 @@ def load_akshare_managers(codes):
         # Save to cache
         try:
             cache_path.write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
-        except:
+        except OSError:
             pass
         return result
     except Exception as e:
@@ -340,9 +340,9 @@ def analyze(code, name, fund_charts, rules, holdings_data, profiles, managers, s
                 df = ak.fund_portfolio_hold_em(symbol=c, date="2026")
                 if df is not None and not df.empty:
                     akshare_holdings[c] = df
-            except:
+            except Exception:
                 pass
-    except:
+    except Exception:
         pass
 
     tags["段永平"] = duanyongping_tag(code, holdings_data, profiles, akshare_holdings)

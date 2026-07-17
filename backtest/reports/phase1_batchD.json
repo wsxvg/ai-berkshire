@@ -1,0 +1,115 @@
+{
+  "batch": "D",
+  "results": [
+    {
+      "uid": "3642504",
+      "input_trades": 3734,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 3.8
+    },
+    {
+      "uid": "11832508",
+      "input_trades": 3591,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 3.6
+    },
+    {
+      "uid": "14345330",
+      "input_trades": 3577,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 3.0
+    },
+    {
+      "uid": "3748946",
+      "input_trades": 3156,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 4.1
+    },
+    {
+      "uid": "10597647",
+      "input_trades": 3018,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 4.8
+    },
+    {
+      "uid": "9914015",
+      "input_trades": 2648,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 4.0
+    },
+    {
+      "uid": "11768823",
+      "input_trades": 2095,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 4.3
+    },
+    {
+      "uid": "92408",
+      "input_trades": 1484,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 3.9
+    },
+    {
+      "uid": "16020895",
+      "input_trades": 1419,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 3.9
+    },
+    {
+      "uid": "11953905",
+      "input_trades": 1327,
+      "return": 0.0,
+      "annualized": 0.0,
+      "dd": 0,
+      "sharpe": 0.0,
+      "calmar": 0.0,
+      "trades": 0,
+      "elapsed": 4.1
+    }
+  ]
+}

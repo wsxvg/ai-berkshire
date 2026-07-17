@@ -119,6 +119,83 @@ def compute_bollinger_bands(nav_values: List[float],
     return (upper, middle, lower, pct_b)
 
 
+def compute_atr(nav_values: List[float], period: int = 14) -> float:
+    """计算 ATR (Average True Range) — 真实波幅均值。
+
+    ATR 是衡量波动率的标准指标，常用于：
+    - 仓位管理：高 ATR → 小仓位（防止单日大幅亏损）
+    - 止损设置：止损 = 当前价 - k * ATR
+    - 趋势强度：ATR 上升表示趋势增强
+
+    简化版本（场外基金场景用日收益率代替真实波幅）：
+    - TR = |今日净值 - 昨日净值| （基金无跳空缺口，无需 max(HL-C, ...) 形式）
+    - ATR = TR 的 period 日简单平均
+
+    Args:
+        nav_values: 净值序列（已转换自累计收益率%）
+        period: 周期，默认 14
+
+    Returns:
+        float: ATR 净值单位。例如 ATR=0.02 表示日均波动 2%
+    """
+    if len(nav_values) < period + 1:
+        return 0.0
+
+    trs = []
+    for i in range(1, len(nav_values)):
+        trs.append(abs(nav_values[i] - nav_values[i - 1]))
+
+    # 取最近 period 个 TR 的平均
+    recent_trs = trs[-period:]
+    return sum(recent_trs) / len(recent_trs) if recent_trs else 0.0
+
+
+def compute_atr_pct(nav_values: List[float], period: int = 14) -> float:
+    """计算 ATR 占当前净值的百分比（便于跨基金比较）。
+
+    Returns:
+        float: 例如 0.015 表示日均波动 1.5%
+    """
+    atr = compute_atr(nav_values, period)
+    if not nav_values or nav_values[-1] <= 0:
+        return 0.0
+    return atr / nav_values[-1]
+
+
+def atr_position_size(available_cash: float, atr_pct: float,
+                      target_daily_risk: float = 0.005,
+                      baseline_atr: float = 0.015) -> float:
+    """基于 ATR 的仓位计算（波动率倒数加权）。
+
+    原理（风险平价思想）：
+    - 每只基金每天损失不应超过 target_daily_risk
+    - 高波动基金（高 ATR）应配小仓位
+    - 低波动基金（低 ATR）应配大仓位
+    - 仓位 = (target_daily_risk / ATR_pct) * 可用资金
+
+    与 baseline_atr 的比值作为调整因子：
+    - ATR == baseline → 调整因子 = 1.0
+    - ATR > baseline  → 调整因子 < 1.0（减仓）
+    - ATR < baseline  → 调整因子 > 1.0（加仓）
+
+    Args:
+        available_cash: 可用资金
+        atr_pct: 当前 ATR 占净值百分比
+        target_daily_risk: 目标日损失占总资金比例（默认 0.5%）
+        baseline_atr: 基准 ATR（用于归一化），默认 1.5%
+
+    Returns:
+        float: 建议买入金额
+    """
+    if atr_pct <= 0:
+        return available_cash * 0.1  # 兜底
+    # 基础仓位：让该基金 1 日损失 = target_daily_risk
+    base_size = (target_daily_risk / atr_pct) * available_cash
+    # 归一化因子：以 baseline_atr 为基准
+    norm_factor = baseline_atr / atr_pct
+    return base_size * norm_factor
+
+
 def ma_crossover_signal(nav_values: List[float],
                         short_period: int = 20, long_period: int = 60) -> int:
     """均线交叉信号。

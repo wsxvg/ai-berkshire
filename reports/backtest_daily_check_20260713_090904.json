@@ -1,0 +1,45 @@
+{
+  "config": {
+    "start_date": "2024-06-01",
+    "end_date": "2026-06-01",
+    "initial_cash": 100000,
+    "max_holdings": 5,
+    "min_buyers": 2,
+    "require_industry_low": false
+  },
+  "result": {
+    "final_value": 6305.09,
+    "total_return": -93.69,
+    "annualized": -74.91,
+    "sharpe": -0.44,
+    "max_drawdown": -95.02,
+    "trading_days": 730,
+    "n_buys": 2,
+    "n_sells": 0,
+    "win_rate": 0,
+    "benchmark_return": 143.29,
+    "benchmark_annualized": 56.03,
+    "alpha": -130.94
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2024-06-01",
+        "action": "buy",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "amount": 95000.0,
+        "consensus": 2
+      },
+      {
+        "date": "2024-06-02",
+        "action": "buy",
+        "code": "012920",
+        "name": "易方达全球成长精选混合(QDII)A",
+        "amount": 4750.0,
+        "consensus": 2
+      }
+    ],
+    "sells": []
+  }
+}

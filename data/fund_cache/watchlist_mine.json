@@ -1,0 +1,206 @@
+{
+  "groups": [
+    {
+      "group_name": "全部",
+      "group_id": 1324196,
+      "count": 0
+    },
+    {
+      "group_name": "持有",
+      "group_id": 1324197,
+      "count": 0
+    },
+    {
+      "group_name": "进阶",
+      "group_id": 1324198,
+      "count": 0
+    },
+    {
+      "group_name": "稳健",
+      "group_id": 1324199,
+      "count": 0
+    },
+    {
+      "group_name": "指数",
+      "group_id": 1324200,
+      "count": 0
+    },
+    {
+      "group_name": "全球",
+      "group_id": 1324201,
+      "count": 0
+    }
+  ],
+  "funds": [
+    {
+      "fund_code": "013841",
+      "fund_name": "银华集成电路混合C",
+      "fund_type": "混合型",
+      "latest_nav": "3.2797",
+      "day_return": -5.83,
+      "week_return": -17.41,
+      "month_return": 19.52,
+      "year_return": 228.82,
+      "total_pnl_pct": -17.78,
+      "fund_id": "114880",
+      "url": "https://fund.jd.com/detail/114880.htm"
+    },
+    {
+      "fund_code": "024663",
+      "fund_name": "富国创业板人工智能ETF发起式联接C",
+      "fund_type": "指数型",
+      "latest_nav": "2.0482",
+      "day_return": -2.7,
+      "week_return": -8.78,
+      "month_return": -9.6,
+      "year_return": 104.82,
+      "total_pnl_pct": -12.25,
+      "fund_id": "1024663",
+      "url": "https://fund.jd.com/detail/1024663.htm"
+    },
+    {
+      "fund_code": "024239",
+      "fund_name": "华夏全球科技先锋混合(QDII)C",
+      "fund_type": "QDII",
+      "latest_nav": "3.1482",
+      "day_return": -2.84,
+      "week_return": -5.04,
+      "month_return": -17.74,
+      "year_return": 64.72,
+      "total_pnl_pct": -19.15,
+      "fund_id": "1024239",
+      "url": "https://fund.jd.com/detail/1024239.htm"
+    },
+    {
+      "fund_code": "016664",
+      "fund_name": "天弘全球高端制造混合(QDII)A",
+      "fund_type": "QDII",
+      "latest_nav": "3.1753",
+      "day_return": -1.92,
+      "week_return": -2.74,
+      "month_return": -12.6,
+      "year_return": 138.15,
+      "total_pnl_pct": -15.03,
+      "fund_id": "1016664",
+      "url": "https://fund.jd.com/detail/1016664.htm"
+    },
+    {
+      "fund_code": "012922",
+      "fund_name": "易方达全球成长精选混合(QDII)C",
+      "fund_type": "QDII",
+      "latest_nav": "4.2954",
+      "day_return": -0.75,
+      "week_return": -1.28,
+      "month_return": -10.57,
+      "year_return": 155.34,
+      "total_pnl_pct": -11.28,
+      "fund_id": "1012922",
+      "url": "https://fund.jd.com/detail/1012922.htm"
+    },
+    {
+      "fund_code": "012920",
+      "fund_name": "易方达全球成长精选混合(QDII)A",
+      "fund_type": "QDII",
+      "latest_nav": "4.3805",
+      "day_return": -0.75,
+      "week_return": -1.27,
+      "month_return": -10.53,
+      "year_return": 156.56,
+      "total_pnl_pct": 11.12,
+      "fund_id": "1012920",
+      "url": "https://fund.jd.com/detail/1012920.htm"
+    },
+    {
+      "fund_code": "021842",
+      "fund_name": "国富全球科技互联混合(QDII)人民币C",
+      "fund_type": "混合型",
+      "latest_nav": "7.1806",
+      "day_return": -1.63,
+      "week_return": -0.17,
+      "month_return": -10.13,
+      "year_return": 88.38,
+      "total_pnl_pct": 1.98,
+      "fund_id": "1021842",
+      "url": "https://fund.jd.com/detail/1021842.htm"
+    },
+    {
+      "fund_code": "008254",
+      "fund_name": "华宝致远混合C",
+      "fund_type": "QDII",
+      "latest_nav": "1.8438",
+      "day_return": -1.71,
+      "week_return": -1.55,
+      "month_return": -13.97,
+      "year_return": 64.52,
+      "total_pnl_pct": -2.29,
+      "fund_id": "110356",
+      "url": "https://fund.jd.com/detail/110356.htm"
+    },
+    {
+      "fund_code": "022184",
+      "fund_name": "富国全球科技互联网股票(QDII)C",
+      "fund_type": "QDII",
+      "latest_nav": "5.6886",
+      "day_return": 0.46,
+      "week_return": -1.48,
+      "month_return": -8.14,
+      "year_return": 85.82,
+      "total_pnl_pct": 10.2,
+      "fund_id": "1022184",
+      "url": "https://fund.jd.com/detail/1022184.htm"
+    },
+    {
+      "fund_code": "501226",
+      "fund_name": "长城全球新能源车股票发起式(QDII)A",
+      "fund_type": "QDII",
+      "latest_nav": "2.7731",
+      "day_return": -0.56,
+      "week_return": 0.4,
+      "month_return": -6.95,
+      "year_return": 69.29,
+      "total_pnl_pct": 4.09,
+      "fund_id": "1501226",
+      "url": "https://fund.jd.com/detail/1501226.htm"
+    },
+    {
+      "fund_code": "539002",
+      "fund_name": "建信新兴市场混合(QDII)A",
+      "fund_type": "QDII",
+      "latest_nav": "2.4500",
+      "day_return": -0.97,
+      "week_return": -0.65,
+      "month_return": -11.52,
+      "year_return": 108.16,
+      "total_pnl_pct": 5.6,
+      "fund_id": "106151",
+      "url": "https://fund.jd.com/detail/106151.htm"
+    },
+    {
+      "fund_code": "017731",
+      "fund_name": "嘉实全球产业升级股票发起式(QDII)C",
+      "fund_type": "QDII",
+      "latest_nav": "4.3746",
+      "day_return": -2.55,
+      "week_return": -2.21,
+      "month_return": -0.91,
+      "year_return": 134.2,
+      "total_pnl_pct": 17.58,
+      "fund_id": "1017731",
+      "url": "https://fund.jd.com/detail/1017731.htm"
+    },
+    {
+      "fund_code": "018147",
+      "fund_name": "建信新兴市场混合(QDII)C",
+      "fund_type": "混合型",
+      "latest_nav": "2.4110",
+      "day_return": -0.99,
+      "week_return": -0.66,
+      "month_return": -11.56,
+      "year_return": 107.13,
+      "total_pnl_pct": 5.51,
+      "fund_id": "1018147",
+      "url": "https://fund.jd.com/detail/1018147.htm"
+    }
+  ],
+  "total_count": 13
+}

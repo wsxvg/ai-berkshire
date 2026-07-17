@@ -2,6 +2,13 @@
 from __future__ import annotations
 from scripts.pipeline.engine import PipelineEngine, PipelineTask
 
+try:
+    from tools.logutil import get_logger
+except Exception:
+    from logutil import get_logger
+
+_logger = get_logger("pipeline.auth")
+
 
 @PipelineEngine.register
 class TaskAuth(PipelineTask):
@@ -16,6 +23,6 @@ class TaskAuth(PipelineTask):
         cookies = _ensure_cookies(offline=offline)
         cookie_ok = _verify_cookies(cookies) if cookies else False
         msg = "[OK]" if cookie_ok else "[--]"
-        print(f"  Auth: {msg} (cookies={bool(cookies)})")
+        _logger.info(f"Auth: {msg} (cookies={bool(cookies)})")
 
         return {"cookies": cookies, "cookie_ok": cookie_ok, "cookie_msg": msg}

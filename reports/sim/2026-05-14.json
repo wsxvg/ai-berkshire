@@ -1,0 +1,34 @@
+{
+  "date": "2026-05-14",
+  "market": "neutral",
+  "min_score": 2.5,
+  "candidates_top5": [],
+  "buy_recommendations": [],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost": 1000.0,
+      "market_value": 1241.02,
+      "pnl_pct": 24.1
+    },
+    "016664": {
+      "name": "天弘全球高端制造混合(QDII)A",
+      "cost": 100.0,
+      "market_value": 130.18,
+      "pnl_pct": 30.18
+    },
+    "013841": {
+      "name": "银华集成电路混合C",
+      "cost": 17800,
+      "market_value": 20719.13,
+      "pnl_pct": 16.4
+    }
+  },
+  "portfolio": {
+    "total_value": 103190.33,
+    "cash": 81100.0,
+    "fees": 1.5
+  }
+}

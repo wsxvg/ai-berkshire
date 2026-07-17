@@ -1,0 +1,33 @@
+{
+  "created": "2026-04-13",
+  "initial_cash": 100000,
+  "cash": 100000,
+  "total_fees": 0,
+  "holdings": {},
+  "pending": [],
+  "history": [],
+  "snapshots": [
+    {
+      "date": "2026-04-13",
+      "total_value": 100000,
+      "cash": 100000,
+      "holdings": 0,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-14",
+      "total_value": 100000,
+      "cash": 100000,
+      "holdings": 0,
+      "pending": 0
+    },
+    {
+      "date": "2026-04-13",
+      "total_value": 100000,
+      "cash": 100000,
+      "holdings": 0,
+      "pending": 0
+    }
+  ],
+  "sell_history": {}
+}

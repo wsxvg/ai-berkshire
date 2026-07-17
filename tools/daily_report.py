@@ -22,7 +22,7 @@ def calculate_strategy_drift(holdings_data):
                 mv = amt + profit
                 total += mv
                 holdings.append({"code": h.get("code",""), "name": h.get("name","?"), "market_value": max(mv, 0)})
-            except:
+            except (ValueError, TypeError):
                 pass
     
     if total == 0 or not holdings:

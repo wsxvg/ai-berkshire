@@ -1,0 +1,250 @@
+{
+  "created": "2026-05-31",
+  "initial_cash": 100000,
+  "cash": 66100.0,
+  "total_fees": 76.5,
+  "holdings": {
+    "024663": {
+      "name": "富国创业板人工智能ETF发起式联接C",
+      "cost_basis": 17700,
+      "market_value": 19378.81,
+      "buy_date": "2026-06-01",
+      "buy_score": 3.0,
+      "pnl_pct": 9.48
+    },
+    "501226": {
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "cost_basis": 500.0,
+      "market_value": 536.71,
+      "buy_date": "2026-06-01",
+      "buy_score": 3.0,
+      "pnl_pct": 7.34
+    },
+    "016664": {
+      "name": "天弘全球高端制造混合(QDII)A",
+      "cost_basis": 100.0,
+      "market_value": 113.95,
+      "buy_date": "2026-06-01",
+      "buy_score": 3.0,
+      "pnl_pct": 13.95
+    },
+    "024239": {
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "cost_basis": 1000.0,
+      "market_value": 1162.13,
+      "buy_date": "2026-06-01",
+      "buy_score": 3.0,
+      "pnl_pct": 16.21
+    },
+    "017731": {
+      "name": "嘉实全球产业升级股票发起式(QDII)C",
+      "cost_basis": 100.0,
+      "market_value": 124.01,
+      "buy_date": "2026-06-01",
+      "buy_score": 3.0,
+      "pnl_pct": 24.01
+    },
+    "013841": {
+      "name": "银华集成电路混合C",
+      "cost_basis": 14500,
+      "market_value": 22933.2,
+      "buy_date": "2026-06-02",
+      "buy_score": 3.0,
+      "pnl_pct": 58.16
+    }
+  },
+  "pending": [],
+  "history": [],
+  "snapshots": [
+    {
+      "date": "2026-06-01",
+      "total_value": 100000.0,
+      "cash": 80600.0,
+      "holdings": 0,
+      "pending": 5
+    },
+    {
+      "date": "2026-06-02",
+      "total_value": 100618.64,
+      "cash": 66100.0,
+      "holdings": 1,
+      "pending": 5
+    },
+    {
+      "date": "2026-06-03",
+      "total_value": 101712.39,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-04",
+      "total_value": 101869.92,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-05",
+      "total_value": 100306.79,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-08",
+      "total_value": 99084.58,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-09",
+      "total_value": 100676.78,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-10",
+      "total_value": 100056.64,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-11",
+      "total_value": 100182.94,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-12",
+      "total_value": 100242.31,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-15",
+      "total_value": 102316.53,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-16",
+      "total_value": 102558.06,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-17",
+      "total_value": 104038.8,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-18",
+      "total_value": 105148.65,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-19",
+      "total_value": 105148.65,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-22",
+      "total_value": 105919.99,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-23",
+      "total_value": 105144.48,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-24",
+      "total_value": 106965.43,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-25",
+      "total_value": 108241.86,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-26",
+      "total_value": 107809.89,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-29",
+      "total_value": 109227.22,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-06-30",
+      "total_value": 111034.49,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-01",
+      "total_value": 110348.81,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-11",
+      "total_value": 110348.81,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-11",
+      "total_value": 110348.81,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-11",
+      "total_value": 110348.81,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-11",
+      "total_value": 110348.81,
+      "cash": 66100.0,
+      "holdings": 6,
+      "pending": 0
+    }
+  ],
+  "sell_history": {}
+}

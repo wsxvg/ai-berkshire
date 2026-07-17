@@ -1,0 +1,3 @@
+@echo off
+cd /d C:\??\A??\??\fund-ui
+npm run dev

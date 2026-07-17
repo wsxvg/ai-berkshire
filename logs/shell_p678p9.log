@@ -1,0 +1,2258 @@
+
+############################################################
+# 开始 P678_拓展方向
+############################################################
+
+============================================================
+  [RUN] champion+atr (P6_ATR)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.6s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=6703
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=10065
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=9512
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=11240
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=12282
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=10236
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=8604
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=8933
+  progress: 2025-03-26 (61/494)
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=13203
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=429
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=12260
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=2223
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=10405
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=10319
+  progress: 2025-06-05 (121/494)
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=8724
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4439
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=560
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=276
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=139
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=4122
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=8765
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=7644
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=9720
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=8345
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4414
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=9777
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=8557
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=4414
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=9777
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=8557
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=4556
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=10204
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=8901
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4368
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=9616
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=8501
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=8623
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4112
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=8961
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8113
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4351
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=9691
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8442
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4351
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=9691
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8442
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=8442
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=8206
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=8911
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=8172
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=4328
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=9420
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=8467
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=2313
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=10386
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8987
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1173
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=10096
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=10096
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=10096
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=62.0% amt=145
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=9881
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=8879
+  progress: 2025-09-17 (221/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=10006
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=8912
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=10053
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=8985
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=10280
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=9110
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5154
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4601
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2577
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2300
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=1288
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=1150
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=654
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=585
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=325
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.5% amt=158
+  SELL_TP 022365 永赢科技智选混合发起C profit=72.4% amt=144
+  progress: 2025-10-10 (241/494)
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=10593
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=153
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=140
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=10760
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=13119
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=893
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=3907
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=10250
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=14124
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=992
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=7639
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=1997
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=140
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=15298
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=14744
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=6756
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1100
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=5262
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=5175
+  progress: 2025-12-10 (301/494)
+  progress: 2026-01-01 (321/494)
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=10977
+  progress: 2026-01-21 (341/494)
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=7712
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=3985
+  SELL 019005 国投瑞银白银期货(LOF)C momentum_crash mom=0.00 proceeds=177
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=21211
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=153
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=8987
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=15272
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=2002
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=7818
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=12739
+  SELL_TP 004253 国泰黄金ETF联接C profit=52.9% amt=1933
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.9% amt=1013
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=18945
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=5665
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2076
+  progress: 2026-03-07 (381/494)
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=8566
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.65 proceeds=6939
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=15591
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=16361
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=16374
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=940
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=7258
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=17409
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=4329
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=16600
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=18323
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=850
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=15054
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=11628
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=15674
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=7410
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=3716
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1916
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1005
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=502
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=251
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=61.7% amt=125
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=16890
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=6597
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=1424
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=16813
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=11102
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=5797
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.9% amt=3176
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=2959
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.4% amt=3249
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=4703
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=1468
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.9% amt=3217
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=753
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=3271
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=373
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=3210
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=186
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=1605
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=20010
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.4% amt=789
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=60.1% amt=418
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.6% amt=213
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=23217
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=756
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=12396
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=7328
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.2% amt=100
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=12107
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=6211
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=3105
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1553
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=776
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=11655
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=6117
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=3052
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=383
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=1588
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=14481
+  SELL_TP 022365 永赢科技智选混合发起C profit=60.3% amt=100
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=843
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15445
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=11695
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=422
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15464
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=12150
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=211
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15464
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=12150
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=75.1% amt=105
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=15464
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=12150
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=15983
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=13128
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=16151
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=13691
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 218,430.13
+Return: +118.43%
+MaxDD: 8.52%
+Trades: 328
+Holdings: 35
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +48.97%
+Volatility: 21.16%
+Sharpe: 2.20
+Calmar: 5.75
+Fees: 10039.29
+  -> champion+atr: return=118.43% dd=8.52% trades=328 (128s)
+
+============================================================
+  [RUN] champion+hedge (P7_Hedge)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.6s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/494)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/494)
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4407
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=4383
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=4633
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=5108
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=4859
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=4921
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=4944
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5056
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2535
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=1267
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=634
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=322
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=160
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/494)
+  REBALANCE 023567 德邦高端装备混合发起式C 混合 43%>40%
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=150
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=138
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6462
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6545
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=6061
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5129
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=7050
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6632
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.25 proceeds=2239
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=7129
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=6907
+  SELL 023885 华夏中证金融科技主题ETF发起式 momentum_crash mom=0.66 proceeds=3726
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=7530
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=5055
+  SELL 015829 永赢新能源智选混合发起C momentum_crash mom=1.86 proceeds=583
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=106
+  SELL 012349 天弘恒生科技ETF联接C momentum_crash mom=1.14 proceeds=908
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.00 proceeds=3203
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/494)
+  progress: 2026-01-01 (321/494)
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=6087
+  progress: 2026-01-21 (341/494)
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=3856
+  SELL 024749 博时中证卫星产业指数C momentum_crash mom=1.96 proceeds=5611
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=1992
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.84 proceeds=1694
+  SELL 019005 国投瑞银白银期货(LOF)C momentum_crash mom=0.00 proceeds=177
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=9312
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=153
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=7879
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=6682
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=6529
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=5869
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=6825
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=5390
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=138
+  SELL_TP 004253 国泰黄金ETF联接C profit=52.9% amt=966
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.58 proceeds=2847
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.9% amt=506
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=8288
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=3802
+  SELL 001071 华安媒体互联网混合A momentum_crash mom=1.97 proceeds=4219
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2104
+  progress: 2026-03-07 (381/494)
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6246
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=7691
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1389
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=7918
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=7354
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=7985
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=6943
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6645
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=5848
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=470
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=8753
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=7335
+  SELL 022328 宏利高端装备股票C momentum_crash mom=1.88 proceeds=6499
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=9261
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=7000
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=8104
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=340
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=6273
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=4912
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=6615
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=4076
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=2044
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1054
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=552
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=276
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=138
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=6955
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=2799
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=610
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=6960
+  SELL 016068 鹏华新能源汽车混合C momentum_crash mom=1.77 proceeds=6415
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.12 proceeds=6190
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=4830
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=2522
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.6% amt=2853
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=1287
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=2918
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=8441
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=639
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.6% amt=2889
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=328
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2938
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=162
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2883
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=1442
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=9604
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.0% amt=709
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.7% amt=375
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.3% amt=191
+  SELL 016020 招商中证电池主题ETF联接C momentum_crash mom=1.42 proceeds=5879
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.41 proceeds=3617
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=9521
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=1025
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=6496
+  SELL 021511 宏利半导体产业混合发起C momentum_crash mom=1.62 proceeds=7354
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=7621
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.75 proceeds=6788
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=5094
+  REBALANCE 025778 东方阿尔法瑞享混合发起C 混合 44%>40%
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=74.1% amt=104
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=2613
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1307
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=653
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=327
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=4869
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=129.0% amt=103
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=2555
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=1275
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=161
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=663
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=5648
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=352
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6024
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4532
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=176
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.4% amt=6682
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.6% amt=6887
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=6233
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=5087
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=6299
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=5305
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 158,120.64
+Return: +58.12%
+MaxDD: 8.75%
+Trades: 403
+Holdings: 34
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +26.33%
+Volatility: 18.04%
+Sharpe: 1.32
+Calmar: 3.01
+Fees: 11410.37
+  -> champion+hedge: return=58.12% dd=8.75% trades=403 (130s)
+
+============================================================
+  [RUN] champion+quality (P8_Quality)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.7s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/494)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  progress: 2025-06-05 (121/494)
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4407
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=4383
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=4633
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=5108
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=4859
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=4921
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=4944
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5056
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2535
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=1267
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=634
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=322
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=160
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/494)
+  REBALANCE 023567 德邦高端装备混合发起式C 混合 43%>40%
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=150
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=138
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6462
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6545
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=6061
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5129
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=7050
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6632
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.25 proceeds=2239
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=7129
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=6907
+  SELL 023885 华夏中证金融科技主题ETF发起式 momentum_crash mom=0.66 proceeds=3726
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=7530
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=5055
+  SELL 015829 永赢新能源智选混合发起C momentum_crash mom=1.86 proceeds=583
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=106
+  SELL 012349 天弘恒生科技ETF联接C momentum_crash mom=1.14 proceeds=908
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.00 proceeds=3203
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/494)
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  progress: 2026-01-01 (321/494)
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=6087
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  progress: 2026-01-21 (341/494)
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=3856
+  SELL 024749 博时中证卫星产业指数C momentum_crash mom=1.96 proceeds=5786
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=1992
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.84 proceeds=1694
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=9312
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=7879
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=6682
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=6529
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=5869
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=6825
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=5390
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=283
+  SELL_TP 004253 国泰黄金ETF联接C profit=52.9% amt=966
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.58 proceeds=2763
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.9% amt=506
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=8288
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=3707
+  QFILTER 007844 华宝油气: 申购状态: 暂停申购
+  SELL 001071 华安媒体互联网混合A momentum_crash mom=1.97 proceeds=4219
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2104
+  progress: 2026-03-07 (381/494)
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6246
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=7691
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1389
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=7918
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=7354
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=7985
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=6943
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6645
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=5747
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=470
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=8753
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=7335
+  SELL 022328 宏利高端装备股票C momentum_crash mom=1.88 proceeds=6499
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=9261
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=7000
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=8104
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=340
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=6273
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=4912
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=6615
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=4076
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=2044
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1054
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=552
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=276
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=138
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=6955
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=2799
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=610
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=6960
+  SELL 016068 鹏华新能源汽车混合C momentum_crash mom=1.77 proceeds=6415
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.12 proceeds=6190
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=4830
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=2522
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.6% amt=2853
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=1287
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=2918
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=8441
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=639
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.6% amt=2889
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=328
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2938
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=162
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2883
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=1442
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=9604
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.0% amt=709
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.7% amt=375
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.3% amt=191
+  SELL 016020 招商中证电池主题ETF联接C momentum_crash mom=1.42 proceeds=5879
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.41 proceeds=3617
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=9521
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=1025
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=6496
+  SELL 021511 宏利半导体产业混合发起C momentum_crash mom=1.62 proceeds=7354
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=7621
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.75 proceeds=6788
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=5094
+  REBALANCE 025778 东方阿尔法瑞享混合发起C 混合 44%>40%
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=74.1% amt=104
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=2613
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1307
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=653
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=327
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=4869
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=129.0% amt=103
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=2555
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=1275
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=161
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=663
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=5575
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=352
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=5946
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4532
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=176
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=5954
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=5954
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.4% amt=6682
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=5954
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.6% amt=6887
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=6153
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=5087
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=6218
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=5305
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 157,864.45
+Return: +57.86%
+MaxDD: 8.75%
+Trades: 397
+Holdings: 34
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +26.23%
+Volatility: 18.05%
+Sharpe: 1.31
+Calmar: 3.00
+Fees: 11399.60
+  -> champion+quality: return=57.86% dd=8.75% trades=397 (150s)
+
+============================================================
+  [RUN] champion+dyn_sl (P5.1_DynSL)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.8s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/494)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/494)
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL 018957 中航机遇领航混合发起C dynamic_stop profit=46.9% dd=-12.2% proceeds=9701
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/494)
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/494)
+  REBALANCE 024738 永赢新材料智选混合发起C 混合 47%>40%
+  SELL 015916 永赢医药创新智选混合发起C dynamic_stop profit=30.9% dd=-16.0% proceeds=127
+  SELL 010392 易方达战略新兴产业股票C dynamic_stop profit=56.2% dd=-10.2% proceeds=149
+  SELL 022365 永赢科技智选混合发起C dynamic_stop profit=54.6% dd=-11.1% proceeds=135
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6462
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6545
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=6061
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5129
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=7050
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6632
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.25 proceeds=2239
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=7129
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=6907
+  SELL 021528 财通成长优选混合C momentum_crash mom=0.47 proceeds=116
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=6223
+  SELL 024738 永赢新材料智选混合发起C momentum_crash mom=1.60 proceeds=2616
+  SELL 023885 华夏中证金融科技主题ETF发起式 momentum_crash mom=0.66 proceeds=3726
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=7530
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=1246
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=388
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/494)
+  progress: 2026-01-01 (321/494)
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=6182
+  progress: 2026-01-21 (341/494)
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=3856
+  SELL 024749 博时中证卫星产业指数C momentum_crash mom=1.96 proceeds=4715
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=1992
+  SELL 004253 国泰黄金ETF联接C dynamic_stop profit=31.4% dd=-16.7% proceeds=1967
+  SELL 019005 国投瑞银白银期货(LOF)C momentum_crash mom=0.00 proceeds=177
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=9312
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=153
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=8002
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=6788
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=6634
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=5960
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=6949
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=5488
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=1610
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.58 proceeds=531
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=8288
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=3802
+  SELL 001071 华安媒体互联网混合A momentum_crash mom=1.97 proceeds=4219
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2104
+  progress: 2026-03-07 (381/494)
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6427
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=7798
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1389
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=8033
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=7448
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=8096
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=7047
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6742
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=5949
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=8067
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=7235
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=4801
+  SELL 022328 宏利高端装备股票C momentum_crash mom=1.88 proceeds=3589
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=9377
+  SELL 004814 中欧红利优享灵活配置混合C momentum_crash mom=1.69 proceeds=983
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=7100
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=8222
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=340
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=6466
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=4912
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=6717
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=4150
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=2081
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1073
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=563
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=281
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=141
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=7054
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=2799
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=610
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=7051
+  SELL 016068 鹏华新能源汽车混合C momentum_crash mom=1.77 proceeds=6593
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.12 proceeds=6355
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=4902
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=2560
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.6% amt=2853
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=1307
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=2918
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=8542
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=648
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.6% amt=2889
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=333
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2938
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=165
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2883
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=1442
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=9838
+  SELL 017811 东方人工智能主题混合C dynamic_stop profit=24.0% dd=-15.7% proceeds=1052
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.0% amt=709
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.7% amt=375
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.3% amt=191
+  SELL 016020 招商中证电池主题ETF联接C momentum_crash mom=1.42 proceeds=5972
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.41 proceeds=3712
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=9782
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=6679
+  SELL 021511 宏利半导体产业混合发起C momentum_crash mom=1.62 proceeds=7450
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=9192
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=7721
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.75 proceeds=6888
+  SELL 002891 华夏移动互联混合(QDII) dynamic_stop profit=52.1% dd=-10.1% proceeds=133
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=5168
+  REBALANCE 025778 东方阿尔法瑞享混合发起C 混合 44%>40%
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=130.7% amt=101
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=74.1% amt=104
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=2651
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1326
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=663
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=331
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=4942
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=2594
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=1294
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=164
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=673
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=5720
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=357
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6101
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4605
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=179
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6108
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4784
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6108
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4784
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.4% amt=6829
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=6108
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=4784
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.6% amt=7039
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=6313
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=5169
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=6380
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=5391
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 161,047.45
+Return: +61.05%
+MaxDD: 8.45%
+Trades: 405
+Holdings: 34
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +27.52%
+Volatility: 17.94%
+Sharpe: 1.39
+Calmar: 3.26
+Fees: 11396.50
+  -> champion+dyn_sl: return=61.05% dd=8.45% trades=405 (136s)
+
+============================================================
+  [RUN] champion+all_ext (P678_All)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.8s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=6703
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=10065
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=9512
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=11240
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=12282
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=10236
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=8604
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=8933
+  progress: 2025-03-26 (61/494)
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=13203
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=429
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=12260
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=2223
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=10405
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=10319
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  progress: 2025-06-05 (121/494)
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  QFILTER 007844 华宝油气C: 申购状态: 暂停申购
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=8724
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4439
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=560
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=276
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=139
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=4122
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=8765
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=7644
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=9720
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=8345
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4414
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=9777
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=8557
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=4414
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=9777
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=8557
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=4556
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=10204
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=8901
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=4368
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=9616
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=8501
+  SELL 018957 中航机遇领航混合发起C dynamic_stop profit=46.9% dd=-12.2% proceeds=19725
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=8623
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4112
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8113
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4351
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8442
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=4351
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=8442
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=8442
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=8206
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=8172
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=4328
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=8467
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=2313
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8987
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1173
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=293
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=8964
+  SELL_TP 010392 易方达战略新兴产业股票C profit=62.0% amt=145
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=8879
+  progress: 2025-09-17 (221/494)
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=8912
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=8985
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=9110
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4601
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2300
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=1150
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=585
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=293
+  SELL_TP 022365 永赢科技智选混合发起C profit=72.4% amt=144
+  progress: 2025-10-10 (241/494)
+  SELL 015916 永赢医药创新智选混合发起C dynamic_stop profit=30.9% dd=-16.0% proceeds=127
+  SELL 010392 易方达战略新兴产业股票C dynamic_stop profit=56.2% dd=-10.2% proceeds=149
+  SELL 022365 永赢科技智选混合发起C dynamic_stop profit=54.6% dd=-11.1% proceeds=138
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=10593
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=10760
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=13119
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=893
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=3907
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=10250
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=14124
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=992
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=15644
+  SELL 021528 财通成长优选混合C momentum_crash mom=0.47 proceeds=119
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=5692
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=7639
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=2032
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=140
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=9545
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=7281
+  SELL 014143 银河创新混合C momentum_crash mom=0.56 proceeds=384
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1100
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=5262
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=5175
+  progress: 2025-12-10 (301/494)
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 019005 国投瑞银白银期货(LOF)C: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  progress: 2026-01-01 (321/494)
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=11967
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  progress: 2026-01-21 (341/494)
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  QFILTER 161226 国投瑞银白银期货(LOF)A: 申购状态: 暂停申购
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=7712
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=3985
+  SELL 004253 国泰黄金ETF联接C dynamic_stop profit=31.4% dd=-16.7% proceeds=3934
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=21211
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=9110
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=15272
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=2861
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=7818
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=10822
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=18945
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=2509
+  QFILTER 007844 华宝油气: 申购状态: 暂停申购
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2076
+  progress: 2026-03-07 (381/494)
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=8662
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.65 proceeds=7138
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=13800
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=16775
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=16581
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=4467
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=7258
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=16846
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=9336
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=4329
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=17200
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=18558
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=850
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=15441
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=12029
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=16081
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=7410
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=3716
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1916
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1005
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=502
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=251
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=61.7% amt=125
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=17486
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=6797
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=1424
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=17356
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=11246
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=5873
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.9% amt=3176
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=2997
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.4% amt=3249
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=5023
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=1487
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.9% amt=3217
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=763
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=3271
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=378
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=3210
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=189
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=1605
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=14217
+  SELL 017811 东方人工智能主题混合C dynamic_stop profit=24.0% dd=-15.7% proceeds=1034
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.4% amt=789
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=60.1% amt=418
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.6% amt=213
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=23738
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=12569
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=21448
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=791
+  SELL 002891 华夏移动互联混合(QDII) dynamic_stop profit=52.1% dd=-10.1% proceeds=133
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.2% amt=100
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=12402
+  QFILTER 014915 财通匠心优选一年持有期混合A: 申购状态: 暂停申购
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.2% amt=100
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=6362
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=3181
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1591
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=795
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=11950
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=6271
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=3129
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=393
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=1628
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=14770
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=864
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15754
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=11841
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=432
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15774
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=12301
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=216
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=15774
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=12301
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=75.1% amt=108
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=15774
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=12301
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=16302
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=13292
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=16474
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=13863
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 221,264.81
+Return: +121.26%
+MaxDD: 8.47%
+Trades: 332
+Holdings: 32
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +49.95%
+Volatility: 20.53%
+Sharpe: 2.31
+Calmar: 5.90
+Fees: 10031.44
+  -> champion+all_ext: return=121.26% dd=8.47% trades=332 (146s)
+
+  保存: C:\fund\backtest\reports\p678_experiments.json
+
+############################################################
+# 开始 P9_过拟合
+############################################################
+
+============================================================
+  [RUN] champion_2025only (P9.1_2025年)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (0.9s)
+
+Period: 2025-01-05 ~ 2025-12-31
+Days: 320
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/320)
+  progress: 2025-02-07 (21/320)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/320)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/320)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/320)
+  progress: 2025-05-14 (101/320)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/320)
+  progress: 2025-06-26 (141/320)
+  progress: 2025-07-17 (161/320)
+  progress: 2025-08-07 (181/320)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/320)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4407
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=4383
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=4633
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=5108
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=4859
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/320)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=4921
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=4944
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5056
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2535
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=1267
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=634
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=322
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=160
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/320)
+  REBALANCE 023567 德邦高端装备混合发起式C 混合 43%>40%
+  progress: 2025-10-30 (261/320)
+  progress: 2025-11-20 (281/320)
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=150
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=138
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6462
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6545
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=6061
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5129
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=7050
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6632
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.25 proceeds=2239
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=7129
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=6907
+  SELL 023885 华夏中证金融科技主题ETF发起式 momentum_crash mom=0.66 proceeds=3726
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=7530
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=5055
+  SELL 015829 永赢新能源智选混合发起C momentum_crash mom=1.86 proceeds=583
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=106
+  SELL 012349 天弘恒生科技ETF联接C momentum_crash mom=1.14 proceeds=908
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.00 proceeds=3203
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/320)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 114,012.19
+Return: +14.01%
+MaxDD: 8.75%
+Trades: 179
+Holdings: 17
+Benchmark CSI300: +24.78%
+BuyHold(023885): +0.00%
+Scores: 457
+Annualized: +10.88%
+Volatility: 15.29%
+Sharpe: 0.55
+Calmar: 1.24
+Fees: 4765.73
+  -> champion_2025only: return=14.01% dd=8.75% trades=179 (86s)
+
+============================================================
+  [RUN] baseline_2025only (P9.1_2025年)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (1.3s)
+
+Period: 2025-01-05 ~ 2025-12-31
+Days: 320
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/320)
+  progress: 2025-02-07 (21/320)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/320)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/320)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 015528 弘毅远方汽车产业升级混合C momentum_crash mom=1.92 proceeds=5396
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/320)
+  progress: 2025-05-14 (101/320)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/320)
+  progress: 2025-06-26 (141/320)
+  progress: 2025-07-17 (161/320)
+  progress: 2025-08-07 (181/320)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/320)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4407
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=4383
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=4633
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=5108
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=4859
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/320)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=4921
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=4944
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5056
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2535
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=1267
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=634
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=322
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=160
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/320)
+  progress: 2025-10-30 (261/320)
+  progress: 2025-11-20 (281/320)
+  SELL 024239 华夏全球科技先锋混合(QDII) momentum_crash mom=1.74 proceeds=1153
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=150
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=138
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6364
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6459
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=5984
+  SELL 020629 汇添富上证科创板芯片ETF发起式 momentum_crash mom=1.13 proceeds=7108
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5045
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=6934
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6521
+  SELL 023652 富国上证科创板芯片ETF发起式联 momentum_crash mom=1.15 proceeds=6296
+  SELL 024329 易方达恒生港股通创新药ETF联接 momentum_crash mom=0.00 proceeds=1951
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=1330
+  SELL 021528 财通成长优选混合C momentum_crash mom=0.47 proceeds=105
+  SELL 011036 嘉实中证稀土产业ETF联接C momentum_crash mom=1.40 proceeds=633
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=6706
+  SELL 008888 华夏国证半导体芯片ETF联接C momentum_crash mom=0.98 proceeds=3039
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=6521
+  SELL 017470 嘉实上证科创板芯片ETF发起联接 momentum_crash mom=1.11 proceeds=1975
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=244
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 005402 广发资源优选股票A momentum_crash mom=2.00 proceeds=257
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/320)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 114,544.10
+Return: +14.54%
+MaxDD: 9.00%
+Trades: 209
+Holdings: 30
+Benchmark CSI300: +24.78%
+BuyHold(023885): +0.00%
+Scores: 733
+Annualized: +11.29%
+Volatility: 15.38%
+Sharpe: 0.57
+Calmar: 1.25
+Fees: 5142.13
+  -> baseline_2025only: return=14.54% dd=9.00% trades=209 (100s)
+
+============================================================
+  [RUN] champion_for_winner_removal (P9.2_去赢家)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (1.3s)
+
+Period: 2025-01-05 ~ 2026-07-01
+Days: 494
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/494)
+  progress: 2025-02-07 (21/494)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/494)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/494)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/494)
+  progress: 2025-05-14 (101/494)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/494)
+  progress: 2025-06-26 (141/494)
+  progress: 2025-07-17 (161/494)
+  progress: 2025-08-07 (181/494)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=4362
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=2219
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=1110
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=52.0% amt=555
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.7% amt=280
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=51.1% amt=138
+  progress: 2025-08-27 (201/494)
+  SELL_TP 010392 易方达战略新兴产业股票C profit=51.7% amt=2061
+  SELL_TP 018957 中航机遇领航混合发起C profit=59.3% amt=4311
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.5% amt=3751
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2200
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4780
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4095
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=60.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=58.5% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=57.1% amt=2207
+  SELL_TP 018957 中航机遇领航混合发起C profit=67.3% amt=4808
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.8% amt=4199
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.6% amt=2278
+  SELL_TP 018957 中航机遇领航混合发起C profit=57.6% amt=5018
+  SELL_TP 022365 永赢科技智选混合发起C profit=57.4% amt=4368
+  SELL_TP 010392 易方达战略新兴产业股票C profit=52.2% amt=2184
+  SELL_TP 018957 中航机遇领航混合发起C profit=61.7% amt=4729
+  SELL_TP 022365 永赢科技智选混合发起C profit=59.7% amt=4172
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.2% amt=4232
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2056
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4407
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=3981
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 010392 易方达战略新兴产业股票C profit=50.0% amt=2175
+  SELL_TP 018957 中航机遇领航混合发起C profit=58.9% amt=4766
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.3% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.0% amt=4143
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.3% amt=4027
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.4% amt=4383
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.8% amt=4010
+  SELL_TP 010392 易方达战略新兴产业股票C profit=59.5% amt=2164
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.3% amt=4633
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4155
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=1157
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=5108
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4410
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=587
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=61.8% amt=293
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.5% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.0% amt=4399
+  SELL_TP 010392 易方达战略新兴产业股票C profit=60.2% amt=147
+  SELL_TP 018957 中航机遇领航混合发起C profit=62.0% amt=4965
+  SELL_TP 022365 永赢科技智选混合发起C profit=64.4% amt=4399
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.0% amt=4859
+  SELL_TP 022365 永赢科技智选混合发起C profit=65.0% amt=4357
+  progress: 2025-09-17 (221/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=64.8% amt=4921
+  SELL_TP 022365 永赢科技智选混合发起C profit=66.4% amt=4373
+  SELL_TP 018957 中航机遇领航混合发起C profit=68.5% amt=4944
+  SELL_TP 022365 永赢科技智选混合发起C profit=68.7% amt=4409
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=5056
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=4470
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=2535
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=2258
+  SELL_TP 018957 中航机遇领航混合发起C profit=69.0% amt=1267
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.4% amt=1129
+  SELL_TP 018957 中航机遇领航混合发起C profit=71.7% amt=634
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.3% amt=564
+  SELL_TP 018957 中航机遇领航混合发起C profit=70.2% amt=322
+  SELL_TP 022365 永赢科技智选混合发起C profit=73.8% amt=287
+  SELL_TP 018957 中航机遇领航混合发起C profit=65.6% amt=160
+  SELL_TP 022365 永赢科技智选混合发起C profit=70.8% amt=144
+  progress: 2025-10-10 (241/494)
+  REBALANCE 023567 德邦高端装备混合发起式C 混合 43%>40%
+  progress: 2025-10-30 (261/494)
+  progress: 2025-11-20 (281/494)
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=122
+  SELL 016561 永赢启源混合发起C momentum_crash mom=1.67 proceeds=5196
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=148
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.86 proceeds=150
+  SELL 022365 永赢科技智选混合发起C momentum_crash mom=1.02 proceeds=138
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=5255
+  SELL 023598 景顺长城中证港股通创新药ETF联 momentum_crash mom=0.69 proceeds=6462
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.03 proceeds=446
+  SELL 013346 富荣信息技术混合C momentum_crash mom=0.00 proceeds=1865
+  SELL 017103 大摩数字经济混合C momentum_crash mom=0.72 proceeds=6824
+  SELL 023552 银华上证科创板人工智能ETF发起 momentum_crash mom=1.58 proceeds=6545
+  SELL 018993 中欧数字经济混合发起A momentum_crash mom=1.13 proceeds=4091
+  SELL 023766 华夏中证全指证券公司ETF联接D momentum_crash mom=1.75 proceeds=6061
+  SELL 003305 前海开源沪港深核心资源混合C momentum_crash mom=1.72 proceeds=5129
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=7050
+  SELL 011452 华泰柏瑞质量成长混合C momentum_crash mom=0.81 proceeds=6632
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.25 proceeds=2239
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=7129
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.20 proceeds=6907
+  SELL 023885 华夏中证金融科技主题ETF发起式 momentum_crash mom=0.66 proceeds=3726
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=0.58 proceeds=7530
+  SELL 023567 德邦高端装备混合发起式C momentum_crash mom=1.47 proceeds=5055
+  SELL 015829 永赢新能源智选混合发起C momentum_crash mom=1.86 proceeds=583
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=106
+  SELL 012349 天弘恒生科技ETF联接C momentum_crash mom=1.14 proceeds=908
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.00 proceeds=3203
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1000
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.46 proceeds=4666
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.44 proceeds=4578
+  progress: 2025-12-10 (301/494)
+  progress: 2026-01-01 (321/494)
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.61 proceeds=6087
+  progress: 2026-01-21 (341/494)
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=3856
+  SELL 024749 博时中证卫星产业指数C momentum_crash mom=1.96 proceeds=5611
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=1992
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.84 proceeds=1694
+  SELL 019005 国投瑞银白银期货(LOF)C momentum_crash mom=0.00 proceeds=177
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=9312
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=153
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=7879
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=6682
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=6529
+  SELL 023754 永赢信息产业智选混合发起C momentum_crash mom=1.94 proceeds=5869
+  progress: 2026-02-10 (361/494)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=6825
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.95 proceeds=5390
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=138
+  SELL_TP 004253 国泰黄金ETF联接C profit=52.9% amt=966
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.58 proceeds=2847
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.9% amt=506
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=8288
+  SELL 021986 财通资管先进制造混合发起式C momentum_crash mom=1.07 proceeds=3802
+  SELL 001071 华安媒体互联网混合A momentum_crash mom=1.97 proceeds=4219
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2104
+  progress: 2026-03-07 (381/494)
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6246
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=7691
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1389
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=7918
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=7354
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=7985
+  SELL 018957 中航机遇领航混合发起C momentum_crash mom=1.96 proceeds=6943
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6645
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=5848
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=470
+  SELL 008702 华夏黄金ETF联接C momentum_crash mom=1.57 proceeds=8753
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=7335
+  SELL 022328 宏利高端装备股票C momentum_crash mom=1.88 proceeds=6499
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=9261
+  SELL 018816 方正富邦核心优势混合C momentum_crash mom=1.95 proceeds=7000
+  progress: 2026-03-28 (401/494)
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.79 proceeds=8104
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=163
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2000
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.97 proceeds=340
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=6273
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.09 proceeds=4912
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=6615
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=51.1% amt=4076
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=53.3% amt=2044
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=1054
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=552
+  progress: 2026-04-19 (421/494)
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=276
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=59.7% amt=138
+  SELL 025491 平安中证卫星产业指数C momentum_crash mom=1.95 proceeds=6955
+  progress: 2026-05-09 (441/494)
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=127
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=50.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=54.4% amt=128
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=52.9% amt=131
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.35 proceeds=2799
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=0.92 proceeds=610
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.82 proceeds=6960
+  SELL 016068 鹏华新能源汽车混合C momentum_crash mom=1.77 proceeds=6415
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.12 proceeds=6190
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=51.8% amt=125
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=129
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=53.8% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=50.6% amt=4830
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=55.2% amt=131
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.7% amt=2522
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=52.6% amt=2853
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=59.9% amt=132
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.5% amt=1287
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=51.1% amt=2918
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.2% amt=136
+  SELL 016874 广发远见智选混合C momentum_crash mom=1.45 proceeds=8441
+  SELL_TP 022365 永赢科技智选混合发起C profit=56.5% amt=639
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=53.6% amt=2889
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.4% amt=134
+  progress: 2026-05-29 (461/494)
+  SELL_TP 021528 财通成长优选混合C profit=97.2% amt=101
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=328
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2938
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=135
+  SELL_TP 022365 永赢科技智选混合发起C profit=54.9% amt=162
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=2883
+  SELL_TP 002891 华夏移动互联混合(QDII) profit=58.0% amt=134
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=50.8% amt=1442
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.79 proceeds=9604
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=57.0% amt=709
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.7% amt=375
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=59.3% amt=191
+  SELL 016020 招商中证电池主题ETF联接C momentum_crash mom=1.42 proceeds=5879
+  SELL 017223 富国中证电池主题ETF发起式联接 momentum_crash mom=1.41 proceeds=3617
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.78 proceeds=9521
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.62 proceeds=1025
+  SELL 017744 嘉实绿色主题股票发起式A momentum_crash mom=1.65 proceeds=6496
+  SELL 021511 宏利半导体产业混合发起C momentum_crash mom=1.62 proceeds=7354
+  SELL 013841 银华集成电路混合C momentum_crash mom=1.56 proceeds=7621
+  SELL 013340 创金合信芯片产业股票发起C momentum_crash mom=1.75 proceeds=6788
+  progress: 2026-06-18 (481/494)
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=5094
+  REBALANCE 025778 东方阿尔法瑞享混合发起C 混合 44%>40%
+  SELL_TP 005698 华夏全球科技先锋混合(QDII) profit=74.1% amt=104
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=2613
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=1307
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.5% amt=653
+  SELL_TP 018957 中航机遇领航混合发起C profit=51.8% amt=327
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.8% amt=4869
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=129.0% amt=103
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=54.5% amt=2555
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=60.8% amt=1275
+  SELL_TP 018957 中航机遇领航混合发起C profit=54.7% amt=161
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.7% amt=663
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.4% amt=5648
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=352
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6024
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4532
+  SELL_TP 025209 永赢先锋半导体智选混合发起C profit=70.8% amt=176
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=54.6% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=51.9% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.4% amt=6682
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=59.8% amt=6031
+  SELL_TP 017811 东方人工智能主题混合C profit=64.1% amt=4708
+  SELL_TP 018816 方正富邦核心优势混合C profit=51.6% amt=6887
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=61.5% amt=6233
+  SELL_TP 017811 东方人工智能主题混合C profit=71.1% amt=5087
+  SELL_TP 025500 东方阿尔法科技智选混合发起C profit=60.7% amt=6299
+  SELL_TP 017811 东方人工智能主题混合C profit=68.8% amt=5305
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 158,120.64
+Return: +58.12%
+MaxDD: 8.75%
+Trades: 403
+Holdings: 34
+Benchmark CSI300: +34.58%
+BuyHold(025857): +0.00%
+Scores: 1696
+Annualized: +26.33%
+Volatility: 18.04%
+Sharpe: 1.32
+Calmar: 3.01
+Fees: 11410.37
+  -> champion_for_winner_removal: return=58.12% dd=8.75% trades=403 (187s)
+
+============================================================
+  [RUN] champion_2025Q1Q2 (P9.3_温和市场)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (1.1s)
+
+Period: 2025-01-05 ~ 2025-06-30
+Days: 145
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/145)
+  progress: 2025-02-07 (21/145)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/145)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/145)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/145)
+  progress: 2025-05-14 (101/145)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/145)
+  progress: 2025-06-26 (141/145)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 100,172.22
+Return: +0.17%
+MaxDD: 3.11%
+Trades: 54
+Holdings: 3
+Benchmark CSI300: +5.49%
+BuyHold(018123): +0.00%
+Scores: 105
+Annualized: +0.30%
+Volatility: 5.81%
+Sharpe: -0.38
+Calmar: 0.10
+Fees: 38.00
+  -> champion_2025Q1Q2: return=0.17% dd=3.11% trades=54 (33s)
+
+============================================================
+  [RUN] baseline_2025Q1Q2 (P9.3_温和市场)
+============================================================
+加载历史数据...
+  性能优化: 1100 只基金图表已索引, 1889 个基金名索引, 815 个基金代码索引 (1.1s)
+
+Period: 2025-01-05 ~ 2025-06-30
+Days: 145
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2025-01-06 (1/145)
+  progress: 2025-02-07 (21/145)
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.53 proceeds=3352
+  progress: 2025-03-05 (41/145)
+  SELL 016387 永赢低碳环保智选混合发起C momentum_crash mom=1.51 proceeds=5032
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.41 proceeds=5232
+  SELL 017103 大摩数字经济混合C momentum_crash mom=1.84 proceeds=5526
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.00 proceeds=6141
+  SELL 017484 财通资管数字经济混合发起式C momentum_crash mom=1.51 proceeds=5023
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.62 proceeds=4402
+  SELL 018524 华泰紫金恒生互联网科技业指数型发 momentum_crash mom=1.98 proceeds=5761
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.60 proceeds=3739
+  SELL 017102 大摩数字经济混合A momentum_crash mom=1.84 proceeds=163
+  progress: 2025-03-26 (61/145)
+  SELL 007519 东方阿尔法优选混合C momentum_crash mom=1.96 proceeds=5507
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.49 proceeds=6602
+  SELL 015528 弘毅远方汽车产业升级混合C momentum_crash mom=1.92 proceeds=5396
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=1.68 proceeds=215
+  progress: 2025-04-16 (81/145)
+  progress: 2025-05-14 (101/145)
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.85 proceeds=6130
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=1112
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.95 proceeds=5203
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5159
+  progress: 2025-06-05 (121/145)
+  progress: 2025-06-26 (141/145)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 99,950.54
+Return: -0.05%
+MaxDD: 3.52%
+Trades: 58
+Holdings: 4
+Benchmark CSI300: +5.49%
+BuyHold(018123): +0.00%
+Scores: 123
+Annualized: -0.09%
+Volatility: 6.05%
+Sharpe: -0.43
+Calmar: -0.02
+Fees: 38.00
+  -> baseline_2025Q1Q2: return=-0.05% dd=3.52% trades=58 (34s)
+
+  保存: C:\fund\backtest\reports\p9_experiments.json
+
+============================================================
+  全部完成! 总耗时 18.8 分钟
+============================================================
+
+================================================================================
+  实验名                                      收益%      回撤%     交易
+================================================================================
+  champion+atr                          118.43     8.52    328
+  champion+hedge                         58.12     8.75    403
+  champion+quality                       57.86     8.75    397
+  champion+dyn_sl                        61.05     8.45    405
+  champion+all_ext                      121.26     8.47    332
+  champion_2025only                      14.01     8.75    179
+  baseline_2025only                      14.54     9.00    209
+  champion_for_winner_removal            58.12     8.75    403
+  champion_2025Q1Q2                       0.17     3.11     54
+  baseline_2025Q1Q2                      -0.05     3.52     58
+
+汇总已保存: C:\fund\backtest\reports\all_experiments_summary.json

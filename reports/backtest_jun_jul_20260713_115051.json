@@ -1,0 +1,238 @@
+{
+  "config": {
+    "start": "2026-06-01",
+    "end": "2026-07-13",
+    "use_tp": true,
+    "use_trail": true,
+    "use_time_tp": true,
+    "use_dynamic": false,
+    "use_scorer": false,
+    "tp_pct": 15.0,
+    "trail_pct": 8.0,
+    "hold_days": 60
+  },
+  "result": {
+    "final_value": 102027.02,
+    "total_return": 2.03,
+    "annualized": 19.57,
+    "sharpe": 0.52,
+    "max_drawdown": -10.58,
+    "trading_days": 41,
+    "n_buys": 10,
+    "n_sells": 10,
+    "win_rate": 40.0,
+    "benchmark_return": -0.54,
+    "benchmark_annualized": -4.69,
+    "alpha": 24.27
+  },
+  "reason_stats": {
+    "trail_stop": {
+      "count": 5,
+      "avg_pnl": -1.89
+    },
+    "take_profit": {
+      "count": 3,
+      "avg_pnl": 17.08
+    },
+    "stop_loss": {
+      "count": 2,
+      "avg_pnl": -12.5
+    }
+  },
+  "trades": {
+    "buys": [
+      {
+        "date": "2026-06-01",
+        "action": "buy",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "amount": 25000.0,
+        "consensus": 6,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-01",
+        "action": "buy",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "amount": 23750.0,
+        "consensus": 4,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-01",
+        "action": "buy",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "amount": 16229.166666666666,
+        "consensus": 3,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-05",
+        "action": "buy",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "amount": 24626.16788188637,
+        "consensus": 5,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-05",
+        "action": "buy",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "amount": 23394.85948779205,
+        "consensus": 4,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-05",
+        "action": "buy",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "amount": 15986.487316657898,
+        "consensus": 4,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-15",
+        "action": "buy",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "amount": 26977.412597801063,
+        "consensus": 6,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-18",
+        "action": "buy",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "amount": 27800.750672420203,
+        "consensus": 5,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-18",
+        "action": "buy",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "amount": 26008.060437431825,
+        "consensus": 5,
+        "market": "fixed",
+        "score": 0
+      },
+      {
+        "date": "2026-06-23",
+        "action": "buy",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "amount": 26827.57940838866,
+        "consensus": 5,
+        "market": "fixed",
+        "score": 0
+      }
+    ],
+    "sells": [
+      {
+        "date": "2026-06-05",
+        "action": "sell",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "reason": "trail_stop",
+        "pnl_pct": -1.1292726087361649,
+        "amount": 24717.681847815962
+      },
+      {
+        "date": "2026-06-05",
+        "action": "sell",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "reason": "trail_stop",
+        "pnl_pct": -4.357950765136387,
+        "amount": 22714.98669328011
+      },
+      {
+        "date": "2026-06-05",
+        "action": "sell",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "reason": "trail_stop",
+        "pnl_pct": -1.0967723556391196,
+        "amount": 16051.169653116069
+      },
+      {
+        "date": "2026-06-15",
+        "action": "sell",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "reason": "take_profit",
+        "pnl_pct": 18.098021582733814,
+        "amount": 29083.017060150425
+      },
+      {
+        "date": "2026-06-18",
+        "action": "sell",
+        "code": "539002",
+        "name": "建信新兴市场混合(QDII)A",
+        "reason": "take_profit",
+        "pnl_pct": 17.147501015847233,
+        "amount": 27406.493256117225
+      },
+      {
+        "date": "2026-06-18",
+        "action": "sell",
+        "code": "008253",
+        "name": "华宝致远混合A",
+        "reason": "take_profit",
+        "pnl_pct": 16.006144393241172,
+        "amount": 18545.307559969347
+      },
+      {
+        "date": "2026-06-23",
+        "action": "sell",
+        "code": "012922",
+        "name": "易方达全球成长精选混合(QDII)C",
+        "reason": "trail_stop",
+        "pnl_pct": 1.2284244935351518,
+        "amount": 27308.80974187449
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "005698",
+        "name": "华夏全球科技先锋混合(QDII)A",
+        "reason": "stop_loss",
+        "pnl_pct": -13.254239755440722,
+        "amount": 24115.97252448533
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "002891",
+        "name": "华夏移动互联混合(QDII)",
+        "reason": "stop_loss",
+        "pnl_pct": -11.75239234449762,
+        "amount": 22951.491133630774
+      },
+      {
+        "date": "2026-07-02",
+        "action": "sell",
+        "code": "021528",
+        "name": "财通成长优选混合C",
+        "reason": "trail_stop",
+        "pnl_pct": -4.08163265306124,
+        "amount": 25732.576167229934
+      }
+    ]
+  }
+}

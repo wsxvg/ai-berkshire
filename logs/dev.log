@@ -1,0 +1,15 @@
+
+> fund-ui@0.1.0 dev
+> next dev -p 3456
+
+⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3456
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3456)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3456
+}
+[?25h
