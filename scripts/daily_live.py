@@ -97,13 +97,32 @@ def save_vp(vp):
 
 
 def fetch_today_trades(cookies):
-    """从10个大佬抓取最新交易，合并到 trading_by_date
+    """获取当日大佬交易信号
 
-    --simulate-date 模式下: 跳过, 用历史缓存 (trading_by_date_fixed.json)
-    避免真实拉取(网络慢, 且不反映历史)
+    实时模式: 从10个大佬的 JD API 抓最新交易
+    simulate 模式: 从 trading_by_date_fixed.json 取历史数据 (避免网络请求)
     """
     if _args.simulate_date:
-        return {}
+        # simulate 模式: 从历史数据中提取当天的信号
+        fresh = {}
+        tp = PROJECT / "backtest" / "data" / "trading_by_date_fixed.json"
+        if tp.exists():
+            try:
+                hist = json.loads(tp.read_text("utf-8"))
+                day_recs = hist.get(TODAY, [])
+                for rec in day_recs:
+                    fresh.setdefault(TODAY, []).append({
+                        "fund_name": rec.get("fund_name", ""),
+                        "action": rec.get("action", ""),
+                        "amount": rec.get("amount", ""),
+                        "fund_code": rec.get("fund_code", ""),
+                        "_user": rec.get("_user", "历史"),
+                    })
+            except Exception as e:
+                print(f"  历史数据读取失败: {e}")
+        return fresh
+
+    # 实时模式: 从API拉取
     fresh = {}
     for uid, name in list(FOLLOWED_USERS.items())[:10]:
         full = f"jimu_user_info-{uid}"
@@ -644,14 +663,25 @@ def run():
     # 10. 推送飞书日报 (仅当天推送, 历史回放不推)
     real_today = datetime.now().strftime("%Y-%m-%d")
     if TODAY == real_today:
-        _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown)
+        # 本周/本月交易汇总
+        week_buys = week_sells = week_buy_amt = 0
+        for t in portfolio.trades:
+            td = t.get("date", "")
+            if td >= (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d"):
+                if t.get("action") == "buy":
+                    week_buys += 1; week_buy_amt += t.get("amount", 0)
+                elif t.get("action") == "sell":
+                    week_sells += 1
+        _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market,
+                          sell_cooldown, total_new, week_buys, week_sells, week_buy_amt)
     else:
         print(f"[FEISHU] 跳过 (历史回放 {TODAY} != 今天 {real_today})")
     return vp, portfolio
 
 
-def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market, sell_cooldown):
-    """生成并推送飞书日报卡片"""
+def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, market,
+                      sell_cooldown, total_new, week_buys, week_sells, week_buy_amt):
+    """生成并推送飞书日报卡片 (A+C合并风格: 紧凑信息 + 进度条 + 操作日志)"""
     try:
         from tools.feishu_push import _get_token, _send_card
     except ImportError:
@@ -663,10 +693,8 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
         print("[FEISHU] token 获取失败, 跳过推送")
         return
 
-    # 计算总收益
+    # ── 计算各项指标 ──
     total_return = (total_val - INITIAL_CASH) / INITIAL_CASH * 100
-
-    # 7月1日至今收益
     july1_val = INITIAL_CASH
     for snap in vp.get("snapshots", []):
         if snap.get("date", "") >= "2026-07-01":
@@ -674,81 +702,106 @@ def _push_feishu_daily(vp, portfolio, candidates, today_actions, total_val, mark
                 july1_val = snap.get("total_value", INITIAL_CASH)
     july1_return = (total_val - july1_val) / july1_val * 100 if july1_val > 0 else 0
 
-    # 本月操作统计
-    month_buys = 0
-    month_sells = 0
-    month_buy_amt = 0
+    month_buys = month_sells = month_buy_amt = 0
     for t in portfolio.trades:
         if t.get("date", "")[:7] == TODAY[:7]:
             if t.get("action") == "buy":
-                month_buys += 1
-                month_buy_amt += t.get("amount", 0)
+                month_buys += 1; month_buy_amt += t.get("amount", 0)
             elif t.get("action") == "sell":
                 month_sells += 1
 
-    # 持仓摘要
-    holding_lines = []
+    market_emoji = {"bull": "🐂 牛市", "neutral": "⚖️ 震荡", "bear": "🐻 熊市"}.get(market, market)
+
+    # ── 生成进度条 ──
+    def bar(pct, width=10):
+        filled = max(0, min(width, int((pct + 20) / 40 * width) if pct > -100 else 0))
+        return "█" * filled + "░" * max(0, width - filled)
+
+    # ── 持仓列表 (带进度条+颜色) ──
+    holding_rows = []
     for code, h in portfolio.holdings.items():
         vh = vp.get("holdings", {}).get(code, {})
-        pnl = vh.get("pnl_pct", 0)
-        emoji = "🟢" if pnl > 5 else "🟡" if pnl > 0 else "🔴"
-        holding_lines.append(f"{emoji} {h['name'][:12]}  ¥{vh.get('market_value',h['cost']):,.0f} ({pnl:+.1f}%)")
-    holding_text = "\n".join(holding_lines) if holding_lines else "暂无持仓"
+        pnl = vh.get("pnl_pct", 0) or 0
+        mv = vh.get("market_value", h.get("cost", 0))
+        emoji = "🟢" if pnl > 5 else "🟡" if pnl > 0 else "🔴" if pnl < -5 else "🟠"
+        b = bar(pnl)
+        holding_rows.append(f"{emoji} {h['name'][:14]:<14s} {pnl:+5.1f}% {b} ¥{mv:,.0f}")
+    holding_text = "\n".join(holding_rows) if holding_rows else "暂无持仓"
 
-    # 今日操作
+    # ── 今日操作列表 ──
     buy_ops = [a for a in today_actions if a.get("action") == "BUY"]
     sell_ops = [a for a in today_actions if a.get("action") == "SELL"]
-    ops_text = ""
-    if buy_ops:
-        ops_text += "**买入**\n"
+    ops_lines = []
+    if buy_ops or sell_ops:
         for a in buy_ops[:5]:
-            ops_text += f"  🟢 {a.get('name','')[:16]}  ¥{a.get('amount',0):,.0f}\n"
-    if sell_ops:
-        ops_text += "**卖出**\n"
+            ops_lines.append(f"🟢 买入 {a.get('name','')[:16]}  ¥{a.get('amount',0):,.0f}")
         for a in sell_ops[:5]:
-            ops_text += f"  🔴 {a.get('name','')[:16]}\n"
-    if not ops_text:
-        ops_text = "今日无操作"
+            ops_lines.append(f"🔴 卖出 {a.get('name','')[:16]}")
+    ops_text = "\n".join(ops_lines) if ops_lines else "今日无操作"
 
-    # TOP3 候选
+    # ── TOP3候选 ──
     top_lines = []
-    for c in candidates[:3]:
-        top_lines.append(f"  {c['code']} {c['name'][:16]:<16s} {c['score']:.1f}分")
+    for i, c in enumerate(candidates[:3]):
+        star = "⭐" if c['score'] >= 3.0 else "◎" if c['score'] >= 2.0 else "○"
+        top_lines.append(f"{i+1}. {star} {c['code']} {c['name'][:14]:<14s} {c['score']:.1f}分")
     top_text = "\n".join(top_lines) if top_lines else "无候选"
 
-    # 冷却期
-    cooldown_text = ""
-    if sell_cooldown:
-        cooldown_text = "**冷却期**\n"
-        for code, info in list(sell_cooldown.items())[:3]:
-            name = portfolio.holdings.get(code, {}).get("name", code)
-            cooldown_text += f"  ⏳ {name[:16]} ({info.get('reason','?')})\n"
+    # ── 风险提示 ──
+    alerts = []
+    if total_new == 0 and not _args.simulate_date:
+        alerts.append("⚠️ 今日大佬无新交易信号")
+    if july1_return < -3:
+        alerts.append(f"🔻 7月回撤 {july1_return:.1f}%")
+    if market == "bear":
+        alerts.append("🐻 熊市 — 持仓防御为主")
+    for code, info in list(sell_cooldown.items())[:2]:
+        name = portfolio.holdings.get(code, {}).get("name", code)
+        alerts.append(f"⏳ {name[:12]} 冷却期 ({info.get('reason','?')})")
+    alert_text = "\n".join(alerts) if alerts else ""
+
+    # ── 构建卡片 (A+C风格) ──
+    elements = [
+        # 标题区
+        {"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**📊 {TODAY_CN}  {market_emoji}**\n总资产 **¥{total_val:,.0f}**  |  总收益 {total_return:+.2f}%"}},
+        {"tag": "hr"},
+        # 概览指标行
+        {"tag": "div", "text": {"tag": "lark_md",
+            "content": (f"7月至今 {july1_return:+.2f}%  |  "
+                       f"现金 ¥{portfolio.cash:,.0f}  |  "
+                       f"持仓 **{len(portfolio.holdings)}**只  |  "
+                       f"信号 {total_new}笔\n"
+                       f"本周 买{week_buys}笔(¥{week_buy_amt:,.0f}) 卖{week_sells}笔  |  "
+                       f"本月 买{month_buys}笔(¥{month_buy_amt:,.0f}) 卖{month_sells}笔")}},
+        {"tag": "hr"},
+        # 今日操作
+        {"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**📋 今日操作**\n{ops_text}"}},
+        {"tag": "hr"},
+        # 持仓列表 (带进度条)
+        {"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**📂 持仓盈亏**\n{holding_text}"}},
+        {"tag": "hr"},
+        # TOP3
+        {"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**⭐ 评分TOP3**\n{top_text}"}},
+    ]
+
+    # 风险提示
+    if alert_text:
+        elements.append({"tag": "hr"})
+        elements.append({"tag": "div", "text": {"tag": "lark_md",
+            "content": f"**🔔 提醒**\n{alert_text}"}})
+
+    elements.append({"tag": "hr"})
+    elements.append({"tag": "note", "elements": [
+        {"tag": "plain_text", "content": f"AI Berkshire · 冠军策略(70.23%) · {TODAY_CN} · 仅供参考"}
+    ]})
 
     card = {
-        "header": {"title": {"tag": "plain_text", "content": f"AI Berkshire {TODAY}"}, "template": "blue"},
-        "elements": [
-            {"tag": "div", "text": {"tag": "lark_md", "content": f"**📊 账户概览 | {TODAY_CN}**\n总资产: ¥{total_val:,.0f}  |  总收益: {total_return:+.2f}%\n7月至今: {july1_return:+.2f}%  |  本月买入{month_buys}笔(¥{month_buy_amt:,.0f})卖出{month_sells}笔\n现金: ¥{portfolio.cash:,.0f}  |  持仓: {len(portfolio.holdings)}只  |  市场: {market}"}},
-            {"tag": "hr"},
-        ],
+        "header": {"title": {"tag": "plain_text", "content": f"🏆 AI Berkshire {TODAY}"}, "template": "blue"},
+        "elements": elements,
     }
-
-    if ops_text.strip() and ops_text.strip() != "今日无操作":
-        card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**📋 今日操作**\n{ops_text}"}})
-        card["elements"].append({"tag": "hr"})
-
-    card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**📂 当前持仓**\n{holding_text}"}})
-    card["elements"].append({"tag": "hr"})
-    card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": f"**⭐ TOP3 候选**\n{top_text}"}})
-
-    if cooldown_text:
-        card["elements"].append({"tag": "hr"})
-        card["elements"].append({"tag": "div", "text": {"tag": "lark_md", "content": cooldown_text}})
-
-    card["elements"].append({"tag": "hr"})
-    card["elements"].append({
-        "tag": "note",
-        "elements": [{"tag": "plain_text", "content": f"AI Berkshire · {TODAY_CN} · 冠军策略V2 · 仅供参考"}],
-    })
 
     _send_card(card)
 
