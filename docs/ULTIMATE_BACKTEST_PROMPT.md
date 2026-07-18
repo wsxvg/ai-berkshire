@@ -475,3 +475,87 @@ data/evolution/best_config.json ← 最终写入
 ---
 
 现在开始。先确认引擎干净（git status），然后逐个实验跑起来。
+
+---
+
+## 六、当前会话状态（交接用，2026-07-18）
+
+> **重要：如果你是从这个文档开始的新 AI session，先读这里了解现状。**
+
+### 6.1 引擎已改动的部分
+
+**`backtest/engine/backtest.py`** — 新增行情感知参数解析：
+
+```python
+# 第 1388 行附近
+_regime = config.get("regime_specific", False)
+def _rc(key, default):
+    if _regime:
+        regime_val = config.get(f"{key}_{_ms}")
+        if regime_val is not None:
+            return regime_val
+    return config.get(key, default)
+
+_dyn_tp_pct = _rc("take_profit_pct", 50)
+_dyn_sl_pct = _rc("stop_loss_pct", -30)
+_dyn_kelly = _rc("kelly_cap", 0.2)
+_dyn_pyramid = _rc("pyramiding_enabled", False)
+_dyn_dynsl = _rc("dynamic_stop_loss", False)
+_dyn_trail_act = _rc("trailing_tp_activate", 0)
+_dyn_trail_dd = _rc("trailing_tp_drawdown", 10)
+```
+
+然后 `tp_pct`/`sl_pct`/`kelly_cap`/`pyramiding_enabled`/`dynamic_stop_loss`/`trailing_tp` 全部改用 `_dyn_*` 变量。**向后兼容**——`regime_specific=false` 时行为和改之前完全一样。
+
+### 6.2 数据现状
+
+| 数据文件 | 覆盖 | 备注 |
+|---------|------|------|
+| `backtest/data/trading_by_date_fixed.json` | 2023-07-17 ~ 2026-07-17, 50,632 条 | 完整 |
+| `backtest/data/fund_charts.json` | 2,187 只基金 | 328 只覆盖到 2023-07, 183 只完整 3 年 |
+| `data/evolution/best_config.json` | 冠军 dynSL-alone(70.23%) | 含行情参数(默认关闭) |
+
+**三年数据够用但有局限**：段 A(2023H2)只有 328 只基金有走势、日均 11.5 条信号——稀疏但真实。段 C(2025H2~2026H1)数据充裕。
+
+### 6.3 已完成和进行中的回测
+
+| 测试 | 状态 | 结果 |
+|------|------|------|
+| Champion 18个月 (2025-01~2026-07) | ✅ 完成 | 70.23%/9.20%dd/307笔 |
+| Champion 近一年 (2025-07~2026-07) | ✅ 完成 | 55.94%/9.59%dd/300笔/夏普1.62 |
+| 凯利 kelly=0.2 | ✅ 完成 | 41.92% (但数据可能有误) |
+| 凯利 kelly=0.3 | 🔄 跑中 | 后台进程，检查 `_test_kelly_result.txt` |
+| 1年期 行情自适应(3/17/17b) | 🔄 跑中 | 策略3跑完，17+17b 跑中 |
+| 3年期 行情自适应(3/17/17b) | 🔄 跑中 | 后台进程，约 1.5h 后查看 |
+
+**结果文件**：
+- `_test_regime_result.txt` — 1年期对比结果
+- `_test_regime_3y_result.txt` — 3年期对比结果
+- `_test_kelly_result.txt` — 凯利对比结果
+
+### 6.4 新 session 接手时的操作
+
+1. **等后台进程跑完再改代码**——改引擎会覆盖当前进程的内存，但不会影响已启动的 `py -3.10` 子进程（已加载到内存）
+2. **先读结果**：`cat _test_regime_result.txt` 和 `cat _test_kelly_result.txt`
+3. **跑下一个策略时写新脚本**，不要覆盖正在写的结果文件
+4. **所有策略参数在 best_config.json 里**，读 `cfg.get('config', {})` 获取
+5. **跑回测的模板**：
+```python
+import json, sys; sys.path.insert(0, '.')
+from backtest.engine.backtest import run_backtest
+cfg = json.load(open('data/evolution/best_config.json','r',encoding='utf-8'))
+config = dict(cfg.get('config', {}))
+config['start_date'] = '202X-XX-XX'
+config['end_date'] = '202X-XX-XX'
+# 改你要测的参数
+result = run_backtest(config)
+```
+6. **必须用 `py -3.10`**，不要用默认 python
+7. **每个策略约 15-17 分钟（1年）/ 50 分钟（3年）**，别重复跑已完成的
+
+### 6.5 禁止事项
+
+- ❌ 不要 `git checkout` 覆盖 `backtest/engine/backtest.py`（引擎已改过）
+- ❌ 不要删 `_test_*_result.txt`（正在写入）
+- ❌ 不要改 `backtest/data/` 原始数据
+- ❌ 不要用 `git reset --hard` 或 `git checkout HEAD --` 任何文件
