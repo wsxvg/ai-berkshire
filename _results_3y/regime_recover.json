@@ -1,0 +1,23 @@
+[
+  {
+    "label": "策略3_Champion+dynSL",
+    "total_return": 51.68,
+    "max_drawdown": 9.42,
+    "trade_count": 395,
+    "sharpe": 0.74,
+    "calmar": 1.2,
+    "annualized": 11.27,
+    "volatility": 11.84,
+    "fees": 14034.22,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": -0.79,
+      "C_牛市": 52.7
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 31.8,
+    "time_seconds": 2189.0,
+    "final_value": 151684.96
+  }
+]

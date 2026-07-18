@@ -1,0 +1,86 @@
+[
+  {
+    "label": "策略15a_kelly0.25",
+    "total_return": 52.95,
+    "max_drawdown": 9.85,
+    "trade_count": 380,
+    "sharpe": 0.75,
+    "calmar": 1.17,
+    "annualized": 11.51,
+    "volatility": 12.07,
+    "fees": 14668.32,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": -1.07,
+      "C_牛市": 54.38
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 31.2,
+    "time_seconds": 1783.0,
+    "final_value": 152950.13
+  },
+  {
+    "label": "策略15b_kelly0.30",
+    "total_return": 56.61,
+    "max_drawdown": 9.92,
+    "trade_count": 368,
+    "sharpe": 0.8,
+    "calmar": 1.23,
+    "annualized": 12.19,
+    "volatility": 12.07,
+    "fees": 14431.44,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": -1.24,
+      "C_牛市": 58.35
+    },
+    "monthly_win_rate": 55.6,
+    "total_months": 36,
+    "signal_utilization": 30.3,
+    "time_seconds": 1915.0,
+    "final_value": 156609.63
+  },
+  {
+    "label": "策略15c_kelly0.35",
+    "total_return": 57.96,
+    "max_drawdown": 9.41,
+    "trade_count": 363,
+    "sharpe": 0.82,
+    "calmar": 1.32,
+    "annualized": 12.44,
+    "volatility": 12.07,
+    "fees": 14514.57,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": -1.35,
+      "C_牛市": 59.9
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 30.1,
+    "time_seconds": 2204.0,
+    "final_value": 157963.42
+  },
+  {
+    "label": "策略17a_regime保守",
+    "total_return": 32.67,
+    "max_drawdown": 8.69,
+    "trade_count": 450,
+    "sharpe": 0.45,
+    "calmar": 0.86,
+    "annualized": 7.52,
+    "volatility": 11.13,
+    "fees": 16715.78,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": -0.78,
+      "C_牛市": 33.8
+    },
+    "monthly_win_rate": 55.6,
+    "total_months": 36,
+    "signal_utilization": 34.4,
+    "time_seconds": 1898.0,
+    "final_value": 132674.06
+  }
+]

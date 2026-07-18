@@ -1,0 +1,23 @@
+[
+  {
+    "label": "策略12_ML信号",
+    "total_return": 40.26,
+    "max_drawdown": 10.52,
+    "trade_count": 391,
+    "sharpe": 0.57,
+    "calmar": 0.86,
+    "annualized": 9.06,
+    "volatility": 11.57,
+    "fees": 15565.96,
+    "segments": {
+      "A_熊市": 0.01,
+      "B_震荡": 0.18,
+      "C_牛市": 40.16
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 32.3,
+    "time_seconds": 2333.0,
+    "final_value": 140263.11
+  }
+]

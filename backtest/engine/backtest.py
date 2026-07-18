@@ -1489,8 +1489,23 @@ def run_backtest(config):
 
         # 对该日有买入信号的基金评分
         candidates = []
+
+        # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
+        _min_consensus = config.get("min_consensus", 2)
+        if config.get("adaptive_consensus", False):
+            # 近30日日均信号密度
+            _recent_days = backtest_dates[max(0, idx-30):idx+1]
+            _recent_signals = sum(len(trading_by_date.get(d, [])) for d in _recent_days)
+            _avg_daily = _recent_signals / max(1, len(_recent_days))
+            if _avg_daily < 15:
+                _min_consensus = 1   # 稀疏期：1人买就够
+            elif _avg_daily < 50:
+                _min_consensus = 2   # 正常期
+            else:
+                _min_consensus = 3   # 密集期：提高门槛防噪音
+
         for fn, signal in fund_signals.items():
-            if signal["buy_count"] < 2:  # 需要至少2人买入
+            if signal["buy_count"] < _min_consensus:  # 需要至少 N 人买入（默认2，支持自适应）
                 continue
             # 净信号过滤：买入必须多于卖出
             if config.get("net_signal", False) and signal["buy_count"] <= signal.get("sell_count", 0):
