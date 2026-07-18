@@ -1,561 +1,151 @@
-# 三年期全周期回测方案：牛市·熊市·震荡市全覆盖对比
+# 长周期辅助策略 — 新增回测方案
 
-> 数据期：2023-07-17 ~ 2026-07-17（3 整年，979 天，50,632 条交易记录）
-> 覆盖周期：2023 H2 熊市 + 2024 震荡复苏 + 2025-2026 牛市
-> 当前最优：champion TOP60+active+sec40+dynSL = 70.23% / DD 9.20%（18个月）
-> 近一年回测（2025-07~2026-07）：41.92% / DD 9.49% / 327笔
-> 引擎：原始版本，每实验约 15-17 分钟
-> 策略数：23 个（含 11 个新参数测试 + 3 个凯利变体 + 4 个行情自适应）
+> **前提**：当前的 19 个策略回测不要动，等那批跑完选出最优配置作为 baseline。
+> 下面的策略是新增的，用选出的 baseline 配置 + 新增参数对跑。
 
 ---
 
-## 一、市场周期划分（基于沪深 300 实际走势）
+## 背景
 
-```
-段 A（熊市）: 2023-07-17 ~ 2024-06-30
-  特征：CSI300 持续阴跌，日均信号 10-15 条
-  测试：策略在信号极稀疏时的防御能力
+现有策略全部基于**日线**（每天跟随大佬信号决策）。长周期指标（周线MACD、年线、月线布林带）可用于**市场状态判断**和**仓位调节**，不干预每日买入卖出决策。
 
-段 B（震荡复苏）: 2024-07-01 ~ 2025-06-30
-  特征：CSI300 低位震荡后缓慢回升，日均信号 15-50 条
-  测试：策略在信号从稀疏到密集过渡中的稳定性
+**区别**：
+- 现有短线策略 → 决定"今天买哪只基金"
+- 长周期策略 → 决定"今天该重仓还是轻仓"
 
-段 C（牛市加速）: 2025-07-01 ~ 2026-07-17
-  特征：CSI300 加速上行（AI/半导体行情），日均信号 50-130 条
-  测试：策略在信号密集时的进攻能力上限
-```
-
-分段验证是必须的——全周期收益高但段 A 崩溃的策略不能被采用。
+两者互补，不冲突。
 
 ---
 
-> **新增 2026-07-18**：PE 行业估值过滤（策略10~10.5）、RSI超买拦截（策略11）、ML信号增强（策略12）、
-> 移动止盈（策略13）、熊市不买（策略14）、凯利优化（策略15）、大佬卖出跟单（策略16）。
-> 此前所有回测均未测试这些参数——开了可能进一步提升收益或降低回撤。
+## 需要改的代码
+
+### 1. `tools/technical_indicators.py` 新增 4 个函数
+
+```python
+def compute_weekly_rsi(nav_values, period=14):
+    """将日线NAV(每5天取1点)重采样为周线，再算RSI"""
+
+def compute_weekly_macd(nav_values, fast=12, slow=26, signal=9):
+    """周线MACD，返回 macd_line, signal_line, histogram"""
+
+def compute_macd_divergence(nav_values):
+    """检测周线MACD顶背离/底背离：
+    顶背离 = 价格创新高但MACD未创新高 → 返回 "top"
+    底背离 = 价格创新低但MACD未创新低 → 返回 "bottom"
+    无背离 = 返回 None
+    """
+
+def compute_weekly_bollinger(nav_values, period=20, std_mult=2.0):
+    """周线布林带（每5天1点），返回 (upper, middle, lower, %b)"""
+
+def compute_ma_250(nav_values):
+    """250日移动平均线（年线），返回 (current_nav, ma_250) 和 是否在年线上方"""
+```
+
+### 2. `backtest/engine/backtest.py` 新增配置项
+
+在每日循环顶部（检测完 `_market_state` 后）加入：
+
+```python
+# ── 长周期辅助参数 ──
+if config.get("weekly_macd_divergence", False):
+    from tools.technical_indicators import compute_macd_divergence
+    _div = compute_macd_divergence(_get_csi300_nav())  # 需要补充获取方法
+    if _div == "top":
+        _market_discount = 0.7   # 顶背离 → 仓位×0.7
+    elif _div == "bottom":
+        _market_discount = 1.0   # 底背离 → 仓位不变（让短线决定）
+
+if config.get("yearly_ma_filter", False):
+    from tools.technical_indicators import compute_ma_250
+    _nav, _ma250 = compute_ma_250(_get_csi300_nav())
+    if _nav < _ma250:
+        _yearly_bear = True  # 跌破年线 → 强制防守
+
+if config.get("weekly_bollinger_adjust", False):
+    from tools.technical_indicators import compute_weekly_bollinger
+    _, _, _, _bb_pct = compute_weekly_bollinger(_get_csi300_nav())
+    if _bb_pct > 0.8:
+        _bb_adjust = 0.8      # 接近上轨 → 仓位×0.8
+    elif _bb_pct < 0.2:
+        _bb_adjust = 1.2      # 接近下轨 → 仓位×1.2
+```
+
+然后在 `kelly_allocate` 的资金计算中，把 `_market_discount`、`_yearly_bear`、`_bb_adjust` 乘进去。
 
 ---
 
-## 二、对比策略（11+7=18 个策略）
+## 策略定义
 
-每个策略需要跑两遍：全周期（2023-07~2026-07）+ 分段（A/B/C）。
-
-### 策略 1：K_baseline（纯跟投，基线）
+### 策略18：周线MACD顶底背离辅助
 
 ```
-config: min_score=0, min_consensus=2, fund_type='all', 无 exclude_uids
-逻辑：完全信任大佬共识，不做任何过滤
-作用：最底层的基线——后续所有策略的收益必须超过这个才有效
-```
-
-### 策略 2：Champion（冠军基线）
-
-```
-config: TOP60 + active + sec40 + min_consensus=2
-       exclude_uids=[14345330,550027,8670487,3032839,2690580,
-                     10951797,183856,1094463,10542838,2804244]
-逻辑：当前最优静态配置
-作用：全周期验证 65.84% 是否稳定，分段看弱点在哪
-```
-
-### 策略 3：Champion + 动态止损（当前最优，70.23%）
-
-```
-config: 策略2 + dynamic_stop_loss=True
-逻辑：浮盈>20%→止损收紧为从高点回撤15%，浮盈>40%→收紧到10%
-单项效果：+4.39pp（vs Champion 65.84%）
-作用：牛市锁利，70.23% 为当前所有单项策略中最高收益
-备注：此策略为单独动态止损，不含金字塔补仓
-```
-
-### 策略 4：Champion + 金字塔补仓
-
-```
-config: 策略2 + pyramiding_enabled=True
-逻辑：持仓浮亏>5% + 大佬继续买入 → 加仓(×0.5)
-      浮亏>10% + 大佬继续买 → 再加(×0.3)，浮亏>15% 不再加
-单项效果：+1.89pp（vs Champion 65.84% → 67.73%）
-作用：看熊市中能否降低成本、震荡市中能否吃反弹
-```
-
-### 策略 4.5：Champion + 金字塔 + 动态止损（V2 组合，69.25%）
-
-```
-config: 策略2 + pyramiding_enabled=True + dynamic_stop_loss=True
-逻辑：金字塔在回调时加仓 + 动态止损在盈利后锁利
-结果：69.25%（+3.41pp vs Champion），低于策略3单独dynSL（70.23%）
-根因：两个特性互斥。金字塔在回调中扩大仓位→动态止损锁利时
-      金字塔多买的份额未充分复利即被清仓，抵消约2.87pp
-结论：组合不如单独 dynSL。生产推荐策略3（单独动态止损）
-```
-
-### 策略 5：自适应共识（稀疏期适配）
-
-```
-config: 策略2 + 动态 min_consensus
-逻辑：近30日日均信号<15 → min_consensus=1
-      近30日日均信号15-50 → min_consensus=2
-      近30日日均信号>50 → min_consensus=3
-作用：解决段 A 只有 2 笔交易的问题——降低门槛增加稀疏期的参与度
-```
-
-### 策略 6：被动指数托底（5 个变体）
-
-```
-适用场景：连续 10 天无买入信号 → 自动切换到被动模式
-         信号恢复 → 卖被动仓, 切回主动策略
-```
-
-**为什么需要多个变体**：同一宽基指数有十几家基金公司的产品，费率不同、跟踪误差不同、收益差异可达 3pp。不能随便写死两个代码。
-
-#### 策略 6A：纯 A 股防御
-
-```
-被动仓 = CSI300 ETF联接(110020)
-理由：最简单，A 股的基准线
-```
-
-#### 策略 6B：纯美股科技
-
-```
-被动仓 = 万家纳斯达克100 QDII(019441)
-理由：表现最好的纳指基金（同期 +29.9% vs 最差 26.7%）
-```
-
-#### 策略 6C：纯美股均衡
-
-```
-被动仓 = 博时标普500 QDII(050025)
-理由：纳指跌 33% 的年份标普只跌 19%，防御性更强
-```
-
-#### 策略 6D：A 股+美股混合
-
-```
-被动仓 = 110020(CSI300)×40% + 019441(NASDAQ)×40% + 050025(SP500)×20%
-理由：三个市场分散，中美对冲 + 科技/均衡搭配
-```
-
-#### 策略 6E：动态选最强宽基
-
-```
-逻辑：切换时, 比较近 60 日涨幅最高的宽基 → 买那只
-      每 20 天重评一次, 换到最强的
-候选池: [110020(CSI300), 019441(NASDAQ), 050025(SP500), 000614(DAX)]
-作用：不预设哪个市场会涨——让数据说话
-```
-
-**5 个变体全部回测**。不需要额外抓数据——这些基金的净值曲线已在 fund_charts 中。
-
-### 策略 7：评分系统独立运行（无大佬模式）
-
-```
-config: 策略2 的共识检查替换为纯评分
-逻辑：信号密度<15 → 不用共识, 直接按五维评分买 TOP3
-      信号密度恢复 → 切回共识模式
-      min_score=3.0（评分门槛, 防买入烂基金）
-作用：稀疏期完全不依赖大佬信号, 只看基金本身质量
-```
-
-### 策略 8：纯技术指标模式
-
-```
-config: 不依赖大佬信号, 纯技术面决策
-逻辑：取基金池中所有基金的近60日净值
-      RSI<30 + 20日MA向上 → 买入
-      RSI>70 → 卖出
-      max_holdings=5, 每日重新评估
-作用：极端情况下的备用方案——如果大佬信号彻底失效
-```
-
-### 策略 9：综合方案（所有有效组件打包）
-
-```
-config: 策略3(单独dynSL，70.23%) + 策略5 + 策略7 的组合
-注意：不使用策略4.5的 pyramiding+dynSL 组合（互斥，反而降低收益）
+config = {baseline, weekly_macd_divergence=true}
 逻辑：
-  信号密集期 → 冠军+动态止损(正常模式)
-  信号稀疏期 → 自适应共识(min_consensus降为1)
-  极端稀疏(日均<8) → 评分系统(不依赖大佬)
-作用：最终战场——所有有效改进的集成（不含金字塔以避免互斥）
+  周线MACD顶背离 → 买入金额×0.7
+  底背离 → 正常（底背离不代表立刻涨，牛市底背离很少）
 ```
 
----
-
-### 🔴 第二批：从未测试过的参数（11 个新策略）
-
-以下参数代码已就绪、历史数据完整，但**从未在任何回测中开启过**。
-开启后可能进一步提升收益或降低回撤。
-
----
-
-### 策略 10：Champion+dynSL + PE 行业估值过滤
+### 策略19：年线牛熊过滤
 
 ```
-config: 策略3 + sector_valuation=true
-逻辑：利用 CSI 行业指数 10 年 PE 历史百分位，在买入时做估值检查
-  数据：data/industry_valuation.json（3个行业，各 2427 条日度记录，2016~2026）
-  H30184 半导体  → PE>80%分位扣1.5分，>70%扣1.0分，<30%加0.5分
-  930712 有色金属 → 同上
-  930713 煤炭    → 同上
-  当前状态：半导体PE=99.6%(严重高估)，有色金属=98.5%(严重高估)，煤炭=78.4%(偏高)
-作用：防止在行业 PE 历史高位接盘，2025-11 动量崩盘前半导体PE可能已在高位
-注意：仅覆盖 3 个 A 股行业（通过基金名称关键词匹配），不覆盖 QDII
-```
-
-### 策略 10.5：Champion+dynSL + PE + 金字塔（全开）
-
-```
-config: 策略3 + sector_valuation=true + pyramiding_enabled=true
-逻辑：估值过滤 + 低吸 + 动态锁利三合一
-作用：最完整的防御体系——PE挡高位、金字塔摊成本、dynSL锁利润
-预期：收益可能介于 69%~71% 之间，回撤有望降到 8% 以下
-```
-
-### 策略 11：Champion+dynSL + RSI 超买拦截
-
-```
-config: 策略3 + timing_filter=true + block_overbought=true
-逻辑：买入前检查 RSI，RSI>70 超买则拒绝买入
-数据：fund_charts.json 已有所有基金的净值数据，compute_entry_timing_score 已实现
-作用：避免在短期过热时追高（你在实盘中看到的 BLOCKED 银华集成电路就是此逻辑）
-```
-
-### 策略 12：Champion+dynSL + ML 信号增强
-
-```
-config: 策略3 + ml_signal=true + ml_weight=1.0 + ml_retrain_days=30
-逻辑：LightGBM 分类器，16维特征预测 30 日前瞻收益>3%
-      每 30 天 walk-forward 重新训练，严格防前视偏差（pretrain 方法已实现）
-依赖：pip install lightgbm scikit-learn
-作用：机器学习辅助决策，可能捕捉五维评分遗漏的 alpha
-```
-
-### 策略 13：Champion+dynSL + 移动止盈
-
-```
-config: 策略3 + trailing_tp_activate=15 + trailing_tp_drawdown=8
-逻辑：浮盈>15% 后开启移动止盈，从最高点回撤>8% 则卖出锁利
-作用：比固定 50% 止盈更灵活——牛市中可让利润跑到 100%+，回撤时及时锁定
-注意：和 dynamic_stop_loss 是不同机制，两者可并存测试
-```
-
-### 策略 14：Champion+dynSL + 熊市不买
-
-```
-config: 策略3 + bear_market_no_buy=true
-逻辑：市场判定为熊市 → 跳过所有买入，只持有现金/已有仓位
-作用：三年回测中段 A 是熊市——开了这个策略段 A 收益应该更好（不买就不亏）
-```
-
-### 策略 15：Champion+dynSL + 凯利优化
-
-```
-config: 策略3 + kelly_cap=0.25/0.3/0.35（做 3 个变体）
-逻辑：提高单笔仓位上限——当前 18% → 试探 22.5%/27%/31.5%
-作用：理论凯利值约 0.4，当前只用半凯利 0.2，提高可能增加收益但会加大回撤
-近一年测试（2025-07 ~ 2026-07）正在进行中
-```
-
-### 策略 16：Champion+dynSL + 大佬卖出跟单
-
-```
-config: 策略3 + sell_consensus=2
-逻辑：有 ≥2 位大佬卖出某持仓基金 → 跟卖
-作用：大佬集体撤退往往是风险信号，跟卖可能提前避坑
-```
-
----
-
-### 🟢 策略 17：行情自适应（regime_specific=true）★ 核心新增
-
-```
-config: 策略3 基础上 + regime_specific=true
-       需要配置 regime 特定的 6 个参数，按牛/熊/震荡分别调整
-
-牛市配置:
-  take_profit_pct_bull=60, stop_loss_pct_bull=-25
-  kelly_cap_bull=0.25, pyramiding_enabled_bull=false
-  trailing_tp_activate_bull=20, trailing_tp_drawdown_bull=8
-
-震荡配置:
-  take_profit_pct_neutral=50, stop_loss_pct_neutral=-30
-  kelly_cap_neutral=0.2, pyramiding_enabled_neutral=false
-  trailing_tp_activate_neutral=15, trailing_tp_drawdown_neutral=10
-
-熊市配置:
-  take_profit_pct_bear=30, stop_loss_pct_bear=-20
-  kelly_cap_bear=0.1, pyramiding_enabled_bear=true
-  trailing_tp_activate_bear=10, trailing_tp_drawdown_bear=6
-
+config = {baseline, yearly_ma_filter=true}
 逻辑：
-  牛市 → 高止盈(60%) 高仓位(25% Kelly) 不补仓(等新信号) 移动止盈20%激活
-  震荡 → 正常止盈(50%) 正常仓位(20%)  
-  熊市 → 快速止盈(30%) 轻仓(10%) 开金字塔摊成本 移动止盈10%激活收紧
-
-设计理念：不是"熊市就不买"，而是"熊市用不同打法"——
-  轻仓试探 → 跌了补仓 → 反弹快速止盈 → 反复滚小利润
-vs 旧K_regime(51.59%)的粗暴做法：熊市提高门槛 → 几乎不买 → 反弹时没仓位
-
-引擎改动：新增 _rc(key, default) 行情感知解析器，自动读取 key_{bull/neutral/bear}
-无需改引擎，全部通过 config 参数控制
+  CSI300在年线上方 → 正常
+  跌破年线 → 仓位上限减半，开启金字塔补仓
+  重回年线 → 恢复正常
 ```
 
-### 策略 17a：行情自适应·保守版
+### 策略20：周线布林带仓位调节
 
 ```
-config: 策略17 + 全部行情降低一档
-牛市: take_profit=50, kelly=0.2, trailing_activate=25
-震荡: take_profit=40, kelly=0.15
-熊市: take_profit=20, kelly=0.05, stop_loss=-15, trailing_activate=8
+config = {baseline, weekly_bollinger_adjust=true}
+逻辑：
+  %b > 0.8 → 仓位×0.8
+  %b < 0.2 → 仓位×1.2
 ```
 
-### 策略 17b：行情自适应·激进版
+### 策略21：三合一（全开）
 
 ```
-config: 策略17 + 全部行情提一档
-牛市: take_profit=80, kelly=0.35, trailing_activate=15
-震荡: take_profit=60, kelly=0.25
-熊市: take_profit=40, kelly=0.15, stop_loss=-25, pyramiding=true
-```
-
-### 策略 17c：行情自适应·仅牛熊切换（简化版）
-
-```
-config: 策略17 + 只在牛市和熊市有区别，震荡复用默认值
-牛市: take_profit=60, kelly=0.3, pyramiding=false
-熊市: take_profit=25, kelly=0.08, pyramiding=true, stop_loss=-15
-震荡: 无特殊配置(用全局默认值)
-作用：最小化参数变动，测牛熊切换的增量效果
+config = {baseline, weekly_macd_divergence=true, yearly_ma_filter=true, weekly_bollinger_adjust=true}
 ```
 
 ---
 
-## 三、评估指标
+## 跑法
 
-### 主指标（排名用）
-
-| 指标 | 计算 | 阈值 |
-|------|------|------|
-| 全周期总收益 | 2023-07~2026-07 | ≥ K_baseline 同期收益 |
-| 最大回撤 | 全周期 | ≤ 20% |
-| 段 A 收益 | 2023-07~2024-06 | ≥ -10%（不能熊市崩盘） |
-| 段 B 收益 | 2024-07~2025-06 | ≥ 0%（震荡市至少不亏） |
-| 段 C 收益 | 2025-07~2026-07 | ≥ 30%（牛市要跟得上） |
-| 月胜率 | 盈利月/总月数 | ≥ 50% |
-
-### 辅助指标
-
-| 指标 | 意义 |
-|------|------|
-| 信号利用率 | 有交易的天数/总有信号的天数——越高说明策略不浪费信号 |
-| 夏普比率 | 风险调整后收益 |
-| 卡玛比率 | 收益/回撤——越高越好 |
-| 年化收益率 | 标准化对比 |
-
-### 排名权重
+只跑**三年全周期**（不需要分段），对比 baseline 即可。
 
 ```
-全周期收益 × 0.3
-+ 段A收益 × 0.15
-+ 段B收益 × 0.15
-+ 段C收益 × 0.2
-+ 月胜率×100 × 0.1
-+ 卡玛比率 × 0.1
+4 个策略 × 约 50 分钟/个 ≈ 3.5 小时
 ```
 
----
+模板：
 
-## 四、代码实现要点
+```python
+import json, sys
+sys.path.insert(0, '.')
+from backtest.engine.backtest import run_backtest
 
-### 4.1 需要改引擎的地方（逐个加，逐个测）
+baseline = {}  # 从19个里选出的最优config
+base = dict(baseline)
+base['start_date'] = '2023-07-17'
+base['end_date'] = '2026-07-17'
+base['initial_cash'] = 100000
 
-| 改动 | 行数 | 影响策略 |
-|------|------|---------|
-| dynamic_stop_loss | ~10 行 Portfolio 类 | 策略3,9,10,11,12,13,14,15,16 |
-| pyramiding_enabled | ~15 行 Portfolio 类 | 策略4,10.5 |
-| 自适应 consensus | ~5 行 每日循环 | 策略5,9 |
-| 被动指数托底 | ~10 行 每日循环 | 策略6 |
-| 评分切换 | ~8 行 信号聚合处 | 策略7,9 |
-| sector_valuation | ✅ 已实现，只需 config | 策略10,10.5 |
-| timing_filter/block_overbought | ✅ 已实现，只需 config | 策略11 |
-| ml_signal | ✅ 已实现，只需 config | 策略12 |
-| trailing_tp | ✅ 已实现，只需 config | 策略13 |
-| bear_market_no_buy | ✅ 已实现，只需 config | 策略14 |
-| sell_consensus | ✅ 已实现，只需 config | 策略16 |
-
-### 4.2 不需要改引擎的策略
-
-策略 1,2,8 可以通过纯 config 参数组合实现。
-策略 10~16 全部已实现，只需改 config 参数。
-策略 15 需要跑 3 个 kelly_cap 变体。
-
-### 4.3 实验量
-
-```
-第一批（核心 11 个，已回测过有的）：
-  策略1~9 + 4.5 = 11 个 × 2 次（全周期+分段）= 22 次
-
-第二批（新增参数 7 个，从未测试）：
-  策略10(PE), 10.5(PE+pyramid), 11(RSI), 12(ML), 13(trailing_tp),
-  14(bear_no_buy), 16(sell_consensus) = 7 个 × 2 次 = 14 次
-
-第三批（凯利变体 3 个）：
-  策略15(kelly=0.25/0.3/0.35) = 3 个 × 2 次 = 6 次
-
-第四批（行情自适应 4 个）：
-  策略17, 17a, 17b, 17c = 4 个 × 2 次 = 8 次
-
-总计: 23 策略 × 2 次 = 46 次回测
-每实验约 15-17 分钟，总耗时约 12-14 小时
-```
-
----
-
-## 五、结论格式
-
-最终输出《三年全周期对比报告》：
-
-```
-## 排名表
-| 排名 | 策略 | 全周期 | 段A | 段B | 段C | 回撤 | 月胜率 | 夏普 | 加权分 |
-|------|------|--------|-----|-----|-----|------|--------|------|--------|
-|      | 1.K_baseline | | | | | | | | |
-|      | 2.Champion | | | | | | | | |
-|      | 3.Champion+dynSL | | | | | | | | |
-|      | 4.Champion+pyramid | | | | | | | | |
-|      | 4.5.Champion+pyramid+dynSL | | | | | | | | |
-|      | 5.自适应共识 | | | | | | | | |
-|      | 6A.被动CSI300 | | | | | | | | |
-|      | 6B.被动NASDAQ | | | | | | | | |
-|      | 6C.被动SP500 | | | | | | | | |
-|      | 6D.被动中美混合 | | | | | | | | |
-|      | 6E.被动动态最强 | | | | | | | | |
-|      | 7.纯评分 | | | | | | | | |
-|      | 8.纯技术指标 | | | | | | | | |
-|      | 9.综合方案 | | | | | | | | |
-|      | 10.Champion+dynSL+PE过滤 | | | | | | | | |
-|      | 10.5.Champion+dynSL+PE+pyramid | | | | | | | | |
-|      | 11.Champion+dynSL+RSI拦截 | | | | | | | | |
-|      | 12.Champion+dynSL+ML信号 | | | | | | | | |
-|      | 13.Champion+dynSL+移动止盈 | | | | | | | | |
-|      | 14.Champion+dynSL+熊市不买 | | | | | | | | |
-|      | 15a.Champion+dynSL+kelly0.25 | | | | | | | | |
-|      | 15b.Champion+dynSL+kelly0.3 | | | | | | | | |
-|      | 15c.Champion+dynSL+kelly0.35 | | | | | | | | |
-|      | 16.Champion+dynSL+大佬卖出跟单 | | | | | | | | |
-|      | 17.Champion+dynSL+行情自适应(默认) | | | | | | | | |
-|      | 17a.行情自适应·保守版 | | | | | | | | |
-|      | 17b.行情自适应·激进版 | | | | | | | | |
-|      | 17c.行情自适应·仅牛熊切换 | | | | | | | | |
-
-## 各策略在不同周期的行为分析
-- 段A：哪个策略亏损最小？为什么？
-- 段B：哪个策略基本持平？为什么？
-- 段C：哪个策略收益最高？为什么？
-
-## 最终推荐
-- 第一选择：策略X（年化Y%, 回撤Z%, 全周期稳定）
-- 第二选择：策略Y（备用方案）
-- 不推荐：策略A, B, C（原因）
-
-## 最优配置
-data/evolution/best_config.json ← 最终写入
+# 然后逐个加新增参数
+# base['weekly_macd_divergence'] = True
+# base['yearly_ma_filter'] = True
+# ...
+result = run_backtest(base)
 ```
 
 ---
 
 ## 铁律
 
-1. Python: `py -3.10`
-2. 每个策略跑完全周期 + 分段后再对比, 不要跑一个评一个
-3. 段 A 如果不触发交易(=只产生 0-2 笔), 标注"数据稀疏, 策略无机会"
-4. 引擎改动逐个加, 不加一次性的"全能版"
-5. 不修改 backtest/data/ 原始数据
-
----
-
-现在开始。先确认引擎干净（git status），然后逐个实验跑起来。
-
----
-
-## 六、当前会话状态（交接用，2026-07-18）
-
-> **重要：如果你是从这个文档开始的新 AI session，先读这里了解现状。**
-
-### 6.1 引擎已改动的部分
-
-**`backtest/engine/backtest.py`** — 新增行情感知参数解析：
-
-```python
-# 第 1388 行附近
-_regime = config.get("regime_specific", False)
-def _rc(key, default):
-    if _regime:
-        regime_val = config.get(f"{key}_{_ms}")
-        if regime_val is not None:
-            return regime_val
-    return config.get(key, default)
-
-_dyn_tp_pct = _rc("take_profit_pct", 50)
-_dyn_sl_pct = _rc("stop_loss_pct", -30)
-_dyn_kelly = _rc("kelly_cap", 0.2)
-_dyn_pyramid = _rc("pyramiding_enabled", False)
-_dyn_dynsl = _rc("dynamic_stop_loss", False)
-_dyn_trail_act = _rc("trailing_tp_activate", 0)
-_dyn_trail_dd = _rc("trailing_tp_drawdown", 10)
-```
-
-然后 `tp_pct`/`sl_pct`/`kelly_cap`/`pyramiding_enabled`/`dynamic_stop_loss`/`trailing_tp` 全部改用 `_dyn_*` 变量。**向后兼容**——`regime_specific=false` 时行为和改之前完全一样。
-
-### 6.2 数据现状
-
-| 数据文件 | 覆盖 | 备注 |
-|---------|------|------|
-| `backtest/data/trading_by_date_fixed.json` | 2023-07-17 ~ 2026-07-17, 50,632 条 | 完整 |
-| `backtest/data/fund_charts.json` | 2,187 只基金 | 328 只覆盖到 2023-07, 183 只完整 3 年 |
-| `data/evolution/best_config.json` | 冠军 dynSL-alone(70.23%) | 含行情参数(默认关闭) |
-
-**三年数据够用但有局限**：段 A(2023H2)只有 328 只基金有走势、日均 11.5 条信号——稀疏但真实。段 C(2025H2~2026H1)数据充裕。
-
-### 6.3 已完成和进行中的回测
-
-| 测试 | 状态 | 结果 |
-|------|------|------|
-| Champion 18个月 (2025-01~2026-07) | ✅ 完成 | 70.23%/9.20%dd/307笔 |
-| Champion 近一年 (2025-07~2026-07) | ✅ 完成 | 55.94%/9.59%dd/300笔/夏普1.62 |
-| 凯利 kelly=0.2 | ✅ 完成 | 41.92% (但数据可能有误) |
-| 凯利 kelly=0.3 | 🔄 跑中 | 后台进程，检查 `_test_kelly_result.txt` |
-| 1年期 行情自适应(3/17/17b) | 🔄 跑中 | 策略3跑完，17+17b 跑中 |
-| 3年期 行情自适应(3/17/17b) | 🔄 跑中 | 后台进程，约 1.5h 后查看 |
-
-**结果文件**：
-- `_test_regime_result.txt` — 1年期对比结果
-- `_test_regime_3y_result.txt` — 3年期对比结果
-- `_test_kelly_result.txt` — 凯利对比结果
-
-### 6.4 新 session 接手时的操作
-
-1. **等后台进程跑完再改代码**——改引擎会覆盖当前进程的内存，但不会影响已启动的 `py -3.10` 子进程（已加载到内存）
-2. **先读结果**：`cat _test_regime_result.txt` 和 `cat _test_kelly_result.txt`
-3. **跑下一个策略时写新脚本**，不要覆盖正在写的结果文件
-4. **所有策略参数在 best_config.json 里**，读 `cfg.get('config', {})` 获取
-5. **跑回测的模板**：
-```python
-import json, sys; sys.path.insert(0, '.')
-from backtest.engine.backtest import run_backtest
-cfg = json.load(open('data/evolution/best_config.json','r',encoding='utf-8'))
-config = dict(cfg.get('config', {}))
-config['start_date'] = '202X-XX-XX'
-config['end_date'] = '202X-XX-XX'
-# 改你要测的参数
-result = run_backtest(config)
-```
-6. **必须用 `py -3.10`**，不要用默认 python
-7. **每个策略约 15-17 分钟（1年）/ 50 分钟（3年）**，别重复跑已完成的
-
-### 6.5 禁止事项
-
-- ❌ 不要 `git checkout` 覆盖 `backtest/engine/backtest.py`（引擎已改过）
-- ❌ 不要删 `_test_*_result.txt`（正在写入）
-- ❌ 不要改 `backtest/data/` 原始数据
-- ❌ 不要用 `git reset --hard` 或 `git checkout HEAD --` 任何文件
+1. `py -3.10`
+2. 等当前 19 个跑完、选出 baseline，再跑这些
+3. 不改 `backtest/data/` 原始数据
+4. 长周期函数只在 config 开启时才生效，不影响现有策略
