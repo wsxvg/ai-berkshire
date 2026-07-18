@@ -1387,6 +1387,26 @@ def run_backtest(config):
         if _dyn_min_score_key in config:
             _effective_min_score = config[_dyn_min_score_key]
 
+        # ── 行情特定参数：按牛/熊/震荡分别配置 ──
+        _ms = _market_state  # shorthand
+        # 如果配置了 regime_specific=true, 优先用行情特定参数, 否则用通用值
+        _regime = config.get("regime_specific", False)
+        def _rc(key, default):
+            """Regime-aware config: 先查 regime 特定值, 再查通用值, 最后用 default"""
+            if _regime:
+                regime_val = config.get(f"{key}_{_ms}")
+                if regime_val is not None:
+                    return regime_val
+            return config.get(key, default)
+
+        _dyn_tp_pct = _rc("take_profit_pct", 50)
+        _dyn_sl_pct = _rc("stop_loss_pct", -30)
+        _dyn_kelly = _rc("kelly_cap", 0.2)
+        _dyn_pyramid = _rc("pyramiding_enabled", False)
+        _dyn_dynsl = _rc("dynamic_stop_loss", False)
+        _dyn_trail_act = _rc("trailing_tp_activate", 0)
+        _dyn_trail_dd = _rc("trailing_tp_drawdown", 10)
+
         # ── ML冷启动降门槛：ML不可靠时放宽买入标准 ──
         if _ml_enabled and _ml_cold_start:
             _cs_drop = config.get("ml_cold_start_drop", 0.5)  # 冷启动期间降低门槛
@@ -1698,9 +1718,9 @@ def run_backtest(config):
             sell_reason = ""
             should_sell = False
 
-            tp_pct = config.get("take_profit_pct", 30)
+            tp_pct = _dyn_tp_pct
             tp_sell = config.get("take_profit_sell_pct", 0.5)
-            sl_pct = config.get("stop_loss_pct", -15)
+            sl_pct = _dyn_sl_pct
             mom_sell = config.get("momentum_sell", 2.0)
             max_pos = _dyn_max_pos
 
@@ -1708,7 +1728,7 @@ def run_backtest(config):
             no_sl = config.get("no_stop_loss", False)
             # 动态止损：浮盈 >20% 收紧到从高点回撤15%，浮盈 >40% 收紧到10%
             effective_sl = sl_pct
-            if config.get("dynamic_stop_loss", False) and cum_return > 20:
+            if _dyn_dynsl and cum_return > 20:
                 if drawdown_from_peak < -15:
                     should_sell = True
                     sell_reason = f"dyn_stop_loss profit={cum_return:.1f}% dd={drawdown_from_peak:.1f}%"
@@ -1743,9 +1763,7 @@ def run_backtest(config):
 
             # 🟢 移动止盈: 盈利达到激活阈值后，从最高点回撤超过阈值则卖出锁利
             # 与 peak_drawdown_exit 的区别：只在盈利状态下触发，避免亏损时误卖
-            trailing_tp_activate = config.get("trailing_tp_activate", 0)
-            trailing_tp_dd = config.get("trailing_tp_drawdown", 10)
-            if trailing_tp_activate > 0 and cum_return >= trailing_tp_activate and drawdown_from_peak < -trailing_tp_dd:
+            if _dyn_trail_act > 0 and cum_return >= _dyn_trail_act and drawdown_from_peak < -_dyn_trail_dd:
                 should_sell = True
                 sell_reason = f"trailing_tp profit={cum_return:.1f}% dd={drawdown_from_peak:.1f}%"
 
@@ -1926,7 +1944,7 @@ def run_backtest(config):
         to_buy = kelly_allocate(candidates, portfolio.cash + sum(
             h["shares"] * fund_prices.get(code, h.get("buy_nav", 1.0))
             for code, h in portfolio.holdings.items()),
-            kelly_cap=config.get("kelly_cap", 0.2),
+            kelly_cap=_dyn_kelly,
             cash_reserve=_dyn_cash_reserve,
             max_pos=_dyn_max_pos / 100)
         for c in to_buy:
@@ -1943,7 +1961,7 @@ def run_backtest(config):
             # 已持仓的基金：检查是否满足金字塔补仓条件
             if c["code"] in portfolio.holdings:
                 # 金字塔补仓：浮亏 >5% 且大佬信号持续 → 越跌越买
-                if not config.get("pyramiding_enabled", False):
+                if not _dyn_pyramid:
                     continue
                 h = portfolio.holdings[c["code"]]
                 buy_nav = h.get("buy_nav", 1.0)

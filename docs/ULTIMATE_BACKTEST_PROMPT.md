@@ -5,7 +5,7 @@
 > 当前最优：champion TOP60+active+sec40+dynSL = 70.23% / DD 9.20%（18个月）
 > 近一年回测（2025-07~2026-07）：41.92% / DD 9.49% / 327笔
 > 引擎：原始版本，每实验约 15-17 分钟
-> 策略数：18 个（含 7 个新参数测试 + 3 个凯利变体）
+> 策略数：23 个（含 11 个新参数测试 + 3 个凯利变体 + 4 个行情自适应）
 
 ---
 
@@ -266,6 +266,70 @@ config: 策略3 + sell_consensus=2
 
 ---
 
+### 🟢 策略 17：行情自适应（regime_specific=true）★ 核心新增
+
+```
+config: 策略3 基础上 + regime_specific=true
+       需要配置 regime 特定的 6 个参数，按牛/熊/震荡分别调整
+
+牛市配置:
+  take_profit_pct_bull=60, stop_loss_pct_bull=-25
+  kelly_cap_bull=0.25, pyramiding_enabled_bull=false
+  trailing_tp_activate_bull=20, trailing_tp_drawdown_bull=8
+
+震荡配置:
+  take_profit_pct_neutral=50, stop_loss_pct_neutral=-30
+  kelly_cap_neutral=0.2, pyramiding_enabled_neutral=false
+  trailing_tp_activate_neutral=15, trailing_tp_drawdown_neutral=10
+
+熊市配置:
+  take_profit_pct_bear=30, stop_loss_pct_bear=-20
+  kelly_cap_bear=0.1, pyramiding_enabled_bear=true
+  trailing_tp_activate_bear=10, trailing_tp_drawdown_bear=6
+
+逻辑：
+  牛市 → 高止盈(60%) 高仓位(25% Kelly) 不补仓(等新信号) 移动止盈20%激活
+  震荡 → 正常止盈(50%) 正常仓位(20%)  
+  熊市 → 快速止盈(30%) 轻仓(10%) 开金字塔摊成本 移动止盈10%激活收紧
+
+设计理念：不是"熊市就不买"，而是"熊市用不同打法"——
+  轻仓试探 → 跌了补仓 → 反弹快速止盈 → 反复滚小利润
+vs 旧K_regime(51.59%)的粗暴做法：熊市提高门槛 → 几乎不买 → 反弹时没仓位
+
+引擎改动：新增 _rc(key, default) 行情感知解析器，自动读取 key_{bull/neutral/bear}
+无需改引擎，全部通过 config 参数控制
+```
+
+### 策略 17a：行情自适应·保守版
+
+```
+config: 策略17 + 全部行情降低一档
+牛市: take_profit=50, kelly=0.2, trailing_activate=25
+震荡: take_profit=40, kelly=0.15
+熊市: take_profit=20, kelly=0.05, stop_loss=-15, trailing_activate=8
+```
+
+### 策略 17b：行情自适应·激进版
+
+```
+config: 策略17 + 全部行情提一档
+牛市: take_profit=80, kelly=0.35, trailing_activate=15
+震荡: take_profit=60, kelly=0.25
+熊市: take_profit=40, kelly=0.15, stop_loss=-25, pyramiding=true
+```
+
+### 策略 17c：行情自适应·仅牛熊切换（简化版）
+
+```
+config: 策略17 + 只在牛市和熊市有区别，震荡复用默认值
+牛市: take_profit=60, kelly=0.3, pyramiding=false
+熊市: take_profit=25, kelly=0.08, pyramiding=true, stop_loss=-15
+震荡: 无特殊配置(用全局默认值)
+作用：最小化参数变动，测牛熊切换的增量效果
+```
+
+---
+
 ## 三、评估指标
 
 ### 主指标（排名用）
@@ -329,18 +393,20 @@ config: 策略3 + sell_consensus=2
 
 ```
 第一批（核心 11 个，已回测过有的）：
-  策略1~9 + 4.5 = 11 个 × 2 次（全周期+分段）= 22 次回测
+  策略1~9 + 4.5 = 11 个 × 2 次（全周期+分段）= 22 次
 
-第二批（新增 7 个，从未测试）：
+第二批（新增参数 7 个，从未测试）：
   策略10(PE), 10.5(PE+pyramid), 11(RSI), 12(ML), 13(trailing_tp),
-  14(bear_no_buy), 16(sell_consensus) = 7 个 × 2 次 = 14 次回测
+  14(bear_no_buy), 16(sell_consensus) = 7 个 × 2 次 = 14 次
 
 第三批（凯利变体 3 个）：
-  策略15(kelly=0.25/0.3/0.35) = 3 个 × 2 次 = 6 次回测
+  策略15(kelly=0.25/0.3/0.35) = 3 个 × 2 次 = 6 次
 
-总计: 18 策略 × 2 次 = 36 次回测（不含凯利变体=42 次）
-策略6A~6E 的段A/B几乎0耗，每实验约 15-17 分钟
-总耗时: 约 10-11 小时
+第四批（行情自适应 4 个）：
+  策略17, 17a, 17b, 17c = 4 个 × 2 次 = 8 次
+
+总计: 23 策略 × 2 次 = 46 次回测
+每实验约 15-17 分钟，总耗时约 12-14 小时
 ```
 
 ---
@@ -377,6 +443,10 @@ config: 策略3 + sell_consensus=2
 |      | 15b.Champion+dynSL+kelly0.3 | | | | | | | | |
 |      | 15c.Champion+dynSL+kelly0.35 | | | | | | | | |
 |      | 16.Champion+dynSL+大佬卖出跟单 | | | | | | | | |
+|      | 17.Champion+dynSL+行情自适应(默认) | | | | | | | | |
+|      | 17a.行情自适应·保守版 | | | | | | | | |
+|      | 17b.行情自适应·激进版 | | | | | | | | |
+|      | 17c.行情自适应·仅牛熊切换 | | | | | | | | |
 
 ## 各策略在不同周期的行为分析
 - 段A：哪个策略亏损最小？为什么？
