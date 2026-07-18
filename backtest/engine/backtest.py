@@ -7,11 +7,28 @@
 3. 交易记录按日期截断（只取 _date_prefix ≤ T）
 4. 费率、经理数据用当前值（变化极慢，可接受）
 """
-import json, math, statistics, sys, os
+import json, math, statistics, sys, os, bisect
 from pathlib import Path
 from datetime import datetime, date
 from collections import defaultdict
 from typing import Optional
+
+# ── 速度优化：bisect 二分查找代替线性截断 ──
+# 预处理时为每只基金缓存 dates 数组, id(pts)→dates
+_DATES_CACHE = {}
+_TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
+
+def _bisect_valid(pts, cutoff_date):
+    """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
+    if not pts:
+        return []
+    pid = id(pts)
+    dates = _DATES_CACHE.get(pid)
+    if dates is None:
+        dates = [p.get("xAxis", "") for p in pts]
+        _DATES_CACHE[pid] = dates
+    pos = bisect.bisect_right(dates, cutoff_date)
+    return pts[:pos] if pos > 0 else []
 
 BACKTEST_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BACKTEST_DIR / "data"
@@ -65,7 +82,7 @@ def score_momentum_backtest(chart_points, cutoff_date):
     cutoff_date: "2026-03-15"
     只使用 xAxis ≤ cutoff_date 的点。
     """
-    valid = [p for p in chart_points if p.get("xAxis", "") <= cutoff_date]
+    valid = _bisect_valid(chart_points, cutoff_date)
     if len(valid) < 20:
         return DimensionScore(score=2.5, weight=0.15, freshness_days=0)
 
@@ -103,7 +120,7 @@ def score_quality_backtest(chart_points, cutoff_date, scale_text=None, perf_data
     perf_data 可作为补充（如果有当天的排名数据），
     但回测中只使用 chart_data 算的收益率。
     """
-    valid = [p for p in chart_points if p.get("xAxis", "") <= cutoff_date]
+    valid = _bisect_valid(chart_points, cutoff_date)
     if len(valid) < 20:
         return DimensionScore(score=2.5, weight=0.25, freshness_days=0)
 
@@ -167,7 +184,12 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
     cutoff_date: "2026-03-15" → 只取 <= 的日期。
     fund_code: 可选，用于精确匹配（优先级高于 fund_name）。
     """
-    sorted_dates = sorted(d for d in trading_by_date if d <= cutoff_date)
+    # 用 bisect 在预排序的 dates 中截断（速度优化）
+    if _TRADING_DATES_SORTED:
+        pos = bisect.bisect_right(_TRADING_DATES_SORTED, cutoff_date)
+        sorted_dates = _TRADING_DATES_SORTED[:pos]
+    else:
+        sorted_dates = sorted(d for d in trading_by_date if d <= cutoff_date)
 
     def _match(record):
         """匹配: fund_code 精确匹配 → fund_name 精确匹配"""
@@ -294,7 +316,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
 def detect_market_state(cutoff_date, fund_charts, benchmark_code="110020", lookback_days=60):
     """Use benchmark fund performance to determine market state"""
     pts = fund_charts.get(benchmark_code, [])
-    valid = [p for p in pts if p.get("xAxis", "") <= cutoff_date]
+    valid = _bisect_valid(pts, cutoff_date)
     if len(valid) < 20:
         return "neutral"  # insufficient data
     recent = valid[-min(lookback_days, len(valid)):]
@@ -310,7 +332,7 @@ def detect_market_state(cutoff_date, fund_charts, benchmark_code="110020", lookb
 
 def _compute_fund_returns(chart_points, cutoff_date, lookback=60):
     """提取截止到cutoff_date的最近lookback个日收益率。"""
-    valid = [p for p in chart_points if p.get("xAxis", "") <= cutoff_date]
+    valid = _bisect_valid(chart_points, cutoff_date)
     if len(valid) < 20:
         return []
     recent = valid[-min(lookback + 1, len(valid)):]
@@ -392,7 +414,7 @@ def get_sector_performance(cutoff_date, fund_charts, fund_holdings_cache, lookba
     sector_counts = {}
     
     for code, pts in fund_charts.items():
-        valid = [p for p in pts if p.get("xAxis", "") <= cutoff_date]
+        valid = _bisect_valid(pts, cutoff_date)
         if len(valid) < 20:
             continue
         recent = valid[-min(lookback, len(valid)):]
@@ -568,7 +590,7 @@ def score_4433(fund_code, cutoff_date, fund_charts):
     返回: 修正值 (正=加分, 负=扣分), 通过数
     """
     pts = fund_charts.get(fund_code, [])
-    valid = [p for p in pts if p.get("xAxis", "") <= cutoff_date]
+    valid = _bisect_valid(pts, cutoff_date)
     if len(valid) < 63:  # 至少3个月数据
         return 0.0, 0
 
@@ -1149,8 +1171,9 @@ def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_
         suggested = available * kelly * c["score"] / 5.0
         if c["day_limit"] and c["day_limit"] < 999999:
             suggested = min(suggested, c["day_limit"])
-        # 硬上限: 单只基金不超过总资产25%, 单次不超过可用现金30%
-        suggested = min(suggested, total_cash * max_pos)  # max_pos 默认0.15=15%
+        # 硬上限: 单只基金不超过总资产max_pos%, 单次不超过可用现金30%
+        _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100  # 支持 sector bonus 覆盖
+        suggested = min(suggested, total_cash * _eff_max_pos)  # max_pos 默认0.15=15%
         suggested = min(suggested, available * 0.30)       # 单次不超过可用现金30%
         suggested = round(suggested / 100) * 100
         c["_suggested"] = suggested
@@ -1203,6 +1226,15 @@ def run_backtest(config):
 
     with open(DATA_DIR / "fund_charts.json", "r", encoding="utf-8") as f:
         fund_charts = json.load(f)
+
+    # ── 速度优化预处理：排序 fund_charts + 预排序 trading_by_date keys ──
+    _DATES_CACHE.clear()
+    for _code in fund_charts:
+        if fund_charts[_code]:
+            fund_charts[_code].sort(key=lambda p: p.get("xAxis", ""))
+    global _TRADING_DATES_SORTED
+    _TRADING_DATES_SORTED = sorted(trading_by_date.keys())
+    print(f"  [优化] chart排序完成({len(fund_charts)}只) + trading dates预排序({len(_TRADING_DATES_SORTED)}天)")
 
     # 加载行业估值数据（新增）
     industry_data = {}
@@ -1406,6 +1438,9 @@ def run_backtest(config):
         _dyn_dynsl = _rc("dynamic_stop_loss", False)
         _dyn_trail_act = _rc("trailing_tp_activate", 0)
         _dyn_trail_dd = _rc("trailing_tp_drawdown", 10)
+        # max_pos / cash_reserve 也走 _rc() 机制，使 regime_specific=True 时仓位上限随行情变化
+        _dyn_max_pos = _rc("max_position_pct", _dyn_max_pos)
+        _dyn_cash_reserve = _rc("cash_reserve_pct", _dyn_cash_reserve)
 
         # ── ML冷启动降门槛：ML不可靠时放宽买入标准 ──
         if _ml_enabled and _ml_cold_start:
@@ -1502,7 +1537,7 @@ def run_backtest(config):
             elif _avg_daily < 50:
                 _min_consensus = 2   # 正常期
             else:
-                _min_consensus = 3   # 密集期：提高门槛防噪音
+                _min_consensus = config.get("min_consensus", 2)  # 密集期：不提高门槛(防过量过滤)
 
         for fn, signal in fund_signals.items():
             if signal["buy_count"] < _min_consensus:  # 需要至少 N 人买入（默认2，支持自适应）
@@ -1592,15 +1627,7 @@ def run_backtest(config):
                     "total": fs.total,
                 }, signal["buy_count"], _market_state))
 
-            # 共识门槛
-            min_consensus = config.get("min_consensus", 2)
-            if signal["buy_count"] < min_consensus:
-                scores_history.append({
-                    "date": day,
-                    "code": code, "name": fn,
-                    "score": round(raw_score, 2), "verdict": "skip_low_consensus",
-                })
-                continue
+            # 共识门槛已在上方用 _min_consensus（支持自适应）过滤，此处不再重复检查
 
             # 限购感知：有限额的基金说明是热门，加分
             limit_boost = config.get("limit_boost", 0)
@@ -1712,7 +1739,7 @@ def run_backtest(config):
                 continue
 
             # 用当天的 chart_data 算累计收益
-            valid = [p for p in pts if p.get("xAxis", "") <= cutoff_full]
+            valid = _bisect_valid(pts, cutoff_full)
             if not valid:
                 continue
             y = _float(valid[-1].get("yAxis", 0))
@@ -1729,7 +1756,7 @@ def run_backtest(config):
             # 动量分
             mom = score_momentum_backtest(pts, cutoff_full)
 
-            sell_price = fund_prices.get(code, current_nav)
+            sell_price = current_nav  # 用当天净值（与买入一致，实盘T日赎回按当日净值）
             sell_reason = ""
             should_sell = False
 
@@ -1874,7 +1901,7 @@ def run_backtest(config):
                             if hsec != sec: continue
                             pts = fund_charts.get(code, [])
                             if not pts: continue
-                            valid = [p for p in pts if p.get("xAxis","") <= cutoff_full]
+                            valid = _bisect_valid(pts, cutoff_full)
                             if not valid: continue
                             y = _float(valid[-1].get("yAxis",0))
                             nav = (100 + y) / 100
@@ -1947,7 +1974,7 @@ def run_backtest(config):
                     candidates.append({
                         "code": bb_code,
                         "name": bb_name,
-                        "score": config.get("min_score", 3.3) - 0.3,  # 买回门槛降低0.3
+                        "score": _effective_min_score - 0.3,  # 买回门槛降低0.3（与主逻辑一致，支持regime/ML降门槛）
                         "buy_count": 1,
                         "day_limit": 999999,
                         "sector": sector,
@@ -1983,7 +2010,7 @@ def run_backtest(config):
                 current_nav = 1.0
                 pts = fund_charts.get(c["code"], [])
                 if pts:
-                    valid = [p for p in pts if p.get("xAxis", "") <= day]
+                    valid = _bisect_valid(pts, day)
                     if valid:
                         current_nav = (100 + _float(valid[-1].get("yAxis", 0))) / 100
                 loss_pct = (current_nav / buy_nav - 1) * 100 if buy_nav > 0 else 0
@@ -2006,7 +2033,7 @@ def run_backtest(config):
             pts = fund_charts.get(c["code"], [])
             if pts:
                 cutoff_full = day
-                valid = [p for p in pts if p.get("xAxis", "") <= cutoff_full]
+                valid = _bisect_valid(pts, cutoff_full)
                 if valid:
                     y = _float(valid[-1].get("yAxis", 0))
                     buy_price = (100 + y) / 100
@@ -2022,7 +2049,7 @@ def run_backtest(config):
             if not pts:
                 continue
             # 取截止到当天的最后一条净值
-            valid = [p for p in pts if p.get("xAxis", "") <= cutoff_full]
+            valid = _bisect_valid(pts, cutoff_full)
             if valid:
                 y = _float(valid[-1].get("yAxis", 0))
                 fund_prices[code] = (100 + y) / 100  # 净值 ≈ 1 + 累计收益率
