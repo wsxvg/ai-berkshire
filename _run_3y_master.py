@@ -284,6 +284,23 @@ STRATEGIES = {
         pyramiding_enabled_bull=False, pyramiding_enabled_neutral=False, pyramiding_enabled_bear=True,
         trailing_tp_activate_bull=15, trailing_tp_activate_neutral=12, trailing_tp_activate_bear=8,
         trailing_tp_drawdown_bull=10, trailing_tp_drawdown_neutral=8, trailing_tp_drawdown_bear=6),
+
+    # ── 批次: longcycle (长周期辅助策略，需先选出baseline再加参数) ──
+    # 策略18-21 用 baseline 配置 + 长周期参数对跑
+    # baseline 会从 _results_3y 最优策略动态读取，这里先用 BASE 作为占位
+    "策略18_周线MACD背离": dict(BASE,
+        weekly_macd_divergence=True),
+
+    "策略19_年线牛熊过滤": dict(BASE,
+        yearly_ma_filter=True),
+
+    "策略20_周线布林带仓位": dict(BASE,
+        weekly_bollinger_adjust=True),
+
+    "策略21_三合一": dict(BASE,
+        weekly_macd_divergence=True,
+        yearly_ma_filter=True,
+        weekly_bollinger_adjust=True),
 }
 
 BATCH_MAP = {
@@ -294,6 +311,7 @@ BATCH_MAP = {
     "variants": ["策略15a_kelly0.25", "策略15b_kelly0.30", "策略15c_kelly0.35",
                  "策略17a_regime保守", "策略17c_regime仅牛熊"],
     "regime_recover": ["策略3_Champion+dynSL", "策略17_regime默认", "策略17b_regime激进"],
+    "longcycle": ["策略18_周线MACD背离", "策略19_年线牛熊过滤", "策略20_周线布林带仓位", "策略21_三合一"],
     "all": list(STRATEGIES.keys()),
 }
 

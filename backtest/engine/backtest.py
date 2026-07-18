@@ -69,6 +69,8 @@ except ImportError:
 
 # 技术指标（RSI/MACD/布林带/均线交叉）— 融合QuantDinger算法
 from tools.technical_indicators import compute_entry_timing_score, compute_rsi, ma_trend
+# 长周期技术指标（周线MACD背离/年线/周线布林带）
+from tools.technical_indicators import compute_macd_divergence, compute_weekly_bollinger, compute_ma_250
 
 RISK_FREE_RATE = 0.025
 PURCHASE_DISCOUNT = 0.1
@@ -828,7 +830,7 @@ class Portfolio:
         self.fund_rules = {}  # per-fund rules loaded from cache
         self._min_holding_days = 60  # 60天最低持有（减少交易频率）
         self.yearly_trades = {}  # {year: count}
-        self.max_yearly_trades = 6  # annual trade cap
+        self.max_yearly_trades = 50  # annual trade cap (可被config覆盖)
         self.sell_history = {}  # {code: {date: "YYYY-MM-DD", reason: "...", nav: float}} — 冷却期追踪
         self.slippage_pct = 0.0  # 滑点百分比（买入加价，卖出发折）
 
@@ -865,16 +867,26 @@ class Portfolio:
         return days_since < cooldown_days
 
     def get_fee(self, code, default_purchase_fee=0.0015):
-        """获取基金的实际申购费率"""
+        """获取基金的实际申购费率。
+        京东API返回的 purchase_fee 是百分比值（如 0.15 表示 0.15%，1.5 表示 1.5%），
+        且已是渠道打折后的实际费率。统一除以100转为小数。
+        """
         rules = self.fund_rules.get(code, {})
         pf = rules.get("purchase_fee", default_purchase_fee * 100)
         if isinstance(pf, str):
-            try: pf = float(pf.replace("%",""))
+            try: pf = float(pf.replace("%","").strip())
             except: pf = default_purchase_fee * 100
-        return float(pf) / 100 if pf > 1 else float(pf)  # 1.5%→0.015, 0.15→0.0015
+        return float(pf) / 100  # 0.15→0.0015, 1.5→0.015
 
     def get_redeem_fee(self, code, days_held):
-        """获取基金的实际赎回费率"""
+        """获取基金的实际赎回费率。
+        京东API返回的 rate 是百分比值（如 1.5 表示 1.5%），统一除以100转小数。
+        interval 格式多样，用正则提取数字统一解析：
+          "<7天" / "持有期限<7天"  → [0, 7)
+          "7-365天" / "7天≤持有期限<365天" → [7, 365)
+          ">365天" / "持有期限≥365天" → [365, ∞)
+        """
+        import re as _re
         rules = self.fund_rules.get(code, {})
         tiers = rules.get("redeem_fees", [])
         if not tiers:
@@ -885,34 +897,32 @@ class Portfolio:
             return 0.0
         for tier in tiers:
             interval = str(tier.get("interval", ""))
-            rate = float(tier.get("rate", 0))
-            # 解析 interval 如 "1天≤持有期限<6天" → 判断 days_held 是否在区间内
-            if "≤" in interval and "<" in interval:
-                parts = interval.replace("天", "").split("≤")
-                if len(parts) >= 2:
-                    low_str = parts[0].strip()
-                    rest = parts[1].split("<")
-                    high_str = rest[0].strip() if len(rest) >= 1 else "9999"
-                    try:
-                        low = int(low_str) if low_str.isdigit() else 0
-                        high = int(high_str) if high_str.isdigit() else 9999
-                        if low <= days_held < high:
-                            return rate / 100
-                    except: pass
-            elif "≥" in interval:
-                low_str = interval.replace("天", "").replace("≥", "").strip()
-                try:
-                    low = int(low_str) if low_str.isdigit() else 0
-                    if days_held >= low:
-                        return rate / 100
-                except: pass
-            elif "＜" in interval:
-                high_str = interval.replace("天", "").replace("＜", "").strip()
-                try:
-                    high = int(high_str) if high_str.isdigit() else 0
-                    if days_held < high:
-                        return rate / 100
-                except: pass
+            rate = float(tier.get("rate", 0)) / 100  # 百分比→小数
+            # 提取所有数字
+            nums = [int(x) for x in _re.findall(r'\d+', interval)]
+            if not nums:
+                continue
+            # 判断区间类型
+            has_lower = any(c in interval for c in ["≥", ">", "≥"])
+            has_dash = "-" in interval and len(nums) == 2
+            if has_dash:
+                # "7-365天" 格式
+                low, high = nums[0], nums[1]
+                if low <= days_held < high:
+                    return rate
+            elif len(nums) == 2:
+                # "7天≤持有期限<365天" 格式
+                low, high = nums[0], nums[1]
+                if low <= days_held < high:
+                    return rate
+            elif has_lower or (len(nums) == 1 and (">" in interval or "≥" in interval)):
+                # ">365天" / "≥365天" 格式
+                if days_held >= nums[0]:
+                    return rate
+            elif len(nums) == 1:
+                # "<7天" 格式
+                if days_held < nums[0]:
+                    return rate
         return 0.0
 
     def get_t_plus_n(self, code):
@@ -920,18 +930,22 @@ class Portfolio:
         rules = self.fund_rules.get(code, {})
         confirm = rules.get("confirm_date", "")
         buy_date = rules.get("buy_date", "")
-        # 简单判断: 如果 confirm_date 比 buy_date 晚2天 → T+2
+        # 用完整日期解析，避免跨月错误
         if confirm and buy_date:
             try:
-                c_day = int(confirm.split("-")[-1])
-                b_day = int(buy_date.split(" ")[0].split("-")[-1])
-                diff = (c_day - b_day) % 30
+                from datetime import datetime
+                # confirm_date 格式如 "07-08", buy_date 格式如 "07-06 15:00前"
+                # 补全年份用当前年，只算日历差
+                _year = datetime.now().year
+                b_str = buy_date.split(" ")[0]  # "07-06"
+                b_dt = datetime.strptime(f"{_year}-{b_str}", "%Y-%m-%d")
+                c_dt = datetime.strptime(f"{_year}-{confirm}", "%Y-%m-%d")
+                diff = (c_dt - b_dt).days
                 if diff <= 1: return 1  # T+1
                 if diff <= 2: return 2  # T+2
                 return diff
             except: pass
         # 根据基金类型判断
-        rules = self.fund_rules.get(code, {})
         profile = getattr(self, '_profiles', {}).get(code, {})
         fund_type = profile.get("fund_type", "") if profile else ""
         if "QDII" in fund_type: return 2
@@ -967,6 +981,10 @@ class Portfolio:
 
     def buy(self, code, name, amount, price=1.0, day_str="", fund_rules=None):
         """买入，使用实际费率+T+N确认+滑点模拟。"""
+        # 年交易次数上限检查
+        _yr = day_str[:4] if len(day_str) >= 4 else "0000"
+        if self.yearly_trades.get(_yr, 0) >= self.max_yearly_trades:
+            return False  # 本年交易次数已达上限
         fee_rate = self.get_fee(code)
         day_limit = self.get_day_limit(code)
         amount = min(amount, day_limit)
@@ -1159,9 +1177,11 @@ class Portfolio:
 
 # ── 资金分配器（回测版）──
 
-def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15):
-    """半凯利分配。折扣×0.5 + 硬上限。"""
-    available = total_cash * (1 - cash_reserve)
+def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15, market_discount=1.0):
+    """半凯利分配。折扣×0.5 + 硬上限。
+    market_discount: 长周期调整因子（默认1.0，顶背离×0.7、布帺上轨×0.8等）
+    """
+    available = total_cash * (1 - cash_reserve) * market_discount
     for c in candidates:
         p = c["score"] / 5.0
         b = max(p * 2, 0.5)
@@ -1361,6 +1381,8 @@ def run_backtest(config):
     portfolio.set_fund_rules(fund_rules)
     portfolio._profiles = fund_profiles  # 供 get_t_plus_n 使用
     portfolio.slippage_pct = config.get("slippage_pct", 0.0)  # 滑点模拟
+    portfolio.max_yearly_trades = config.get("max_yearly_trades", 50)  # 年交易上限
+    portfolio._min_holding_days = config.get("min_holding_days", 60)  # 最低持有天数
     fund_holdings_data[""] = {}  # 确保load_cache正确工作
     scores_history = []
     fund_prices = {}  # 初始化在前，避免首次迭代 sell 逻辑引用未定义变量
@@ -1412,6 +1434,48 @@ def run_backtest(config):
             # Use fixed config values
             _dyn_max_pos = config.get("max_position_pct", 25)
             _dyn_cash_reserve = config.get("cash_reserve_pct", 0.10)
+
+        # ── 长周期辅助参数：周线MACD背离/年线/周线布林带 → 仓位调节 ──
+        _market_discount = 1.0  # 默认不调整，仅在config开启时生效
+        _benchmark_code = "110020"  # 易方达沪深300ETF联接，与detect_market_state一致
+        _bm_pts = fund_charts.get(_benchmark_code, [])
+        _bm_nav_values = []
+        if _bm_pts:
+            _bm_valid = _bisect_valid(_bm_pts, cutoff_full)
+            _bm_nav_values = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _bm_valid]
+
+        # 周线MACD顶背离 → 仓位×0.7
+        if config.get("weekly_macd_divergence", False) and len(_bm_nav_values) >= 300:
+            try:
+                _div = compute_macd_divergence(_bm_nav_values)
+                if _div == "top":
+                    _market_discount *= config.get("divergence_top_discount", 0.7)
+                # 底背离不提高仓位（让短线决定），牛市底背离很少
+            except Exception:
+                pass
+
+        # 周线布林带仓位调节
+        if config.get("weekly_bollinger_adjust", False) and len(_bm_nav_values) >= 100:
+            try:
+                _, _, _, _bb_pct = compute_weekly_bollinger(_bm_nav_values)
+                if _bb_pct > 0.8:
+                    _market_discount *= config.get("bb_upper_discount", 0.8)  # 接近上轨 → 减仓
+                elif _bb_pct < 0.2:
+                    _market_discount *= config.get("bb_lower_boost", 1.2)    # 接近下轨 → 加仓
+            except Exception:
+                pass
+
+        # 年线牛熊过滤：跌破年线 → 仓位上限减半
+        if config.get("yearly_ma_filter", False) and len(_bm_nav_values) >= 250:
+            try:
+                _bm_nav, _bm_ma250, _above_ma = compute_ma_250(_bm_nav_values)
+                if not _above_ma:
+                    _dyn_max_pos = _dyn_max_pos * config.get("yearly_bear_pos_ratio", 0.5)
+            except Exception:
+                pass
+
+        # 防止_market_discount过小（最低0.3，避免完全不买）
+        _market_discount = max(0.3, min(2.0, _market_discount))
 
         # ── 动态评分门槛：根据市场状态调整 min_score ──
         _effective_min_score = config.get("min_score", 3.3)
@@ -1988,7 +2052,8 @@ def run_backtest(config):
             for code, h in portfolio.holdings.items()),
             kelly_cap=_dyn_kelly,
             cash_reserve=_dyn_cash_reserve,
-            max_pos=_dyn_max_pos / 100)
+            max_pos=_dyn_max_pos / 100,
+            market_discount=_market_discount)
         for c in to_buy:
             # 最大持仓数限制
             max_holdings = config.get("max_holdings", 0)

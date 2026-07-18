@@ -373,3 +373,170 @@ def _float(v, default=0.0):
         return float(v)
     except (ValueError, TypeError):
         return default
+
+
+# ============================================================
+# 长周期技术指标（周线/年线级别，用于市场状态判断与仓位调节）
+# ============================================================
+
+def _resample_weekly(nav_values: List[float]) -> List[float]:
+    """将日线净值序列重采样为周线：每5个交易日取最后一个点。
+
+    场外基金按交易日计，5个交易日≈1自然周。
+    """
+    if not nav_values:
+        return []
+    # 每5天取最后一天的净值，不足5天的取最后一天
+    weekly = []
+    for i in range(4, len(nav_values), 5):
+        weekly.append(nav_values[i])
+    # 如果最后一段不足5天，补上最后一个点
+    if len(nav_values) % 5 != 0 and len(nav_values) > 4:
+        weekly.append(nav_values[-1])
+    return weekly
+
+
+def compute_weekly_rsi(nav_values: List[float], period: int = 14) -> float:
+    """周线RSI：将日线NAV每5天取1点重采样为周线，再算RSI。
+
+    周线RSI比日线RSI更稳定，适合判断中期超买超卖。
+    period=14 周 ≈ 3个月。
+
+    Returns: RSI值 (0-100)，数据不足返回50（中性）
+    """
+    weekly = _resample_weekly(nav_values)
+    return compute_rsi(weekly, period)
+
+
+def compute_weekly_macd(nav_values: List[float],
+                        fast: int = 12, slow: int = 26, signal: int = 9) -> Tuple[float, float, float]:
+    """周线MACD：将日线NAV重采样为周线后计算MACD。
+
+    周线MACD过滤了日线噪音，交叉信号更可靠。
+    注意：period是周线周期，12周≈3个月，26周≈半年。
+
+    Returns: (macd_line, signal_line, histogram)
+    """
+    weekly = _resample_weekly(nav_values)
+    return compute_macd(weekly, fast, slow, signal)
+
+
+def compute_macd_divergence(nav_values: List[float]) -> Optional[str]:
+    """检测周线MACD顶背离/底背离。
+
+    顶背离 = 价格创新高但MACD未创新高 → 返回 "top"（见顶信号）
+    底背离 = 价格创新低但MACD未创新低 → 返回 "bottom"（见底信号）
+    无背离 = 返回 None
+
+    算法：将日线重采样为周线，找近120周（≈2.5年）内的价格局部高/低点，
+    对比最近两个高点（或低点）的价格与MACD值。
+
+    Args:
+        nav_values: 日线净值序列
+
+    Returns: "top" / "bottom" / None
+    """
+    weekly = _resample_weekly(nav_values)
+    if len(weekly) < 60:  # 至少60周数据
+        return None
+
+    # 限制到最近120周（约2.5年）便于找拐点
+    lookback = weekly[-120:] if len(weekly) > 120 else weekly[:]
+
+    # 计算每周MACD值序列（需要足够数据）
+    def _ema_series(data, period):
+        multiplier = 2 / (period + 1)
+        result = [data[0]]
+        for v in data[1:]:
+            result.append(v * multiplier + result[-1] * (1 - multiplier))
+        return result
+
+    if len(lookback) < 26 + 9:
+        return None
+
+    ema_fast = _ema_series(lookback, 12)
+    ema_slow = _ema_series(lookback, 26)
+    macd_series = [f - s for f, s in zip(ema_fast, ema_slow)]
+
+    if len(macd_series) < 9:
+        return None
+
+    # 信号线序列
+    sig_multiplier = 2 / (9 + 1)
+    signal_series = [macd_series[0]]
+    for v in macd_series[1:]:
+        signal_series.append(v * sig_multiplier + signal_series[-1] * (1 - sig_multiplier))
+
+    histogram = [m - s for m, s in zip(macd_series, signal_series)]
+
+    # 找价格的局部极值点（窗口=5周）
+    window = 5
+    highs = []  # [(index, price, macd)]
+    lows = []
+    for i in range(window, len(lookback) - window):
+        is_high = all(lookback[i] >= lookback[i - j] for j in range(1, window + 1)) and \
+                  all(lookback[i] >= lookback[i + j] for j in range(1, window + 1))
+        is_low = all(lookback[i] <= lookback[i - j] for j in range(1, window + 1)) and \
+                 all(lookback[i] <= lookback[i + j] for j in range(1, window + 1))
+        if is_high:
+            highs.append((i, lookback[i], macd_series[i]))
+        if is_low:
+            lows.append((i, lookback[i], macd_series[i]))
+
+    # 顶背离：最近两个高点，价格创新高但MACD未创新高
+    if len(highs) >= 2:
+        idx1, price1, macd1 = highs[-2]
+        idx2, price2, macd2 = highs[-1]
+        # 价格新高（price2 > price1）但MACD未新高（macd2 < macd1）
+        if price2 > price1 and macd2 < macd1:
+            return "top"
+
+    # 底背离：最近两个低点，价格创新低但MACD未创新低
+    if len(lows) >= 2:
+        idx1, price1, macd1 = lows[-2]
+        idx2, price2, macd2 = lows[-1]
+        # 价格新低（price2 < price1）但MACD未新低（macd2 > macd1）
+        if price2 < price1 and macd2 > macd1:
+            return "bottom"
+
+    return None
+
+
+def compute_weekly_bollinger(nav_values: List[float],
+                             period: int = 20, std_mult: float = 2.0) -> Tuple[float, float, float, float]:
+    """周线布林带：将日线NAV重采样为周线后计算布林带。
+
+    period=20 周 ≈ 4个月。%b > 0.8 接近上轨，%b < 0.2 接近下轨。
+
+    Returns: (upper, middle, lower, %b)
+    """
+    weekly = _resample_weekly(nav_values)
+    return compute_bollinger_bands(weekly, period, std_mult)
+
+
+def compute_ma_250(nav_values: List[float]) -> Tuple[float, float, bool]:
+    """250日移动平均线（年线）。
+
+    年线是经典的牛熊分界线：
+    - 价格在年线上方 → 中长期牛市
+    - 价格跌破年线 → 中长期熊市
+
+    Args:
+        nav_values: 日线净值序列
+
+    Returns: (current_nav, ma_250, above_ma)
+        - current_nav: 当前净值
+        - ma_250: 250日均线值（数据不足时返回当前净值）
+        - above_ma: 当前净值是否在年线上方
+    """
+    if not nav_values:
+        return (0.0, 0.0, False)
+
+    current = nav_values[-1]
+    if len(nav_values) < 250:
+        # 数据不足，返回中性值
+        return (current, current, True)
+
+    ma_250 = statistics.mean(nav_values[-250:])
+    above_ma = current > ma_250
+    return (current, ma_250, above_ma)
