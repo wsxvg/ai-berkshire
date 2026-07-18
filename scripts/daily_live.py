@@ -235,12 +235,14 @@ def run():
     portfolio.set_fund_rules(fund_rules)
     portfolio._profiles = fund_profiles
     portfolio.slippage_pct = GENE.get("slippage_pct", 0.0)
-    # 恢复之前的持仓
+    # 恢复之前的持仓（使用保存的 shares 和 buy_nav，避免份额失真）
     for code, h in vp.get("holdings", {}).items():
-        cb = h.get("cost_basis", 5000)
+        cost_basis = h.get("cost_basis", 0)
+        shares = h.get("shares", 0) or cost_basis  # 兼容旧数据
+        buy_nav = h.get("buy_nav", 1.0)
         portfolio.holdings[code] = {
-            "name": h["name"], "shares": cb, "cost": cb,
-            "buy_date": h.get("buy_date", TODAY), "buy_nav": 1.0,
+            "name": h["name"], "shares": shares, "cost": cost_basis,
+            "buy_date": h.get("buy_date", TODAY), "buy_nav": buy_nav,
         }
     portfolio.cash = vp.get("cash", INITIAL_CASH)
     portfolio.total_fees = vp.get("total_fees", 0)
@@ -354,13 +356,12 @@ def run():
 
         # 止盈
         if actual_pnl >= GENE.get("take_profit_pct", 80):
-            portfolio.sell(code, h["cost"], 1.0, TODAY, "take_profit", False)
-            sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": 1.0}
-            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}%")
+            portfolio.sell(code, h["cost"], latest_nav, TODAY, "take_profit", False)
+            sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": latest_nav}
+            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}% @NAV={latest_nav:.4f}")
 
         # 动态止损：浮盈>20%时从高点回撤15%止盈，浮盈>40%时回撤10%止盈
         elif GENE.get("dynamic_stop_loss") and actual_pnl > 20:
-            # 计算从最高点回撤
             peak_nav = latest_nav
             if pts:
                 hist_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
@@ -368,15 +369,15 @@ def run():
                     peak_nav = max((100 + float(p.get("yAxis", 0))) / 100 for p in hist_pts)
             dd_from_peak = (latest_nav / peak_nav - 1) * 100 if peak_nav > 0 else 0
             if (actual_pnl > 40 and dd_from_peak < -10) or dd_from_peak < -15:
-                portfolio.sell(code, h["cost"], 1.0, TODAY, "dyn_stop_loss", False)
-                sell_cooldown[code] = {"date": TODAY, "reason": "dyn_stop_loss", "nav": 1.0}
-                print(f"   SELL_DSL {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd_from_peak:.1f}%")
+                portfolio.sell(code, h["cost"], latest_nav, TODAY, "dyn_stop_loss", False)
+                sell_cooldown[code] = {"date": TODAY, "reason": "dyn_stop_loss", "nav": latest_nav}
+                print(f"   SELL_DSL {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd_from_peak:.1f}% @NAV={latest_nav:.4f}")
 
         # 止损
         elif actual_pnl <= GENE.get("stop_loss_pct", -15):
-            portfolio.sell(code, h["cost"], 1.0, TODAY, "stop_loss", True)
-            sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": 1.0}
-            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}%")
+            portfolio.sell(code, h["cost"], latest_nav, TODAY, "stop_loss", True)
+            sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": latest_nav}
+            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}% @NAV={latest_nav:.4f}")
 
         # 动量崩溃（牛市不触发，减少假信号）
         elif day_ret < -8 and market != "bull":
@@ -384,9 +385,9 @@ def run():
             if len(pts) >= 20:
                 timing = compute_entry_timing_score(pts, TODAY)
                 if timing.get("entry_score", 0) < 1.0:
-                    portfolio.sell(code, h["cost"], 1.0, TODAY, "momentum_crash", True)
-                    sell_cooldown[code] = {"date": TODAY, "reason": "momentum_crash", "nav": 1.0}
-                    print(f"   SELL_MC {h['name'][:25]}: 动量崩塌")
+                    portfolio.sell(code, h["cost"], latest_nav, TODAY, "momentum_crash", True)
+                    sell_cooldown[code] = {"date": TODAY, "reason": "momentum_crash", "nav": latest_nav}
+                    print(f"   SELL_MC {h['name'][:25]}: 动量崩塌 @NAV={latest_nav:.4f}")
 
     # 7. 买入决策
     print("5. 买入...")
@@ -483,6 +484,7 @@ def run():
         holdings_market_value += mv
         vp_holdings[code] = {
             "name": h["name"], "cost_basis": cb,
+            "shares": h.get("shares", 0), "buy_nav": h.get("buy_nav", 1.0),
             "market_value": round(mv, 2),
             "buy_date": h.get("buy_date", TODAY), "buy_score": 3.0,
             "pnl_pct": round((mv - cb) / cb * 100, 2) if cb > 0 else 0,
