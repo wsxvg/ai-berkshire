@@ -72,6 +72,20 @@ from tools.technical_indicators import compute_entry_timing_score, compute_rsi, 
 # 长周期技术指标（周线MACD背离/年线/周线布林带）
 from tools.technical_indicators import compute_macd_divergence, compute_weekly_bollinger, compute_ma_250
 
+# 市场风险预警系统（方案B）
+try:
+    from tools.market_risk import compute_market_risk
+    MARKET_RISK_AVAILABLE = True
+except ImportError:
+    MARKET_RISK_AVAILABLE = False
+
+# 市场方向预测 — Transformer（方案C）
+try:
+    from tools.market_predictor import MarketPredictor, build_feature_sequence, _to_nav as mp_to_nav
+    MARKET_PREDICTOR_AVAILABLE = True
+except ImportError:
+    MARKET_PREDICTOR_AVAILABLE = False
+
 RISK_FREE_RATE = 0.025
 PURCHASE_DISCOUNT = 0.1
 
@@ -1177,30 +1191,38 @@ class Portfolio:
 
 # ── 资金分配器（回测版）──
 
-def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15, market_discount=1.0):
-    """半凯利分配。折扣×0.5 + 硬上限。
-    market_discount: 长周期调整因子（默认1.0，顶背离×0.7、布帺上轨×0.8等）
+def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15, market_discount=1.0, kelly_fraction=0.5, max_single_buy_pct=0.30):
+    """凯利分配。kelly_fraction控制凯利系数(0.5=半凯利, 1.0=全凯利)。
+    market_discount: 长周期调整因子（默认1.0，顶背离×0.7、布帶上轨×0.8等）
+    
+    改进：限额感知的资金重分配。当一个基金因day_limit只能买少量时，
+    把剩余资金重新分配给后续无限额或限额充足的基金，避免现金闲置。
     """
     available = total_cash * (1 - cash_reserve) * market_discount
     for c in candidates:
         p = c["score"] / 5.0
         b = max(p * 2, 0.5)
         kelly = max(0, min((p * b - (1 - p)) / b, kelly_cap))
-        # 半凯利: 直接砍半
-        kelly = kelly * 0.5
+        # 凯利分数: kelly_fraction=0.5半凯利, 1.0全凯利
+        kelly = kelly * kelly_fraction
         suggested = available * kelly * c["score"] / 5.0
+        _raw_suggested = suggested  # 限额截断前的原始建议金额
         if c["day_limit"] and c["day_limit"] < 999999:
             suggested = min(suggested, c["day_limit"])
-        # 硬上限: 单只基金不超过总资产max_pos%, 单次不超过可用现金30%
+        # 硬上限: 单只基金不超过总资产max_pos%, 单次不超过可用现金max_single_buy_pct
         _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100  # 支持 sector bonus 覆盖
         suggested = min(suggested, total_cash * _eff_max_pos)  # max_pos 默认0.15=15%
-        suggested = min(suggested, available * 0.30)       # 单次不超过可用现金30%
+        suggested = min(suggested, available * max_single_buy_pct)  # 单次不超过可用现金max_single_buy_pct
         suggested = round(suggested / 100) * 100
         c["_suggested"] = suggested
+        c["_raw_suggested"] = round(_raw_suggested / 100) * 100  # 保存原始建议（限额截断前）
+        c["_capped_by_limit"] = _raw_suggested > suggested + 100  # 是否被限额截断
 
     candidates.sort(key=lambda x: x["score"], reverse=True)
     allocated = 0
     results = []
+    # 第一轮：按分数顺序分配，记录被限额截断的剩余资金
+    capped_surplus = 0  # 被限额截断的总剩余资金
     for c in candidates:
         if allocated >= available or c["_suggested"] < 100:
             continue
@@ -1209,7 +1231,34 @@ def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_
         if c["_suggested"] < 100:
             continue
         allocated += c["_suggested"]
+        # 如果被限额截断，记录剩余资金用于第二轮重分配
+        if c["_capped_by_limit"] and c["_raw_suggested"] > c["_suggested"]:
+            capped_surplus += c["_raw_suggested"] - c["_suggested"]
         results.append(c)
+
+    # 第二轮：限额感知的资金重分配（把被截断的资金分给无限额的高分基金）
+    if capped_surplus > 100:
+        for c in results:
+            if capped_surplus < 100:
+                break
+            # 只给无限额或限额充足的基金加仓
+            if c["day_limit"] and c["day_limit"] < 999999:
+                remaining_limit = c["day_limit"] - c["_suggested"]
+                if remaining_limit < 100:
+                    continue
+                extra = min(capped_surplus, remaining_limit)
+            else:
+                _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100
+                hard_cap = total_cash * _eff_max_pos
+                remaining_cap = hard_cap - c["_suggested"]
+                if remaining_cap < 100:
+                    continue
+                extra = min(capped_surplus, remaining_cap)
+            extra = round(extra / 100) * 100
+            if extra >= 100:
+                c["_suggested"] += extra
+                capped_surplus -= extra
+                allocated += extra
     return results
 
 
@@ -1407,6 +1456,21 @@ def run_backtest(config):
             label_threshold=config.get("ml_label_threshold", 3.0))
         print("ML signal enhancement: enabled")
 
+    # ── 市场风险预警初始化（方案B）──
+    _market_risk_enabled = config.get("market_risk_filter", False) and MARKET_RISK_AVAILABLE
+    _market_risk_threshold = config.get("market_risk_threshold", 60)  # 风险分>此值停止买入
+    _market_risk_caution = config.get("market_risk_caution", 30)  # 风险分>此值减半买入
+
+    # ── Transformer市场预测初始化（方案C）──
+    _predictor_enabled = config.get("market_predictor", False) and MARKET_PREDICTOR_AVAILABLE
+    _predictor = None
+    _predictor_prob_threshold = config.get("predictor_prob_threshold", 0.6)  # P(跌)>此值停止买入
+    _predictor_retrain_interval = config.get("predictor_retrain_days", 20)
+    if _predictor_enabled:
+        _predictor = MarketPredictor(
+            seq_len=60, fwd_days=10, retrain_interval=_predictor_retrain_interval)
+        print("Market predictor (Transformer): enabled")
+
     for idx, day in enumerate(backtest_dates):
         cutoff_full = day  # 已经是 YYYY-MM-DD
 
@@ -1477,6 +1541,48 @@ def run_backtest(config):
         # 防止_market_discount过小（最低0.3，避免完全不买）
         _market_discount = max(0.3, min(2.0, _market_discount))
 
+        # ── 方案B：市场风险预警 ──
+        _market_risk_action = "normal"
+        _market_risk_score = 0
+        if _market_risk_enabled and _bm_nav_values:
+            # 收集持仓基金净值序列用于市场广度计算
+            _held_nav_series = {}
+            for _hc in list(portfolio.holdings.keys()):
+                _hpts = fund_charts.get(_hc, [])
+                _hvalid = _bisect_valid(_hpts, cutoff_full)
+                if len(_hvalid) >= 20:
+                    _held_nav_series[_hc] = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _hvalid]
+            try:
+                _risk_result = compute_market_risk(_bm_nav_values, _held_nav_series)
+                _market_risk_score = _risk_result["risk_score"]
+                _market_risk_action = _risk_result["action"]
+                if idx % 20 == 0:
+                    print(f"  market_risk: score={_market_risk_score:.0f} action={_market_risk_action}")
+            except Exception:
+                pass
+
+        # ── 方案C：Transformer市场方向预测 ──
+        _predictor_prob_down = 0.5  # 默认中性
+        if _predictor_enabled and _predictor and _bm_nav_values:
+            # 收集训练数据（walk-forward）
+            if idx > 0 and idx % 5 == 0:
+                try:
+                    _cutoff_idx = min(len(_bm_nav_values), len(_bm_nav_values))
+                    _predictor.add_training_data(_bm_nav_values, _cutoff_idx)
+                    _new_count = len(_predictor.training_data)
+                    if _predictor.should_retrain(_new_count):
+                        print(f"  training market predictor with {_new_count} samples...")
+                        _predictor.train()
+                except Exception as e:
+                    pass
+            # 预测
+            try:
+                _predictor_prob_down = _predictor.predict(_bm_nav_values)
+                if idx % 20 == 0:
+                    print(f"  predictor: P(down)={_predictor_prob_down:.2f}")
+            except Exception:
+                pass
+
         # ── 动态评分门槛：根据市场状态调整 min_score ──
         _effective_min_score = config.get("min_score", 3.3)
         _dyn_min_score_key = f"min_score_{_market_state}"  # min_score_bull / min_score_bear / min_score_neutral
@@ -1523,6 +1629,9 @@ def run_backtest(config):
                 "loss_days": config.get("cooldown_loss_days", _cooldown_days * 2),
                 "default_days": _cooldown_days,
             }
+
+        # ── OpenClaw组合级回撤熔断：检查是否在暂停期内（上一轮可能触发）──
+        _in_pause = hasattr(portfolio, '_dd_pause_until') and cutoff_full < getattr(portfolio, '_dd_pause_until', '')
 
         # ── 每30天重算基金相关性矩阵 ──
         if _max_corr > 0 and (idx % 30 == 0 or not _corr_matrix):
@@ -1725,6 +1834,29 @@ def run_backtest(config):
         if _bear_no_buy and candidates:
             candidates = []
 
+        # 组合回撤暂停期内不买入新基金（OpenClaw组合级风控）
+        if _in_pause and candidates:
+            candidates = []
+
+        # 方案B：市场风险过滤 — 高风险时停止买入，中风险时减半
+        if _market_risk_enabled and candidates:
+            if _market_risk_action == "stop_buy" or _market_risk_action == "reduce":
+                candidates = []
+                if idx % 20 == 0:
+                    print(f"  market_risk_filter: STOP BUY (score={_market_risk_score})")
+            elif _market_risk_action == "caution":
+                # 减半候选数量（只保留评分最高的前50%）
+                candidates.sort(key=lambda c: c["score"], reverse=True)
+                candidates = candidates[:max(1, len(candidates) // 2)]
+                if idx % 20 == 0:
+                    print(f"  market_risk_filter: CAUTION (score={_market_risk_score}), reduced to {len(candidates)} candidates")
+
+        # 方案C：Transformer预测过滤 — P(下跌)>阈值时停止买入
+        if _predictor_enabled and candidates and _predictor_prob_down > _predictor_prob_threshold:
+            candidates = []
+            if idx % 20 == 0:
+                print(f"  predictor_filter: STOP BUY (P_down={_predictor_prob_down:.2f})")
+
         # ── 相关性过滤：排除与已持仓基金高度相关的新基金 ──
         if _max_corr > 0 and candidates and portfolio.holdings:
             held_codes = list(portfolio.holdings.keys())
@@ -1794,6 +1926,36 @@ def run_backtest(config):
             if idx == 0 or backtest_dates[idx-1][:7] != day[:7]:
                 portfolio.inject_cash(monthly_amount, cutoff_full)
                 print(f"  SALARY +{monthly_amount} on {cutoff_full}")
+
+        # ── OpenClaw策略：组合级回撤熔断 — 总资产从峰值回撤>X% → 清仓+暂停N天 ──
+        _portfolio_dd_breaker = config.get("portfolio_dd_breaker", 0)
+        if _portfolio_dd_breaker > 0:
+            _total_val_now = portfolio.value(fund_prices)
+            if not hasattr(portfolio, '_peak_total'):
+                portfolio._peak_total = _total_val_now
+            if _total_val_now > portfolio._peak_total:
+                portfolio._peak_total = _total_val_now
+            if portfolio._peak_total > 0:
+                _portfolio_dd = (_total_val_now / portfolio._peak_total - 1) * 100
+                if _portfolio_dd < -_portfolio_dd_breaker:
+                    _pause_days = config.get("portfolio_dd_pause_days", 5)
+                    if not hasattr(portfolio, '_dd_pause_until') or cutoff_full >= getattr(portfolio, '_dd_pause_until', ''):
+                        print(f"  🚨 PORTFOLIO_CIRCUIT_BREAKER dd={_portfolio_dd:.1f}% clearing all + pause {_pause_days}d")
+                        for _cb_code in list(portfolio.holdings.keys()):
+                            _cb_h = portfolio.holdings[_cb_code]
+                            _cb_pts = fund_charts.get(_cb_code, [])
+                            _cb_valid = _bisect_valid(_cb_pts, cutoff_full)
+                            _cb_nav = (100 + _float(_cb_valid[-1].get("yAxis", 0))) / 100 if _cb_valid else 1.0
+                            portfolio.sell(_cb_code, 0, _cb_nav, cutoff_full, "portfolio_circuit_breaker", force_sell=True)
+                        try:
+                            from datetime import datetime as _dt, timedelta as _td
+                            _pause_dt = _dt.strptime(cutoff_full[:10], "%Y-%m-%d") + _td(days=_pause_days)
+                            portfolio._dd_pause_until = _pause_dt.strftime("%Y-%m-%d")
+                        except:
+                            portfolio._dd_pause_until = cutoff_full
+
+        # 更新暂停状态（可能在上面触发）
+        _in_pause = hasattr(portfolio, '_dd_pause_until') and cutoff_full < getattr(portfolio, '_dd_pause_until', '')
 
         # 重新评分已持仓的基金（判断是否需要卖出）
         for code in list(portfolio.holdings.keys()):
@@ -1887,6 +2049,60 @@ def run_backtest(config):
             if mom.score < mom_sell and _market_state != "bull":
                 should_sell = True
                 sell_reason = f"momentum_crash mom={mom.score:.2f}"
+
+            # 🟡 OpenClaw策略：RSI超买卖出 — RSI>阈值且盈利中，部分卖出锁利
+            _rsi_sell_threshold = config.get("rsi_sell_threshold", 0)
+            if _rsi_sell_threshold > 0 and cum_return > 10 and code in portfolio.holdings:
+                try:
+                    _sell_nav_values = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    _sell_rsi = compute_rsi(_sell_nav_values, 14)
+                    if _sell_rsi > _rsi_sell_threshold:
+                        sell_value = h["shares"] * sell_price * config.get("rsi_sell_pct", 0.3)
+                        if sell_value >= 100:
+                            portfolio.sell(code, sell_value, sell_price, cutoff_full,
+                                          sell_reason=f"rsi_overbought rsi={_sell_rsi:.0f} profit={cum_return:.1f}%")
+                            print(f"  SELL_RSI {code} {h['name'][:16]} rsi={_sell_rsi:.0f} profit={cum_return:.1f}% amt={sell_value:.0f}")
+                            continue
+                except Exception:
+                    pass
+
+            # 🟡 OpenClaw策略：N日不创新高卖出 — 连续N个交易日未创净值新高 → 趋势走平卖出
+            _no_new_high_days = config.get("no_new_high_days", 0)
+            if _no_new_high_days > 0 and cum_return > 0 and code in portfolio.holdings:
+                try:
+                    _recent_pts = valid[-min(_no_new_high_days + 1, len(valid)):] if len(valid) >= _no_new_high_days else []
+                    if _recent_pts:
+                        _recent_navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _recent_pts]
+                        _recent_max = max(_recent_navs[:-1]) if len(_recent_navs) > 1 else 0
+                        if current_nav < _recent_max:
+                            should_sell = True
+                            sell_reason = f"no_new_high {_no_new_high_days}d profit={cum_return:.1f}%"
+                except Exception:
+                    pass
+
+            # 🟡 OpenClaw策略：均线死叉卖出 — MA5下穿MA20 → 趋势反转卖出
+            _ma_cross_sell = config.get("ma_death_cross_sell", False)
+            if _ma_cross_sell and cum_return > 0 and code in portfolio.holdings and len(valid) >= 25:
+                try:
+                    _sell_nav_values = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    _ma5_now = statistics.mean(_sell_nav_values[-5:])
+                    _ma20_now = statistics.mean(_sell_nav_values[-20:])
+                    _ma5_prev = statistics.mean(_sell_nav_values[-6:-1])
+                    _ma20_prev = statistics.mean(_sell_nav_values[-21:-1])
+                    if _ma5_prev >= _ma20_prev and _ma5_now < _ma20_now:
+                        should_sell = True
+                        sell_reason = f"ma_death_cross MA5={_ma5_now:.4f}<MA20={_ma20_now:.4f}"
+                except Exception:
+                    pass
+
+            # 🔴 OpenClaw策略：时间止损 — 持仓满N天且收益不足 → 卖出释放资金
+            _time_stop_days = config.get("time_stop_days", 0)
+            if _time_stop_days > 0 and code in portfolio.holdings:
+                _hold_days = portfolio._holding_days(code, cutoff_full)
+                _time_stop_profit = config.get("time_stop_min_profit", 5)
+                if _hold_days >= _time_stop_days and cum_return < _time_stop_profit:
+                    should_sell = True
+                    sell_reason = f"time_stop {_hold_days}d profit={cum_return:.1f}%"
 
             # 🔴 最大回撤止盈: 从最高点回撤X%即卖出
             peak_dd_exit = config.get("peak_drawdown_exit", 0)
@@ -2053,7 +2269,9 @@ def run_backtest(config):
             kelly_cap=_dyn_kelly,
             cash_reserve=_dyn_cash_reserve,
             max_pos=_dyn_max_pos / 100,
-            market_discount=_market_discount)
+            market_discount=_market_discount,
+            kelly_fraction=config.get("kelly_fraction", 0.5),
+            max_single_buy_pct=config.get("max_single_buy_pct", 0.30))
         for c in to_buy:
             # 最大持仓数限制
             max_holdings = config.get("max_holdings", 0)
