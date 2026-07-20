@@ -1857,6 +1857,19 @@ def run_backtest(config):
             if idx % 20 == 0:
                 print(f"  predictor_filter: STOP BUY (P_down={_predictor_prob_down:.2f})")
 
+        # 方案D3：MACD金叉买入过滤 — 基准MACD<0时停止买入
+        _macd_buy_filter = config.get("macd_golden_cross_buy", False)
+        if _macd_buy_filter and candidates and _bm_nav_values:
+            try:
+                from tools.technical_indicators import compute_macd
+                _bm_macd, _bm_sig, _bm_hist = compute_macd(_bm_nav_values)
+                if _bm_macd < _bm_sig:  # MACD在信号线下方，空头趋势
+                    candidates = []
+                    if idx % 20 == 0:
+                        print(f"  macd_buy_filter: STOP BUY (MACD={_bm_macd:.4f} < signal={_bm_sig:.4f})")
+            except Exception:
+                pass
+
         # ── 相关性过滤：排除与已持仓基金高度相关的新基金 ──
         if _max_corr > 0 and candidates and portfolio.holdings:
             held_codes = list(portfolio.holdings.keys())
@@ -2029,6 +2042,22 @@ def run_backtest(config):
                     print(f"  SELL_TP {code} {h['name'][:16]} profit={cum_return:.1f}% amt={sell_amt:.0f}")
                     continue
 
+            # 🟡 方案D1：阶梯止盈 — 分批卖出锁利
+            _step_tp = config.get("step_take_profit", False)
+            if _step_tp and cum_return > 20 and code in portfolio.holdings:
+                _step_levels = config.get("step_tp_levels", [(30, 0.3), (50, 0.3), (80, 0.4)])
+                _sold_key = f"_step_tp_sold_{int(cum_return // 10) * 10}"
+                if not h.get(_sold_key, False):
+                    for _level, _frac in _step_levels:
+                        if cum_return >= _level and not h.get(f"_step_tp_sold_{_level}", False):
+                            _sell_val = h["shares"] * sell_price * _frac
+                            if _sell_val >= 100:
+                                portfolio.sell(code, _sell_val, sell_price, cutoff_full,
+                                              sell_reason=f"step_tp {_level}% sell{_frac*100:.0f}%")
+                                h[f"_step_tp_sold_{_level}"] = True
+                                print(f"  SELL_STEP_TP {code} {h['name'][:16]} level={_level}% frac={_frac*100:.0f}% amt={_sell_val:.0f}")
+                                break
+
             # 🟢 移动止盈: 盈利达到激活阈值后，从最高点回撤超过阈值则卖出锁利
             # 与 peak_drawdown_exit 的区别：只在盈利状态下触发，避免亏损时误卖
             if _dyn_trail_act > 0 and cum_return >= _dyn_trail_act and drawdown_from_peak < -_dyn_trail_dd:
@@ -2103,6 +2132,20 @@ def run_backtest(config):
                 if _hold_days >= _time_stop_days and cum_return < _time_stop_profit:
                     should_sell = True
                     sell_reason = f"time_stop {_hold_days}d profit={cum_return:.1f}%"
+
+            # 🔴 方案D2：ATR动态止损 — 止损线随波动率自适应
+            _atr_mult = config.get("atr_stop_loss_mult", 0)
+            if _atr_mult > 0 and code in portfolio.holdings and len(valid) >= 15:
+                try:
+                    _sell_nav_values = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid[-15:]]
+                    _trs = [abs(_sell_nav_values[i] - _sell_nav_values[i-1]) for i in range(1, len(_sell_nav_values))]
+                    _atr_val = statistics.mean(_trs) if _trs else 0
+                    _atr_stop = buy_nav - _atr_mult * _atr_val
+                    if current_nav <= _atr_stop:
+                        should_sell = True
+                        sell_reason = f"atr_stop nav={current_nav:.4f} stop={_atr_stop:.4f} atr={_atr_val:.4f}"
+                except Exception:
+                    pass
 
             # 🔴 最大回撤止盈: 从最高点回撤X%即卖出
             peak_dd_exit = config.get("peak_drawdown_exit", 0)
@@ -2263,6 +2306,12 @@ def run_backtest(config):
                     })
                     print(f"  BUY_BACK_SIGNAL {bb_code} {bb_name[:16]} RSI={bb_timing['rsi']:.0f} trend=UP")
 
+        # 方案D4：动态凯利 — 根据市场风险分数调整仓位
+        _dyn_kelly_frac = config.get("kelly_fraction", 0.5)
+        if _market_risk_enabled and _market_risk_score > 0:
+            _risk_factor = max(0.1, 1.0 - _market_risk_score / 100)
+            _dyn_kelly_frac = _dyn_kelly_frac * _risk_factor
+
         to_buy = kelly_allocate(candidates, portfolio.cash + sum(
             h["shares"] * fund_prices.get(code, h.get("buy_nav", 1.0))
             for code, h in portfolio.holdings.items()),
@@ -2270,7 +2319,7 @@ def run_backtest(config):
             cash_reserve=_dyn_cash_reserve,
             max_pos=_dyn_max_pos / 100,
             market_discount=_market_discount,
-            kelly_fraction=config.get("kelly_fraction", 0.5),
+            kelly_fraction=_dyn_kelly_frac,
             max_single_buy_pct=config.get("max_single_buy_pct", 0.30))
         for c in to_buy:
             # 最大持仓数限制

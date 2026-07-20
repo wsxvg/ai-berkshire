@@ -1,0 +1,64 @@
+name: Backtest Matrix 2 (D+E+F+G+H)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'backtest/run_single_test.py'
+      - 'backtest/collect_results.py'
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          D1_step_tp, D2_atr_stop, D3_macd_buy, D4_dyn_kelly,
+          E1_A5_B1, E2_A5_C1, E3_B1_C1, E4_all,
+          F1_rsi65, F2_rsi75, F3_tp40, F4_tp60, F5_trail5, F6_trail12, F7_sector30,
+          G1_atr_risk, G2_step_atr, H1_all_in
+        ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install lightgbm scikit-learn numpy pandas
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+
+      - name: Generate summary
+        run: python backtest/collect_results.py
+
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-2
+          path: backtest/reports/unified_backtest_summary.json

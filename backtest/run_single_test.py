@@ -29,6 +29,30 @@ TEST_CONFIGS = {
     "OC_no_new_high20": {"no_new_high_days": 20},
     "OC_ma_cross": {"ma_death_cross_sell": True},
     "OC_dd_breaker12": {"portfolio_dd_breaker": 12, "portfolio_dd_pause_days": 5},
+    # 方案D：新策略
+    "D1_step_tp": {"step_take_profit": True},
+    "D2_atr_stop": {"atr_stop_loss_mult": 2.0},
+    "D3_macd_buy": {"macd_golden_cross_buy": True},
+    "D4_dyn_kelly": {"market_risk_filter": True, "market_risk_threshold": 60, "market_risk_caution": 30, "kelly_fraction": 0.5},
+    # 混合组合
+    "E1_A5_B1": {"weekly_macd_divergence": True, "weekly_bollinger_adjust": True, "yearly_ma_filter": True, "block_overbought": True, "market_risk_filter": True, "market_risk_threshold": 60, "market_risk_caution": 30},
+    "E2_A5_C1": {"weekly_macd_divergence": True, "weekly_bollinger_adjust": True, "yearly_ma_filter": True, "block_overbought": True, "market_predictor": True, "predictor_prob_threshold": 0.6},
+    "E3_B1_C1": {"market_risk_filter": True, "market_risk_threshold": 60, "market_risk_caution": 30, "market_predictor": True, "predictor_prob_threshold": 0.6},
+    "E4_all": {"weekly_macd_divergence": True, "weekly_bollinger_adjust": True, "yearly_ma_filter": True, "block_overbought": True, "market_risk_filter": True, "market_risk_threshold": 60, "market_risk_caution": 30, "market_predictor": True, "predictor_prob_threshold": 0.6},
+    # 参数扫描
+    "F1_rsi65": {"block_overbought": True, "rsi_block_threshold": 65},
+    "F2_rsi75": {"block_overbought": True, "rsi_block_threshold": 75},
+    "F3_tp40": {"take_profit_pct": 40},
+    "F4_tp60": {"take_profit_pct": 60},
+    "F5_trail5": {"trailing_tp_activate": 20, "trailing_tp_drawdown": 5},
+    "F6_trail12": {"trailing_tp_activate": 20, "trailing_tp_drawdown": 12},
+    "F7_sector30": {"rebalance": True, "max_sector_pct": 30},
+    # D2 + B1 组合
+    "G1_atr_risk": {"atr_stop_loss_mult": 2.0, "market_risk_filter": True, "market_risk_threshold": 50, "market_risk_caution": 30},
+    # D1 + D2 组合
+    "G2_step_atr": {"step_take_profit": True, "atr_stop_loss_mult": 2.0},
+    # 全部组合（所有策略全开）
+    "H1_all_in": {"step_take_profit": True, "atr_stop_loss_mult": 2.0, "macd_golden_cross_buy": True, "market_risk_filter": True, "market_risk_threshold": 50, "market_risk_caution": 30, "weekly_macd_divergence": True, "weekly_bollinger_adjust": True, "yearly_ma_filter": True, "block_overbought": True},
 }
 
 LABELS = {
@@ -48,6 +72,24 @@ LABELS = {
     "OC_no_new_high20": "OC:20日不创新高",
     "OC_ma_cross": "OC:MA5下穿MA20",
     "OC_dd_breaker12": "OC:组合回撤12%熔断",
+    "D1_step_tp": "D1:阶梯止盈(30/50/80分批)",
+    "D2_atr_stop": "D2:ATR动态止损(2×ATR)",
+    "D3_macd_buy": "D3:MACD金叉买入过滤",
+    "D4_dyn_kelly": "D4:动态凯利(风险分调仓)",
+    "E1_A5_B1": "E1:A5+B1(指标+风险)",
+    "E2_A5_C1": "E2:A5+C1(指标+Transformer)",
+    "E3_B1_C1": "E3:B1+C1(风险+Transformer)",
+    "E4_all": "E4:全部组合(A+B+C)",
+    "F1_rsi65": "F1:RSI超买65(更严格)",
+    "F2_rsi75": "F2:RSI超买75(较宽松)",
+    "F3_tp40": "F3:止盈40%(更早)",
+    "F4_tp60": "F4:止盈60%(更晚)",
+    "F5_trail5": "F5:移动止盈回撤5%(紧)",
+    "F6_trail12": "F6:移动止盈回撤12%(松)",
+    "F7_sector30": "F7:行业集中度30%",
+    "G1_atr_risk": "G1:ATR止损+风险50停买",
+    "G2_step_atr": "G2:阶梯止盈+ATR止损",
+    "H1_all_in": "H1:全部策略全开",
 }
 
 
