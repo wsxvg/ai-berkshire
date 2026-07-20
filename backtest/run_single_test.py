@@ -53,6 +53,25 @@ TEST_CONFIGS = {
     "G2_step_atr": {"step_take_profit": True, "atr_stop_loss_mult": 2.0},
     # 全部组合（所有策略全开）
     "H1_all_in": {"step_take_profit": True, "atr_stop_loss_mult": 2.0, "macd_golden_cross_buy": True, "market_risk_filter": True, "market_risk_threshold": 50, "market_risk_caution": 30, "weekly_macd_divergence": True, "weekly_bollinger_adjust": True, "yearly_ma_filter": True, "block_overbought": True},
+    # 方案I：新买入过滤
+    "I1_ma20_buy": {"ma20_trend_buy": True},
+    "I2_rsi_oversold": {"rsi_buy_max": 40},
+    "I3_breakout60": {"momentum_breakout_days": 60},
+    # 方案J：参数变体
+    "J1_stop15": {"stop_loss_pct": -15},
+    "J2_stop50": {"stop_loss_pct": -50},
+    "J3_score4": {"min_score": 4.0},
+    "J4_consensus1": {"min_consensus": 1},
+    "J5_consensus3": {"min_consensus": 3},
+    "J6_maxpos50": {"max_position_pct": 50},
+    "J7_cash3": {"cash_reserve_pct": 0.03},
+    "J8_nostop": {"no_stop_loss": True},
+    "J9_hold60": {"min_holding_days": 60},
+    "J10_hold15": {"min_holding_days": 15},
+    # 方案K：组合策略
+    "K1_value_trend": {"min_score": 4.0, "ma20_trend_buy": True},
+    "K2_event_v2": {"ma20_trend_buy": True, "stop_loss_pct": -15},
+    "K3_all_buy_filters": {"ma20_trend_buy": True, "macd_golden_cross_buy": True, "momentum_breakout_days": 60},
 }
 
 LABELS = {
@@ -90,6 +109,22 @@ LABELS = {
     "G1_atr_risk": "G1:ATR止损+风险50停买",
     "G2_step_atr": "G2:阶梯止盈+ATR止损",
     "H1_all_in": "H1:全部策略全开",
+    "I1_ma20_buy": "I1:MA20趋势买入过滤",
+    "I2_rsi_oversold": "I2:RSI<40超卖买入",
+    "I3_breakout60": "I3:60日新高突破买入",
+    "J1_stop15": "J1:紧止损15%(事件驱动V2)",
+    "J2_stop50": "J2:松止损50%",
+    "J3_score4": "J3:高门槛4.0(价值)",
+    "J4_consensus1": "J4:低共识1人(激进)",
+    "J5_consensus3": "J5:高共识3人(保守)",
+    "J6_maxpos50": "J6:单仓上限50%(集中)",
+    "J7_cash3": "J7:现金储备3%(满仓)",
+    "J8_nostop": "J8:无止损(扛回撤)",
+    "J9_hold60": "J9:最低持有60天",
+    "J10_hold15": "J10:最低持有15天(快轮)",
+    "K1_value_trend": "K1:价值+趋势(高门槛+MA20)",
+    "K2_event_v2": "K2:事件驱动V2(MA20+止15%)",
+    "K3_all_buy_filters": "K3:全部买入过滤(MA20+MACD+突破)",
 }
 
 

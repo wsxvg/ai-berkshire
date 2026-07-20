@@ -1870,6 +1870,48 @@ def run_backtest(config):
             except Exception:
                 pass
 
+        # 方案I1：MA20趋势买入过滤 — 只买入站上MA20的基金（事件驱动V2灵感）
+        _ma20_buy = config.get("ma20_trend_buy", False)
+        if _ma20_buy and candidates:
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) >= 20:
+                    _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                    _cma20 = statistics.mean(_cnavs[-20:])
+                    if _cnavs[-1] >= _cma20:
+                        filtered.append(c)
+            candidates = filtered
+
+        # 方案I2：RSI超卖买入 — 只在RSI<阈值时买入（逆向/均值回归）
+        _rsi_buy_max = config.get("rsi_buy_max", 0)
+        if _rsi_buy_max > 0 and candidates:
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) >= 15:
+                    _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                    _crsi = compute_rsi(_cnavs, 14)
+                    if _crsi <= _rsi_buy_max:
+                        filtered.append(c)
+            candidates = filtered
+
+        # 方案I3：动量突破买入 — 只买入创N日新高的基金
+        _breakout_days = config.get("momentum_breakout_days", 0)
+        if _breakout_days > 0 and candidates:
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) >= _breakout_days:
+                    _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                    _recent_max = max(_cnavs[-(_breakout_days):-1]) if len(_cnavs) > _breakout_days else 0
+                    if _cnavs[-1] > _recent_max:
+                        filtered.append(c)
+            candidates = filtered
+
         # ── 相关性过滤：排除与已持仓基金高度相关的新基金 ──
         if _max_corr > 0 and candidates and portfolio.holdings:
             held_codes = list(portfolio.holdings.keys())

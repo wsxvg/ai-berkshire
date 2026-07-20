@@ -1,0 +1,57 @@
+name: Backtest Matrix 3 (I+J+K)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'backtest/engine/backtest.py'
+      - 'backtest/run_single_test.py'
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          I1_ma20_buy, I2_rsi_oversold, I3_breakout60,
+          J1_stop15, J2_stop50, J3_score4, J4_consensus1, J5_consensus3,
+          J6_maxpos50, J7_cash3, J8_nostop, J9_hold60, J10_hold15,
+          K1_value_trend, K2_event_v2, K3_all_buy_filters
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install lightgbm scikit-learn numpy pandas
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-3
+          path: backtest/reports/unified_backtest_summary.json
