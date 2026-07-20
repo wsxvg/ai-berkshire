@@ -1,0 +1,79 @@
+{
+  "date": "2026-07-20",
+  "market": "neutral",
+  "min_score": 0.0,
+  "candidates_top5": [
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "score": 2.9735636836393535
+    },
+    {
+      "code": "024239",
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "score": 2.7832201152343763
+    },
+    {
+      "code": "016664",
+      "name": "天弘全球高端制造混合(QDII)A",
+      "score": 2.7638239239990536
+    },
+    {
+      "code": "021842",
+      "name": "国富全球科技互联混合(QDII)人民币C",
+      "score": 2.6854510827715457
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "score": 2.6786074580739005
+    }
+  ],
+  "buy_recommendations": [
+    {
+      "action": "BUY",
+      "code": "024239",
+      "name": "华夏全球科技先锋混合(QDII)C",
+      "amount": 1000.0
+    },
+    {
+      "action": "BUY",
+      "code": "016664",
+      "name": "天弘全球高端制造混合(QDII)A",
+      "amount": 100.0
+    },
+    {
+      "action": "BUY",
+      "code": "013841",
+      "name": "银华集成电路混合C",
+      "amount": 17800
+    },
+    {
+      "action": "BUY",
+      "code": "017731",
+      "name": "嘉实全球产业升级股票发起式(QDII)C",
+      "amount": 100.0
+    },
+    {
+      "action": "BUY",
+      "code": "022184",
+      "name": "富国全球科技互联网股票(QDII)C",
+      "amount": 1000.0
+    },
+    {
+      "action": "BUY",
+      "code": "501226",
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "amount": 500.0
+    }
+  ],
+  "sell_recommendations": [],
+  "blocked_funds": [],
+  "holdings": {},
+  "fund_notices": {},
+  "portfolio": {
+    "total_value": 100000.0,
+    "cash": 79500.0,
+    "fees": 2.25
+  }
+}
