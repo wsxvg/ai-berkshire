@@ -1,31 +1,34 @@
 name: Backtest Matrix (A+B+C)
 
 on:
-  workflow_dispatch:       # 手动触发
+  workflow_dispatch:
     inputs:
-      test_group:
-        description: 'Test group (all/A/B/C/OC/baseline)'
+      test_name:
+        description: 'Single test name (empty = run all)'
         required: false
-        default: 'all'
+        default: ''
   push:
     paths:
       - 'backtest/engine/backtest.py'
       - 'tools/market_risk.py'
       - 'tools/market_predictor.py'
-      - 'backtest/test_unified_all.py'
+      - 'backtest/run_single_test.py'
 
 jobs:
-  # ─────────────────────────────────────────────
-  # 基线 + 方案A（已有前瞻指标激活）
-  # ─────────────────────────────────────────────
-  group-A:
+  backtest:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     strategy:
-      matrix:
-        test_name: [baseline, A1_macd_div, A2_bollinger, A3_yearly_ma, A4_rsi70, A5_all_combined]
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 16
+      matrix:
+        test_name: [
+          baseline,
+          A1_macd_div, A2_bollinger, A3_yearly_ma, A4_rsi70, A5_all_combined,
+          B1_risk60, B2_risk50, B3_risk40,
+          C1_predictor60, C2_predictor55,
+          OC_time_stop120, OC_rsi_sell80, OC_no_new_high20, OC_ma_cross, OC_dd_breaker12
+        ]
     steps:
       - uses: actions/checkout@v4
 
@@ -35,203 +38,21 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install lightgbm scikit-learn numpy pandas statistics torch --index-url https://download.pytorch.org/whl/cpu
+          pip install lightgbm scikit-learn numpy pandas
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
 
       - name: Run backtest
-        run: |
-          python -c "
-          import sys, json, copy, time
-          sys.path.insert(0, '.')
-          from backtest.engine.backtest import run_backtest
-
-          BASE_CFG = json.loads(open('data/evolution/best_config.json', 'r', encoding='utf-8').read())['config']
-
-          TESTS = {
-            'baseline': {},
-            'A1_macd_div': {'weekly_macd_divergence': True, 'divergence_top_discount': 0.6},
-            'A2_bollinger': {'weekly_bollinger_adjust': True},
-            'A3_yearly_ma': {'yearly_ma_filter': True},
-            'A4_rsi70': {'block_overbought': True},
-            'A5_all_combined': {'weekly_macd_divergence': True, 'weekly_bollinger_adjust': True, 'yearly_ma_filter': True, 'block_overbought': True},
-          }
-
-          name = '${{ matrix.test_name }}'
-          cfg = copy.deepcopy(BASE_CFG)
-          cfg.update(TESTS[name])
-          cfg['start_date'] = '2023-07-17'
-          cfg['end_date'] = '2026-07-17'
-          cfg['initial_cash'] = 100000
-
-          t0 = time.time()
-          r = run_backtest(cfg)
-          elapsed = time.time() - t0
-
-          result = {
-            'name': name,
-            'total_return': round(r['total_return'], 2),
-            'max_drawdown': round(r['max_drawdown'], 2),
-            'sharpe': round(r['sharpe_ratio'], 2),
-            'trade_count': r['trade_count'],
-            'elapsed_sec': round(elapsed, 1),
-          }
-          import os
-          os.makedirs('backtest/results', exist_ok=True)
-          with open(f'backtest/results/{name}.json', 'w') as f:
-            json.dump(result, f, indent=2)
-          print(f'{name}: ret={result[\"total_return\"]}% dd={result[\"max_drawdown\"]}% sharpe={result[\"sharpe\"]}')
-          "
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
 
       - name: Upload result
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: result-${{ matrix.test_name }}
           path: backtest/results/${{ matrix.test_name }}.json
 
-  # ─────────────────────────────────────────────
-  # 方案B（市场风险预警）
-  # ─────────────────────────────────────────────
-  group-B:
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    strategy:
-      matrix:
-        test_name: [B1_risk60, B2_risk50, B3_risk40]
-      fail-fast: false
-      max-parallel: 3
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          pip install lightgbm scikit-learn numpy pandas torch --index-url https://download.pytorch.org/whl/cpu
-
-      - name: Run backtest
-        run: |
-          python -c "
-          import sys, json, copy, time, os
-          sys.path.insert(0, '.')
-          from backtest.engine.backtest import run_backtest
-
-          BASE_CFG = json.loads(open('data/evolution/best_config.json', 'r', encoding='utf-8').read())['config']
-
-          TESTS = {
-            'B1_risk60': {'market_risk_filter': True, 'market_risk_threshold': 60, 'market_risk_caution': 30},
-            'B2_risk50': {'market_risk_filter': True, 'market_risk_threshold': 50, 'market_risk_caution': 20},
-            'B3_risk40': {'market_risk_filter': True, 'market_risk_threshold': 40, 'market_risk_caution': 20},
-          }
-
-          name = '${{ matrix.test_name }}'
-          cfg = copy.deepcopy(BASE_CFG)
-          cfg.update(TESTS[name])
-          cfg['start_date'] = '2023-07-17'
-          cfg['end_date'] = '2026-07-17'
-          cfg['initial_cash'] = 100000
-
-          t0 = time.time()
-          r = run_backtest(cfg)
-          elapsed = time.time() - t0
-
-          result = {
-            'name': name,
-            'total_return': round(r['total_return'], 2),
-            'max_drawdown': round(r['max_drawdown'], 2),
-            'sharpe': round(r['sharpe_ratio'], 2),
-            'trade_count': r['trade_count'],
-            'elapsed_sec': round(elapsed, 1),
-          }
-          os.makedirs('backtest/results', exist_ok=True)
-          with open(f'backtest/results/{name}.json', 'w') as f:
-            json.dump(result, f, indent=2)
-          print(f'{name}: ret={result[\"total_return\"]}% dd={result[\"max_drawdown\"]}% sharpe={result[\"sharpe\"]}')
-          "
-
-      - name: Upload result
-        uses: actions/upload-artifact@v4
-        with:
-          name: result-${{ matrix.test_name }}
-          path: backtest/results/${{ matrix.test_name }}.json
-
-  # ─────────────────────────────────────────────
-  # 方案C（Transformer市场预测）+ OpenClaw策略
-  # ─────────────────────────────────────────────
-  group-C-OC:
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    strategy:
-      matrix:
-        test_name: [C1_predictor60, C2_predictor55, OC_time_stop120, OC_rsi_sell80, OC_no_new_high20, OC_ma_cross, OC_dd_breaker12]
-      fail-fast: false
-      max-parallel: 7
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          pip install lightgbm scikit-learn numpy pandas torch --index-url https://download.pytorch.org/whl/cpu
-
-      - name: Run backtest
-        run: |
-          python -c "
-          import sys, json, copy, time, os
-          sys.path.insert(0, '.')
-          from backtest.engine.backtest import run_backtest
-
-          BASE_CFG = json.loads(open('data/evolution/best_config.json', 'r', encoding='utf-8').read())['config']
-
-          TESTS = {
-            'C1_predictor60': {'market_predictor': True, 'predictor_prob_threshold': 0.6, 'predictor_retrain_days': 20},
-            'C2_predictor55': {'market_predictor': True, 'predictor_prob_threshold': 0.55, 'predictor_retrain_days': 20},
-            'OC_time_stop120': {'time_stop_days': 120, 'time_stop_min_profit': 5},
-            'OC_rsi_sell80': {'rsi_sell_threshold': 80, 'rsi_sell_pct': 0.3},
-            'OC_no_new_high20': {'no_new_high_days': 20},
-            'OC_ma_cross': {'ma_death_cross_sell': True},
-            'OC_dd_breaker12': {'portfolio_dd_breaker': 12, 'portfolio_dd_pause_days': 5},
-          }
-
-          name = '${{ matrix.test_name }}'
-          cfg = copy.deepcopy(BASE_CFG)
-          cfg.update(TESTS[name])
-          cfg['start_date'] = '2023-07-17'
-          cfg['end_date'] = '2026-07-17'
-          cfg['initial_cash'] = 100000
-
-          t0 = time.time()
-          r = run_backtest(cfg)
-          elapsed = time.time() - t0
-
-          result = {
-            'name': name,
-            'total_return': round(r['total_return'], 2),
-            'max_drawdown': round(r['max_drawdown'], 2),
-            'sharpe': round(r['sharpe_ratio'], 2),
-            'trade_count': r['trade_count'],
-            'elapsed_sec': round(elapsed, 1),
-          }
-          os.makedirs('backtest/results', exist_ok=True)
-          with open(f'backtest/results/{name}.json', 'w') as f:
-            json.dump(result, f, indent=2)
-          print(f'{name}: ret={result[\"total_return\"]}% dd={result[\"max_drawdown\"]}% sharpe={result[\"sharpe\"]}')
-          "
-
-      - name: Upload result
-        uses: actions/upload-artifact@v4
-        with:
-          name: result-${{ matrix.test_name }}
-          path: backtest/results/${{ matrix.test_name }}.json
-
-  # ─────────────────────────────────────────────
-  # 汇总结果
-  # ─────────────────────────────────────────────
   collect-results:
-    needs: [group-A, group-B, group-C-OC]
+    needs: backtest
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -242,33 +63,7 @@ jobs:
           merge-multiple: true
 
       - name: Generate summary
-        run: |
-          python -c "
-          import json, os, glob
-
-          results = []
-          for f in sorted(glob.glob('backtest/results/*.json')):
-              with open(f) as fh:
-                  results.append(json.load(fh))
-
-          results.sort(key=lambda x: x['total_return'], reverse=True)
-          baseline = next((r['total_return'] for r in results if r['name'] == 'baseline'), 56.93)
-
-          print(f'\\n{\"=\"*80}')
-          print(f'统一回测最终结果（3年 2023-07-17 ~ 2026-07-17）')
-          print(f'{\"=\"*80}')
-          print(f'{\"方案\":<30} {\"收益%\":>8} {\"vs基线\":>8} {\"回撤%\":>8} {\"夏普\":>6} {\"交易\":>6}')
-          print(f'{\"-\"*80}')
-          for r in results:
-              diff = r['total_return'] - baseline
-              marker = '  ' if abs(diff) < 0.5 else ('+ ' if diff > 0 else '  ')
-              print(f'{marker}{r[\"name\"]:<28} {r[\"total_return\"]:>7.2f}% {diff:>+7.2f}pp {r[\"max_drawdown\"]:>7.2f}% {r[\"sharpe\"]:>5.2f} {r[\"trade_count\"]:>5}')
-
-          output = {'results': results, 'baseline': baseline}
-          with open('backtest/reports/unified_backtest_summary.json', 'w') as f:
-              json.dump(output, f, indent=2)
-          print(f'\\nSummary saved to backtest/reports/unified_backtest_summary.json')
-          "
+        run: python backtest/collect_results.py
 
       - name: Upload summary
         uses: actions/upload-artifact@v4
