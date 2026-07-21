@@ -1,0 +1,56 @@
+name: Backtest Matrix 11 (GA - Momentum Strategy No Expert)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          # GA: 动量信号模式（脱离大佬，用基金自身收益率排名）
+          GA1_mom63_top10, GA2_mom63_top20, GA3_mom63_top5,
+          GA4_mom21_top10, GA5_mom21_top20,
+          GA6_mom126_top10, GA7_mom126_top20,
+          GA8_mom63_top10_w5, GA9_mom63_top10_w10, GA10_mom63_top10_w42,
+          GA11_mom_kdj, GA12_mom_maccel, GA13_mom_rsi,
+          GA14_mom_momsell2, GA15_mom_momsell1,
+          GA16_mom21_top10_w5, GA17_mom21_top5_w5,
+          GA18_mom126_top10_w42, GA19_mom126_top20_w42,
+          GA20_mom63_top30
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+      - name: Collect all results
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-results-summary
+          path: backtest/results/all_results.json

@@ -1720,47 +1720,85 @@ def run_backtest(config):
         # 该日的所有交易记录
         day_records = trading_by_date.get(day, [])
 
-        # — 动态大佬排分（每N天重算）—
-        if config.get("dynamic_ranking", False):
-            recalc_days = config.get("ranking_recalc_days", 30)
-            last_rank = getattr(run_backtest, "_last_rank_date", None)
-            if not last_rank or (idx - last_rank) >= recalc_days or idx <= 1:
-                dyn_weights = compute_player_rankings(
-                    all_records, fund_charts, name_to_code, cutoff_full, config)
-                run_backtest._last_rank_date = idx
-                run_backtest._rank_weights = dyn_weights
-                run_backtest._rank_excluded = {uid for uid, w in dyn_weights.items() if w == 0}
-            player_weights = run_backtest._rank_weights
-            exclude_uids = run_backtest._rank_excluded
-        else:
-            exclude_uids = set(str(u) for u in config.get("exclude_uids", []))
-            player_weights = config.get("player_weights", {})
-        fund_signals = defaultdict(lambda: {"buy_count": 0, "sell_count": 0, "weighted_buy": 0.0, "records": []})
-        for r in day_records:
-            uid = str(r.get("_uid", ""))
-            if exclude_uids and uid in exclude_uids:
-                continue
-            fn = r.get("fund_name", "")
-            act = r.get("action", "")
-            weight = float(player_weights.get(uid, 1.0)) if player_weights else 1.0
-            if "买入" in act:
-                fund_signals[fn]["buy_count"] += 1
-                fund_signals[fn]["weighted_buy"] += weight
-            elif "卖出" in act:
-                fund_signals[fn]["sell_count"] += 1
-            fund_signals[fn]["records"].append(r)
+        # ═══ 动量信号模式：脱离大佬，用基金自身收益率排名生成信号 ═══
+        _signal_source = config.get("signal_source", "expert")
+        if _signal_source == "momentum":
+            _mom_lookback = config.get("momentum_lookback", 63)  # 回看天数（63≈3月）
+            _mom_top_n = config.get("momentum_top_n", 10)  # 取前N只
+            _mom_rebal = config.get("momentum_rebalance_days", 21)  # 调仓频率（21≈1月）
+            _mom_min_data = config.get("momentum_min_data", 40)  # 最少数据天数
 
-        # 如果启用了加权，用加权后的买数替代原始买数
-        use_weighted = config.get("use_weighted_consensus", False)
-        _weighted_threshold = config.get("weighted_consensus_threshold", 0)  # 加权共识门槛(浮点)
-        for fn in fund_signals:
-            if use_weighted:
-                _wb = fund_signals[fn]["weighted_buy"]
-                if _weighted_threshold > 0:
-                    # 使用浮点门槛而非int截断
-                    fund_signals[fn]["buy_count"] = _wb  # 保留浮点用于门槛比较
-                else:
-                    fund_signals[fn]["buy_count"] = max(1, int(_wb))
+            # 只在调仓日重新计算排名
+            if idx % _mom_rebal == 0 or idx == 0:
+                _mom_ranking = []
+                for _code, _pts in fund_charts.items():
+                    _valid = _bisect_valid(_pts, cutoff_full)
+                    if len(_valid) < _mom_min_data + _mom_lookback:
+                        continue
+                    _navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _valid]
+                    _cur = _navs[-1]
+                    _past = _navs[-_mom_lookback] if len(_navs) > _mom_lookback else _navs[0]
+                    if _past > 0:
+                        _ret = (_cur / _past - 1) * 100
+                        _mom_ranking.append((_code, _ret))
+                _mom_ranking.sort(key=lambda x: x[1], reverse=True)
+                _mom_ranking = _mom_ranking[:_mom_top_n]
+                if idx % 100 == 0:
+                    print(f"  [momentum] rebalance: top{_mom_top_n} by {_mom_lookback}d return")
+                    for _c, _r in _mom_ranking[:5]:
+                        print(f"    {_c}: {_r:.2f}%")
+
+            # 生成合成信号：top N基金各得到buy_count=1
+            fund_signals = defaultdict(lambda: {"buy_count": 0, "sell_count": 0, "weighted_buy": 0.0, "records": []})
+            _name_map_inv = {v: k for k, v in name_to_code.items()} if name_to_code else {}
+            for _rank, (_code, _ret) in enumerate(_mom_ranking):
+                _fn = _name_map_inv.get(_code, _code)
+                fund_signals[_fn]["buy_count"] = 1
+                fund_signals[_fn]["weighted_buy"] = 1.0
+            use_weighted = False
+            _weighted_threshold = 0
+        else:
+            # — 动态大佬排分（每N天重算）—
+            if config.get("dynamic_ranking", False):
+                recalc_days = config.get("ranking_recalc_days", 30)
+                last_rank = getattr(run_backtest, "_last_rank_date", None)
+                if not last_rank or (idx - last_rank) >= recalc_days or idx <= 1:
+                    dyn_weights = compute_player_rankings(
+                        all_records, fund_charts, name_to_code, cutoff_full, config)
+                    run_backtest._last_rank_date = idx
+                    run_backtest._rank_weights = dyn_weights
+                    run_backtest._rank_excluded = {uid for uid, w in dyn_weights.items() if w == 0}
+                player_weights = run_backtest._rank_weights
+                exclude_uids = run_backtest._rank_excluded
+            else:
+                exclude_uids = set(str(u) for u in config.get("exclude_uids", []))
+                player_weights = config.get("player_weights", {})
+            fund_signals = defaultdict(lambda: {"buy_count": 0, "sell_count": 0, "weighted_buy": 0.0, "records": []})
+            for r in day_records:
+                uid = str(r.get("_uid", ""))
+                if exclude_uids and uid in exclude_uids:
+                    continue
+                fn = r.get("fund_name", "")
+                act = r.get("action", "")
+                weight = float(player_weights.get(uid, 1.0)) if player_weights else 1.0
+                if "买入" in act:
+                    fund_signals[fn]["buy_count"] += 1
+                    fund_signals[fn]["weighted_buy"] += weight
+                elif "卖出" in act:
+                    fund_signals[fn]["sell_count"] += 1
+                fund_signals[fn]["records"].append(r)
+
+            # 如果启用了加权，用加权后的买数替代原始买数
+            use_weighted = config.get("use_weighted_consensus", False)
+            _weighted_threshold = config.get("weighted_consensus_threshold", 0)  # 加权共识门槛(浮点)
+            for fn in fund_signals:
+                if use_weighted:
+                    _wb = fund_signals[fn]["weighted_buy"]
+                    if _weighted_threshold > 0:
+                        # 使用浮点门槛而非int截断
+                        fund_signals[fn]["buy_count"] = _wb  # 保留浮点用于门槛比较
+                    else:
+                        fund_signals[fn]["buy_count"] = max(1, int(_wb))
 
         # 对该日有买入信号的基金评分
         candidates = []

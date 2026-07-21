@@ -264,6 +264,33 @@ TEST_CONFIGS = {
     "FE2_w_kdj_sell_maccel_sell": {"use_weighted_consensus": True, "kdj_sell_mode": "overbought_exit", "maccel_sell": True},
     "FE3_w_kdj_buy_sell_maccel": {"use_weighted_consensus": True, "kdj_buy_mode": "block_overbought", "kdj_overbought_k": 80, "kdj_sell_mode": "overbought_exit", "maccel_block": True},
     "FE4_w_kdj_golden_maccel": {"use_weighted_consensus": True, "kdj_buy_mode": "golden_cross", "maccel_block": True},
+    # ═══ 方案GA：动量信号模式（脱离大佬，用基金自身收益率排名） ═══
+    "GA1_mom63_top10": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1},
+    "GA2_mom63_top20": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 20, "min_consensus": 1},
+    "GA3_mom63_top5": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 5, "min_consensus": 1},
+    "GA4_mom21_top10": {"signal_source": "momentum", "momentum_lookback": 21, "momentum_top_n": 10, "min_consensus": 1},
+    "GA5_mom21_top20": {"signal_source": "momentum", "momentum_lookback": 21, "momentum_top_n": 20, "min_consensus": 1},
+    "GA6_mom126_top10": {"signal_source": "momentum", "momentum_lookback": 126, "momentum_top_n": 10, "min_consensus": 1},
+    "GA7_mom126_top20": {"signal_source": "momentum", "momentum_lookback": 126, "momentum_top_n": 20, "min_consensus": 1},
+    # 不同调仓频率
+    "GA8_mom63_top10_w5": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "momentum_rebalance_days": 5},
+    "GA9_mom63_top10_w10": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "momentum_rebalance_days": 10},
+    "GA10_mom63_top10_w42": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "momentum_rebalance_days": 42},
+    # 动量+技术指标组合
+    "GA11_mom_kdj": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "kdj_buy_mode": "block_overbought", "kdj_overbought_k": 80},
+    "GA12_mom_maccel": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "maccel_block": True},
+    "GA13_mom_rsi": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "rsi_buy_max": 70},
+    # 动量+卖出优化
+    "GA14_mom_momsell2": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "momentum_sell": 2.0},
+    "GA15_mom_momsell1": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 10, "min_consensus": 1, "momentum_sell": 1.0},
+    # 短期动量+高频调仓
+    "GA16_mom21_top10_w5": {"signal_source": "momentum", "momentum_lookback": 21, "momentum_top_n": 10, "min_consensus": 1, "momentum_rebalance_days": 5},
+    "GA17_mom21_top5_w5": {"signal_source": "momentum", "momentum_lookback": 21, "momentum_top_n": 5, "min_consensus": 1, "momentum_rebalance_days": 5},
+    # 长期动量+低频调仓
+    "GA18_mom126_top10_w42": {"signal_source": "momentum", "momentum_lookback": 126, "momentum_top_n": 10, "min_consensus": 1, "momentum_rebalance_days": 42},
+    "GA19_mom126_top20_w42": {"signal_source": "momentum", "momentum_lookback": 126, "momentum_top_n": 20, "min_consensus": 1, "momentum_rebalance_days": 42},
+    # 大池子
+    "GA20_mom63_top30": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 30, "min_consensus": 1},
 }
 
 LABELS = {
@@ -477,6 +504,26 @@ LABELS = {
     "FE2_w_kdj_sell_maccel_sell": "FE2:加权+KDJ卖+动量卖",
     "FE3_w_kdj_buy_sell_maccel": "FE3:加权+KDJ买卖+动量不买",
     "FE4_w_kdj_golden_maccel": "FE4:加权+KDJ金叉+动量不买",
+    "GA1_mom63_top10": "GA1:动量63日Top10月调",
+    "GA2_mom63_top20": "GA2:动量63日Top20月调",
+    "GA3_mom63_top5": "GA3:动量63日Top5月调",
+    "GA4_mom21_top10": "GA4:动量21日Top10月调",
+    "GA5_mom21_top20": "GA5:动量21日Top20月调",
+    "GA6_mom126_top10": "GA6:动量126日Top10月调",
+    "GA7_mom126_top20": "GA7:动量126日Top20月调",
+    "GA8_mom63_top10_w5": "GA8:动量63日Top10周调",
+    "GA9_mom63_top10_w10": "GA9:动量63日Top10双周调",
+    "GA10_mom63_top10_w42": "GA10:动量63日Top10双月调",
+    "GA11_mom_kdj": "GA11:动量+KDJ超买不买",
+    "GA12_mom_maccel": "GA12:动量+加速不买",
+    "GA13_mom_rsi": "GA13:动量+RSI<70才买",
+    "GA14_mom_momsell2": "GA14:动量+崩溃卖2.0",
+    "GA15_mom_momsell1": "GA15:动量+崩溃卖1.0",
+    "GA16_mom21_top10_w5": "GA16:短期动量21日Top10周调",
+    "GA17_mom21_top5_w5": "GA17:短期动量21日Top5周调",
+    "GA18_mom126_top10_w42": "GA18:长期动量126日Top10双月",
+    "GA19_mom126_top20_w42": "GA19:长期动量126日Top20双月",
+    "GA20_mom63_top30": "GA20:动量63日Top30月调",
 }
 
 # 导入参数扫描配置（113个自动生成的测试）
