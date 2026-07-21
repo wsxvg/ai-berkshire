@@ -150,27 +150,22 @@ def fetch_today_trades(cookies):
         except Exception as e:
             print(f"  {name}: ERR {e}")
 
-    # 自动拉取新基金的历史净值
+    # 自动拉取新基金的历史净值 (使用 JD API + chart_loader)
     if new_fund_codes:
         print(f"  发现 {len(new_fund_codes)} 只新基金，自动拉取历史净值...")
-        from tools.eastmoney_api import get_fund_nav_history
+        from scripts.bulk_fetch_charts import fetch_full_nav
+        from tools.chart_loader import update_chart
+        charts_dir = PROJECT / "data" / "fund_charts"
         for code in new_fund_codes:
             try:
-                nav = get_fund_nav_history(code, max_pages=40)
-                if nav:
-                    # 转换为chart格式 (累计收益率%)
-                    if nav:
-                        base = nav[0]["nav"]
-                        pts = [{"xAxis": n["date"], "yAxis": (n["nav"] / base - 1) * 100} for n in nav]
-                        fund_charts[code] = pts
-                        print(f"    {code}: 拉取 {len(pts)} 天历史")
+                pts = fetch_full_nav(code)
+                if pts:
+                    update_chart(code, pts, charts_dir)
+                    fund_charts[code] = pts
+                    print(f"    {code}: 拉取 {len(pts)} 天历史")
             except Exception as e:
                 print(f"    {code}: 拉取失败 {e}")
             time.sleep(0.3)
-        # 保存更新后的fund_charts
-        (PROJECT / "data" / "fund_charts.json").write_text(
-            json.dumps(fund_charts, ensure_ascii=False), encoding="utf-8")
-        print(f"  fund_charts.json 已更新 ({len(fund_charts)} 只)")
 
     return fresh
 
