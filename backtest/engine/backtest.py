@@ -108,7 +108,7 @@ def score_momentum_backtest(chart_points, cutoff_date):
     """
     valid = _bisect_valid(chart_points, cutoff_date)
     if len(valid) < 20:
-        return DimensionScore(score=2.5, weight=0.15, freshness_days=0)
+        return DimensionScore(score=-1, weight=0, freshness_days=0)
 
     values = [(100 + _float(p.get("yAxis", 0))) / 100 * 100 for p in valid]
     current = values[-1]
@@ -146,7 +146,7 @@ def score_quality_backtest(chart_points, cutoff_date, scale_text=None, perf_data
     """
     valid = _bisect_valid(chart_points, cutoff_date)
     if len(valid) < 20:
-        return DimensionScore(score=2.5, weight=0.25, freshness_days=0)
+        return DimensionScore(score=-1, weight=0, freshness_days=0)
 
     values = [_float(p.get("yAxis", 0)) for p in valid]  # 累计收益率 %
     cur_return = values[-1]
@@ -707,7 +707,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     if mgr:
         manager_dim = score_manager(mgr)
         # 如果经理数据虽然存在但内容为空（如 managers=[]），也视为缺失
-        if manager_dim.score == 2.5 and not (mgr.get("managers") or []):
+        if not (mgr.get("managers") or []):
             _mgr_missing = True
     else:
         _mgr_missing = True
@@ -715,7 +715,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     if _mgr_missing:
         # 经理数据缺失时降低该维度权重（0.20→0.05），避免用默认值干扰总分
         # 剩余权重按比例分配给其他维度
-        manager_dim = DimensionScore(score=2.5, weight=0.05, freshness_days=365)
+        manager_dim = DimensionScore(score=-1, weight=0, freshness_days=0)
 
     # ===== 新增: 资产配置评分 =====
     alloc_modifier = 0.0
@@ -1914,11 +1914,11 @@ def run_backtest(config):
             # ── ML信号增强：用模型预测概率调整评分 ──
             if _ml_enabled and _ml_enhancer and _ml_enhancer.model:
                 _ml_scores = {
-                    "quality": fs.quality.score if fs.quality else 2.5,
+                    "quality": fs.quality.score if fs.quality else -1,
                     "cost": fs.cost.score if fs.cost else 3.0,
-                    "manager": fs.manager.score if fs.manager else 2.5,
-                    "momentum": fs.momentum.score if fs.momentum else 2.5,
-                    "smart_money": fs.smart_money.score if fs.smart_money else 2.5,
+                    "manager": fs.manager.score if fs.manager else -1,
+                    "momentum": fs.momentum.score if fs.momentum else -1,
+                    "smart_money": fs.smart_money.score if fs.smart_money else -1,
                     "total": fs.total,
                 }
                 _ml_prob = _ml_enhancer.predict(code, day, _ml_scores,
@@ -1933,11 +1933,11 @@ def run_backtest(config):
             # ── 收集ML训练数据（所有评分过的基金都记录）──
             if _ml_enabled:
                 _ml_training_data.append((code, day, {
-                    "quality": fs.quality.score if fs.quality else 2.5,
+                    "quality": fs.quality.score if fs.quality else -1,
                     "cost": fs.cost.score if fs.cost else 3.0,
-                    "manager": fs.manager.score if fs.manager else 2.5,
-                    "momentum": fs.momentum.score if fs.momentum else 2.5,
-                    "smart_money": fs.smart_money.score if fs.smart_money else 2.5,
+                    "manager": fs.manager.score if fs.manager else -1,
+                    "momentum": fs.momentum.score if fs.momentum else -1,
+                    "smart_money": fs.smart_money.score if fs.smart_money else -1,
                     "total": fs.total,
                 }, signal["buy_count"], _market_state))
 
