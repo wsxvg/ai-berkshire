@@ -1,0 +1,26 @@
+[
+  {
+    "label": "0_BASELINE",
+    "return": 35.51,
+    "dd": 6.45,
+    "sharpe": 5.43,
+    "trades": 75,
+    "time": 747.0
+  },
+  {
+    "label": "P1-1_regime_specific",
+    "return": 39.15,
+    "dd": 7.28,
+    "sharpe": 5.79,
+    "trades": 77,
+    "time": 896.0
+  },
+  {
+    "label": "COMBO_all_best",
+    "return": 29.76,
+    "dd": 7.06,
+    "sharpe": 4.36,
+    "trades": 77,
+    "time": 989.0
+  }
+]

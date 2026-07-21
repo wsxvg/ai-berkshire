@@ -1,0 +1,9 @@
+{
+  "name": "AB4_topn10",
+  "label": "AB4:\u53ea\u4e70\u8bc4\u5206\u524d10",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 591.6
+}

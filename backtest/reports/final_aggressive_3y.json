@@ -1,0 +1,20 @@
+{
+  "label": "FINAL_AGGRESSIVE_3y",
+  "final_value": 156929.68,
+  "total_return": 56.92967999999999,
+  "annualized_return": 12.25,
+  "annualized_volatility": 8.95,
+  "max_drawdown": 9.638713975273564,
+  "sharpe": 1.09,
+  "calmar": 1.27,
+  "trades": 172,
+  "total_fees": 155.09,
+  "benchmark_return": 32.202523013978855,
+  "buyhold_return": 0,
+  "segments": {
+    "A_bear_2023H2": 0.12,
+    "B_oscillate_2024H2_2025H1": 2.81,
+    "C_bull_2025H2_2026H1": 52.31
+  },
+  "time": 1371.0
+}

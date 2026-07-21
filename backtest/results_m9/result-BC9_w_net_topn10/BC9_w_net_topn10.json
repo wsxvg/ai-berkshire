@@ -1,0 +1,9 @@
+{
+  "name": "BC9_w_net_topn10",
+  "label": "BC9:\u52a0\u6743+\u51c0\u4fe1\u53f7+\u524d10",
+  "total_return": 57.78,
+  "max_drawdown": 9.88,
+  "sharpe": 1.09,
+  "trade_count": 173,
+  "elapsed_sec": 585.4
+}

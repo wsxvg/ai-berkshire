@@ -1,0 +1,9 @@
+{
+  "name": "BE5_w_net_thr20_adaptive",
+  "label": "BE5:\u52a0\u6743+\u51c0\u4fe1\u53f7+\u6743\u95e82+\u81ea\u9002\u5e94",
+  "total_return": 32.54,
+  "max_drawdown": 12.76,
+  "sharpe": 0.42,
+  "trade_count": 205,
+  "elapsed_sec": 557.6
+}

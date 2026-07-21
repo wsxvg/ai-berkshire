@@ -1,0 +1,9 @@
+{
+  "name": "D1_step_tp",
+  "label": "D1:\u9636\u68af\u6b62\u76c8(30/50/80\u5206\u6279)",
+  "total_return": 37.02,
+  "max_drawdown": 7.55,
+  "sharpe": 0.85,
+  "trade_count": 250,
+  "elapsed_sec": 589.9
+}

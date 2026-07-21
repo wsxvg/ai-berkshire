@@ -1,0 +1,9 @@
+{
+  "name": "BB4_net_diff2",
+  "label": "BB4:\u51c0\u4fe1\u53f7+\u5dee\u503c>=2",
+  "total_return": 38.18,
+  "max_drawdown": 12.54,
+  "sharpe": 0.5,
+  "trade_count": 203,
+  "elapsed_sec": 546.1
+}

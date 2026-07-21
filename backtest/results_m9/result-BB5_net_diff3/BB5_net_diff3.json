@@ -1,0 +1,9 @@
+{
+  "name": "BB5_net_diff3",
+  "label": "BB5:\u51c0\u4fe1\u53f7+\u5dee\u503c>=3",
+  "total_return": 40.36,
+  "max_drawdown": 13.58,
+  "sharpe": 0.49,
+  "trade_count": 129,
+  "elapsed_sec": 283.1
+}

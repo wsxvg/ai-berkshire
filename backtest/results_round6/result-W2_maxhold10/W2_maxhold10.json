@@ -1,0 +1,9 @@
+{
+  "name": "W2_maxhold10",
+  "label": "W2:\u6700\u591a\u630110\u53ea",
+  "total_return": 10.22,
+  "max_drawdown": 9.43,
+  "sharpe": 0.0,
+  "trade_count": 70,
+  "elapsed_sec": 606.7
+}

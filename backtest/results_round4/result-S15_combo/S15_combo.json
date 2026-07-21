@@ -1,0 +1,9 @@
+{
+  "name": "S15_combo",
+  "label": "S15:\u7ec4\u5408(\u52a8\u91cf\u8c03\u6574+\u52a8\u6001\u6b62\u76c8+\u79fb\u52a8\u6b62\u76c8)",
+  "total_return": 52.28,
+  "max_drawdown": 10.47,
+  "sharpe": 1.0,
+  "trade_count": 177,
+  "elapsed_sec": 588.3
+}

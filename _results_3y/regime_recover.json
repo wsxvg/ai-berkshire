@@ -1,0 +1,65 @@
+[
+  {
+    "label": "策略3_Champion+dynSL",
+    "total_return": 23.49,
+    "max_drawdown": 8.32,
+    "trade_count": 239,
+    "sharpe": 0.58,
+    "calmar": 0.67,
+    "annualized": 5.56,
+    "volatility": 5.25,
+    "fees": 107.03,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 21.03
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.4,
+    "time_seconds": 2299.0,
+    "final_value": 123494.59
+  },
+  {
+    "label": "策略17_regime默认",
+    "total_return": 23.61,
+    "max_drawdown": 7.96,
+    "trade_count": 251,
+    "sharpe": 0.62,
+    "calmar": 0.7,
+    "annualized": 5.58,
+    "volatility": 4.97,
+    "fees": 107.46,
+    "segments": {
+      "A_熊市": -0.16,
+      "B_震荡": 2.04,
+      "C_牛市": 21.29
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.4,
+    "time_seconds": 2882.0,
+    "final_value": 123611.76
+  },
+  {
+    "label": "策略17b_regime激进",
+    "total_return": 21.72,
+    "max_drawdown": 8.64,
+    "trade_count": 200,
+    "sharpe": 0.5,
+    "calmar": 0.6,
+    "annualized": 5.17,
+    "volatility": 5.37,
+    "fees": 110.54,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 1.88,
+      "C_牛市": 19.6
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 11.3,
+    "time_seconds": 3032.0,
+    "final_value": 121717.54
+  }
+]

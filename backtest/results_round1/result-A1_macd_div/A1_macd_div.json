@@ -1,0 +1,9 @@
+{
+  "name": "A1_macd_div",
+  "label": "A1:\u5468\u7ebfMACD\u9876\u80cc\u79bb",
+  "total_return": 29.74,
+  "max_drawdown": 6.26,
+  "sharpe": 0.85,
+  "trade_count": 268,
+  "elapsed_sec": 590.9
+}

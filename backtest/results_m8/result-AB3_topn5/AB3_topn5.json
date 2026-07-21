@@ -1,0 +1,9 @@
+{
+  "name": "AB3_topn5",
+  "label": "AB3:\u53ea\u4e70\u8bc4\u5206\u524d5",
+  "total_return": 53.67,
+  "max_drawdown": 9.68,
+  "sharpe": 1.03,
+  "trade_count": 168,
+  "elapsed_sec": 585.9
+}

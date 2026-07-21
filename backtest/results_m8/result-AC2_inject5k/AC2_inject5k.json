@@ -1,0 +1,9 @@
+{
+  "name": "AC2_inject5k",
+  "label": "AC2:\u6bcf\u6708\u5b9a\u62955000",
+  "total_return": 49.75,
+  "max_drawdown": 7.9,
+  "sharpe": 0.65,
+  "trade_count": 299,
+  "elapsed_sec": 590.2
+}

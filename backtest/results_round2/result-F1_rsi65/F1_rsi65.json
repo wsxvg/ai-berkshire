@@ -1,0 +1,9 @@
+{
+  "name": "F1_rsi65",
+  "label": "F1:RSI\u8d85\u4e7065(\u66f4\u4e25\u683c)",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 593.8
+}

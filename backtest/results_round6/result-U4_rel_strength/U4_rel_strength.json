@@ -1,0 +1,9 @@
+{
+  "name": "U4_rel_strength",
+  "label": "U4:\u76f8\u5bf9\u5f3a\u5ea6\u4e70\u5165(\u8dd1\u8d62\u57fa\u51c6)",
+  "total_return": 40.07,
+  "max_drawdown": 11.47,
+  "sharpe": 0.52,
+  "trade_count": 192,
+  "elapsed_sec": 464.1
+}

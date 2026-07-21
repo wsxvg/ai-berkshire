@@ -1,0 +1,9 @@
+{
+  "name": "Z5_no_overbought",
+  "label": "Z5:\u5173\u95ed\u8d85\u4e70\u8fc7\u6ee4",
+  "total_return": 56.76,
+  "max_drawdown": 9.74,
+  "sharpe": 1.09,
+  "trade_count": 176,
+  "elapsed_sec": 570.7
+}

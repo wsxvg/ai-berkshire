@@ -1,0 +1,9 @@
+{
+  "name": "I2_rsi_oversold",
+  "label": "I2:RSI<40\u8d85\u5356\u4e70\u5165",
+  "total_return": -4.09,
+  "max_drawdown": 12.39,
+  "sharpe": -0.59,
+  "trade_count": 98,
+  "elapsed_sec": 591.4
+}

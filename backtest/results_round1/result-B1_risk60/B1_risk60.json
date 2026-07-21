@@ -1,0 +1,9 @@
+{
+  "name": "B1_risk60",
+  "label": "B1:\u98ce\u9669>60\u505c\u4e70",
+  "total_return": 29.23,
+  "max_drawdown": 6.32,
+  "sharpe": 0.85,
+  "trade_count": 268,
+  "elapsed_sec": 455.4
+}

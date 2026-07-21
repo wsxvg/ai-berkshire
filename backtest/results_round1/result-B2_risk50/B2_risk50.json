@@ -1,0 +1,9 @@
+{
+  "name": "B2_risk50",
+  "label": "B2:\u98ce\u9669>50\u505c\u4e70",
+  "total_return": 29.23,
+  "max_drawdown": 6.32,
+  "sharpe": 0.85,
+  "trade_count": 268,
+  "elapsed_sec": 593.0
+}

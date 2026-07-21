@@ -1,0 +1,9 @@
+{
+  "name": "S9_profit_quarter",
+  "label": "S9:30%\u53561/4\u6b62\u76c8",
+  "total_return": 56.07,
+  "max_drawdown": 9.74,
+  "sharpe": 1.07,
+  "trade_count": 172,
+  "elapsed_sec": 587.9
+}

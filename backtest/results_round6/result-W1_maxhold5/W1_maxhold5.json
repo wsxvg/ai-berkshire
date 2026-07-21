@@ -1,0 +1,9 @@
+{
+  "name": "W1_maxhold5",
+  "label": "W1:\u6700\u591a\u63015\u53ea(\u96c6\u4e2d)",
+  "total_return": 18.53,
+  "max_drawdown": 6.66,
+  "sharpe": 0.39,
+  "trade_count": 55,
+  "elapsed_sec": 590.0
+}

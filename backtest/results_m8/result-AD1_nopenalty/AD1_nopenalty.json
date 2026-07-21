@@ -1,0 +1,9 @@
+{
+  "name": "AD1_nopenalty",
+  "label": "AD1:\u65e0\u4e0b\u8dcc\u8d8b\u52bf\u60e9\u7f5a",
+  "total_return": 37.5,
+  "max_drawdown": 9.31,
+  "sharpe": 0.83,
+  "trade_count": 182,
+  "elapsed_sec": 598.2
+}

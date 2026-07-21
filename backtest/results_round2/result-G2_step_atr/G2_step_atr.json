@@ -1,0 +1,9 @@
+{
+  "name": "G2_step_atr",
+  "label": "G2:\u9636\u68af\u6b62\u76c8+ATR\u6b62\u635f",
+  "total_return": 18.37,
+  "max_drawdown": 8.0,
+  "sharpe": 0.36,
+  "trade_count": 273,
+  "elapsed_sec": 591.4
+}

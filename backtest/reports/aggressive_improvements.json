@@ -1,0 +1,54 @@
+{
+  "bull": [
+    {
+      "label": "0_CURRENT",
+      "return": 17.23,
+      "dd": 7.06,
+      "sharpe": 2.54,
+      "trades": 78,
+      "time": 887.0
+    },
+    {
+      "label": "MODERATE",
+      "return": 18.67,
+      "dd": 6.6,
+      "sharpe": 2.64,
+      "trades": 62,
+      "time": 879.0
+    },
+    {
+      "label": "AGGRESSIVE",
+      "return": 35.1,
+      "dd": 6.62,
+      "sharpe": 5.16,
+      "trades": 47,
+      "time": 1010.0
+    }
+  ],
+  "oscillate": [
+    {
+      "label": "0_CURRENT",
+      "return": -6.4,
+      "dd": 12.39,
+      "sharpe": -1.11,
+      "trades": 67,
+      "time": 114.0
+    },
+    {
+      "label": "MODERATE",
+      "return": -5.75,
+      "dd": 14.01,
+      "sharpe": -0.89,
+      "trades": 61,
+      "time": 88.0
+    },
+    {
+      "label": "AGGRESSIVE",
+      "return": -5.36,
+      "dd": 14.22,
+      "sharpe": -0.81,
+      "trades": 56,
+      "time": 80.0
+    }
+  ]
+}

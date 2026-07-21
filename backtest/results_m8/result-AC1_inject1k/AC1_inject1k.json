@@ -1,0 +1,9 @@
+{
+  "name": "AC1_inject1k",
+  "label": "AC1:\u6bcf\u6708\u5b9a\u62951000",
+  "total_return": 54.89,
+  "max_drawdown": 8.56,
+  "sharpe": 0.98,
+  "trade_count": 265,
+  "elapsed_sec": 556.4
+}

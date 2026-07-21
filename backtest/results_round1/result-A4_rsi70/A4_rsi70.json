@@ -1,0 +1,9 @@
+{
+  "name": "A4_rsi70",
+  "label": "A4:RSI\u8d85\u4e7070",
+  "total_return": 29.49,
+  "max_drawdown": 6.34,
+  "sharpe": 0.84,
+  "trade_count": 268,
+  "elapsed_sec": 595.0
+}

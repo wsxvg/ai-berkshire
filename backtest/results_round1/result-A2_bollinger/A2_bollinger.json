@@ -1,0 +1,9 @@
+{
+  "name": "A2_bollinger",
+  "label": "A2:\u5468\u7ebf\u5e03\u6797\u5e26",
+  "total_return": 25.52,
+  "max_drawdown": 6.4,
+  "sharpe": 0.69,
+  "trade_count": 255,
+  "elapsed_sec": 584.5
+}

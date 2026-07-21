@@ -1,0 +1,9 @@
+{
+  "name": "BE4_w_net_maxhold10_consprio",
+  "label": "BE4:\u52a0\u6743+\u51c0\u4fe1\u53f7+10\u53ea+\u4f18\u5148",
+  "total_return": 10.22,
+  "max_drawdown": 9.43,
+  "sharpe": 0.0,
+  "trade_count": 70,
+  "elapsed_sec": 580.3
+}

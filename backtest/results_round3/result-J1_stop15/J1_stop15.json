@@ -1,0 +1,9 @@
+{
+  "name": "J1_stop15",
+  "label": "J1:\u7d27\u6b62\u635f15%(\u4e8b\u4ef6\u9a71\u52a8V2)",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 451.6
+}

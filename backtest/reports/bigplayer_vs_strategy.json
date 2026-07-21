@@ -1,0 +1,270 @@
+{
+  "big_players": [
+    {
+      "user": "晴空万里理财",
+      "value": 9126373.790000003,
+      "cost": 5905954.92,
+      "profit": 3220418.869999999,
+      "return_pct": 54.53
+    },
+    {
+      "user": "王晴阳的活财之路",
+      "value": 1870788.93,
+      "cost": 1266748.44,
+      "profit": 604040.4899999999,
+      "return_pct": 47.68
+    },
+    {
+      "user": "Z先生养基",
+      "value": 18629173.250000007,
+      "cost": 12817696.31,
+      "profit": 5811476.9399999995,
+      "return_pct": 45.34
+    },
+    {
+      "user": "黑夜银翼",
+      "value": 6940582.6,
+      "cost": 4888407.079999999,
+      "profit": 2052175.5199999998,
+      "return_pct": 41.98
+    },
+    {
+      "user": "南山隐士",
+      "value": 1414046.9100000004,
+      "cost": 1069938.56,
+      "profit": 344108.35000000003,
+      "return_pct": 32.16
+    },
+    {
+      "user": "名字长我骄傲了吗",
+      "value": 64978.24999999999,
+      "cost": 51301.21,
+      "profit": 13677.04,
+      "return_pct": 26.66
+    },
+    {
+      "user": "热茶leo",
+      "value": 84522.75,
+      "cost": 68837.51,
+      "profit": 15685.240000000002,
+      "return_pct": 22.79
+    },
+    {
+      "user": "爱理财的小唐",
+      "value": 48774.65,
+      "cost": 40348.82,
+      "profit": 8425.830000000002,
+      "return_pct": 20.88
+    },
+    {
+      "user": "招财小猫",
+      "value": 18727173.319999993,
+      "cost": 15664585.85,
+      "profit": 3062587.47,
+      "return_pct": 19.55
+    },
+    {
+      "user": "赚自己认知内的钱",
+      "value": 5292991.180000001,
+      "cost": 4464481.699999999,
+      "profit": 828509.4799999999,
+      "return_pct": 18.56
+    },
+    {
+      "user": "柠檬小金库",
+      "value": 130948.22999999998,
+      "cost": 116105.40999999999,
+      "profit": 14842.82,
+      "return_pct": 12.78
+    },
+    {
+      "user": "蓝鲸跃财",
+      "value": 8572602.51,
+      "cost": 7622592.37,
+      "profit": 950010.1399999997,
+      "return_pct": 12.46
+    },
+    {
+      "user": "杜康的菠萝爷",
+      "value": 251441.88999999998,
+      "cost": 223623.96,
+      "profit": 27817.929999999997,
+      "return_pct": 12.44
+    },
+    {
+      "user": "家庭的温暖",
+      "value": 29033127.71000001,
+      "cost": 25854928.460000005,
+      "profit": 3178199.25,
+      "return_pct": 12.29
+    },
+    {
+      "user": "金蟾仙人",
+      "value": 997321.5399999999,
+      "cost": 914141.62,
+      "profit": 83179.92,
+      "return_pct": 9.1
+    },
+    {
+      "user": "梦幻天书2012",
+      "value": 106947.26000000001,
+      "cost": 100719.11,
+      "profit": 6228.15,
+      "return_pct": 6.18
+    },
+    {
+      "user": "西西的金算盘",
+      "value": 211807.51,
+      "cost": 201003.80999999997,
+      "profit": 10803.699999999999,
+      "return_pct": 5.37
+    },
+    {
+      "user": "柠檬茶1983",
+      "value": 125527.59,
+      "cost": 120090.38,
+      "profit": 5437.21,
+      "return_pct": 4.53
+    },
+    {
+      "user": "水手的梦想",
+      "value": 171045.22,
+      "cost": 165056.00999999998,
+      "profit": 5989.21,
+      "return_pct": 3.63
+    },
+    {
+      "user": "苦寻广州富婆",
+      "value": 124579.29000000001,
+      "cost": 122865.02,
+      "profit": 1714.27,
+      "return_pct": 1.4
+    },
+    {
+      "user": "小猫咪爱黄金",
+      "value": 1864429.03,
+      "cost": 1844010.93,
+      "profit": 20418.09999999999,
+      "return_pct": 1.11
+    }
+  ],
+  "strategies_3y": [
+    {
+      "label": "策略11_RSI拦截",
+      "return": 37.8,
+      "annualized": 8.57,
+      "seg_A_bear": 0.71,
+      "seg_B_oscillate": 4.0,
+      "seg_C_bull": 31.33,
+      "max_dd": 6.79,
+      "sharpe": 1.08
+    },
+    {
+      "label": "策略10_PE过滤",
+      "return": 30.33,
+      "annualized": 7.03,
+      "seg_A_bear": 0.94,
+      "seg_B_oscillate": 7.72,
+      "seg_C_bull": 19.42,
+      "max_dd": 5.55,
+      "sharpe": 0.82
+    },
+    {
+      "label": "策略14_熊市不买",
+      "return": 29.34,
+      "annualized": 6.82,
+      "seg_A_bear": -0.23,
+      "seg_B_oscillate": 0.98,
+      "seg_C_bull": 28.34,
+      "max_dd": 6.81,
+      "sharpe": 0.82
+    },
+    {
+      "label": "策略10.5_PE+pyramid",
+      "return": 28.76,
+      "annualized": 6.69,
+      "seg_A_bear": 0.94,
+      "seg_B_oscillate": 7.72,
+      "seg_C_bull": 17.98,
+      "max_dd": 5.75,
+      "sharpe": 0.76
+    },
+    {
+      "label": "策略2_Champion",
+      "return": 26.07,
+      "annualized": 6.12,
+      "seg_A_bear": -0.15,
+      "seg_B_oscillate": 2.16,
+      "seg_C_bull": 23.55,
+      "max_dd": 7.51,
+      "sharpe": 0.67
+    },
+    {
+      "label": "策略4_Champion+pyramid",
+      "return": 24.3,
+      "annualized": 5.74,
+      "seg_A_bear": -0.15,
+      "seg_B_oscillate": 2.16,
+      "seg_C_bull": 21.82,
+      "max_dd": 7.72,
+      "sharpe": 0.61
+    },
+    {
+      "label": "策略17c_regime仅牛熊",
+      "return": 24.17,
+      "annualized": 5.71,
+      "seg_A_bear": -0.16,
+      "seg_B_oscillate": 2.65,
+      "seg_C_bull": 21.01,
+      "max_dd": 8.49,
+      "sharpe": 0.63
+    },
+    {
+      "label": "策略17_regime默认",
+      "return": 23.61,
+      "annualized": 5.58,
+      "seg_A_bear": -0.16,
+      "seg_B_oscillate": 2.04,
+      "seg_C_bull": 21.29,
+      "max_dd": 7.96,
+      "sharpe": 0.62
+    },
+    {
+      "label": "策略15b_kelly0.30",
+      "return": 23.55,
+      "annualized": 5.57,
+      "seg_A_bear": -0.15,
+      "seg_B_oscillate": 2.16,
+      "seg_C_bull": 21.08,
+      "max_dd": 8.29,
+      "sharpe": 0.59
+    },
+    {
+      "label": "策略15c_kelly0.35",
+      "return": 23.49,
+      "annualized": 5.56,
+      "seg_A_bear": -0.15,
+      "seg_B_oscillate": 2.16,
+      "seg_C_bull": 21.03,
+      "max_dd": 8.32,
+      "sharpe": 0.58
+    }
+  ],
+  "improvement_results": {
+    "baseline_3m_oscillate": -7.63,
+    "regime_3m_oscillate": -6.62,
+    "combo_3m_oscillate": -2.99,
+    "baseline_3m_bull": 35.51,
+    "regime_3m_bull": 39.15,
+    "combo_3m_bull": 29.76
+  },
+  "summary": {
+    "best_strategy_3y_return": 37.8,
+    "best_strategy_3y_annualized": 8.57,
+    "baseline_3y_return": 22.83,
+    "baseline_3y_annualized": 5.41,
+    "best_bigplayer_return": 54.53,
+    "best_bigplayer_name": "晴空万里理财",
+    "top5_bigplayer_avg_return": 44.338
+  }
+}

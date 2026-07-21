@@ -1,0 +1,107 @@
+[
+  {
+    "label": "策略10_PE过滤",
+    "total_return": 30.33,
+    "max_drawdown": 5.55,
+    "trade_count": 241,
+    "sharpe": 0.82,
+    "calmar": 1.27,
+    "annualized": 7.03,
+    "volatility": 5.53,
+    "fees": 167.09,
+    "segments": {
+      "A_熊市": 0.94,
+      "B_震荡": 7.72,
+      "C_牛市": 19.42
+    },
+    "monthly_win_rate": 66.7,
+    "total_months": 36,
+    "signal_utilization": 16.0,
+    "time_seconds": 2315.0,
+    "final_value": 130329.03
+  },
+  {
+    "label": "策略10.5_PE+pyramid",
+    "total_return": 28.76,
+    "max_drawdown": 5.75,
+    "trade_count": 241,
+    "sharpe": 0.76,
+    "calmar": 1.17,
+    "annualized": 6.69,
+    "volatility": 5.55,
+    "fees": 167.99,
+    "segments": {
+      "A_熊市": 0.94,
+      "B_震荡": 7.72,
+      "C_牛市": 17.98
+    },
+    "monthly_win_rate": 66.7,
+    "total_months": 36,
+    "signal_utilization": 16.4,
+    "time_seconds": 2903.0,
+    "final_value": 128756.98
+  },
+  {
+    "label": "策略11_RSI拦截",
+    "total_return": 37.8,
+    "max_drawdown": 6.79,
+    "trade_count": 276,
+    "sharpe": 1.08,
+    "calmar": 1.26,
+    "annualized": 8.57,
+    "volatility": 5.59,
+    "fees": 145.25,
+    "segments": {
+      "A_熊市": 0.71,
+      "B_震荡": 4.0,
+      "C_牛市": 31.33
+    },
+    "monthly_win_rate": 69.4,
+    "total_months": 36,
+    "signal_utilization": 16.4,
+    "time_seconds": 3067.0,
+    "final_value": 137800.9
+  },
+  {
+    "label": "策略13_移动止盈",
+    "total_return": 16.79,
+    "max_drawdown": 8.04,
+    "trade_count": 233,
+    "sharpe": 0.28,
+    "calmar": 0.5,
+    "annualized": 4.06,
+    "volatility": 5.57,
+    "fees": 132.49,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 14.46
+    },
+    "monthly_win_rate": 61.1,
+    "total_months": 36,
+    "signal_utilization": 13.1,
+    "time_seconds": 2785.0,
+    "final_value": 116788.93
+  },
+  {
+    "label": "策略14_熊市不买",
+    "total_return": 29.34,
+    "max_drawdown": 6.81,
+    "trade_count": 298,
+    "sharpe": 0.82,
+    "calmar": 1.0,
+    "annualized": 6.82,
+    "volatility": 5.26,
+    "fees": 100.09,
+    "segments": {
+      "A_熊市": -0.23,
+      "B_震荡": 0.98,
+      "C_牛市": 28.34
+    },
+    "monthly_win_rate": 61.1,
+    "total_months": 36,
+    "signal_utilization": 16.5,
+    "time_seconds": 2954.0,
+    "final_value": 129342.21
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "name": "K1_value_trend",
+  "label": "K1:\u4ef7\u503c+\u8d8b\u52bf(\u9ad8\u95e8\u69db+MA20)",
+  "total_return": 41.44,
+  "max_drawdown": 10.83,
+  "sharpe": 0.56,
+  "trade_count": 174,
+  "elapsed_sec": 587.3
+}

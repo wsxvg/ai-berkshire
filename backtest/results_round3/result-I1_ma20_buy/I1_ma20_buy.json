@@ -1,0 +1,9 @@
+{
+  "name": "I1_ma20_buy",
+  "label": "I1:MA20\u8d8b\u52bf\u4e70\u5165\u8fc7\u6ee4",
+  "total_return": 41.44,
+  "max_drawdown": 10.83,
+  "sharpe": 0.56,
+  "trade_count": 174,
+  "elapsed_sec": 538.5
+}

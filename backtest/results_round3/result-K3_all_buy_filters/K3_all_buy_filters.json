@@ -1,0 +1,9 @@
+{
+  "name": "K3_all_buy_filters",
+  "label": "K3:\u5168\u90e8\u4e70\u5165\u8fc7\u6ee4(MA20+MACD+\u7a81\u7834)",
+  "total_return": 1.85,
+  "max_drawdown": 2.28,
+  "sharpe": -1.41,
+  "trade_count": 11,
+  "elapsed_sec": 590.2
+}

@@ -1,0 +1,9 @@
+{
+  "name": "X1_ma50_portdd",
+  "label": "X1:MA50\u7834\u4f4d+\u7ec4\u5408\u56de\u64a4\u51cf\u4ed3",
+  "total_return": 14.21,
+  "max_drawdown": 7.67,
+  "sharpe": 0.17,
+  "trade_count": 284,
+  "elapsed_sec": 452.0
+}

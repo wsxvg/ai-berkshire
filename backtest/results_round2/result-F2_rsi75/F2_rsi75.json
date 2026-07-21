@@ -1,0 +1,9 @@
+{
+  "name": "F2_rsi75",
+  "label": "F2:RSI\u8d85\u4e7075(\u8f83\u5bbd\u677e)",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 608.2
+}

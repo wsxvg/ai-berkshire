@@ -1,0 +1,9 @@
+{
+  "name": "S3_tp_trail_dyn",
+  "label": "S3:\u52a8\u6001\u79fb\u52a8\u6b62\u76c8(\u8d8a\u8d5a\u8d8a\u7d27)",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 563.7
+}

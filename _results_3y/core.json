@@ -1,0 +1,86 @@
+[
+  {
+    "label": "策略1_K_baseline",
+    "total_return": 22.83,
+    "max_drawdown": 6.43,
+    "trade_count": 277,
+    "sharpe": 0.58,
+    "calmar": 0.84,
+    "annualized": 5.41,
+    "volatility": 5.05,
+    "fees": 115.79,
+    "segments": {
+      "A_熊市": -0.26,
+      "B_震荡": 2.32,
+      "C_牛市": 20.39
+    },
+    "monthly_win_rate": 61.1,
+    "total_months": 36,
+    "signal_utilization": 14.2,
+    "time_seconds": 2629.0,
+    "final_value": 122832.8
+  },
+  {
+    "label": "策略2_Champion",
+    "total_return": 26.07,
+    "max_drawdown": 7.51,
+    "trade_count": 251,
+    "sharpe": 0.67,
+    "calmar": 0.81,
+    "annualized": 6.12,
+    "volatility": 5.38,
+    "fees": 112.93,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 23.55
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 14.2,
+    "time_seconds": 2941.0,
+    "final_value": 126073.44
+  },
+  {
+    "label": "策略4_Champion+pyramid",
+    "total_return": 24.3,
+    "max_drawdown": 7.72,
+    "trade_count": 250,
+    "sharpe": 0.61,
+    "calmar": 0.74,
+    "annualized": 5.74,
+    "volatility": 5.31,
+    "fees": 108.7,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 21.82
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 14.1,
+    "time_seconds": 3057.0,
+    "final_value": 124302.74
+  },
+  {
+    "label": "策略4.5_Champion+pyramid+dynSL",
+    "total_return": 23.39,
+    "max_drawdown": 8.4,
+    "trade_count": 240,
+    "sharpe": 0.58,
+    "calmar": 0.66,
+    "annualized": 5.54,
+    "volatility": 5.25,
+    "fees": 107.03,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 20.92
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.4,
+    "time_seconds": 2789.0,
+    "final_value": 123390.49
+  }
+]

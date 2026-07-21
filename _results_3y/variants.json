@@ -1,0 +1,107 @@
+[
+  {
+    "label": "策略15a_kelly0.25",
+    "total_return": 23.04,
+    "max_drawdown": 8.38,
+    "trade_count": 245,
+    "sharpe": 0.57,
+    "calmar": 0.65,
+    "annualized": 5.46,
+    "volatility": 5.17,
+    "fees": 106.74,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 20.58
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.7,
+    "time_seconds": 2314.0,
+    "final_value": 123042.56
+  },
+  {
+    "label": "策略15b_kelly0.30",
+    "total_return": 23.55,
+    "max_drawdown": 8.29,
+    "trade_count": 245,
+    "sharpe": 0.59,
+    "calmar": 0.67,
+    "annualized": 5.57,
+    "volatility": 5.23,
+    "fees": 107.03,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 21.08
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.7,
+    "time_seconds": 2895.0,
+    "final_value": 123552.33
+  },
+  {
+    "label": "策略15c_kelly0.35",
+    "total_return": 23.49,
+    "max_drawdown": 8.32,
+    "trade_count": 239,
+    "sharpe": 0.58,
+    "calmar": 0.67,
+    "annualized": 5.56,
+    "volatility": 5.25,
+    "fees": 107.03,
+    "segments": {
+      "A_熊市": -0.15,
+      "B_震荡": 2.16,
+      "C_牛市": 21.03
+    },
+    "monthly_win_rate": 58.3,
+    "total_months": 36,
+    "signal_utilization": 13.4,
+    "time_seconds": 3044.0,
+    "final_value": 123494.59
+  },
+  {
+    "label": "策略17a_regime保守",
+    "total_return": 20.65,
+    "max_drawdown": 6.38,
+    "trade_count": 342,
+    "sharpe": 0.5,
+    "calmar": 0.77,
+    "annualized": 4.93,
+    "volatility": 4.83,
+    "fees": 109.23,
+    "segments": {
+      "A_熊市": -0.14,
+      "B_震荡": 1.04,
+      "C_牛市": 19.48
+    },
+    "monthly_win_rate": 66.7,
+    "total_months": 36,
+    "signal_utilization": 18.8,
+    "time_seconds": 2773.0,
+    "final_value": 120649.54
+  },
+  {
+    "label": "策略17c_regime仅牛熊",
+    "total_return": 24.17,
+    "max_drawdown": 8.49,
+    "trade_count": 257,
+    "sharpe": 0.63,
+    "calmar": 0.67,
+    "annualized": 5.71,
+    "volatility": 5.08,
+    "fees": 101.34,
+    "segments": {
+      "A_熊市": -0.16,
+      "B_震荡": 2.65,
+      "C_牛市": 21.01
+    },
+    "monthly_win_rate": 63.9,
+    "total_months": 36,
+    "signal_utilization": 14.0,
+    "time_seconds": 2949.0,
+    "final_value": 124169.52
+  }
+]

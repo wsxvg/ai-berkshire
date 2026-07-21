@@ -1,0 +1,9 @@
+{
+  "name": "G1_atr_risk",
+  "label": "G1:ATR\u6b62\u635f+\u98ce\u966950\u505c\u4e70",
+  "total_return": 23.75,
+  "max_drawdown": 6.52,
+  "sharpe": 0.55,
+  "trade_count": 260,
+  "elapsed_sec": 573.4
+}

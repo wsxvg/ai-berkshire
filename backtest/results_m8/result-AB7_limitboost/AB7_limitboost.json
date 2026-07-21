@@ -1,0 +1,9 @@
+{
+  "name": "AB7_limitboost",
+  "label": "AB7:\u9650\u8d2d\u57fa\u91d1\u52a0\u6210",
+  "total_return": 51.95,
+  "max_drawdown": 9.11,
+  "sharpe": 0.99,
+  "trade_count": 190,
+  "elapsed_sec": 585.0
+}

@@ -1,0 +1,9 @@
+{
+  "name": "BD3_w_net_limitboost",
+  "label": "BD3:\u52a0\u6743+\u51c0\u4fe1\u53f7+\u9650\u8d2d\u52a0\u6210",
+  "total_return": 52.31,
+  "max_drawdown": 9.28,
+  "sharpe": 0.98,
+  "trade_count": 192,
+  "elapsed_sec": 577.9
+}

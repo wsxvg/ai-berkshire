@@ -1,0 +1,66 @@
+[
+  {
+    "label": "baseline",
+    "desc": "当前最优配置（基线）",
+    "ret": 56.93,
+    "ann": 12.25,
+    "dd": 9.64,
+    "sharpe": 1.09,
+    "calmar": 1.27,
+    "trades": 172,
+    "seg": {
+      "bear": 0.12,
+      "osc": 2.81,
+      "bull": 52.31
+    },
+    "time": 2279.0
+  },
+  {
+    "label": "A_quality",
+    "desc": "方案A: 质量集中 — 限制持仓6只+动态排名+加权共识+放开基金类型",
+    "ret": 35.57,
+    "ann": 8.11,
+    "dd": 11.5,
+    "sharpe": 0.7,
+    "calmar": 0.71,
+    "trades": 57,
+    "seg": {
+      "bear": -0.33,
+      "osc": 0.0,
+      "bull": 36.02
+    },
+    "time": 2048.0
+  },
+  {
+    "label": "B_defense",
+    "desc": "方案B: 熊市防御 — 熊市不买入+峰值回撤8%退出",
+    "ret": 29.55,
+    "ann": 6.86,
+    "dd": 9.84,
+    "sharpe": 0.59,
+    "calmar": 0.7,
+    "trades": 222,
+    "seg": {
+      "bear": 0.33,
+      "osc": 2.21,
+      "bull": 26.25
+    },
+    "time": 1834.0
+  },
+  {
+    "label": "C_full",
+    "desc": "方案C: 全面优化 — A+B合并",
+    "ret": 27.09,
+    "ann": 6.34,
+    "dd": 7.6,
+    "sharpe": 0.52,
+    "calmar": 0.83,
+    "trades": 72,
+    "seg": {
+      "bear": -0.33,
+      "osc": 0.0,
+      "bull": 27.51
+    },
+    "time": 2343.0
+  }
+]

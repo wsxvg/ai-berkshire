@@ -1,0 +1,9 @@
+{
+  "name": "I3_breakout60",
+  "label": "I3:60\u65e5\u65b0\u9ad8\u7a81\u7834\u4e70\u5165",
+  "total_return": 0.17,
+  "max_drawdown": 5.7,
+  "sharpe": -0.88,
+  "trade_count": 21,
+  "elapsed_sec": 574.7
+}

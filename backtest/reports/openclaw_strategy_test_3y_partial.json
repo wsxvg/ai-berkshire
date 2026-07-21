@@ -1,0 +1,41 @@
+[
+  {
+    "name": "baseline",
+    "label": "基线（无OpenClaw策略）",
+    "overrides": {},
+    "total_return": 56.93,
+    "annualized": 12.25,
+    "max_drawdown": 9.64,
+    "sharpe": 1.09,
+    "trade_count": 172,
+    "elapsed_sec": 3313.0
+  },
+  {
+    "name": "time_stop_120",
+    "label": "时间止损120天+收益<5%",
+    "overrides": {
+      "time_stop_days": 120,
+      "time_stop_min_profit": 5
+    },
+    "total_return": 37.8,
+    "annualized": 8.57,
+    "max_drawdown": 9.47,
+    "sharpe": 0.54,
+    "trade_count": 248,
+    "elapsed_sec": 3221.4
+  },
+  {
+    "name": "time_stop_90",
+    "label": "时间止损90天+收益<3%",
+    "overrides": {
+      "time_stop_days": 90,
+      "time_stop_min_profit": 3
+    },
+    "total_return": 25.64,
+    "annualized": 6.03,
+    "max_drawdown": 9.31,
+    "sharpe": 0.35,
+    "trade_count": 251,
+    "elapsed_sec": 3116.8
+  }
+]

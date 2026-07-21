@@ -1,0 +1,9 @@
+{
+  "name": "Z3_dyn_maxpos_cash",
+  "label": "Z3:\u52a8\u6001\u4ed3\u4f4d+\u52a8\u6001\u73b0\u91d1\u50a8\u5907",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 588.0
+}

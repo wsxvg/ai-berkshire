@@ -1,0 +1,9 @@
+{
+  "name": "S7_mom_adj_decay",
+  "label": "S7:\u52a8\u91cf\u8c03\u6574+\u8870\u9000\u5356\u51fa",
+  "total_return": 52.28,
+  "max_drawdown": 10.47,
+  "sharpe": 1.0,
+  "trade_count": 177,
+  "elapsed_sec": 540.5
+}

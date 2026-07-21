@@ -1,0 +1,9 @@
+{
+  "name": "BE2_w_net_thr25_diff2",
+  "label": "BE2:\u52a0\u6743+\u51c0\u4fe1\u53f7+\u6743\u95e82.5+\u5dee2",
+  "total_return": 42.8,
+  "max_drawdown": 13.58,
+  "sharpe": 0.54,
+  "trade_count": 134,
+  "elapsed_sec": 294.2
+}

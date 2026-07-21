@@ -1,0 +1,9 @@
+{
+  "name": "D2_atr_stop",
+  "label": "D2:ATR\u52a8\u6001\u6b62\u635f(2\u00d7ATR)",
+  "total_return": 29.91,
+  "max_drawdown": 9.12,
+  "sharpe": 0.67,
+  "trade_count": 224,
+  "elapsed_sec": 593.0
+}

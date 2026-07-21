@@ -1,0 +1,9 @@
+{
+  "name": "D3_macd_buy",
+  "label": "D3:MACD\u91d1\u53c9\u4e70\u5165\u8fc7\u6ee4",
+  "total_return": 25.45,
+  "max_drawdown": 10.02,
+  "sharpe": 0.42,
+  "trade_count": 177,
+  "elapsed_sec": 595.0
+}

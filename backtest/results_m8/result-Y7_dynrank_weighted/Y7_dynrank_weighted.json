@@ -1,0 +1,9 @@
+{
+  "name": "Y7_dynrank_weighted",
+  "label": "Y7:\u52a8\u6001\u6392\u540d+\u52a0\u6743\u5171\u8bc6",
+  "total_return": 49.92,
+  "max_drawdown": 8.15,
+  "sharpe": 0.98,
+  "trade_count": 185,
+  "elapsed_sec": 593.0
+}

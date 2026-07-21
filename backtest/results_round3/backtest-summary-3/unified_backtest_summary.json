@@ -1,0 +1,149 @@
+{
+  "results": [
+    {
+      "name": "J10_hold15",
+      "label": "J10:\u6700\u4f4e\u6301\u670915\u5929(\u5feb\u8f6e)",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 588.0
+    },
+    {
+      "name": "J1_stop15",
+      "label": "J1:\u7d27\u6b62\u635f15%(\u4e8b\u4ef6\u9a71\u52a8V2)",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 451.6
+    },
+    {
+      "name": "J2_stop50",
+      "label": "J2:\u677e\u6b62\u635f50%",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 597.7
+    },
+    {
+      "name": "J3_score4",
+      "label": "J3:\u9ad8\u95e8\u69db4.0(\u4ef7\u503c)",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 493.5
+    },
+    {
+      "name": "J6_maxpos50",
+      "label": "J6:\u5355\u4ed3\u4e0a\u965050%(\u96c6\u4e2d)",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 589.4
+    },
+    {
+      "name": "J8_nostop",
+      "label": "J8:\u65e0\u6b62\u635f(\u625b\u56de\u64a4)",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 520.2
+    },
+    {
+      "name": "J9_hold60",
+      "label": "J9:\u6700\u4f4e\u6301\u670960\u5929",
+      "total_return": 56.11,
+      "max_drawdown": 9.74,
+      "sharpe": 1.08,
+      "trade_count": 172,
+      "elapsed_sec": 597.9
+    },
+    {
+      "name": "J7_cash3",
+      "label": "J7:\u73b0\u91d1\u50a8\u59073%(\u6ee1\u4ed3)",
+      "total_return": 54.03,
+      "max_drawdown": 9.24,
+      "sharpe": 1.05,
+      "trade_count": 170,
+      "elapsed_sec": 568.1
+    },
+    {
+      "name": "J4_consensus1",
+      "label": "J4:\u4f4e\u5171\u8bc61\u4eba(\u6fc0\u8fdb)",
+      "total_return": 45.46,
+      "max_drawdown": 11.38,
+      "sharpe": 0.86,
+      "trade_count": 177,
+      "elapsed_sec": 1798.3
+    },
+    {
+      "name": "I1_ma20_buy",
+      "label": "I1:MA20\u8d8b\u52bf\u4e70\u5165\u8fc7\u6ee4",
+      "total_return": 41.44,
+      "max_drawdown": 10.83,
+      "sharpe": 0.56,
+      "trade_count": 174,
+      "elapsed_sec": 538.5
+    },
+    {
+      "name": "K1_value_trend",
+      "label": "K1:\u4ef7\u503c+\u8d8b\u52bf(\u9ad8\u95e8\u69db+MA20)",
+      "total_return": 41.44,
+      "max_drawdown": 10.83,
+      "sharpe": 0.56,
+      "trade_count": 174,
+      "elapsed_sec": 587.3
+    },
+    {
+      "name": "K2_event_v2",
+      "label": "K2:\u4e8b\u4ef6\u9a71\u52a8V2(MA20+\u6b6215%)",
+      "total_return": 41.44,
+      "max_drawdown": 10.83,
+      "sharpe": 0.56,
+      "trade_count": 174,
+      "elapsed_sec": 592.6
+    },
+    {
+      "name": "J5_consensus3",
+      "label": "J5:\u9ad8\u5171\u8bc63\u4eba(\u4fdd\u5b88)",
+      "total_return": 39.47,
+      "max_drawdown": 9.63,
+      "sharpe": 0.75,
+      "trade_count": 142,
+      "elapsed_sec": 343.9
+    },
+    {
+      "name": "K3_all_buy_filters",
+      "label": "K3:\u5168\u90e8\u4e70\u5165\u8fc7\u6ee4(MA20+MACD+\u7a81\u7834)",
+      "total_return": 1.85,
+      "max_drawdown": 2.28,
+      "sharpe": -1.41,
+      "trade_count": 11,
+      "elapsed_sec": 590.2
+    },
+    {
+      "name": "I3_breakout60",
+      "label": "I3:60\u65e5\u65b0\u9ad8\u7a81\u7834\u4e70\u5165",
+      "total_return": 0.17,
+      "max_drawdown": 5.7,
+      "sharpe": -0.88,
+      "trade_count": 21,
+      "elapsed_sec": 574.7
+    },
+    {
+      "name": "I2_rsi_oversold",
+      "label": "I2:RSI<40\u8d85\u5356\u4e70\u5165",
+      "total_return": -4.09,
+      "max_drawdown": 12.39,
+      "sharpe": -0.59,
+      "trade_count": 98,
+      "elapsed_sec": 591.4
+    }
+  ],
+  "baseline": 56.93
+}

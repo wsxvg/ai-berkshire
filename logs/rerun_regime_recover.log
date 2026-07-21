@@ -1,0 +1,522 @@
+﻿三年全周期策略对比 — 批次: regime_recover
+策略数: 3  数据期: 2023-07-17 ~ 2026-07-17
+策略列表: ['策略3_Champion+dynSL', '策略17_regime默认', '策略17b_regime激进']
+================================================================================
+=== 策略3_Champion+dynSL ===
+加载历史数据...
+  [优化] chart排序完成(2187只) + trading dates预排序(983天)
+
+Period: 2023-07-17 ~ 2026-07-17
+Days: 983
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2023-07-17 (1/983)
+  progress: 2023-08-08 (21/983)
+  progress: 2023-08-28 (41/983)
+  progress: 2023-09-19 (61/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.95 proceeds=2047
+  progress: 2023-10-20 (81/983)
+  progress: 2023-11-14 (101/983)
+  progress: 2023-12-07 (121/983)
+  progress: 2023-12-31 (141/983)
+  SELL 002834 华夏新锦绣混合C momentum_crash mom=0.91 proceeds=88
+  progress: 2024-01-25 (161/983)
+  progress: 2024-02-21 (181/983)
+  progress: 2024-03-13 (201/983)
+  progress: 2024-04-02 (221/983)
+  progress: 2024-04-23 (241/983)
+  progress: 2024-05-16 (261/983)
+  progress: 2024-06-05 (281/983)
+  progress: 2024-06-25 (301/983)
+  progress: 2024-07-16 (321/983)
+  progress: 2024-08-06 (341/983)
+  progress: 2024-08-26 (361/983)
+  progress: 2024-09-17 (381/983)
+  progress: 2024-10-10 (401/983)
+  progress: 2024-11-01 (421/983)
+  progress: 2024-11-26 (441/983)
+  progress: 2024-12-19 (461/983)
+  progress: 2025-01-10 (481/983)
+  progress: 2025-02-13 (501/983)
+  progress: 2025-03-10 (521/983)
+  progress: 2025-03-31 (541/983)
+  SELL_TP 004253 国泰黄金ETF联接C profit=51.1% amt=378
+  SELL_TP 002611 博时黄金ETF联接C profit=50.2% amt=225
+  SELL_TP 004253 国泰黄金ETF联接C profit=52.1% amt=190
+  SELL_TP 002611 博时黄金ETF联接C profit=50.8% amt=113
+  SELL_TP 004253 国泰黄金ETF联接C profit=61.3% amt=101
+  progress: 2025-04-22 (561/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.83 proceeds=112
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=95
+  SELL 021740 前海开源黄金ETF联接C momentum_crash mom=1.78 proceeds=7851
+  progress: 2025-05-20 (581/983)
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=6802
+  progress: 2025-06-11 (601/983)
+  progress: 2025-07-01 (621/983)
+  progress: 2025-07-22 (641/983)
+  progress: 2025-08-12 (661/983)
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=682
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=341
+  SELL_TP 015916 永赢医药创新智选混合发起C profit=50.5% amt=171
+  progress: 2025-09-02 (681/983)
+  progress: 2025-09-22 (701/983)
+  SELL_TP 377240 摩根新兴动力混合A类 profit=50.3% amt=2252
+  SELL_TP 007301 国联安中证全指半导体产品与设备E profit=53.6% amt=2300
+  SELL 015916 永赢医药创新智选混合发起C dyn_stop_loss profit=30.9% dd=-16.0% proceeds=148
+  progress: 2025-10-15 (721/983)
+  SELL_TP 377240 摩根新兴动力混合A类 profit=53.5% amt=1149
+  SELL_TP 377240 摩根新兴动力混合A类 profit=52.5% amt=571
+  SELL_TP 377240 摩根新兴动力混合A类 profit=55.8% amt=292
+  SELL_TP 377240 摩根新兴动力混合A类 profit=53.9% amt=144
+  SELL 001302 前海开源金银珠宝混合A dyn_stop_loss profit=23.3% dd=-16.5% proceeds=6525
+  progress: 2025-11-05 (741/983)
+  SELL 519644 银河智联混合A momentum_crash mom=1.45 proceeds=6180
+  SELL 377240 摩根新兴动力混合A类 momentum_crash mom=1.67 proceeds=132
+  SELL 007301 国联安中证全指半导体产品与设备E momentum_crash mom=1.13 proceeds=1900
+  SELL 004070 南方中证全指证券公司ETF联接C momentum_crash mom=1.88 proceeds=1011
+  SELL 011103 天弘中证光伏C momentum_crash mom=1.11 proceeds=1281
+  SELL 012348 天弘恒生科技指数C momentum_crash mom=1.29 proceeds=990
+  SELL 010710 安信医药健康股票C momentum_crash mom=0.52 proceeds=2987
+  SELL 021760 中欧中证港股通创新药指数发起C momentum_crash mom=1.39 proceeds=1393
+  SELL 021298 中欧北证50成份指数发起A momentum_crash mom=1.20 proceeds=1049
+  SELL 018125 永赢先进制造智选混合发起C momentum_crash mom=1.21 proceeds=3690
+  SELL 014143 银河创新混合C momentum_crash mom=0.56 proceeds=131
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=1516
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=0.00 proceeds=376
+  SELL 011143 创金合信新材料新能源股票C momentum_crash mom=1.72 proceeds=587
+  SELL 002112 德邦鑫星价值C momentum_crash mom=0.83 proceeds=5320
+  progress: 2025-11-25 (761/983)
+  SELL 015254 申万菱信消费增长混合C momentum_crash mom=1.80 proceeds=5367
+  SELL 161725 招商中证白酒指数A momentum_crash mom=1.91 proceeds=1328
+  progress: 2025-12-16 (781/983)
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.37 proceeds=1057
+  progress: 2026-01-06 (801/983)
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=50.6% amt=3984
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=52.7% amt=2020
+  SELL 519697 交银优势行业混合 momentum_crash mom=1.89 proceeds=3523
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=53.5% amt=1015
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=55.4% amt=514
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=56.6% amt=259
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=56.6% amt=130
+  progress: 2026-01-26 (821/983)
+  SELL_TP 008143 工银黄金ETF联接C profit=51.6% amt=2198
+  SELL_TP 020341 工银黄金ETF联接E profit=51.6% amt=3942
+  SELL_TP 008702 华夏黄金ETF联接C profit=51.9% amt=3950
+  SELL_TP 009034 建信上海金ETF联接C profit=51.3% amt=756
+  SELL_TP 002963 易方达黄金ETF联接C profit=51.6% amt=481
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=796
+  SELL_TP 008143 工银黄金ETF联接C profit=59.1% amt=1153
+  SELL_TP 020341 工银黄金ETF联接E profit=59.1% amt=2068
+  SELL_TP 008702 华夏黄金ETF联接C profit=59.6% amt=2074
+  SELL_TP 016582 嘉实上海金ETF发起联接C profit=56.1% amt=780
+  SELL_TP 009034 建信上海金ETF联接C profit=59.7% amt=399
+  SELL_TP 002963 易方达黄金ETF联接C profit=59.0% amt=252
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=417
+  SELL 008143 工银黄金ETF联接C dyn_stop_loss profit=32.5% dd=-16.7% proceeds=961
+  SELL 020341 工银黄金ETF联接E dyn_stop_loss profit=32.5% dd=-16.7% proceeds=1722
+  SELL 008702 华夏黄金ETF联接C dyn_stop_loss profit=32.6% dd=-16.9% proceeds=1724
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.93 proceeds=641
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.91 proceeds=326
+  SELL 002963 易方达黄金ETF联接C dyn_stop_loss profit=32.3% dd=-16.8% proceeds=210
+  SELL 004253 国泰黄金ETF联接C dyn_stop_loss profit=31.4% dd=-16.7% proceeds=348
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=89
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=271
+  SELL 013346 富荣信息技术混合C momentum_crash mom=1.34 proceeds=1346
+  SELL 025500 东方阿尔法科技智选混合发起C momentum_crash mom=1.83 proceeds=13775
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=2805
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.76 proceeds=3091
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=6836
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=5950
+  progress: 2026-02-15 (841/983)
+  SELL 005233 广发睿毅领先混合A momentum_crash mom=1.73 proceeds=5716
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=4427
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2340
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6151
+  progress: 2026-03-13 (861/983)
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=1884
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.65 proceeds=2788
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1348
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=6431
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=12292
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=507
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6311
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=3835
+  SELL 020274 富国中证细分化工产业主题ETF发 momentum_crash mom=1.17 proceeds=121
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=1258
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=3977
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=92
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.29 proceeds=12551
+  progress: 2026-04-02 (881/983)
+  progress: 2026-04-24 (901/983)
+  progress: 2026-05-14 (921/983)
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.6% amt=5570
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.4% amt=2763
+  SELL_TP 022365 永赢科技智选混合发起C profit=55.4% amt=1418
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=702
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=351
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=175
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=104.9% amt=102
+  progress: 2026-06-04 (941/983)
+  SELL_TP 021528 财通成长优选混合C profit=101.9% amt=101
+  progress: 2026-06-24 (961/983)
+  SELL 011452 华泰柏瑞质量成长混合C dyn_stop_loss profit=105.2% dd=-15.5% proceeds=103
+  SELL 021528 财通成长优选混合C dyn_stop_loss profit=121.6% dd=-11.1% proceeds=111
+  progress: 2026-07-15 (981/983)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 123,494.59
+Return: +23.49%
+MaxDD: 8.32%
+Trades: 239
+Holdings: 15
+Benchmark CSI300: +32.20%
+BuyHold(025857): +0.00%
+Scores: 4053
+Annualized: +5.56%
+Volatility: 5.25%
+Sharpe: 0.58
+Calmar: 0.67
+Fees: 107.03
+  收益: 23.49%  回撤: 8.32%  交易: 239笔  夏普: 0.58  卡玛: 0.67
+  分段: A_熊市=-0.15%  B_震荡=2.16%  C_牛市=21.03%
+  月胜率: 58.3% (36月)  信号利用: 13.4%  耗时: 2299s
+
+[已保存] _results_3y\regime_recover.json + _results_3y\regime_recover.txt
+=== 策略17_regime默认 ===
+加载历史数据...
+  [优化] chart排序完成(2187只) + trading dates预排序(983天)
+
+Period: 2023-07-17 ~ 2026-07-17
+Days: 983
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2023-07-17 (1/983)
+  progress: 2023-08-08 (21/983)
+  progress: 2023-08-28 (41/983)
+  progress: 2023-09-19 (61/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.95 proceeds=2047
+  progress: 2023-10-20 (81/983)
+  progress: 2023-11-14 (101/983)
+  progress: 2023-12-07 (121/983)
+  progress: 2023-12-31 (141/983)
+  SELL 002834 华夏新锦绣混合C momentum_crash mom=0.91 proceeds=88
+  progress: 2024-01-25 (161/983)
+  progress: 2024-02-21 (181/983)
+  progress: 2024-03-13 (201/983)
+  progress: 2024-04-02 (221/983)
+  progress: 2024-04-23 (241/983)
+  progress: 2024-05-16 (261/983)
+  progress: 2024-06-05 (281/983)
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.83 proceeds=1184
+  progress: 2024-06-25 (301/983)
+  progress: 2024-07-16 (321/983)
+  progress: 2024-08-06 (341/983)
+  progress: 2024-08-26 (361/983)
+  progress: 2024-09-17 (381/983)
+  progress: 2024-10-10 (401/983)
+  progress: 2024-11-01 (421/983)
+  progress: 2024-11-26 (441/983)
+  progress: 2024-12-19 (461/983)
+  progress: 2025-01-10 (481/983)
+  SELL_TP 002611 博时黄金ETF联接C profit=30.8% amt=196
+  SELL_TP 004253 国泰黄金ETF联接C profit=31.6% amt=329
+  SELL_TP 004253 国泰黄金ETF联接C profit=31.6% amt=164
+  SELL_TP 002611 博时黄金ETF联接C profit=37.3% amt=103
+  progress: 2025-02-13 (501/983)
+  progress: 2025-03-10 (521/983)
+  progress: 2025-03-31 (541/983)
+  SELL_TP 004253 国泰黄金ETF联接C profit=61.3% amt=101
+  progress: 2025-04-22 (561/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.83 proceeds=112
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=95
+  SELL 021740 前海开源黄金ETF联接C momentum_crash mom=1.78 proceeds=7851
+  progress: 2025-05-20 (581/983)
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=5344
+  progress: 2025-06-11 (601/983)
+  progress: 2025-07-01 (621/983)
+  progress: 2025-07-22 (641/983)
+  progress: 2025-08-12 (661/983)
+  progress: 2025-09-02 (681/983)
+  SELL 010392 易方达战略新兴产业股票C trailing_tp profit=35.8% dd=-9.7% proceeds=1077
+  SELL 007301 国联安中证全指半导体产品与设备E trailing_tp profit=22.7% dd=-9.5% proceeds=3677
+  progress: 2025-09-22 (701/983)
+  SELL 377240 摩根新兴动力混合A类 trailing_tp profit=37.0% dd=-8.9% proceeds=4103
+  progress: 2025-10-15 (721/983)
+  SELL 519644 银河智联混合A trailing_tp profit=20.7% dd=-9.1% proceeds=6266
+  SELL 022522 中欧农业产业混合发起C trailing_tp profit=24.3% dd=-8.4% proceeds=1243
+  SELL 001302 前海开源金银珠宝混合A trailing_tp profit=33.4% dd=-9.7% proceeds=3462
+  progress: 2025-11-05 (741/983)
+  SELL 011103 天弘中证光伏C trailing_tp profit=35.5% dd=-8.7% proceeds=1355
+  SELL 004070 南方中证全指证券公司ETF联接C momentum_crash mom=1.88 proceeds=1011
+  SELL 012348 天弘恒生科技指数C momentum_crash mom=1.29 proceeds=990
+  SELL 010710 安信医药健康股票C momentum_crash mom=0.52 proceeds=2987
+  SELL 018490 万家中证工业有色金属主题ETF发 momentum_crash mom=1.89 proceeds=1041
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=1153
+  SELL 014143 银河创新混合C momentum_crash mom=0.56 proceeds=1238
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=5280
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.55 proceeds=2309
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=4147
+  progress: 2025-11-25 (761/983)
+  SELL 015254 申万菱信消费增长混合C momentum_crash mom=1.80 proceeds=5268
+  SELL 161725 招商中证白酒指数A momentum_crash mom=1.91 proceeds=1328
+  progress: 2025-12-16 (781/983)
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.37 proceeds=1057
+  progress: 2026-01-06 (801/983)
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=50.6% amt=3984
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=52.7% amt=2020
+  SELL 519697 交银优势行业混合 momentum_crash mom=1.89 proceeds=3523
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=53.5% amt=1015
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=55.4% amt=514
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=56.6% amt=259
+  SELL_TP 020274 富国中证细分化工产业主题ETF发 profit=56.6% amt=130
+  progress: 2026-01-26 (821/983)
+  SELL_TP 008143 工银黄金ETF联接C profit=51.6% amt=2198
+  SELL_TP 020341 工银黄金ETF联接E profit=51.6% amt=3942
+  SELL_TP 008702 华夏黄金ETF联接C profit=51.9% amt=3950
+  SELL_TP 009034 建信上海金ETF联接C profit=51.3% amt=756
+  SELL_TP 002963 易方达黄金ETF联接C profit=51.6% amt=758
+  SELL_TP 004253 国泰黄金ETF联接C profit=50.4% amt=1924
+  SELL_TP 008143 工银黄金ETF联接C profit=59.1% amt=1153
+  SELL_TP 020341 工银黄金ETF联接E profit=59.1% amt=2068
+  SELL_TP 008702 华夏黄金ETF联接C profit=59.6% amt=2074
+  SELL_TP 016582 嘉实上海金ETF发起联接C profit=56.1% amt=780
+  SELL_TP 009034 建信上海金ETF联接C profit=59.7% amt=399
+  SELL_TP 002963 易方达黄金ETF联接C profit=59.0% amt=398
+  SELL_TP 018392 南方上海金ETF发起联接C profit=56.8% amt=928
+  SELL_TP 004253 国泰黄金ETF联接C profit=57.7% amt=1009
+  SELL 290008 泰信发展主题混合 momentum_crash mom=1.84 proceeds=2336
+  SELL 008143 工银黄金ETF联接C trailing_tp profit=32.5% dd=-16.7% proceeds=961
+  SELL 020341 工银黄金ETF联接E trailing_tp profit=32.5% dd=-16.7% proceeds=1722
+  SELL 008702 华夏黄金ETF联接C trailing_tp profit=32.6% dd=-16.9% proceeds=1724
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.93 proceeds=641
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.91 proceeds=326
+  SELL 002963 易方达黄金ETF联接C trailing_tp profit=32.3% dd=-16.8% proceeds=331
+  SELL 018392 南方上海金ETF发起联接C momentum_crash mom=1.87 proceeds=760
+  SELL 004253 国泰黄金ETF联接C trailing_tp profit=31.4% dd=-16.7% proceeds=841
+  SELL 025500 东方阿尔法科技智选混合发起C trailing_tp profit=24.7% dd=-11.4% proceeds=8104
+  SELL 017811 东方人工智能主题混合C trailing_tp profit=19.1% dd=-10.5% proceeds=7268
+  SELL 161226 国投瑞银白银期货(LOF)A momentum_crash mom=0.00 proceeds=89
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.96 proceeds=271
+  SELL 013346 富荣信息技术混合C momentum_crash mom=1.34 proceeds=1513
+  SELL 025209 永赢先锋半导体智选混合发起C trailing_tp profit=24.5% dd=-11.1% proceeds=6974
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=2805
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=1945
+  SELL 018463 德邦稳盈增长灵活配置混合C momentum_crash mom=1.76 proceeds=3091
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.44 proceeds=5387
+  progress: 2026-02-15 (841/983)
+  SELL 005233 广发睿毅领先混合A momentum_crash mom=1.73 proceeds=5608
+  SELL 015790 永赢高端装备智选混合发起C momentum_crash mom=1.94 proceeds=4427
+  SELL 001071 华安媒体互联网混合A momentum_crash mom=1.97 proceeds=3658
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2340
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=6164
+  progress: 2026-03-13 (861/983)
+  SELL 025949 诺安研究精选股票C momentum_crash mom=1.54 proceeds=1884
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.65 proceeds=2788
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1348
+  SELL 021534 华夏有色金属ETF联接D momentum_crash mom=1.65 proceeds=7560
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=7063
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=507
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=6821
+  SELL 014320 德邦半导体产业混合发起式C momentum_crash mom=1.80 proceeds=5547
+  SELL 020274 富国中证细分化工产业主题ETF发 momentum_crash mom=1.17 proceeds=121
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=5260
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=5702
+  SELL 022328 宏利高端装备股票C momentum_crash mom=1.88 proceeds=2768
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=3977
+  SELL 024888 平安中证全指自由现金流ETF联接 trailing_tp profit=11.4% dd=-6.4% proceeds=1114
+  SELL 012886 华夏中证光伏产业ETF发起式联接 momentum_crash mom=1.29 proceeds=7156
+  progress: 2026-04-02 (881/983)
+  progress: 2026-04-24 (901/983)
+  progress: 2026-05-14 (921/983)
+  SELL_TP 022365 永赢科技智选混合发起C profit=52.6% amt=5570
+  SELL_TP 022365 永赢科技智选混合发起C profit=51.4% amt=2763
+  SELL_TP 022365 永赢科技智选混合发起C profit=55.4% amt=1418
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=702
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=351
+  SELL_TP 022365 永赢科技智选混合发起C profit=53.8% amt=175
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=104.9% amt=102
+  progress: 2026-06-04 (941/983)
+  progress: 2026-06-24 (961/983)
+  SELL 011452 华泰柏瑞质量成长混合C trailing_tp profit=105.2% dd=-15.5% proceeds=103
+  SELL 022365 永赢科技智选混合发起C trailing_tp profit=49.9% dd=-9.3% proceeds=171
+  progress: 2026-07-15 (981/983)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 123,611.76
+Return: +23.61%
+MaxDD: 7.96%
+Trades: 251
+Holdings: 15
+Benchmark CSI300: +32.20%
+BuyHold(025857): +0.00%
+Scores: 4053
+Annualized: +5.58%
+Volatility: 4.97%
+Sharpe: 0.62
+Calmar: 0.70
+Fees: 107.46
+  收益: 23.61%  回撤: 7.96%  交易: 251笔  夏普: 0.62  卡玛: 0.7
+  分段: A_熊市=-0.16%  B_震荡=2.04%  C_牛市=21.29%
+  月胜率: 58.3% (36月)  信号利用: 13.4%  耗时: 2882s
+
+[已保存] _results_3y\regime_recover.json + _results_3y\regime_recover.txt
+=== 策略17b_regime激进 ===
+加载历史数据...
+  [优化] chart排序完成(2187只) + trading dates预排序(983天)
+
+Period: 2023-07-17 ~ 2026-07-17
+Days: 983
+start_cash: 100,000
+weights: Q25 C20 M20 Mo15 SM20
+  progress: 2023-07-17 (1/983)
+  progress: 2023-08-08 (21/983)
+  progress: 2023-08-28 (41/983)
+  progress: 2023-09-19 (61/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.95 proceeds=2047
+  progress: 2023-10-20 (81/983)
+  progress: 2023-11-14 (101/983)
+  progress: 2023-12-07 (121/983)
+  progress: 2023-12-31 (141/983)
+  SELL 002834 华夏新锦绣混合C momentum_crash mom=0.91 proceeds=88
+  progress: 2024-01-25 (161/983)
+  progress: 2024-02-21 (181/983)
+  progress: 2024-03-13 (201/983)
+  progress: 2024-04-02 (221/983)
+  progress: 2024-04-23 (241/983)
+  progress: 2024-05-16 (261/983)
+  progress: 2024-06-05 (281/983)
+  progress: 2024-06-25 (301/983)
+  progress: 2024-07-16 (321/983)
+  progress: 2024-08-06 (341/983)
+  progress: 2024-08-26 (361/983)
+  progress: 2024-09-17 (381/983)
+  progress: 2024-10-10 (401/983)
+  progress: 2024-11-01 (421/983)
+  progress: 2024-11-26 (441/983)
+  progress: 2024-12-19 (461/983)
+  progress: 2025-01-10 (481/983)
+  SELL_TP 004253 国泰黄金ETF联接C profit=40.8% amt=352
+  SELL_TP 002611 博时黄金ETF联接C profit=40.3% amt=210
+  SELL_TP 004253 国泰黄金ETF联接C profit=41.6% amt=177
+  progress: 2025-02-13 (501/983)
+  SELL_TP 002611 博时黄金ETF联接C profit=40.3% amt=105
+  progress: 2025-03-10 (521/983)
+  progress: 2025-03-31 (541/983)
+  SELL_TP 004253 国泰黄金ETF联接C profit=61.3% amt=101
+  progress: 2025-04-22 (561/983)
+  SELL 002611 博时黄金ETF联接C momentum_crash mom=1.83 proceeds=112
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.77 proceeds=95
+  SELL 021740 前海开源黄金ETF联接C momentum_crash mom=1.78 proceeds=7851
+  progress: 2025-05-20 (581/983)
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=2.00 proceeds=6607
+  progress: 2025-06-11 (601/983)
+  progress: 2025-07-01 (621/983)
+  progress: 2025-07-22 (641/983)
+  progress: 2025-08-12 (661/983)
+  progress: 2025-09-02 (681/983)
+  SELL 007301 国联安中证全指半导体产品与设备E trailing_tp profit=18.7% dd=-12.5% proceeds=3554
+  progress: 2025-09-22 (701/983)
+  SELL 519644 银河智联混合A trailing_tp profit=18.6% dd=-10.7% proceeds=6275
+  SELL 018125 永赢先进制造智选混合发起C trailing_tp profit=16.3% dd=-14.1% proceeds=1023
+  progress: 2025-10-15 (721/983)
+  SELL 001302 前海开源金银珠宝混合A trailing_tp profit=29.8% dd=-12.0% proceeds=5057
+  progress: 2025-11-05 (741/983)
+  SELL 377240 摩根新兴动力混合A类 momentum_crash mom=1.67 proceeds=4219
+  SELL 004070 南方中证全指证券公司ETF联接C momentum_crash mom=1.88 proceeds=1011
+  SELL 011103 天弘中证光伏C momentum_crash mom=1.11 proceeds=1281
+  SELL 012348 天弘恒生科技指数C momentum_crash mom=1.29 proceeds=990
+  SELL 010710 安信医药健康股票C momentum_crash mom=0.52 proceeds=2987
+  SELL 015916 永赢医药创新智选混合发起C momentum_crash mom=0.12 proceeds=1251
+  SELL 021580 华夏人工智能ETF联接D momentum_crash mom=1.35 proceeds=3658
+  SELL 014143 银河创新混合C momentum_crash mom=0.56 proceeds=1238
+  SELL 010392 易方达战略新兴产业股票C momentum_crash mom=0.81 proceeds=5280
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=0.00 proceeds=4457
+  SELL 020274 富国中证细分化工产业主题ETF发 trailing_tp profit=24.1% dd=-8.7% proceeds=6569
+  progress: 2025-11-25 (761/983)
+  SELL 015254 申万菱信消费增长混合C momentum_crash mom=1.80 proceeds=5367
+  SELL 161725 招商中证白酒指数A momentum_crash mom=1.91 proceeds=1328
+  progress: 2025-12-16 (781/983)
+  SELL 012769 华夏中证动漫游戏ETF发起式联接 momentum_crash mom=1.37 proceeds=1057
+  progress: 2026-01-06 (801/983)
+  SELL 519697 交银优势行业混合 momentum_crash mom=1.89 proceeds=3523
+  progress: 2026-01-26 (821/983)
+  SELL 008143 工银黄金ETF联接C trailing_tp profit=32.5% dd=-16.7% proceeds=3842
+  SELL 020341 工银黄金ETF联接E trailing_tp profit=32.5% dd=-16.7% proceeds=6890
+  SELL 008702 华夏黄金ETF联接C trailing_tp profit=32.6% dd=-16.9% proceeds=6897
+  SELL 016582 嘉实上海金ETF发起联接C momentum_crash mom=1.93 proceeds=1282
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.91 proceeds=1303
+  SELL 002963 易方达黄金ETF联接C trailing_tp profit=32.3% dd=-16.8% proceeds=1323
+  SELL 004253 国泰黄金ETF联接C trailing_tp profit=31.4% dd=-16.7% proceeds=1654
+  SELL 025500 东方阿尔法科技智选混合发起C trailing_tp profit=24.7% dd=-11.4% proceeds=10099
+  SELL 025209 永赢先锋半导体智选混合发起C trailing_tp profit=27.1% dd=-9.2% proceeds=7118
+  SELL 017811 东方人工智能主题混合C trailing_tp profit=19.1% dd=-10.5% proceeds=9055
+  SELL 018123 永赢数字经济智选混合发起C momentum_crash mom=1.59 proceeds=2805
+  SELL 015968 永赢半导体产业智选混合发起C momentum_crash mom=1.79 proceeds=8348
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.88 proceeds=4033
+  progress: 2026-02-15 (841/983)
+  SELL 005233 广发睿毅领先混合A momentum_crash mom=1.73 proceeds=5716
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.54 proceeds=2340
+  SELL 017811 东方人工智能主题混合C momentum_crash mom=1.80 proceeds=7593
+  progress: 2026-03-13 (861/983)
+  SELL 024195 永赢国证商用卫星通信产业ETF发 momentum_crash mom=1.65 proceeds=2788
+  SELL 002207 前海开源金银珠宝混合C momentum_crash mom=1.98 proceeds=1348
+  SELL 017193 天弘中证工业有色金属主题ETF发 momentum_crash mom=1.50 proceeds=8714
+  SELL 002112 德邦鑫星价值C momentum_crash mom=1.88 proceeds=8125
+  SELL 021876 路博迈资源精选股票发起C momentum_crash mom=1.45 proceeds=8367
+  SELL 004253 国泰黄金ETF联接C momentum_crash mom=1.56 proceeds=5054
+  SELL 009034 建信上海金ETF联接C momentum_crash mom=1.59 proceeds=5515
+  SELL 025857 华夏中证电网设备主题ETF发起式 momentum_crash mom=1.68 proceeds=3649
+  SELL 021087 鹏华国证粮食产业ETF发起式联接 momentum_crash mom=1.03 proceeds=3543
+  SELL 012886 华夏中证光伏产业ETF发起式联接 trailing_tp profit=13.6% dd=-9.2% proceeds=9201
+  SELL 002891 华夏移动互联混合(QDII) momentum_crash mom=1.27 proceeds=184
+  SELL 005698 华夏全球科技先锋混合(QDII) momentum_crash mom=1.77 proceeds=2251
+  SELL 024888 平安中证全指自由现金流ETF联接 trailing_tp profit=11.4% dd=-6.4% proceeds=1114
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.96 proceeds=3230
+  progress: 2026-04-02 (881/983)
+  SELL 025209 永赢先锋半导体智选混合发起C momentum_crash mom=1.89 proceeds=4691
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=42.2% amt=422
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=44.1% amt=214
+  SELL_TP 011452 华泰柏瑞质量成长混合C profit=60.7% amt=119
+  progress: 2026-04-24 (901/983)
+  progress: 2026-05-14 (921/983)
+  SELL 011452 华泰柏瑞质量成长混合C trailing_tp profit=73.4% dd=-8.1% proceeds=129
+  SELL_TP 021528 财通成长优选混合C profit=101.5% amt=101
+  progress: 2026-06-04 (941/983)
+  progress: 2026-06-24 (961/983)
+  SELL 021528 财通成长优选混合C trailing_tp profit=139.4% dd=-11.1% proceeds=120
+  progress: 2026-07-15 (981/983)
+
+==================================================
+回测结果
+==================================================
+Initial: 100,000
+Final: 121,717.54
+Return: +21.72%
+MaxDD: 8.64%
+Trades: 200
+Holdings: 16
+Benchmark CSI300: +32.20%
+BuyHold(025857): +0.00%
+Scores: 4053
+Annualized: +5.17%
+Volatility: 5.37%
+Sharpe: 0.50
+Calmar: 0.60
+Fees: 110.54
+  收益: 21.72%  回撤: 8.64%  交易: 200笔  夏普: 0.5  卡玛: 0.6
+  分段: A_熊市=-0.15%  B_震荡=1.88%  C_牛市=19.6%
+  月胜率: 58.3% (36月)  信号利用: 11.3%  耗时: 3032s
+
+[已保存] _results_3y\regime_recover.json + _results_3y\regime_recover.txt
+[已保存] _results_3y\regime_recover.json + _results_3y\regime_recover.txt
+
+=== 全部完成 ===
+  策略17_regime默认: 23.61%  A=-0.16% B=2.04% C=21.29%  回撤8.0%  夏普0.62
+  策略3_Champion+dynSL: 23.49%  A=-0.15% B=2.16% C=21.03%  回撤8.3%  夏普0.58
+  策略17b_regime激进: 21.72%  A=-0.15% B=1.88% C=19.6%  回撤8.6%  夏普0.5

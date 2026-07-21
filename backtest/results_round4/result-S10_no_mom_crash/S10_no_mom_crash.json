@@ -1,0 +1,9 @@
+{
+  "name": "S10_no_mom_crash",
+  "label": "S10:\u7981\u7528\u52a8\u91cf\u5d29\u6e83\u5356\u51fa",
+  "total_return": 35.09,
+  "max_drawdown": 10.23,
+  "sharpe": 0.81,
+  "trade_count": 130,
+  "elapsed_sec": 566.0
+}

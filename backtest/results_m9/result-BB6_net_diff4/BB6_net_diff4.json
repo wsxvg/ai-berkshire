@@ -1,0 +1,9 @@
+{
+  "name": "BB6_net_diff4",
+  "label": "BB6:\u51c0\u4fe1\u53f7+\u5dee\u503c>=4",
+  "total_return": 30.59,
+  "max_drawdown": 9.64,
+  "sharpe": 0.5,
+  "trade_count": 77,
+  "elapsed_sec": 181.3
+}

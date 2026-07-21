@@ -1,0 +1,9 @@
+{
+  "name": "BB10_net_topn10",
+  "label": "BB10:\u51c0\u4fe1\u53f7+\u524d10\u9009\u57fa",
+  "total_return": 58.08,
+  "max_drawdown": 9.99,
+  "sharpe": 1.09,
+  "trade_count": 170,
+  "elapsed_sec": 579.9
+}

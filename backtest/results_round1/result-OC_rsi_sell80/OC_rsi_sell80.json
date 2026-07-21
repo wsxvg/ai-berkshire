@@ -1,0 +1,9 @@
+{
+  "name": "OC_rsi_sell80",
+  "label": "OC:RSI>80\u535630%",
+  "total_return": 14.98,
+  "max_drawdown": 7.45,
+  "sharpe": 0.2,
+  "trade_count": 418,
+  "elapsed_sec": 581.4
+}

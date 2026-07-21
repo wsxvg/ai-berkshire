@@ -1,0 +1,9 @@
+{
+  "name": "S1_mom_adj",
+  "label": "S1:\u52a8\u91cf\u9608\u503c\u52a8\u6001\u8c03\u6574(\u4e8f\u4e25\u76c8\u677e)",
+  "total_return": 52.28,
+  "max_drawdown": 10.47,
+  "sharpe": 1.0,
+  "trade_count": 177,
+  "elapsed_sec": 587.8
+}

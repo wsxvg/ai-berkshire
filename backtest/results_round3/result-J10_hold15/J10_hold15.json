@@ -1,0 +1,9 @@
+{
+  "name": "J10_hold15",
+  "label": "J10:\u6700\u4f4e\u6301\u670915\u5929(\u5feb\u8f6e)",
+  "total_return": 56.11,
+  "max_drawdown": 9.74,
+  "sharpe": 1.08,
+  "trade_count": 172,
+  "elapsed_sec": 588.0
+}
