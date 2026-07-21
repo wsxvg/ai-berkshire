@@ -232,6 +232,20 @@ def run():
     else:
         print("0.5/0.6 跳过 (simulate 模式用缓存)")
 
+    # 0.7 增量更新已有基金的净值数据（确保 fund_charts 不是过期数据）
+    if not _args.simulate_date:
+        print("0.7 增量更新基金净值...")
+        try:
+            from scripts.update_fund_charts import update_charts_file
+            update_charts_file(PROJECT / "data" / "fund_charts.json", max_funds=0)
+            # 重新加载更新后的 fund_charts
+            global fund_charts
+            fund_charts = json.loads((PROJECT / "data" / "fund_charts.json").read_text("utf-8"))
+        except Exception as e:
+            print(f"   增量更新失败(非致命): {e}")
+    else:
+        print("0.7 跳过 (simulate 模式用缓存)")
+
     # 1. 自选 + 大佬信号
     print("1. 数据...")
     # simulate 模式: use_cache=True (避免重复抓, 用上次缓存)

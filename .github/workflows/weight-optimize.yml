@@ -1,0 +1,70 @@
+name: 五维权重优化回测
+
+on:
+  workflow_dispatch:            # 手动触发
+    inputs:
+      part:
+        description: '运行哪部分 (1=关联分析 2=权重网格搜索 3=凯利参数扫描 all=全部)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - '1'
+          - '2'
+          - '3'
+
+permissions:
+  contents: write
+
+jobs:
+  weight-optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安装依赖
+        run: |
+          pip install lightgbm scikit-learn numpy
+          pip install chinese_calendar
+
+      - name: 增量更新回测数据
+        run: |
+          echo "── 更新回测数据 fund_charts.json ──"
+          python scripts/update_fund_charts.py --backtest --max-funds 0
+
+      - name: 提交更新后的数据
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backtest/data/fund_charts.json data/fund_charts.json
+          git diff --cached --quiet || git commit -m "数据更新(权重优化前) $(date +%Y-%m-%d)"
+          git push || echo "push skipped"
+
+      - name: 运行五维权重优化
+        run: |
+          PART="${{ github.event.inputs.part || 'all' }}"
+          echo "运行部分: $PART"
+          if [ "$PART" = "all" ]; then
+            python backtest/weight_optimizer.py --all
+          else
+            python backtest/weight_optimizer.py --part $PART
+          fi
+
+      - name: 提交优化结果
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backtest/reports/score_correlation_analysis.json
+          git add backtest/reports/weight_grid_search.json
+          git add backtest/reports/weight_grid_fine.json
+          git add backtest/reports/kelly_param_scan.json
+          git diff --cached --quiet || git commit -m "权重优化结果 $(date +%Y-%m-%d)"
+          git push || echo "push skipped"

@@ -16,7 +16,7 @@ env:
 jobs:
   daily-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
@@ -47,6 +47,22 @@ jobs:
             echo "已过北京时间14:30，直接执行"
           fi
           echo "执行时间(北京): $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
+
+      - name: 增量更新基金净值数据
+        run: |
+          echo "── 更新 data/fund_charts.json (实盘用) ──"
+          python scripts/update_fund_charts.py --max-funds 0
+          echo "── 更新 backtest/data/fund_charts.json (回测用) ──"
+          python scripts/update_fund_charts.py --backtest --max-funds 0
+
+      - name: 提交更新后的基金数据
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/fund_charts.json backtest/data/fund_charts.json
+          git diff --cached --quiet || git commit -m "数据更新 $(date +%Y-%m-%d)"
+          git push || echo "push skipped (no changes or behind remote)"
+          git pull --rebase origin main || echo "pull skipped"
 
       - name: 运行冠军策略实盘模拟 (含飞书推送)
         run: python scripts/daily_live.py
