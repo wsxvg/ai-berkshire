@@ -1,0 +1,70 @@
+name: Backtest Matrix 7 (Parameter Sweep 113)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          PS_kelly_cap_0p1, PS_kelly_cap_0p15, PS_kelly_cap_0p2, PS_kelly_cap_0p25, PS_kelly_cap_0p3,
+          PS_kelly_cap_0p4, PS_kelly_cap_0p45, PS_kelly_cap_0p5, PS_momentum_sell_0p5, PS_momentum_sell_1p0,
+          PS_momentum_sell_2p0, PS_momentum_sell_2p5, PS_momentum_sell_3p0, PS_take_profit_pct_30, PS_take_profit_pct_50,
+          PS_take_profit_pct_70, PS_take_profit_pct_80, PS_take_profit_pct_90, PS_take_profit_pct_120, PS_take_profit_pct_150,
+          PS_stop_loss_pct_m10, PS_stop_loss_pct_m15, PS_stop_loss_pct_m20, PS_stop_loss_pct_m25, PS_stop_loss_pct_m35,
+          PS_stop_loss_pct_m40, PS_stop_loss_pct_m50, PS_max_position_pct_10, PS_max_position_pct_15, PS_max_position_pct_20,
+          PS_max_position_pct_25, PS_max_position_pct_30, PS_max_position_pct_35, PS_max_position_pct_45, PS_max_position_pct_50,
+          PS_cash_reserve_pct_0, PS_cash_reserve_pct_0p02, PS_cash_reserve_pct_0p03, PS_cash_reserve_pct_0p08, PS_cash_reserve_pct_0p1,
+          PS_cash_reserve_pct_0p15, PS_cash_reserve_pct_0p2, PS_min_consensus_1, PS_min_consensus_3, PS_min_consensus_4,
+          PS_min_consensus_5, PS_max_holdings_3, PS_max_holdings_5, PS_max_holdings_8, PS_max_holdings_10,
+          PS_max_holdings_12, PS_max_holdings_15, PS_max_holdings_20, PS_max_correlation_0p3, PS_max_correlation_0p4,
+          PS_max_correlation_0p5, PS_max_correlation_0p7, PS_max_correlation_0p8, PS_max_correlation_0p9, PS_max_correlation_1p0,
+          PS_max_sector_pct_20, PS_max_sector_pct_25, PS_max_sector_pct_30, PS_max_sector_pct_35, PS_max_sector_pct_50,
+          PS_max_sector_pct_60, PS_max_sector_pct_100, PS_cooldown_profit_days_0, PS_cooldown_profit_days_5, PS_cooldown_profit_days_15,
+          PS_cooldown_profit_days_20, PS_cooldown_profit_days_30, PS_cooldown_loss_days_0, PS_cooldown_loss_days_10, PS_cooldown_loss_days_20,
+          PS_cooldown_loss_days_45, PS_cooldown_loss_days_60, PS_profit_mode_all, PS_profit_mode_half, PS_profit_mode_quarter,
+          PS_trail_act20_dd5, PS_trail_act20_dd8, PS_trail_act20_dd12, PS_trail_act10_dd5, PS_trail_act10_dd8,
+          PS_trail_act15_dd8, PS_trail_act15_dd5, PS_trail_act25_dd10, PS_trail_act30_dd8, PS_rsi_block_65,
+          PS_rsi_block_70, PS_rsi_block_75, PS_rsi_block_85, PC_kelly_cap0p4_momentum_sell1p0, PC_kelly_cap0p4_momentum_sell2p0,
+          PC_kelly_cap0p3_take_profit_pct80, PC_kelly_cap0p45_max_position_pct50, PC_momentum_sell1p0_stop_loss_pctm15, PC_momentum_sell2p0_take_profit_pct150, PC_momentum_sell1p0_kelly_cap0p45,
+          PC_momentum_sell2p0_kelly_cap0p3, PC_max_position_pct50_kelly_cap0p45, PC_max_position_pct30_kelly_cap0p3, PC_cash_reserve_pct0p1_max_position_pct30, PC_cash_reserve_pct0p02_kelly_cap0p4,
+          PC_take_profit_pct80_profit_modehalf, PC_take_profit_pct150_momentum_sell2p0, PC_stop_loss_pctm15_momentum_sell1p0, PC_stop_loss_pctm20_max_position_pct50, PC_max_holdings5_kelly_cap0p45,
+          PC_max_holdings10_max_position_pct30, PC_max_correlation0p4_max_holdings10, PC_max_sector_pct30_max_holdings10
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-7
+          path: backtest/reports/unified_backtest_summary.json

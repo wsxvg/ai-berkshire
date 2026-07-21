@@ -218,6 +218,14 @@ LABELS = {
     "X3_lgb_ma50": "X3:LGB预测+MA50破位",
 }
 
+# 导入参数扫描配置（113个自动生成的测试）
+try:
+    from backtest.sweep_configs import SWEEP_CONFIGS, SWEEP_LABELS
+    TEST_CONFIGS.update(SWEEP_CONFIGS)
+    LABELS.update(SWEEP_LABELS)
+except ImportError:
+    pass
+
 
 def main():
     if len(sys.argv) < 2:
