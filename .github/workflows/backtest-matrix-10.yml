@@ -1,0 +1,65 @@
+name: Backtest Matrix 10 (FA+FB+FC+FD+FE - KDJ & Momentum Acceleration)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          # FA: KDJ买入过滤（10个）
+          FA1_kdj_block80, FA2_kdj_block70, FA3_kdj_block60,
+          FA4_kdj_oversold, FA5_kdj_oversold30, FA6_kdj_golden,
+          FA7_w_kdj_block80, FA8_w_kdj_block70, FA9_w_kdj_oversold, FA10_w_kdj_golden,
+          # FB: KDJ卖出过滤（6个）
+          FB1_kdj_sell_death, FB2_kdj_sell_overexit,
+          FB3_w_kdj_sell_death, FB4_w_kdj_sell_overexit,
+          FB5_kdj_buy_block_sell_death, FB6_w_kdj_buy_sell,
+          # FC: 动量加速检测（10个）
+          FC1_maccel_block, FC2_maccel_block_20, FC3_maccel_block_40,
+          FC4_maccel_ratio2, FC5_maccel_ratio1,
+          FC6_maccel_sell, FC7_maccel_sell_20,
+          FC8_w_maccel_block, FC9_w_maccel_block_20, FC10_w_maccel_sell,
+          # FD: KDJ+动量加速组合（5个）
+          FD1_kdj_maccel, FD2_kdj_maccel_sell,
+          FD3_w_kdj_maccel, FD4_w_kdj_maccel_sell, FD5_w_kdj_sell_maccel,
+          # FE: 三合一极限组合（4个）
+          FE1_w_kdj_maccel_net, FE2_w_kdj_sell_maccel_sell,
+          FE3_w_kdj_buy_sell_maccel, FE4_w_kdj_golden_maccel
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+      - name: Collect all results
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-results-summary
+          path: backtest/results/all_results.json

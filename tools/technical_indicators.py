@@ -540,3 +540,170 @@ def compute_ma_250(nav_values: List[float]) -> Tuple[float, float, bool]:
     ma_250 = statistics.mean(nav_values[-250:])
     above_ma = current > ma_250
     return (current, ma_250, above_ma)
+
+
+# ============================================================
+# KDJ 指标 — 随机指标，对基金净值格外有效
+# ============================================================
+
+def compute_kdj(nav_values: List[float], n: int = 9,
+                k_prev: float = 50.0, d_prev: float = 50.0) -> Tuple[float, float, float]:
+    """计算 KDJ 随机指标。
+
+    KDJ 对基金有效的原因：
+    - 基金净值波动比股票小，KDJ的钝化现象更少
+    - 基金没有盘口博弈，净值反映的是底层资产真实走势
+    - KDJ的超买超卖信号在基金上更稳定可靠
+
+    算法：
+    - RSV = (Close - Low_N) / (High_N - Low_N) * 100
+    - K = 2/3 * K_prev + 1/3 * RSV
+    - D = 2/3 * D_prev + 1/3 * K
+    - J = 3*K - 2*D
+
+    判读：
+    - K>D: 金叉（买入信号）
+    - K<D: 死叉（卖出信号）
+    - J>100: 极度超买
+    - J<0: 极度超卖
+    - K<20且D<20: 超卖区
+    - K>80且D>80: 超买区
+
+    Args:
+        nav_values: 净值序列
+        n: RSV计算周期，默认9
+        k_prev: 前一日K值，默认50
+        d_prev: 前一日D值，默认50
+
+    Returns: (K, D, J)
+    """
+    if len(nav_values) < n:
+        return (50.0, 50.0, 50.0)
+
+    recent = nav_values[-n:]
+    high_n = max(recent)
+    low_n = min(recent)
+    close = nav_values[-1]
+
+    if high_n == low_n:
+        rsv = 50.0
+    else:
+        rsv = (close - low_n) / (high_n - low_n) * 100
+
+    k = 2/3 * k_prev + 1/3 * rsv
+    d = 2/3 * d_prev + 1/3 * k
+    j = 3 * k - 2 * d
+
+    return (k, d, j)
+
+
+def compute_kdj_series(nav_values: List[float], n: int = 9) -> List[Tuple[float, float, float]]:
+    """计算完整KDJ序列（用于回测中追踪历史KDJ值）。
+
+    Returns: [(K, D, J), ...] 与 nav_values 等长
+    """
+    if len(nav_values) < n:
+        return [(50.0, 50.0, 50.0)] * len(nav_values)
+
+    result = [(50.0, 50.0, 50.0)] * (n - 1)
+    k_prev, d_prev = 50.0, 50.0
+
+    for i in range(n - 1, len(nav_values)):
+        recent = nav_values[i - n + 1: i + 1]
+        high_n = max(recent)
+        low_n = min(recent)
+        close = nav_values[i]
+
+        if high_n == low_n:
+            rsv = 50.0
+        else:
+            rsv = (close - low_n) / (high_n - low_n) * 100
+
+        k = 2/3 * k_prev + 1/3 * rsv
+        d = 2/3 * d_prev + 1/3 * k
+        j = 3 * k - 2 * d
+
+        result.append((k, d, j))
+        k_prev, d_prev = k, d
+
+    return result
+
+
+# ============================================================
+# 动量加速检测 — 3月涨幅+1月加速判断高位风险
+# ============================================================
+
+def detect_momentum_acceleration(nav_values: List[float],
+                                  period_3m: int = 63,
+                                  period_1m: int = 21,
+                                  threshold_3m: float = 30.0,
+                                  accel_ratio: float = 1.5) -> dict:
+    """检测动量加速——越涨越快往往意味着情绪推动而非业绩支撑。
+
+    策略逻辑（用户描述）：
+    1. 看近3个月涨幅，如果涨了接近30%或更多，说明短期已有明显涨幅
+    2. 算月均涨幅 = 3月涨幅 / 3
+    3. 看近1个月涨幅，如果明显超过月均（如月均10%但近1月涨15%+），说明在加速
+    4. 加速 = 情绪推动，前期进去的人可能准备收尾 → 入场要谨慎
+
+    判读：
+    - ret_3m < 30%: 正常，不预警
+    - ret_3m >= 30% 且 ret_1m > monthly_avg * accel_ratio: 动量加速，预警
+    - ret_3m >= 30% 但 ret_1m <= monthly_avg: 涨幅均匀，正常
+
+    Args:
+        nav_values: 净值序列
+        period_3m: 3个月交易日数（默认63）
+        period_1m: 1个月交易日数（默认21）
+        threshold_3m: 3月涨幅预警阈值（默认30%）
+        accel_ratio: 加速倍数（近1月涨幅超过月均的多少倍算加速，默认1.5）
+
+    Returns: {
+        "ret_3m": float,        # 3月涨幅%
+        "ret_1m": float,        # 1月涨幅%
+        "monthly_avg": float,   # 月均涨幅%
+        "is_high_gain": bool,   # 3月涨幅是否超过阈值
+        "is_accelerating": bool,# 是否在加速
+        "should_warn": bool,    # 是否发出预警
+        "severity": float,      # 严重程度 0-1
+    }
+    """
+    if len(nav_values) < max(period_3m, period_1m) + 1:
+        return {
+            "ret_3m": 0, "ret_1m": 0, "monthly_avg": 0,
+            "is_high_gain": False, "is_accelerating": False,
+            "should_warn": False, "severity": 0,
+        }
+
+    cur = nav_values[-1]
+
+    # 3月涨幅
+    nav_3m_ago = nav_values[-period_3m - 1] if len(nav_values) > period_3m else nav_values[0]
+    ret_3m = (cur / nav_3m_ago - 1) * 100 if nav_3m_ago > 0 else 0
+
+    # 1月涨幅
+    nav_1m_ago = nav_values[-period_1m - 1] if len(nav_values) > period_1m else nav_values[0]
+    ret_1m = (cur / nav_1m_ago - 1) * 100 if nav_1m_ago > 0 else 0
+
+    # 月均涨幅
+    monthly_avg = ret_3m / 3.0
+
+    is_high_gain = ret_3m >= threshold_3m
+    is_accelerating = is_high_gain and monthly_avg > 0 and ret_1m > monthly_avg * accel_ratio
+    should_warn = is_high_gain and is_accelerating
+
+    # 严重程度：基于加速程度
+    if should_warn and monthly_avg > 0:
+        severity = min(1.0, (ret_1m / monthly_avg - 1) / 2.0)
+    else:
+        severity = 0
+
+    return {
+        "ret_3m": round(ret_3m, 2),
+        "ret_1m": round(ret_1m, 2),
+        "monthly_avg": round(monthly_avg, 2),
+        "is_high_gain": is_high_gain,
+        "is_accelerating": is_accelerating,
+        "should_warn": should_warn,
+        "severity": round(severity, 2),
+    }

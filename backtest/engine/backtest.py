@@ -71,6 +71,7 @@ except ImportError:
 from tools.technical_indicators import compute_entry_timing_score, compute_rsi, ma_trend
 # 长周期技术指标（周线MACD背离/年线/周线布林带）
 from tools.technical_indicators import compute_macd_divergence, compute_weekly_bollinger, compute_ma_250
+from tools.technical_indicators import compute_kdj, compute_kdj_series, detect_momentum_acceleration
 
 # 市场风险预警系统（方案B）
 try:
@@ -2009,6 +2010,67 @@ def run_backtest(config):
                         filtered.append(c)
             candidates = filtered
 
+        # 方案KDJ：KDJ买入过滤 — KDJ超买区不买/超卖区才买/金叉才买
+        _kdj_buy_mode = config.get("kdj_buy_mode", "")  # "block_overbought" / "oversold_only" / "golden_cross"
+        _kdj_n = config.get("kdj_n", 9)
+        _kdj_overbought_k = config.get("kdj_overbought_k", 80)
+        _kdj_oversold_k = config.get("kdj_oversold_k", 20)
+        if _kdj_buy_mode and candidates:
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) < _kdj_n + 1:
+                    filtered.append(c)  # 数据不足不过滤
+                    continue
+                _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                _ck, _cd, _cj = compute_kdj(_cnavs, _kdj_n)
+                if _kdj_buy_mode == "block_overbought":
+                    # K>D且K>overbought → 超买，不买
+                    if _ck > _kdj_overbought_k:
+                        continue
+                    filtered.append(c)
+                elif _kdj_buy_mode == "oversold_only":
+                    # 只在K<oversold时买入
+                    if _ck < _kdj_oversold_k:
+                        filtered.append(c)
+                elif _kdj_buy_mode == "golden_cross":
+                    # 需要KDJ序列判断金叉
+                    _kdj_series = compute_kdj_series(_cnavs, _kdj_n)
+                    if len(_kdj_series) >= 2:
+                        _k1, _d1, _ = _kdj_series[-2]
+                        _k2, _d2, _ = _kdj_series[-1]
+                        # 金叉：前一天K<D，今天K>D
+                        if _k1 <= _d1 and _k2 > _d2:
+                            filtered.append(c)
+                    # 非金叉但K>D也允许（趋势向上）
+                    elif _ck > _cd:
+                        filtered.append(c)
+                else:
+                    filtered.append(c)
+            if filtered:
+                candidates = filtered
+
+        # 方案MACCEL：动量加速检测 — 3月涨30%+1月加速 → 不买（高位预警）
+        _maccel_enabled = config.get("maccel_block", False)
+        _maccel_3m = config.get("maccel_3m_threshold", 30.0)
+        _maccel_ratio = config.get("maccel_ratio", 1.5)
+        if _maccel_enabled and candidates:
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) < 64:
+                    filtered.append(c)  # 数据不足不过滤
+                    continue
+                _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                _ma = detect_momentum_acceleration(_cnavs, threshold_3m=_maccel_3m, accel_ratio=_maccel_ratio)
+                if _ma["should_warn"]:
+                    continue  # 动量加速，跳过
+                filtered.append(c)
+            if filtered:
+                candidates = filtered
+
         # 方案U4：相对强度买入 — 只买跑赢基准的基金
         _rel_strength = config.get("relative_strength_buy", False)
         if _rel_strength and candidates and _bm_nav_values and len(_bm_nav_values) >= 20:
@@ -2252,6 +2314,42 @@ def run_backtest(config):
             if mom.score < _mom_sell_actual and _market_state != "bull":
                 should_sell = True
                 sell_reason = f"momentum_crash mom={mom.score:.2f} threshold={_mom_sell_actual:.2f}"
+
+            # KDJ死叉卖出 — K下穿D且在超买区
+            _kdj_sell_mode = config.get("kdj_sell_mode", "")  # "death_cross" / "overbought_exit"
+            if _kdj_sell_mode and not should_sell:
+                try:
+                    _sell_navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    if len(_sell_navs) >= 11:
+                        _kdj_s = compute_kdj_series(_sell_navs, _kdj_n)
+                        if len(_kdj_s) >= 2:
+                            _pk, _pd, _pj = _kdj_s[-2]
+                            _ck, _cd, _cj = _kdj_s[-1]
+                            if _kdj_sell_mode == "death_cross":
+                                # 死叉：前一天K>D，今天K<D
+                                if _pk >= _pd and _ck < _cd:
+                                    should_sell = True
+                                    sell_reason = f"kdj_death_cross K={_ck:.1f} D={_cd:.1f}"
+                            elif _kdj_sell_mode == "overbought_exit":
+                                # 超买区死叉：K>80时K下穿D
+                                if _pk > _kdj_overbought_k and _pk >= _pd and _ck < _cd:
+                                    should_sell = True
+                                    sell_reason = f"kdj_overbought_exit K={_ck:.1f} D={_cd:.1f}"
+                except Exception:
+                    pass
+
+            # 动量加速卖出 — 持仓中基金出现3月涨30%+1月加速 → 获利了结
+            _maccel_sell = config.get("maccel_sell", False)
+            if _maccel_sell and not should_sell and cum_return > 0:
+                try:
+                    _sell_navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    if len(_sell_navs) >= 64:
+                        _ma = detect_momentum_acceleration(_sell_navs, threshold_3m=_maccel_3m, accel_ratio=_maccel_ratio)
+                        if _ma["should_warn"]:
+                            should_sell = True
+                            sell_reason = f"maccel_sell 3m={_ma['ret_3m']:.1f}% 1m={_ma['ret_1m']:.1f}% avg={_ma['monthly_avg']:.1f}%"
+                except Exception:
+                    pass
 
             # 🟡 OpenClaw策略：RSI超买卖出 — RSI>阈值且盈利中，部分卖出锁利
             _rsi_sell_threshold = config.get("rsi_sell_threshold", 0)
