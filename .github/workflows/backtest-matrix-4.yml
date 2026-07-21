@@ -1,0 +1,57 @@
+name: Backtest Matrix 4 (Sell Optimization S)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'backtest/engine/backtest.py'
+      - 'backtest/run_single_test.py'
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          S1_mom_adj, S2_loss_hold30, S2b_loss_hold15, S3_tp_trail_dyn,
+          S4_mom_decay5, S4b_mom_decay10,
+          S5_mom_adj_trail, S6_trail_atr, S7_mom_adj_decay,
+          S8_profit_all, S9_profit_quarter, S10_no_mom_crash, S11_mom_crash_bull,
+          S12_trail_act15, S13_trail_act30, S14_trail_act10_dd5, S15_combo
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-4
+          path: backtest/reports/unified_backtest_summary.json

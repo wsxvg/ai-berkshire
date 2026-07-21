@@ -72,6 +72,28 @@ TEST_CONFIGS = {
     "K1_value_trend": {"min_score": 4.0, "ma20_trend_buy": True},
     "K2_event_v2": {"ma20_trend_buy": True, "stop_loss_pct": -15},
     "K3_all_buy_filters": {"ma20_trend_buy": True, "macd_golden_cross_buy": True, "momentum_breakout_days": 60},
+    # 方案S：卖出优化（全新方向）
+    "S1_mom_adj": {"momentum_sell": 1.5, "momentum_sell_adjust": 0.3},
+    "S2_loss_hold30": {"loss_hold_days": 30},
+    "S2b_loss_hold15": {"loss_hold_days": 15},
+    "S3_tp_trail_dyn": {"tp_trail_dynamic": True},
+    "S4_mom_decay5": {"mom_decay_days": 5},
+    "S4b_mom_decay10": {"mom_decay_days": 10},
+    # 卖出组合
+    "S5_mom_adj_trail": {"momentum_sell": 1.5, "momentum_sell_adjust": 0.3, "tp_trail_dynamic": True},
+    "S6_trail_atr": {"tp_trail_dynamic": True, "atr_stop_loss_mult": 2.0},
+    "S7_mom_adj_decay": {"momentum_sell": 1.5, "momentum_sell_adjust": 0.3, "mom_decay_days": 5},
+    # profit_mode变体
+    "S8_profit_all": {"take_profit_pct": 80, "profit_mode": "all"},
+    "S9_profit_quarter": {"take_profit_pct": 30, "profit_mode": "quarter"},
+    "S10_no_mom_crash": {"momentum_sell": 0.0},  # 完全禁用动量崩溃卖出
+    "S11_mom_crash_bull": {"momentum_sell": 1.5},  # 牛市也触发（去掉market_state!=bull条件）
+    # trailing_tp激活
+    "S12_trail_act15": {"trailing_tp_activate": 15, "trailing_tp_drawdown": 10},
+    "S13_trail_act30": {"trailing_tp_activate": 30, "trailing_tp_drawdown": 8},
+    "S14_trail_act10_dd5": {"trailing_tp_activate": 10, "trailing_tp_drawdown": 5},
+    # 组合：动量调整+移动止盈+宽松止盈
+    "S15_combo": {"momentum_sell": 1.5, "momentum_sell_adjust": 0.3, "tp_trail_dynamic": True, "trailing_tp_activate": 20, "trailing_tp_drawdown": 8},
 }
 
 LABELS = {
@@ -125,6 +147,23 @@ LABELS = {
     "K1_value_trend": "K1:价值+趋势(高门槛+MA20)",
     "K2_event_v2": "K2:事件驱动V2(MA20+止15%)",
     "K3_all_buy_filters": "K3:全部买入过滤(MA20+MACD+突破)",
+    "S1_mom_adj": "S1:动量阈值动态调整(亏严盈松)",
+    "S2_loss_hold30": "S2:亏损持有30天止损",
+    "S2b_loss_hold15": "S2b:亏损持有15天止损",
+    "S3_tp_trail_dyn": "S3:动态移动止盈(越赚越紧)",
+    "S4_mom_decay5": "S4:动量衰退5天卖出",
+    "S4b_mom_decay10": "S4b:动量衰退10天卖出",
+    "S5_mom_adj_trail": "S5:动量调整+动态止盈",
+    "S6_trail_atr": "S6:动态止盈+ATR止损",
+    "S7_mom_adj_decay": "S7:动量调整+衰退卖出",
+    "S8_profit_all": "S8:80%全卖止盈",
+    "S9_profit_quarter": "S9:30%卖1/4止盈",
+    "S10_no_mom_crash": "S10:禁用动量崩溃卖出",
+    "S11_mom_crash_bull": "S11:牛市也触发动量崩溃",
+    "S12_trail_act15": "S12:15%激活移动止盈10%",
+    "S13_trail_act30": "S13:30%激活移动止盈8%",
+    "S14_trail_act10_dd5": "S14:10%激活移动止盈5%",
+    "S15_combo": "S15:组合(动量调整+动态止盈+移动止盈)",
 }
 
 

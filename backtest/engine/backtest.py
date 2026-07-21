@@ -2117,9 +2117,17 @@ def run_backtest(config):
                         sell_reason = f"big_sell {sc}人"
 
             # 🔴 动量崩溃: 动量分低于阈值（牛市不触发，减少假信号）
-            if mom.score < mom_sell and _market_state != "bull":
+            _mom_sell_actual = mom_sell
+            # 方案S1: 动量崩溃阈值调整 — 浮亏时更严格，浮盈时更宽松
+            _mom_adj = config.get("momentum_sell_adjust", 0)
+            if _mom_adj > 0:
+                if cum_return < 0:
+                    _mom_sell_actual = mom_sell * (1 - _mom_adj)  # 亏损时更严格(更低才卖)
+                elif cum_return > 30:
+                    _mom_sell_actual = mom_sell * (1 + _mom_adj)  # 盈利时更宽松
+            if mom.score < _mom_sell_actual and _market_state != "bull":
                 should_sell = True
-                sell_reason = f"momentum_crash mom={mom.score:.2f}"
+                sell_reason = f"momentum_crash mom={mom.score:.2f} threshold={_mom_sell_actual:.2f}"
 
             # 🟡 OpenClaw策略：RSI超买卖出 — RSI>阈值且盈利中，部分卖出锁利
             _rsi_sell_threshold = config.get("rsi_sell_threshold", 0)
@@ -2174,6 +2182,40 @@ def run_backtest(config):
                 if _hold_days >= _time_stop_days and cum_return < _time_stop_profit:
                     should_sell = True
                     sell_reason = f"time_stop {_hold_days}d profit={cum_return:.1f}%"
+
+            # 方案S2: 盈利保护卖出 — 浮亏>阈值且持续N天 → 卖出止损
+            _loss_hold_days = config.get("loss_hold_days", 0)
+            if _loss_hold_days > 0 and cum_return < -10 and code in portfolio.holdings:
+                _hold_d = portfolio._holding_days(code, cutoff_full)
+                if _hold_d >= _loss_hold_days:
+                    should_sell = True
+                    sell_reason = f"loss_hold {_hold_d}d return={cum_return:.1f}%"
+
+            # 方案S3: 动态移动止盈 — 浮盈越高，回撤阈值越紧
+            _tp_trail_dynamic = config.get("tp_trail_dynamic", False)
+            if _tp_trail_dynamic and cum_return > 20 and code in portfolio.holdings:
+                # 20%盈利→回撤12%卖, 40%→8%, 60%→6%, 80%+→5%
+                _trail_dd = max(5, 14 - int(cum_return / 20))
+                if drawdown_from_peak < -_trail_dd:
+                    should_sell = True
+                    sell_reason = f"tp_trail_dynamic profit={cum_return:.1f}% dd={drawdown_from_peak:.1f}% threshold={_trail_dd}%"
+
+            # 方案S4: 动量衰退卖出 — 动量分连续N天下隆 → 提前离场
+            _mom_decay_days = config.get("mom_decay_days", 0)
+            if _mom_decay_days > 0 and code in portfolio.holdings and cum_return > 5:
+                _decay_key = f"_mom_history_{code}"
+                if not hasattr(portfolio, _decay_key):
+                    setattr(portfolio, _decay_key, [])
+                _mom_hist = getattr(portfolio, _decay_key)
+                _mom_hist.append(mom.score)
+                if len(_mom_hist) > _mom_decay_days:
+                    _mom_hist.pop(0)
+                if len(_mom_hist) >= _mom_decay_days:
+                    _recent_avg = statistics.mean(_mom_hist[-_mom_decay_days:])
+                    _prev_avg = statistics.mean(_mom_hist[:-1]) if len(_mom_hist) > 1 else _recent_avg
+                    if _recent_avg < _prev_avg * 0.8:  # 动量下降20%
+                        should_sell = True
+                        sell_reason = f"mom_decay {_mom_decay_days}d avg={_recent_avg:.2f} prev={_prev_avg:.2f}"
 
             # 🔴 方案D2：ATR动态止损 — 止损线随波动率自适应
             _atr_mult = config.get("atr_stop_loss_mult", 0)
