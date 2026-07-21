@@ -1199,32 +1199,49 @@ class Portfolio:
 
 # ── 资金分配器（回测版）──
 
-def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15, market_discount=1.0, kelly_fraction=0.5, max_single_buy_pct=0.30):
+def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_pos=0.15, market_discount=1.0, kelly_fraction=0.5, max_single_buy_pct=0.30, equal_allocate=False):
     """凯利分配。kelly_fraction控制凯利系数(0.5=半凯利, 1.0=全凯利)。
     market_discount: 长周期调整因子（默认1.0，顶背离×0.7、布帶上轨×0.8等）
+    equal_allocate: True=等额分配(不按评分差异化), False=凯利差异化分配
     
     改进：限额感知的资金重分配。当一个基金因day_limit只能买少量时，
     把剩余资金重新分配给后续无限额或限额充足的基金，避免现金闲置。
     """
     available = total_cash * (1 - cash_reserve) * market_discount
-    for c in candidates:
-        p = c["score"] / 5.0
-        b = max(p * 2, 0.5)
-        kelly = max(0, min((p * b - (1 - p)) / b, kelly_cap))
-        # 凯利分数: kelly_fraction=0.5半凯利, 1.0全凯利
-        kelly = kelly * kelly_fraction
-        suggested = available * kelly * c["score"] / 5.0
-        _raw_suggested = suggested  # 限额截断前的原始建议金额
-        if c["day_limit"] and c["day_limit"] < 999999:
-            suggested = min(suggested, c["day_limit"])
-        # 硬上限: 单只基金不超过总资产max_pos%, 单次不超过可用现金max_single_buy_pct
-        _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100  # 支持 sector bonus 覆盖
-        suggested = min(suggested, total_cash * _eff_max_pos)  # max_pos 默认0.15=15%
-        suggested = min(suggested, available * max_single_buy_pct)  # 单次不超过可用现金max_single_buy_pct
-        suggested = round(suggested / 100) * 100
-        c["_suggested"] = suggested
-        c["_raw_suggested"] = round(_raw_suggested / 100) * 100  # 保存原始建议（限额截断前）
-        c["_capped_by_limit"] = _raw_suggested > suggested + 100  # 是否被限额截断
+    if equal_allocate:
+        # 等额分配：每只基金分配 available / N，受max_pos和max_single_buy_pct上限
+        _n = max(len(candidates), 1)
+        _per = available / _n
+        for c in candidates:
+            suggested = _per
+            if c["day_limit"] and c["day_limit"] < 999999:
+                suggested = min(suggested, c["day_limit"])
+            _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100
+            suggested = min(suggested, total_cash * _eff_max_pos)
+            suggested = min(suggested, available * max_single_buy_pct)
+            suggested = round(suggested / 100) * 100
+            c["_suggested"] = suggested
+            c["_raw_suggested"] = suggested
+            c["_capped_by_limit"] = False
+    else:
+        for c in candidates:
+            p = c["score"] / 5.0
+            b = max(p * 2, 0.5)
+            kelly = max(0, min((p * b - (1 - p)) / b, kelly_cap))
+            # 凯利分数: kelly_fraction=0.5半凯利, 1.0全凯利
+            kelly = kelly * kelly_fraction
+            suggested = available * kelly * c["score"] / 5.0
+            _raw_suggested = suggested  # 限额截断前的原始建议金额
+            if c["day_limit"] and c["day_limit"] < 999999:
+                suggested = min(suggested, c["day_limit"])
+            # 硬上限: 单只基金不超过总资产max_pos%, 单次不超过可用现金max_single_buy_pct
+            _eff_max_pos = c.get("_max_pos_override", max_pos * 100) / 100  # 支持 sector bonus 覆盖
+            suggested = min(suggested, total_cash * _eff_max_pos)  # max_pos 默认0.15=15%
+            suggested = min(suggested, available * max_single_buy_pct)  # 单次不超过可用现金max_single_buy_pct
+            suggested = round(suggested / 100) * 100
+            c["_suggested"] = suggested
+            c["_raw_suggested"] = round(_raw_suggested / 100) * 100  # 保存原始建议（限额截断前）
+            c["_capped_by_limit"] = _raw_suggested > suggested + 100  # 是否被限额截断
 
     candidates.sort(key=lambda x: x["score"], reverse=True)
     allocated = 0
@@ -2713,7 +2730,8 @@ def run_backtest(config):
             max_pos=_dyn_max_pos / 100,
             market_discount=_market_discount,
             kelly_fraction=_dyn_kelly_frac,
-            max_single_buy_pct=config.get("max_single_buy_pct", 0.30))
+            max_single_buy_pct=config.get("max_single_buy_pct", 0.30),
+            equal_allocate=config.get("equal_allocate", False))
         for c in to_buy:
             # 最大持仓数限制
             max_holdings = config.get("max_holdings", 0)

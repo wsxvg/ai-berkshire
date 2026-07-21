@@ -291,6 +291,10 @@ TEST_CONFIGS = {
     "GA19_mom126_top20_w42": {"signal_source": "momentum", "momentum_lookback": 126, "momentum_top_n": 20, "min_consensus": 1, "momentum_rebalance_days": 42},
     # 大池子
     "GA20_mom63_top30": {"signal_source": "momentum", "momentum_lookback": 63, "momentum_top_n": 30, "min_consensus": 1},
+# ═══ 方案EQ：等额分配 vs Y5凯利差异化分配对比 ═══
+"EQ1_equal_alloc": {"use_weighted_consensus": True, "equal_allocate": True},
+"EQ2_equal_full_kelly": {"use_weighted_consensus": True, "equal_allocate": True, "kelly_fraction": 1.0},
+"EQ3_y5_full_kelly": {"use_weighted_consensus": True, "kelly_fraction": 1.0},
 }
 
 LABELS = {
@@ -524,6 +528,9 @@ LABELS = {
     "GA18_mom126_top10_w42": "GA18:长期动量126日Top10双月",
     "GA19_mom126_top20_w42": "GA19:长期动量126日Top20双月",
     "GA20_mom63_top30": "GA20:动量63日Top30月调",
+    "EQ1_equal_alloc": "EQ1:Y5+等额分配(对比凯利)",
+    "EQ2_equal_full_kelly": "EQ2:Y5+等额+全凯利",
+    "EQ3_y5_full_kelly": "EQ3:Y5+全凯利(对比半凯利)",
 }
 
 # 导入参数扫描配置（113个自动生成的测试）

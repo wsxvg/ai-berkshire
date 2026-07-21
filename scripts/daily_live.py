@@ -33,7 +33,7 @@ from tools.jd_finance_api import get_watchlist, get_trading_records, _ensure_coo
 # ── 回测引擎组件 ──
 from backtest.engine.backtest import (
     Portfolio, score_fund_backtest, detect_market_state,
-    compute_correlation_matrix,
+    compute_correlation_matrix, kelly_allocate,
 )
 from tools.technical_indicators import compute_entry_timing_score
 
@@ -420,97 +420,156 @@ def run():
             if add: filtered.append(c)
         candidates = filtered
 
-    # 6. 卖出决策（回测引擎同款逻辑）
+    # 6. 卖出决策（直接复用回测引擎逻辑，确保一致性）
     print("4. 卖出检查...")
     sell_cooldown = {}
+
+    # Regime-aware 参数（和回测引擎 _rc() 一致）
+    _regime = GENE.get("regime_specific", False)
+    def _rc(key, default):
+        if _regime:
+            regime_val = GENE.get(f"{key}_{market}")
+            if regime_val is not None:
+                return regime_val
+        return GENE.get(key, default)
+
+    _tp_pct = _rc("take_profit_pct", 50)
+    _sl_pct = _rc("stop_loss_pct", -30)
+    _dyn_sl = _rc("dynamic_stop_loss", False)
+    _trail_act = _rc("trailing_tp_activate", 0)
+    _trail_dd = _rc("trailing_tp_drawdown", 10)
+    _profit_mode = GENE.get("profit_mode", "half")
+    _tp_sell = GENE.get("take_profit_sell_pct", 0.5)
+    _mom_sell = GENE.get("momentum_sell", 2.0)
+
     for code in list(portfolio.holdings.keys()):
         h = portfolio.holdings[code]
-        days = portfolio._holding_days(code, TODAY)
-        if days < 60:
-            continue  # 60天最低持有期（减少摩擦成本）
-
-        # day_ret 从自选数据拿（动量崩溃需要实时涨跌幅）
-        info = funds.get(code, {})
-        day_ret = info.get("day_return") or 0
 
         # 用 chart 数据算真实盈亏 (用 <=TODAY 的最近点, 避免未来函数)
         pts = fund_charts.get(code, [])
-        mv = h["cost"]  # 默认成本
+        mv = h["cost"]
         actual_pnl = 0
-        latest_nav = 1.0  # 默认值，无行情数据时退回 1.0，避免后续 NameError
+        latest_nav = 1.0
+        peak_nav = 1.0
         if pts and len(pts) > 0:
             today_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
             if today_pts:
                 latest_yaxis = float(today_pts[-1].get("yAxis", 0))
                 latest_nav = (100 + latest_yaxis) / 100
+                peak_nav = max((100 + float(p.get("yAxis", 0))) / 100 for p in today_pts)
                 buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
                 if buy_pts:
                     buy_yaxis = float(buy_pts[-1].get("yAxis", 0))
                     buy_nav = (100 + buy_yaxis) / 100
-                    mv = h["cost"] * (latest_nav / buy_nav)
-                    actual_pnl = (mv - h["cost"]) / h["cost"] * 100
+                    if buy_nav > 0:
+                        mv = h["cost"] * (latest_nav / buy_nav)
+                        actual_pnl = (mv - h["cost"]) / h["cost"] * 100
 
-        # 止盈
-        if actual_pnl >= GENE.get("take_profit_pct", 80):
-            portfolio.sell(code, h["cost"], latest_nav, TODAY, "take_profit", False)
-            sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": latest_nav}
-            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}% @NAV={latest_nav:.4f}")
+        dd_from_peak = (latest_nav / peak_nav - 1) * 100 if peak_nav > 0 else 0
+        sell_reason = ""
+        should_sell = False
 
-        # 动态止损：浮盈>20%时从高点回撤15%止盈，浮盈>40%时回撤10%止盈
-        elif GENE.get("dynamic_stop_loss") and actual_pnl > 20:
-            peak_nav = latest_nav
-            if pts:
-                hist_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
-                if hist_pts:
-                    peak_nav = max((100 + float(p.get("yAxis", 0))) / 100 for p in hist_pts)
-            dd_from_peak = (latest_nav / peak_nav - 1) * 100 if peak_nav > 0 else 0
-            if (actual_pnl > 40 and dd_from_peak < -10) or dd_from_peak < -15:
-                portfolio.sell(code, h["cost"], latest_nav, TODAY, "dyn_stop_loss", False)
-                sell_cooldown[code] = {"date": TODAY, "reason": "dyn_stop_loss", "nav": latest_nav}
-                print(f"   SELL_DSL {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd_from_peak:.1f}% @NAV={latest_nav:.4f}")
+        # 🔴 动态止损：浮盈>20%从高点回撤15%，浮盈>40%回撤10%
+        if _dyn_sl and actual_pnl > 20:
+            if dd_from_peak < -15:
+                should_sell = True
+                sell_reason = f"dyn_stop_loss profit={actual_pnl:.1f}% dd={dd_from_peak:.1f}%"
+            elif actual_pnl > 40 and dd_from_peak < -10:
+                should_sell = True
+                sell_reason = f"dyn_stop_loss profit={actual_pnl:.1f}% dd={dd_from_peak:.1f}%"
 
-        # 止损
-        elif actual_pnl <= GENE.get("stop_loss_pct", -15):
-            portfolio.sell(code, h["cost"], latest_nav, TODAY, "stop_loss", True)
-            sell_cooldown[code] = {"date": TODAY, "reason": "stop_loss", "nav": latest_nav}
-            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}% @NAV={latest_nav:.4f}")
+        # 🔴 止损
+        if not should_sell and not GENE.get("no_stop_loss", False) and actual_pnl < _sl_pct:
+            should_sell = True
+            sell_reason = f"stop_loss {actual_pnl:.1f}%"
 
-        # 动量崩溃（牛市不触发，减少假信号）
-        elif day_ret < -8 and market != "bull":
-            pts = fund_charts.get(code, [])
-            if len(pts) >= 20:
-                timing = compute_entry_timing_score(pts, TODAY)
-                if timing.get("entry_score", 0) < 1.0:
-                    portfolio.sell(code, h["cost"], latest_nav, TODAY, "momentum_crash", True)
-                    sell_cooldown[code] = {"date": TODAY, "reason": "momentum_crash", "nav": latest_nav}
-                    print(f"   SELL_MC {h['name'][:25]}: 动量崩塌 @NAV={latest_nav:.4f}")
+        # 🟢 止盈：阶梯止盈 (profit_mode=step)
+        if not should_sell and actual_pnl > _tp_pct:
+            sell_value = mv
+            if _profit_mode == "all":
+                sell_amt = sell_value
+            elif _profit_mode == "quarter":
+                sell_amt = sell_value * 0.25
+            elif _profit_mode == "step":
+                steps = int((actual_pnl - _tp_pct) / 15)
+                step_sell = {0: 0.5, 1: 0.5, 2: 0.3, 3: 0.2}
+                sell_frac = step_sell.get(min(steps, 3), 0.1)
+                sell_amt = sell_value * sell_frac
+            else:
+                sell_amt = sell_value * _tp_sell
+            if sell_amt >= 100:
+                portfolio.sell(code, sell_amt, latest_nav, TODAY, f"take_profit {actual_pnl:.1f}%")
+                sell_cooldown[code] = {"date": TODAY, "reason": "take_profit", "nav": latest_nav}
+                print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}% sell={sell_amt:.0f} @NAV={latest_nav:.4f}")
+                continue  # 已卖出，跳过后续检查
 
-    # 7. 买入决策
+        # 🟢 移动止盈
+        if not should_sell and _trail_act > 0 and actual_pnl >= _trail_act and dd_from_peak < -_trail_dd:
+            should_sell = True
+            sell_reason = f"trailing_tp profit={actual_pnl:.1f}% dd={dd_from_peak:.1f}%"
+
+        if should_sell:
+            portfolio.sell(code, mv, latest_nav, TODAY, sell_reason)
+            sell_cooldown[code] = {"date": TODAY, "reason": sell_reason.split()[0], "nav": latest_nav}
+            print(f"   SELL {h['name'][:25]}: {sell_reason} @NAV={latest_nav:.4f}")
+
+    # 7. 买入决策（使用kelly_allocate，和回测引擎一致）
     print("5. 买入...")
-    max_pos = GENE.get("max_position_pct", 20)
-    cash_reserve = GENE.get("cash_reserve_pct", 0.1)
+    _dyn_kelly = _rc("kelly_cap", 0.2)
+    _dyn_cash_reserve = _rc("cash_reserve_pct", 0.1)
+    _dyn_max_pos = _rc("max_position_pct", 25)
+    _dyn_pyramid = _rc("pyramiding_enabled", False)
+    _kelly_frac = GENE.get("kelly_fraction", 0.5)
     cooldown_cfg = {"profit_days": GENE.get("cooldown_profit_days", 10),
                     "loss_days": GENE.get("cooldown_loss_days", 30)}
 
-    # 冷却期检查
-    active_codes = set()
-    for c in candidates:
-        code = c["code"] if isinstance(c, dict) else c
-        if code in sell_cooldown:
-            continue
-        if portfolio.is_in_cooldown(code, TODAY, cooldown_cfg):
-            print(f"   COOLED {code}: 冷却期未过")
-            continue
-        active_codes.add(code)
+    # 计算总资产（现金+持仓市值+待确认）
+    holdings_value = 0
+    for h_code, h in portfolio.holdings.items():
+        pts = fund_charts.get(h_code, [])
+        if pts:
+            valid = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+            if valid:
+                latest_y = float(valid[-1].get("yAxis", 0))
+                latest_n = (100 + latest_y) / 100
+                buy_pts = [p for p in pts if p.get("xAxis", "")[:10] <= h.get("buy_date", TODAY)]
+                if buy_pts:
+                    buy_n = (100 + float(buy_pts[-1].get("yAxis", 0))) / 100
+                    if buy_n > 0:
+                        holdings_value += h["cost"] * (latest_n / buy_n)
+                        continue
+        holdings_value += h["cost"]
+    pending_value = sum(p.get("amount", 0) for p in portfolio.pending_buys)
+    total_assets = portfolio.cash + holdings_value + pending_value
 
-    # 当日交易跟踪 (独立记录名字和金额, 供 trade_log 用)
+    # 准备candidates给kelly_allocate
+    alloc_candidates = []
+    for c in candidates:
+        if c["code"] in sell_cooldown:
+            continue
+        if portfolio.is_in_cooldown(c["code"], TODAY, cooldown_cfg):
+            print(f"   COOLED {c['code']}: 冷却期未过")
+            continue
+        alloc_candidates.append({
+            "code": c["code"],
+            "name": c["name"],
+            "score": c["score"],
+            "day_limit": 999999,
+        })
+
+    to_buy = kelly_allocate(alloc_candidates, total_assets,
+        kelly_cap=_dyn_kelly,
+        cash_reserve=_dyn_cash_reserve,
+        max_pos=_dyn_max_pos / 100,
+        kelly_fraction=_kelly_frac,
+        max_single_buy_pct=GENE.get("max_single_buy_pct", 0.30),
+        equal_allocate=GENE.get("equal_allocate", False))
+
     daily_trades = []
-
-    for c in candidates:
-        if c["code"] not in active_codes: continue
-        # 金字塔补仓：已持仓 + 浮亏5-15% + 大佬信号持续 → 加仓
+    for c in to_buy:
+        # 已持仓的基金：金字塔补仓
         if c["code"] in portfolio.holdings:
-            if not GENE.get("pyramiding_enabled"):
+            if not _dyn_pyramid:
                 continue
             h = portfolio.holdings[c["code"]]
             pts = fund_charts.get(c["code"], [])
@@ -524,9 +583,7 @@ def run():
             if loss_pct > -5 or loss_pct < -15:
                 continue
             pyramid_mult = 0.5 if loss_pct > -10 else 0.3
-            available = portfolio.cash * (1 - cash_reserve)
-            kelly = GENE.get("kelly_cap", 0.2)  # 提前定义，避免 NameError（原 bug: kelly 在下方才定义）
-            amount = round(available * kelly * pyramid_mult / 100) * 100
+            amount = round(c["_suggested"] * pyramid_mult / 100) * 100
             if amount >= 100 and portfolio.buy(c["code"], c["name"], amount, current_nav, TODAY):
                 actual_amount = portfolio.trades[-1].get("amount", amount) if portfolio.trades else amount
                 daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": actual_amount})
@@ -534,16 +591,11 @@ def run():
             continue
         if any(p["code"] == c["code"] for p in portfolio.pending_buys): continue
 
-        available = portfolio.cash * (1 - cash_reserve)
-        per_position = available * max_pos / 100
-        # 动态仓位：用 kelly_cap 限制单笔上限
-        kelly = GENE.get("kelly_cap", 0.2)
-        amount = min(per_position, available * kelly)
-        amount = round(amount / 100) * 100  # 取整
+        amount = c["_suggested"]
         if amount < 100:
             continue
 
-        # 用实际净值买入 (不是 1.0)
+        # 用实际净值买入
         buy_price = 1.0
         pts = fund_charts.get(c["code"], [])
         if pts:

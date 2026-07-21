@@ -1,0 +1,35 @@
+name: 回测对比: 凯利差异化 vs 等额分配
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        test_name: [Y5_weighted, EQ1_equal_alloc, EQ2_equal_full_kelly, EQ3_y5_full_kelly]
+      max-parallel: 4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安装依赖
+        run: pip install lightgbm scikit-learn numpy
+
+      - name: 运行回测 ${{ matrix.test_name }}
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+
+      - name: 上传结果
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
