@@ -1,0 +1,68 @@
+name: Backtest Matrix 8 (Y+Z+AA+AB+AC+AD+AE)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          # 方案Y：大佬排名与信号机制（8个）
+          Y1_dynrank, Y2_dynrank_w60, Y3_dynrank_w180, Y4_dynrank_hl30,
+          Y5_weighted, Y6_net_signal, Y7_dynrank_weighted, Y8_dynrank_netsig,
+          # 方案Z：市场择时与仓位自适应（5个）
+          Z1_bear_nobuy, Z2_dyn_maxpos, Z3_dyn_maxpos_cash,
+          Z4_no_timing, Z5_no_overbought,
+          # 方案AA：持有期与交易成本（5个）
+          AA1_hold30, AA2_hold90, AA3_hold120,
+          AA4_slip05, AA5_slip10,
+          # 方案AB：卖出信号与选股范围（7个）
+          AB1_sellcons2, AB2_sellcons3,
+          AB3_topn5, AB4_topn10,
+          AB5_consprio, AB6_costpen, AB7_limitboost,
+          # 方案AC：资金管理与配置开关（5个）
+          AC1_inject1k, AC2_inject5k,
+          AC3_nodynsl, AC4_noregime, AC5_qdii50,
+          # 方案AD：评分惩罚（3个）
+          AD1_nopenalty, AD2_pen03, AD3_pen10,
+          # 方案AE：组合策略（4个）
+          AE1_bear_dynpos, AE2_dynrank_netsig_w,
+          AE3_sellcons_dynrank, AE4_topn_consprio
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-8
+          path: backtest/reports/unified_backtest_summary.json

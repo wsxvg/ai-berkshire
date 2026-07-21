@@ -279,19 +279,19 @@ SWEEP_CONFIGS = {
         "trailing_tp_drawdown": 8
     },
     "PS_rsi_block_65": {
-        "block_overbought": true,
+        "block_overbought": True,
         "rsi_block_threshold": 65
     },
     "PS_rsi_block_70": {
-        "block_overbought": true,
+        "block_overbought": True,
         "rsi_block_threshold": 70
     },
     "PS_rsi_block_75": {
-        "block_overbought": true,
+        "block_overbought": True,
         "rsi_block_threshold": 75
     },
     "PS_rsi_block_85": {
-        "block_overbought": true,
+        "block_overbought": True,
         "rsi_block_threshold": 85
     },
     "PC_kelly_cap0p4_momentum_sell1p0": {
