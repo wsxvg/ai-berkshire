@@ -1,63 +1,290 @@
 {
   "date": "2026-06-29",
   "market": "bull",
-  "min_score": 2.91,
+  "min_score": 0.0,
   "candidates_top5": [
-    {
-      "code": "539002",
-      "name": "建信新兴市场混合(QDII)A",
-      "score": 3.2661875115592394
-    },
     {
       "code": "018147",
       "name": "建信新兴市场混合(QDII)C",
-      "score": 3.1273169108418335
+      "score": 2.9067286755477166
+    },
+    {
+      "code": "022853",
+      "name": "中航优选领航混合发起C",
+      "score": 2.8764705882352937
+    },
+    {
+      "code": "519981",
+      "name": "长信标普100等权重指数（QDII）人民币份额",
+      "score": 2.717647058823529
+    },
+    {
+      "code": "008702",
+      "name": "华夏黄金ETF联接C",
+      "score": 2.7075553927266007
+    },
+    {
+      "code": "017559",
+      "name": "华安上证科创板芯片ETF发起式联接A",
+      "score": 2.702848735513218
     }
   ],
   "buy_recommendations": [],
   "sell_recommendations": [],
-  "blocked_funds": [],
-  "holdings": {
-    "024239": {
-      "name": "华夏全球科技先锋混合(QDII)C",
-      "cost": 1000.0,
-      "market_value": 1420.78,
-      "pnl_pct": 42.08
+  "blocked_funds": [
+    {
+      "code": "009995",
+      "name": "嘉实创新先锋混合C",
+      "reason": "RSI超买(80)"
     },
-    "016664": {
-      "name": "天弘全球高端制造混合(QDII)A",
-      "cost": 100.0,
-      "market_value": 150.48,
-      "pnl_pct": 50.48
+    {
+      "code": "015916",
+      "name": "永赢医药创新智选混合发起C",
+      "reason": "RSI超买(75)"
     },
-    "013841": {
+    {
+      "code": "019018",
+      "name": "易方达信息产业混合C",
+      "reason": "RSI超买(75)"
+    },
+    {
+      "code": "021523",
+      "name": "财通价值动量混合C",
+      "reason": "RSI超买(72)"
+    },
+    {
+      "code": "024481",
+      "name": "财通品质甄选混合C",
+      "reason": "RSI超买(72)"
+    },
+    {
+      "code": "021528",
+      "name": "财通成长优选混合C",
+      "reason": "RSI超买(70)"
+    },
+    {
+      "code": "011370",
+      "name": "华商均衡成长混合C",
+      "reason": "RSI超买(72)"
+    },
+    {
+      "code": "014925",
+      "name": "天弘优利短债发起C",
+      "reason": "RSI超买(78)"
+    },
+    {
+      "code": "011829",
+      "name": "平安睿享成长混合C",
+      "reason": "RSI超买(74)"
+    },
+    {
+      "code": "018123",
+      "name": "永赢数字经济智选混合发起C",
+      "reason": "RSI超买(81)"
+    },
+    {
+      "code": "013841",
       "name": "银华集成电路混合C",
-      "cost": 17800,
-      "market_value": 34166.65,
-      "pnl_pct": 91.95
+      "reason": "RSI超买(98)"
     },
-    "022184": {
-      "name": "富国全球科技互联网股票(QDII)C",
-      "cost": 1000.0,
-      "market_value": 1231.75,
-      "pnl_pct": 23.18
+    {
+      "code": "008989",
+      "name": "大成科技创新混合C",
+      "reason": "RSI超买(73)"
     },
-    "024663": {
-      "name": "富国创业板人工智能ETF发起式联接C",
-      "cost": 14400,
-      "market_value": 15188.28,
-      "pnl_pct": 5.47
+    {
+      "code": "720001",
+      "name": "财通价值动量混合A",
+      "reason": "RSI超买(72)"
     },
-    "501226": {
-      "name": "长城全球新能源车股票发起式(QDII)A",
-      "cost": 500.0,
-      "market_value": 488.47,
-      "pnl_pct": -2.31
+    {
+      "code": "026211",
+      "name": "平安科技精选混合发起式C",
+      "reason": "RSI超买(73)"
+    },
+    {
+      "code": "009063",
+      "name": "财通智慧成长混合C",
+      "reason": "RSI超买(73)"
+    },
+    {
+      "code": "015968",
+      "name": "永赢半导体产业智选混合发起C",
+      "reason": "RSI超买(84)"
+    },
+    {
+      "code": "015528",
+      "name": "弘毅远方汽车产业升级混合C",
+      "reason": "RSI超买(82)"
+    },
+    {
+      "code": "017811",
+      "name": "东方人工智能主题混合C",
+      "reason": "RSI超买(99)"
+    },
+    {
+      "code": "013346",
+      "name": "富荣信息技术混合C",
+      "reason": "RSI超买(75)"
+    },
+    {
+      "code": "025500",
+      "name": "东方阿尔法科技智选混合发起C",
+      "reason": "RSI超买(96)"
+    },
+    {
+      "code": "006523",
+      "name": "财通新兴蓝筹混合C",
+      "reason": "RSI超买(72)"
+    },
+    {
+      "code": "024481",
+      "name": "财通品质甄选混合A",
+      "reason": "RSI超买(72)"
+    },
+    {
+      "code": "001480",
+      "name": "财通成长优选混合A",
+      "reason": "RSI超买(70)"
+    },
+    {
+      "code": "019018",
+      "name": "易方达信息产业混合A",
+      "reason": "RSI超买(75)"
+    }
+  ],
+  "holdings": {
+    "025500": {
+      "name": "东方阿尔法科技智选混合发起C",
+      "cost": 33200,
+      "market_value": 52919.7,
+      "pnl_pct": 59.4
+    },
+    "021528": {
+      "name": "财通成长优选混合C",
+      "cost": 100.0,
+      "market_value": 134.06,
+      "pnl_pct": 34.06
+    },
+    "011452": {
+      "name": "华泰柏瑞质量成长混合C",
+      "cost": 10000.0,
+      "market_value": 12369.38,
+      "pnl_pct": 23.69
+    },
+    "022365": {
+      "name": "永赢科技智选混合发起C",
+      "cost": 18000,
+      "market_value": 18796.55,
+      "pnl_pct": 4.43
+    },
+    "017811": {
+      "name": "东方人工智能主题混合C",
+      "cost": 12000,
+      "market_value": 19540.22,
+      "pnl_pct": 62.84
+    },
+    "001608": {
+      "name": "英大策略优选C",
+      "cost": 8000,
+      "market_value": 10047.32,
+      "pnl_pct": 25.59
+    },
+    "021523": {
+      "name": "财通价值动量混合C",
+      "cost": 100.0,
+      "market_value": 131.16,
+      "pnl_pct": 31.16
+    },
+    "014581": {
+      "name": "东吴阿尔法混合C",
+      "cost": 5300,
+      "market_value": 5528.99,
+      "pnl_pct": 4.32
+    },
+    "016371": {
+      "name": "信澳业绩驱动混合C",
+      "cost": 3600,
+      "market_value": 4319.95,
+      "pnl_pct": 20.0
+    },
+    "018957": {
+      "name": "中航机遇领航混合发起A",
+      "cost": 2400,
+      "market_value": 2598.39,
+      "pnl_pct": 8.27
+    },
+    "024070": {
+      "name": "上银中证半导体产业指数发起式C",
+      "cost": 1600,
+      "market_value": 1600,
+      "pnl_pct": 0.0
+    },
+    "017496": {
+      "name": "泰康中证科创创业50指数C",
+      "cost": 1000,
+      "market_value": 1000,
+      "pnl_pct": 0.0
+    },
+    "017495": {
+      "name": "泰康中证科创创业50指数A",
+      "cost": 700,
+      "market_value": 700,
+      "pnl_pct": 0.0
+    },
+    "002112": {
+      "name": "德邦鑫星价值C",
+      "cost": 500,
+      "market_value": 541.55,
+      "pnl_pct": 8.31
+    },
+    "025209": {
+      "name": "永赢先锋半导体智选混合发起C",
+      "cost": 300,
+      "market_value": 438.22,
+      "pnl_pct": 46.07
+    },
+    "008702": {
+      "name": "华夏黄金ETF联接C",
+      "cost": 200,
+      "market_value": 200,
+      "pnl_pct": 0.0
+    },
+    "020988": {
+      "name": "南方恒生科技ETF发起联接(QDII)A",
+      "cost": 100,
+      "market_value": 100,
+      "pnl_pct": 0.0
+    },
+    "025687": {
+      "name": "国泰半导体制造精选混合发起C",
+      "cost": 100,
+      "market_value": 163.44,
+      "pnl_pct": 63.44
+    },
+    "015968": {
+      "name": "永赢半导体产业智选混合发起C",
+      "cost": 100,
+      "market_value": 127.44,
+      "pnl_pct": 27.44
+    },
+    "005698": {
+      "name": "华夏全球科技先锋混合(QDII)A",
+      "cost": 2500.0,
+      "market_value": 2823.33,
+      "pnl_pct": 12.93
+    },
+    "002891": {
+      "name": "华夏移动互联混合(QDII)",
+      "cost": 100.0,
+      "market_value": 109.18,
+      "pnl_pct": 9.18
     }
   },
+  "fund_notices": {},
   "portfolio": {
-    "total_value": 117846.42,
-    "cash": 65200.0,
-    "fees": 76.5
+    "total_value": 134288.89,
+    "cash": 100.0,
+    "fees": 7.47
   }
 }

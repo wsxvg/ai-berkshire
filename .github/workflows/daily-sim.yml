@@ -2,7 +2,7 @@ name: 每日实盘模拟 + 飞书推送 (14:30 CST)
 
 on:
   schedule:
-    - cron: '30 6 * * 1-5'   # 工作日 14:30 CST (UTC+8 = 06:30 UTC)
+    - cron: '0 6 * * 1-5'   # 工作日 14:00 CST 开始等待 (UTC+8 = 06:00 UTC)
   workflow_dispatch:            # 手动触发
 
 permissions:
@@ -16,7 +16,7 @@ env:
 jobs:
   daily-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +29,24 @@ jobs:
         run: |
           pip install lightgbm scikit-learn numpy
           pip install chinese_calendar
+
+      - name: 等待到北京时间14:30
+        run: |
+          echo "当前UTC时间: $(date -u '+%Y-%m-%d %H:%M:%S')"
+          echo "当前北京时间: $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
+          # 计算距离北京时间14:30的等待秒数
+          CURRENT_HOUR=$(TZ='Asia/Shanghai' date +%H)
+          CURRENT_MIN=$(TZ='Asia/Shanghai' date +%M)
+          CURRENT_SEC=$((CURRENT_HOUR * 3600 + CURRENT_MIN * 60 + $(TZ='Asia/Shanghai' date +%S)))
+          TARGET_SEC=$((14 * 3600 + 30 * 60))
+          if [ "$CURRENT_SEC" -lt "$TARGET_SEC" ]; then
+            WAIT=$((TARGET_SEC - CURRENT_SEC))
+            echo "等待 ${WAIT} 秒到北京时间14:30..."
+            sleep $WAIT
+          else
+            echo "已过北京时间14:30，直接执行"
+          fi
+          echo "执行时间(北京): $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
 
       - name: 运行冠军策略实盘模拟 (含飞书推送)
         run: python scripts/daily_live.py

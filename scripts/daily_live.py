@@ -7,7 +7,7 @@
 参数 = data/evolution/best_config.json
 """
 
-import json, sys, os, glob, argparse
+import json, sys, os, glob, argparse, time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -125,6 +125,7 @@ def fetch_today_trades(cookies):
 
     # 实时模式: 从API拉取
     fresh = {}
+    new_fund_codes = set()  # 记录新基金代码
     for uid, name in list(FOLLOWED_USERS.items())[:10]:
         full = f"jimu_user_info-{uid}"
         try:
@@ -132,14 +133,44 @@ def fetch_today_trades(cookies):
             for rec in r.get("records", []):
                 detail = rec.get("detail", "")
                 date = detail[:10] if detail and len(detail) >= 10 else TODAY
+                fund_name = rec.get("fund_name", "")
+                fund_code = rec.get("fund_code", "")
                 fresh.setdefault(date, []).append({
-                    "fund_name": rec.get("fund_name", ""),
+                    "fund_name": fund_name,
                     "action": rec.get("action", ""),
                     "amount": rec.get("amount", ""),
+                    "fund_code": fund_code,
                     "_user": name,
+                    "_uid": uid,
                 })
+                # 检查是否是新基金（不在fund_charts中）
+                if fund_code and fund_code not in fund_charts:
+                    new_fund_codes.add(fund_code)
         except Exception as e:
             print(f"  {name}: ERR {e}")
+
+    # 自动拉取新基金的历史净值
+    if new_fund_codes:
+        print(f"  发现 {len(new_fund_codes)} 只新基金，自动拉取历史净值...")
+        from tools.eastmoney_api import get_fund_nav_history
+        for code in new_fund_codes:
+            try:
+                nav = get_fund_nav_history(code, max_pages=40)
+                if nav:
+                    # 转换为chart格式 (累计收益率%)
+                    if nav:
+                        base = nav[0]["nav"]
+                        pts = [{"xAxis": n["date"], "yAxis": (n["nav"] / base - 1) * 100} for n in nav]
+                        fund_charts[code] = pts
+                        print(f"    {code}: 拉取 {len(pts)} 天历史")
+            except Exception as e:
+                print(f"    {code}: 拉取失败 {e}")
+            time.sleep(0.3)
+        # 保存更新后的fund_charts
+        (PROJECT / "data" / "fund_charts.json").write_text(
+            json.dumps(fund_charts, ensure_ascii=False), encoding="utf-8")
+        print(f"  fund_charts.json 已更新 ({len(fund_charts)} 只)")
+
     return fresh
 
 
@@ -256,26 +287,84 @@ def run():
     portfolio.settle_pending(TODAY)
     print(f"   持仓 {len(portfolio.holdings)} 只, 待确认 {len(portfolio.pending_buys)} 笔, 现金 {portfolio.cash:,.0f}")
 
-    # 4. 评分
-    print("3. 评分...")
+    # 4. 大佬共识信号过滤（和回测引擎一致）+ 评分
+    print("3. 共识信号过滤 + 评分...")
     candidates = []
+    blocked_funds = []  # 记录被风控拦截的基金（RSI超买/类型过滤等）
 
     # 冠军配置: fund_type_filter + exclude_uids
     fund_type_filter = GENE.get("fund_type_filter", "")
     exclude_uids = set(GENE.get("exclude_uids", []))
+    min_consensus = GENE.get("min_consensus", 2)
+    use_weighted = GENE.get("use_weighted_consensus", False)
 
-    for code, info in funds.items():
-        name = info.get("fund_name", code)
+    # ── 提取当日大佬买入信号（和回测引擎run_backtest逻辑一致）──
+    day_records = merged_trades.get(TODAY, [])
+    fund_signals = {}
+    for r in day_records:
+        uid = str(r.get("_uid", r.get("_user", "")))
+        if exclude_uids and uid in exclude_uids:
+            continue
+        fn = r.get("fund_name", "")
+        act = r.get("action", "")
+        if not fn:
+            continue
+        if fn not in fund_signals:
+            fund_signals[fn] = {"buy_count": 0, "sell_count": 0, "weighted_buy": 0.0}
+        if "买入" in str(act):
+            fund_signals[fn]["buy_count"] += 1
+            fund_signals[fn]["weighted_buy"] += 1.0
+        elif "卖出" in str(act):
+            fund_signals[fn]["sell_count"] += 1
 
-        # 排除噪音大佬
-        if exclude_uids:
-            # uid 排除在交易信号阶段生效, 此处跳过
-            pass
+    # 加权共识模式：用加权买数替代原始买数
+    if use_weighted:
+        for fn in fund_signals:
+            fund_signals[fn]["buy_count"] = max(1, int(fund_signals[fn]["weighted_buy"]))
 
-        # 基金类型过滤 (active=只买主动型, 排除指数/ETF)
+    # 自适应共识（稀疏期降门槛）
+    if GENE.get("adaptive_consensus", False):
+        recent_days = list(merged_trades.keys())
+        recent_days = [d for d in recent_days if d <= TODAY]
+        recent_days = sorted(recent_days)[-30:]
+        recent_signals = sum(len(merged_trades.get(d, [])) for d in recent_days)
+        avg_daily = recent_signals / max(1, len(recent_days))
+        if avg_daily < 15:
+            min_consensus = 1
+        elif avg_daily < 50:
+            min_consensus = 2
+
+    print(f"   当日信号: {len(fund_signals)} 只基金有交易, min_consensus={min_consensus}, weighted={use_weighted}")
+
+    # 通过共识的基金名 → 信号强度
+    consensus_funds = {}
+    for fn, sig in fund_signals.items():
+        if sig["buy_count"] >= min_consensus:
+            consensus_funds[fn] = sig
+    print(f"   共识过滤后: {len(consensus_funds)} 只基金通过 (买入≥{min_consensus})")
+
+    # ── 对通过共识的基金评分 ──
+    for fn, sig in consensus_funds.items():
+        # 从name_map找到基金代码
+        code = name_map.get(fn, "")
+        if not code:
+            # 尝试从交易记录中拿
+            for r in day_records:
+                if r.get("fund_name") == fn and r.get("fund_code"):
+                    code = r["fund_code"]
+                    break
+        if not code:
+            continue
+
+        info = funds.get(code, {})
+        name = info.get("fund_name", fn)
+
+        # 基金类型过滤 (active=只买主动型, 排除指数/QDII; 和回测引擎一致)
         if fund_type_filter == "active":
-            ftype = info.get("fund_type", "")
-            if ftype and "指数" in str(ftype):
+            fp = fund_profiles.get(code, {})
+            ftype = fp.get("fund_type", "")
+            is_active = "指数" not in str(ftype) and "QDII" not in str(ftype)
+            if not is_active:
                 continue
 
         # RSI 超买
@@ -284,6 +373,7 @@ def run():
             timing = compute_entry_timing_score(pts, TODAY)
             if timing.get("should_warn"):
                 print(f"   BLOCKED {name[:25]}: RSI超买")
+                blocked_funds.append({"code": code, "name": name, "reason": f"RSI超买({timing.get('rsi',0):.0f})"})
                 continue
 
         try:
@@ -304,8 +394,13 @@ def run():
             s = max(1.0, min(5.0, 3.0 + (info.get("month_return", 0) or 0) * 0.05))
 
         if s < min_score: continue
-        candidates.append({"code": code, "name": name, "score": s})
-        print(f"   {name[:30]} ({code}): {s:.1f}")
+        candidates.append({"code": code, "name": name, "score": s,
+                          "buy_count": sig["buy_count"], "sell_count": sig["sell_count"]})
+        print(f"   {name[:30]} ({code}): {s:.1f} [买{sig['buy_count']}/卖{sig['sell_count']}]")
+
+    # 如果当天没有共识信号，也检查持仓基金是否需要卖出（空仓不买但需风控）
+    if not candidates:
+        print("   当日无共识信号，仅检查持仓风控")
 
     candidates.sort(key=lambda x: -x["score"])
 
@@ -342,6 +437,7 @@ def run():
         pts = fund_charts.get(code, [])
         mv = h["cost"]  # 默认成本
         actual_pnl = 0
+        latest_nav = 1.0  # 默认值，无行情数据时退回 1.0，避免后续 NameError
         if pts and len(pts) > 0:
             today_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
             if today_pts:
@@ -429,10 +525,12 @@ def run():
                 continue
             pyramid_mult = 0.5 if loss_pct > -10 else 0.3
             available = portfolio.cash * (1 - cash_reserve)
+            kelly = GENE.get("kelly_cap", 0.2)  # 提前定义，避免 NameError（原 bug: kelly 在下方才定义）
             amount = round(available * kelly * pyramid_mult / 100) * 100
             if amount >= 100 and portfolio.buy(c["code"], c["name"], amount, current_nav, TODAY):
-                daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": amount})
-                print(f"   PYRAMID {c['name'][:25]}: loss={loss_pct:.1f}% mult={pyramid_mult} amt={amount:.0f}")
+                actual_amount = portfolio.trades[-1].get("amount", amount) if portfolio.trades else amount
+                daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": actual_amount})
+                print(f"   PYRAMID {c['name'][:25]}: loss={loss_pct:.1f}% mult={pyramid_mult} amt={actual_amount:.0f}")
             continue
         if any(p["code"] == c["code"] for p in portfolio.pending_buys): continue
 
@@ -454,8 +552,9 @@ def run():
                 buy_price = (100 + float(valid[-1].get("yAxis", 0))) / 100
 
         if portfolio.buy(c["code"], c["name"], amount, buy_price, TODAY):
-            daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": amount})
-            print(f"   BUY {c['name'][:30]}: {amount:,.0f} @{buy_price:.4f} (评分{c['score']:.1f})")
+            actual_amount = portfolio.trades[-1].get("amount", amount) if portfolio.trades else amount
+            daily_trades.append({"date": TODAY, "code": c["code"], "name": c["name"], "action": "buy", "amount": actual_amount})
+            print(f"   BUY {c['name'][:30]}: {actual_amount:,.0f} @{buy_price:.4f} (评分{c['score']:.1f})")
 
     # 8. 同步回 VP（含市值盯市）
     vp["cash"] = portfolio.cash
@@ -568,16 +667,9 @@ def run():
         for p in portfolio.pending_buys:
             today_actions.append({"action": "BUY", "code": p.get('code', ''), "name": p.get('name', ''), "amount": p.get('amount', 0)})
     sell_actions = [a for a in today_actions if a.get('action') == 'SELL']
-    # 找 BLOCKED 的 (从评分过程结果)
-    blocked_set = set()
-    for line in []:  # 日志里没存 blocked list, 改从 candidates 提取
-        if line: pass
-    # 实际 blocked 不在 candidates (candidates 是过滤后的, blocked 在更早被排除)
-    # 看评分时的输出日志难以解析, 直接从 candidates 里找 score < min_score 的或 has block_reason 字段
-    results = []
-    for c in candidates:
-        if c.get('block_reason'):
-            results.append({"code": c['code'], "name": c['name'], "blocked": True, "reason": c['block_reason']})
+    # blocked_funds 已在评分阶段记录（RSI超买等），直接使用
+    results = [{"code": b["code"], "name": b["name"], "blocked": True, "reason": b["reason"]}
+               for b in blocked_funds]
 
     # AI 审计入口
     buy_codes = [a["code"] for a in today_actions if a["action"] == "BUY"]

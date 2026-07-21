@@ -44,7 +44,7 @@
     "momentum_sell": 1.5,
     "profit_mode": "step",
     "no_stop_loss": false,
-    "use_weighted_consensus": false,
+    "use_weighted_consensus": true,
     "cost_penalty": 0,
     "limit_boost": 0,
     "top_n": 0,
@@ -109,12 +109,12 @@
     "trailing_tp_drawdown_neutral": 10,
     "trailing_tp_drawdown_bear": 6
   },
-  "note": "3年完整回测验证 (2023-07-17 ~ 2026-07-17): 总收益56.93%, 年化16.25%, 回撤9.64%, 夏普1.09, 交易172次。分段收益: 熊市段+0.12%, 震荡段+2.81%, 牛市段+52.31%。对比基准沪深300(32.20%)超额+24.73pp。2026-07-19激进改进: (1)止盈50→120%(数据显示TP=100%平均收益34.8% >> TP=50%的22.2%); (2)kelly_cap 0.20→0.35+半凯利→直接凯利; (3)max_position 25→40%(大佬单只占30-50%); (4)cash_reserve 10→5%; (5)profit_mode half→step(阶梯止盈让利润奔跑); (6)momentum_sell 2.0→1.5。回测验证: 牛市3个月17.23%→35.10%(+17.87pp翻倍); 震荡市-6.40%→-5.36%(+1.04pp)。夏普5.16。",
+  "note": "Y5冠军策略(use_weighted_consensus=true) 3年完整回测验证 (2023-07-17 ~ 2026-07-17): 总收益58.94%, 年化16.84%, 回撤9.74%, 夏普1.12, 交易172次。Y5加权共识=按大佬实力加权信号强度，比等权共识(56.93%)高2.01pp。2026-07-21修复: use_weighted_consensus从false改为true(原配置遗漏了Y5核心参数)。其余参数不变: 止盈120%/止损-30%/kelly_cap=0.35/max_position=40%/momentum_sell=1.5。",
   "performance": {
-    "total_return": 56.93,
-    "annualized": 16.25,
-    "max_drawdown": 9.64,
-    "sharpe": 1.09,
+    "total_return": 58.94,
+    "annualized": 16.84,
+    "max_drawdown": 9.74,
+    "sharpe": 1.12,
     "calmar": 1.27,
     "trade_count": 172,
     "benchmark_return": 32.20,
@@ -123,6 +123,6 @@
       "B_oscillate_2024H2_2025H1": 2.81,
       "C_bull_2025H2_2026H1": 52.31
     },
-    "note": "3年完整回测验证，收益主要来自牛市段(52.31%)，熊市和震荡段几乎不赚钱。年化16.25%显著高于大盘(32.20%/3年=10.73%)。"
+    "note": "Y5加权共识策略，3年完整回测验证。收益主要来自牛市段(52.31%)，年化16.84%显著高于大盘(32.20%/3年=10.73%)。"
   }
 }

@@ -1,57 +1,250 @@
 {
   "date": "2026-06-15",
-  "market": "neutral",
-  "min_score": 2.5,
+  "market": "bull",
+  "min_score": 0.0,
   "candidates_top5": [
-    {
-      "code": "539002",
-      "name": "建信新兴市场混合(QDII)A",
-      "score": 3.3736875115592393
-    },
     {
       "code": "018147",
       "name": "建信新兴市场混合(QDII)C",
-      "score": 3.1208463226065395
+      "score": 3.516140440253599
+    },
+    {
+      "code": "012970",
+      "name": "鹏华国证半导体芯片ETF联接C",
+      "score": 2.717647058823529
+    },
+    {
+      "code": "008702",
+      "name": "华夏黄金ETF联接C",
+      "score": 2.7075553927266007
+    },
+    {
+      "code": "020988",
+      "name": "南方恒生科技ETF发起联接(QDII)A",
+      "score": 2.6965922620152174
+    },
+    {
+      "code": "004400",
+      "name": "金信民兴债券A",
+      "score": 2.6214096784665393
     }
   ],
   "buy_recommendations": [],
   "sell_recommendations": [],
-  "blocked_funds": [],
+  "blocked_funds": [
+    {
+      "code": "012920",
+      "name": "易方达全球成长精选混合(QDII)A",
+      "reason": "RSI超买(66)"
+    },
+    {
+      "code": "002891",
+      "name": "华夏移动互联混合(QDII)",
+      "reason": "RSI超买(63)"
+    },
+    {
+      "code": "012922",
+      "name": "易方达全球成长精选混合(QDII)C",
+      "reason": "RSI超买(66)"
+    },
+    {
+      "code": "021528",
+      "name": "财通成长优选混合C",
+      "reason": "RSI超买(74)"
+    },
+    {
+      "code": "024481",
+      "name": "财通品质甄选混合C",
+      "reason": "RSI超买(76)"
+    },
+    {
+      "code": "021523",
+      "name": "财通价值动量混合C",
+      "reason": "RSI超买(75)"
+    },
+    {
+      "code": "006503",
+      "name": "财通集成电路产业股票C",
+      "reason": "RSI超买(75)"
+    },
+    {
+      "code": "005698",
+      "name": "华夏全球科技先锋混合(QDII)A",
+      "reason": "RSI超买(59)"
+    },
+    {
+      "code": "720001",
+      "name": "财通价值动量混合A",
+      "reason": "RSI超买(75)"
+    },
+    {
+      "code": "501026",
+      "name": "财通多策略福享混合(LOF)",
+      "reason": "RSI超买(66)"
+    },
+    {
+      "code": "009063",
+      "name": "财通智慧成长混合C",
+      "reason": "RSI超买(68)"
+    },
+    {
+      "code": "024481",
+      "name": "财通品质甄选混合A",
+      "reason": "RSI超买(76)"
+    },
+    {
+      "code": "006502",
+      "name": "财通集成电路产业股票A",
+      "reason": "RSI超买(76)"
+    },
+    {
+      "code": "019018",
+      "name": "易方达信息产业混合A",
+      "reason": "RSI超买(63)"
+    },
+    {
+      "code": "014915",
+      "name": "财通匠心优选一年持有期混合A",
+      "reason": "RSI超买(78)"
+    },
+    {
+      "code": "001480",
+      "name": "财通成长优选混合A",
+      "reason": "RSI超买(74)"
+    }
+  ],
   "holdings": {
-    "024239": {
-      "name": "华夏全球科技先锋混合(QDII)C",
-      "cost": 1000.0,
-      "market_value": 1388.51,
-      "pnl_pct": 38.85
+    "025500": {
+      "name": "东方阿尔法科技智选混合发起C",
+      "cost": 33200,
+      "market_value": 37651.46,
+      "pnl_pct": 13.41
     },
-    "016664": {
-      "name": "天弘全球高端制造混合(QDII)A",
+    "021528": {
+      "name": "财通成长优选混合C",
       "cost": 100.0,
-      "market_value": 144.45,
-      "pnl_pct": 44.45
+      "market_value": 125.91,
+      "pnl_pct": 25.91
     },
-    "013841": {
-      "name": "银华集成电路混合C",
-      "cost": 17800,
-      "market_value": 24724.78,
-      "pnl_pct": 38.9
+    "011452": {
+      "name": "华泰柏瑞质量成长混合C",
+      "cost": 10000.0,
+      "market_value": 11562.99,
+      "pnl_pct": 15.63
     },
-    "022184": {
-      "name": "富国全球科技互联网股票(QDII)C",
-      "cost": 1000.0,
-      "market_value": 1221.81,
-      "pnl_pct": 22.18
+    "022365": {
+      "name": "永赢科技智选混合发起C",
+      "cost": 18000,
+      "market_value": 18583.22,
+      "pnl_pct": 3.24
     },
-    "024663": {
-      "name": "富国创业板人工智能ETF发起式联接C",
-      "cost": 14400,
-      "market_value": 14622.12,
-      "pnl_pct": 1.54
+    "017811": {
+      "name": "东方人工智能主题混合C",
+      "cost": 12000,
+      "market_value": 14131.0,
+      "pnl_pct": 17.76
+    },
+    "001608": {
+      "name": "英大策略优选C",
+      "cost": 8000,
+      "market_value": 9179.84,
+      "pnl_pct": 14.75
+    },
+    "021523": {
+      "name": "财通价值动量混合C",
+      "cost": 100.0,
+      "market_value": 123.67,
+      "pnl_pct": 23.67
+    },
+    "014581": {
+      "name": "东吴阿尔法混合C",
+      "cost": 5300,
+      "market_value": 5598.29,
+      "pnl_pct": 5.63
+    },
+    "016371": {
+      "name": "信澳业绩驱动混合C",
+      "cost": 3600,
+      "market_value": 4152.49,
+      "pnl_pct": 15.35
+    },
+    "018957": {
+      "name": "中航机遇领航混合发起A",
+      "cost": 2400,
+      "market_value": 2593.99,
+      "pnl_pct": 8.08
+    },
+    "024070": {
+      "name": "上银中证半导体产业指数发起式C",
+      "cost": 1600,
+      "market_value": 1600,
+      "pnl_pct": 0.0
+    },
+    "017496": {
+      "name": "泰康中证科创创业50指数C",
+      "cost": 1000,
+      "market_value": 1000,
+      "pnl_pct": 0.0
+    },
+    "017495": {
+      "name": "泰康中证科创创业50指数A",
+      "cost": 700,
+      "market_value": 700,
+      "pnl_pct": 0.0
+    },
+    "002112": {
+      "name": "德邦鑫星价值C",
+      "cost": 500,
+      "market_value": 556.96,
+      "pnl_pct": 11.39
+    },
+    "025209": {
+      "name": "永赢先锋半导体智选混合发起C",
+      "cost": 300,
+      "market_value": 328.7,
+      "pnl_pct": 9.57
+    },
+    "008702": {
+      "name": "华夏黄金ETF联接C",
+      "cost": 200,
+      "market_value": 200,
+      "pnl_pct": 0.0
+    },
+    "020988": {
+      "name": "南方恒生科技ETF发起联接(QDII)A",
+      "cost": 100,
+      "market_value": 100,
+      "pnl_pct": 0.0
+    },
+    "025687": {
+      "name": "国泰半导体制造精选混合发起C",
+      "cost": 100,
+      "market_value": 117.17,
+      "pnl_pct": 17.17
+    },
+    "015968": {
+      "name": "永赢半导体产业智选混合发起C",
+      "cost": 100,
+      "market_value": 104.74,
+      "pnl_pct": 4.74
+    },
+    "005698": {
+      "name": "华夏全球科技先锋混合(QDII)A",
+      "cost": 2500.0,
+      "market_value": 2758.52,
+      "pnl_pct": 10.34
+    },
+    "002891": {
+      "name": "华夏移动互联混合(QDII)",
+      "cost": 100.0,
+      "market_value": 109.28,
+      "pnl_pct": 9.28
     }
   },
+  "fund_notices": {},
   "portfolio": {
-    "total_value": 107801.67,
-    "cash": 65700.0,
-    "fees": 1.5
+    "total_value": 111378.23,
+    "cash": 100.0,
+    "fees": 7.47
   }
 }

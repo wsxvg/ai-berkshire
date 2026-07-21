@@ -551,8 +551,9 @@ def score_cost(rules: dict, discount: float = PURCHASE_DISCOUNT) -> DimensionSco
 
     manage = _float(rules.get("manage_fee", 0))
     custody = _float(rules.get("custody_fee", 0))
-    purchase_orig = _float(rules.get("purchase_fee", 0))
-    purchase = purchase_orig * discount  # apply channel discount
+    # 京东API: purchase_fee 是渠道打折后的实际费率，purchase_fee_original 是原费率
+    # 评分时用实际费率（已是打折值），不再重复打折
+    purchase = _float(rules.get("purchase_fee", 0))
 
     total_annual = manage + custody
     total_1y = total_annual + purchase

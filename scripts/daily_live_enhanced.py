@@ -638,10 +638,12 @@ def run():
     portfolio.slippage_pct = GENE.get("slippage_pct", 0.1)
     
     for code, h in vp.get("holdings", {}).items():
-        cb = h.get("cost_basis", 5000)
+        cb = h.get("cost_basis", 0)
+        shares = h.get("shares", 0) or cb  # 兼容旧数据：无 shares 时退回成本
+        buy_nav = h.get("buy_nav", 1.0)
         portfolio.holdings[code] = {
-            "name": h["name"], "shares": cb, "cost": cb,
-            "buy_date": h.get("buy_date", TODAY), "buy_nav": 1.0,
+            "name": h["name"], "shares": shares, "cost": cb,
+            "buy_date": h.get("buy_date", TODAY), "buy_nav": buy_nav,
             "peak_nav": h.get("peak_nav", 1.0),
         }
     portfolio.cash = vp.get("cash", INITIAL_CASH)
@@ -678,8 +680,8 @@ def run():
         if s < min_score:
             continue
         
-        # 费率感知：检查申购限额
-        purchasable, reason = portfolio.is_purchasable(code)
+        # 费率感知：检查申购限额（Portfolio 无 is_purchasable 方法，用本地函数）
+        purchasable, reason = check_purchase_limit(code, 99999999)
         if not purchasable:
             print(f"   SKIP {name[:25]}: {reason}")
             continue
@@ -689,15 +691,15 @@ def run():
     candidates.sort(key=lambda x: -x["score"])
     print(f"   通过评分: {len(candidates)} 只")
     
-    # 5. 相关性过滤
-    if portfolio.holdings and candidates:
+    # 5. 相关性过滤（max_correlation=0 表示不限制，与 daily_live.py 一致）
+    _max_corr = GENE.get("max_correlation", 0)
+    if _max_corr > 0 and portfolio.holdings and candidates:
         held_codes = list(portfolio.holdings.keys()) + [c["code"] for c in candidates]
         corr = compute_correlation_matrix(fund_charts, held_codes, TODAY, lookback=60)
         filtered = []
         for c in candidates:
-            max_c = check_max_correlation(c["code"], list(portfolio.holdings.keys()), corr, 
-                                          GENE.get("max_correlation", 0.85))
-            if max_c <= GENE.get("max_correlation", 0.85):
+            max_c = check_max_correlation(c["code"], list(portfolio.holdings.keys()), corr, _max_corr)
+            if max_c <= _max_corr:
                 filtered.append(c)
             else:
                 print(f"   FILTERED {c['name'][:25]}: 相关{max_c:.2f}")
@@ -721,26 +723,11 @@ def run():
     for code in list(portfolio.holdings.keys()):
         h = portfolio.holdings[code]
         days = portfolio._holding_days(code, TODAY)
-        
-        # 场外基金费率感知：检查惩罚性赎回费
-        is_short_term, penalty_reason = check_short_term_penalty(code, days)
-        if is_short_term and days < 7:
-            print(f"   HOLD {h['name'][:25]}: {penalty_reason}（避免惩罚性赎回费）")
-            continue
-        
-        # 时间止损
-        time_stop, ts_reason = check_time_stop(code, portfolio.holdings, TODAY)
-        if time_stop:
-            print(f"   SELL_TS {h['name'][:25]}: {ts_reason}")
-            portfolio.sell(code, 0, 1.0, TODAY, "time_stop", True)
-            sell_actions.append({"action": "SELL", "code": code, "name": h["name"], "reason": ts_reason})
-            continue
-        
-        if days < GENE.get("min_holding_days", 60):
-            continue
-        
-        # 标准止盈止损
+
+        # 先算当前净值（卖出必须用实际净值，不能用 1.0，否则 PnL 全错）
         pts = fund_charts.get(code, [])
+        latest_nav = 1.0  # 默认值，无行情数据时退回 1.0
+        today_pts = []
         actual_pnl = 0
         if pts:
             today_pts = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
@@ -751,33 +738,50 @@ def run():
                     buy_nav = (100 + float(buy_pts[-1].get("yAxis", 0))) / 100
                     if buy_nav > 0:
                         actual_pnl = (latest_nav / buy_nav - 1) * 100
-        
+
+        # 场外基金费率感知：检查惩罚性赎回费
+        is_short_term, penalty_reason = check_short_term_penalty(code, days)
+        if is_short_term and days < 7:
+            print(f"   HOLD {h['name'][:25]}: {penalty_reason}（避免惩罚性赎回费）")
+            continue
+
+        # 时间止损
+        time_stop, ts_reason = check_time_stop(code, portfolio.holdings, TODAY)
+        if time_stop:
+            print(f"   SELL_TS {h['name'][:25]}: {ts_reason}")
+            portfolio.sell(code, 0, latest_nav, TODAY, "time_stop", True)
+            sell_actions.append({"action": "SELL", "code": code, "name": h["name"], "reason": ts_reason})
+            continue
+
+        if days < GENE.get("min_holding_days", 60):
+            continue
+
         # 止盈
         tp_pct = GENE.get("take_profit_pct", 35)
         if actual_pnl >= tp_pct:
-            portfolio.sell(code, 0, 1.0, TODAY, "take_profit", False)
-            sell_actions.append({"action": "SELL", "code": code, "name": h["name"], 
+            portfolio.sell(code, 0, latest_nav, TODAY, "take_profit", False)
+            sell_actions.append({"action": "SELL", "code": code, "name": h["name"],
                                  "reason": f"止盈+{actual_pnl:.0f}%"})
-            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}%")
-        
+            print(f"   SELL_TP {h['name'][:25]}: +{actual_pnl:.0f}% @NAV={latest_nav:.4f}")
+
         # 止损
         elif actual_pnl <= GENE.get("stop_loss_pct", -10):
-            portfolio.sell(code, 0, 1.0, TODAY, "stop_loss", True)
+            portfolio.sell(code, 0, latest_nav, TODAY, "stop_loss", True)
             sell_actions.append({"action": "SELL", "code": code, "name": h["name"],
                                  "reason": f"止损{actual_pnl:.0f}%"})
-            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}%")
-        
+            print(f"   SELL_SL {h['name'][:25]}: {actual_pnl:.0f}% @NAV={latest_nav:.4f}")
+
         # 移动止盈
         elif GENE.get("trailing_tp_activate", 0) > 0 and actual_pnl >= GENE.get("trailing_tp_activate", 0):
             peak_nav = h.get("peak_nav", 1.0)
-            current_nav = (100 + float(today_pts[-1].get("yAxis", 0))) / 100 if today_pts else 1.0
+            current_nav = latest_nav  # 已在上面计算，避免 today_pts 未定义
             if peak_nav > 0:
                 dd = (current_nav / peak_nav - 1) * 100
                 if dd < -GENE.get("trailing_tp_drawdown", 10):
-                    portfolio.sell(code, 0, 1.0, TODAY, "trailing_tp", True)
+                    portfolio.sell(code, 0, latest_nav, TODAY, "trailing_tp", True)
                     sell_actions.append({"action": "SELL", "code": code, "name": h["name"],
                                          "reason": f"移动止盈 profit={actual_pnl:.0f}% dd={dd:.0f}%"})
-                    print(f"   SELL_TTP {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd:.0f}%")
+                    print(f"   SELL_TTP {h['name'][:25]}: profit={actual_pnl:.0f}% dd={dd:.0f}% @NAV={latest_nav:.4f}")
     
     # 8. 买入决策
     print("7. 买入...")
@@ -820,15 +824,23 @@ def run():
         # A/C份额推荐
         expected_hold = 90  # 预期持有90天
         recommended_class, class_reason = recommend_share_class(code, c["name"], expected_hold)
-        
-        if portfolio.buy(code, c["name"], amount, 1.0, TODAY):
+
+        # 用实际净值买入（不是 1.0，否则后续 PnL 全错）
+        buy_price = 1.0
+        pts = fund_charts.get(code, [])
+        if pts:
+            valid = [p for p in pts if p.get("xAxis", "")[:10] <= TODAY]
+            if valid:
+                buy_price = (100 + float(valid[-1].get("yAxis", 0))) / 100
+
+        if portfolio.buy(code, c["name"], amount, buy_price, TODAY):
             buy_actions.append({
                 "action": "BUY", "code": code, "name": c["name"],
                 "amount": amount, "score": c["score"],
                 "share_class_recommended": recommended_class,
                 "share_class_reason": class_reason,
             })
-            print(f"   BUY {c['name'][:30]}: {amount:,.0f} (评分{c['score']:.1f} 推荐{recommended_class}类)")
+            print(f"   BUY {c['name'][:30]}: {amount:,.0f} @{buy_price:.4f} (评分{c['score']:.1f} 推荐{recommended_class}类)")
     
     # 9. 同步持仓 + 计算市值
     vp["cash"] = portfolio.cash
@@ -865,6 +877,8 @@ def run():
         
         vp_holdings[code] = {
             "name": h["name"], "cost_basis": cb,
+            "shares": h.get("shares", 0),  # 保存实际份额，避免恢复时丢失
+            "buy_nav": h.get("buy_nav", 1.0),  # 保存实际买入净值
             "market_value": round(mv, 2),
             "buy_date": h.get("buy_date", TODAY),
             "buy_score": 3.0,
