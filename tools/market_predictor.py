@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 """市场方向预测 — Transformer + LSTM 混合模型预测未来N日市场下跌概率。
 
 输入特征序列（过去60个交易日）：
@@ -23,11 +24,12 @@ import statistics
 from typing import List, Dict, Tuple, Optional
 from collections import deque
 
+import numpy as np
+
 try:
     import torch
     import torch.nn as nn
     import torch.nn.functional as F
-    import numpy as np
     TORCH_AVAILABLE = True
 except ImportError:
     TORCH_AVAILABLE = False
