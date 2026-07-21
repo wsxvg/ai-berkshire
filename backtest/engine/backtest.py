@@ -86,6 +86,13 @@ try:
 except ImportError:
     MARKET_PREDICTOR_AVAILABLE = False
 
+# 市场方向预测 — LightGBM（方案V，CPU秒级训练）
+try:
+    from tools.lgb_predictor import LGBMarketPredictor
+    LGB_PREDICTOR_AVAILABLE = True
+except Exception:
+    LGB_PREDICTOR_AVAILABLE = False
+
 RISK_FREE_RATE = 0.025
 PURCHASE_DISCOUNT = 0.1
 
@@ -1474,6 +1481,18 @@ def run_backtest(config):
             crash_threshold=_predictor_crash_threshold)
         print(f"Market predictor (Transformer): enabled, crash_thresh={_predictor_crash_threshold}, sell_thresh={_predictor_sell_threshold}")
 
+    # ── LightGBM市场预测初始化（方案V）──
+    _lgb_enabled = config.get("lgb_predictor", False) and LGB_PREDICTOR_AVAILABLE
+    _lgb_predictor = None
+    _lgb_crash_threshold = config.get("lgb_crash_threshold", -0.05)
+    _lgb_sell_threshold = config.get("lgb_sell_threshold", 0.0)
+    _lgb_prob_down = 0.5
+    if _lgb_enabled:
+        _lgb_predictor = LGBMarketPredictor(
+            seq_len=60, fwd_days=10, retrain_interval=config.get("lgb_retrain_days", 20),
+            crash_threshold=_lgb_crash_threshold)
+        print(f"LGB predictor: enabled, crash_thresh={_lgb_crash_threshold}, sell_thresh={_lgb_sell_threshold}")
+
     for idx, day in enumerate(backtest_dates):
         cutoff_full = day  # 已经是 YYYY-MM-DD
 
@@ -1585,6 +1604,44 @@ def run_backtest(config):
                     print(f"  predictor: P(down)={_predictor_prob_down:.2f}")
             except Exception:
                 pass
+
+        # ── 方案V：LightGBM市场预测（CPU秒级，替代Transformer）──
+        _lgb_prob_down = 0.5
+        if _lgb_enabled and _lgb_predictor and _bm_nav_values:
+            if idx > 0 and idx % 5 == 0:
+                try:
+                    _lgb_predictor.add_training_data(_bm_nav_values, len(_bm_nav_values))
+                    _lgb_new = len(_lgb_predictor.training_data_X)
+                    if _lgb_predictor.should_retrain(_lgb_new):
+                        _lgb_predictor.train()
+                        if idx % 20 == 0:
+                            print(f"  lgb_trained: {_lgb_new} samples")
+                except Exception:
+                    pass
+            try:
+                _lgb_prob_down = _lgb_predictor.predict(_bm_nav_values)
+                if idx % 20 == 0:
+                    print(f"  lgb_predict: P(crash)={_lgb_prob_down:.2f}")
+            except Exception:
+                pass
+
+        # 方案V：LGB预测过滤 — P(crash)>阈值时停止买入
+        if _lgb_enabled and candidates and _lgb_prob_down > config.get("lgb_buy_stop_threshold", 0.7):
+            candidates = []
+            if idx % 20 == 0:
+                print(f"  lgb_filter: STOP BUY (P_crash={_lgb_prob_down:.2f})")
+
+        # 方案V2：LGB大跌预测清仓 — P(crash)>sell_threshold时清仓逃跑
+        if _lgb_enabled and _lgb_sell_threshold > 0 and _lgb_prob_down > _lgb_sell_threshold:
+            if portfolio.holdings and (not hasattr(portfolio, '_last_lgb_crash_sell') or idx - getattr(portfolio, '_last_lgb_crash_sell', 0) >= 10):
+                print(f"  LGB_CRASH: P(crash)={_lgb_prob_down:.2f} > {_lgb_sell_threshold}, SELLING ALL")
+                for _lp_code in list(portfolio.holdings.keys()):
+                    _lp_pts = fund_charts.get(_lp_code, [])
+                    _lp_valid = _bisect_valid(_lp_pts, cutoff_full)
+                    _lp_nav = (100 + _float(_lp_valid[-1].get("yAxis", 0))) / 100 if _lp_valid else 1.0
+                    portfolio.sell(_lp_code, 0, _lp_nav, cutoff_full, "lgb_crash_predictor", force_sell=True)
+                portfolio._last_lgb_crash_sell = idx
+                portfolio._dd_pause_until = _add_days(cutoff_full, 5)
 
         # ── 动态评分门槛：根据市场状态调整 min_score ──
         _effective_min_score = config.get("min_score", 3.3)
@@ -1928,6 +1985,33 @@ def run_backtest(config):
                         filtered.append(c)
             candidates = filtered
 
+        # 方案U4：相对强度买入 — 只买跑赢基准的基金
+        _rel_strength = config.get("relative_strength_buy", False)
+        if _rel_strength and candidates and _bm_nav_values and len(_bm_nav_values) >= 20:
+            _bm_ret_20 = _bm_nav_values[-1] / _bm_nav_values[-20] - 1
+            filtered = []
+            for c in candidates:
+                _cpts = fund_charts.get(c["code"], [])
+                _cvalid = _bisect_valid(_cpts, cutoff_full)
+                if len(_cvalid) >= 20:
+                    _cnavs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in _cvalid]
+                    _c_ret = _cnavs[-1] / _cnavs[-20] - 1
+                    if _c_ret > _bm_ret_20:
+                        filtered.append(c)
+            candidates = filtered
+
+        # 方案U5：逆向买入 — 基准前一日跌幅>X%时才买入（抄底策略）
+        _contrarian_drop = config.get("contrarian_buy_drop", 0)
+        if _contrarian_drop > 0 and _bm_nav_values and len(_bm_nav_values) >= 2:
+            _bm_daily_ret = _bm_nav_values[-1] / _bm_nav_values[-2] - 1
+            if _bm_daily_ret < -_contrarian_drop:
+                # 市场大跌，保持候选不变（抄底信号）
+                if idx % 20 == 0:
+                    print(f"  contrarian_buy: market drop={_bm_daily_ret*100:.2f}%, KEEPING candidates")
+            else:
+                # 市场没大跌，不买
+                candidates = []
+
         # ── 相关性过滤：排除与已持仓基金高度相关的新基金 ──
         if _max_corr > 0 and candidates and portfolio.holdings:
             held_codes = list(portfolio.holdings.keys())
@@ -2232,6 +2316,55 @@ def run_backtest(config):
                     if _recent_avg < _prev_avg * 0.8:  # 动量下降20%
                         should_sell = True
                         sell_reason = f"mom_decay {_mom_decay_days}d avg={_recent_avg:.2f} prev={_prev_avg:.2f}"
+
+            # 🔴 方案U1：MA50趋势破位卖出 — 跌破50日均线卖出（长趋势跟随）
+            _ma50_exit = config.get("ma50_trend_exit", False)
+            if _ma50_exit and code in portfolio.holdings and len(valid) >= 50:
+                try:
+                    _sell_navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    _ma50 = statistics.mean(_sell_navs[-50:])
+                    if _sell_navs[-1] < _ma50:
+                        should_sell = True
+                        sell_reason = f"ma50_break nav={_sell_navs[-1]:.4f} ma50={_ma50:.4f}"
+                except Exception:
+                    pass
+
+            # 🔴 方案U2：波动率突增卖出 — 日波动率>2倍均值时=恐慌逃离
+            _vol_spike_mult = config.get("vol_spike_mult", 0)
+            if _vol_spike_mult > 0 and code in portfolio.holdings and len(valid) >= 30:
+                try:
+                    _sell_navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid]
+                    _daily_rets = [abs(_sell_navs[i] - _sell_navs[i-1]) for i in range(1, len(_sell_navs))]
+                    _avg_vol = statistics.mean(_daily_rets[-20:]) if len(_daily_rets) >= 20 else 0
+                    _recent_vol = statistics.mean(_daily_rets[-3:]) if len(_daily_rets) >= 3 else 0
+                    if _avg_vol > 0 and _recent_vol > _vol_spike_mult * _avg_vol:
+                        should_sell = True
+                        sell_reason = f"vol_spike recent={_recent_vol:.4f} avg={_avg_vol:.4f} ratio={_recent_vol/_avg_vol:.1f}x"
+                except Exception:
+                    pass
+
+            # 🔴 方案U3：组合级回撤减仓 — 组合回撤>X%时每只减仓Y%（不全清）
+            _port_dd_reduce_pct = config.get("portfolio_dd_reduce_pct", 0)
+            if _port_dd_reduce_pct > 0 and code in portfolio.holdings:
+                _total_value = portfolio.cash + sum(
+                    h2["shares"] * (100 + _float((_bisect_valid(fund_charts.get(c2, []), cutoff_full) or [{"yAxis":0}])[-1].get("yAxis", 0))) / 100
+                    for c2, h2 in portfolio.holdings.items()
+                )
+                _port_peak = getattr(portfolio, "_peak_value", _total_value)
+                if _total_value > _port_peak:
+                    portfolio._peak_value = _total_value
+                    _port_peak = _total_value
+                _port_dd = (_total_value / _port_peak - 1) * 100 if _port_peak > 0 else 0
+                _port_dd_threshold = config.get("portfolio_dd_reduce_threshold", 10)
+                if _port_dd < -_port_dd_threshold:
+                    _reduce_frac = config.get("portfolio_dd_reduce_frac", 0.3)
+                    _sell_val = h["shares"] * sell_price * _reduce_frac
+                    if _sell_val >= 100 and not h.get("_dd_reduced_today", False):
+                        portfolio.sell(code, _sell_val, sell_price, cutoff_full,
+                                      sell_reason=f"port_dd_reduce dd={_port_dd:.1f}% frac={_reduce_frac*100:.0f}%")
+                        h["_dd_reduced_today"] = True
+                        print(f"  SELL_PORT_DD_REDUCE {code} {h['name'][:16]} dd={_port_dd:.1f}% amt={_sell_val:.0f}")
+                        continue
 
             # 🔴 方案D2：ATR动态止损 — 止损线随波动率自适应
             _atr_mult = config.get("atr_stop_loss_mult", 0)

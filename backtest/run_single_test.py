@@ -99,6 +99,30 @@ TEST_CONFIGS = {
     "T2_crash3_sell70": {"market_predictor": True, "predictor_crash_threshold": -0.03, "predictor_sell_threshold": 0.7, "predictor_retrain_days": 20},
     "T3_crash5_sell60": {"market_predictor": True, "predictor_crash_threshold": -0.05, "predictor_sell_threshold": 0.6, "predictor_retrain_days": 20},
     "T4_crash10_sell80": {"market_predictor": True, "predictor_crash_threshold": -0.10, "predictor_sell_threshold": 0.8, "predictor_retrain_days": 20},
+    # 方案U：新卖出策略
+    "U1_ma50_exit": {"ma50_trend_exit": True},
+    "U2_vol_spike2": {"vol_spike_mult": 2.0},
+    "U2b_vol_spike3": {"vol_spike_mult": 3.0},
+    "U3_port_dd10": {"portfolio_dd_reduce_pct": 1, "portfolio_dd_reduce_threshold": 10, "portfolio_dd_reduce_frac": 0.3},
+    "U3b_port_dd15": {"portfolio_dd_reduce_pct": 1, "portfolio_dd_reduce_threshold": 15, "portfolio_dd_reduce_frac": 0.3},
+    # 方案U买入策略
+    "U4_rel_strength": {"relative_strength_buy": True},
+    "U5_contrarian2": {"contrarian_buy_drop": 0.02},
+    "U5b_contrarian3": {"contrarian_buy_drop": 0.03},
+    # 方案V：LightGBM预测（CPU秒级）
+    "V1_lgb_crash5_sell70": {"lgb_predictor": True, "lgb_crash_threshold": -0.05, "lgb_sell_threshold": 0.7, "lgb_buy_stop_threshold": 0.6},
+    "V2_lgb_crash3_sell60": {"lgb_predictor": True, "lgb_crash_threshold": -0.03, "lgb_sell_threshold": 0.6, "lgb_buy_stop_threshold": 0.5},
+    "V3_lgb_crash5_sell60": {"lgb_predictor": True, "lgb_crash_threshold": -0.05, "lgb_sell_threshold": 0.6, "lgb_buy_stop_threshold": 0.5},
+    "V4_lgb_crash10_sell80": {"lgb_predictor": True, "lgb_crash_threshold": -0.10, "lgb_sell_threshold": 0.8, "lgb_buy_stop_threshold": 0.7},
+    # 方案W：组合结构
+    "W1_maxhold5": {"max_holdings": 5},
+    "W2_maxhold10": {"max_holdings": 10},
+    "W3_maxhold15": {"max_holdings": 15},
+    "W4_pyramid": {"pyramiding_enabled": True},
+    # 方案X：组合策略
+    "X1_ma50_portdd": {"ma50_trend_exit": True, "portfolio_dd_reduce_pct": 1, "portfolio_dd_reduce_threshold": 10, "portfolio_dd_reduce_frac": 0.3},
+    "X2_volspike_relstr": {"vol_spike_mult": 2.0, "relative_strength_buy": True},
+    "X3_lgb_ma50": {"lgb_predictor": True, "lgb_crash_threshold": -0.05, "lgb_sell_threshold": 0.7, "ma50_trend_exit": True},
 }
 
 LABELS = {
@@ -173,6 +197,25 @@ LABELS = {
     "T2_crash3_sell70": "T2:预测跌3%+P>70%清仓",
     "T3_crash5_sell60": "T3:预测跌5%+P>60%清仓",
     "T4_crash10_sell80": "T4:预测跌10%+P>80%清仓",
+    "U1_ma50_exit": "U1:MA50趋势破位卖出",
+    "U2_vol_spike2": "U2:波动率2x突增卖出",
+    "U2b_vol_spike3": "U2b:波动率3x突增卖出",
+    "U3_port_dd10": "U3:组合回撤10%减仓30%",
+    "U3b_port_dd15": "U3b:组合回撤15%减仓30%",
+    "U4_rel_strength": "U4:相对强度买入(跑赢基准)",
+    "U5_contrarian2": "U5:逆向买入(跌2%才买)",
+    "U5b_contrarian3": "U5b:逆向买入(跌3%才买)",
+    "V1_lgb_crash5_sell70": "V1:LGB预测跌5%+P>70%清仓",
+    "V2_lgb_crash3_sell60": "V2:LGB预测跌3%+P>60%清仓",
+    "V3_lgb_crash5_sell60": "V3:LGB预测跌5%+P>60%清仓",
+    "V4_lgb_crash10_sell80": "V4:LGB预测跌10%+P>80%清仓",
+    "W1_maxhold5": "W1:最多持5只(集中)",
+    "W2_maxhold10": "W2:最多持10只",
+    "W3_maxhold15": "W3:最多持15只(分散)",
+    "W4_pyramid": "W4:金字塔加仓",
+    "X1_ma50_portdd": "X1:MA50破位+组合回撤减仓",
+    "X2_volspike_relstr": "X2:波动率突增+相对强度",
+    "X3_lgb_ma50": "X3:LGB预测+MA50破位",
 }
 
 

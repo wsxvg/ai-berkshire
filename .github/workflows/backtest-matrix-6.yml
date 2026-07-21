@@ -1,0 +1,53 @@
+name: Backtest Matrix 6 (U+V+W+X)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          U1_ma50_exit, U2_vol_spike2, U2b_vol_spike3,
+          U3_port_dd10, U3b_port_dd15,
+          U4_rel_strength, U5_contrarian2, U5b_contrarian3,
+          V1_lgb_crash5_sell70, V2_lgb_crash3_sell60, V3_lgb_crash5_sell60, V4_lgb_crash10_sell80,
+          W1_maxhold5, W2_maxhold10, W3_maxhold15, W4_pyramid,
+          X1_ma50_portdd, X2_volspike_relstr, X3_lgb_ma50
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-6
+          path: backtest/reports/unified_backtest_summary.json
