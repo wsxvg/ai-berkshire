@@ -1,4 +1,4 @@
-name: 回测对比: 凯利差异化 vs 等额分配
+name: Backtest EQ Test (Kelly vs Equal Allocate)
 
 on:
   workflow_dispatch:
