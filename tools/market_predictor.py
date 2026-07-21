@@ -164,10 +164,11 @@ if TORCH_AVAILABLE:
 class MarketPredictor:
     """Walk-forward市场预测器，在回测中逐步训练和预测。"""
 
-    def __init__(self, seq_len=60, fwd_days=10, retrain_interval=20):
+    def __init__(self, seq_len=60, fwd_days=10, retrain_interval=20, crash_threshold=0.0):
         self.seq_len = seq_len
         self.fwd_days = fwd_days
         self.retrain_interval = retrain_interval
+        self.crash_threshold = crash_threshold  # 0.0=任何下跌, -0.05=跌超5%, -0.10=跌超10%
         self.model = None
         self.training_data = []  # [(feature_seq, label)]
         self._last_train_count = 0
@@ -190,9 +191,9 @@ class MarketPredictor:
         if feat is None:
             return None
 
-        # 标签：未来fwd_days的累计收益是否为负
+        # 标签：未来fwd_days的累计收益是否低于crash_threshold
         future_ret = (nav_values[current_idx + self.fwd_days] / nav_values[current_idx] - 1)
-        label = 1 if future_ret < 0 else 0
+        label = 1 if future_ret < self.crash_threshold else 0
 
         return (feat, label)
 
@@ -221,8 +222,9 @@ class MarketPredictor:
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=1e-3, weight_decay=1e-4)
         criterion = nn.BCELoss()
 
-        # 训练50个epoch
-        for epoch in range(50):
+        # 训练20个epoch（从50减少，让CPU能跑完）
+        n_epochs = 20
+        for epoch in range(n_epochs):
             self.optimizer.zero_grad()
             pred = self.model(X)
             loss = criterion(pred, y)

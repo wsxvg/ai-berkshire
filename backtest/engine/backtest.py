@@ -1466,10 +1466,13 @@ def run_backtest(config):
     _predictor = None
     _predictor_prob_threshold = config.get("predictor_prob_threshold", 0.6)  # P(跌)>此值停止买入
     _predictor_retrain_interval = config.get("predictor_retrain_days", 20)
+    _predictor_crash_threshold = config.get("predictor_crash_threshold", 0.0)  # 0=任何跌, -0.05=跌超5%
+    _predictor_sell_threshold = config.get("predictor_sell_threshold", 0.0)  # P(大跌)>此值清仓逃跑, 0=禁用
     if _predictor_enabled:
         _predictor = MarketPredictor(
-            seq_len=60, fwd_days=10, retrain_interval=_predictor_retrain_interval)
-        print("Market predictor (Transformer): enabled")
+            seq_len=60, fwd_days=10, retrain_interval=_predictor_retrain_interval,
+            crash_threshold=_predictor_crash_threshold)
+        print(f"Market predictor (Transformer): enabled, crash_thresh={_predictor_crash_threshold}, sell_thresh={_predictor_sell_threshold}")
 
     for idx, day in enumerate(backtest_dates):
         cutoff_full = day  # 已经是 YYYY-MM-DD
@@ -1856,6 +1859,19 @@ def run_backtest(config):
             candidates = []
             if idx % 20 == 0:
                 print(f"  predictor_filter: STOP BUY (P_down={_predictor_prob_down:.2f})")
+
+        # 方案C2：大跌预测清仓 — P(大跌)>阈值时卖出所有持仓逃跑
+        if _predictor_enabled and _predictor_sell_threshold > 0 and _predictor_prob_down > _predictor_sell_threshold:
+            if portfolio.holdings and (not hasattr(portfolio, '_last_crash_sell') or idx - getattr(portfolio, '_last_crash_sell', 0) >= 10):
+                print(f"  🚨 CRASH_PREDICTOR: P(crash)={_predictor_prob_down:.2f} > {_predictor_sell_threshold}, SELLING ALL")
+                for _cp_code in list(portfolio.holdings.keys()):
+                    _cp_h = portfolio.holdings[_cp_code]
+                    _cp_pts = fund_charts.get(_cp_code, [])
+                    _cp_valid = _bisect_valid(_cp_pts, cutoff_full)
+                    _cp_nav = (100 + _float(_cp_valid[-1].get("yAxis", 0))) / 100 if _cp_valid else 1.0
+                    portfolio.sell(_cp_code, 0, _cp_nav, cutoff_full, "crash_predictor", force_sell=True)
+                portfolio._last_crash_sell = idx
+                portfolio._dd_pause_until = _add_days(cutoff_full, 5)  # 暂停5天买入
 
         # 方案D3：MACD金叉买入过滤 — 基准MACD<0时停止买入
         _macd_buy_filter = config.get("macd_golden_cross_buy", False)

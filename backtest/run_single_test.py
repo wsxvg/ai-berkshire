@@ -94,6 +94,11 @@ TEST_CONFIGS = {
     "S14_trail_act10_dd5": {"trailing_tp_activate": 10, "trailing_tp_drawdown": 5},
     # 组合：动量调整+移动止盈+宽松止盈
     "S15_combo": {"momentum_sell": 1.5, "momentum_sell_adjust": 0.3, "tp_trail_dynamic": True, "trailing_tp_activate": 20, "trailing_tp_drawdown": 8},
+    # 方案T：大跌预测+清仓逃跑（Transformer改良版）
+    "T1_crash5_sell70": {"market_predictor": True, "predictor_crash_threshold": -0.05, "predictor_sell_threshold": 0.7, "predictor_retrain_days": 20},
+    "T2_crash3_sell70": {"market_predictor": True, "predictor_crash_threshold": -0.03, "predictor_sell_threshold": 0.7, "predictor_retrain_days": 20},
+    "T3_crash5_sell60": {"market_predictor": True, "predictor_crash_threshold": -0.05, "predictor_sell_threshold": 0.6, "predictor_retrain_days": 20},
+    "T4_crash10_sell80": {"market_predictor": True, "predictor_crash_threshold": -0.10, "predictor_sell_threshold": 0.8, "predictor_retrain_days": 20},
 }
 
 LABELS = {
@@ -164,6 +169,10 @@ LABELS = {
     "S13_trail_act30": "S13:30%激活移动止盈8%",
     "S14_trail_act10_dd5": "S14:10%激活移动止盈5%",
     "S15_combo": "S15:组合(动量调整+动态止盈+移动止盈)",
+    "T1_crash5_sell70": "T1:预测跌5%+P>70%清仓",
+    "T2_crash3_sell70": "T2:预测跌3%+P>70%清仓",
+    "T3_crash5_sell60": "T3:预测跌5%+P>60%清仓",
+    "T4_crash10_sell80": "T4:预测跌10%+P>80%清仓",
 }
 
 
