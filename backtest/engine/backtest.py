@@ -1751,9 +1751,15 @@ def run_backtest(config):
 
         # 如果启用了加权，用加权后的买数替代原始买数
         use_weighted = config.get("use_weighted_consensus", False)
+        _weighted_threshold = config.get("weighted_consensus_threshold", 0)  # 加权共识门槛(浮点)
         for fn in fund_signals:
             if use_weighted:
-                fund_signals[fn]["buy_count"] = max(1, int(fund_signals[fn]["weighted_buy"]))
+                _wb = fund_signals[fn]["weighted_buy"]
+                if _weighted_threshold > 0:
+                    # 使用浮点门槛而非int截断
+                    fund_signals[fn]["buy_count"] = _wb  # 保留浮点用于门槛比较
+                else:
+                    fund_signals[fn]["buy_count"] = max(1, int(_wb))
 
         # 对该日有买入信号的基金评分
         candidates = []
@@ -1772,11 +1778,29 @@ def run_backtest(config):
             else:
                 _min_consensus = config.get("min_consensus", 2)  # 密集期：不提高门槛(防过量过滤)
 
+        # ── 净信号参数 ──
+        _net_signal = config.get("net_signal", False)
+        _net_signal_ratio = config.get("net_signal_ratio", 0)  # 买入必须 >= 卖出 * ratio
+        _net_signal_diff = config.get("net_signal_diff", 0)  # 买入-卖出必须 >= diff
+
         for fn, signal in fund_signals.items():
-            if signal["buy_count"] < _min_consensus:  # 需要至少 N 人买入（默认2，支持自适应）
-                continue
+            _bc = signal["buy_count"]
+            # 加权模式下用浮点比较
+            if use_weighted and _weighted_threshold > 0:
+                if _bc < _weighted_threshold:
+                    continue
+            else:
+                if _bc < _min_consensus:
+                    continue
             # 净信号过滤：买入必须多于卖出
-            if config.get("net_signal", False) and signal["buy_count"] <= signal.get("sell_count", 0):
+            _sc = signal.get("sell_count", 0)
+            if _net_signal and _bc <= _sc:
+                continue
+            # 净信号比例过滤：买入必须 >= 卖出 * ratio
+            if _net_signal_ratio > 0 and _bc < _sc * _net_signal_ratio:
+                continue
+            # 净信号差值过滤：买入-卖出必须 >= diff
+            if _net_signal_diff > 0 and (_bc - _sc) < _net_signal_diff:
                 continue
             # 找基金代码（三步模糊匹配：精确→标准化→包含）
             code = _resolve_fund_code(fn)

@@ -1,0 +1,68 @@
+name: Backtest Matrix 9 (BA+BB+BC+BD+BE - Signal Deep Dive)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        test_name: [
+          # BA: 加权共识深挖（12个）
+          BA1_w_cons1, BA2_w_cons3, BA3_w_cons4,
+          BA4_w_thr15, BA5_w_thr20, BA6_w_thr25, BA7_w_thr30, BA8_w_thr35,
+          BA9_w_adaptive, BA10_w_cons2_topn10, BA11_w_cons2_consprio, BA12_w_cons2_maxhold10,
+          # BB: 净信号深挖（12个）
+          BB1_net_ratio15, BB2_net_ratio2, BB3_net_ratio3,
+          BB4_net_diff2, BB5_net_diff3, BB6_net_diff4,
+          BB7_net_cons1, BB8_net_cons3, BB9_net_adaptive,
+          BB10_net_topn10, BB11_net_consprio, BB12_net_maxhold10,
+          # BC: 加权+净信号组合（12个，最有潜力）
+          BC1_w_net, BC2_w_net_cons1, BC3_w_net_cons3,
+          BC4_w_net_thr20, BC5_w_net_thr25, BC6_w_net_diff2,
+          BC7_w_net_ratio2, BC8_w_net_adaptive, BC9_w_net_topn10,
+          BC10_w_net_consprio, BC11_w_net_maxhold10, BC12_w_net_sellcons2,
+          # BD: 加权+净信号+评分组合（6个）
+          BD1_w_net_score4, BD2_w_net_costpen, BD3_w_net_limitboost,
+          BD4_w_net_qdii50, BD5_w_net_corr04, BD6_w_net_sector30,
+          # BE: 极限组合（6个）
+          BE1_w_net_topn_consprio, BE2_w_net_thr25_diff2,
+          BE3_w_net_adaptive_consprio, BE4_w_net_maxhold10_consprio,
+          BE5_w_net_thr20_adaptive, BE6_w_net_thr30_diff3
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install lightgbm scikit-learn numpy pandas
+      - name: Run backtest
+        run: python backtest/run_single_test.py ${{ matrix.test_name }}
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.test_name }}
+          path: backtest/results/${{ matrix.test_name }}.json
+
+  collect-results:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: backtest/results
+          merge-multiple: true
+      - name: Generate summary
+        run: python backtest/collect_results.py
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-summary-9
+          path: backtest/reports/unified_backtest_summary.json
