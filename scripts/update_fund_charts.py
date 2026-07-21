@@ -184,9 +184,24 @@ def update_single_fund(code: str, pts: list, cookies: dict, force_full: bool = F
 
 
 def update_charts_file(charts_path: Path, max_funds: int = 0, force_full: bool = False):
-    """更新指定的 fund_charts.json 文件"""
+    """更新基金净值数据。
+
+    charts_path 可以是目录 (data/fund_charts/) 或文件 (旧 data/fund_charts.json)。
+    目录模式: 每只基金写入 {dir}/{code}.json (推荐, 通过 chart_loader)
+    文件模式: 写入单个 JSON 文件 (兼容旧代码, 会打 deprecation 警告)
+    """
+    charts_path = Path(charts_path)
+    is_dir_mode = charts_path.is_dir() or (not charts_path.exists() and not charts_path.suffix)
+
+    if is_dir_mode:
+        _update_charts_dir(charts_path, max_funds, force_full)
+        return
+
+    # 旧文件模式 (向后兼容)
+    import warnings
+    warnings.warn("单文件模式已废弃，请改用目录模式", DeprecationWarning, stacklevel=2)
     print(f"\n{'='*60}")
-    print(f"更新: {charts_path}")
+    print(f"更新(文件模式): {charts_path}")
     print(f"{'='*60}")
 
     charts = load_charts(charts_path)
@@ -262,21 +277,76 @@ def update_charts_file(charts_path: Path, max_funds: int = 0, force_full: bool =
     print(f"  原最新日期: {global_max} → 新最新日期: {new_global_max}")
 
 
+def _update_charts_dir(charts_dir: Path, max_funds: int = 0, force_full: bool = False):
+    """目录模式：逐基金增量更新，通过 chart_loader 写入 per-fund 文件。"""
+    from tools.chart_loader import load_single_chart, update_chart
+    charts_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"\n{'='*60}")
+    print(f"更新(目录模式): {charts_dir}")
+    print(f"{'='*60}")
+
+    cookies = _get_cookies()
+    existing_codes = sorted([f.stem for f in charts_dir.glob("*.json")])
+    if max_funds > 0:
+        existing_codes = existing_codes[:max_funds]
+
+    total = len(existing_codes)
+    if total == 0:
+        print("  无数据, 跳过")
+        return
+
+    updated = 0
+    skipped = 0
+    failed = 0
+    total_new_days = 0
+    global_max = ""
+
+    for i, code in enumerate(existing_codes):
+        old_pts = load_single_chart(code, charts_dir)
+        if old_pts:
+            d = old_pts[-1].get("xAxis", "")
+            if d > global_max:
+                global_max = d
+        try:
+            new_pts, new_days = update_single_fund(code, old_pts, cookies, force_full)
+            if new_days > 0:
+                update_chart(code, new_pts, charts_dir)
+                updated += 1
+                total_new_days += new_days
+                last_new = new_pts[-1].get("xAxis", "")
+                if (i + 1) <= 5 or (i + 1) % 50 == 0:
+                    print(f"  [{i+1}/{total}] {code}: +{new_days} 天 → {last_new}")
+            else:
+                skipped += 1
+                if (i + 1) <= 3:
+                    last_old = old_pts[-1].get("xAxis", "") if old_pts else "N/A"
+                    print(f"  [{i+1}/{total}] {code}: 已是最新 ({last_old})")
+        except Exception as e:
+            failed += 1
+            if i < 5 or (i + 1) % 100 == 0:
+                print(f"  [{i+1}/{total}] {code}: FAIL {e}")
+
+        if (i + 1) % 50 == 0:
+            print(f"  --- 进度: {i+1}/{total} | 更新:{updated} 跳过:{skipped} 失败:{failed} ---")
+
+        time.sleep(0.15)
+
+    print(f"\n  ── 更新完成 ──")
+    print(f"  更新: {updated} 只 | 跳过: {skipped} | 失败: {failed}")
+    print(f"  新增数据点: {total_new_days}")
+
+
 def main():
-    parser = argparse.ArgumentParser(description="增量更新 fund_charts.json (京东金融数据源)")
-    parser.add_argument("--backtest", action="store_true", help="更新 backtest/data/fund_charts.json")
-    parser.add_argument("--both", action="store_true", help="同时更新实盘和回测数据")
+    parser = argparse.ArgumentParser(description="增量更新基金净值 (京东金融数据源)")
+    parser.add_argument("--backtest", action="store_true", help="(已废弃) 更新回测数据")
+    parser.add_argument("--both", action="store_true", help="(已废弃) 统一数据源后无需分更新")
     parser.add_argument("--max-funds", type=int, default=0, help="最多更新N只 (0=全部)")
     parser.add_argument("--force-full", action="store_true", help="全量重拉 (不用增量)")
     args = parser.parse_args()
 
-    if args.both:
-        update_charts_file(PROJECT / "data" / "fund_charts.json", args.max_funds, args.force_full)
-        update_charts_file(PROJECT / "backtest" / "data" / "fund_charts.json", args.max_funds, args.force_full)
-    elif args.backtest:
-        update_charts_file(PROJECT / "backtest" / "data" / "fund_charts.json", args.max_funds, args.force_full)
-    else:
-        update_charts_file(PROJECT / "data" / "fund_charts.json", args.max_funds, args.force_full)
+    # 统一数据源：回测和实盘共用 data/fund_charts/ 目录
+    update_charts_file(PROJECT / "data" / "fund_charts", args.max_funds, args.force_full)
 
 
 if __name__ == "__main__":
