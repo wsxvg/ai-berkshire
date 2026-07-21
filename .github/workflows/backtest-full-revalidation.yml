@@ -1,0 +1,70 @@
+name: Full Strategy Revalidation
+
+on:
+  workflow_dispatch:
+    inputs:
+      strategies:
+        description: 'Strategy list (comma-separated, empty=all)'
+        required: false
+        default: ''
+  schedule:
+    # 每月最后一个周六 UTC 18:00 (北京时间周日 02:00)
+    - cron: '0 18 * * 6'
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install pytest
+
+      - name: Restore fund chart cache
+        uses: actions/cache@v4
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ hashFiles('data/fund_charts_index.json') }}
+          restore-keys: |
+            fund-charts-
+
+      - name: Run preflight check
+        run: python scripts/preflight_check.py
+
+      - name: Run all backtest strategies
+        run: |
+          cd backtest
+          python run_all_strategies.py --output results_revalidation/
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Collect and analyze results
+        run: |
+          python backtest/collect_results.py --input backtest/results_revalidation/ --output backtest/revalidation_report.json
+          python backtest/analyze_revalidation.py --input backtest/revalidation_report.json --output backtest/revalidation_analysis.md
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: revalidation-results
+          path: |
+            backtest/results_revalidation/
+            backtest/revalidation_report.json
+            backtest/revalidation_analysis.md
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backtest/revalidation_report.json backtest/revalidation_analysis.md
+          git commit -m "全自动策略回测重验证 $(date -u +'%Y-%m-%d')" || true
+          git push

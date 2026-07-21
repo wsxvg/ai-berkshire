@@ -1,0 +1,50 @@
+name: Daily Chart Update
+
+on:
+  schedule:
+    # 每日 UTC 06:00 (北京时间 14:00) 交易日自动运行
+    - cron: '0 6 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Restore fund chart cache
+        uses: actions/cache@v4
+        id: chart-cache
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ github.run_id }}
+          restore-keys: |
+            fund-charts-
+
+      - name: Incremental update fund charts
+        run: |
+          python scripts/update_fund_charts.py --max-funds 0
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Save updated cache
+        uses: actions/cache/save@v4
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ github.run_id }}
+
+      - name: Commit updated charts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/fund_charts/ data/fund_charts_index.json
+          git commit -m "每日基金净值更新 $(date -u +'%Y-%m-%d')" || true
+          git push
