@@ -1318,8 +1318,9 @@ def run_backtest(config):
     with open(hist_file, "r", encoding="utf-8") as f:
         all_records = json.load(f)
 
-    with open(DATA_DIR / "fund_charts.json", "r", encoding="utf-8") as f:
-        fund_charts = json.load(f)
+    from tools.chart_loader import load_all_charts
+    fund_charts = load_all_charts()
+    print(f"[DATA] 加载 {len(fund_charts)} 只基金净值数据")
 
     # ── 速度优化预处理：排序 fund_charts + 预排序 trading_by_date keys ──
     _DATES_CACHE.clear()

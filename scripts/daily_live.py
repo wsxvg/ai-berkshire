@@ -67,7 +67,8 @@ def load_cache(prefix):
 fund_rules = load_cache("trade_rules")
 fund_managers = load_cache("fund_manager")
 fund_profiles = load_cache("fund_profile")
-fund_charts = json.loads((PROJECT / "data" / "fund_charts.json").read_text("utf-8"))
+from tools.chart_loader import load_all_charts
+fund_charts = load_all_charts()
 
 tp = PROJECT / "backtest" / "data" / "trading_by_date_fixed.json"
 trading_by_date = json.loads(tp.read_text("utf-8")) if tp.exists() else {}
@@ -237,10 +238,10 @@ def run():
         print("0.7 增量更新基金净值...")
         try:
             from scripts.update_fund_charts import update_charts_file
-            update_charts_file(PROJECT / "data" / "fund_charts.json", max_funds=0)
+            update_charts_file(PROJECT / "data" / "fund_charts", max_funds=0)
             # 重新加载更新后的 fund_charts
             global fund_charts
-            fund_charts = json.loads((PROJECT / "data" / "fund_charts.json").read_text("utf-8"))
+            fund_charts = load_all_charts()
         except Exception as e:
             print(f"   增量更新失败(非致命): {e}")
     else:
