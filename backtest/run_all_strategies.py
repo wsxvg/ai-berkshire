@@ -23,6 +23,11 @@ try:
         MEGA_SWEEP = json.loads(_f.read())
 except (FileNotFoundError, ImportError):
     MEGA_SWEEP = []
+try:
+    with open(Path(__file__).resolve().parent / "player_sweep_configs.json", encoding="utf-8") as _f:
+        PLAYER_SWEEP = json.loads(_f.read())
+except (FileNotFoundError, ImportError):
+    PLAYER_SWEEP = []
 
 # ── 基础配置 ──
 BASE = {
@@ -169,6 +174,7 @@ def main():
     parser.add_argument("--end", type=str, default="2026-07-17", help="回测结束日期")
     parser.add_argument("--output", type=str, default="backtest/results_revalidation/", help="输出目录")
     parser.add_argument("--mega", action="store_true", help="包含超大规模扫描(2187个)")
+    parser.add_argument("--player", action="store_true", help="包含大佬精选策略(335个)")
     parser.add_argument("--chunk", type=int, default=0, help="当前分片ID (0-based)")
     parser.add_argument("--total", type=int, default=1, help="总分片数")
     args = parser.parse_args()
@@ -191,8 +197,11 @@ def main():
             base = deepcopy(Y5_BASE)
             base.update(Y5_CHAMPION["config"])
             all_strategies.append((f"SW_{key}", label, cfg, base))
-    if args.mega or (not args.base_only and not args.champion_only and not args.sweep_only):
+    if args.mega or (not args.base_only and not args.champion_only and not args.sweep_only and not args.player):
         for s in MEGA_SWEEP:
+            all_strategies.append((s["name"], s["desc"], s["config"], deepcopy(BASE)))
+    if args.player or (not args.base_only and not args.champion_only and not args.sweep_only and not args.mega):
+        for s in PLAYER_SWEEP:
             all_strategies.append((s["name"], s["desc"], s["config"], deepcopy(BASE)))
 
     # 分片: 只跑当前 chunk 的策略

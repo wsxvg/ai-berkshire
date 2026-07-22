@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       strategy_set:
-        description: 'all / base / champion / sweep / mega'
+        description: 'all / base / champion / sweep / mega / player'
         required: false
         default: 'all'
       chunks:
@@ -89,6 +89,7 @@ jobs:
           elif [ "$STRATEGY_SET" = "champion" ]; then FLAGS="--champion-only"
           elif [ "$STRATEGY_SET" = "sweep" ]; then FLAGS="--sweep-only"
           elif [ "$STRATEGY_SET" = "mega" ]; then FLAGS="--mega"
+          elif [ "$STRATEGY_SET" = "player" ]; then FLAGS="--player"
           fi
           TOTAL=${{ needs.generate-matrix.outputs.total }}
           python run_all_strategies.py $FLAGS \

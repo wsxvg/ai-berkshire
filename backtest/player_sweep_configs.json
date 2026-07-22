@@ -1,0 +1,4639 @@
+[
+  {
+    "name": "P_rw30_ms0",
+    "desc": "window=30d mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rw30_ms0.5",
+    "desc": "window=30d mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rw30_ms1.0",
+    "desc": "window=30d mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rw30_ms1.5",
+    "desc": "window=30d mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rw60_ms0",
+    "desc": "window=60d mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rw60_ms0.5",
+    "desc": "window=60d mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rw60_ms1.0",
+    "desc": "window=60d mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rw60_ms1.5",
+    "desc": "window=60d mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rw90_ms0",
+    "desc": "window=90d mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rw90_ms0.5",
+    "desc": "window=90d mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rw90_ms1.0",
+    "desc": "window=90d mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rw90_ms1.5",
+    "desc": "window=90d mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rw180_ms0",
+    "desc": "window=180d mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rw180_ms0.5",
+    "desc": "window=180d mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rw180_ms1.0",
+    "desc": "window=180d mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rw180_ms1.5",
+    "desc": "window=180d mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rw365_ms0",
+    "desc": "window=365d mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rw365_ms0.5",
+    "desc": "window=365d mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rw365_ms1.0",
+    "desc": "window=365d mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rw365_ms1.5",
+    "desc": "window=365d mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_hl15_mb3",
+    "desc": "half_life=15d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_hl15_mb5",
+    "desc": "half_life=15d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_hl15_mb10",
+    "desc": "half_life=15d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_hl15_mb15",
+    "desc": "half_life=15d min_buys=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_hl30_mb3",
+    "desc": "half_life=30d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_hl30_mb5",
+    "desc": "half_life=30d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_hl30_mb10",
+    "desc": "half_life=30d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_hl30_mb15",
+    "desc": "half_life=30d min_buys=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_hl45_mb3",
+    "desc": "half_life=45d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_hl45_mb5",
+    "desc": "half_life=45d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_hl45_mb10",
+    "desc": "half_life=45d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_hl45_mb15",
+    "desc": "half_life=45d min_buys=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_hl90_mb3",
+    "desc": "half_life=90d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_hl90_mb5",
+    "desc": "half_life=90d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_hl90_mb10",
+    "desc": "half_life=90d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_hl90_mb15",
+    "desc": "half_life=90d min_buys=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_hl180_mb3",
+    "desc": "half_life=180d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_hl180_mb5",
+    "desc": "half_life=180d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_hl180_mb10",
+    "desc": "half_life=180d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_hl180_mb15",
+    "desc": "half_life=180d min_buys=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_rw30_hl15",
+    "desc": "window=30 half_life=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rw30_hl45",
+    "desc": "window=30 half_life=45",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rw30_hl90",
+    "desc": "window=30 half_life=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rw30_hl180",
+    "desc": "window=30 half_life=180",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rw90_hl15",
+    "desc": "window=90 half_life=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rw90_hl45",
+    "desc": "window=90 half_life=45",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rw90_hl90",
+    "desc": "window=90 half_life=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rw90_hl180",
+    "desc": "window=90 half_life=180",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rw180_hl15",
+    "desc": "window=180 half_life=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rw180_hl45",
+    "desc": "window=180 half_life=45",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rw180_hl90",
+    "desc": "window=180 half_life=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rw180_hl180",
+    "desc": "window=180 half_life=180",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rw365_hl15",
+    "desc": "window=365 half_life=15",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rw365_hl45",
+    "desc": "window=365 half_life=45",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rw365_hl90",
+    "desc": "window=365 half_life=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rw365_hl180",
+    "desc": "window=365 half_life=180",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rd7_mb3",
+    "desc": "recalc=7d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rd7_mb5",
+    "desc": "recalc=7d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rd7_mb10",
+    "desc": "recalc=7d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rd14_mb3",
+    "desc": "recalc=14d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rd14_mb5",
+    "desc": "recalc=14d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rd14_mb10",
+    "desc": "recalc=14d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rd30_mb3",
+    "desc": "recalc=30d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rd30_mb5",
+    "desc": "recalc=30d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rd30_mb10",
+    "desc": "recalc=30d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rd60_mb3",
+    "desc": "recalc=60d min_buys=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rd60_mb5",
+    "desc": "recalc=60d min_buys=5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rd60_mb10",
+    "desc": "recalc=60d min_buys=10",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_kc0.05_ms0",
+    "desc": "kelly=0.05 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_kc0.05_ms0.5",
+    "desc": "kelly=0.05 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_kc0.05_ms1.0",
+    "desc": "kelly=0.05 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_kc0.05_ms1.5",
+    "desc": "kelly=0.05 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_kc0.1_ms0",
+    "desc": "kelly=0.1 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_kc0.1_ms0.5",
+    "desc": "kelly=0.1 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_kc0.1_ms1.0",
+    "desc": "kelly=0.1 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_kc0.1_ms1.5",
+    "desc": "kelly=0.1 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_kc0.15_ms0",
+    "desc": "kelly=0.15 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_kc0.15_ms0.5",
+    "desc": "kelly=0.15 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_kc0.15_ms1.0",
+    "desc": "kelly=0.15 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_kc0.15_ms1.5",
+    "desc": "kelly=0.15 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_kc0.2_ms0",
+    "desc": "kelly=0.2 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_kc0.2_ms0.5",
+    "desc": "kelly=0.2 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_kc0.2_ms1.0",
+    "desc": "kelly=0.2 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_kc0.2_ms1.5",
+    "desc": "kelly=0.2 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_kc0.3_ms0",
+    "desc": "kelly=0.3 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_kc0.3_ms0.5",
+    "desc": "kelly=0.3 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_kc0.3_ms1.0",
+    "desc": "kelly=0.3 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_kc0.3_ms1.5",
+    "desc": "kelly=0.3 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_kc0.35_ms0",
+    "desc": "kelly=0.35 mom_sell=0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_kc0.35_ms0.5",
+    "desc": "kelly=0.35 mom_sell=0.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_kc0.35_ms1.0",
+    "desc": "kelly=0.35 mom_sell=1.0",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_kc0.35_ms1.5",
+    "desc": "kelly=0.35 mom_sell=1.5",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_tp50_mc1",
+    "desc": "tp=50 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_tp50_mc2",
+    "desc": "tp=50 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_tp50_mc3",
+    "desc": "tp=50 consensus=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_tp100_mc1",
+    "desc": "tp=100 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_tp100_mc2",
+    "desc": "tp=100 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_tp100_mc3",
+    "desc": "tp=100 consensus=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_tp200_mc1",
+    "desc": "tp=200 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_tp200_mc2",
+    "desc": "tp=200 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_tp200_mc3",
+    "desc": "tp=200 consensus=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_tp500_mc1",
+    "desc": "tp=500 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_tp500_mc2",
+    "desc": "tp=500 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_tp500_mc3",
+    "desc": "tp=500 consensus=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_tp1000_mc1",
+    "desc": "tp=1000 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_tp1000_mc2",
+    "desc": "tp=1000 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_tp1000_mc3",
+    "desc": "tp=1000 consensus=3",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_rw60_hl30_kc0.1",
+    "desc": "w=60 hl=30 kelly=0.1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rw60_hl30_kc0.2",
+    "desc": "w=60 hl=30 kelly=0.2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rw60_hl30_kc0.35",
+    "desc": "w=60 hl=30 kelly=0.35",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rw60_hl90_kc0.1",
+    "desc": "w=60 hl=90 kelly=0.1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rw60_hl90_kc0.2",
+    "desc": "w=60 hl=90 kelly=0.2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rw60_hl90_kc0.35",
+    "desc": "w=60 hl=90 kelly=0.35",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rw180_hl30_kc0.1",
+    "desc": "w=180 hl=30 kelly=0.1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rw180_hl30_kc0.2",
+    "desc": "w=180 hl=30 kelly=0.2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rw180_hl30_kc0.35",
+    "desc": "w=180 hl=30 kelly=0.35",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rw180_hl90_kc0.1",
+    "desc": "w=180 hl=90 kelly=0.1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rw180_hl90_kc0.2",
+    "desc": "w=180 hl=90 kelly=0.2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rw180_hl90_kc0.35",
+    "desc": "w=180 hl=90 kelly=0.35",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_mh0_mc1",
+    "desc": "max_holdings=0 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_mh0_mc2",
+    "desc": "max_holdings=0 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_mh5_mc1",
+    "desc": "max_holdings=5 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_mh5_mc2",
+    "desc": "max_holdings=5 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_mh10_mc1",
+    "desc": "max_holdings=10 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_mh10_mc2",
+    "desc": "max_holdings=10 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_mh15_mc1",
+    "desc": "max_holdings=15 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 15,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_mh15_mc2",
+    "desc": "max_holdings=15 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 15,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_mh20_mc1",
+    "desc": "max_holdings=20 consensus=1",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_mh20_mc2",
+    "desc": "max_holdings=20 consensus=2",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_ftall_rw90",
+    "desc": "type=all window=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "all",
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_ftall_rw365",
+    "desc": "type=all window=365",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "all",
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_ftactive_rw90",
+    "desc": "type=active window=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "active",
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_ftactive_rw365",
+    "desc": "type=active window=365",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "active",
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_ftpassive_rw90",
+    "desc": "type=passive window=90",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "passive",
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_ftpassive_rw365",
+    "desc": "type=passive window=365",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "fund_type_filter": "passive",
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rnd000",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "min_consensus": 3,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd001",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 10,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd002",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 5,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rnd003",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.35,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd004",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_recalc_days": 60,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd005",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_min_buys": 5,
+      "ranking_recalc_days": 14,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd006",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_window": 60,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd007",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_window": 30,
+      "ranking_recalc_days": 30,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd008",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_window": 180,
+      "kelly_cap": 0.05,
+      "ranking_recalc_days": 7,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd009",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "min_consensus": 2,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_rnd010",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_window": 365,
+      "kelly_cap": 0.05,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rnd011",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_min_buys": 5,
+      "ranking_recalc_days": 7,
+      "kelly_cap": 0.3,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd012",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd013",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_recalc_days": 7,
+      "min_consensus": 3,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rnd014",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd015",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "max_holdings": 10,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd016",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_min_buys": 5,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd017",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_half_life": 15,
+      "kelly_cap": 0.2,
+      "ranking_min_buys": 5,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd018",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "ranking_min_buys": 5,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd019",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "kelly_cap": 0.05,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd020",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35,
+      "ranking_window": 30,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd021",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "ranking_half_life": 15,
+      "ranking_window": 365,
+      "min_consensus": 2,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd022",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "max_holdings": 20,
+      "ranking_window": 365,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd023",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_min_buys": 10,
+      "ranking_recalc_days": 7,
+      "ranking_half_life": 180,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rnd024",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 10,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_rnd025",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "kelly_cap": 0.15,
+      "ranking_min_buys": 15,
+      "max_holdings": 5,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_rnd026",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 5,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd027",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "min_consensus": 1,
+      "ranking_half_life": 30,
+      "max_holdings": 0,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd028",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 3,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd029",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_min_buys": 15,
+      "max_holdings": 0,
+      "ranking_window": 90,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd030",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.35,
+      "ranking_window": 30,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd031",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "max_holdings": 10,
+      "ranking_half_life": 180,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd032",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1,
+      "ranking_half_life": 45,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rnd033",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_min_buys": 3,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd034",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "ranking_min_buys": 15,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rnd035",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rnd036",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "ranking_window": 60,
+      "ranking_half_life": 90,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd037",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd038",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35,
+      "ranking_min_buys": 10,
+      "ranking_window": 180,
+      "ranking_recalc_days": 14,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd039",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "ranking_window": 365,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd040",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "min_consensus": 1,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd041",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "kelly_cap": 0.1,
+      "ranking_window": 180,
+      "ranking_half_life": 30
+    }
+  },
+  {
+    "name": "P_rnd042",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "ranking_window": 30,
+      "ranking_min_buys": 15,
+      "kelly_cap": 0.05,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd043",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_min_buys": 3,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd044",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "ranking_half_life": 15,
+      "ranking_window": 60,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd045",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2,
+      "ranking_window": 90,
+      "min_consensus": 3,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd046",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "min_consensus": 2,
+      "ranking_window": 180,
+      "ranking_recalc_days": 30,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd047",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "max_holdings": 0,
+      "ranking_window": 60,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd048",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rnd049",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "kelly_cap": 0.05,
+      "max_holdings": 0,
+      "ranking_recalc_days": 14,
+      "ranking_half_life": 30
+    }
+  },
+  {
+    "name": "P_rnd050",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_window": 30,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd051",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_half_life": 30,
+      "max_holdings": 5,
+      "ranking_min_buys": 10
+    }
+  },
+  {
+    "name": "P_rnd052",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35,
+      "ranking_window": 365,
+      "ranking_recalc_days": 30,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd053",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "kelly_cap": 0.1,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd054",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_recalc_days": 60,
+      "min_consensus": 3,
+      "max_holdings": 5,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd055",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "min_consensus": 1,
+      "ranking_window": 30,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd056",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "kelly_cap": 0.35,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd057",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_recalc_days": 60,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rnd058",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_window": 90,
+      "ranking_min_buys": 15,
+      "min_consensus": 1,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd059",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 10,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd060",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_window": 60,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd061",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "max_holdings": 20,
+      "ranking_window": 30,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd062",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_recalc_days": 7,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd063",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "min_consensus": 2,
+      "max_holdings": 0,
+      "ranking_half_life": 45,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd064",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_half_life": 30,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rnd065",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd066",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "max_holdings": 5,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_rnd067",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "ranking_window": 180,
+      "ranking_recalc_days": 7,
+      "min_consensus": 1,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd068",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "max_holdings": 5,
+      "ranking_window": 30,
+      "ranking_half_life": 15,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_rnd069",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "min_consensus": 3,
+      "ranking_half_life": 90,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd070",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "kelly_cap": 0.05,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 3,
+      "ranking_half_life": 45,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd071",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "ranking_min_buys": 3,
+      "max_holdings": 20,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd072",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "max_holdings": 20,
+      "kelly_cap": 0.1,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rnd073",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "kelly_cap": 0.2,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd074",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_recalc_days": 7,
+      "ranking_half_life": 15,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd075",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "ranking_window": 30,
+      "ranking_min_buys": 15,
+      "ranking_recalc_days": 14,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd076",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "min_consensus": 1,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd077",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "max_holdings": 0,
+      "min_consensus": 2,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd078",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1,
+      "ranking_recalc_days": 14,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd079",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "ranking_half_life": 45,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd080",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "ranking_half_life": 180,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd081",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "ranking_recalc_days": 30,
+      "max_holdings": 10,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd082",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd083",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd084",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "kelly_cap": 0.2,
+      "max_holdings": 10,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rnd085",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "ranking_min_buys": 5,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rnd086",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "max_holdings": 0,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_rnd087",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "ranking_recalc_days": 60,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd088",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 3,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd089",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "ranking_min_buys": 5,
+      "max_holdings": 10,
+      "ranking_recalc_days": 14,
+      "min_consensus": 1,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rnd090",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_half_life": 90,
+      "ranking_recalc_days": 7,
+      "max_holdings": 5,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_rnd091",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "ranking_recalc_days": 30,
+      "ranking_window": 180,
+      "min_consensus": 2,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd092",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd093",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd094",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "ranking_half_life": 180,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_rnd095",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "max_holdings": 5,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd096",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "min_consensus": 3,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd097",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_window": 30,
+      "ranking_min_buys": 15,
+      "max_holdings": 10,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd098",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "kelly_cap": 0.15,
+      "ranking_min_buys": 3,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rnd099",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 3,
+      "ranking_window": 60,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd100",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "min_consensus": 2,
+      "ranking_half_life": 90,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd101",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_rnd102",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "min_consensus": 3,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd103",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "ranking_window": 90,
+      "kelly_cap": 0.05,
+      "max_holdings": 5,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd104",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "max_holdings": 5,
+      "ranking_recalc_days": 30,
+      "ranking_window": 365
+    }
+  },
+  {
+    "name": "P_rnd105",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_half_life": 15,
+      "kelly_cap": 0.35,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd106",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_rnd107",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 3,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd108",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "kelly_cap": 0.3,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd109",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 15,
+      "kelly_cap": 0.35,
+      "max_holdings": 10,
+      "ranking_half_life": 180,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd110",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd111",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "ranking_recalc_days": 30,
+      "max_holdings": 20,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd112",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "ranking_half_life": 15,
+      "ranking_min_buys": 5,
+      "min_consensus": 3
+    }
+  },
+  {
+    "name": "P_rnd113",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "kelly_cap": 0.15,
+      "ranking_recalc_days": 60,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd114",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "ranking_recalc_days": 60,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd115",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "ranking_min_buys": 10,
+      "max_holdings": 20,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd116",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "min_consensus": 1,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd117",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_half_life": 90,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 5,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd118",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "max_holdings": 0,
+      "ranking_half_life": 30,
+      "ranking_min_buys": 5,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rnd119",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd120",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "min_consensus": 1,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd121",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 15,
+      "min_consensus": 3,
+      "ranking_half_life": 180,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd122",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35,
+      "ranking_recalc_days": 30,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd123",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 45,
+      "ranking_recalc_days": 60,
+      "kelly_cap": 0.2,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd124",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "ranking_recalc_days": 60,
+      "ranking_window": 30,
+      "min_consensus": 3,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rnd125",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_recalc_days": 14,
+      "ranking_half_life": 180,
+      "max_holdings": 0,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd126",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd127",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_half_life": 30,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd128",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_min_buys": 15,
+      "ranking_window": 90,
+      "ranking_half_life": 45,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd129",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_recalc_days": 60,
+      "ranking_half_life": 30,
+      "kelly_cap": 0.05
+    }
+  },
+  {
+    "name": "P_rnd130",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd131",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd132",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd133",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "max_holdings": 10,
+      "kelly_cap": 0.05,
+      "ranking_recalc_days": 7,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd134",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 15,
+      "kelly_cap": 0.3,
+      "ranking_recalc_days": 7,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd135",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.3,
+      "max_holdings": 5,
+      "ranking_recalc_days": 30,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd136",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "max_holdings": 0,
+      "ranking_window": 60,
+      "ranking_min_buys": 5,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd137",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd138",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "kelly_cap": 0.3,
+      "ranking_window": 60
+    }
+  },
+  {
+    "name": "P_rnd139",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 15
+    }
+  },
+  {
+    "name": "P_rnd140",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_min_buys": 3,
+      "ranking_window": 90,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd141",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "max_holdings": 20,
+      "ranking_half_life": 90,
+      "min_consensus": 1,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd142",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.2,
+      "min_consensus": 3,
+      "ranking_window": 30,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd143",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 10,
+      "min_consensus": 3,
+      "kelly_cap": 0.35,
+      "ranking_half_life": 30
+    }
+  },
+  {
+    "name": "P_rnd144",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "kelly_cap": 0.05,
+      "ranking_min_buys": 3,
+      "ranking_window": 365,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rnd145",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 10,
+      "ranking_window": 180,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd146",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd147",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_window": 30,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd148",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "min_consensus": 3,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rnd149",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "ranking_recalc_days": 60,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "P_rnd150",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "kelly_cap": 0.15,
+      "ranking_window": 30,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd151",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.35,
+      "ranking_window": 30,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd152",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_window": 90,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd153",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1,
+      "ranking_window": 365,
+      "max_holdings": 0,
+      "ranking_recalc_days": 7,
+      "ranking_min_buys": 3
+    }
+  },
+  {
+    "name": "P_rnd154",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "max_holdings": 5,
+      "ranking_recalc_days": 7,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd155",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 30,
+      "max_holdings": 5,
+      "ranking_half_life": 180,
+      "ranking_min_buys": 15,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd156",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "max_holdings": 0,
+      "kelly_cap": 0.1,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd157",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.15,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd158",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "kelly_cap": 0.35,
+      "max_holdings": 0,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd159",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "max_holdings": 5,
+      "kelly_cap": 0.1,
+      "ranking_half_life": 45,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rnd160",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "min_consensus": 1,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rnd161",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "max_holdings": 0,
+      "ranking_recalc_days": 7,
+      "ranking_window": 90,
+      "ranking_half_life": 90
+    }
+  },
+  {
+    "name": "P_rnd162",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "ranking_window": 90,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd163",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "max_holdings": 0,
+      "ranking_recalc_days": 30,
+      "ranking_min_buys": 3,
+      "min_consensus": 3,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "P_rnd164",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_recalc_days": 14,
+      "ranking_min_buys": 3,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd165",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 45,
+      "min_consensus": 2,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd166",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 180,
+      "ranking_recalc_days": 7,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd167",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2,
+      "ranking_min_buys": 3,
+      "ranking_recalc_days": 60,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd168",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 180,
+      "max_holdings": 0,
+      "min_consensus": 1,
+      "ranking_min_buys": 15,
+      "ranking_recalc_days": 30
+    }
+  },
+  {
+    "name": "P_rnd169",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "ranking_half_life": 90,
+      "ranking_window": 90
+    }
+  },
+  {
+    "name": "P_rnd170",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "max_holdings": 5,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd171",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 14,
+      "min_consensus": 3,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd172",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "max_holdings": 20,
+      "ranking_half_life": 180
+    }
+  },
+  {
+    "name": "P_rnd173",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.1,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd174",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 365,
+      "max_holdings": 5,
+      "kelly_cap": 0.1,
+      "ranking_recalc_days": 30,
+      "ranking_half_life": 90,
+      "min_consensus": 2
+    }
+  },
+  {
+    "name": "P_rnd175",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "kelly_cap": 0.05,
+      "max_holdings": 0,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd176",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 5,
+      "ranking_half_life": 90,
+      "ranking_window": 30,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd177",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 10,
+      "kelly_cap": 0.2,
+      "min_consensus": 1
+    }
+  },
+  {
+    "name": "P_rnd178",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.2,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd179",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_window": 365,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd180",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "kelly_cap": 0.05,
+      "ranking_window": 180
+    }
+  },
+  {
+    "name": "P_rnd181",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "max_holdings": 20,
+      "ranking_recalc_days": 7
+    }
+  },
+  {
+    "name": "P_rnd182",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "max_holdings": 5,
+      "min_consensus": 3,
+      "ranking_half_life": 45,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd183",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 3,
+      "min_consensus": 3,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd184",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 200,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_min_buys": 10,
+      "ranking_half_life": 15
+    }
+  },
+  {
+    "name": "P_rnd185",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 3,
+      "kelly_cap": 0.15,
+      "max_holdings": 5
+    }
+  },
+  {
+    "name": "P_rnd186",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "min_consensus": 1,
+      "ranking_half_life": 15,
+      "ranking_recalc_days": 14
+    }
+  },
+  {
+    "name": "P_rnd187",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_window": 90,
+      "max_holdings": 0
+    }
+  },
+  {
+    "name": "P_rnd188",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 60,
+      "max_holdings": 5,
+      "min_consensus": 2,
+      "kelly_cap": 0.3
+    }
+  },
+  {
+    "name": "P_rnd189",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "min_consensus": 3,
+      "ranking_half_life": 180,
+      "ranking_window": 30
+    }
+  },
+  {
+    "name": "P_rnd190",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 7,
+      "ranking_window": 90,
+      "ranking_min_buys": 3,
+      "max_holdings": 10,
+      "ranking_half_life": 45
+    }
+  },
+  {
+    "name": "P_rnd191",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 15,
+      "min_consensus": 2,
+      "ranking_min_buys": 10,
+      "max_holdings": 10
+    }
+  },
+  {
+    "name": "P_rnd192",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_recalc_days": 30,
+      "ranking_half_life": 30
+    }
+  },
+  {
+    "name": "P_rnd193",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_min_buys": 15,
+      "ranking_recalc_days": 7,
+      "ranking_window": 365,
+      "max_holdings": 10,
+      "kelly_cap": 0.1
+    }
+  },
+  {
+    "name": "P_rnd194",
+    "desc": "random(4dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_recalc_days": 60,
+      "ranking_min_buys": 10,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd195",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 0,
+      "dynamic_ranking": true,
+      "ranking_half_life": 30,
+      "min_consensus": 1,
+      "ranking_recalc_days": 14,
+      "kelly_cap": 0.2
+    }
+  },
+  {
+    "name": "P_rnd196",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 100,
+      "profit_mode": "half",
+      "momentum_sell": 1.0,
+      "dynamic_ranking": true,
+      "ranking_half_life": 90,
+      "ranking_min_buys": 3,
+      "ranking_window": 365,
+      "max_holdings": 20
+    }
+  },
+  {
+    "name": "P_rnd197",
+    "desc": "random(6dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "ranking_window": 60,
+      "ranking_half_life": 15,
+      "ranking_recalc_days": 7,
+      "min_consensus": 3,
+      "ranking_min_buys": 5
+    }
+  },
+  {
+    "name": "P_rnd198",
+    "desc": "random(5dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 500,
+      "profit_mode": "half",
+      "momentum_sell": 1.5,
+      "dynamic_ranking": true,
+      "max_holdings": 20,
+      "min_consensus": 1,
+      "kelly_cap": 0.05,
+      "ranking_recalc_days": 60
+    }
+  },
+  {
+    "name": "P_rnd199",
+    "desc": "random(3dims)",
+    "config": {
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "momentum_sell": 0.5,
+      "dynamic_ranking": true,
+      "min_consensus": 2,
+      "ranking_min_buys": 10
+    }
+  }
+]
