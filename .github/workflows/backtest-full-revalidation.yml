@@ -101,7 +101,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chunk-${{ matrix.chunk }}
-          path: backtest/results_revalidation/all_strategies_chunk${{ matrix.chunk }}.json
+          path: results_revalidation/all_strategies_chunk${{ matrix.chunk }}.json
           retention-days: 30
 
   # 合并结果
@@ -123,6 +123,8 @@ jobs:
           path: chunks/
           merge-multiple: true
 
+      - name: Also check for results in backtest dir
+
       - name: Merge and rank all strategies
         run: |
           python -c "
@@ -140,9 +142,10 @@ jobs:
           }
           import os
           os.makedirs('backtest/results_revalidation', exist_ok=True)
-          with open('backtest/results_revalidation/all_strategies.json', 'w', encoding='utf-8') as f:
+          os.makedirs('results_revalidation', exist_ok=True)
+          with open('results_revalidation/all_strategies.json', 'w', encoding='utf-8') as f:
               json.dump(out, f, ensure_ascii=False, indent=2)
-          with open('backtest/results_revalidation/top20.json', 'w', encoding='utf-8') as f:
+          with open('results_revalidation/top20.json', 'w', encoding='utf-8') as f:
               json.dump({'top20': all_results[:20], 'period': '2023-07-17 ~ 2026-07-17'}, f, ensure_ascii=False, indent=2)
           print(f'\n=== Final Results: {len(all_results)} strategies ===')
           print(f\"{'Strategy':42s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}\")
@@ -155,6 +158,7 @@ jobs:
         with:
           name: revalidation-final
           path: |
+            results_revalidation/
             backtest/results_revalidation/
 
       - name: Commit results
