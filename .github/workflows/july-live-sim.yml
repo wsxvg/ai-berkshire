@@ -25,21 +25,10 @@ jobs:
           pip install -r requirements.txt 2>/dev/null || true
           pip install chinese_calendar
 
-      - name: Restore fund chart cache
-        uses: actions/cache@v4
-        with:
-          path: data/fund_charts
-          key: fund-charts-${{ hashFiles('data/fund_charts_index.json') }}
-          restore-keys: |
-            fund-charts-
-
-      - name: Restore trading data cache
-        uses: actions/cache@v4
-        with:
-          path: backtest/data
-          key: trading-data-v1
-          restore-keys: |
-            trading-data-
+      - name: Verify fund chart data
+        run: |
+          echo "Fund charts: $(ls data/fund_charts/*.json 2>/dev/null | wc -l) files"
+          echo "Trading data: $(ls backtest/data/*.json 2>/dev/null | wc -l) files"
 
       - name: Run July live simulation
         run: |
