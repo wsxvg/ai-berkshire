@@ -18,6 +18,10 @@ sys.path.insert(0, str(PROJECT))
 
 from backtest.engine.backtest import run_backtest
 from backtest.sweep_configs import SWEEP_CONFIGS, SWEEP_LABELS
+try:
+    from backtest.mega_sweep_configs import MEGA_SWEEP
+except ImportError:
+    MEGA_SWEEP = []
 
 # ── 基础配置 ──
 BASE = {
@@ -163,6 +167,7 @@ def main():
     parser.add_argument("--start", type=str, default="2023-07-17", help="回测开始日期")
     parser.add_argument("--end", type=str, default="2026-07-17", help="回测结束日期")
     parser.add_argument("--output", type=str, default="backtest/results_revalidation/", help="输出目录")
+    parser.add_argument("--mega", action="store_true", help="包含超大规模扫描(2187个)")
     parser.add_argument("--chunk", type=int, default=0, help="当前分片ID (0-based)")
     parser.add_argument("--total", type=int, default=1, help="总分片数")
     args = parser.parse_args()
@@ -175,16 +180,19 @@ def main():
 
     all_strategies = []
 
-    if not args.sweep_only and not args.champion_only:
+    if not args.sweep_only and not args.champion_only and not args.mega:
         all_strategies.extend([(s["name"], s["desc"], s["config"], BASE) for s in BASE_STRATEGIES])
-    if not args.base_only and not args.sweep_only:
+    if not args.base_only and not args.sweep_only and not args.mega:
         all_strategies.append((Y5_CHAMPION["name"], Y5_CHAMPION["desc"], Y5_CHAMPION["config"], Y5_BASE))
-    if not args.base_only and not args.champion_only:
+    if not args.base_only and not args.champion_only and not args.mega:
         for key, cfg in SWEEP_CONFIGS.items():
             label = SWEEP_LABELS.get(key, key)
             base = deepcopy(Y5_BASE)
             base.update(Y5_CHAMPION["config"])
             all_strategies.append((f"SW_{key}", label, cfg, base))
+    if args.mega or (not args.base_only and not args.champion_only and not args.sweep_only):
+        for s in MEGA_SWEEP:
+            all_strategies.append((s["name"], s["desc"], s["config"], deepcopy(BASE)))
 
     # 分片: 只跑当前 chunk 的策略
     if args.total > 1:
