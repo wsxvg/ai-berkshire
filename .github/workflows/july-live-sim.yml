@@ -9,12 +9,12 @@ permissions:
 jobs:
   july-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - uses: actions/setup-python@v5
         with:
