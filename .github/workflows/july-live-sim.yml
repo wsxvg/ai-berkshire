@@ -25,10 +25,10 @@ jobs:
           pip install -r requirements.txt 2>/dev/null || true
           pip install chinese_calendar
 
-      - name: Verify fund chart data
+      - name: Extract fund chart data
         run: |
+          tar -xzf data/fund_charts.tar.gz -C data/fund_charts/
           echo "Fund charts: $(ls data/fund_charts/*.json 2>/dev/null | wc -l) files"
-          echo "Trading data: $(ls backtest/data/*.json 2>/dev/null | wc -l) files"
 
       - name: Run July live simulation
         run: |

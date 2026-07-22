@@ -1,56 +1,25 @@
-# 参考项目
-reference_projects/
+# Fund chart data (use compressed archive instead)
+data/fund_charts/*.json
+!data/fund_charts/.gitkeep
+
+# Temporary files
+chunk_results/
+all_chunks/
+mega_results/
+player_results/
+july_result/
+results_temp/
 
 # Python
 __pycache__/
 *.pyc
-*.pyo
-.venv/
-venv/
+.ruff_cache/
+.pytest_cache/
 
 # IDE
 .vscode/
 .idea/
-*.swp
 
-# 临时文件
-_tmp*
-*.tmp
-_optimize*
-_test*
-_bt_*
-_check*
-_debug*
-_collect*
-_evolve*
-_validate*
-_sim*.*
-_api_*.py
-*.har
-.coverage
-1.txt
-
-# 虚拟持仓 (Actions 生成)
-reports/sim/virtual_portfolio.json
-
-# 环境
-.env
-.env.local
-
-# Caches with sensitive data
-data/fund_cache/daily_news_main.json
-data/fund_cache/featured_rankings_*.json
-data/jd_auth/mapping.db
-data/fund_charts_todo.json
-data/api_cache/
-
-# 行情 / 排行 / 评分缓存 (按需重算)
-data/cache/ranking.json
-data/cache/scores.json
-
-# Cookie (含用户身份)
-# data/jd_auth/cookies.json  -- 需要推送到GitHub供Actions使用
-data/jd_auth/cookies_backup.json
-
-# 注意: data/fund_cache/daily_news/{YYYY-MM-DD}.json 不 ignore
-# 因为是反未来函数的核心 (按日期归档的新闻快照, 给 LLM 回测用)
+# OS
+Thumbs.db
+.DS_Store
