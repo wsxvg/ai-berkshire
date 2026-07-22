@@ -17,6 +17,7 @@ from typing import Optional
 # 预处理时为每只基金缓存 dates 数组, id(pts)→dates
 _DATES_CACHE = {}
 _TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
+_4433_RANK_CACHE = {}  # {cutoff_date: {period_name: [(code, return_pct), ...]}} — score_4433 排名缓存
 
 def _bisect_valid(pts, cutoff_date):
     """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
@@ -627,6 +628,7 @@ def score_4433(fund_code, cutoff_date, fund_charts):
     periods = {
         "3mo": (63, 0.33),
         "6mo": (126, 0.33),
+        "1y": (252, 0.25),
     }
 
     rets = {}
@@ -637,19 +639,22 @@ def score_4433(fund_code, cutoff_date, fund_charts):
         else:
             rets[name] = None
 
-    # 排名
-    all_rets = {}
-    for code, pts_all in fund_charts.items():
-        v_raw = [float(p.get("yAxis", 0)) for p in pts_all if p.get("xAxis", "") <= cutoff_date]
-        if len(v_raw) < 252:
-            continue
-        v_nav = [(100 + v) / 100 for v in v_raw]
-        cv_nav = v_nav[-1]
-        for name, (days, _) in periods.items():
-            if len(v_nav) > days:
-                sv_nav = v_nav[-days]
-                r = (cv_nav - sv_nav) / sv_nav * 100
-                all_rets.setdefault(name, []).append((code, r))
+    # 排名 — 按日期缓存（同一天的所有候选基金共享同一个排名）
+    if cutoff_date not in _4433_RANK_CACHE:
+        all_rets = {}
+        for code, pts_all in fund_charts.items():
+            valid_all = _bisect_valid(pts_all, cutoff_date)  # bisect O(log n) 替代线性扫描
+            if len(valid_all) < 252:
+                continue
+            v_nav = [(100 + float(p.get("yAxis", 0))) / 100 for p in valid_all]
+            cv_nav = v_nav[-1]
+            for name, (days, _) in periods.items():
+                if len(v_nav) > days:
+                    sv_nav = v_nav[-days]
+                    r = (cv_nav - sv_nav) / sv_nav * 100
+                    all_rets.setdefault(name, []).append((code, r))
+        _4433_RANK_CACHE[cutoff_date] = all_rets
+    all_rets = _4433_RANK_CACHE[cutoff_date]
 
     passes = 0
     for name, (days, threshold) in periods.items():
@@ -1131,9 +1136,9 @@ class Portfolio:
         return 0.0
 
     def sell(self, code, amount, price=1.0, day_str="", sell_reason="", force_sell=False):
-        """卖出，使用实际赎回费，检查 T+N 锁定。"""
+        """卖出，使用实际赎回费，检查 T+N 锁定。返回 True=成功, False=失败。"""
         if code not in self.holdings:
-            return
+            return False
         # 30天最低持有期检查（除止损/清仓跟卖外）
         if not force_sell:
             _hold_d = self._holding_days(code, day_str)
@@ -1144,12 +1149,12 @@ class Portfolio:
                     "stop_loss", "big_sell", "trail_stop", "peak_dd",
                     "trailing_tp", "momentum_crash"])
                 if not is_exception:
-                    return  # 持有期不足，不卖
+                    return False  # 持有期不足，不卖
 
         # 检查 T+N 锁定：pending_buys 中是否有未确认的同基金
         for pb in self.pending_buys:
             if pb["code"] == code and pb["confirm_date"] > day_str:
-                return  # 尚在 T+N 锁定期，不能卖出
+                return False  # 尚在 T+N 锁定期，不能卖出
 
         h = self.holdings[code]
         days_held = self._holding_days(code, day_str)
@@ -1171,11 +1176,12 @@ class Portfolio:
             if code in self.holdings: del self.holdings[code]
             # 记录卖出历史（用于冷却期追踪）
             self.sell_history[code] = {"date": day_str, "reason": sell_reason, "nav": price}
+            return True
         # 部分卖出
         shares_to_sell = amount / price
         if shares_to_sell >= h["shares"]:
             self.sell(code, 0, price, day_str, sell_reason)
-            return
+            return True
         # 滑点导致实际收到金额略少
         proceeds = amount * _slip
         fee = round(proceeds * redeem_fee_rate, 2)
@@ -1187,6 +1193,7 @@ class Portfolio:
         self.total_fees += fee
         self.trades.append({"date": day_str, "code": code, "action": "sell",
                            "amount": amount, "fee": fee, "days_held": days_held, "reason": sell_reason})
+        return True
 
     def snapshot(self, day_str, fund_prices=None):
         self.daily_values.append({
@@ -1287,8 +1294,10 @@ def kelly_allocate(candidates, total_cash, kelly_cap=0.2, cash_reserve=0.2, max_
     return results
 
 
-def run_backtest(config):
-    """运行回测主循环。"""
+def run_backtest(config, clear_cache=True):
+    """运行回测主循环。
+    clear_cache: 是否清空全局缓存（批量运行时设 False 可大幅加速）。
+    """
     import json
 
     # 加载数据（支持多年；用 _fixed 文件）
@@ -1323,7 +1332,12 @@ def run_backtest(config):
     print(f"[DATA] 加载 {len(fund_charts)} 只基金净值数据")
 
     # ── 速度优化预处理：排序 fund_charts + 预排序 trading_by_date keys ──
-    _DATES_CACHE.clear()
+    if clear_cache:
+        _DATES_CACHE.clear()
+        _4433_RANK_CACHE.clear()  # 清理 4433 排名缓存，防止多次 run_backtest 间膨胀
+    else:
+        _DATES_CACHE.clear()  # _DATES_CACHE 按 id(pts) 索引，每次 load 新对象，必须清空
+        # _4433_RANK_CACHE 按 cutoff_date 索引，数据不变则排名不变，可跨策略复用
     for _code in fund_charts:
         if fund_charts[_code]:
             fund_charts[_code].sort(key=lambda p: p.get("xAxis", ""))
@@ -1517,6 +1531,18 @@ def run_backtest(config):
 
         # 处理 T+N 确认到期的买入
         portfolio.settle_pending(cutoff_full)
+
+        # 更新 fund_prices（在卖出检查之前，确保新确认的持仓有正确价格）
+        # 修复 bug: 原来 fund_prices 只在每天结束时更新，导致 T+N 首日确认的持仓
+        # 在卖出检查时 price=1.0，portfolio.value() 严重低估，触发误判 SELL_REDUCE
+        fund_prices = {}
+        for _code in portfolio.holdings:
+            _pts = fund_charts.get(_code, [])
+            if not _pts:
+                continue
+            _valid = _bisect_valid(_pts, cutoff_full)
+            if _valid:
+                fund_prices[_code] = (100 + _float(_valid[-1].get("yAxis", 0))) / 100
 
         # 市场状态检测 + 动态仓位上限
         _market_state = "neutral"
@@ -2595,10 +2621,12 @@ def run_backtest(config):
                     target_val = total_value * (max_pos * 0.6 / 100)
                     sell_val = fund_value - target_val
                     if sell_val > 0:
-                        portfolio.sell(code, sell_val, sell_price, cutoff_full,
+                        _sold = portfolio.sell(code, sell_val, sell_price, cutoff_full,
                                       sell_reason=f"reduce_pos {pct:.0f}%->{max_pos*0.6:.0f}%")
-                        print(f"  SELL_REDUCE {code} {h['name'][:16]} {pct:.0f}%->{max_pos*0.6:.0f}% amt={sell_val:.0f}")
-                        continue
+                        if _sold:
+                            print(f"  SELL_REDUCE {code} {h['name'][:16]} {pct:.0f}%->{max_pos*0.6:.0f}% amt={sell_val:.0f}")
+                            continue
+                        # 卖出失败（如持有期不足），不跳过后续卖出检查
 
             if should_sell:
                 portfolio.sell(code, 0, sell_price, cutoff_full, sell_reason, force_sell=True)

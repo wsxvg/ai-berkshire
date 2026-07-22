@@ -123,15 +123,17 @@ Y5_BASE = {
 }
 
 
-def run_one(name, desc, config, base=None):
-    """运行单个策略，返回结果。"""
+def run_one(name, desc, config, base=None, clear_cache=True):
+    """运行单个策略，返回结果。
+    clear_cache: 是否清空全局缓存（批量运行第2个起设 False 可大幅加速）。
+    """
     b = deepcopy(base or BASE)
     b.update(config)
     if config.get("monthly_injection", 0) > 0:
         b["initial_cash"] = 0
     try:
         t0 = time.time()
-        r = run_backtest(b)
+        r = run_backtest(b, clear_cache=clear_cache)
         elapsed = time.time() - t0
         # 计算年化
         days = 0
@@ -153,6 +155,7 @@ def run_one(name, desc, config, base=None):
             "fees": r.get("total_fees", 0),
             "injected": r.get("monthly_injections", 0),
             "elapsed": elapsed,
+            "config": b,  # 保留完整配置供滚动窗口验证使用
         }
         print(f"  {name:40s} ret={r['total_return']:+8.2f}% ann={ann:+7.1f}% "
               f"dd={r['max_drawdown']:6.2f}% trades={r['trade_count']:4d} "
@@ -224,7 +227,8 @@ def main():
     for i, (name, desc, config, base) in enumerate(all_strategies):
         if (i + 1) % 10 == 0 or i == 0:
             print(f"\n--- [{i+1}/{total}] ---")
-        r = run_one(name, desc, config, base)
+        # 第一个策略清空缓存，后续策略复用 4433 排名缓存
+        r = run_one(name, desc, config, base, clear_cache=(i == 0))
         if r:
             results.append(r)
 

@@ -1,0 +1,366 @@
+name: Mega Sweep + Rolling Window (7-8h)
+
+on:
+  workflow_dispatch:
+    inputs:
+      strategy_set:
+        description: 'all / mega / player / base / champion / sweep'
+        required: false
+        default: 'mega'
+      chunks:
+        description: 'Phase 1 并行分片数 (1-20)'
+        required: false
+        default: '20'
+      top_n:
+        description: 'Phase 2 滚动窗口验证的策略数'
+        required: false
+        default: '50'
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # ═══════════════════════════════════════════════════
+  # Phase 0: 生成并行矩阵
+  # ═══════════════════════════════════════════════════
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      total: ${{ steps.set-matrix.outputs.total }}
+    steps:
+      - id: set-matrix
+        run: |
+          CHUNKS="${{ github.event.inputs.chunks || '20' }}"
+          ITEMS=""
+          for i in $(seq 0 $((CHUNKS-1))); do
+            if [ -n "$ITEMS" ]; then ITEMS="$ITEMS,"; fi
+            ITEMS="$ITEMS\"$i\""
+          done
+          echo "matrix=[$ITEMS]" >> $GITHUB_OUTPUT
+          echo "total=$CHUNKS" >> $GITHUB_OUTPUT
+          echo "Phase 1 Matrix: [$ITEMS]"
+
+  # ═══════════════════════════════════════════════════
+  # Phase 1: 全量3年回测（20路并行，~4小时）
+  # ═══════════════════════════════════════════════════
+  backtest-full-period:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        chunk: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore fund chart cache
+        uses: actions/cache@v4
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ hashFiles('data/fund_charts_index.json') }}
+          restore-keys: |
+            fund-charts-
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: backtest/data
+          key: trading-data-v2
+          restore-keys: |
+            trading-data-
+
+      - name: Run backtest chunk ${{ matrix.chunk }}
+        run: |
+          cd backtest
+          STRATEGY_SET="${{ github.event.inputs.strategy_set || 'mega' }}"
+          FLAGS=""
+          if [ "$STRATEGY_SET" = "base" ]; then FLAGS="--base-only"
+          elif [ "$STRATEGY_SET" = "champion" ]; then FLAGS="--champion-only"
+          elif [ "$STRATEGY_SET" = "sweep" ]; then FLAGS="--sweep-only"
+          elif [ "$STRATEGY_SET" = "mega" ]; then FLAGS="--mega"
+          elif [ "$STRATEGY_SET" = "player" ]; then FLAGS="--player"
+          elif [ "$STRATEGY_SET" = "all" ]; then FLAGS=""
+          fi
+          TOTAL=${{ needs.generate-matrix.outputs.total }}
+          echo "=== Phase 1: Full 3-year backtest chunk ${{ matrix.chunk }}/$TOTAL ==="
+          python run_all_strategies.py $FLAGS \
+            --start 2023-07-17 --end 2026-07-17 \
+            --chunk ${{ matrix.chunk }} --total $TOTAL \
+            --output results_revalidation/
+
+      - name: Upload chunk results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1-chunk-${{ matrix.chunk }}
+          path: backtest/results_revalidation/all_strategies_chunk${{ matrix.chunk }}.json
+          retention-days: 30
+
+  # ═══════════════════════════════════════════════════
+  # Phase 1.5: 合并结果 + 选出 Top N
+  # ═══════════════════════════════════════════════════
+  merge-select-top:
+    needs: backtest-full-period
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      rw_matrix: ${{ steps.split.outputs.rw_matrix }}
+      rw_total: ${{ steps.split.outputs.rw_total }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 1 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase1-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Merge and select top N
+        id: merge
+        run: |
+          TOP_N="${{ github.event.inputs.top_n || '50' }}"
+          python -c "
+          import json, glob
+          all_results = []
+          for f in sorted(glob.glob('chunks/all_strategies_chunk*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_results.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+          # 按夏普排序（兼顾收益和风险）
+          all_results.sort(key=lambda x: x.get('sharpe', 0), reverse=True)
+          # 选出 Top N（包含完整 config 供滚动窗口使用）
+          top_n = all_results[:$TOP_N]
+          # 保存
+          import os
+          os.makedirs('backtest/results_revalidation', exist_ok=True)
+          with open('backtest/results_revalidation/all_strategies.json', 'w', encoding='utf-8') as f:
+              json.dump({'strategies': all_results, 'total': len(all_results)}, f, ensure_ascii=False, indent=2)
+          with open('backtest/results_revalidation/top50.json', 'w', encoding='utf-8') as f:
+              json.dump({'top50': top_n}, f, ensure_ascii=False, indent=2)
+          print(f'\n=== Phase 1 Results: {len(all_results)} strategies, Top {len(top_n)} selected ===')
+          print(f\"{'Strategy':42s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}\")
+          for r in top_n[:10]:
+              print(f\"{r['name']:42s} {r['return']:>+7.2f}% {r['annualized']:>+7.1f}% {r['dd']:>7.2f}% {r['sharpe']:>5.2f} {r['trades']:>5d}\")
+          "
+
+      - name: Split top N into rolling window chunks
+        id: split
+        run: |
+          TOP_N="${{ github.event.inputs.top_n || '50' }}"
+          # 分成10个chunk，每个5个策略
+          RW_CHUNKS=10
+          if [ "$TOP_N" -lt 10 ]; then RW_CHUNKS=$TOP_N; fi
+          ITEMS=""
+          for i in $(seq 0 $((RW_CHUNKS-1))); do
+            if [ -n "$ITEMS" ]; then ITEMS="$ITEMS,"; fi
+            ITEMS="$ITEMS\"$i\""
+          done
+          echo "rw_matrix=[$ITEMS]" >> $GITHUB_OUTPUT
+          echo "rw_total=$RW_CHUNKS" >> $GITHUB_OUTPUT
+          echo "Phase 2 Rolling Window Matrix: $RW_CHUNKS chunks"
+
+      - name: Upload merged results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1-merged
+          path: |
+            backtest/results_revalidation/all_strategies.json
+            backtest/results_revalidation/top50.json
+
+  # ═══════════════════════════════════════════════════
+  # Phase 2: 滚动窗口验证（10路并行，~1小时）
+  # ═══════════════════════════════════════════════════
+  rolling-window-validation:
+    needs: merge-select-top
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        chunk: ${{ fromJson(needs.merge-select-top.outputs.rw_matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore fund chart cache
+        uses: actions/cache@v4
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ hashFiles('data/fund_charts_index.json') }}
+          restore-keys: |
+            fund-charts-
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: backtest/data
+          key: trading-data-v2
+          restore-keys: |
+            trading-data-
+
+      - name: Download top50.json (Phase 1 merged)
+        uses: actions/download-artifact@v4
+        with:
+          name: phase1-merged
+          path: .
+
+      - name: Run rolling window validation chunk ${{ matrix.chunk }}
+        run: |
+          RW_TOTAL=${{ needs.merge-select-top.outputs.rw_total }}
+          echo "=== Phase 2: Rolling window validation chunk ${{ matrix.chunk }}/$RW_TOTAL ==="
+          cd backtest
+          python rolling_window.py \
+            --input results_revalidation/top50.json \
+            --output rolling_window.json \
+            --chunk ${{ matrix.chunk }} --total $RW_TOTAL
+
+      - name: Upload rolling window chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-chunk-${{ matrix.chunk }}
+          path: backtest/results_revalidation/rolling_window_chunk${{ matrix.chunk }}.json
+          retention-days: 30
+
+  # ═══════════════════════════════════════════════════
+  # Phase 3: 最终合并 + 排名 + 提交
+  # ═══════════════════════════════════════════════════
+  final-merge-commit:
+    needs: rolling-window-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 2 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase2-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Download Phase 1 merged
+        uses: actions/download-artifact@v4
+        with:
+          name: phase1-merged
+          path: .
+
+      - name: Merge rolling window results and generate final ranking
+        run: |
+          python -c "
+          import json, glob, os
+
+          # 合并滚动窗口结果
+          all_rw = []
+          for f in sorted(glob.glob('chunks/rolling_window_chunk*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_rw.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+
+          # 按 anti_overfit_score 排序
+          all_rw.sort(key=lambda x: x.get('anti_overfit_score', 0), reverse=True)
+
+          # 统计
+          passed = [r for r in all_rw if r.get('anti_overfit_passed', False)]
+          failed = [r for r in all_rw if not r.get('anti_overfit_passed', False)]
+
+          # 保存最终结果
+          os.makedirs('backtest/results_revalidation', exist_ok=True)
+          with open('backtest/results_revalidation/rolling_window_final.json', 'w', encoding='utf-8') as f:
+              json.dump({
+                  'strategies': all_rw,
+                  'passed': passed,
+                  'failed': failed,
+                  'pass_rate': f'{len(passed)}/{len(all_rw)}',
+                  'total': len(all_rw),
+              }, f, ensure_ascii=False, indent=2)
+
+          # 保存防过拟合通过的策略
+          with open('backtest/results_revalidation/anti_overfit_passed.json', 'w', encoding='utf-8') as f:
+              json.dump({
+                  'strategies': passed,
+                  'total': len(passed),
+                  'criteria': all_rw[0].get('criteria', {}) if all_rw else {},
+              }, f, ensure_ascii=False, indent=2)
+
+          # 打印最终排行
+          print(f'\n{\"=\"*90}')
+          print(f'最终结果: {len(all_rw)} 个策略 | 防过拟合通过: {len(passed)} | 失败: {len(failed)}')
+          print(f'{\"=\"*90}')
+          print(f'{\"策略\":42s} {\"全量收益\":>8s} {\"年均\":>6s} {\"标准差\":>6s} {\"最差\":>6s} {\"AO分\":>6s} {\"状态\":>6s}')
+          print(f'{\"-\"*90}')
+          for r in all_rw[:30]:
+              status = 'PASS' if r.get('anti_overfit_passed') else 'FAIL'
+              print(f\"{r['name']:42s} {r.get('full_return',0):>+7.2f}% {r.get('avg_yearly_return',0):>+5.1f}% \"
+                    f\"{r.get('std_yearly_return',0):>5.1f}% {r.get('min_yearly_return',0):>+5.1f}% \"
+                    f\"{r.get('anti_overfit_score',0):>5.1f} {status:>6s}\")
+
+          # 输出冠军策略
+          if passed:
+              champ = passed[0]
+              print(f'\n Champion (anti-overfit): {champ[\"name\"]}')
+              print(f'   Full return: {champ.get(\"full_return\",0):+.2f}% | Sharpe: {champ.get(\"full_sharpe\",0):.2f}')
+              print(f'   Avg yearly: {champ.get(\"avg_yearly_return\",0):+.1f}% | Std: {champ.get(\"std_yearly_return\",0):.1f}%')
+              print(f'   Worst window: {champ.get(\"min_yearly_return\",0):+.1f}% | Max DD: {champ.get(\"max_yearly_dd\",0):.1f}%')
+          elif all_rw:
+              best = all_rw[0]
+              print(f'\n Best (not passed anti-overfit): {best[\"name\"]}')
+              for iss in best.get('anti_overfit_issues', []):
+                  print(f'   Issue: {iss}')
+          "
+
+      - name: Commit final results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backtest/results_revalidation/
+          git diff --cached --quiet || git commit -m "超大规模策略扫描+滚动窗口验证 $(date -u +'%Y-%m-%d')"
+          git push || echo "push skipped"
+
+      - name: Upload final results
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-results
+          path: |
+            backtest/results_revalidation/rolling_window_final.json
+            backtest/results_revalidation/anti_overfit_passed.json
+            backtest/results_revalidation/all_strategies.json
+            backtest/results_revalidation/top50.json
+          retention-days: 90
