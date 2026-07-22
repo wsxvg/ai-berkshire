@@ -123,8 +123,6 @@ jobs:
           path: chunks/
           merge-multiple: true
 
-      - name: Also check for results in backtest dir
-
       - name: Merge and rank all strategies
         run: |
           python -c "
