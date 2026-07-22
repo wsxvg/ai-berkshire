@@ -20,7 +20,8 @@ sys.path.insert(0, str(PROJECT))
 
 from tools.jd_finance_api import _api_post
 from tools.chart_loader import load_single_chart, update_chart, get_chart_index
-from tools.eastmoney_api import get_all_funds
+# eastmoney_api 已失效，跳过全市场拉取
+# from tools.eastmoney_api import get_all_funds
 
 CHARTS_DIR = PROJECT / "data" / "fund_charts"
 TRADING_FILE = PROJECT / "backtest" / "data" / "trading_by_date_fixed.json"
@@ -101,15 +102,8 @@ def collect_fund_codes() -> set:
         for f in CHARTS_DIR.glob("*.json"):
             codes.add(f.stem)
 
-    # 来源4: 全市场 Top 2000
-    print("拉取全市场基金列表 (Top 2000)...")
-    try:
-        r = get_all_funds(sort_by="1n", max_funds=2000)
-        for item in r["rankings"]:
-            codes.add(item["code"])
-        print(f"  全市场获取 {len(r['rankings'])} 只")
-    except Exception as e:
-        print(f"  全市场拉取失败(非致命): {e}")
+    # 来源4: 全市场 Top 2000 (eastmoney_api 已失效，跳过)
+    # 已从交易记录+现有数据+名称映射获取足够基金代码
 
     # 过滤空字符串
     codes.discard("")
@@ -133,7 +127,7 @@ def main():
     # 过滤已存在的（除非 --force）
     if not args.force:
         index = get_chart_index(CHARTS_DIR)
-        existing = {c for c, info in index.items() if info.get("count", 0) >= 20}
+        existing = {c for c, info in index.items() if info.get("count", 0) >= 252}
         codes = codes - existing
         print(f"已有足够数据: {len(existing)} 只, 待拉取: {len(codes)} 只")
     else:

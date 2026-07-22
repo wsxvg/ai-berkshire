@@ -1,20 +1,55 @@
-name: Full Strategy Revalidation
+name: Full Strategy Revalidation (Parallel)
 
 on:
   workflow_dispatch:
     inputs:
-      strategies:
-        description: 'Strategy list (comma-separated, empty=all)'
+      strategy_set:
+        description: 'all / base / champion / sweep'
         required: false
-        default: ''
+        default: 'all'
+      chunks:
+        description: '并行分片数 (1-20)'
+        required: false
+        default: '20'
   schedule:
     # 每月最后一个周六 UTC 18:00 (北京时间周日 02:00)
     - cron: '0 18 * * 6'
 
+permissions:
+  contents: write
+
 jobs:
-  revalidate:
+  # 生成矩阵
+  generate-matrix:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      total: ${{ steps.set-matrix.outputs.total }}
+    steps:
+      - id: set-matrix
+        run: |
+          CHUNKS="${{ github.event.inputs.chunks || '20' }}"
+          # 生成 JSON 数组 [0,1,2,...,CHUNKS-1]
+          ITEMS=""
+          for i in $(seq 0 $((CHUNKS-1))); do
+            if [ -n "$ITEMS" ]; then ITEMS="$ITEMS,"; fi
+            ITEMS="$ITEMS\"$i\""
+          done
+          echo "matrix=[$ITEMS]" >> $GITHUB_OUTPUT
+          echo "total=$CHUNKS" >> $GITHUB_OUTPUT
+          echo "Matrix: [$ITEMS]"
+
+  # 并行回测
+  backtest-parallel:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        chunk: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,7 +62,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt 2>/dev/null || true
-          pip install pytest
+          pip install chinese_calendar
 
       - name: Restore fund chart cache
         uses: actions/cache@v4
@@ -37,34 +72,95 @@ jobs:
           restore-keys: |
             fund-charts-
 
-      - name: Run preflight check
-        run: python scripts/preflight_check.py
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: backtest/data
+          key: trading-data-v1
+          restore-keys: |
+            trading-data-
 
-      - name: Run all backtest strategies
+      - name: Run backtest chunk ${{ matrix.chunk }}
         run: |
           cd backtest
-          python run_all_strategies.py --output results_revalidation/
+          STRATEGY_SET="${{ github.event.inputs.strategy_set || 'all' }}"
+          FLAGS=""
+          if [ "$STRATEGY_SET" = "base" ]; then FLAGS="--base-only"
+          elif [ "$STRATEGY_SET" = "champion" ]; then FLAGS="--champion-only"
+          elif [ "$STRATEGY_SET" = "sweep" ]; then FLAGS="--sweep-only"
+          fi
+          TOTAL=${{ needs.generate-matrix.outputs.total }}
+          python run_all_strategies.py $FLAGS \
+            --start 2023-07-17 --end 2026-07-17 \
+            --chunk ${{ matrix.chunk }} --total $TOTAL \
+            --output results_revalidation/
         env:
           PYTHONPATH: ${{ github.workspace }}
 
-      - name: Collect and analyze results
-        run: |
-          python backtest/collect_results.py --input backtest/results_revalidation/ --output backtest/revalidation_report.json
-          python backtest/analyze_revalidation.py --input backtest/revalidation_report.json --output backtest/revalidation_analysis.md
-
-      - name: Upload results
+      - name: Upload chunk results
         uses: actions/upload-artifact@v4
         with:
-          name: revalidation-results
+          name: chunk-${{ matrix.chunk }}
+          path: backtest/results_revalidation/all_strategies_chunk${{ matrix.chunk }}.json
+          retention-days: 30
+
+  # 合并结果
+  merge-results:
+    needs: backtest-parallel
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all chunk artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Merge and rank all strategies
+        run: |
+          python -c "
+          import json, glob
+          all_results = []
+          for f in sorted(glob.glob('chunks/all_strategies_chunk*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_results.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+          all_results.sort(key=lambda x: x.get('sharpe', 0), reverse=True)
+          out = {
+              'strategies': all_results,
+              'total': len(all_results),
+              'period': '2023-07-17 ~ 2026-07-17',
+          }
+          import os
+          os.makedirs('backtest/results_revalidation', exist_ok=True)
+          with open('backtest/results_revalidation/all_strategies.json', 'w', encoding='utf-8') as f:
+              json.dump(out, f, ensure_ascii=False, indent=2)
+          with open('backtest/results_revalidation/top20.json', 'w', encoding='utf-8') as f:
+              json.dump({'top20': all_results[:20], 'period': '2023-07-17 ~ 2026-07-17'}, f, ensure_ascii=False, indent=2)
+          print(f'\n=== Final Results: {len(all_results)} strategies ===')
+          print(f\"{'Strategy':42s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}\")
+          for r in all_results[:20]:
+              print(f\"{r['name']:42s} {r['return']:>+7.2f}% {r['annualized']:>+7.1f}% {r['dd']:>7.2f}% {r['sharpe']:>5.2f} {r['trades']:>5d}\")
+          "
+
+      - name: Upload merged results
+        uses: actions/upload-artifact@v4
+        with:
+          name: revalidation-final
           path: |
             backtest/results_revalidation/
-            backtest/revalidation_report.json
-            backtest/revalidation_analysis.md
 
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backtest/revalidation_report.json backtest/revalidation_analysis.md
-          git commit -m "全自动策略回测重验证 $(date -u +'%Y-%m-%d')" || true
-          git push
+          git add backtest/results_revalidation/
+          git diff --cached --quiet || git commit -m "全量策略重验证 $(date -u +'%Y-%m-%d') - ${len(all_results)}个策略"
+          git push || echo "push skipped"

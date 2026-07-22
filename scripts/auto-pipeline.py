@@ -1350,6 +1350,7 @@ def _discover_ranking_users(cookies, max_count=10):
 
 def main():
     offline = "--offline" in sys.argv
+    trading_only = "--trading-only" in sys.argv
     _ensure_dirs()
     today = _today_str()
 
@@ -1458,6 +1459,11 @@ def main():
     # ── Merge new records into backtest data (for smart incremental tracking) ──
     if all_records:
         _merge_trading_to_backtest(all_records)
+
+    # --trading-only 模式: 只拉交易记录就退出
+    if trading_only:
+        logger.info("\n── [trading-only] 交易记录已更新，退出 ──")
+        sys.exit(0)
 
     trading_signals = _aggregate_trading_signals(all_records)
     logger.info(f"  Aggregated: {len(trading_signals['funds'])} funds with signals")

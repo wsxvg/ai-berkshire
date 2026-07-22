@@ -12,14 +12,17 @@ env:
   FEISHU_APP_ID: cli_a933badfd57bdbde
   FEISHU_APP_SECRET: zliAQFZ61YOVdhSz8vecahozbGz6Ym5j
   FEISHU_USER_ID: ou_67774e11bf8d8cf2b981cf2b09bac038
+  JD_COOKIES: ${{ secrets.JD_COOKIES }}
 
 jobs:
   daily-sim:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -29,12 +32,26 @@ jobs:
         run: |
           pip install lightgbm scikit-learn numpy
           pip install chinese_calendar
+          pip install -r requirements.txt || true
+
+      - name: 恢复 fund_charts 缓存
+        uses: actions/cache@v4
+        with:
+          path: data/fund_charts
+          key: fund-charts-${{ hashFiles('data/fund_charts_index.json') }}
+          restore-keys: |
+            fund-charts-
+
+      - name: 写入 JD Cookies
+        run: |
+          mkdir -p data/jd_auth
+          echo "$JD_COOKIES" > data/jd_auth/cookies.json 2>/dev/null || true
+          echo "Cookies written: $(wc -c < data/jd_auth/cookies.json) bytes"
 
       - name: 等待到北京时间14:30
         run: |
           echo "当前UTC时间: $(date -u '+%Y-%m-%d %H:%M:%S')"
           echo "当前北京时间: $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
-          # 计算距离北京时间14:30的等待秒数
           CURRENT_HOUR=$(TZ='Asia/Shanghai' date +%H)
           CURRENT_MIN=$(TZ='Asia/Shanghai' date +%M)
           CURRENT_SEC=$((CURRENT_HOUR * 3600 + CURRENT_MIN * 60 + $(TZ='Asia/Shanghai' date +%S)))
@@ -48,23 +65,34 @@ jobs:
           fi
           echo "执行时间(北京): $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
 
-      - name: 增量更新基金净值数据
+      - name: 1. 更新大佬交易记录
+        env:
+          JD_COOKIES: ${{ secrets.JD_COOKIES }}
         run: |
-          echo "── 更新 data/fund_charts.json (实盘用) ──"
-          python scripts/update_fund_charts.py --max-funds 0
-          echo "── 更新 backtest/data/fund_charts.json (回测用) ──"
-          python scripts/update_fund_charts.py --backtest --max-funds 0
+          echo "── 拉取最新大佬交易记录 ──"
+          python -X utf8 scripts/auto-pipeline.py --trading-only 2>&1 | tee logs/trading_update.log || echo "交易记录更新失败(非致命)"
 
-      - name: 提交更新后的基金数据
+      - name: 2. 增量更新基金净值 (分文件)
+        run: |
+          echo "── 更新 data/fund_charts/*.json (回测+实盘用) ──"
+          python -X utf8 scripts/bulk_fetch_charts.py 2>&1 | tee logs/fund_charts_update.log || echo "净值更新失败(非致命)"
+
+      - name: 3. 更新旧格式 fund_charts.json (兼容)
+        run: |
+          echo "── 更新 data/fund_charts.json (旧格式兼容) ──"
+          python scripts/update_fund_charts.py --max-funds 0 || true
+          python scripts/update_fund_charts.py --backtest --max-funds 0 || true
+
+      - name: 提交更新后的数据
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/fund_charts.json backtest/data/fund_charts.json
-          git diff --cached --quiet || git commit -m "数据更新 $(date +%Y-%m-%d)"
+          git add data/fund_charts/ data/fund_charts.json data/fund_charts_index.json backtest/data/fund_charts.json backtest/data/trading_by_date_fixed.json data/jd_auth/cookies.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "数据更新 $(date +%Y-%m-%d) - 交易记录+基金净值"
           git push || echo "push skipped (no changes or behind remote)"
           git pull --rebase origin main || echo "pull skipped"
 
-      - name: 运行冠军策略实盘模拟 (含飞书推送)
+      - name: 4. 运行冠军策略实盘模拟 (含飞书推送)
         run: python scripts/daily_live.py
 
       - name: 提交日报
@@ -75,3 +103,12 @@ jobs:
           git add reports/sim/
           git diff --cached --quiet || git commit -m "实盘日报 $(date +%Y-%m-%d)"
           git push
+
+      - name: 上传日志
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-sim-${{ github.run_id }}
+          path: |
+            logs/
+            reports/sim/
