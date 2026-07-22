@@ -375,13 +375,10 @@ def main():
 
     print(f"总策略数: {len(all_configs)}")
 
-    # 保存
-    out = Path(__file__).resolve().parent / "mega_sweep_configs.py"
+    # 保存为JSON (避免 true/false Python 语法问题)
+    out = Path(__file__).resolve().parent / "mega_sweep_configs.json"
     with open(out, "w", encoding="utf-8") as f:
-        f.write("# Auto-generated mega sweep configs\n")
-        f.write(f"# Total: {len(all_configs)} strategies\n\n")
-        f.write("MEGA_SWEEP = ")
-        f.write(json.dumps(all_configs, ensure_ascii=False, indent=2))
+        json.dump(all_configs, f, ensure_ascii=False, indent=2)
     print(f"保存到 {out}")
 
 

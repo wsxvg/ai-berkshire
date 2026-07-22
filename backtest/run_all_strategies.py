@@ -19,8 +19,9 @@ sys.path.insert(0, str(PROJECT))
 from backtest.engine.backtest import run_backtest
 from backtest.sweep_configs import SWEEP_CONFIGS, SWEEP_LABELS
 try:
-    from backtest.mega_sweep_configs import MEGA_SWEEP
-except ImportError:
+    with open(Path(__file__).resolve().parent / "mega_sweep_configs.json", encoding="utf-8") as _f:
+        MEGA_SWEEP = json.loads(_f.read())
+except (FileNotFoundError, ImportError):
     MEGA_SWEEP = []
 
 # ── 基础配置 ──
