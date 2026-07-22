@@ -2772,6 +2772,11 @@ def run_backtest(config):
                                  day_str=day)
                     print(f"  PYRAMID {c['code']} {c['name'][:16]} loss={loss_pct:.1f}% mult={pyramid_mult} amt={pyramid_amt:.0f}")
                 continue
+            # 跳过已持仓或有待确认买入的基金（防止重复买入导致仓位超100%）
+            if c["code"] in portfolio.holdings:
+                continue
+            if any(pb["code"] == c["code"] for pb in portfolio.pending_buys):
+                continue
             # 计算实际买入净值
             buy_price = 1.0
             pts = fund_charts.get(c["code"], [])
