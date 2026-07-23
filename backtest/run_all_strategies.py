@@ -82,6 +82,53 @@ BASE_STRATEGIES = [
         "fund_type_filter": "all", "monthly_injection": 2500}},
 ]
 
+# ── 散户模拟策略系列 ──
+# 核心差异: 1)月定投模拟工资流入 2)限持仓数防资金分散 3)金字塔补仓防无限加仓
+RETAIL_BASE = {
+    "start_date": "2023-07-17", "end_date": "2026-07-17",
+    "initial_cash": 5000,  # 散户初始资金5000（不是1万）
+    "monthly_injection": 2000,  # 每月定投2000（模拟工资节余）
+    "weights": {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20},
+}
+
+RETAIL_STRATEGIES = [
+    {"name": "R1 散户定投保守", "desc": "月投2000+严止损+早止盈+限5仓", "config": {
+        "min_score": 3.0, "stop_loss_pct": -10, "take_profit_pct": 20,
+        "profit_mode": "half", "min_consensus": 2, "fund_type_filter": "all",
+        "max_holdings": 5, "kelly_cap": 0.25, "momentum_sell": 1.5,
+        "pyramiding_enabled": True, "cooldown_profit_days": 10, "cooldown_loss_days": 20}},
+    {"name": "R2 散户定投积极", "desc": "月投2000+宽止损+高共识+限8仓", "config": {
+        "min_score": 2.5, "stop_loss_pct": -20, "take_profit_pct": 30,
+        "profit_mode": "step", "min_consensus": 2, "fund_type_filter": "all",
+        "max_holdings": 8, "kelly_cap": 0.30, "momentum_sell": 1.0,
+        "pyramiding_enabled": True, "cooldown_profit_days": 5, "cooldown_loss_days": 15,
+        "adaptive_consensus": True, "timing_filter": True}},
+    {"name": "R3 散户定投跟大佬", "desc": "月投2000+高共识+金字塔补仓", "config": {
+        "min_score": 0.0, "stop_loss_pct": -15, "take_profit_pct": 25,
+        "profit_mode": "half", "min_consensus": 3, "fund_type_filter": "active",
+        "max_holdings": 5, "kelly_cap": 0.20, "momentum_sell": 1.5,
+        "pyramiding_enabled": True, "sell_consensus": 2,
+        "cooldown_profit_days": 10, "cooldown_loss_days": 30,
+        "timing_filter": True, "block_overbought": True}},
+    {"name": "R4 散户定投5000起", "desc": "初始5000+月投3000+限6仓", "config": {
+        "min_score": 3.0, "stop_loss_pct": -12, "take_profit_pct": 25,
+        "profit_mode": "quarter", "min_consensus": 2, "fund_type_filter": "all",
+        "max_holdings": 6, "kelly_cap": 0.25, "momentum_sell": 1.5,
+        "pyramiding_enabled": True, "monthly_injection": 3000,
+        "cooldown_profit_days": 7, "cooldown_loss_days": 20}},
+    {"name": "R5 散户定投加权共识", "desc": "月投2000+加权共识+regime自适应", "config": {
+        "min_score": 0.0, "min_consensus": 2, "adaptive_consensus": True,
+        "stop_loss_pct": -15, "take_profit_pct": 30, "profit_mode": "step",
+        "use_weighted_consensus": True, "max_holdings": 6, "kelly_cap": 0.25,
+        "momentum_sell": 1.5, "pyramiding_enabled": True,
+        "regime_specific": True, "dynamic_stop_loss": True,
+        "take_profit_pct_bull": 40, "take_profit_pct_neutral": 25, "take_profit_pct_bear": 15,
+        "stop_loss_pct_bull": -20, "stop_loss_pct_neutral": -15, "stop_loss_pct_bear": -10,
+        "max_correlation": 0.6, "max_sector_pct": 40, "rebalance": True,
+        "cooldown_profit_days": 7, "cooldown_loss_days": 20,
+        "timing_filter": True, "block_overbought": True}},
+]
+
 # ── Y5 冠军策略 (来自 best_config.json) ──
 Y5_CHAMPION = {
     "name": "Y5 加权共识冠军",
@@ -206,6 +253,13 @@ def main():
     if args.player or (not args.base_only and not args.champion_only and not args.sweep_only and not args.mega):
         for s in PLAYER_SWEEP:
             all_strategies.append((s["name"], s["desc"], s["config"], deepcopy(BASE)))
+    # 散户模拟策略（始终包含）
+    if not args.base_only and not args.champion_only and not args.sweep_only:
+        for s in RETAIL_STRATEGIES:
+            base = deepcopy(RETAIL_BASE)
+            if s["config"].get("monthly_injection"):
+                base["monthly_injection"] = s["config"]["monthly_injection"]
+            all_strategies.append((s["name"], s["desc"], s["config"], base))
 
     # 分片: 只跑当前 chunk 的策略
     if args.total > 1:

@@ -365,6 +365,242 @@ def gen_random_search():
     return configs
 
 
+# ── F. 散户模拟变体 (200个) ──
+def gen_retail_variants():
+    """散户友好策略变体。
+
+    核心区别于大佬策略:
+    1. monthly_injection: 1000~5000 (月定投)
+    2. initial_cash: 3000~10000 (小资金起步)
+    3. max_holdings: 3~10 (限仓位防分散)
+    4. pyramiding_enabled: True (金字塔补仓替代无限加仓)
+    5. kelly_cap: 0.15~0.30 (保守仓位)
+    """
+    configs = []
+
+    # F1: 月定投金额扫描 (8个)
+    for inj in [1000, 1500, 2000, 2500, 3000, 4000, 5000, 8000]:
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": inj,
+            "initial_cash": 5000,
+            "max_holdings": 5,
+            "kelly_cap": 0.25,
+            "pyramiding_enabled": True,
+            "stop_loss_pct": -15,
+            "take_profit_pct": 30,
+            "no_stop_loss": False,
+            "momentum_sell": 1.5,
+            "profit_mode": "half",
+        })
+        configs.append({
+            "name": f"F_inj_{inj}",
+            "desc": f"月投{inj}+限5仓+金字塔",
+            "config": config,
+        })
+
+    # F2: 初始资金扫描 (6个)
+    for cash in [1000, 2000, 3000, 5000, 8000, 10000]:
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": 2000,
+            "initial_cash": cash,
+            "max_holdings": 5,
+            "kelly_cap": 0.25,
+            "pyramiding_enabled": True,
+            "stop_loss_pct": -15,
+            "take_profit_pct": 30,
+            "no_stop_loss": False,
+            "momentum_sell": 1.5,
+            "profit_mode": "half",
+        })
+        configs.append({
+            "name": f"F_cash_{cash}",
+            "desc": f"初始{cash}+月投2000+限5仓",
+            "config": config,
+        })
+
+    # F3: 限仓位数扫描 (8个)
+    for mh in [3, 4, 5, 6, 7, 8, 10, 15]:
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": 2000,
+            "initial_cash": 5000,
+            "max_holdings": mh,
+            "kelly_cap": 0.25,
+            "pyramiding_enabled": True,
+            "stop_loss_pct": -15,
+            "take_profit_pct": 30,
+            "no_stop_loss": False,
+            "momentum_sell": 1.5,
+            "profit_mode": "half",
+        })
+        configs.append({
+            "name": f"F_maxh_{mh}",
+            "desc": f"限{mh}仓+月投2000+金字塔",
+            "config": config,
+        })
+
+    # F4: kelly_cap扫描 (6个)
+    for kc in [0.10, 0.15, 0.20, 0.25, 0.30, 0.35]:
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": 2000,
+            "initial_cash": 5000,
+            "max_holdings": 5,
+            "kelly_cap": kc,
+            "pyramiding_enabled": True,
+            "stop_loss_pct": -15,
+            "take_profit_pct": 30,
+            "no_stop_loss": False,
+            "momentum_sell": 1.5,
+            "profit_mode": "half",
+        })
+        configs.append({
+            "name": f"F_kelly_{kc}",
+            "desc": f"kelly={kc}+月投2000+限5仓",
+            "config": config,
+        })
+
+    # F5: 止损止盈组合 (12个)
+    for sl, tp in [(-8, 15), (-8, 20), (-10, 20), (-10, 25), (-12, 25),
+                   (-12, 30), (-15, 25), (-15, 30), (-15, 40),
+                   (-20, 30), (-20, 40), (-25, 50)]:
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": 2000,
+            "initial_cash": 5000,
+            "max_holdings": 5,
+            "kelly_cap": 0.25,
+            "pyramiding_enabled": True,
+            "stop_loss_pct": sl,
+            "take_profit_pct": tp,
+            "no_stop_loss": False,
+            "momentum_sell": 1.5,
+            "profit_mode": "half",
+        })
+        configs.append({
+            "name": f"F_sl{sl}_tp{tp}",
+            "desc": f"止损{sl}%+止盈{tp}%+月投2000",
+            "config": config,
+        })
+
+    # F6: 散户加权共识变体 (20个)
+    for kc in [0.15, 0.20, 0.25, 0.30]:
+        for mh in [4, 5, 6, 8]:
+            for inj in [2000, 3000]:
+                config = dict(BASE)
+                config.update({
+                    "monthly_injection": inj,
+                    "initial_cash": 5000,
+                    "max_holdings": mh,
+                    "kelly_cap": kc,
+                    "pyramiding_enabled": True,
+                    "stop_loss_pct": -15,
+                    "take_profit_pct": 30,
+                    "no_stop_loss": False,
+                    "momentum_sell": 1.5,
+                    "profit_mode": "step",
+                    "use_weighted_consensus": True,
+                    "adaptive_consensus": True,
+                    "timing_filter": True,
+                    "block_overbought": True,
+                })
+                configs.append({
+                    "name": f"F_w_{kc}_{mh}_{inj}",
+                    "desc": f"加权共识+kelly={kc}+限{mh}仓+月投{inj}",
+                    "config": config,
+                })
+
+    # F7: 散户regime自适应 (30个)
+    for sl_bull, sl_bear, tp_bull, tp_bear in [
+        (-15, -10, 30, 15), (-20, -10, 40, 20), (-20, -15, 30, 15),
+        (-25, -15, 40, 20), (-15, -8, 25, 12), (-20, -12, 35, 18),
+        (-10, -8, 20, 10), (-25, -20, 50, 25), (-30, -20, 50, 30),
+        (-15, -12, 30, 20),
+    ]:
+        for mh in [5, 6, 8]:
+            config = dict(BASE)
+            config.update({
+                "monthly_injection": 2000,
+                "initial_cash": 5000,
+                "max_holdings": mh,
+                "kelly_cap": 0.25,
+                "pyramiding_enabled": True,
+                "no_stop_loss": False,
+                "momentum_sell": 1.5,
+                "profit_mode": "step",
+                "regime_specific": True,
+                "dynamic_stop_loss": True,
+                "stop_loss_pct_bull": sl_bull,
+                "stop_loss_pct_neutral": sl_bull + 5,
+                "stop_loss_pct_bear": sl_bear,
+                "take_profit_pct_bull": tp_bull,
+                "take_profit_pct_neutral": tp_bull - 10,
+                "take_profit_pct_bear": tp_bear,
+                "kelly_cap_bull": 0.30,
+                "kelly_cap_neutral": 0.25,
+                "kelly_cap_bear": 0.15,
+            })
+            configs.append({
+                "name": f"F_reg_{sl_bull}_{sl_bear}_{tp_bull}_{tp_bear}_{mh}",
+                "desc": f"regime+牛止损{sl_bull}/熊{sl_bear}+止盈{tp_bull}/{tp_bear}+限{mh}仓",
+                "config": config,
+            })
+
+    # F8: 散户随机搜索 (110个) - 确保多样性和覆盖
+    random.seed(42)
+    retail_param_space = {
+        "stop_loss_pct": (-25, -8, "int"),
+        "take_profit_pct": (15, 50, "int"),
+        "kelly_cap": (0.10, 0.35, "float"),
+        "max_holdings": (3, 10, "int"),
+        "min_consensus": (1, 4, "int"),
+        "cooldown_profit_days": (3, 20, "int"),
+        "cooldown_loss_days": (10, 40, "int"),
+        "momentum_sell": (0.5, 3.0, "float"),
+    }
+    retail_choice_space = {
+        "fund_type_filter": ["all", "active"],
+        "profit_mode": ["half", "quarter", "step"],
+    }
+    retail_bool_space = [
+        "use_weighted_consensus", "adaptive_consensus",
+        "timing_filter", "block_overbought",
+        "pyramiding_enabled", "regime_specific",
+        "dynamic_stop_loss", "dynamic_ranking",
+    ]
+    for i in range(110):
+        config = dict(BASE)
+        config.update({
+            "monthly_injection": random.choice([1000, 1500, 2000, 2500, 3000]),
+            "initial_cash": random.choice([2000, 3000, 5000, 8000]),
+            "no_stop_loss": False,
+        })
+        # 随机 4-6 个数值参数
+        n_params = random.randint(4, 6)
+        selected = random.sample(list(retail_param_space.keys()), min(n_params, len(retail_param_space)))
+        for dim in selected:
+            lo, hi, typ = retail_param_space[dim]
+            if typ == "int":
+                config[dim] = random.randint(lo, hi)
+            else:
+                config[dim] = round(random.uniform(lo, hi), 3)
+        # 随机 2-3 个 bool 参数
+        for dim in random.sample(retail_bool_space, random.randint(2, 3)):
+            config[dim] = True
+        # 随机 0-1 个 choice 参数
+        for dim in random.sample(list(retail_choice_space.keys()), random.randint(0, 1)):
+            config[dim] = random.choice(retail_choice_space[dim])
+        configs.append({
+            "name": f"F_rnd{i:03d}",
+            "desc": f"散户随机({n_params}params)",
+            "config": config,
+        })
+
+    return configs
+
+
 def main():
     all_configs = []
     all_configs.extend(gen_weight_variants())
@@ -372,6 +608,7 @@ def main():
     all_configs.extend(gen_two_param_combos())
     all_configs.extend(gen_three_param_combos())
     all_configs.extend(gen_random_search())
+    all_configs.extend(gen_retail_variants())
 
     print(f"总策略数: {len(all_configs)}")
 
