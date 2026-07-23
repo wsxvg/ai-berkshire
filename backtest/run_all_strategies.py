@@ -234,6 +234,14 @@ def main():
 
     elapsed_total = time.time() - t_start
 
+    # 过滤掉交易次数过低的策略（3年至少30笔交易=年均10笔，否则是假策略）
+    MIN_TRADES = 30
+    filtered = [r for r in results if r["trades"] >= MIN_TRADES]
+    skipped = len(results) - len(filtered)
+    if skipped > 0:
+        print(f"\n⚠ 过滤掉 {skipped} 个低交易策略 (<{MIN_TRADES}笔), 保留 {len(filtered)} 个")
+    results = filtered
+
     # 排序输出（按夏普降序）
     results.sort(key=lambda x: x["sharpe"], reverse=True)
 
