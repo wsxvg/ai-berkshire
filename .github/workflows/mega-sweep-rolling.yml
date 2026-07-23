@@ -276,7 +276,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: phase1-merged
-          path: .
+          path: backtest/results_revalidation/
 
       - name: Run rolling window validation chunk ${{ matrix.chunk }}
         run: |
@@ -320,7 +320,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: phase1-merged
-          path: .
+          path: backtest/results_revalidation/
 
       - name: Merge rolling window results and generate final ranking
         run: |
