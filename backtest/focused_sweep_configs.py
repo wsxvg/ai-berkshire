@@ -43,7 +43,7 @@ J_BASE = {
     "min_score": 3.3, "no_stop_loss": True, "take_profit_pct": 1000,
     "profit_mode": "half", "cost_penalty": 0, "min_consensus": 2,
     "fund_type_filter": "all", "momentum_sell": 0,
-    "max_candidates_per_day": 50,  # 防止mc=1时评分爆炸
+    "max_candidates_per_day": 0,  # 不限制（有跨策略评分缓存）
 }
 
 # 无脑跟投基础（min_score=0，纯信号驱动）
@@ -51,7 +51,7 @@ K_BASE = {
     "min_score": 0.0, "stop_loss_pct": -30, "take_profit_pct": 50,
     "profit_mode": "half", "cost_penalty": 0, "min_consensus": 2,
     "fund_type_filter": "all",
-    "max_candidates_per_day": 50,  # 防止mc=1时评分爆炸
+    "max_candidates_per_day": 0,  # 不限制（有跨策略评分缓存）
 }
 
 configs = []
@@ -1049,7 +1049,7 @@ for mc in [1, 2, 3]:
 # ═══ 统一注入候选数上限（防止mc=1策略评分爆炸）═══
 for c in configs:
     if "max_candidates_per_day" not in c["config"]:
-        c["config"]["max_candidates_per_day"] = 50
+        c["config"]["max_candidates_per_day"] = 0  # 不限制（有跨策略评分缓存）
 
 # ═══ 去重 ═══
 seen = set()

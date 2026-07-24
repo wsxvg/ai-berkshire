@@ -11,7 +11,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -26,7 +26,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -41,7 +41,7 @@
       "min_consensus": 1,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -56,7 +56,7 @@
       "min_consensus": 1,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -71,7 +71,7 @@
       "min_consensus": 1,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -86,7 +86,7 @@
       "min_consensus": 1,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -101,7 +101,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -116,7 +116,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -131,7 +131,7 @@
       "min_consensus": 2,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -146,7 +146,7 @@
       "min_consensus": 2,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -161,7 +161,7 @@
       "min_consensus": 2,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -176,7 +176,7 @@
       "min_consensus": 2,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -191,7 +191,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -206,7 +206,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -221,7 +221,7 @@
       "min_consensus": 3,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -236,7 +236,7 @@
       "min_consensus": 3,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -251,7 +251,7 @@
       "min_consensus": 3,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -266,7 +266,7 @@
       "min_consensus": 3,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -281,7 +281,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -296,7 +296,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -311,7 +311,7 @@
       "min_consensus": 4,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -326,7 +326,7 @@
       "min_consensus": 4,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -341,7 +341,7 @@
       "min_consensus": 4,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -356,7 +356,7 @@
       "min_consensus": 4,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -371,7 +371,7 @@
       "min_consensus": 5,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -386,7 +386,7 @@
       "min_consensus": 5,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -401,7 +401,7 @@
       "min_consensus": 5,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -416,7 +416,7 @@
       "min_consensus": 5,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -431,7 +431,7 @@
       "min_consensus": 5,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -446,7 +446,7 @@
       "min_consensus": 5,
       "fund_type_filter": "passive",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -461,7 +461,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -5
     }
   },
@@ -477,7 +477,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -8
     }
   },
@@ -493,7 +493,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -509,7 +509,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -15
     }
   },
@@ -525,7 +525,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -541,7 +541,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -557,7 +557,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -50
     }
   },
@@ -573,7 +573,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -588,7 +588,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -603,7 +603,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -618,7 +618,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -633,7 +633,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -648,7 +648,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -663,7 +663,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -678,7 +678,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -694,7 +694,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -710,7 +710,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -726,7 +726,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -742,7 +742,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -758,7 +758,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -774,7 +774,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -790,7 +790,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -806,7 +806,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -822,7 +822,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -838,7 +838,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -854,7 +854,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -870,7 +870,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -886,7 +886,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -902,7 +902,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -918,7 +918,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -934,7 +934,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -950,7 +950,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10
     }
   },
@@ -966,7 +966,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -982,7 +982,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -998,7 +998,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -20
     }
   },
@@ -1014,7 +1014,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -1030,7 +1030,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -1046,7 +1046,7 @@
       "min_consensus": 4,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -30
     }
   },
@@ -1062,7 +1062,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0
     }
@@ -1079,7 +1079,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.15
     }
@@ -1096,7 +1096,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.25
     }
@@ -1113,7 +1113,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.35
     }
@@ -1130,7 +1130,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0
     }
@@ -1147,7 +1147,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0.15
     }
@@ -1164,7 +1164,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0.25
     }
@@ -1181,7 +1181,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0.35
     }
@@ -1198,7 +1198,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0
     }
@@ -1215,7 +1215,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.15
     }
@@ -1232,7 +1232,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25
     }
@@ -1249,7 +1249,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.35
     }
@@ -1266,7 +1266,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0
     }
@@ -1283,7 +1283,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.15
     }
@@ -1300,7 +1300,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25
     }
@@ -1317,7 +1317,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.35
     }
@@ -1334,7 +1334,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0
     }
@@ -1351,7 +1351,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.15
     }
@@ -1368,7 +1368,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25
     }
@@ -1385,7 +1385,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.35
     }
@@ -1402,7 +1402,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 15,
       "kelly_cap": 0
     }
@@ -1419,7 +1419,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 15,
       "kelly_cap": 0.15
     }
@@ -1436,7 +1436,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 15,
       "kelly_cap": 0.25
     }
@@ -1453,7 +1453,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 15,
       "kelly_cap": 0.35
     }
@@ -1469,7 +1469,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 0,
@@ -1488,7 +1488,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 0,
@@ -1507,7 +1507,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 2,
@@ -1526,7 +1526,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 2,
@@ -1545,7 +1545,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 3,
@@ -1564,7 +1564,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": true,
       "sell_consensus": 3,
@@ -1583,7 +1583,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 0,
@@ -1602,7 +1602,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 0,
@@ -1621,7 +1621,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 2,
@@ -1640,7 +1640,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 2,
@@ -1659,7 +1659,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 3,
@@ -1678,7 +1678,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": true,
       "net_signal": false,
       "sell_consensus": 3,
@@ -1697,7 +1697,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 0,
@@ -1716,7 +1716,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 0,
@@ -1735,7 +1735,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 2,
@@ -1754,7 +1754,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 2,
@@ -1773,7 +1773,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 3,
@@ -1792,7 +1792,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": true,
       "sell_consensus": 3,
@@ -1811,7 +1811,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 0,
@@ -1830,7 +1830,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 0,
@@ -1849,7 +1849,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 2,
@@ -1868,7 +1868,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 2,
@@ -1887,7 +1887,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 3,
@@ -1906,7 +1906,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "use_weighted_consensus": false,
       "net_signal": false,
       "sell_consensus": 3,
@@ -1926,7 +1926,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -1941,7 +1941,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -1956,7 +1956,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -1971,7 +1971,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -1986,7 +1986,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2001,7 +2001,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2016,7 +2016,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0.5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2031,7 +2031,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 1.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2046,7 +2046,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 1.5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2061,7 +2061,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 2.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2076,7 +2076,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 2.5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2091,7 +2091,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 3.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2106,7 +2106,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.0
     }
   },
@@ -2122,7 +2122,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.0
     }
   },
@@ -2138,7 +2138,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.0
     }
   },
@@ -2154,7 +2154,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.3
     }
   },
@@ -2170,7 +2170,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.3
     }
   },
@@ -2186,7 +2186,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.3
     }
   },
@@ -2202,7 +2202,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.5
     }
   },
@@ -2218,7 +2218,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.5
     }
   },
@@ -2234,7 +2234,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.5
     }
   },
@@ -2250,7 +2250,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.0
     }
   },
@@ -2266,7 +2266,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.0
     }
   },
@@ -2282,7 +2282,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.0
     }
   },
@@ -2298,7 +2298,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 0,
       "cooldown_loss_days": 0
     }
@@ -2315,7 +2315,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 0,
       "cooldown_loss_days": 15
     }
@@ -2332,7 +2332,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 0,
       "cooldown_loss_days": 30
     }
@@ -2349,7 +2349,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 5,
       "cooldown_loss_days": 0
     }
@@ -2366,7 +2366,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 5,
       "cooldown_loss_days": 15
     }
@@ -2383,7 +2383,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 5,
       "cooldown_loss_days": 30
     }
@@ -2400,7 +2400,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 10,
       "cooldown_loss_days": 0
     }
@@ -2417,7 +2417,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 10,
       "cooldown_loss_days": 15
     }
@@ -2434,7 +2434,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 10,
       "cooldown_loss_days": 30
     }
@@ -2451,7 +2451,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 20,
       "cooldown_loss_days": 0
     }
@@ -2468,7 +2468,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 20,
       "cooldown_loss_days": 15
     }
@@ -2485,7 +2485,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cooldown_profit_days": 20,
       "cooldown_loss_days": 30
     }
@@ -2501,7 +2501,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2515,7 +2515,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.3,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2529,7 +2529,7 @@
       "max_holdings": 0,
       "kelly_cap": 0,
       "fund_type_filter": "active",
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2544,7 +2544,7 @@
       "kelly_cap": 0.35,
       "fund_type_filter": "all",
       "momentum_sell": 1.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2558,7 +2558,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2573,7 +2573,7 @@
       "kelly_cap": 0.25,
       "fund_type_filter": "all",
       "profit_mode": "step",
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2589,7 +2589,7 @@
       "fund_type_filter": "all",
       "use_weighted_consensus": true,
       "adaptive_consensus": true,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2605,7 +2605,7 @@
       "fund_type_filter": "all",
       "net_signal": true,
       "sell_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2621,7 +2621,7 @@
       "fund_type_filter": "all",
       "cooldown_profit_days": 10,
       "cooldown_loss_days": 30,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2637,7 +2637,7 @@
       "fund_type_filter": "all",
       "slippage_pct": 0.5,
       "cost_penalty": 0.5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -2652,7 +2652,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 3,
       "kelly_cap": 0.25
@@ -2670,7 +2670,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 5,
       "kelly_cap": 0.25
@@ -2688,7 +2688,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -2706,7 +2706,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 3,
       "kelly_cap": 0.25
@@ -2724,7 +2724,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 5,
       "kelly_cap": 0.25
@@ -2742,7 +2742,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -2760,7 +2760,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 3,
       "kelly_cap": 0.25
@@ -2778,7 +2778,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 5,
       "kelly_cap": 0.25
@@ -2796,7 +2796,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -2814,7 +2814,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 3,
       "kelly_cap": 0.25
@@ -2832,7 +2832,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 5,
       "kelly_cap": 0.25
@@ -2850,7 +2850,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -2868,7 +2868,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 10,
       "trailing_tp_drawdown": 5
     }
@@ -2885,7 +2885,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 10,
       "trailing_tp_drawdown": 8
     }
@@ -2902,7 +2902,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 10,
       "trailing_tp_drawdown": 15
     }
@@ -2919,7 +2919,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 15,
       "trailing_tp_drawdown": 5
     }
@@ -2936,7 +2936,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 15,
       "trailing_tp_drawdown": 8
     }
@@ -2953,7 +2953,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 15,
       "trailing_tp_drawdown": 15
     }
@@ -2970,7 +2970,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 20,
       "trailing_tp_drawdown": 5
     }
@@ -2987,7 +2987,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 20,
       "trailing_tp_drawdown": 8
     }
@@ -3004,7 +3004,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 20,
       "trailing_tp_drawdown": 15
     }
@@ -3021,7 +3021,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 30,
       "trailing_tp_drawdown": 5
     }
@@ -3038,7 +3038,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 30,
       "trailing_tp_drawdown": 8
     }
@@ -3055,7 +3055,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "trailing_tp_activate": 30,
       "trailing_tp_drawdown": 15
     }
@@ -3072,7 +3072,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3090,7 +3090,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3108,7 +3108,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3127,7 +3127,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3146,7 +3146,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3164,7 +3164,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3182,7 +3182,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3201,7 +3201,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3220,7 +3220,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3238,7 +3238,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "max_holdings": 8,
       "kelly_cap": 0.25
@@ -3256,7 +3256,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3275,7 +3275,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "pyramiding_enabled": true,
       "stop_loss_pct": -20,
       "max_holdings": 8,
@@ -3298,7 +3298,7 @@
       "min_score": 0.0,
       "min_consensus": 2,
       "max_holdings": 5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3319,7 +3319,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3336,7 +3336,7 @@
       "min_score": 0.0,
       "min_consensus": 2,
       "max_holdings": 5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3355,7 +3355,7 @@
       "min_consensus": 2,
       "max_holdings": 8,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3372,7 +3372,7 @@
       "min_score": 0.0,
       "min_consensus": 2,
       "max_holdings": 5,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3390,7 +3390,7 @@
       "kelly_cap_neutral": 0.2,
       "min_consensus": 2,
       "max_holdings": 8,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3410,7 +3410,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3429,7 +3429,7 @@
       "min_score": 0.0,
       "min_consensus": 2,
       "max_holdings": 8,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3448,7 +3448,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3468,7 +3468,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3489,7 +3489,7 @@
       "min_consensus": 2,
       "max_holdings": 8,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3506,7 +3506,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -3521,7 +3521,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 10,
       "portfolio_dd_pause_days": 5
     }
@@ -3538,7 +3538,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 15,
       "portfolio_dd_pause_days": 5
     }
@@ -3555,7 +3555,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 20,
       "portfolio_dd_pause_days": 10
     }
@@ -3572,7 +3572,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 10,
       "portfolio_dd_pause_days": 10
     }
@@ -3589,7 +3589,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_reduce_pct": 1,
       "portfolio_dd_reduce_threshold": 8,
       "portfolio_dd_reduce_frac": 0.3
@@ -3607,7 +3607,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_reduce_pct": 1,
       "portfolio_dd_reduce_threshold": 12,
       "portfolio_dd_reduce_frac": 0.5
@@ -3625,7 +3625,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 15,
       "portfolio_dd_pause_days": 5,
       "portfolio_dd_reduce_pct": 1,
@@ -3645,7 +3645,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 20,
       "portfolio_dd_pause_days": 10,
       "portfolio_dd_reduce_pct": 1,
@@ -3665,7 +3665,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 15,
       "portfolio_dd_pause_days": 5,
       "stop_loss_pct": -20
@@ -3683,7 +3683,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 15,
       "portfolio_dd_pause_days": 5,
       "trailing_tp_activate": 20,
@@ -3702,7 +3702,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 15,
       "portfolio_dd_pause_days": 5,
       "pyramiding_enabled": true
@@ -3720,7 +3720,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "portfolio_dd_breaker": 12,
       "portfolio_dd_pause_days": 7,
       "max_holdings": 5,
@@ -3739,7 +3739,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.3
@@ -3757,7 +3757,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5
@@ -3775,7 +3775,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.7
@@ -3793,7 +3793,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5,
@@ -3812,7 +3812,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5,
@@ -3831,7 +3831,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.3,
@@ -3850,7 +3850,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5,
@@ -3869,7 +3869,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_sector_pct": 25,
@@ -3888,7 +3888,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_sector_pct": 30,
@@ -3907,7 +3907,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5,
@@ -3926,7 +3926,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.3,
@@ -3946,7 +3946,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_correlation": 0.5,
@@ -3967,7 +3967,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -3986,7 +3986,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4005,7 +4005,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4024,7 +4024,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "atr_stop_loss_mult": 2.0,
@@ -4043,7 +4043,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "atr_stop_loss_mult": 3.0,
@@ -4062,7 +4062,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "atr_stop_loss_mult": 1.5,
@@ -4081,7 +4081,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4101,7 +4101,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4122,7 +4122,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4142,7 +4142,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "dynamic_stop_loss": true,
@@ -4165,7 +4165,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 5000,
       "slippage_pct": 0.0,
       "max_holdings": 5,
@@ -4184,7 +4184,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 5000,
       "slippage_pct": 0.0,
       "max_holdings": 0
@@ -4202,7 +4202,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 5000,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -4221,7 +4221,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 5000,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -4240,7 +4240,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 10000,
       "slippage_pct": 0.0,
       "max_holdings": 5,
@@ -4259,7 +4259,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 10000,
       "slippage_pct": 0.0,
       "max_holdings": 0
@@ -4277,7 +4277,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 10000,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -4296,7 +4296,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 10000,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -4315,7 +4315,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 20000,
       "slippage_pct": 0.0,
       "max_holdings": 5,
@@ -4334,7 +4334,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 20000,
       "slippage_pct": 0.0,
       "max_holdings": 0
@@ -4352,7 +4352,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 20000,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -4371,7 +4371,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 20000,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -4390,7 +4390,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 50000,
       "slippage_pct": 0.0,
       "max_holdings": 5,
@@ -4409,7 +4409,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 50000,
       "slippage_pct": 0.0,
       "max_holdings": 0
@@ -4427,7 +4427,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 50000,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -4446,7 +4446,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "initial_cash": 50000,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -4465,7 +4465,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 3,
       "kelly_cap": 0.2
@@ -4483,7 +4483,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 3,
       "kelly_cap": 0.3
@@ -4501,7 +4501,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 5,
       "kelly_cap": 0.2
@@ -4519,7 +4519,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 5,
       "kelly_cap": 0.3
@@ -4537,7 +4537,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 8,
       "kelly_cap": 0.2
@@ -4555,7 +4555,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 8,
       "kelly_cap": 0.3
@@ -4573,7 +4573,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 1000,
       "max_holdings": 0,
       "kelly_cap": 0
@@ -4591,7 +4591,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 3,
       "kelly_cap": 0.2
@@ -4609,7 +4609,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 3,
       "kelly_cap": 0.3
@@ -4627,7 +4627,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 5,
       "kelly_cap": 0.2
@@ -4645,7 +4645,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 5,
       "kelly_cap": 0.3
@@ -4663,7 +4663,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 8,
       "kelly_cap": 0.2
@@ -4681,7 +4681,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 8,
       "kelly_cap": 0.3
@@ -4699,7 +4699,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 2000,
       "max_holdings": 0,
       "kelly_cap": 0
@@ -4717,7 +4717,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 3,
       "kelly_cap": 0.2
@@ -4735,7 +4735,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 3,
       "kelly_cap": 0.3
@@ -4753,7 +4753,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 5,
       "kelly_cap": 0.2
@@ -4771,7 +4771,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 5,
       "kelly_cap": 0.3
@@ -4789,7 +4789,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 8,
       "kelly_cap": 0.2
@@ -4807,7 +4807,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 8,
       "kelly_cap": 0.3
@@ -4825,7 +4825,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 3000,
       "max_holdings": 0,
       "kelly_cap": 0
@@ -4843,7 +4843,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 3,
       "kelly_cap": 0.2
@@ -4861,7 +4861,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 3,
       "kelly_cap": 0.3
@@ -4879,7 +4879,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 5,
       "kelly_cap": 0.2
@@ -4897,7 +4897,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 5,
       "kelly_cap": 0.3
@@ -4915,7 +4915,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 8,
       "kelly_cap": 0.2
@@ -4933,7 +4933,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 8,
       "kelly_cap": 0.3
@@ -4951,7 +4951,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "monthly_injection": 5000,
       "max_holdings": 0,
       "kelly_cap": 0
@@ -4968,7 +4968,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.0,
       "no_stop_loss": true
     }
@@ -4985,7 +4985,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.3
     }
   },
@@ -5000,7 +5000,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.3,
       "no_stop_loss": true
     }
@@ -5017,7 +5017,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.5
     }
   },
@@ -5032,7 +5032,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.5,
       "no_stop_loss": true
     }
@@ -5049,7 +5049,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.8
     }
   },
@@ -5064,7 +5064,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 0.8,
       "no_stop_loss": true
     }
@@ -5081,7 +5081,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.0
     }
   },
@@ -5096,7 +5096,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.0,
       "no_stop_loss": true
     }
@@ -5113,7 +5113,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.5
     }
   },
@@ -5128,7 +5128,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 1.5,
       "no_stop_loss": true
     }
@@ -5145,7 +5145,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 2.0
     }
   },
@@ -5160,7 +5160,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "slippage_pct": 2.0,
       "no_stop_loss": true
     }
@@ -5177,7 +5177,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -8,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -5199,7 +5199,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 0.8,
       "max_holdings": 3,
@@ -5221,7 +5221,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -5,
       "slippage_pct": 1.0,
       "max_holdings": 3,
@@ -5242,7 +5242,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -5263,7 +5263,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -15,
       "slippage_pct": 0.5,
       "max_holdings": 8,
@@ -5283,7 +5283,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -8,
       "slippage_pct": 0.8,
       "max_holdings": 5,
@@ -5304,7 +5304,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 1.0,
       "max_holdings": 3,
@@ -5325,7 +5325,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -12,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -5346,7 +5346,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -8,
       "slippage_pct": 0.8,
       "max_holdings": 5,
@@ -5366,7 +5366,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -5388,7 +5388,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -15,
       "slippage_pct": 0.5,
       "max_holdings": 8,
@@ -5409,7 +5409,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 1.0,
       "max_holdings": 5,
@@ -5430,7 +5430,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -8,
       "slippage_pct": 0.8,
       "max_holdings": 3,
@@ -5452,7 +5452,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -12,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -5473,7 +5473,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 1.5,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "stop_loss_pct": -10,
       "slippage_pct": 0.5,
       "max_holdings": 5,
@@ -5494,7 +5494,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0
     }
   },
@@ -5510,7 +5510,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.4,
       "max_position_pct": 50,
@@ -5529,7 +5529,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.5,
       "max_single_buy_pct": 0.5,
@@ -5548,7 +5548,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.4,
       "max_position_pct": 40
@@ -5566,7 +5566,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0.5,
       "max_position_pct": 50
@@ -5584,7 +5584,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "pyramiding_enabled": true,
       "kelly_cap": 0.4
@@ -5602,7 +5602,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_fraction": 1.0,
       "kelly_cap": 0.4
@@ -5620,7 +5620,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.35,
       "monthly_injection": 5000
@@ -5638,7 +5638,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "min_holding_days": 0,
       "max_yearly_trades": 200
@@ -5656,7 +5656,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "equal_allocate": false,
       "kelly_cap": 0.4,
@@ -5675,7 +5675,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.35
     }
@@ -5692,7 +5692,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "use_weighted_consensus": true,
       "adaptive_consensus": true,
@@ -5711,7 +5711,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 3,
       "kelly_cap": 0.4,
       "max_position_pct": 50,
@@ -5730,7 +5730,7 @@
       "min_consensus": 2,
       "fund_type_filter": "active",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.35,
       "kelly_fraction": 0.75
@@ -5748,7 +5748,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 0,
       "kelly_cap": 0.35,
       "max_position_pct": 40,
@@ -5768,7 +5768,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5782,7 +5782,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5797,7 +5797,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5812,7 +5812,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5828,7 +5828,7 @@
       "kelly_cap_neutral": 0.25,
       "max_holdings": 5,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5842,7 +5842,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5857,7 +5857,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5872,7 +5872,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5887,7 +5887,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5902,7 +5902,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5916,7 +5916,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5934,7 +5934,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5951,7 +5951,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5968,7 +5968,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5984,7 +5984,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -5999,7 +5999,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6016,7 +6016,7 @@
       "kelly_cap_neutral": 0.25,
       "max_holdings": 5,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6033,7 +6033,7 @@
       "max_holdings": 3,
       "kelly_cap": 0.35,
       "min_consensus": 1,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6052,7 +6052,7 @@
       "min_consensus": 3,
       "slippage_pct": 0.5,
       "min_holding_days": 60,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6077,7 +6077,7 @@
       "slippage_pct": 0.3,
       "use_weighted_consensus": true,
       "adaptive_consensus": true,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6092,7 +6092,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6106,7 +6106,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6123,7 +6123,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6138,7 +6138,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6153,7 +6153,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 30
     }
   },
@@ -6168,7 +6168,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 30,
       "no_stop_loss": true
     }
@@ -6185,7 +6185,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 60
     }
   },
@@ -6200,7 +6200,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 60,
       "no_stop_loss": true
     }
@@ -6217,7 +6217,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 90
     }
   },
@@ -6232,7 +6232,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 90,
       "no_stop_loss": true
     }
@@ -6249,7 +6249,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 120
     }
   },
@@ -6264,7 +6264,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "min_holding_days": 120,
       "no_stop_loss": true
     }
@@ -6281,7 +6281,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 30
     }
   },
@@ -6296,7 +6296,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 30,
       "no_stop_loss": true
     }
@@ -6313,7 +6313,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 50
     }
   },
@@ -6328,7 +6328,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 50,
       "no_stop_loss": true
     }
@@ -6345,7 +6345,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 100
     }
   },
@@ -6360,7 +6360,7 @@
       "cost_penalty": 0,
       "min_consensus": 2,
       "fund_type_filter": "all",
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_yearly_trades": 100,
       "no_stop_loss": true
     }
@@ -6376,7 +6376,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6390,7 +6390,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6404,7 +6404,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6418,7 +6418,7 @@
       "max_holdings": 0,
       "kelly_cap": 0,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6433,7 +6433,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6448,7 +6448,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6463,7 +6463,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6478,7 +6478,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.3,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6494,7 +6494,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6510,7 +6510,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_score": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6525,7 +6525,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 60,
       "ranking_half_life": 30,
       "use_weighted_consensus": true,
@@ -6545,7 +6545,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 60,
       "ranking_half_life": 45,
       "use_weighted_consensus": true,
@@ -6565,7 +6565,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 90,
       "ranking_half_life": 30,
       "use_weighted_consensus": true,
@@ -6585,7 +6585,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 120,
       "ranking_half_life": 30,
       "use_weighted_consensus": true,
@@ -6605,7 +6605,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 120,
       "ranking_half_life": 45,
       "use_weighted_consensus": true,
@@ -6625,7 +6625,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 180,
       "ranking_half_life": 30,
       "use_weighted_consensus": true,
@@ -6645,7 +6645,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "ranking_window": 180,
       "ranking_half_life": 45,
       "use_weighted_consensus": true,
@@ -6666,7 +6666,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6682,7 +6682,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6698,7 +6698,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6713,7 +6713,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6729,7 +6729,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6744,7 +6744,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6760,7 +6760,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6777,7 +6777,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6794,7 +6794,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6811,7 +6811,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -6826,7 +6826,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true
@@ -6844,7 +6844,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_bollinger_adjust": true
@@ -6862,7 +6862,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "yearly_ma_filter": true
@@ -6880,7 +6880,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true,
@@ -6899,7 +6899,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true,
@@ -6918,7 +6918,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_bollinger_adjust": true,
@@ -6937,7 +6937,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true,
@@ -6957,7 +6957,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "kdj_sell_mode": "death_cross"
@@ -6975,7 +6975,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "kdj_sell_mode": "overbought_exit"
@@ -6993,7 +6993,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "vol_spike_mult": 2.0
@@ -7011,7 +7011,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "vol_spike_mult": 3.0
@@ -7029,7 +7029,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "vol_spike_mult": 4.0
@@ -7047,7 +7047,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true,
@@ -7066,7 +7066,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "yearly_ma_filter": true,
@@ -7085,7 +7085,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "weekly_macd_divergence": true,
@@ -7106,7 +7106,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true
@@ -7124,7 +7124,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7156,7 +7156,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7184,7 +7184,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7216,7 +7216,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7235,7 +7235,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7255,7 +7255,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7274,7 +7274,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7296,7 +7296,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7316,7 +7316,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "step_take_profit": true,
@@ -7335,7 +7335,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 0.25,
       "equal_allocate": true,
       "max_holdings": 5,
@@ -7354,7 +7354,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 0.25,
       "equal_allocate": false,
       "max_holdings": 5,
@@ -7373,7 +7373,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 0.5,
       "equal_allocate": true,
       "max_holdings": 5,
@@ -7392,7 +7392,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 0.75,
       "equal_allocate": true,
       "max_holdings": 5,
@@ -7411,7 +7411,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 0.75,
       "equal_allocate": false,
       "max_holdings": 5,
@@ -7430,7 +7430,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 1.0,
       "equal_allocate": true,
       "max_holdings": 5,
@@ -7449,7 +7449,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_fraction": 1.0,
       "equal_allocate": false,
       "max_holdings": 5,
@@ -7468,7 +7468,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.05,
       "max_position_pct": 15,
       "max_holdings": 5,
@@ -7487,7 +7487,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.05,
       "max_position_pct": 25,
       "max_holdings": 5,
@@ -7506,7 +7506,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.05,
       "max_position_pct": 35,
       "max_holdings": 5,
@@ -7525,7 +7525,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.1,
       "max_position_pct": 15,
       "max_holdings": 5,
@@ -7544,7 +7544,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.1,
       "max_position_pct": 35,
       "max_holdings": 5,
@@ -7563,7 +7563,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.2,
       "max_position_pct": 15,
       "max_holdings": 5,
@@ -7582,7 +7582,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.2,
       "max_position_pct": 25,
       "max_holdings": 5,
@@ -7601,7 +7601,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.2,
       "max_position_pct": 35,
       "max_holdings": 5,
@@ -7620,7 +7620,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.3,
       "max_position_pct": 15,
       "max_holdings": 5,
@@ -7639,7 +7639,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.3,
       "max_position_pct": 25,
       "max_holdings": 5,
@@ -7658,7 +7658,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.3,
       "max_position_pct": 35,
       "max_holdings": 5,
@@ -7677,7 +7677,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.4,
       "max_position_pct": 15,
       "max_holdings": 5,
@@ -7696,7 +7696,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.4,
       "max_position_pct": 25,
       "max_holdings": 5,
@@ -7715,7 +7715,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "cash_reserve_pct": 0.4,
       "max_position_pct": 35,
       "max_holdings": 5,
@@ -7734,7 +7734,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7755,7 +7755,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7776,7 +7776,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7797,7 +7797,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7818,7 +7818,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7839,7 +7839,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7860,7 +7860,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7882,7 +7882,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 10,
       "kelly_cap": 0.25,
       "signal_source": "momentum",
@@ -7905,7 +7905,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 20,
@@ -7924,7 +7924,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 30,
@@ -7943,7 +7943,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 50,
@@ -7962,7 +7962,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 30,
@@ -7982,7 +7982,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 50,
@@ -8002,7 +8002,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 20,
@@ -8022,7 +8022,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 0,
@@ -8041,7 +8041,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "max_qdii_pct": 100,
@@ -8066,7 +8066,7 @@
       "max_position_pct": 100,
       "max_single_buy_pct": 1.0,
       "kelly_fraction": 1.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8088,7 +8088,7 @@
       "cost_penalty": 1.0,
       "cooldown_profit_days": 20,
       "cooldown_loss_days": 60,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8106,7 +8106,7 @@
       "max_qdii_pct": 20,
       "rebalance": true,
       "equal_allocate": true,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8120,7 +8120,7 @@
       "min_consensus": 1,
       "max_holdings": 10,
       "kelly_cap": 0.2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8134,7 +8134,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8151,7 +8151,7 @@
       "max_yearly_trades": 500,
       "cooldown_profit_days": 0,
       "cooldown_loss_days": 0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8168,7 +8168,7 @@
       "max_yearly_trades": 10,
       "cooldown_profit_days": 30,
       "cooldown_loss_days": 90,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8184,7 +8184,7 @@
       "kelly_cap": 0.4,
       "max_position_pct": 50,
       "cash_reserve_pct": 0.0,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8199,7 +8199,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8214,7 +8214,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8229,7 +8229,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8244,7 +8244,7 @@
       "min_consensus": 2,
       "max_holdings": 5,
       "kelly_cap": 0.25,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8265,7 +8265,7 @@
       "kelly_cap_bear": 0.15,
       "kelly_cap_neutral": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8282,7 +8282,7 @@
       "min_holding_days": 90,
       "slippage_pct": 0.5,
       "min_consensus": 3,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8301,7 +8301,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8321,7 +8321,7 @@
       "max_holdings": 5,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8339,7 +8339,7 @@
       "kelly_cap_neutral": 0.25,
       "max_holdings": 8,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8360,7 +8360,7 @@
       "portfolio_dd_pause_days": 5,
       "max_holdings": 10,
       "kelly_cap": 0.2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8382,7 +8382,7 @@
       "max_holdings": 8,
       "kelly_cap": 0.25,
       "min_consensus": 2,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8404,7 +8404,7 @@
       "max_holdings": 5,
       "min_consensus": 2,
       "slippage_pct": 0.3,
-      "max_candidates_per_day": 50
+      "max_candidates_per_day": 0
     }
   },
   {
@@ -8419,7 +8419,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 0
     }
@@ -8436,7 +8436,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 5
     }
@@ -8453,7 +8453,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 10
     }
@@ -8470,7 +8470,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 0
     }
@@ -8487,7 +8487,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 5
     }
@@ -8504,7 +8504,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 10
     }
@@ -8521,7 +8521,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 0
     }
@@ -8538,7 +8538,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 5
     }
@@ -8555,7 +8555,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 10
     }
@@ -8572,7 +8572,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 0
     }
@@ -8589,7 +8589,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 5
     }
@@ -8606,7 +8606,7 @@
       "min_consensus": 1,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 10
     }
@@ -8623,7 +8623,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 5
     }
@@ -8640,7 +8640,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 10
     }
@@ -8657,7 +8657,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 0
     }
@@ -8674,7 +8674,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 5
     }
@@ -8691,7 +8691,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 10
     }
@@ -8708,7 +8708,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 0
     }
@@ -8725,7 +8725,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 5
     }
@@ -8742,7 +8742,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 10
     }
@@ -8759,7 +8759,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 0
     }
@@ -8776,7 +8776,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 5
     }
@@ -8793,7 +8793,7 @@
       "min_consensus": 2,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 10
     }
@@ -8810,7 +8810,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 0
     }
@@ -8827,7 +8827,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 5
     }
@@ -8844,7 +8844,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0,
       "max_holdings": 10
     }
@@ -8861,7 +8861,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 0
     }
@@ -8878,7 +8878,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 5
     }
@@ -8895,7 +8895,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.15,
       "max_holdings": 10
     }
@@ -8912,7 +8912,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 0
     }
@@ -8929,7 +8929,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 5
     }
@@ -8946,7 +8946,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.25,
       "max_holdings": 10
     }
@@ -8963,7 +8963,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 0
     }
@@ -8980,7 +8980,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 5
     }
@@ -8997,7 +8997,7 @@
       "min_consensus": 3,
       "fund_type_filter": "all",
       "momentum_sell": 0,
-      "max_candidates_per_day": 50,
+      "max_candidates_per_day": 0,
       "kelly_cap": 0.35,
       "max_holdings": 10
     }

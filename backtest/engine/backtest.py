@@ -18,6 +18,7 @@ from typing import Optional
 _DATES_CACHE = {}
 _TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
 _4433_RANK_CACHE = {}  # {cutoff_date: {period_name: [(code, return_pct), ...]}} — score_4433 排名缓存
+_SCORE_CACHE = {}  # {(code, cutoff_date): (total, q_score, c_score, m_score, mo_score, sm_score, fund_type, alloc_mod, scale_mod)} — 跨策略评分缓存
 
 def _bisect_valid(pts, cutoff_date):
     """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
@@ -686,6 +687,24 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
     """
+    # ── 跨策略评分缓存：同一基金同一日期的评分在所有策略中完全相同 ──
+    _cache_key = (fund_code, cutoff_date[:10])
+    _cached = _SCORE_CACHE.get(_cache_key)
+    if _cached is not None:
+        from tools.fund_scorer import FundScore, DimensionScore as DS
+        _t, _q, _c, _m, _mo, _sm, _ft, _am, _sm2 = _cached
+        fs = FundScore(
+            fund_code=fund_code, fund_type=_ft,
+            quality=DS(score=_q, weight=0.25, freshness_days=0),
+            cost=DS(score=_c, weight=0.20, freshness_days=0),
+            manager=DS(score=_m, weight=0.20 if _m > 0 else 0, freshness_days=0),
+            momentum=DS(score=_mo, weight=0.15, freshness_days=0),
+            smart_money=DS(score=_sm, weight=0.20, freshness_days=0),
+        )
+        fs.total = _t
+        fs.verdict = "buy" if _t >= 4.0 else "watch" if _t >= 3.3 else "pass"
+        return fs
+
     chart_pts = charts.get(fund_code, []) if isinstance(charts, dict) else []
 
     momentum = score_momentum_backtest(chart_pts, cutoff_date)
@@ -840,6 +859,19 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     # 此处不再重复扣分
 
     fs.verdict = "buy" if raw >= 4.0 else "watch" if raw >= 3.3 else "pass"
+
+    # ── 写入评分缓存 ──
+    _SCORE_CACHE[_cache_key] = (
+        fs.total,
+        quality.score if quality else 3.0,
+        cost.score if cost else 3.0,
+        manager_dim.score if manager_dim else -1,
+        momentum.score if momentum else 3.0,
+        smart.score if smart else 0,
+        fund_type,
+        alloc_modifier,
+        scale_modifier,
+    )
     return fs
 
 
@@ -1335,9 +1367,11 @@ def run_backtest(config, clear_cache=True):
     if clear_cache:
         _DATES_CACHE.clear()
         _4433_RANK_CACHE.clear()  # 清理 4433 排名缓存，防止多次 run_backtest 间膨胀
+        _SCORE_CACHE.clear()  # 清理评分缓存
     else:
         _DATES_CACHE.clear()  # _DATES_CACHE 按 id(pts) 索引，每次 load 新对象，必须清空
         # _4433_RANK_CACHE 按 cutoff_date 索引，数据不变则排名不变，可跨策略复用
+        # _SCORE_CACHE 按 (code, cutoff_date) 索引，评分与策略无关，可跨策略复用
     for _code in fund_charts:
         if fund_charts[_code]:
             fund_charts[_code].sort(key=lambda p: p.get("xAxis", ""))
