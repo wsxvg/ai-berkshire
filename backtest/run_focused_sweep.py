@@ -2,10 +2,11 @@
 """聚焦策略扫描运行器——配合 focused_sweep_configs.json 使用。
 
 用法:
-  python backtest/run_focused_sweep.py                          # 跑全部174个策略
+  python backtest/run_focused_sweep.py                          # 跑全部策略
   python backtest/run_focused_sweep.py --chunk 0 --total 20     # 分片模式
+  python backtest/run_focused_sweep.py --timeout 300            # 单策略超时300秒
 """
-import sys, json, time, argparse
+import sys, json, time, argparse, signal
 from pathlib import Path
 from copy import deepcopy
 
@@ -27,6 +28,17 @@ BASE = {
     "weights": {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20},
 }
 
+# 单策略超时秒数（0=不限制）
+_STRATEGY_TIMEOUT = 0
+
+
+class _TimeoutError(Exception):
+    pass
+
+
+def _timeout_handler(signum, frame):
+    raise _TimeoutError("strategy timeout")
+
 
 def run_one(name, desc, config, base=None, clear_cache=True):
     b = deepcopy(base or BASE)
@@ -35,7 +47,22 @@ def run_one(name, desc, config, base=None, clear_cache=True):
         b["initial_cash"] = 0
     try:
         t0 = time.time()
-        r = run_backtest(b, clear_cache=clear_cache)
+
+        # 设置超时（仅Linux/GitHub Actions支持signal.alarm）
+        _old_handler = None
+        _has_alarm = hasattr(signal, "SIGALRM")
+        if _STRATEGY_TIMEOUT > 0 and _has_alarm:
+            _old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+            signal.alarm(_STRATEGY_TIMEOUT)
+
+        try:
+            r = run_backtest(b, clear_cache=clear_cache)
+        finally:
+            if _has_alarm and _STRATEGY_TIMEOUT > 0:
+                signal.alarm(0)  # 取消超时
+                if _old_handler is not None:
+                    signal.signal(signal.SIGALRM, _old_handler)
+
         elapsed = time.time() - t0
         from datetime import datetime
         try:
@@ -60,6 +87,10 @@ def run_one(name, desc, config, base=None, clear_cache=True):
               f"dd={r['max_drawdown']:6.2f}% trades={r['trade_count']:4d} "
               f"sharpe={result['sharpe']:5.2f} ({elapsed:.0f}s)", flush=True)
         return result
+    except _TimeoutError:
+        elapsed = time.time() - t0
+        print(f"  {name:42s} TIMEOUT after {_STRATEGY_TIMEOUT}s — SKIPPED ({elapsed:.0f}s)", flush=True)
+        return None
     except Exception as e:
         import traceback
         print(f"  {name:42s} FAILED: {e}", flush=True)
@@ -68,14 +99,17 @@ def run_one(name, desc, config, base=None, clear_cache=True):
 
 
 def main():
+    global _STRATEGY_TIMEOUT
     parser = argparse.ArgumentParser(description="聚焦策略扫描")
     parser.add_argument("--start", type=str, default="2023-07-17")
     parser.add_argument("--end", type=str, default="2026-07-24")
     parser.add_argument("--output", type=str, default="backtest/results_focused/")
     parser.add_argument("--chunk", type=int, default=0)
     parser.add_argument("--total", type=int, default=1)
+    parser.add_argument("--timeout", type=int, default=600, help="单策略超时秒数（默认600）")
     args = parser.parse_args()
 
+    _STRATEGY_TIMEOUT = args.timeout
     BASE["start_date"] = args.start
     BASE["end_date"] = args.end
 
@@ -89,26 +123,31 @@ def main():
     print(f"=== Focused Sweep: chunk {args.chunk}/{args.total} ===")
     print(f"Strategies: {len(my_chunk)} (index {start_idx}-{end_idx-1} of {len(all_strategies)})")
     print(f"Period: {args.start} ~ {args.end}")
+    print(f"Per-strategy timeout: {_STRATEGY_TIMEOUT}s", flush=True)
     print(flush=True)
 
     results = []
+    skipped = 0
     for i, s in enumerate(my_chunk):
         print(f"[{i+1}/{len(my_chunk)}] ", end="", flush=True)
         clear_cache = (i == 0)  # 第一个清缓存，后续复用
         r = run_one(s["name"], s["desc"], s["config"], BASE, clear_cache=clear_cache)
         if r:
             results.append(r)
+        else:
+            skipped += 1
 
     # 保存
     out_dir = Path(args.output)
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / f"chunk_{args.chunk}.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump({"strategies": results, "chunk": args.chunk, "total": len(my_chunk)},
-                  f, ensure_ascii=False, indent=2)
+        json.dump({"strategies": results, "chunk": args.chunk, "total": len(my_chunk),
+                   "skipped": skipped}, f, ensure_ascii=False, indent=2)
 
     # 汇总
     print(f"\n=== Chunk {args.chunk} Summary ===")
+    print(f"Completed: {len(results)}/{len(my_chunk)} | Skipped: {skipped}")
     if results:
         results.sort(key=lambda x: x["sharpe"], reverse=True)
         print(f"{'Strategy':42s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}")

@@ -1866,25 +1866,34 @@ def run_backtest(config, clear_cache=True):
         _net_signal_ratio = config.get("net_signal_ratio", 0)  # 买入必须 >= 卖出 * ratio
         _net_signal_diff = config.get("net_signal_diff", 0)  # 买入-卖出必须 >= diff
 
+        # ── 候选数上限：评分前按 buy_count 截取前N个，防止mc=1时评分爆炸 ──
+        _max_candidates = config.get("max_candidates_per_day", 0)  # 0=不限制
+
+        # 第一遍：快速过滤（共识门槛+净信号），收集通过的候选
+        _pre_filtered = []  # [(fn, signal, buy_count)]
         for fn, signal in fund_signals.items():
             _bc = signal["buy_count"]
-            # 加权模式下用浮点比较
             if use_weighted and _weighted_threshold > 0:
                 if _bc < _weighted_threshold:
                     continue
             else:
                 if _bc < _min_consensus:
                     continue
-            # 净信号过滤：买入必须多于卖出
             _sc = signal.get("sell_count", 0)
             if _net_signal and _bc <= _sc:
                 continue
-            # 净信号比例过滤：买入必须 >= 卖出 * ratio
             if _net_signal_ratio > 0 and _bc < _sc * _net_signal_ratio:
                 continue
-            # 净信号差值过滤：买入-卖出必须 >= diff
             if _net_signal_diff > 0 and (_bc - _sc) < _net_signal_diff:
                 continue
+            _pre_filtered.append((fn, signal, _bc))
+
+        # 如果候选数超过上限，按 buy_count 降序截取前N个
+        if _max_candidates > 0 and len(_pre_filtered) > _max_candidates:
+            _pre_filtered.sort(key=lambda x: x[2], reverse=True)
+            _pre_filtered = _pre_filtered[:_max_candidates]
+
+        for fn, signal, _bc in _pre_filtered:
             # 找基金代码（三步模糊匹配：精确→标准化→包含）
             code = _resolve_fund_code(fn)
             if not code:

@@ -123,7 +123,8 @@ jobs:
           python backtest/run_focused_sweep.py \
             --start 2023-07-17 --end 2026-07-24 \
             --chunk ${{ matrix.chunk }} --total $TOTAL \
-            --output results_focused/
+            --output results_focused/ \
+            --timeout 600
 
       - name: Upload chunk results
         uses: actions/upload-artifact@v4
