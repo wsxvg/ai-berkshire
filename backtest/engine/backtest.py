@@ -18,7 +18,7 @@ from typing import Optional
 _DATES_CACHE = {}
 _TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
 _4433_RANK_CACHE = {}  # {cutoff_date: {period_name: [(code, return_pct), ...]}} — score_4433 排名缓存
-_SCORE_CACHE = {}  # {(code, cutoff_date): (total, q_score, c_score, m_score, mo_score, sm_score, fund_type, alloc_mod, scale_mod)} — 跨策略评分缓存
+_SCORE_CACHE = {}  # {(code, cutoff_date): (q, c, m, mo, sm, ft, alloc, scale, s4433, sector)} — 跨策略评分缓存（存各维度独立分数+修饰符，不存总分，支持自定义权重）
 
 def _bisect_valid(pts, cutoff_date):
     """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
@@ -682,27 +682,44 @@ def score_4433(fund_code, cutoff_date, fund_charts):
 def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         cutoff_date, trading_by_date, profile=None,
                         allocation_data=None, fund_data_cache=None,
-                        industry_data=None):
+                        industry_data=None, weights=None):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
+    weights: 可选 dict {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20}
+             用于自定义各维度权重。默认 None=使用硬编码权重(25/20/20/15/20)。
+    缓存策略: 各维度独立分数和修饰符与权重无关，可跨策略共享；
+             仅最终加权总分按各策略的 weights 重算。
     """
-    # ── 跨策略评分缓存：同一基金同一日期的评分在所有策略中完全相同 ──
+    # ── 解析权重（百分比，无需归一化，加权平均时自动归一） ──
+    _w = weights or {}
+    w_q = _w.get("quality", 25)
+    w_c = _w.get("cost", 20)
+    w_m = _w.get("manager", 20)
+    w_mo = _w.get("momentum", 15)
+    w_sm = _w.get("smart_money", 20)
+
+    # ── 跨策略评分缓存：同一基金同一日期的各维度分数+修饰符完全相同 ──
     _cache_key = (fund_code, cutoff_date[:10])
     _cached = _SCORE_CACHE.get(_cache_key)
     if _cached is not None:
         from tools.fund_scorer import FundScore, DimensionScore as DS
-        _t, _q, _c, _m, _mo, _sm, _ft, _am, _sm2 = _cached
+        _q, _c, _m, _mo, _sm, _ft, _am, _sc, _s4433, _sec = _cached
+        # 经理缺失(passive_index 或无数据) → 权重归零
+        _wm = 0 if _m <= 0 else w_m
+        _denom = max(w_q + w_c + _wm + w_mo + w_sm, 0.01)
+        _raw = (_q * w_q + _c * w_c + _m * _wm + _mo * w_mo + _sm * w_sm) / _denom
+        _total = max(0.5, min(5.0, _raw + _am + _sc + _s4433 + _sec))
         fs = FundScore(
             fund_code=fund_code, fund_type=_ft,
-            quality=DS(score=_q, weight=0.25, freshness_days=0),
-            cost=DS(score=_c, weight=0.20, freshness_days=0),
-            manager=DS(score=_m, weight=0.20 if _m > 0 else 0, freshness_days=0),
-            momentum=DS(score=_mo, weight=0.15, freshness_days=0),
-            smart_money=DS(score=_sm, weight=0.20, freshness_days=0),
+            quality=DS(score=_q, weight=w_q, freshness_days=0),
+            cost=DS(score=_c, weight=w_c, freshness_days=0),
+            manager=DS(score=_m, weight=_wm, freshness_days=0),
+            momentum=DS(score=_mo, weight=w_mo, freshness_days=0),
+            smart_money=DS(score=_sm, weight=w_sm, freshness_days=0),
         )
-        fs.total = _t
-        fs.verdict = "buy" if _t >= 4.0 else "watch" if _t >= 3.3 else "pass"
+        fs.total = _total
+        fs.verdict = "buy" if _raw >= 4.0 else "watch" if _raw >= 3.3 else "pass"
         return fs
 
     chart_pts = charts.get(fund_code, []) if isinstance(charts, dict) else []
@@ -832,24 +849,35 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
         smart_money=smart,
     )
     # 跳过成立天数检测（回测中不准确）
-    dims = [quality, cost, manager_dim, momentum, smart]
-    raw = sum(d.score * d.weight for d in dims) / max(sum(d.weight for d in dims), 0.01)
+    # 使用自定义权重计算加权平均（与缓存命中路径一致）
+    _wm = 0 if (manager_dim.score if manager_dim else -1) <= 0 else w_m
+    _denom = max(w_q + w_c + _wm + w_mo + w_sm, 0.01)
+    _q_s = quality.score if quality else 3.0
+    _c_s = cost.score if cost else 3.0
+    _m_s = manager_dim.score if manager_dim else -1
+    _mo_s = momentum.score if momentum else 3.0
+    _sm_s = smart.score if smart else 0
+    raw = (_q_s * w_q + _c_s * w_c + _m_s * _wm + _mo_s * w_mo + _sm_s * w_sm) / _denom
     fs.total = raw
 
     # 应用资产配置+规模修正
     total_modifier = alloc_modifier + scale_modifier
 
     # ===== 新增: 4433法则评分 =====
+    _s4433_val = 0.0
     if charts:
         s4433, p4433 = score_4433(fund_code, cutoff_date, charts)
         total_modifier += s4433
+        _s4433_val = s4433
 
     # ===== 新增: 行业估值评分（防高位接盘）=====
+    _sector_val = 0.0
     if industry_data:
         from backtest.engine.sector_valuation import score_sector_valuation_backtest
         sector_adjust = score_sector_valuation_backtest(
             fund_code, fund_name, cutoff_date, industry_data)
         total_modifier += sector_adjust
+        _sector_val = sector_adjust
         if sector_adjust != 0:
             pass  # 可在 verbose 模式下打印
 
@@ -860,17 +888,18 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
 
     fs.verdict = "buy" if raw >= 4.0 else "watch" if raw >= 3.3 else "pass"
 
-    # ── 写入评分缓存 ──
+    # ── 写入评分缓存（各维度独立分数+修饰符，不含总分，支持自定义权重） ──
     _SCORE_CACHE[_cache_key] = (
-        fs.total,
-        quality.score if quality else 3.0,
-        cost.score if cost else 3.0,
-        manager_dim.score if manager_dim else -1,
-        momentum.score if momentum else 3.0,
-        smart.score if smart else 0,
+        _q_s,       # quality score
+        _c_s,       # cost score
+        _m_s,       # manager score (-1=缺失/passive_index)
+        _mo_s,      # momentum score
+        _sm_s,      # smart_money score
         fund_type,
         alloc_modifier,
         scale_modifier,
+        _s4433_val,
+        _sector_val,
     )
     return fs
 
@@ -1942,6 +1971,7 @@ def run_backtest(config, clear_cache=True):
                 allocation_data=fund_holdings_data,
                 fund_data_cache=fund_data_cache,
                 industry_data=industry_data if industry_data else None,
+                weights=config.get("weights"),
             )
             ft = fund_profiles.get(code, {}).get("fund_type", "")
             is_active = "指数" not in ft and "QDII" not in ft

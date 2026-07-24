@@ -9001,5 +9001,269 @@
       "kelly_cap": 0.35,
       "max_holdings": 10
     }
+  },
+  {
+    "name": "AL_balanced",
+    "desc": "权重变体:等权",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 20,
+        "cost": 20,
+        "manager": 20,
+        "momentum": 20,
+        "smart_money": 20
+      }
+    }
+  },
+  {
+    "name": "AL_mom_heavy",
+    "desc": "权重变体:动量主导",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 15,
+        "cost": 15,
+        "manager": 10,
+        "momentum": 35,
+        "smart_money": 25
+      }
+    }
+  },
+  {
+    "name": "AL_sm_heavy",
+    "desc": "权重变体:聪明钱主导",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 20,
+        "cost": 15,
+        "manager": 10,
+        "momentum": 15,
+        "smart_money": 40
+      }
+    }
+  },
+  {
+    "name": "AL_qual_heavy",
+    "desc": "权重变体:质量主导",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 40,
+        "cost": 20,
+        "manager": 15,
+        "momentum": 10,
+        "smart_money": 15
+      }
+    }
+  },
+  {
+    "name": "AL_cost_heavy",
+    "desc": "权重变体:成本主导",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 25,
+        "cost": 30,
+        "manager": 15,
+        "momentum": 10,
+        "smart_money": 20
+      }
+    }
+  },
+  {
+    "name": "AL_mgr_heavy",
+    "desc": "权重变体:经理主导",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 20,
+        "cost": 15,
+        "manager": 35,
+        "momentum": 15,
+        "smart_money": 15
+      }
+    }
+  },
+  {
+    "name": "AL_mom_sm",
+    "desc": "权重变体:动量+聪明钱",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 15,
+        "cost": 10,
+        "manager": 5,
+        "momentum": 30,
+        "smart_money": 40
+      }
+    }
+  },
+  {
+    "name": "AL_qual_cost",
+    "desc": "权重变体:质量+成本",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 35,
+        "cost": 30,
+        "manager": 10,
+        "momentum": 10,
+        "smart_money": 15
+      }
+    }
+  },
+  {
+    "name": "AL_anti_mom",
+    "desc": "权重变体:弱动量",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 30,
+        "cost": 20,
+        "manager": 20,
+        "momentum": 5,
+        "smart_money": 25
+      }
+    }
+  },
+  {
+    "name": "AL_sm_qual",
+    "desc": "权重变体:聪明钱+质量",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 30,
+        "cost": 15,
+        "manager": 15,
+        "momentum": 10,
+        "smart_money": 30
+      }
+    }
+  },
+  {
+    "name": "AL_balanced_m0",
+    "desc": "权重变体:等权+纯信号",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 20,
+        "cost": 20,
+        "manager": 20,
+        "momentum": 20,
+        "smart_money": 20
+      }
+    }
+  },
+  {
+    "name": "AL_sm_heavy_m0",
+    "desc": "权重变体:聪明钱主导+纯信号",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_candidates_per_day": 0,
+      "weights": {
+        "quality": 20,
+        "cost": 15,
+        "manager": 10,
+        "momentum": 15,
+        "smart_money": 40
+      }
+    }
   }
 ]

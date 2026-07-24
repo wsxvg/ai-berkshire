@@ -1,10 +1,10 @@
-"""聚焦策略扫描配置生成器 v2 — 513个策略
+"""聚焦策略扫描配置生成器 v2 — 525个策略
 
 设计原则:
 1. 基于J买入持有冠军策略(+41.85%)和已知失败策略(Y5过拟合)
-2. 覆盖引擎全部61个参数维度
+2. 覆盖引擎全部61个参数维度+评分权重
 3. 每个维度独立扫描+组合，防止过拟合
-4. 513个策略，20路并行，~3小时可完成
+4. 525个策略，20路并行，~3小时可完成
 5. 防过拟合：Phase 2 滚动窗口验证+7项标准
 
 策略分类:
@@ -34,6 +34,7 @@
   AI:      8个 — QDII+行业限制（max_qdii + max_sector）
   AJ:     20个 — 极端组合（all-in/ultra-safe/max-diversify）
   AK:     30个 — 多维网格（consensus × kelly × holdings 系统网格）
+  AL:     12个 — 评分权重变体（quality/cost/manager/momentum/smart_money）
 """
 import json
 from copy import deepcopy
@@ -1050,6 +1051,31 @@ for mc in [1, 2, 3]:
 for c in configs:
     if "max_candidates_per_day" not in c["config"]:
         c["config"]["max_candidates_per_day"] = 0  # 不限制（有跨策略评分缓存）
+
+# ═══ AL: 评分权重变体（quality/cost/manager/momentum/smart_money）═══
+# 缓存重构后各维度独立分数跨策略共享，仅加权总分不同 → 零额外计算成本
+# 基线权重: Q25 C20 M20 Mo15 SM20（硬编码默认值）
+al_weights = [
+    ("balanced",     {"quality": 20, "cost": 20, "manager": 20, "momentum": 20, "smart_money": 20}, "等权"),
+    ("mom_heavy",    {"quality": 15, "cost": 15, "manager": 10, "momentum": 35, "smart_money": 25}, "动量主导"),
+    ("sm_heavy",     {"quality": 20, "cost": 15, "manager": 10, "momentum": 15, "smart_money": 40}, "聪明钱主导"),
+    ("qual_heavy",   {"quality": 40, "cost": 20, "manager": 15, "momentum": 10, "smart_money": 15}, "质量主导"),
+    ("cost_heavy",   {"quality": 25, "cost": 30, "manager": 15, "momentum": 10, "smart_money": 20}, "成本主导"),
+    ("mgr_heavy",    {"quality": 20, "cost": 15, "manager": 35, "momentum": 15, "smart_money": 15}, "经理主导"),
+    ("mom_sm",       {"quality": 15, "cost": 10, "manager": 5,  "momentum": 30, "smart_money": 40}, "动量+聪明钱"),
+    ("qual_cost",    {"quality": 35, "cost": 30, "manager": 10, "momentum": 10, "smart_money": 15}, "质量+成本"),
+    ("anti_mom",     {"quality": 30, "cost": 20, "manager": 20, "momentum": 5,  "smart_money": 25}, "弱动量"),
+    ("sm_qual",      {"quality": 30, "cost": 15, "manager": 15, "momentum": 10, "smart_money": 30}, "聪明钱+质量"),
+    # min_score=0 变体（纯信号驱动+不同权重）
+    ("balanced_m0",  {"quality": 20, "cost": 20, "manager": 20, "momentum": 20, "smart_money": 20}, "等权+纯信号"),
+    ("sm_heavy_m0",  {"quality": 20, "cost": 15, "manager": 10, "momentum": 15, "smart_money": 40}, "聪明钱主导+纯信号"),
+]
+for wname, w, desc in al_weights:
+    cfg = deepcopy(J_BASE)
+    cfg["weights"] = w
+    if wname.endswith("_m0"):
+        cfg["min_score"] = 0.0
+    configs.append({"name": f"AL_{wname}", "desc": f"权重变体:{desc}", "config": cfg})
 
 # ═══ 去重 ═══
 seen = set()
