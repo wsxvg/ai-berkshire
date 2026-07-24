@@ -1,4 +1,4 @@
-name: Focused Strategy Sweep (174 strategies, 20-way parallel)
+name: Focused Strategy Sweep v2 (513 strategies, 20-way parallel)
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
       top_n:
         description: 'Phase 2 滚动窗口验证的策略数'
         required: false
-        default: '30'
+        default: '50'
 
 permissions:
   contents: write
@@ -41,7 +41,7 @@ jobs:
           echo "Phase 1 Matrix: [$ITEMS]"
 
   # ═══════════════════════════════════════════════════
-  # Phase 1: 全量3年回测（20路并行，~3小时）
+  # Phase 1: 全量3年回测（20路并行，513策略，~1.5小时）
   # ═══════════════════════════════════════════════════
   backtest-full-period:
     needs: generate-matrix
@@ -178,7 +178,7 @@ jobs:
           with open('backtest/results_focused/all_strategies.json', 'w', encoding='utf-8') as f:
               json.dump({'strategies': all_results, 'total': len(all_results)}, f, ensure_ascii=False, indent=2)
           with open('backtest/results_focused/top30.json', 'w', encoding='utf-8') as f:
-              json.dump({'top30': top_n}, f, ensure_ascii=False, indent=2)
+              json.dump({'top30': top_n, 'top50': top_n}, f, ensure_ascii=False, indent=2)
 
           print(f'\n=== Phase 1 Results: {len(all_results)} strategies, Top {len(top_n)} selected ===')
           print(f\"{'Strategy':42s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}\")
@@ -189,8 +189,8 @@ jobs:
       - name: Split top N into rolling window chunks
         id: split
         run: |
-          TOP_N="${{ github.event.inputs.top_n || '30' }}"
-          RW_CHUNKS=6
+          TOP_N="${{ github.event.inputs.top_n || '50' }}"
+          RW_CHUNKS=10
           if [ "$TOP_N" -lt 6 ]; then RW_CHUNKS=$TOP_N; fi
           ITEMS=""
           for i in $(seq 0 $((RW_CHUNKS-1))); do
@@ -209,7 +209,7 @@ jobs:
             backtest/results_focused/top30.json
 
   # ═══════════════════════════════════════════════════
-  # Phase 2: 滚动窗口验证（6路并行，~1小时）
+  # Phase 2: 滚动窗口验证（10路并行，Top50策略，~1小时）
   # ═══════════════════════════════════════════════════
   rolling-window-validation:
     needs: merge-select-top
@@ -217,7 +217,7 @@ jobs:
     timeout-minutes: 120
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 10
       matrix:
         chunk: ${{ fromJson(needs.merge-select-top.outputs.rw_matrix) }}
 
@@ -282,7 +282,8 @@ jobs:
           python backtest/rolling_window.py \
             --input results_focused/top30.json \
             --output results_focused/rolling_window.json \
-            --chunk ${{ matrix.chunk }} --total $RW_TOTAL
+            --chunk ${{ matrix.chunk }} --total $RW_TOTAL \
+            --top-n 0
 
       - name: Upload rolling window chunk
         uses: actions/upload-artifact@v4
