@@ -27,8 +27,8 @@ ROLLING_WINDOWS = [
     ("W2_2024H1", "2024-01-17", "2025-01-17"),
     ("W3_2024H2", "2024-07-17", "2025-07-17"),
     ("W4_2025H1", "2025-01-17", "2026-01-17"),
-    ("W5_2025H2", "2025-07-17", "2026-07-17"),
-    ("FULL_3Y",   "2023-07-17", "2026-07-17"),
+    ("W5_2025H2", "2025-07-17", "2026-07-24"),
+    ("FULL_3Y",   "2023-07-17", "2026-07-24"),
 ]
 
 # ── 防过拟合标准 ──
@@ -159,6 +159,8 @@ def main():
         strategies = data["strategies"]
     elif "top20" in data:
         strategies = data["top20"]
+    elif "top30" in data:
+        strategies = data["top30"]
     elif "top50" in data:
         strategies = data["top50"]
     elif isinstance(data, list):

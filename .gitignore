@@ -2,6 +2,11 @@
 data/fund_charts/*.json
 !data/fund_charts/.gitkeep
 
+# Large raw fund_charts.json (use .gz instead)
+backtest/data/fund_charts.json
+# Keep the compressed version
+!backtest/data/fund_charts.json.gz
+
 # Temporary files
 chunk_results/
 all_chunks/
@@ -9,6 +14,29 @@ mega_results/
 player_results/
 july_result/
 results_temp/
+phase1-chunk-*/
+phase2-chunk-*/
+player_chunks/
+final-results/
+reference_projects/
+_reports_*/
+_results_*/
+*.tmp
+*.log
+*.bak
+
+# Temp scripts (underscore prefix)
+_analyze_*.py
+_check_*.py
+_fix_*.py
+_test_*.py
+_tmp_*.py
+_verify_*.py
+_smoke_*.py
+_monitor_*.py
+_start_*.ps1
+_rank100_output.log
+july_sim_output.log
 
 # Python
 __pycache__/

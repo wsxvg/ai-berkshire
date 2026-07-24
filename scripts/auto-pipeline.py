@@ -1297,11 +1297,11 @@ def _discover_ranking_users(cookies, max_count=10):
     import re as _re, urllib.request, urllib.parse
     from tools.jd_finance_api import _JD_BASE, _USER_AGENT
 
-    # All combinations: 3 sort types × 5 time cycles = 15 API calls
-    # rs=1(总收益) rs=2(收益率%) rs=3(年化)
-    # tc=401(近1月) 402(近3月) 403(近6月) 404(近1年) 406(全部)
-    time_cycles = ["401", "402", "403", "404", "406"]
-    sort_types = ["1", "2", "3"]
+    # 正确参数: rs=0(收益榜/金额), rs=1(收益率榜/百分比)
+    # tc=1(近一周), tc=2(近一月), tc=5(近一年)
+    # 注意: 旧代码用的401/402/403/404/406是无效值, API会忽略并返回默认数据
+    time_cycles = ["1", "2", "5"]
+    sort_types = ["1", "0"]
 
     extra = {}
     known_uids = {str(k) for k in FOLLOWED_USERS.keys()}

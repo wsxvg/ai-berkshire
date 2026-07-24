@@ -105,25 +105,25 @@ FOLLOWED_USERS = {
     # 2026-07-14 收益率榜 TOP50 (rankSortBy=1, 近一年)
     "3340681": "SunSpear_",
     "12970014": "酷睿-陈",
-    "11036788": "吼吼拉拉",
-    "1133558": "jd_187217ygz",
+    # 2026-07-24 已删除: 吼吼拉拉 (单押2只基金)
+    # 2026-07-24 已删除: jd_187217ygz (僵尸575天)
     "11857780": "Merci",
     "273591": "那风飘飘",
     "1126861": "jd_无限宽容2015",
-    "1164775": "jd_zxsm",
-    "185759": "L***6",
+    # 2026-07-24 已删除: jd_zxsm (僵尸571天)
+    # 2026-07-24 已删除: L***6 (僵尸620天)
     "1064219": "野生月光",
-    "1264266": "善其事利其器",
+    # 2026-07-24 已删除: 善其事利其器 (无交易记录)
     "3757670": "45895uqombpypx",
     "432038": "jd332099ifj",
     "13566933": "r2b4mm433m54wi",
     "14155320": "59106b4s1qx9m8",
-    "384397": "嘻嘻哈哈112",
-    "3786598": "茅年斌",
-    "277615": "s***4",
-    "2960245": "j***F",
-    "904812": "bobzxj",
-    "1202693": "万今888",
+    # 2026-07-24 已删除: 嘻嘻哈哈112 (无交易记录)
+    # 2026-07-24 已删除: 茅年斌 (无交易记录)
+    # 2026-07-24 已删除: s***4 (僵尸463天)
+    # 2026-07-24 已删除: j***F (僵尸982天)
+    # 2026-07-24 已删除: bobzxj (僵尸412天)
+    # 2026-07-24 已删除: 万今888 (僵尸570天 单押1只)
     "80841": "道申一",
     "412456": "江***月",
     "987020": "S***3",
@@ -133,10 +133,10 @@ FOLLOWED_USERS = {
     "15522603": "xuelou123",
     "11025669": "9j1a9wf38qlj05",
     "12254649": "欣欣来了",
-    "14215625": "jd_心琪无忧",
+    # 2026-07-24 已删除: jd_心琪无忧 (无交易记录)
     "1040927": "中***手",
     "2804244": "-咫尺-天涯-",
-    "13877467": "西门喷血1981",
+    # 2026-07-24 已删除: 西门喷血1981 (无交易记录)
     "12396062": "甜甜圈521",
     "13440316": "illkid87",
     "397676": "z***7",
@@ -146,13 +146,20 @@ FOLLOWED_USERS = {
     "2750587": "ZHCZJN",
     "1129067": "mai下京东",
     "4972373": "羊小米米",
-    "1224896": "无影天尊",
+    # 2026-07-24 已删除: 无影天尊 (无交易记录)
     "8390340": "时令的香气",
-    "4452314": "jd_136395apy",
+    # 2026-07-24 已删除: jd_136395apy (僵尸611天)
     "3202582": "h***g",
     "47850": "s种花家",
     "4409771": "jd_153130wko",
-    "6401658": "和平的使命延续",
+    # 2026-07-24 已删除: 和平的使命延续 (僵尸308天)
+    # 2026-07-24 收益率榜多维度拉取新增 (7榜x4持仓=1839人去重, 筛选有本地数据+ret>50%)
+    "2740674": "龙先生.",  # ret=+572% buy=236 funds=13
+    "3032839": "我要回报以歌",  # ret=+214% buy=409 funds=86
+    "550027": "jd_135013tkf",  # ret=+142% buy=1012 funds=208
+    "10502492": "红肥绿瘦",  # ret=+131% buy=194 funds=82
+    "1224491": "简单生活快乐买基",  # ret=+100% buy=97 funds=40
+    "411788": "iBlack",  # ret=+95% buy=190 funds=29
 }
 
 
@@ -614,6 +621,9 @@ def get_user_holdings(target_uid=None, cookies=None, use_cache=False):
         "clientType": "android",
     }
     if target_uid:
+        # target_uid 需要 jimu_user_info- 前缀
+        if not str(target_uid).startswith("jimu_user_info-"):
+            target_uid = f"jimu_user_info-{target_uid}"
         body["targetUid"] = target_uid
 
     data = _api_form("gw2/generic/CreatorSer/h5/m/queryUserFundHoldingInfo", body, cookies)
@@ -690,7 +700,7 @@ def get_user_fund_holding_info(target_uid, cookies=None):
     return {"holdings": result, "period_returns": period_returns}
 
 
-def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5, today_only=False):
+def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=200, today_only=False):
     """Fetch trading records with pagination support.
 
     Iterates pages until end=True or max_pages reached.
@@ -727,6 +737,9 @@ def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5, tod
             "clientType": "android",
         }
         if target_uid:
+            # target_uid 需要 jimu_user_info- 前缀（和 get_user_holdings 一样）
+            if not str(target_uid).startswith("jimu_user_info-"):
+                target_uid = f"jimu_user_info-{target_uid}"
             body["extParams"]["targetUid"] = target_uid
 
         data = _api_form("gw2/generic/aladdin/h5/m/getPageMutilData?pageId=11568", body, cookies)
@@ -763,7 +776,21 @@ def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5, tod
                 # tradeType: 1=buy, 2=sell, 3=conversion, etc.
                 ttype = trans.get("tradeType", "")
                 action = "买入" if ttype == "1" else "卖出" if ttype == "2" else "转换" if ttype == "3" else f"类型{ttype}"
-                rec_date = time_str[:5] if time_str and len(time_str) >= 5 else ""
+                # 日期解析：API返回两种格式
+                #   旧记录: "2023-07-28 08:07:32" (含年份)
+                #   新记录: "07-24 10:29:14" (不含年份, 当年)
+                full_date = ""
+                rec_date = ""
+                if time_str:
+                    import re as _re
+                    m_full = _re.match(r'^(\d{4})-(\d{2})-(\d{2})', time_str)
+                    if m_full:
+                        full_date = f"{m_full.group(1)}-{m_full.group(2)}-{m_full.group(3)}"
+                        rec_date = f"{m_full.group(2)}-{m_full.group(3)}"
+                    else:
+                        m_short = _re.match(r'^(\d{2})-(\d{2})', time_str)
+                        if m_short:
+                            rec_date = f"{m_short.group(1)}-{m_short.group(2)}"
                 if today_only and rec_date != _today_prefix:
                     continue  # skip old records
                 if rec_date == _today_prefix:
@@ -777,6 +804,7 @@ def get_trading_records(target_uid=None, size=20, cookies=None, max_pages=5, tod
                     "amount": amount_str,
                     "_fund_id": fund_id,
                     "_date_prefix": rec_date,
+                    "_full_date": full_date,
                 })
             else:
                 # Old format: tradeRecordData
@@ -1582,13 +1610,13 @@ def get_news_asof(asof_date, lookback_days=7):
     return all_items
 
 
-def get_fund_ranking(cookies=None, rank_sort_by="1", time_cycle="401", last_id=None):
+def get_fund_ranking(cookies=None, rank_sort_by="1", time_cycle="5", last_id=None):
     """Fetch fund ranking from JD Finance (实盘牛人 - 收益率榜).
 
     Args:
         cookies: JD auth cookies
-        rank_sort_by: "1"=收益率榜(百分比), "2"=收益榜(金额)
-        time_cycle: "101"=近一周, "201"=近一月, "401"=近一年
+        rank_sort_by: "0"=收益榜(金额), "1"=收益率榜(百分比)
+        time_cycle: "1"=近一周, "2"=近一月, "5"=近一年
         last_id: pagination cursor, None for first page
 
     Returns dict with keys: users, roll_time, last_id, is_end, filters.

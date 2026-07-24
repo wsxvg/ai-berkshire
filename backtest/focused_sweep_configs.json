@@ -1,0 +1,2685 @@
+[
+  {
+    "name": "A_mc1_all_ms0.0",
+    "desc": "买入持有 mc=1 ft=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc1_all_ms3.3",
+    "desc": "买入持有 mc=1 ft=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc1_active_ms0.0",
+    "desc": "买入持有 mc=1 ft=active ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc1_active_ms3.3",
+    "desc": "买入持有 mc=1 ft=active ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc1_passive_ms0.0",
+    "desc": "买入持有 mc=1 ft=passive ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc1_passive_ms3.3",
+    "desc": "买入持有 mc=1 ft=passive ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 1,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_all_ms0.0",
+    "desc": "买入持有 mc=2 ft=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_all_ms3.3",
+    "desc": "买入持有 mc=2 ft=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_active_ms0.0",
+    "desc": "买入持有 mc=2 ft=active ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_active_ms3.3",
+    "desc": "买入持有 mc=2 ft=active ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_passive_ms0.0",
+    "desc": "买入持有 mc=2 ft=passive ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc2_passive_ms3.3",
+    "desc": "买入持有 mc=2 ft=passive ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_all_ms0.0",
+    "desc": "买入持有 mc=3 ft=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_all_ms3.3",
+    "desc": "买入持有 mc=3 ft=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_active_ms0.0",
+    "desc": "买入持有 mc=3 ft=active ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_active_ms3.3",
+    "desc": "买入持有 mc=3 ft=active ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_passive_ms0.0",
+    "desc": "买入持有 mc=3 ft=passive ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc3_passive_ms3.3",
+    "desc": "买入持有 mc=3 ft=passive ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_all_ms0.0",
+    "desc": "买入持有 mc=4 ft=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_all_ms3.3",
+    "desc": "买入持有 mc=4 ft=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_active_ms0.0",
+    "desc": "买入持有 mc=4 ft=active ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_active_ms3.3",
+    "desc": "买入持有 mc=4 ft=active ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_passive_ms0.0",
+    "desc": "买入持有 mc=4 ft=passive ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc4_passive_ms3.3",
+    "desc": "买入持有 mc=4 ft=passive ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_all_ms0.0",
+    "desc": "买入持有 mc=5 ft=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_all_ms3.3",
+    "desc": "买入持有 mc=5 ft=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_active_ms0.0",
+    "desc": "买入持有 mc=5 ft=active ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_active_ms3.3",
+    "desc": "买入持有 mc=5 ft=active ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "active",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_passive_ms0.0",
+    "desc": "买入持有 mc=5 ft=passive ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "A_mc5_passive_ms3.3",
+    "desc": "买入持有 mc=5 ft=passive ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 5,
+      "fund_type_filter": "passive",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "B_sl-5",
+    "desc": "止损-5% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -5
+    }
+  },
+  {
+    "name": "B_sl-8",
+    "desc": "止损-8% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -8
+    }
+  },
+  {
+    "name": "B_sl-10",
+    "desc": "止损-10% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "B_sl-15",
+    "desc": "止损-15% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -15
+    }
+  },
+  {
+    "name": "B_sl-20",
+    "desc": "止损-20% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "B_sl-30",
+    "desc": "止损-30% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "B_sl-50",
+    "desc": "止损-50% 买入持有",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -50
+    }
+  },
+  {
+    "name": "C_tp15",
+    "desc": "止盈15% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 15,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp20",
+    "desc": "止盈20% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 20,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp30",
+    "desc": "止盈30% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp40",
+    "desc": "止盈40% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 40,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp50",
+    "desc": "止盈50% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp80",
+    "desc": "止盈80% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 80,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "C_tp120",
+    "desc": "止盈120% 无止损",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 120,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "D_mc2_sl-10_tp30",
+    "desc": "mc=2 sl=-10 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc2_sl-10_tp50",
+    "desc": "mc=2 sl=-10 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc2_sl-20_tp30",
+    "desc": "mc=2 sl=-20 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc2_sl-20_tp50",
+    "desc": "mc=2 sl=-20 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc2_sl-30_tp30",
+    "desc": "mc=2 sl=-30 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc2_sl-30_tp50",
+    "desc": "mc=2 sl=-30 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc3_sl-10_tp30",
+    "desc": "mc=3 sl=-10 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc3_sl-10_tp50",
+    "desc": "mc=3 sl=-10 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc3_sl-10_tp1000",
+    "desc": "mc=3 sl=-10 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc3_sl-20_tp30",
+    "desc": "mc=3 sl=-20 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc3_sl-20_tp50",
+    "desc": "mc=3 sl=-20 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc3_sl-20_tp1000",
+    "desc": "mc=3 sl=-20 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc3_sl-30_tp30",
+    "desc": "mc=3 sl=-30 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc3_sl-30_tp50",
+    "desc": "mc=3 sl=-30 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc3_sl-30_tp1000",
+    "desc": "mc=3 sl=-30 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 3,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc4_sl-10_tp30",
+    "desc": "mc=4 sl=-10 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc4_sl-10_tp50",
+    "desc": "mc=4 sl=-10 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc4_sl-10_tp1000",
+    "desc": "mc=4 sl=-10 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -10
+    }
+  },
+  {
+    "name": "D_mc4_sl-20_tp30",
+    "desc": "mc=4 sl=-20 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc4_sl-20_tp50",
+    "desc": "mc=4 sl=-20 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc4_sl-20_tp1000",
+    "desc": "mc=4 sl=-20 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -20
+    }
+  },
+  {
+    "name": "D_mc4_sl-30_tp30",
+    "desc": "mc=4 sl=-30 tp=30",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 30,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc4_sl-30_tp50",
+    "desc": "mc=4 sl=-30 tp=50",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 50,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "D_mc4_sl-30_tp1000",
+    "desc": "mc=4 sl=-30 tp=1000",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": false,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 4,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "stop_loss_pct": -30
+    }
+  },
+  {
+    "name": "E_mh0_kc0",
+    "desc": "限仓0 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 0,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh0_kc0.15",
+    "desc": "限仓0 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 0,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh0_kc0.25",
+    "desc": "限仓0 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 0,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh0_kc0.35",
+    "desc": "限仓0 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 0,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "E_mh3_kc0",
+    "desc": "限仓3 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 3,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh3_kc0.15",
+    "desc": "限仓3 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 3,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh3_kc0.25",
+    "desc": "限仓3 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 3,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh3_kc0.35",
+    "desc": "限仓3 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 3,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "E_mh5_kc0",
+    "desc": "限仓5 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 5,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh5_kc0.15",
+    "desc": "限仓5 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 5,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh5_kc0.25",
+    "desc": "限仓5 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 5,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh5_kc0.35",
+    "desc": "限仓5 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 5,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "E_mh8_kc0",
+    "desc": "限仓8 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 8,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh8_kc0.15",
+    "desc": "限仓8 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 8,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh8_kc0.25",
+    "desc": "限仓8 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 8,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh8_kc0.35",
+    "desc": "限仓8 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 8,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "E_mh10_kc0",
+    "desc": "限仓10 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 10,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh10_kc0.15",
+    "desc": "限仓10 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 10,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh10_kc0.25",
+    "desc": "限仓10 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 10,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh10_kc0.35",
+    "desc": "限仓10 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 10,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "E_mh15_kc0",
+    "desc": "限仓15 kelly=0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 15,
+      "kelly_cap": 0
+    }
+  },
+  {
+    "name": "E_mh15_kc0.15",
+    "desc": "限仓15 kelly=0.15",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 15,
+      "kelly_cap": 0.15
+    }
+  },
+  {
+    "name": "E_mh15_kc0.25",
+    "desc": "限仓15 kelly=0.25",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 15,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "E_mh15_kc0.35",
+    "desc": "限仓15 kelly=0.35",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "max_holdings": 15,
+      "kelly_cap": 0.35
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc0_ac1",
+    "desc": "加权True 净信号True 卖共识0 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 0,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc0_ac0",
+    "desc": "加权True 净信号True 卖共识0 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 0,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc2_ac1",
+    "desc": "加权True 净信号True 卖共识2 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 2,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc2_ac0",
+    "desc": "加权True 净信号True 卖共识2 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 2,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc3_ac1",
+    "desc": "加权True 净信号True 卖共识3 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 3,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns1_sc3_ac0",
+    "desc": "加权True 净信号True 卖共识3 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": true,
+      "sell_consensus": 3,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc0_ac1",
+    "desc": "加权True 净信号False 卖共识0 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 0,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc0_ac0",
+    "desc": "加权True 净信号False 卖共识0 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 0,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc2_ac1",
+    "desc": "加权True 净信号False 卖共识2 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 2,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc2_ac0",
+    "desc": "加权True 净信号False 卖共识2 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 2,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc3_ac1",
+    "desc": "加权True 净信号False 卖共识3 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 3,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc1_ns0_sc3_ac0",
+    "desc": "加权True 净信号False 卖共识3 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "net_signal": false,
+      "sell_consensus": 3,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc0_ac1",
+    "desc": "加权False 净信号True 卖共识0 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 0,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc0_ac0",
+    "desc": "加权False 净信号True 卖共识0 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 0,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc2_ac1",
+    "desc": "加权False 净信号True 卖共识2 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 2,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc2_ac0",
+    "desc": "加权False 净信号True 卖共识2 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 2,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc3_ac1",
+    "desc": "加权False 净信号True 卖共识3 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 3,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns1_sc3_ac0",
+    "desc": "加权False 净信号True 卖共识3 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": true,
+      "sell_consensus": 3,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc0_ac1",
+    "desc": "加权False 净信号False 卖共识0 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 0,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc0_ac0",
+    "desc": "加权False 净信号False 卖共识0 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 0,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc2_ac1",
+    "desc": "加权False 净信号False 卖共识2 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 2,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc2_ac0",
+    "desc": "加权False 净信号False 卖共识2 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 2,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc3_ac1",
+    "desc": "加权False 净信号False 卖共识3 自适应True",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 3,
+      "adaptive_consensus": true,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "F_wc0_ns0_sc3_ac0",
+    "desc": "加权False 净信号False 卖共识3 自适应False",
+    "config": {
+      "min_score": 0.0,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": false,
+      "net_signal": false,
+      "sell_consensus": 3,
+      "adaptive_consensus": false,
+      "no_stop_loss": true
+    }
+  },
+  {
+    "name": "G_quarter_ms0.0",
+    "desc": "profit_mode=quarter ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "quarter",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "G_quarter_ms3.3",
+    "desc": "profit_mode=quarter ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "quarter",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "G_step_ms0.0",
+    "desc": "profit_mode=step ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "step",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "G_step_ms3.3",
+    "desc": "profit_mode=step ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "step",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "G_all_ms0.0",
+    "desc": "profit_mode=all ms=0.0",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "all",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "G_all_ms3.3",
+    "desc": "profit_mode=all ms=3.3",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "all",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0
+    }
+  },
+  {
+    "name": "H_msell0.5",
+    "desc": "动量卖出=0.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0.5
+    }
+  },
+  {
+    "name": "H_msell1.0",
+    "desc": "动量卖出=1.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 1.0
+    }
+  },
+  {
+    "name": "H_msell1.5",
+    "desc": "动量卖出=1.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 1.5
+    }
+  },
+  {
+    "name": "H_msell2.0",
+    "desc": "动量卖出=2.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 2.0
+    }
+  },
+  {
+    "name": "H_msell2.5",
+    "desc": "动量卖出=2.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 2.5
+    }
+  },
+  {
+    "name": "H_msell3.0",
+    "desc": "动量卖出=3.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 3.0
+    }
+  },
+  {
+    "name": "I_slip0.0_cp0",
+    "desc": "滑点0.0% 费率惩罚0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.0
+    }
+  },
+  {
+    "name": "I_slip0.0_cp0.5",
+    "desc": "滑点0.0% 费率惩罚0.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0.5,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.0
+    }
+  },
+  {
+    "name": "I_slip0.0_cp1.0",
+    "desc": "滑点0.0% 费率惩罚1.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 1.0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.0
+    }
+  },
+  {
+    "name": "I_slip0.3_cp0",
+    "desc": "滑点0.3% 费率惩罚0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.3
+    }
+  },
+  {
+    "name": "I_slip0.3_cp0.5",
+    "desc": "滑点0.3% 费率惩罚0.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0.5,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.3
+    }
+  },
+  {
+    "name": "I_slip0.3_cp1.0",
+    "desc": "滑点0.3% 费率惩罚1.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 1.0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.3
+    }
+  },
+  {
+    "name": "I_slip0.5_cp0",
+    "desc": "滑点0.5% 费率惩罚0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.5
+    }
+  },
+  {
+    "name": "I_slip0.5_cp0.5",
+    "desc": "滑点0.5% 费率惩罚0.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0.5,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.5
+    }
+  },
+  {
+    "name": "I_slip0.5_cp1.0",
+    "desc": "滑点0.5% 费率惩罚1.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 1.0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 0.5
+    }
+  },
+  {
+    "name": "I_slip1.0_cp0",
+    "desc": "滑点1.0% 费率惩罚0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 1.0
+    }
+  },
+  {
+    "name": "I_slip1.0_cp0.5",
+    "desc": "滑点1.0% 费率惩罚0.5",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0.5,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 1.0
+    }
+  },
+  {
+    "name": "I_slip1.0_cp1.0",
+    "desc": "滑点1.0% 费率惩罚1.0",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 1.0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "slippage_pct": 1.0
+    }
+  },
+  {
+    "name": "J_cpd0_cld0",
+    "desc": "止盈冷却0d 止损冷却0d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 0,
+      "cooldown_loss_days": 0
+    }
+  },
+  {
+    "name": "J_cpd0_cld15",
+    "desc": "止盈冷却0d 止损冷却15d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 0,
+      "cooldown_loss_days": 15
+    }
+  },
+  {
+    "name": "J_cpd0_cld30",
+    "desc": "止盈冷却0d 止损冷却30d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 0,
+      "cooldown_loss_days": 30
+    }
+  },
+  {
+    "name": "J_cpd5_cld0",
+    "desc": "止盈冷却5d 止损冷却0d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 5,
+      "cooldown_loss_days": 0
+    }
+  },
+  {
+    "name": "J_cpd5_cld15",
+    "desc": "止盈冷却5d 止损冷却15d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 5,
+      "cooldown_loss_days": 15
+    }
+  },
+  {
+    "name": "J_cpd5_cld30",
+    "desc": "止盈冷却5d 止损冷却30d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 5,
+      "cooldown_loss_days": 30
+    }
+  },
+  {
+    "name": "J_cpd10_cld0",
+    "desc": "止盈冷却10d 止损冷却0d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 0
+    }
+  },
+  {
+    "name": "J_cpd10_cld15",
+    "desc": "止盈冷却10d 止损冷却15d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 15
+    }
+  },
+  {
+    "name": "J_cpd10_cld30",
+    "desc": "止盈冷却10d 止损冷却30d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 30
+    }
+  },
+  {
+    "name": "J_cpd20_cld0",
+    "desc": "止盈冷却20d 止损冷却0d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 20,
+      "cooldown_loss_days": 0
+    }
+  },
+  {
+    "name": "J_cpd20_cld15",
+    "desc": "止盈冷却20d 止损冷却15d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 20,
+      "cooldown_loss_days": 15
+    }
+  },
+  {
+    "name": "J_cpd20_cld30",
+    "desc": "止盈冷却20d 止损冷却30d",
+    "config": {
+      "min_score": 3.3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "cooldown_profit_days": 20,
+      "cooldown_loss_days": 30
+    }
+  },
+  {
+    "name": "K_combo1",
+    "desc": "综合最优组合1",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25,
+      "fund_type_filter": "all"
+    }
+  },
+  {
+    "name": "K_combo2",
+    "desc": "综合最优组合2",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 3,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 8,
+      "kelly_cap": 0.3,
+      "fund_type_filter": "all"
+    }
+  },
+  {
+    "name": "K_combo3",
+    "desc": "综合最优组合3",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 0,
+      "kelly_cap": 0,
+      "fund_type_filter": "active"
+    }
+  },
+  {
+    "name": "K_combo4",
+    "desc": "综合最优组合4",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 10,
+      "kelly_cap": 0.35,
+      "fund_type_filter": "all",
+      "momentum_sell": 1.0
+    }
+  },
+  {
+    "name": "K_combo5",
+    "desc": "综合最优组合5",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "stop_loss_pct": -30,
+      "take_profit_pct": 1000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25,
+      "fund_type_filter": "all"
+    }
+  },
+  {
+    "name": "K_combo6",
+    "desc": "综合最优组合6",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 50,
+      "max_holdings": 5,
+      "kelly_cap": 0.25,
+      "fund_type_filter": "all",
+      "profit_mode": "step"
+    }
+  },
+  {
+    "name": "K_combo7",
+    "desc": "综合最优组合7",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25,
+      "fund_type_filter": "all",
+      "use_weighted_consensus": true,
+      "adaptive_consensus": true
+    }
+  },
+  {
+    "name": "K_combo8",
+    "desc": "综合最优组合8",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25,
+      "fund_type_filter": "all",
+      "net_signal": true,
+      "sell_consensus": 2
+    }
+  },
+  {
+    "name": "K_combo9",
+    "desc": "综合最优组合9",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 3,
+      "kelly_cap": 0.3,
+      "fund_type_filter": "all",
+      "cooldown_profit_days": 10,
+      "cooldown_loss_days": 30
+    }
+  },
+  {
+    "name": "K_combo10",
+    "desc": "综合最优组合10",
+    "config": {
+      "min_score": 0.0,
+      "min_consensus": 2,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "max_holdings": 0,
+      "kelly_cap": 0,
+      "fund_type_filter": "all",
+      "slippage_pct": 0.5,
+      "cost_penalty": 0.5
+    }
+  },
+  {
+    "name": "L_mi1000_mh3",
+    "desc": "月投1000 限仓3",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 1000,
+      "max_holdings": 3,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi1000_mh5",
+    "desc": "月投1000 限仓5",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 1000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi1000_mh8",
+    "desc": "月投1000 限仓8",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 1000,
+      "max_holdings": 8,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi2000_mh3",
+    "desc": "月投2000 限仓3",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 2000,
+      "max_holdings": 3,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi2000_mh5",
+    "desc": "月投2000 限仓5",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 2000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi2000_mh8",
+    "desc": "月投2000 限仓8",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 2000,
+      "max_holdings": 8,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi3000_mh3",
+    "desc": "月投3000 限仓3",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 3000,
+      "max_holdings": 3,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi3000_mh5",
+    "desc": "月投3000 限仓5",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 3000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi3000_mh8",
+    "desc": "月投3000 限仓8",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 3000,
+      "max_holdings": 8,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi5000_mh3",
+    "desc": "月投5000 限仓3",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 5000,
+      "max_holdings": 3,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi5000_mh5",
+    "desc": "月投5000 限仓5",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 5000,
+      "max_holdings": 5,
+      "kelly_cap": 0.25
+    }
+  },
+  {
+    "name": "L_mi5000_mh8",
+    "desc": "月投5000 限仓8",
+    "config": {
+      "min_score": 0.0,
+      "no_stop_loss": true,
+      "take_profit_pct": 1000,
+      "profit_mode": "half",
+      "cost_penalty": 0,
+      "min_consensus": 2,
+      "fund_type_filter": "all",
+      "momentum_sell": 0,
+      "monthly_injection": 5000,
+      "max_holdings": 8,
+      "kelly_cap": 0.25
+    }
+  }
+]
