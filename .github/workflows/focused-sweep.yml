@@ -83,7 +83,7 @@ jobs:
         run: |
           if [ -f backtest/data/fund_charts.json.gz ]; then
             echo "Decompressing fund_charts.json.gz..."
-            cd backtest/data && gunzip -k fund_charts.json.gz && cd ../..
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
             echo "Done. Size: $(du -h backtest/data/fund_charts.json | cut -f1)"
           fi
 
@@ -251,7 +251,7 @@ jobs:
       - name: Decompress fund charts
         run: |
           if [ -f backtest/data/fund_charts.json.gz ]; then
-            cd backtest/data && gunzip -k fund_charts.json.gz && cd ../..
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
           fi
 
       - name: Prepare fund chart split files
