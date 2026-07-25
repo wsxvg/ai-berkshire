@@ -1208,7 +1208,9 @@ class Portfolio:
                 # 例外：止损/移动止盈/动量崩溃等不受最低持有期限制
                 is_exception = any(kw in (sell_reason or "") for kw in [
                     "stop_loss", "big_sell", "trail_stop", "peak_dd",
-                    "trailing_tp", "momentum_crash"])
+                    "trailing_tp", "momentum_crash",
+                    "take_profit", "step_tp", "rsi_overbought",
+                    "port_dd_reduce", "reduce_pos"])
                 if not is_exception:
                     return False  # 持有期不足，不卖
 
@@ -2420,26 +2422,33 @@ def run_backtest(config, clear_cache=True):
                 else:  # "half" 或其他，卖一半
                     sell_amt = sell_value * tp_sell
                 if sell_amt >= 100:
-                    portfolio.sell(code, sell_amt, sell_price, cutoff_full,
+                    _sold = portfolio.sell(code, sell_amt, sell_price, cutoff_full,
                                   sell_reason=f"take_profit {cum_return:.1f}%")
-                    print(f"  SELL_TP {code} {h['name'][:16]} profit={cum_return:.1f}% amt={sell_amt:.0f}")
-                    continue
+                    if _sold:
+                        print(f"  SELL_TP {code} {h['name'][:16]} profit={cum_return:.1f}% amt={sell_amt:.0f}")
+                        continue
+                    # 卖出失败（如持有期不足），不跳过后续卖出检查
 
             # 🟡 方案D1：阶梯止盈 — 分批卖出锁利
             _step_tp = config.get("step_take_profit", False)
             if _step_tp and cum_return > 20 and code in portfolio.holdings:
                 _step_levels = config.get("step_tp_levels", [(30, 0.3), (50, 0.3), (80, 0.4)])
                 _sold_key = f"_step_tp_sold_{int(cum_return // 10) * 10}"
+                _step_tp_executed = False
                 if not h.get(_sold_key, False):
                     for _level, _frac in _step_levels:
                         if cum_return >= _level and not h.get(f"_step_tp_sold_{_level}", False):
                             _sell_val = h["shares"] * sell_price * _frac
                             if _sell_val >= 100:
-                                portfolio.sell(code, _sell_val, sell_price, cutoff_full,
+                                _sold = portfolio.sell(code, _sell_val, sell_price, cutoff_full,
                                               sell_reason=f"step_tp {_level}% sell{_frac*100:.0f}%")
-                                h[f"_step_tp_sold_{_level}"] = True
-                                print(f"  SELL_STEP_TP {code} {h['name'][:16]} level={_level}% frac={_frac*100:.0f}% amt={_sell_val:.0f}")
-                                break
+                                if _sold:
+                                    h[f"_step_tp_sold_{_level}"] = True
+                                    print(f"  SELL_STEP_TP {code} {h['name'][:16]} level={_level}% frac={_frac*100:.0f}% amt={_sell_val:.0f}")
+                                    _step_tp_executed = True
+                                    break
+                if _step_tp_executed:
+                    continue  # 阶梯止盈已执行，跳过后续卖出检查避免同日双重卖出
 
             # 🟢 移动止盈: 盈利达到激活阈值后，从最高点回撤超过阈值则卖出锁利
             # 与 peak_drawdown_exit 的区别：只在盈利状态下触发，避免亏损时误卖
@@ -2515,10 +2524,11 @@ def run_backtest(config, clear_cache=True):
                     if _sell_rsi > _rsi_sell_threshold:
                         sell_value = h["shares"] * sell_price * config.get("rsi_sell_pct", 0.3)
                         if sell_value >= 100:
-                            portfolio.sell(code, sell_value, sell_price, cutoff_full,
+                            _sold = portfolio.sell(code, sell_value, sell_price, cutoff_full,
                                           sell_reason=f"rsi_overbought rsi={_sell_rsi:.0f} profit={cum_return:.1f}%")
-                            print(f"  SELL_RSI {code} {h['name'][:16]} rsi={_sell_rsi:.0f} profit={cum_return:.1f}% amt={sell_value:.0f}")
-                            continue
+                            if _sold:
+                                print(f"  SELL_RSI {code} {h['name'][:16]} rsi={_sell_rsi:.0f} profit={cum_return:.1f}% amt={sell_value:.0f}")
+                                continue
                 except Exception:
                     pass
 
@@ -2637,11 +2647,12 @@ def run_backtest(config, clear_cache=True):
                     _reduce_frac = config.get("portfolio_dd_reduce_frac", 0.3)
                     _sell_val = h["shares"] * sell_price * _reduce_frac
                     if _sell_val >= 100 and not h.get("_dd_reduced_today", False):
-                        portfolio.sell(code, _sell_val, sell_price, cutoff_full,
+                        _sold = portfolio.sell(code, _sell_val, sell_price, cutoff_full,
                                       sell_reason=f"port_dd_reduce dd={_port_dd:.1f}% frac={_reduce_frac*100:.0f}%")
-                        h["_dd_reduced_today"] = True
-                        print(f"  SELL_PORT_DD_REDUCE {code} {h['name'][:16]} dd={_port_dd:.1f}% amt={_sell_val:.0f}")
-                        continue
+                        if _sold:
+                            h["_dd_reduced_today"] = True
+                            print(f"  SELL_PORT_DD_REDUCE {code} {h['name'][:16]} dd={_port_dd:.1f}% amt={_sell_val:.0f}")
+                            continue
 
             # 🔴 方案D2：ATR动态止损 — 止损线随波动率自适应
             _atr_mult = config.get("atr_stop_loss_mult", 0)
@@ -2668,16 +2679,18 @@ def run_backtest(config, clear_cache=True):
             if peak_dd_reduce > 0 and drawdown_from_peak < -peak_dd_reduce and code in portfolio.holdings:
                 sell_value = h["shares"] * sell_price * 0.5
                 if sell_value >= 100:
-                    portfolio.sell(code, sell_value, sell_price, cutoff_full,
+                    _sold = portfolio.sell(code, sell_value, sell_price, cutoff_full,
                                   sell_reason=f"peak_dd_reduce {drawdown_from_peak:.1f}%")
-                    print(f"  SELL_HALF {code} {h['name'][:16]} dd={drawdown_from_peak:.1f}% amt={sell_value:.0f}")
-                    # 记录到买回追踪列表
-                    _buy_back_watchlist[code] = {
-                        "name": h.get("name", ""),
-                        "sell_date": cutoff_full,
-                        "sell_nav": current_nav,
-                        "reason": "peak_dd_reduce",
-                    }
+                    if _sold:
+                        print(f"  SELL_HALF {code} {h['name'][:16]} dd={drawdown_from_peak:.1f}% amt={sell_value:.0f}")
+                        # 记录到买回追踪列表
+                        _buy_back_watchlist[code] = {
+                            "name": h.get("name", ""),
+                            "sell_date": cutoff_full,
+                            "sell_nav": current_nav,
+                            "reason": "peak_dd_reduce",
+                        }
+                        continue  # 部分卖出后跳过后续检查，避免同日双重卖出
 
             # 🔴 移动止损: 止损线随最高点上移
             trail_stop = config.get("trailing_stop_pct", 0)

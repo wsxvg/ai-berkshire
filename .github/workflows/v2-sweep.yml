@@ -1,4 +1,4 @@
-name: V2 Smart Swap Sweep (204 strategies)
+name: V2 Smart Swap Sweep (204 strategies, 20-way parallel)
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: set-matrix
         run: |
-          TOTAL=10
+          TOTAL=20
           CHUNKS=$(python3 -c "print(','.join(str(i) for i in range($TOTAL)))")
           echo "matrix={\"chunk\":[$CHUNKS]}" >> $GITHUB_OUTPUT
           echo "total=$TOTAL" >> $GITHUB_OUTPUT
@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 300
     strategy:
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 20
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
 
     steps:
@@ -162,9 +162,9 @@ jobs:
     timeout-minutes: 120
     strategy:
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 20
       matrix:
-        chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
     steps:
       - uses: actions/checkout@v4
@@ -222,7 +222,7 @@ jobs:
           python backtest/rolling_window.py \
             --input results_v2/top30.json \
             --output results_v2/rolling_window.json \
-            --chunk ${{ matrix.chunk }} --total 10 \
+            --chunk ${{ matrix.chunk }} --total 20 \
             --top-n 0
 
       - name: Upload rolling window chunk
