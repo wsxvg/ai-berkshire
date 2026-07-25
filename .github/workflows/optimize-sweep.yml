@@ -15,9 +15,6 @@ env:
   PYTHONPATH: ${{ github.workspace }}
 
 jobs:
-  # ═══════════════════════════════════════════════════
-  # Phase 0: Generate matrix
-  # ═══════════════════════════════════════════════════
   generate-matrix:
     runs-on: ubuntu-latest
     outputs:
@@ -27,16 +24,11 @@ jobs:
       - uses: actions/checkout@v4
       - id: set-matrix
         run: |
-          # 2465 strategies, 20-way parallel
           TOTAL=20
           CHUNKS=$(python3 -c "print(','.join(str(i) for i in range($TOTAL)))")
           echo "matrix={\"chunk\":[$CHUNKS]}" >> $GITHUB_OUTPUT
           echo "total=$TOTAL" >> $GITHUB_OUTPUT
-          echo "Using $TOTAL chunks for 2465 strategies (~123 strategies/chunk)"
 
-  # ═══════════════════════════════════════════════════
-  # Phase 1: Full 3-year backtest (20-way parallel)
-  # ═══════════════════════════════════════════════════
   backtest-full-period:
     needs: generate-matrix
     runs-on: ubuntu-latest
@@ -48,7 +40,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -94,7 +85,6 @@ jobs:
 
       - name: Run backtests chunk ${{ matrix.chunk }}/${{ needs.generate-matrix.outputs.total }}
         run: |
-          echo "=== Phase 1: Backtest chunk ${{ matrix.chunk }}/${{ needs.generate-matrix.outputs.total }} ==="
           python backtest/run_focused_sweep.py \
             --configs backtest/optimize_sweep_configs.json \
             --output results_optimize/ \
@@ -105,13 +95,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: phase1-chunk-${{ matrix.chunk }}
-          path: backtest/results_optimize/*.json
+          path: results_optimize/chunk_${{ matrix.chunk }}.json
           retention-days: 30
           if-no-files-found: error
 
-  # ═══════════════════════════════════════════════════
-  # Phase 1.5: Merge results & select Top N (by Sharpe)
-  # ═══════════════════════════════════════════════════
   merge-select-top:
     needs: backtest-full-period
     runs-on: ubuntu-latest
@@ -131,24 +118,19 @@ jobs:
 
       - name: Merge and select Top ${{ github.event.inputs.top_n || '50' }}
         run: |
-          mkdir -p backtest/results_optimize
-          python -c "
+          python3 << 'PYEOF'
           import json, glob, os
 
           all_strategies = []
           for f in sorted(glob.glob('chunks/*.json')):
-              if 'all_strategies' in f:
-                  continue
               data = json.loads(open(f, encoding='utf-8').read())
               strategies = data.get('strategies', data) if isinstance(data, dict) else data
               all_strategies.extend(strategies)
               print(f'  {f}: {len(strategies)} strategies')
 
-          # Remove None/failed
           all_strategies = [s for s in all_strategies if s is not None]
           print(f'\nTotal: {len(all_strategies)} strategies')
 
-          # Sort by Sharpe (return / max_dd)
           all_strategies.sort(key=lambda x: x.get('sharpe', 0), reverse=True)
 
           top_n = int('${{ github.event.inputs.top_n || '50' }}')
@@ -157,16 +139,13 @@ jobs:
           os.makedirs('backtest/results_optimize', exist_ok=True)
           with open('backtest/results_optimize/all_strategies.json', 'w', encoding='utf-8') as f:
               json.dump(all_strategies, f, ensure_ascii=False, indent=2)
-
           with open('backtest/results_optimize/top30.json', 'w', encoding='utf-8') as f:
               json.dump({'top50': top}, f, ensure_ascii=False, indent=2)
 
           print(f'\nTop {len(top)} strategies (by Sharpe):')
-          print(f'{\"Strategy\":50s} {\"Return\":>8s} {\"DD\":>6s} {\"Sharpe\":>7s} {\"Trades\":>6s}')
-          print('-' * 85)
           for r in top[:20]:
-              print(f'{r[\"name\"]:50s} {r[\"return\"]:+7.2f}% {r[\"dd\"]:5.2f}% {r[\"sharpe\"]:6.2f} {r.get(\"trades\",0):5d}')
-          "
+              print(f"  {r['name']:50s} ret={r['return']:+7.2f}% dd={r['dd']:5.2f}% sharpe={r['sharpe']:6.2f}")
+          PYEOF
 
       - name: Upload merged results
         uses: actions/upload-artifact@v4
@@ -177,9 +156,6 @@ jobs:
             backtest/results_optimize/top30.json
           retention-days: 30
 
-  # ═══════════════════════════════════════════════════
-  # Phase 2: Rolling window validation (10-way parallel)
-  # ═══════════════════════════════════════════════════
   rolling-window-validation:
     needs: merge-select-top
     runs-on: ubuntu-latest
@@ -257,9 +233,6 @@ jobs:
           retention-days: 30
           if-no-files-found: error
 
-  # ═══════════════════════════════════════════════════
-  # Phase 3: Final merge + ranking + commit
-  # ═══════════════════════════════════════════════════
   final-merge-commit:
     needs: rolling-window-validation
     runs-on: ubuntu-latest
@@ -283,52 +256,41 @@ jobs:
           name: phase1-merged
           path: backtest/results_optimize/
 
-      - name: Merge rolling window results and generate final ranking
+      - name: Merge rolling window results
         run: |
-          python -c "
+          python3 << 'PYEOF'
           import json, glob, os
 
           all_rw = []
           for f in sorted(glob.glob('chunks/rolling_window_chunk*.json')):
               d = json.loads(open(f, encoding='utf-8').read())
               all_rw.extend(d.get('strategies', []))
-              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+              print(f'  {f}: {len(d.get("strategies", []))} strategies')
 
           all_rw.sort(key=lambda x: x.get('anti_overfit_score', 0), reverse=True)
           passed = [r for r in all_rw if r.get('anti_overfit_passed', False)]
-          failed = [r for r in all_rw if not r.get('anti_overfit_passed', False)]
 
           os.makedirs('backtest/results_optimize', exist_ok=True)
           with open('backtest/results_optimize/rolling_window_final.json', 'w', encoding='utf-8') as f:
               json.dump({
                   'strategies': all_rw,
                   'passed': passed,
-                  'failed': failed,
                   'pass_rate': f'{len(passed)}/{len(all_rw)}',
                   'total': len(all_rw),
               }, f, ensure_ascii=False, indent=2)
-
           with open('backtest/results_optimize/anti_overfit_passed.json', 'w', encoding='utf-8') as f:
               json.dump({'strategies': passed, 'total': len(passed)}, f, ensure_ascii=False, indent=2)
 
-          print(f'\n{\"=\"*100}')
-          print(f'最终结果: {len(all_rw)} 个策略 | 防过拟合通过: {len(passed)} | 失败: {len(failed)}')
-          print(f'{\"=\"*100}')
-          print(f'{\"策略\":50s} {\"全量收益\":>8s} {\"Sharpe\":>7s} {\"年均\":>6s} {\"标准差\":>6s} {\"最差\":>6s} {\"AO分\":>6s} {\"状态\":>4s}')
-          print(f'{\"-\"*100}')
-          for r in all_rw[:30]:
+          print(f'\n最终结果: {len(all_rw)} 策略 | 通过: {len(passed)}')
+          for r in all_rw[:20]:
               status = 'PASS' if r.get('anti_overfit_passed') else 'FAIL'
-              print(f\"{r['name']:50s} {r.get('full_return',0):>+7.2f}% {r.get('full_sharpe',0):>6.2f} \"
-                    f\"{r.get('avg_yearly_return',0):>+5.1f}% {r.get('std_yearly_return',0):>5.1f}% \"
-                    f\"{r.get('min_yearly_return',0):>+5.1f}% {r.get('anti_overfit_score',0):>5.1f} {status:>4s}\")
+              print(f"  {r['name']:50s} ret={r.get('full_return',0):+.2f}% sharpe={r.get('full_sharpe',0):.2f} {status}")
 
           if passed:
               champ = passed[0]
-              print(f'\n Champion (anti-overfit): {champ[\"name\"]}')
-              print(f'   Full return: {champ.get(\"full_return\",0):+.2f}% | Sharpe: {champ.get(\"full_sharpe\",0):.2f}')
-              print(f'   Avg yearly: {champ.get(\"avg_yearly_return\",0):+.1f}% | Std: {champ.get(\"std_yearly_return\",0):.1f}%')
-              print(f'   Worst window: {champ.get(\"min_yearly_return\",0):+.1f}% | Max DD: {champ.get(\"max_yearly_dd\",0):.1f}%')
-          "
+              print(f"\nChampion: {champ['name']}")
+              print(f"  Return: {champ.get('full_return',0):+.2f}% | Sharpe: {champ.get('full_sharpe',0):.2f}")
+          PYEOF
 
       - name: Commit final results
         run: |
