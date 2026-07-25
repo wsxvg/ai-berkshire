@@ -107,14 +107,25 @@ def main():
     parser.add_argument("--chunk", type=int, default=0)
     parser.add_argument("--total", type=int, default=1)
     parser.add_argument("--timeout", type=int, default=600, help="单策略超时秒数（默认600）")
+    parser.add_argument("--configs", type=str, default="", help="自定义策略配置JSON路径（默认用focused_sweep_configs.json）")
     args = parser.parse_args()
+
+    # 支持自定义配置文件
+    if args.configs:
+        custom_path = Path(args.configs)
+        if not custom_path.is_absolute():
+            custom_path = PROJECT / args.configs
+        with open(custom_path, encoding="utf-8") as f:
+            all_strategies = json.loads(f.read())
+        print(f"使用自定义配置: {custom_path} ({len(all_strategies)} 策略)", flush=True)
+    else:
+        all_strategies = FOCUSED_CONFIGS
 
     _STRATEGY_TIMEOUT = args.timeout
     BASE["start_date"] = args.start
     BASE["end_date"] = args.end
 
     # 分片
-    all_strategies = FOCUSED_CONFIGS
     chunk_size = len(all_strategies) // args.total + 1
     start_idx = args.chunk * chunk_size
     end_idx = min(start_idx + chunk_size, len(all_strategies))
