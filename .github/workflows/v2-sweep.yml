@@ -1,0 +1,312 @@
+name: V2 Smart Swap Sweep (204 strategies)
+
+on:
+  workflow_dispatch:
+    inputs:
+      top_n:
+        description: 'Top N for Phase 2 (by Sharpe)'
+        required: false
+        default: '50'
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      total: ${{ steps.set-matrix.outputs.total }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set-matrix
+        run: |
+          TOTAL=10
+          CHUNKS=$(python3 -c "print(','.join(str(i) for i in range($TOTAL)))")
+          echo "matrix={\"chunk\":[$CHUNKS]}" >> $GITHUB_OUTPUT
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+
+  backtest-full-period:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+          key: trading-data-v3-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v3-
+            trading-data-
+
+      - name: Decompress fund charts
+        run: |
+          if [ -f backtest/data/fund_charts.json.gz ]; then
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+          fi
+
+      - name: Prepare fund chart split files
+        run: |
+          mkdir -p data/fund_charts
+          CHART_COUNT=$(ls data/fund_charts/*.json 2>/dev/null | wc -l)
+          if [ "$CHART_COUNT" -lt 100 ] && [ -f backtest/data/fund_charts.json ]; then
+            python -c "
+          import json, os
+          os.makedirs('data/fund_charts', exist_ok=True)
+          data = json.loads(open('backtest/data/fund_charts.json', encoding='utf-8').read())
+          for code, pts in data.items():
+              if pts:
+                  with open(f'data/fund_charts/{code}.json', 'w', encoding='utf-8') as f:
+                      json.dump(pts, f)
+          "
+          fi
+
+      - name: Run backtests chunk ${{ matrix.chunk }}/${{ needs.generate-matrix.outputs.total }}
+        run: |
+          python backtest/run_focused_sweep.py \
+            --configs backtest/v2_sweep_configs.json \
+            --output results_v2/ \
+            --chunk ${{ matrix.chunk }} --total ${{ needs.generate-matrix.outputs.total }} \
+            --timeout 600
+
+      - name: Upload chunk results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1-chunk-${{ matrix.chunk }}
+          path: results_v2/chunk_${{ matrix.chunk }}.json
+          retention-days: 30
+          if-no-files-found: error
+
+  merge-select-top:
+    needs: backtest-full-period
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 1 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase1-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Merge and select Top ${{ github.event.inputs.top_n || '50' }}
+        run: |
+          python3 << 'PYEOF'
+          import json, glob, os
+
+          all_strategies = []
+          for f in sorted(glob.glob('chunks/*.json')):
+              data = json.loads(open(f, encoding='utf-8').read())
+              strategies = data.get('strategies', data) if isinstance(data, dict) else data
+              all_strategies.extend(strategies)
+              print(f'  {f}: {len(strategies)} strategies')
+
+          all_strategies = [s for s in all_strategies if s is not None]
+          print(f'\nTotal: {len(all_strategies)} strategies')
+
+          all_strategies.sort(key=lambda x: x.get('sharpe', 0), reverse=True)
+
+          top_n = int('${{ github.event.inputs.top_n || '50' }}')
+          top = all_strategies[:top_n]
+
+          os.makedirs('backtest/results_v2', exist_ok=True)
+          with open('backtest/results_v2/all_strategies.json', 'w', encoding='utf-8') as f:
+              json.dump(all_strategies, f, ensure_ascii=False, indent=2)
+          with open('backtest/results_v2/top30.json', 'w', encoding='utf-8') as f:
+              json.dump({'top50': top}, f, ensure_ascii=False, indent=2)
+
+          print(f'\nTop {len(top)} strategies (by Sharpe):')
+          for r in top[:20]:
+              print(f"  {r['name']:55s} ret={r['return']:+7.2f}% dd={r['dd']:5.2f}% sharpe={r['sharpe']:6.2f}")
+          PYEOF
+
+      - name: Upload merged results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1-merged
+          path: |
+            backtest/results_v2/all_strategies.json
+            backtest/results_v2/top30.json
+          retention-days: 30
+
+  rolling-window-validation:
+    needs: merge-select-top
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+          key: trading-data-v3-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v3-
+            trading-data-
+
+      - name: Decompress fund charts
+        run: |
+          if [ -f backtest/data/fund_charts.json.gz ]; then
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+          fi
+
+      - name: Prepare fund chart split files
+        run: |
+          mkdir -p data/fund_charts
+          CHART_COUNT=$(ls data/fund_charts/*.json 2>/dev/null | wc -l)
+          if [ "$CHART_COUNT" -lt 100 ] && [ -f backtest/data/fund_charts.json ]; then
+            python -c "
+          import json, os
+          os.makedirs('data/fund_charts', exist_ok=True)
+          data = json.loads(open('backtest/data/fund_charts.json', encoding='utf-8').read())
+          for code, pts in data.items():
+              if pts:
+                  with open(f'data/fund_charts/{code}.json', 'w', encoding='utf-8') as f:
+                      json.dump(pts, f)
+          "
+          fi
+
+      - name: Download Phase 1 merged
+        uses: actions/download-artifact@v4
+        with:
+          name: phase1-merged
+          path: backtest/results_v2/
+
+      - name: Run rolling window validation chunk ${{ matrix.chunk }}
+        run: |
+          python backtest/rolling_window.py \
+            --input results_v2/top30.json \
+            --output results_v2/rolling_window.json \
+            --chunk ${{ matrix.chunk }} --total 10 \
+            --top-n 0
+
+      - name: Upload rolling window chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-chunk-${{ matrix.chunk }}
+          path: backtest/results_revalidation/results_v2/rolling_window_chunk${{ matrix.chunk }}.json
+          retention-days: 30
+          if-no-files-found: error
+
+  final-merge-commit:
+    needs: rolling-window-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 2 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase2-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Download Phase 1 merged
+        uses: actions/download-artifact@v4
+        with:
+          name: phase1-merged
+          path: backtest/results_v2/
+
+      - name: Merge rolling window results
+        run: |
+          python3 << 'PYEOF'
+          import json, glob, os
+
+          all_rw = []
+          for f in sorted(glob.glob('chunks/rolling_window_chunk*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_rw.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get("strategies", []))} strategies')
+
+          all_rw.sort(key=lambda x: x.get('anti_overfit_score', 0), reverse=True)
+          passed = [r for r in all_rw if r.get('anti_overfit_passed', False)]
+
+          os.makedirs('backtest/results_v2', exist_ok=True)
+          with open('backtest/results_v2/rolling_window_final.json', 'w', encoding='utf-8') as f:
+              json.dump({
+                  'strategies': all_rw,
+                  'passed': passed,
+                  'pass_rate': f'{len(passed)}/{len(all_rw)}',
+                  'total': len(all_rw),
+              }, f, ensure_ascii=False, indent=2)
+          with open('backtest/results_v2/anti_overfit_passed.json', 'w', encoding='utf-8') as f:
+              json.dump({'strategies': passed, 'total': len(passed)}, f, ensure_ascii=False, indent=2)
+
+          print(f'\n最终结果: {len(all_rw)} 策略 | 通过: {len(passed)}')
+          for r in all_rw[:20]:
+              status = 'PASS' if r.get('anti_overfit_passed') else 'FAIL'
+              print(f"  {r['name']:55s} ret={r.get('full_return',0):+.2f}% sharpe={r.get('full_sharpe',0):.2f} {status}")
+
+          if passed:
+              champ = passed[0]
+              print(f"\nChampion: {champ['name']}")
+              print(f"  Return: {champ.get('full_return',0):+.2f}% | Sharpe: {champ.get('full_sharpe',0):.2f}")
+          PYEOF
+
+      - name: Commit final results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backtest/results_v2/
+          git diff --cached --quiet || git commit -m "V2智能换仓策略验证结果 $(date -u +'%Y-%m-%d')"
+          git push || echo "push skipped"
+
+      - name: Upload final results
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-results
+          path: |
+            backtest/results_v2/rolling_window_final.json
+            backtest/results_v2/anti_overfit_passed.json
+            backtest/results_v2/all_strategies.json
+            backtest/results_v2/top30.json
+          retention-days: 90

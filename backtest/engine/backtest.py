@@ -2701,6 +2701,23 @@ def run_backtest(config, clear_cache=True):
                             continue
                         # 卖出失败（如持有期不足），不跳过后续卖出检查
 
+            # 🆕 持仓排名淘汰：持仓基金评分低于候选均值的一定比例，且连续N天排名靠后 → 卖出
+            _rank_elim = config.get("rank_elimination", False)
+            if _rank_elim and not should_sell and code in portfolio.holdings:
+                _elim_threshold = config.get("rank_elim_threshold", 2.0)  # 评分低于此值考虑淘汰
+                _elim_min_hold = config.get("rank_elim_min_hold_days", 30)  # 至少持有N天才参与排名淘汰
+                _hold_d = portfolio._holding_days(code, cutoff_full)
+                if _hold_d >= _elim_min_hold and mom.score < _elim_threshold:
+                    # 检查是否有更好的候选可以替代
+                    _has_better = any(
+                        c.get("score", 0) > mom.score + config.get("rank_elim_margin", 0.5)
+                        for c in candidates
+                        if c["code"] != code
+                    )
+                    if _has_better:
+                        should_sell = True
+                        sell_reason = f"rank_elimination mom={mom.score:.2f} threshold={_elim_threshold} held={_hold_d}d"
+
             if should_sell:
                 portfolio.sell(code, 0, sell_price, cutoff_full, sell_reason, force_sell=True)
                 print(f"  SELL {code} {h['name'][:16]} {sell_reason} proceeds={h['shares']*sell_price:.0f}")
@@ -2834,12 +2851,73 @@ def run_backtest(config, clear_cache=True):
             kelly_fraction=_dyn_kelly_frac,
             max_single_buy_pct=config.get("max_single_buy_pct", 0.30),
             equal_allocate=config.get("equal_allocate", False))
+        # 🆕 动态 max_holdings：牛市多持仓，熊市集中
+        _base_mh = config.get("max_holdings", 0)
+        _dyn_mh_enabled = config.get("dynamic_max_holdings", False)
+        if _dyn_mh_enabled and _base_mh > 0:
+            if _market_state == "bull":
+                _eff_max_holdings = int(_base_mh * config.get("max_holdings_bull_mult", 1.5))
+            elif _market_state == "bear":
+                _eff_max_holdings = int(_base_mh * config.get("max_holdings_bear_mult", 0.6))
+            else:
+                _eff_max_holdings = _base_mh
+        else:
+            _eff_max_holdings = _base_mh
+
+        # 🆕 板块集中度限制参数
+        _max_sector_count = config.get("max_sector_count", 0)  # 0=不限制，>0=同板块最多持有N只
+
         for c in to_buy:
-            # 最大持仓数限制
-            max_holdings = config.get("max_holdings", 0)
-            if max_holdings > 0 and len(portfolio.holdings) >= max_holdings:
-                print(f"  SKIP_BUY {c['code']} {c['name'][:16]} max_holdings={max_holdings}")
-                continue
+            # 最大持仓数限制（动态）
+            if _eff_max_holdings > 0 and len(portfolio.holdings) >= _eff_max_holdings:
+                # 🆕 择优换仓：持仓已满时，检查是否有持仓比新候选弱很多
+                _smart_swap = config.get("smart_swap", False)
+                if _smart_swap and c["code"] not in portfolio.holdings:
+                    _swap_margin = config.get("smart_swap_margin", 1.0)  # 新候选评分需高出最弱持仓margin分
+                    _swap_min_hold = config.get("smart_swap_min_hold_days", 30)  # 至少持有N天才可被换出
+                    # 找最弱持仓
+                    _weakest_code = None
+                    _weakest_score = 999
+                    for hc, hh in portfolio.holdings.items():
+                        _hd = portfolio._holding_days(hc, cutoff_full)
+                        if _hd < _swap_min_hold:
+                            continue
+                        # 重新评分
+                        _hpts = fund_charts.get(hc, [])
+                        _hvalid = _bisect_valid(_hpts, cutoff_full) if _hpts else None
+                        if _hvalid:
+                            _hmom = score_momentum_backtest(_hpts, cutoff_full)
+                            if _hmom.score < _weakest_score:
+                                _weakest_score = _hmom.score
+                                _weakest_code = hc
+                    # 如果新候选明显更强，换仓
+                    if _weakest_code and c.get("score", 0) > _weakest_score + _swap_margin:
+                        _wh = portfolio.holdings[_weakest_code]
+                        _wsell_price = 1.0
+                        _wpts = fund_charts.get(_weakest_code, [])
+                        if _wpts:
+                            _wvalid = _bisect_valid(_wpts, cutoff_full)
+                            if _wvalid:
+                                _wsell_price = (100 + _float(_wvalid[-1].get("yAxis", 0))) / 100
+                        portfolio.sell(_weakest_code, 0, _wsell_price, cutoff_full,
+                                      sell_reason=f"smart_swap out_score={_weakest_score:.2f} in_score={c.get('score',0):.2f}",
+                                      force_sell=True)
+                        print(f"  SMART_SWAP OUT {_weakest_code} {_wh.get('name','')[:16]} (score={_weakest_score:.2f}) "
+                              f"→ IN {c['code']} {c['name'][:16]} (score={c.get('score',0):.2f})")
+                        _buy_back_watchlist[_weakest_code] = {
+                            "name": _wh.get("name", ""),
+                            "sell_date": cutoff_full,
+                            "sell_nav": _wsell_price,
+                            "reason": "smart_swap",
+                        }
+                    else:
+                        if idx % 20 == 0:
+                            print(f"  SKIP_BUY {c['code']} {c['name'][:16]} max_holdings={_eff_max_holdings}")
+                        continue
+                else:
+                    if idx % 20 == 0:
+                        print(f"  SKIP_BUY {c['code']} {c['name'][:16]} max_holdings={_eff_max_holdings}")
+                    continue
             # 冷却期检查：刚卖出的基金短期内不重新买入（减少反复交易和手续费）
             # 止盈卖出的冷却期短（默认profit_days），止损/动量崩溃的冷却期长（默认loss_days×2）
             # 这同时实现了"再入场机制"：止盈后基金再次走强可较快重新买入
@@ -2878,6 +2956,20 @@ def run_backtest(config, clear_cache=True):
                 continue
             if any(pb["code"] == c["code"] for pb in portfolio.pending_buys):
                 continue
+
+            # 🆕 板块集中度检查：同板块持仓数超过限制则跳过
+            if _max_sector_count > 0:
+                _c_sector, _ = detect_sector(c.get("name", ""), c.get("code"), FUND_HOLDINGS_CACHE)
+                _same_sector_count = 0
+                for hc, hh in portfolio.holdings.items():
+                    _hs, _ = detect_sector(hh.get("name", ""), hc, FUND_HOLDINGS_CACHE)
+                    if _hs == _c_sector:
+                        _same_sector_count += 1
+                if _same_sector_count >= _max_sector_count:
+                    if idx % 20 == 0:
+                        print(f"  SKIP_BUY {c['code']} {c['name'][:16]} sector={_c_sector} count={_same_sector_count}/{_max_sector_count}")
+                    continue
+
             # 计算实际买入净值
             buy_price = 1.0
             pts = fund_charts.get(c["code"], [])
