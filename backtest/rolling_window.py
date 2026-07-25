@@ -271,7 +271,10 @@ def main():
     out_dir = PROJECT / "backtest" / "results_revalidation"
     out_dir.mkdir(parents=True, exist_ok=True)
     suffix = f"_chunk{args.chunk}" if args.total > 1 else ""
-    out_file = out_dir / args.output.replace(".json", f"{suffix}.json")
+    out_file = out_dir / args.output
+    if suffix:
+        out_file = out_file.with_name(out_file.stem + suffix + out_file.suffix)
+    out_file.parent.mkdir(parents=True, exist_ok=True)
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump({
             "strategies": results,
