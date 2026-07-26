@@ -265,7 +265,10 @@ def main():
 
     # 统计通过率
     passed_count = sum(1 for r in results if r["anti_overfit_passed"])
-    print(f"\n防过拟合通过率: {passed_count}/{len(results)} ({passed_count/len(results)*100:.0f}%)")
+    if len(results) > 0:
+        print(f"\n防过拟合通过率: {passed_count}/{len(results)} ({passed_count/len(results)*100:.0f}%)")
+    else:
+        print(f"\n防过拟合通过率: 0/0 (无有效结果)")
 
     # 保存
     out_dir = PROJECT / "backtest" / "results_revalidation"

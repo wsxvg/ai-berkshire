@@ -138,8 +138,8 @@ def score_momentum_backtest(chart_points, cutoff_date):
         score_mid = 2.5
 
     # 回撤恢复
-    peak = max(values)
-    distance = (current - peak) / peak
+    peak = max(values) if values else 0
+    distance = (current - peak) / peak if peak != 0 else 0
     if distance >= 0: score_recovery = 5.0
     elif distance > -0.05: score_recovery = 4.0
     elif distance > -0.10: score_recovery = 3.0
