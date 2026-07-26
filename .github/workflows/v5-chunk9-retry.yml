@@ -1,0 +1,85 @@
+name: V5 Chunk 9 Retry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  rolling-window-chunk9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+          key: trading-data-v5-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-v3-
+            trading-data-
+
+      - name: Decompress fund charts
+        run: |
+          if [ -f backtest/data/fund_charts.json.gz ]; then
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+          fi
+
+      - name: Prepare fund chart split files
+        run: |
+          mkdir -p data/fund_charts
+          CHART_COUNT=$(ls data/fund_charts/*.json 2>/dev/null | wc -l)
+          if [ "$CHART_COUNT" -lt 100 ] && [ -f backtest/data/fund_charts.json ]; then
+            python -c "
+          import json, os
+          os.makedirs('data/fund_charts', exist_ok=True)
+          data = json.loads(open('backtest/data/fund_charts.json', encoding='utf-8').read())
+          for code, pts in data.items():
+              if pts:
+                  with open(f'data/fund_charts/{code}.json', 'w', encoding='utf-8') as f:
+                      json.dump(pts, f)
+          "
+          fi
+
+      - name: Download V5 Phase 1 merged (top30)
+        uses: actions/download-artifact@v4
+        with:
+          name: v5-phase1-merged
+          path: backtest/v5-results/phase1-merged/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 30200852909
+
+      - name: Run rolling window validation chunk 9
+        run: |
+          echo "=== Phase 2 retry: Rolling window validation chunk 9/10 ==="
+          python backtest/rolling_window.py             --input v5-results/phase1-merged/top30.json             --output rolling_window.json             --chunk 9 --total 10             --top-n 0
+
+      - name: Upload rolling window chunk 9
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-phase2-chunk-9
+          path: backtest/results_revalidation/rolling_window_chunk9.json
+          retention-days: 30
+          if-no-files-found: error
