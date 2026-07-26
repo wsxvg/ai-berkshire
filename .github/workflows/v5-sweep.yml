@@ -1,0 +1,387 @@
+name: V5 Fine-Tuned Sweep (94 strategies, 20-way parallel)
+
+on:
+  workflow_dispatch:
+    inputs:
+      chunks:
+        description: 'Phase 1 并行分片数 (1-20)'
+        required: false
+        default: '20'
+      top_n:
+        description: 'Phase 2 滚动窗口验证的策略数'
+        required: false
+        default: '30'
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # ═══════════════════════════════════════════════════
+  # Phase 0: 生成并行矩阵
+  # ═══════════════════════════════════════════════════
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      total: ${{ steps.set-matrix.outputs.total }}
+    steps:
+      - id: set-matrix
+        run: |
+          CHUNKS="${{ github.event.inputs.chunks || '20' }}"
+          ITEMS=""
+          for i in $(seq 0 $((CHUNKS-1))); do
+            if [ -n "$ITEMS" ]; then ITEMS="$ITEMS,"; fi
+            ITEMS="$ITEMS\"$i\""
+          done
+          echo "matrix=[$ITEMS]" >> $GITHUB_OUTPUT
+          echo "total=$CHUNKS" >> $GITHUB_OUTPUT
+          echo "Phase 1 Matrix: [$ITEMS]"
+
+  # ═══════════════════════════════════════════════════
+  # Phase 1: 全量3年回测（20路并行，94策略）
+  # ═══════════════════════════════════════════════════
+  backtest-full-period:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        chunk: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+          key: trading-data-v5-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v4-
+            trading-data-v3-
+            trading-data-
+
+      - name: Decompress fund charts
+        run: |
+          if [ -f backtest/data/fund_charts.json.gz ]; then
+            echo "Decompressing fund_charts.json.gz..."
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+            echo "Done. Size: $(du -h backtest/data/fund_charts.json | cut -f1)"
+          fi
+
+      - name: Prepare fund chart split files
+        run: |
+          mkdir -p data/fund_charts
+          CHART_COUNT=$(ls data/fund_charts/*.json 2>/dev/null | wc -l)
+          echo "Existing split files: $CHART_COUNT"
+          if [ "$CHART_COUNT" -lt 100 ] && [ -f backtest/data/fund_charts.json ]; then
+            echo "Splitting fund_charts.json..."
+            python -c "
+          import json, os
+          os.makedirs('data/fund_charts', exist_ok=True)
+          data = json.loads(open('backtest/data/fund_charts.json', encoding='utf-8').read())
+          count = 0
+          for code, pts in data.items():
+              if pts:
+                  with open(f'data/fund_charts/{code}.json', 'w', encoding='utf-8') as f:
+                      json.dump(pts, f)
+                  count += 1
+          print(f'Split {count} funds')
+          "
+          fi
+
+      - name: Verify data
+        run: |
+          echo "=== Data verification ==="
+          echo "trading_by_date: $(python -c "import json; d=json.load(open('backtest/data/trading_by_date_fixed.json')); print(f'{len(d)} days, {sum(len(v) for v in d.values())} records')")"
+          echo "fund_charts split: $(ls data/fund_charts/*.json 2>/dev/null | wc -l) files"
+          echo "fund_name_map: $(python -c "import json; print(len(json.load(open('data/fund_name_map.json'))))") entries"
+          echo "v5_sweep: $(python -c "import json; print(len(json.load(open('backtest/v5_sweep_configs.json'))))") strategies"
+
+      - name: Run V5 sweep chunk ${{ matrix.chunk }}
+        run: |
+          TOTAL=${{ needs.generate-matrix.outputs.total }}
+          echo "=== Phase 1: V5 sweep chunk ${{ matrix.chunk }}/$TOTAL ==="
+          python backtest/run_focused_sweep.py \
+            --start 2023-07-17 --end 2026-07-24 \
+            --chunk ${{ matrix.chunk }} --total $TOTAL \
+            --configs backtest/v5_sweep_configs.json \
+            --output v5-results/phase1/ \
+            --timeout 600
+
+      - name: Upload chunk results
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-phase1-chunk-${{ matrix.chunk }}
+          path: v5-results/phase1/chunk_${{ matrix.chunk }}.json
+          retention-days: 30
+          if-no-files-found: error
+
+  # ═══════════════════════════════════════════════════
+  # Phase 1.5: 合并结果 + 选出 Top N
+  # ═══════════════════════════════════════════════════
+  merge-select-top:
+    needs: backtest-full-period
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      rw_matrix: ${{ steps.split.outputs.rw_matrix }}
+      rw_total: ${{ steps.split.outputs.rw_total }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 1 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: v5-phase1-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Merge and select top N
+        id: merge
+        run: |
+          TOP_N="${{ github.event.inputs.top_n || '30' }}"
+          python -c "
+          import json, glob, os
+          all_results = []
+          for f in sorted(glob.glob('chunks/chunk_*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_results.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+
+          all_results.sort(key=lambda x: x.get('sharpe', 0), reverse=True)
+          top_n = all_results[:$TOP_N]
+
+          os.makedirs('v5-results/phase1-merged', exist_ok=True)
+          with open('v5-results/phase1-merged/all_strategies.json', 'w', encoding='utf-8') as f:
+              json.dump({'strategies': all_results, 'total': len(all_results)}, f, ensure_ascii=False, indent=2)
+          with open('v5-results/phase1-merged/top30.json', 'w', encoding='utf-8') as f:
+              json.dump({'top20': top_n[:20], 'top30': top_n}, f, ensure_ascii=False, indent=2)
+
+          print(f'\n=== V5 Phase 1 Results: {len(all_results)} strategies, Top {len(top_n)} selected ===')
+          print(f\"{'Strategy':40s} {'Return':>8s} {'Annual':>8s} {'MaxDD':>8s} {'Sharpe':>6s} {'Trades':>6s}\")
+          for r in top_n[:20]:
+              print(f\"{r['name']:40s} {r['return']:>+7.2f}% {r['annualized']:>+7.1f}% {r['dd']:>7.2f}% {r['sharpe']:>5.2f} {r['trades']:>5d}\")
+          "
+
+      - name: Split top N into rolling window chunks
+        id: split
+        run: |
+          TOP_N="${{ github.event.inputs.top_n || '30' }}"
+          RW_CHUNKS=10
+          if [ "$TOP_N" -lt 10 ]; then RW_CHUNKS=$TOP_N; fi
+          ITEMS=""
+          for i in $(seq 0 $((RW_CHUNKS-1))); do
+            if [ -n "$ITEMS" ]; then ITEMS="$ITEMS,"; fi
+            ITEMS="$ITEMS\"$i\""
+          done
+          echo "rw_matrix=[$ITEMS]" >> $GITHUB_OUTPUT
+          echo "rw_total=$RW_CHUNKS" >> $GITHUB_OUTPUT
+
+      - name: Upload merged results
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-phase1-merged
+          path: |
+            v5-results/phase1-merged/all_strategies.json
+            v5-results/phase1-merged/top30.json
+
+  # ═══════════════════════════════════════════════════
+  # Phase 2: 滚动窗口验证（10路并行，Top30策略）
+  # ═══════════════════════════════════════════════════
+  rolling-window-validation:
+    needs: merge-select-top
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        chunk: ${{ fromJson(needs.merge-select-top.outputs.rw_matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || true
+          pip install chinese_calendar
+
+      - name: Restore trading data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+          key: trading-data-v5-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v4-
+            trading-data-v3-
+            trading-data-
+
+      - name: Decompress fund charts
+        run: |
+          if [ -f backtest/data/fund_charts.json.gz ]; then
+            cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+          fi
+
+      - name: Prepare fund chart split files
+        run: |
+          mkdir -p data/fund_charts
+          CHART_COUNT=$(ls data/fund_charts/*.json 2>/dev/null | wc -l)
+          if [ "$CHART_COUNT" -lt 100 ] && [ -f backtest/data/fund_charts.json ]; then
+            python -c "
+          import json, os
+          os.makedirs('data/fund_charts', exist_ok=True)
+          data = json.loads(open('backtest/data/fund_charts.json', encoding='utf-8').read())
+          for code, pts in data.items():
+              if pts:
+                  with open(f'data/fund_charts/{code}.json', 'w', encoding='utf-8') as f:
+                      json.dump(pts, f)
+          "
+          fi
+
+      - name: Download top30.json
+        uses: actions/download-artifact@v4
+        with:
+          name: v5-phase1-merged
+          path: backtest/v5-results/phase1-merged/
+
+      - name: Run rolling window validation chunk ${{ matrix.chunk }}
+        run: |
+          RW_TOTAL=${{ needs.merge-select-top.outputs.rw_total }}
+          echo "=== Phase 2: Rolling window validation chunk ${{ matrix.chunk }}/$RW_TOTAL ==="
+          python backtest/rolling_window.py \
+            --input v5-results/phase1-merged/top30.json \
+            --output rolling_window.json \
+            --chunk ${{ matrix.chunk }} --total $RW_TOTAL \
+            --top-n 0
+
+      - name: Upload rolling window chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-phase2-chunk-${{ matrix.chunk }}
+          path: backtest/results_revalidation/rolling_window_chunk${{ matrix.chunk }}.json
+          retention-days: 30
+          if-no-files-found: error
+
+  # ═══════════════════════════════════════════════════
+  # Phase 3: 最终合并 + 排名 + 提交
+  # ═══════════════════════════════════════════════════
+  final-merge-commit:
+    needs: rolling-window-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all Phase 2 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: v5-phase2-chunk-*
+          path: chunks/
+          merge-multiple: true
+
+      - name: Download Phase 1 merged
+        uses: actions/download-artifact@v4
+        with:
+          name: v5-phase1-merged
+          path: v5-results/phase1-merged/
+
+      - name: Merge rolling window results and generate final ranking
+        run: |
+          python -c "
+          import json, glob, os
+
+          all_rw = []
+          for f in sorted(glob.glob('chunks/rolling_window_chunk*.json')):
+              d = json.loads(open(f, encoding='utf-8').read())
+              all_rw.extend(d.get('strategies', []))
+              print(f'  {f}: {len(d.get(\"strategies\", []))} strategies')
+
+          all_rw.sort(key=lambda x: x.get('anti_overfit_score', 0), reverse=True)
+          passed = [r for r in all_rw if r.get('anti_overfit_passed', False)]
+          failed = [r for r in all_rw if not r.get('anti_overfit_passed', False)]
+
+          os.makedirs('v5-results/final', exist_ok=True)
+          with open('v5-results/final/rolling_window_final.json', 'w', encoding='utf-8') as f:
+              json.dump({
+                  'strategies': all_rw,
+                  'passed': passed,
+                  'failed': failed,
+                  'pass_rate': f'{len(passed)}/{len(all_rw)}',
+                  'total': len(all_rw),
+              }, f, ensure_ascii=False, indent=2)
+
+          with open('v5-results/final/anti_overfit_passed.json', 'w', encoding='utf-8') as f:
+              json.dump({'strategies': passed, 'total': len(passed)}, f, ensure_ascii=False, indent=2)
+
+          print(f'\n{\"=\"*90}')
+          print(f'V5最终结果: {len(all_rw)} 个策略 | 防过拟合通过: {len(passed)} | 失败: {len(failed)}')
+          print(f'{\"=\"*90}')
+          print(f'{\"策略\":40s} {\"全量收益\":>8s} {\"年均\":>6s} {\"标准差\":>6s} {\"最差\":>6s} {\"AO分\":>6s} {\"状态\":>6s}')
+          print(f'{\"-\"*90}')
+          for r in all_rw[:25]:
+              status = 'PASS' if r.get('anti_overfit_passed') else 'FAIL'
+              print(f\"{r['name']:40s} {r.get('full_return',0):>+7.2f}% {r.get('avg_yearly_return',0):>+5.1f}% \"
+                    f\"{r.get('std_yearly_return',0):>5.1f}% {r.get('min_yearly_return',0):>+5.1f}% \"
+                    f\"{r.get('anti_overfit_score',0):>5.1f} {status:>6s}\")
+
+          if passed:
+              champ = passed[0]
+              print(f'\n V5 Champion (anti-overfit): {champ[\"name\"]}')
+              print(f'   Full return: {champ.get(\"full_return\",0):+.2f}% | Sharpe: {champ.get(\"full_sharpe\",0):.2f}')
+              print(f'   Avg yearly: {champ.get(\"avg_yearly_return\",0):+.1f}% | Std: {champ.get(\"std_yearly_return\",0):.1f}%')
+              print(f'   Worst window: {champ.get(\"min_yearly_return\",0):+.1f}% | Max DD: {champ.get(\"max_yearly_dd\",0):.1f}%')
+          "
+
+      - name: Commit final results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add v5-results/
+          git diff --cached --quiet || git commit -m "V5精细优化扫描+滚动窗口验证 $(date -u +'%Y-%m-%d')"
+          git push || echo "push skipped"
+
+      - name: Upload final results
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-final-results
+          path: |
+            v5-results/final/rolling_window_final.json
+            v5-results/final/anti_overfit_passed.json
+            v5-results/phase1-merged/all_strategies.json
