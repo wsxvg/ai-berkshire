@@ -2632,7 +2632,7 @@ def run_backtest(config, clear_cache=True):
 
             # 🔴 方案U3：组合级回撤减仓 — 组合回撤>X%时每只减仓Y%（不全清）
             _port_dd_reduce_pct = config.get("portfolio_dd_reduce_pct", 0)
-            if _port_dd_reduce_pct > 0 and code in portfolio.holdings:
+            if _port_dd_reduce_pct > 0 and not should_sell and code in portfolio.holdings:
                 _total_value = portfolio.cash + sum(
                     h2["shares"] * (100 + _float((_bisect_valid(fund_charts.get(c2, []), cutoff_full) or [{"yAxis":0}])[-1].get("yAxis", 0))) / 100
                     for c2, h2 in portfolio.holdings.items()
@@ -2676,7 +2676,7 @@ def run_backtest(config, clear_cache=True):
 
             # 🟡 回撤减半: 从最高点回撤超过阈值但未到清仓线，先卖一半锁利
             peak_dd_reduce = config.get("peak_drawdown_reduce", 0)
-            if peak_dd_reduce > 0 and drawdown_from_peak < -peak_dd_reduce and code in portfolio.holdings:
+            if peak_dd_reduce > 0 and not should_sell and drawdown_from_peak < -peak_dd_reduce and code in portfolio.holdings:
                 sell_value = h["shares"] * sell_price * 0.5
                 if sell_value >= 100:
                     _sold = portfolio.sell(code, sell_value, sell_price, cutoff_full,
@@ -2700,7 +2700,7 @@ def run_backtest(config, clear_cache=True):
 
             # 🔵 仓位过重: 单只超过阈值，减到标准仓位
             total_value = portfolio.value(fund_prices)
-            if total_value > 0 and code in portfolio.holdings:
+            if total_value > 0 and not should_sell and code in portfolio.holdings:
                 fund_value = h["shares"] * sell_price
                 pct = fund_value / total_value * 100
                 if pct > max_pos:
@@ -2720,16 +2720,28 @@ def run_backtest(config, clear_cache=True):
                 _elim_threshold = config.get("rank_elim_threshold", 2.0)  # 评分低于此值考虑淘汰
                 _elim_min_hold = config.get("rank_elim_min_hold_days", 30)  # 至少持有N天才参与排名淘汰
                 _hold_d = portfolio._holding_days(code, cutoff_full)
-                if _hold_d >= _elim_min_hold and mom.score < _elim_threshold:
+                # 使用与候选相同的总分(含权重)，而非纯动量分
+                _held_fs = score_fund_backtest(
+                    code, h.get("name", ""), fund_charts, None,
+                    fund_rules.get(code), fund_managers.get(code),
+                    cutoff_full, trading_by_date,
+                    fund_profiles.get(code),
+                    allocation_data=fund_holdings_data,
+                    fund_data_cache=fund_data_cache,
+                    industry_data=industry_data if industry_data else None,
+                    weights=config.get("weights"),
+                )
+                _held_total = _held_fs.total
+                if _hold_d >= _elim_min_hold and _held_total < _elim_threshold:
                     # 检查是否有更好的候选可以替代
                     _has_better = any(
-                        c.get("score", 0) > mom.score + config.get("rank_elim_margin", 0.5)
+                        c.get("score", 0) > _held_total + config.get("rank_elim_margin", 0.5)
                         for c in candidates
                         if c["code"] != code
                     )
                     if _has_better:
                         should_sell = True
-                        sell_reason = f"rank_elimination mom={mom.score:.2f} threshold={_elim_threshold} held={_hold_d}d"
+                        sell_reason = f"rank_elimination score={_held_total:.2f} threshold={_elim_threshold} held={_hold_d}d"
 
             if should_sell:
                 portfolio.sell(code, 0, sell_price, cutoff_full, sell_reason, force_sell=True)
@@ -2895,13 +2907,23 @@ def run_backtest(config, clear_cache=True):
                         _hd = portfolio._holding_days(hc, cutoff_full)
                         if _hd < _swap_min_hold:
                             continue
-                        # 重新评分
+                        # 重新评分——使用与候选相同的总分(含权重)，而非纯动量分
                         _hpts = fund_charts.get(hc, [])
                         _hvalid = _bisect_valid(_hpts, cutoff_full) if _hpts else None
                         if _hvalid:
-                            _hmom = score_momentum_backtest(_hpts, cutoff_full)
-                            if _hmom.score < _weakest_score:
-                                _weakest_score = _hmom.score
+                            _hfs = score_fund_backtest(
+                                hc, hh.get("name", ""), fund_charts, None,
+                                fund_rules.get(hc), fund_managers.get(hc),
+                                cutoff_full, trading_by_date,
+                                fund_profiles.get(hc),
+                                allocation_data=fund_holdings_data,
+                                fund_data_cache=fund_data_cache,
+                                industry_data=industry_data if industry_data else None,
+                                weights=config.get("weights"),
+                            )
+                            _h_total = _hfs.total
+                            if _h_total < _weakest_score:
+                                _weakest_score = _h_total
                                 _weakest_code = hc
                     # 如果新候选明显更强，换仓
                     if _weakest_code and c.get("score", 0) > _weakest_score + _swap_margin:
