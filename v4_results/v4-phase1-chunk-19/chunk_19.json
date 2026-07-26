@@ -1,0 +1,50 @@
+{
+  "strategies": [
+    {
+      "name": "V4_N2_inject1000_tp15_sl10",
+      "desc": "",
+      "return": 5.805891891891893,
+      "annualized": 1.8864076208757519,
+      "dd": 15.15496877487207,
+      "trades": 309,
+      "holdings": 6,
+      "sharpe": 0.3831015410284738,
+      "fees": 262.05,
+      "elapsed": 544.1645407676697,
+      "config": {
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 0,
+        "monthly_injection": 1000,
+        "weights": {
+          "quality": 25,
+          "cost": 20,
+          "manager": 20,
+          "momentum": 15,
+          "smart_money": 20
+        },
+        "min_score": 3.3,
+        "no_stop_loss": false,
+        "take_profit_pct": 15,
+        "profit_mode": "half",
+        "cost_penalty": 0,
+        "min_consensus": 2,
+        "fund_type_filter": "all",
+        "momentum_sell": 0,
+        "max_candidates_per_day": 0,
+        "max_holdings": 8,
+        "kelly_cap": 0.35,
+        "smart_swap": true,
+        "smart_swap_margin": 1.0,
+        "smart_swap_min_hold_days": 30,
+        "dynamic_max_holdings": true,
+        "max_holdings_bull_mult": 1.5,
+        "max_holdings_bear_mult": 0.6,
+        "stop_loss_pct": -10
+      }
+    }
+  ],
+  "chunk": 19,
+  "total": 5,
+  "skipped": 4
+}

@@ -1,0 +1,1669 @@
+{
+  "fetch_time": "2026-07-24T14:33:21.584956",
+  "total_checked": 62,
+  "normal": 47,
+  "single_bet": 15,
+  "cleared": 0,
+  "normal_users": [
+    {
+      "rank": 1,
+      "uid": "14569374",
+      "name": "宝宝100102",
+      "ret": 204.28,
+      "n_funds": 18,
+      "total_amount": 670283.9100000001,
+      "fund_names": [
+        "万家中证半导体材料设备主题ETF发起式联接C",
+        "东方阿尔法科技优选混合发起C",
+        "财通价值动量混合A",
+        "华泰柏瑞中证红利低波ETF联接C",
+        "方正富邦中证保险C"
+      ]
+    },
+    {
+      "rank": 12,
+      "uid": "18170275",
+      "name": "安叔GX",
+      "ret": 124.57,
+      "n_funds": 6,
+      "total_amount": 306742.54000000004,
+      "fund_names": [
+        "易方达中证海外中国互联网50ETF联接(QDII)",
+        "博时中证港股通互联网ETF发起式联接A",
+        "富国中证港股通互联网ETF发起式联接A",
+        "嘉实沪深300红利低波动ETF联接Y",
+        "天弘中证同业存单AAA指数7天持有"
+      ]
+    },
+    {
+      "rank": 15,
+      "uid": "384397",
+      "name": "嘻嘻哈哈112",
+      "ret": 112.61,
+      "n_funds": 5,
+      "total_amount": 54106.45,
+      "fund_names": [
+        "易方达科讯混合",
+        "易方达新常态混合A",
+        "金鹰稳健成长混合",
+        "工银医疗保健股票",
+        "易方达新常态混合A"
+      ]
+    },
+    {
+      "rank": 23,
+      "uid": "3786598",
+      "name": "茅年斌",
+      "ret": 98.17,
+      "n_funds": 4,
+      "total_amount": 175392.79,
+      "fund_names": [
+        "华夏中证5G通信主题ETF联接C",
+        "鹏华医药科技股票A",
+        "银河创新混合A",
+        "易方达蓝筹精选混合"
+      ]
+    },
+    {
+      "rank": 27,
+      "uid": "14215625",
+      "name": "jd_心琪无忧",
+      "ret": 90.89,
+      "n_funds": 4,
+      "total_amount": 69388.01999999999,
+      "fund_names": [
+        "富国成长策略混合A",
+        "广发科技先锋混合",
+        "华夏科创50ETF联接C",
+        "富国天惠成长混合(LOF)A/B"
+      ]
+    },
+    {
+      "rank": 33,
+      "uid": "13877467",
+      "name": "西门喷血1981",
+      "ret": 87.54,
+      "n_funds": 9,
+      "total_amount": 177317.64,
+      "fund_names": [
+        "易方达核心智造混合",
+        "华夏中证5G通信主题ETF联接C",
+        "华夏国证半导体芯片ETF联接C",
+        "富国创新科技混合A",
+        "华夏科创50ETF联接C"
+      ]
+    },
+    {
+      "rank": 34,
+      "uid": "14160183",
+      "name": "jd_找寻神",
+      "ret": 86.8,
+      "n_funds": 8,
+      "total_amount": 131048.37000000001,
+      "fund_names": [
+        "易方达新收益混合A",
+        "前海开源国家比较优势混合A",
+        "工银前沿医疗股票A",
+        "中欧医疗健康混合A",
+        "易方达上证科创50ETF联接A"
+      ]
+    },
+    {
+      "rank": 42,
+      "uid": "13716567",
+      "name": "大锤子JD",
+      "ret": 83.64,
+      "n_funds": 3,
+      "total_amount": 384196.54,
+      "fund_names": [
+        "工银核心价值混合A",
+        "广发纳指100ETF联接(QDII)C",
+        "广发纳指100ETF联接(QDII)A"
+      ]
+    },
+    {
+      "rank": 45,
+      "uid": "1224896",
+      "name": "无影天尊",
+      "ret": 81.79,
+      "n_funds": 3,
+      "total_amount": 401576.86,
+      "fund_names": [
+        "博时半导体主题混合A",
+        "汇添富数字未来混合C",
+        "华夏核心价值混合C"
+      ]
+    },
+    {
+      "rank": 47,
+      "uid": "235970",
+      "name": "随心与",
+      "ret": 81.06,
+      "n_funds": 3,
+      "total_amount": 145130.95,
+      "fund_names": [
+        "华夏中证5G通信主题ETF联接C",
+        "鹏华匠心精选混合C类",
+        "天弘上海金ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 49,
+      "uid": "3101248",
+      "name": "jdhe1190",
+      "ret": 79.59,
+      "n_funds": 3,
+      "total_amount": 90767.58,
+      "fund_names": [
+        "广发国证半导体芯片ETF联接A",
+        "兴业研究精选混合A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 50,
+      "uid": "180948",
+      "name": "思茅区陈磊",
+      "ret": 79.24,
+      "n_funds": 19,
+      "total_amount": 1471941.2599999998,
+      "fund_names": [
+        "东方人工智能主题混合A",
+        "招商中证白酒指数C",
+        "南方瑞盛三年持有期混合A",
+        "华宝医疗ETF联接C",
+        "汇添富沪港深大盘价值混合A"
+      ]
+    },
+    {
+      "rank": 52,
+      "uid": "11077713",
+      "name": "彩色的风",
+      "ret": 78.93,
+      "n_funds": 33,
+      "total_amount": 69200.99,
+      "fund_names": [
+        "工银科创ETF联接C",
+        "博时半导体主题混合A",
+        "鹏扬中证科创创业50ETF联接C",
+        "易方达上证科创50ETF联接C",
+        "天弘中证工业有色金属主题ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 55,
+      "uid": "3123736",
+      "name": "北漂的龙少帅",
+      "ret": 76.81,
+      "n_funds": 11,
+      "total_amount": 156277.81999999998,
+      "fund_names": [
+        "天弘医药创新C",
+        "天弘中证全指通信设备指数发起C",
+        "中航机遇领航混合发起C",
+        "永赢科技智选混合发起C",
+        "富国创新科技混合C"
+      ]
+    },
+    {
+      "rank": 56,
+      "uid": "14225881",
+      "name": "r1506u2fj614l2",
+      "ret": 76.71,
+      "n_funds": 16,
+      "total_amount": 54265.920000000006,
+      "fund_names": [
+        "创金合信恒宁30天滚动持有短债A",
+        "富国创新科技混合A",
+        "华夏中证5G通信主题ETF联接C",
+        "华夏MSCI中国A50互联互通ETF发起式联接C",
+        "中欧洞见一年持有混合"
+      ]
+    },
+    {
+      "rank": 57,
+      "uid": "2929964",
+      "name": "大哲哥nio2",
+      "ret": 76.62,
+      "n_funds": 4,
+      "total_amount": 128435.62000000001,
+      "fund_names": [
+        "浦银安盛全球智能科技(QDII)C",
+        "华夏国证半导体芯片ETF联接C",
+        "华夏科创50ETF联接C",
+        "天弘上海金ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 59,
+      "uid": "2378188",
+      "name": "天朝网购战士",
+      "ret": 75.95,
+      "n_funds": 3,
+      "total_amount": 168970.47,
+      "fund_names": [
+        "国联安中证全指半导体产品与设备ETF联接A",
+        "广发科技先锋混合",
+        "汇添富中证生物科技指数C"
+      ]
+    },
+    {
+      "rank": 61,
+      "uid": "1133060",
+      "name": "不浊的流水",
+      "ret": 75.55,
+      "n_funds": 9,
+      "total_amount": 272877.07,
+      "fund_names": [
+        "交银医药创新股票C",
+        "财通集成电路产业股票A",
+        "嘉实绿色主题股票发起式A",
+        "财通匠心优选一年持有期混合C",
+        "中欧医疗创新股票C"
+      ]
+    },
+    {
+      "rank": 62,
+      "uid": "14197156",
+      "name": "亚修",
+      "ret": 75.18,
+      "n_funds": 3,
+      "total_amount": 194855.82,
+      "fund_names": [
+        "易方达战略新兴产业股票C",
+        "兴全合宜混合A",
+        "国联安核心资产混合"
+      ]
+    },
+    {
+      "rank": 63,
+      "uid": "2705091",
+      "name": "dlbcangel",
+      "ret": 74.92,
+      "n_funds": 5,
+      "total_amount": 76978.76,
+      "fund_names": [
+        "国泰中证全指证券公司ETF联接C",
+        "华夏科创50ETF联接A",
+        "万家臻选混合A",
+        "博时黄金ETF联接C",
+        "国泰海通君增利60天滚动持有债券发起C"
+      ]
+    },
+    {
+      "rank": 64,
+      "uid": "44553",
+      "name": "独孤隐龟",
+      "ret": 74.84,
+      "n_funds": 28,
+      "total_amount": 176720.58000000002,
+      "fund_names": [
+        "平安惠泰纯债C",
+        "华夏国证半导体芯片ETF联接C",
+        "广发睿毅领先混合A",
+        "广发新经济混合A",
+        "天弘恒生科技ETF联接C"
+      ]
+    },
+    {
+      "rank": 65,
+      "uid": "570540",
+      "name": "永恒的梦",
+      "ret": 74.56,
+      "n_funds": 3,
+      "total_amount": 136033.03999999998,
+      "fund_names": [
+        "大摩数字经济混合A",
+        "华夏全球科技先锋混合(QDII)A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 68,
+      "uid": "10945204",
+      "name": "jd_32s5t55v0tc8iu",
+      "ret": 72.38,
+      "n_funds": 4,
+      "total_amount": 73694.36,
+      "fund_names": [
+        "信澳新能源产业股票A",
+        "中欧中证芯片产业指数发起C",
+        "永赢科技智选混合发起C",
+        "国泰黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 69,
+      "uid": "1096064",
+      "name": "world7602",
+      "ret": 72.35,
+      "n_funds": 9,
+      "total_amount": 764485.5199999999,
+      "fund_names": [
+        "易方达战略新兴产业股票A",
+        "易方达竞争优势企业混合A",
+        "易方达医药生物股票A",
+        "博时半导体主题混合A",
+        "易方达品质动能三年持有混合A"
+      ]
+    },
+    {
+      "rank": 70,
+      "uid": "344148",
+      "name": "准确命中o",
+      "ret": 72.29,
+      "n_funds": 11,
+      "total_amount": 66148.70000000001,
+      "fund_names": [
+        "华夏科创50ETF联接C",
+        "鹏扬中证科创创业50ETF联接C",
+        "华夏国证半导体芯片ETF联接C",
+        "华夏新兴成长股票C",
+        "景顺长城绩优成长混合A"
+      ]
+    },
+    {
+      "rank": 71,
+      "uid": "11977071",
+      "name": "nd04v4qyaxy8dz",
+      "ret": 71.68,
+      "n_funds": 6,
+      "total_amount": 976195.4800000001,
+      "fund_names": [
+        "易方达全球成长精选混合(QDII)A",
+        "华夏全球科技先锋混合(QDII)A",
+        "天弘全球高端制造混合(QDII)A",
+        "嘉实全球产业升级股票发起式(QDII)A",
+        "建信新兴市场混合(QDII)A"
+      ]
+    },
+    {
+      "rank": 72,
+      "uid": "2849211",
+      "name": "帅杨先生",
+      "ret": 70.31,
+      "n_funds": 5,
+      "total_amount": 99804.65,
+      "fund_names": [
+        "中欧医疗健康混合A",
+        "摩根纳斯达克100指数(QDII)人民币A",
+        "国泰恒生A股电网设备ETF发起联接A",
+        "南方有色金属ETF联接A",
+        "工银新能源汽车混合A"
+      ]
+    },
+    {
+      "rank": 74,
+      "uid": "8792440",
+      "name": "jd_178570qdg",
+      "ret": 69.8,
+      "n_funds": 32,
+      "total_amount": 762001.0899999997,
+      "fund_names": [
+        "中航机遇领航混合发起C",
+        "东方人工智能主题混合C",
+        "德邦鑫星价值C",
+        "信澳业绩驱动混合C",
+        "德邦稳盈增长灵活配置混合C"
+      ]
+    },
+    {
+      "rank": 75,
+      "uid": "9374298",
+      "name": "92g10ys5zafuvn",
+      "ret": 69.67,
+      "n_funds": 7,
+      "total_amount": 153814.37,
+      "fund_names": [
+        "华夏科创50ETF联接C",
+        "富国天惠成长混合(LOF)A/B",
+        "银河创新混合A",
+        "中欧医疗健康混合A",
+        "天弘中证光伏C"
+      ]
+    },
+    {
+      "rank": 76,
+      "uid": "14170940",
+      "name": "cheaaa",
+      "ret": 69.62,
+      "n_funds": 4,
+      "total_amount": 53124.33,
+      "fund_names": [
+        "银河创新混合C",
+        "诺安成长混合A",
+        "中欧医疗健康混合C",
+        "华泰保兴产业升级混合发起C"
+      ]
+    },
+    {
+      "rank": 77,
+      "uid": "4944636",
+      "name": "2hyz69pu7xlw5j",
+      "ret": 69.56,
+      "n_funds": 4,
+      "total_amount": 185681.25000000003,
+      "fund_names": [
+        "汇添富鑫享添利六个月持有混合A",
+        "前海开源裕源",
+        "华夏核心资产混合C",
+        "工银食品饮料混合A"
+      ]
+    },
+    {
+      "rank": 79,
+      "uid": "3623438",
+      "name": "理财日记1号",
+      "ret": 69.48,
+      "n_funds": 6,
+      "total_amount": 348308.66,
+      "fund_names": [
+        "建信新兴市场混合(QDII)C",
+        "嘉实全球产业升级股票发起式(QDII)C",
+        "大成科技创新混合C",
+        "国富全球科技互联混合(QDII)人民币A",
+        "国富全球科技互联混合(QDII)人民币C"
+      ]
+    },
+    {
+      "rank": 80,
+      "uid": "2880111",
+      "name": "jd_etAMVeqwUlRi",
+      "ret": 69.31,
+      "n_funds": 7,
+      "total_amount": 117714.21,
+      "fund_names": [
+        "富国互联科技股票型A",
+        "工银新能源汽车混合A",
+        "中航机遇领航混合发起A",
+        "银河创新混合A",
+        "广发创新升级混合"
+      ]
+    },
+    {
+      "rank": 81,
+      "uid": "14194272",
+      "name": "4e0dkprnbew9yj",
+      "ret": 69.17,
+      "n_funds": 26,
+      "total_amount": 477882.68,
+      "fund_names": [
+        "易方达科讯混合",
+        "国泰聚信价值优势灵活配置混合C",
+        "易方达安心回报债券B",
+        "中邮战略新兴产业混合A",
+        "易方达安心回报债券B"
+      ]
+    },
+    {
+      "rank": 82,
+      "uid": "1234313",
+      "name": "弦月之翼",
+      "ret": 69.06,
+      "n_funds": 3,
+      "total_amount": 147988.52,
+      "fund_names": [
+        "华商优势行业混合A",
+        "博时半导体主题混合A",
+        "广发双债添利债券A"
+      ]
+    },
+    {
+      "rank": 83,
+      "uid": "13788338",
+      "name": "888大地主888",
+      "ret": 68.67,
+      "n_funds": 5,
+      "total_amount": 1867809.7400000002,
+      "fund_names": [
+        "东财通信A",
+        "永赢科技智选混合发起A",
+        "东财通信C",
+        "景顺长城沪港深精选股票A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 84,
+      "uid": "12478776",
+      "name": "赵wdd",
+      "ret": 68.66,
+      "n_funds": 7,
+      "total_amount": 194393.6,
+      "fund_names": [
+        "东方人工智能主题混合C",
+        "景顺长城科技创新混合A",
+        "浦银安盛全球智能科技(QDII)C",
+        "广发全球精选股票(QDII)C",
+        "华宝纳斯达克精选股票发起式(QDII)C"
+      ]
+    },
+    {
+      "rank": 85,
+      "uid": "2657128",
+      "name": "丹尼尔2014",
+      "ret": 67.25,
+      "n_funds": 4,
+      "total_amount": 103181.03999999998,
+      "fund_names": [
+        "工银前沿医疗股票A",
+        "浦银安盛医疗健康混合A",
+        "光大保德信消费股票A",
+        "浦银安盛环保新能源C类"
+      ]
+    },
+    {
+      "rank": 86,
+      "uid": "10829377",
+      "name": "jd_182356dwq",
+      "ret": 67.08,
+      "n_funds": 5,
+      "total_amount": 51804.259999999995,
+      "fund_names": [
+        "银华中证5G通信主题ETF联接A",
+        "交银创业板50指数C",
+        "大成标普500等权重指数(QDII)C人民币",
+        "汇添富纳斯达克生物科技ETF发起式联接(QDII)",
+        "鹏华酒C"
+      ]
+    },
+    {
+      "rank": 87,
+      "uid": "1136313",
+      "name": "gan__gan",
+      "ret": 67.06,
+      "n_funds": 22,
+      "total_amount": 849554.0899999999,
+      "fund_names": [
+        "银河创新混合A",
+        "华夏中证5G通信主题ETF联接C",
+        "易方达信息产业混合A",
+        "兴全可转债混合",
+        "华夏中证5G通信主题ETF联接A"
+      ]
+    },
+    {
+      "rank": 90,
+      "uid": "11285806",
+      "name": "jd_137929gez",
+      "ret": 66.6,
+      "n_funds": 10,
+      "total_amount": 280641.04,
+      "fund_names": [
+        "富国成长策略混合A",
+        "易方达创新成长混合",
+        "大成积极成长混合A",
+        "中邮趋势精选灵活配置混合A",
+        "华夏科技创新混合C"
+      ]
+    },
+    {
+      "rank": 91,
+      "uid": "13901763",
+      "name": "嗜书如好色",
+      "ret": 66.28,
+      "n_funds": 5,
+      "total_amount": 148174.75,
+      "fund_names": [
+        "中欧明睿新常态混合A",
+        "工银高端制造股票",
+        "易方达上证50增强A",
+        "财通聚利债券C",
+        "富国中证新能源汽车指数A"
+      ]
+    },
+    {
+      "rank": 94,
+      "uid": "10819553",
+      "name": "Siketsu",
+      "ret": 65.73,
+      "n_funds": 9,
+      "total_amount": 320575.71,
+      "fund_names": [
+        "银河创新混合C",
+        "国投瑞银国家安全混合A",
+        "中欧阿尔法混合A",
+        "招商中证白酒指数A",
+        "鹏扬中证科创创业50ETF联接C"
+      ]
+    },
+    {
+      "rank": 95,
+      "uid": "4019495",
+      "name": "斗士888zku",
+      "ret": 65.61,
+      "n_funds": 171,
+      "total_amount": 499871.77000000025,
+      "fund_names": [
+        "华商优势行业混合A",
+        "交银优择回报灵活配置混合C",
+        "华商优势行业混合C",
+        "华商均衡成长混合C",
+        "华商致远回报混合C"
+      ]
+    },
+    {
+      "rank": 98,
+      "uid": "1066000",
+      "name": "h***u",
+      "ret": 64.25,
+      "n_funds": 13,
+      "total_amount": 206764.86999999997,
+      "fund_names": [
+        "国联新经济混合A",
+        "诺安成长混合A",
+        "中欧医疗健康混合A",
+        "易方达标普生物科技指数(QDII-LOF)A",
+        "东方红睿泽三年持有混合A"
+      ]
+    },
+    {
+      "rank": 99,
+      "uid": "14148626",
+      "name": "布丁小芒果",
+      "ret": 64.21,
+      "n_funds": 3,
+      "total_amount": 83086.76,
+      "fund_names": [
+        "国泰价值经典灵活配置混合(LOF)",
+        "兴业90天滚动持有中短债A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 100,
+      "uid": "2773435",
+      "name": "a***8",
+      "ret": 64.02,
+      "n_funds": 3,
+      "total_amount": 83339.38,
+      "fund_names": [
+        "易方达供给改革混合",
+        "华夏智胜价值成长股票A",
+        "西部利得汇享债券A"
+      ]
+    }
+  ],
+  "all_verified": [
+    {
+      "rank": 1,
+      "uid": "14569374",
+      "name": "宝宝100102",
+      "ret": 204.28,
+      "n_funds": 18,
+      "total_amount": 670283.9100000001,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "万家中证半导体材料设备主题ETF发起式联接C",
+        "东方阿尔法科技优选混合发起C",
+        "财通价值动量混合A",
+        "华泰柏瑞中证红利低波ETF联接C",
+        "方正富邦中证保险C"
+      ]
+    },
+    {
+      "rank": 4,
+      "uid": "18118793",
+      "name": "公开持仓",
+      "ret": 147.28,
+      "n_funds": 2,
+      "total_amount": 200018.83,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "招商中证白酒指数C",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 12,
+      "uid": "18170275",
+      "name": "安叔GX",
+      "ret": 124.57,
+      "n_funds": 6,
+      "total_amount": 306742.54000000004,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达中证海外中国互联网50ETF联接(QDII)",
+        "博时中证港股通互联网ETF发起式联接A",
+        "富国中证港股通互联网ETF发起式联接A",
+        "嘉实沪深300红利低波动ETF联接Y",
+        "天弘中证同业存单AAA指数7天持有"
+      ]
+    },
+    {
+      "rank": 15,
+      "uid": "384397",
+      "name": "嘻嘻哈哈112",
+      "ret": 112.61,
+      "n_funds": 5,
+      "total_amount": 54106.45,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达科讯混合",
+        "易方达新常态混合A",
+        "金鹰稳健成长混合",
+        "工银医疗保健股票",
+        "易方达新常态混合A"
+      ]
+    },
+    {
+      "rank": 23,
+      "uid": "3786598",
+      "name": "茅年斌",
+      "ret": 98.17,
+      "n_funds": 4,
+      "total_amount": 175392.79,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏中证5G通信主题ETF联接C",
+        "鹏华医药科技股票A",
+        "银河创新混合A",
+        "易方达蓝筹精选混合"
+      ]
+    },
+    {
+      "rank": 27,
+      "uid": "14215625",
+      "name": "jd_心琪无忧",
+      "ret": 90.89,
+      "n_funds": 4,
+      "total_amount": 69388.01999999999,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "富国成长策略混合A",
+        "广发科技先锋混合",
+        "华夏科创50ETF联接C",
+        "富国天惠成长混合(LOF)A/B"
+      ]
+    },
+    {
+      "rank": 33,
+      "uid": "13877467",
+      "name": "西门喷血1981",
+      "ret": 87.54,
+      "n_funds": 9,
+      "total_amount": 177317.64,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达核心智造混合",
+        "华夏中证5G通信主题ETF联接C",
+        "华夏国证半导体芯片ETF联接C",
+        "富国创新科技混合A",
+        "华夏科创50ETF联接C"
+      ]
+    },
+    {
+      "rank": 34,
+      "uid": "14160183",
+      "name": "jd_找寻神",
+      "ret": 86.8,
+      "n_funds": 8,
+      "total_amount": 131048.37000000001,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达新收益混合A",
+        "前海开源国家比较优势混合A",
+        "工银前沿医疗股票A",
+        "中欧医疗健康混合A",
+        "易方达上证科创50ETF联接A"
+      ]
+    },
+    {
+      "rank": 42,
+      "uid": "13716567",
+      "name": "大锤子JD",
+      "ret": 83.64,
+      "n_funds": 3,
+      "total_amount": 384196.54,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "工银核心价值混合A",
+        "广发纳指100ETF联接(QDII)C",
+        "广发纳指100ETF联接(QDII)A"
+      ]
+    },
+    {
+      "rank": 43,
+      "uid": "14223324",
+      "name": "jd_hOYyoaVzlUDM",
+      "ret": 82.56,
+      "n_funds": 1,
+      "total_amount": 89663.96,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达中证人工智能主题ETF联接C"
+      ]
+    },
+    {
+      "rank": 45,
+      "uid": "1224896",
+      "name": "无影天尊",
+      "ret": 81.79,
+      "n_funds": 3,
+      "total_amount": 401576.86,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "博时半导体主题混合A",
+        "汇添富数字未来混合C",
+        "华夏核心价值混合C"
+      ]
+    },
+    {
+      "rank": 47,
+      "uid": "235970",
+      "name": "随心与",
+      "ret": 81.06,
+      "n_funds": 3,
+      "total_amount": 145130.95,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏中证5G通信主题ETF联接C",
+        "鹏华匠心精选混合C类",
+        "天弘上海金ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 48,
+      "uid": "14189099",
+      "name": "酉酉2013",
+      "ret": 80.99,
+      "n_funds": 2,
+      "total_amount": 65765.93000000001,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "富国天瑞强势地区精选混合A",
+        "国泰黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 49,
+      "uid": "3101248",
+      "name": "jdhe1190",
+      "ret": 79.59,
+      "n_funds": 3,
+      "total_amount": 90767.58,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "广发国证半导体芯片ETF联接A",
+        "兴业研究精选混合A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 50,
+      "uid": "180948",
+      "name": "思茅区陈磊",
+      "ret": 79.24,
+      "n_funds": 19,
+      "total_amount": 1471941.2599999998,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "东方人工智能主题混合A",
+        "招商中证白酒指数C",
+        "南方瑞盛三年持有期混合A",
+        "华宝医疗ETF联接C",
+        "汇添富沪港深大盘价值混合A"
+      ]
+    },
+    {
+      "rank": 51,
+      "uid": "3585515",
+      "name": "regexz",
+      "ret": 79.18,
+      "n_funds": 2,
+      "total_amount": 133939.27,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "中航机遇领航混合发起C",
+        "中航机遇领航混合发起A"
+      ]
+    },
+    {
+      "rank": 52,
+      "uid": "11077713",
+      "name": "彩色的风",
+      "ret": 78.93,
+      "n_funds": 33,
+      "total_amount": 69200.99,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "工银科创ETF联接C",
+        "博时半导体主题混合A",
+        "鹏扬中证科创创业50ETF联接C",
+        "易方达上证科创50ETF联接C",
+        "天弘中证工业有色金属主题ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 53,
+      "uid": "14089372",
+      "name": "清凉的山风8922@",
+      "ret": 78.52,
+      "n_funds": 2,
+      "total_amount": 57834.39,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达科翔混合",
+        "易方达科翔混合"
+      ]
+    },
+    {
+      "rank": 55,
+      "uid": "3123736",
+      "name": "北漂的龙少帅",
+      "ret": 76.81,
+      "n_funds": 11,
+      "total_amount": 156277.81999999998,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "天弘医药创新C",
+        "天弘中证全指通信设备指数发起C",
+        "中航机遇领航混合发起C",
+        "永赢科技智选混合发起C",
+        "富国创新科技混合C"
+      ]
+    },
+    {
+      "rank": 56,
+      "uid": "14225881",
+      "name": "r1506u2fj614l2",
+      "ret": 76.71,
+      "n_funds": 16,
+      "total_amount": 54265.920000000006,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "创金合信恒宁30天滚动持有短债A",
+        "富国创新科技混合A",
+        "华夏中证5G通信主题ETF联接C",
+        "华夏MSCI中国A50互联互通ETF发起式联接C",
+        "中欧洞见一年持有混合"
+      ]
+    },
+    {
+      "rank": 57,
+      "uid": "2929964",
+      "name": "大哲哥nio2",
+      "ret": 76.62,
+      "n_funds": 4,
+      "total_amount": 128435.62000000001,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "浦银安盛全球智能科技(QDII)C",
+        "华夏国证半导体芯片ETF联接C",
+        "华夏科创50ETF联接C",
+        "天弘上海金ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 59,
+      "uid": "2378188",
+      "name": "天朝网购战士",
+      "ret": 75.95,
+      "n_funds": 3,
+      "total_amount": 168970.47,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "国联安中证全指半导体产品与设备ETF联接A",
+        "广发科技先锋混合",
+        "汇添富中证生物科技指数C"
+      ]
+    },
+    {
+      "rank": 60,
+      "uid": "1130028",
+      "name": "jd_136972hxy",
+      "ret": 75.63,
+      "n_funds": 1,
+      "total_amount": 59436.35,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏科创50ETF联接C"
+      ]
+    },
+    {
+      "rank": 61,
+      "uid": "1133060",
+      "name": "不浊的流水",
+      "ret": 75.55,
+      "n_funds": 9,
+      "total_amount": 272877.07,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "交银医药创新股票C",
+        "财通集成电路产业股票A",
+        "嘉实绿色主题股票发起式A",
+        "财通匠心优选一年持有期混合C",
+        "中欧医疗创新股票C"
+      ]
+    },
+    {
+      "rank": 62,
+      "uid": "14197156",
+      "name": "亚修",
+      "ret": 75.18,
+      "n_funds": 3,
+      "total_amount": 194855.82,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达战略新兴产业股票C",
+        "兴全合宜混合A",
+        "国联安核心资产混合"
+      ]
+    },
+    {
+      "rank": 63,
+      "uid": "2705091",
+      "name": "dlbcangel",
+      "ret": 74.92,
+      "n_funds": 5,
+      "total_amount": 76978.76,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "国泰中证全指证券公司ETF联接C",
+        "华夏科创50ETF联接A",
+        "万家臻选混合A",
+        "博时黄金ETF联接C",
+        "国泰海通君增利60天滚动持有债券发起C"
+      ]
+    },
+    {
+      "rank": 64,
+      "uid": "44553",
+      "name": "独孤隐龟",
+      "ret": 74.84,
+      "n_funds": 28,
+      "total_amount": 176720.58000000002,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "平安惠泰纯债C",
+        "华夏国证半导体芯片ETF联接C",
+        "广发睿毅领先混合A",
+        "广发新经济混合A",
+        "天弘恒生科技ETF联接C"
+      ]
+    },
+    {
+      "rank": 65,
+      "uid": "570540",
+      "name": "永恒的梦",
+      "ret": 74.56,
+      "n_funds": 3,
+      "total_amount": 136033.03999999998,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "大摩数字经济混合A",
+        "华夏全球科技先锋混合(QDII)A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 66,
+      "uid": "183856",
+      "name": "风之徽章",
+      "ret": 72.99,
+      "n_funds": 2,
+      "total_amount": 64865.37,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "华商优势行业混合A",
+        "嘉实上证科创板芯片ETF发起联接C"
+      ]
+    },
+    {
+      "rank": 68,
+      "uid": "10945204",
+      "name": "jd_32s5t55v0tc8iu",
+      "ret": 72.38,
+      "n_funds": 4,
+      "total_amount": 73694.36,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "信澳新能源产业股票A",
+        "中欧中证芯片产业指数发起C",
+        "永赢科技智选混合发起C",
+        "国泰黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 69,
+      "uid": "1096064",
+      "name": "world7602",
+      "ret": 72.35,
+      "n_funds": 9,
+      "total_amount": 764485.5199999999,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达战略新兴产业股票A",
+        "易方达竞争优势企业混合A",
+        "易方达医药生物股票A",
+        "博时半导体主题混合A",
+        "易方达品质动能三年持有混合A"
+      ]
+    },
+    {
+      "rank": 70,
+      "uid": "344148",
+      "name": "准确命中o",
+      "ret": 72.29,
+      "n_funds": 11,
+      "total_amount": 66148.70000000001,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏科创50ETF联接C",
+        "鹏扬中证科创创业50ETF联接C",
+        "华夏国证半导体芯片ETF联接C",
+        "华夏新兴成长股票C",
+        "景顺长城绩优成长混合A"
+      ]
+    },
+    {
+      "rank": 71,
+      "uid": "11977071",
+      "name": "nd04v4qyaxy8dz",
+      "ret": 71.68,
+      "n_funds": 6,
+      "total_amount": 976195.4800000001,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达全球成长精选混合(QDII)A",
+        "华夏全球科技先锋混合(QDII)A",
+        "天弘全球高端制造混合(QDII)A",
+        "嘉实全球产业升级股票发起式(QDII)A",
+        "建信新兴市场混合(QDII)A"
+      ]
+    },
+    {
+      "rank": 72,
+      "uid": "2849211",
+      "name": "帅杨先生",
+      "ret": 70.31,
+      "n_funds": 5,
+      "total_amount": 99804.65,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "中欧医疗健康混合A",
+        "摩根纳斯达克100指数(QDII)人民币A",
+        "国泰恒生A股电网设备ETF发起联接A",
+        "南方有色金属ETF联接A",
+        "工银新能源汽车混合A"
+      ]
+    },
+    {
+      "rank": 73,
+      "uid": "153342",
+      "name": "顺大势耐住气",
+      "ret": 69.99,
+      "n_funds": 2,
+      "total_amount": 530575.56,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达供给改革混合",
+        "东方人工智能主题混合A"
+      ]
+    },
+    {
+      "rank": 74,
+      "uid": "8792440",
+      "name": "jd_178570qdg",
+      "ret": 69.8,
+      "n_funds": 32,
+      "total_amount": 762001.0899999997,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "中航机遇领航混合发起C",
+        "东方人工智能主题混合C",
+        "德邦鑫星价值C",
+        "信澳业绩驱动混合C",
+        "德邦稳盈增长灵活配置混合C"
+      ]
+    },
+    {
+      "rank": 75,
+      "uid": "9374298",
+      "name": "92g10ys5zafuvn",
+      "ret": 69.67,
+      "n_funds": 7,
+      "total_amount": 153814.37,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏科创50ETF联接C",
+        "富国天惠成长混合(LOF)A/B",
+        "银河创新混合A",
+        "中欧医疗健康混合A",
+        "天弘中证光伏C"
+      ]
+    },
+    {
+      "rank": 76,
+      "uid": "14170940",
+      "name": "cheaaa",
+      "ret": 69.62,
+      "n_funds": 4,
+      "total_amount": 53124.33,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "银河创新混合C",
+        "诺安成长混合A",
+        "中欧医疗健康混合C",
+        "华泰保兴产业升级混合发起C"
+      ]
+    },
+    {
+      "rank": 77,
+      "uid": "4944636",
+      "name": "2hyz69pu7xlw5j",
+      "ret": 69.56,
+      "n_funds": 4,
+      "total_amount": 185681.25000000003,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "汇添富鑫享添利六个月持有混合A",
+        "前海开源裕源",
+        "华夏核心资产混合C",
+        "工银食品饮料混合A"
+      ]
+    },
+    {
+      "rank": 78,
+      "uid": "299891",
+      "name": "心跳的奇迹",
+      "ret": 69.53,
+      "n_funds": 2,
+      "total_amount": 199693.49,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "永赢先锋半导体智选混合发起C",
+        "中航机遇领航混合发起C"
+      ]
+    },
+    {
+      "rank": 79,
+      "uid": "3623438",
+      "name": "理财日记1号",
+      "ret": 69.48,
+      "n_funds": 6,
+      "total_amount": 348308.66,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "建信新兴市场混合(QDII)C",
+        "嘉实全球产业升级股票发起式(QDII)C",
+        "大成科技创新混合C",
+        "国富全球科技互联混合(QDII)人民币A",
+        "国富全球科技互联混合(QDII)人民币C"
+      ]
+    },
+    {
+      "rank": 80,
+      "uid": "2880111",
+      "name": "jd_etAMVeqwUlRi",
+      "ret": 69.31,
+      "n_funds": 7,
+      "total_amount": 117714.21,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "富国互联科技股票型A",
+        "工银新能源汽车混合A",
+        "中航机遇领航混合发起A",
+        "银河创新混合A",
+        "广发创新升级混合"
+      ]
+    },
+    {
+      "rank": 81,
+      "uid": "14194272",
+      "name": "4e0dkprnbew9yj",
+      "ret": 69.17,
+      "n_funds": 26,
+      "total_amount": 477882.68,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达科讯混合",
+        "国泰聚信价值优势灵活配置混合C",
+        "易方达安心回报债券B",
+        "中邮战略新兴产业混合A",
+        "易方达安心回报债券B"
+      ]
+    },
+    {
+      "rank": 82,
+      "uid": "1234313",
+      "name": "弦月之翼",
+      "ret": 69.06,
+      "n_funds": 3,
+      "total_amount": 147988.52,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华商优势行业混合A",
+        "博时半导体主题混合A",
+        "广发双债添利债券A"
+      ]
+    },
+    {
+      "rank": 83,
+      "uid": "13788338",
+      "name": "888大地主888",
+      "ret": 68.67,
+      "n_funds": 5,
+      "total_amount": 1867809.7400000002,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "东财通信A",
+        "永赢科技智选混合发起A",
+        "东财通信C",
+        "景顺长城沪港深精选股票A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 84,
+      "uid": "12478776",
+      "name": "赵wdd",
+      "ret": 68.66,
+      "n_funds": 7,
+      "total_amount": 194393.6,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "东方人工智能主题混合C",
+        "景顺长城科技创新混合A",
+        "浦银安盛全球智能科技(QDII)C",
+        "广发全球精选股票(QDII)C",
+        "华宝纳斯达克精选股票发起式(QDII)C"
+      ]
+    },
+    {
+      "rank": 85,
+      "uid": "2657128",
+      "name": "丹尼尔2014",
+      "ret": 67.25,
+      "n_funds": 4,
+      "total_amount": 103181.03999999998,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "工银前沿医疗股票A",
+        "浦银安盛医疗健康混合A",
+        "光大保德信消费股票A",
+        "浦银安盛环保新能源C类"
+      ]
+    },
+    {
+      "rank": 86,
+      "uid": "10829377",
+      "name": "jd_182356dwq",
+      "ret": 67.08,
+      "n_funds": 5,
+      "total_amount": 51804.259999999995,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "银华中证5G通信主题ETF联接A",
+        "交银创业板50指数C",
+        "大成标普500等权重指数(QDII)C人民币",
+        "汇添富纳斯达克生物科技ETF发起式联接(QDII)",
+        "鹏华酒C"
+      ]
+    },
+    {
+      "rank": 87,
+      "uid": "1136313",
+      "name": "gan__gan",
+      "ret": 67.06,
+      "n_funds": 22,
+      "total_amount": 849554.0899999999,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "银河创新混合A",
+        "华夏中证5G通信主题ETF联接C",
+        "易方达信息产业混合A",
+        "兴全可转债混合",
+        "华夏中证5G通信主题ETF联接A"
+      ]
+    },
+    {
+      "rank": 88,
+      "uid": "14196059",
+      "name": "octeau",
+      "ret": 66.92,
+      "n_funds": 2,
+      "total_amount": 136761.48,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "信澳新能源产业股票A",
+        "工银战略转型股票A"
+      ]
+    },
+    {
+      "rank": 89,
+      "uid": "230901",
+      "name": "jd_qiwang966",
+      "ret": 66.82,
+      "n_funds": 2,
+      "total_amount": 1251316.4,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "华安黄金ETF联接C",
+        "国泰黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 90,
+      "uid": "11285806",
+      "name": "jd_137929gez",
+      "ret": 66.6,
+      "n_funds": 10,
+      "total_amount": 280641.04,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "富国成长策略混合A",
+        "易方达创新成长混合",
+        "大成积极成长混合A",
+        "中邮趋势精选灵活配置混合A",
+        "华夏科技创新混合C"
+      ]
+    },
+    {
+      "rank": 91,
+      "uid": "13901763",
+      "name": "嗜书如好色",
+      "ret": 66.28,
+      "n_funds": 5,
+      "total_amount": 148174.75,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "中欧明睿新常态混合A",
+        "工银高端制造股票",
+        "易方达上证50增强A",
+        "财通聚利债券C",
+        "富国中证新能源汽车指数A"
+      ]
+    },
+    {
+      "rank": 92,
+      "uid": "1132486",
+      "name": "jd_136833abm",
+      "ret": 65.99,
+      "n_funds": 2,
+      "total_amount": 69624.7,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达上证科创50ETF联接C",
+        "兴银策略智选混合A"
+      ]
+    },
+    {
+      "rank": 93,
+      "uid": "14216028",
+      "name": "豆豆0118",
+      "ret": 65.95,
+      "n_funds": 2,
+      "total_amount": 53730.42,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "华夏科技成长股票",
+        "中欧预见养老2035三年持有(FOF)C"
+      ]
+    },
+    {
+      "rank": 94,
+      "uid": "10819553",
+      "name": "Siketsu",
+      "ret": 65.73,
+      "n_funds": 9,
+      "total_amount": 320575.71,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "银河创新混合C",
+        "国投瑞银国家安全混合A",
+        "中欧阿尔法混合A",
+        "招商中证白酒指数A",
+        "鹏扬中证科创创业50ETF联接C"
+      ]
+    },
+    {
+      "rank": 95,
+      "uid": "4019495",
+      "name": "斗士888zku",
+      "ret": 65.61,
+      "n_funds": 171,
+      "total_amount": 499871.77000000025,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "华商优势行业混合A",
+        "交银优择回报灵活配置混合C",
+        "华商优势行业混合C",
+        "华商均衡成长混合C",
+        "华商致远回报混合C"
+      ]
+    },
+    {
+      "rank": 96,
+      "uid": "14219581",
+      "name": "JanzMan",
+      "ret": 65.6,
+      "n_funds": 2,
+      "total_amount": 309797.32,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "信澳智远三年持有期混合C",
+        "易方达品质动能三年持有混合A"
+      ]
+    },
+    {
+      "rank": 97,
+      "uid": "2734447",
+      "name": "哪吒nao海",
+      "ret": 65.57,
+      "n_funds": 2,
+      "total_amount": 62577.61,
+      "is_single_bet": true,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达竞争优势企业混合A",
+        "广发睿毅领先混合A"
+      ]
+    },
+    {
+      "rank": 98,
+      "uid": "1066000",
+      "name": "h***u",
+      "ret": 64.25,
+      "n_funds": 13,
+      "total_amount": 206764.86999999997,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "国联新经济混合A",
+        "诺安成长混合A",
+        "中欧医疗健康混合A",
+        "易方达标普生物科技指数(QDII-LOF)A",
+        "东方红睿泽三年持有混合A"
+      ]
+    },
+    {
+      "rank": 99,
+      "uid": "14148626",
+      "name": "布丁小芒果",
+      "ret": 64.21,
+      "n_funds": 3,
+      "total_amount": 83086.76,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "国泰价值经典灵活配置混合(LOF)",
+        "兴业90天滚动持有中短债A",
+        "博时黄金ETF联接C"
+      ]
+    },
+    {
+      "rank": 100,
+      "uid": "2773435",
+      "name": "a***8",
+      "ret": 64.02,
+      "n_funds": 3,
+      "total_amount": 83339.38,
+      "is_single_bet": false,
+      "is_cleared": false,
+      "fund_names": [
+        "易方达供给改革混合",
+        "华夏智胜价值成长股票A",
+        "西部利得汇享债券A"
+      ]
+    }
+  ]
+}

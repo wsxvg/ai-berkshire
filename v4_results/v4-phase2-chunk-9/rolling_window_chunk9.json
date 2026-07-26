@@ -1,0 +1,300 @@
+{
+  "strategies": [
+    {
+      "name": "V4_B7_peakdd20",
+      "desc": "",
+      "config": {
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 10000,
+        "monthly_injection": 0,
+        "weights": {
+          "quality": 25,
+          "cost": 20,
+          "manager": 20,
+          "momentum": 15,
+          "smart_money": 20
+        },
+        "min_score": 3.3,
+        "no_stop_loss": true,
+        "take_profit_pct": 1000,
+        "profit_mode": "half",
+        "cost_penalty": 0,
+        "min_consensus": 2,
+        "fund_type_filter": "all",
+        "momentum_sell": 0,
+        "max_candidates_per_day": 0,
+        "max_holdings": 8,
+        "kelly_cap": 0.35,
+        "smart_swap": true,
+        "smart_swap_margin": 1.0,
+        "smart_swap_min_hold_days": 30,
+        "dynamic_max_holdings": true,
+        "max_holdings_bull_mult": 1.5,
+        "max_holdings_bear_mult": 0.6,
+        "peak_drawdown_exit": 20
+      },
+      "windows": {
+        "W1_2023H2": {
+          "return": 3.015699999999997,
+          "annualized": 3.0094282198186217,
+          "dd": 4.590020542802583,
+          "trades": 71,
+          "sharpe": 0.6570123100491976
+        },
+        "W2_2024H1": {
+          "return": 10.561100000000005,
+          "annualized": 10.538356177877706,
+          "dd": 4.250463737251466,
+          "trades": 65,
+          "sharpe": 2.4846935894174385
+        },
+        "W3_2024H2": {
+          "return": 7.0968000000000035,
+          "annualized": 7.101829480091371,
+          "dd": 21.797650519386334,
+          "trades": 74,
+          "sharpe": 0.3255763731824341
+        },
+        "W4_2025H1": {
+          "return": 21.28120000000001,
+          "annualized": 21.297228588158635,
+          "dd": 21.746254510990415,
+          "trades": 72,
+          "sharpe": 0.9786145006830776
+        },
+        "W5_2025H2": {
+          "return": 16.725900000000003,
+          "annualized": 16.398791400891,
+          "dd": 19.168176302701973,
+          "trades": 89,
+          "sharpe": 0.8725869240696777
+        },
+        "FULL_3Y": {
+          "return": 53.355,
+          "annualized": 15.21060316950864,
+          "dd": 24.44359720930458,
+          "trades": 201,
+          "sharpe": 2.182780199785412
+        }
+      },
+      "full_return": 53.355,
+      "full_dd": 24.44359720930458,
+      "full_sharpe": 2.182780199785412,
+      "avg_yearly_return": 11.736140000000004,
+      "std_yearly_return": 7.330691367326826,
+      "min_yearly_return": 3.015699999999997,
+      "max_yearly_return": 21.28120000000001,
+      "avg_yearly_dd": 14.310513122626555,
+      "max_yearly_dd": 21.797650519386334,
+      "positive_windows": 5,
+      "anti_overfit_passed": true,
+      "anti_overfit_issues": [],
+      "anti_overfit_score": 45.532419241925545
+    },
+    {
+      "name": "V4_B8_trailstop20",
+      "desc": "",
+      "config": {
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 10000,
+        "monthly_injection": 0,
+        "weights": {
+          "quality": 25,
+          "cost": 20,
+          "manager": 20,
+          "momentum": 15,
+          "smart_money": 20
+        },
+        "min_score": 3.3,
+        "no_stop_loss": true,
+        "take_profit_pct": 1000,
+        "profit_mode": "half",
+        "cost_penalty": 0,
+        "min_consensus": 2,
+        "fund_type_filter": "all",
+        "momentum_sell": 0,
+        "max_candidates_per_day": 0,
+        "max_holdings": 8,
+        "kelly_cap": 0.35,
+        "smart_swap": true,
+        "smart_swap_margin": 1.0,
+        "smart_swap_min_hold_days": 30,
+        "dynamic_max_holdings": true,
+        "max_holdings_bull_mult": 1.5,
+        "max_holdings_bear_mult": 0.6,
+        "trailing_stop_pct": 20
+      },
+      "windows": {
+        "W1_2023H2": {
+          "return": 3.015699999999997,
+          "annualized": 3.0094282198186217,
+          "dd": 4.590020542802583,
+          "trades": 71,
+          "sharpe": 0.6570123100491976
+        },
+        "W2_2024H1": {
+          "return": 10.561100000000005,
+          "annualized": 10.538356177877706,
+          "dd": 4.250463737251466,
+          "trades": 65,
+          "sharpe": 2.4846935894174385
+        },
+        "W3_2024H2": {
+          "return": 7.0968000000000035,
+          "annualized": 7.101829480091371,
+          "dd": 21.797650519386334,
+          "trades": 74,
+          "sharpe": 0.3255763731824341
+        },
+        "W4_2025H1": {
+          "return": 21.28120000000001,
+          "annualized": 21.297228588158635,
+          "dd": 21.746254510990415,
+          "trades": 72,
+          "sharpe": 0.9786145006830776
+        },
+        "W5_2025H2": {
+          "return": 16.725900000000003,
+          "annualized": 16.398791400891,
+          "dd": 19.168176302701973,
+          "trades": 89,
+          "sharpe": 0.8725869240696777
+        },
+        "FULL_3Y": {
+          "return": 53.355,
+          "annualized": 15.21060316950864,
+          "dd": 24.44359720930458,
+          "trades": 201,
+          "sharpe": 2.182780199785412
+        }
+      },
+      "full_return": 53.355,
+      "full_dd": 24.44359720930458,
+      "full_sharpe": 2.182780199785412,
+      "avg_yearly_return": 11.736140000000004,
+      "std_yearly_return": 7.330691367326826,
+      "min_yearly_return": 3.015699999999997,
+      "max_yearly_return": 21.28120000000001,
+      "avg_yearly_dd": 14.310513122626555,
+      "max_yearly_dd": 21.797650519386334,
+      "positive_windows": 5,
+      "anti_overfit_passed": true,
+      "anti_overfit_issues": [],
+      "anti_overfit_score": 45.532419241925545
+    },
+    {
+      "name": "V4_L1_swap_m0.3_h30",
+      "desc": "",
+      "config": {
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 10000,
+        "monthly_injection": 0,
+        "weights": {
+          "quality": 25,
+          "cost": 20,
+          "manager": 20,
+          "momentum": 15,
+          "smart_money": 20
+        },
+        "min_score": 3.3,
+        "no_stop_loss": true,
+        "take_profit_pct": 1000,
+        "profit_mode": "half",
+        "cost_penalty": 0,
+        "min_consensus": 2,
+        "fund_type_filter": "all",
+        "momentum_sell": 0,
+        "max_candidates_per_day": 0,
+        "max_holdings": 8,
+        "kelly_cap": 0.35,
+        "smart_swap": true,
+        "smart_swap_margin": 0.3,
+        "smart_swap_min_hold_days": 30,
+        "dynamic_max_holdings": true,
+        "max_holdings_bull_mult": 1.5,
+        "max_holdings_bear_mult": 0.6
+      },
+      "windows": {
+        "W1_2023H2": {
+          "return": 1.2101000000000022,
+          "annualized": 1.2076053742809068,
+          "dd": 4.733190937977455,
+          "trades": 96,
+          "sharpe": 0.2556626208105374
+        },
+        "W2_2024H1": {
+          "return": 3.2385000000000037,
+          "annualized": 3.2317576334562004,
+          "dd": 5.855239467050774,
+          "trades": 68,
+          "sharpe": 0.5530943726937276
+        },
+        "W3_2024H2": {
+          "return": 2.7403000000000066,
+          "annualized": 2.7422024202733875,
+          "dd": 23.50804778136845,
+          "trades": 76,
+          "sharpe": 0.11656859070074972
+        },
+        "W4_2025H1": {
+          "return": 35.20290000000001,
+          "annualized": 35.23083306565269,
+          "dd": 19.156568819498556,
+          "trades": 67,
+          "sharpe": 1.8376411940831834
+        },
+        "W5_2025H2": {
+          "return": 31.637199999999993,
+          "annualized": 30.982263570206726,
+          "dd": 12.014548908381894,
+          "trades": 107,
+          "sharpe": 2.6332407684427044
+        },
+        "FULL_3Y": {
+          "return": 44.6719,
+          "annualized": 13.008209552422745,
+          "dd": 20.551571401075343,
+          "trades": 208,
+          "sharpe": 2.1736488723029024
+        }
+      },
+      "full_return": 44.6719,
+      "full_dd": 20.551571401075343,
+      "full_sharpe": 2.1736488723029024,
+      "avg_yearly_return": 14.805800000000003,
+      "std_yearly_return": 17.05549392717783,
+      "min_yearly_return": 1.2101000000000022,
+      "max_yearly_return": 35.20290000000001,
+      "avg_yearly_dd": 13.053519182855426,
+      "max_yearly_dd": 23.50804778136845,
+      "positive_windows": 5,
+      "anti_overfit_passed": true,
+      "anti_overfit_issues": [],
+      "anti_overfit_score": 29.43387361669009
+    }
+  ],
+  "windows": [
+    "W1_2023H2",
+    "W2_2024H1",
+    "W3_2024H2",
+    "W4_2025H1",
+    "W5_2025H2",
+    "FULL_3Y"
+  ],
+  "criteria": {
+    "min_return_per_window": -15.0,
+    "max_drawdown_per_window": 40.0,
+    "min_positive_windows": 4,
+    "max_return_stddev": 25.0,
+    "min_full_period_return": 10.0,
+    "min_full_period_sharpe": 0.5,
+    "max_worst_window_loss": -20.0
+  },
+  "total": 3,
+  "succeeded": 3,
+  "passed": 3,
+  "elapsed_sec": 3367.312395334244
+}

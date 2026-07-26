@@ -309,7 +309,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Download all Phase 2 artifacts
+      - name: Download all Phase 2 artifacts· 
         uses: actions/download-artifact@v4
         with:
           pattern: v5-phase2-chunk-*

@@ -1,0 +1,36 @@
+import json,copy
+B={'start_date':'2023-07-17','end_date':'2026-07-24','initial_cash':10000,'monthly_injection':0,'weights':{'quality':25,'cost':20,'manager':20,'momentum':15,'smart_money':20},'min_score':3.3,'no_stop_loss':True,'take_profit_pct':1000,'profit_mode':'half','cost_penalty':0,'min_consensus':2,'fund_type_filter':'all','momentum_sell':0,'max_candidates_per_day':0,'max_holdings':8,'kelly_cap':0.35,'smart_swap':True,'smart_swap_margin':1.0,'smart_swap_min_hold_days':30,'dynamic_max_holdings':True,'max_holdings_bull_mult':1.5,'max_holdings_bear_mult':0.6}
+S=[]
+def a(n,o):
+ c=copy.deepcopy(B);c.update(o);S.append({'name':n,'desc':'','config':c})
+for d in [0.01,0.02,0.03]: a(f'V6B_A1_drop{d}_corr06',{'contrarian_buy_drop':d,'max_correlation':0.6})
+for d in [0.01,0.02,0.03]: a(f'V6B_A1_drop{d}_corr07',{'contrarian_buy_drop':d,'max_correlation':0.7})
+for d in [0.02,0.03]: a(f'V6B_A1_drop{d}_corr08',{'contrarian_buy_drop':d,'max_correlation':0.8})
+a('V6B_A1_equal_corr06',{'equal_allocate':True,'max_correlation':0.6})
+a('V6B_A1_equal_corr07',{'equal_allocate':True,'max_correlation':0.7})
+for d in [0.01,0.02,0.03]:
+ for ms in [2,3]: a(f'V6B_B1_drop{d}_sec{ms}',{'contrarian_buy_drop':d,'max_sector_count':ms})
+for d in [0.02,0.03]: a(f'V6B_B1_drop{d}_sec30pct',{'contrarian_buy_drop':d,'max_sector_pct':30})
+a('V6B_B1_equal_sec2',{'equal_allocate':True,'max_sector_count':2})
+a('V6B_B1_equal_sec3',{'equal_allocate':True,'max_sector_count':3})
+a('V6B_B1_equal_sec30pct',{'equal_allocate':True,'max_sector_pct':30})
+for d in [0.02,0.03]: a(f'V6B_B1_drop{d}_rebal30',{'contrarian_buy_drop':d,'rebalance':True,'max_sector_pct':30})
+a('V6B_B1_equal_rebal30',{'equal_allocate':True,'rebalance':True,'max_sector_pct':30})
+for d in [0.01,0.02,0.03]: a(f'V6B_C1_drop{d}_4433_1',{'contrarian_buy_drop':d,'require_4433_pass':1})
+for d in [0.02,0.03]: a(f'V6B_C1_drop{d}_4433_2',{'contrarian_buy_drop':d,'require_4433_pass':2})
+a('V6B_C1_equal_4433_1',{'equal_allocate':True,'require_4433_pass':1})
+a('V6B_C1_champ_4433_1_corr07',{'contrarian_buy_drop':0.03,'require_4433_pass':1,'max_correlation':0.7})
+a('V6B_C1_champ_4433_1_sec3',{'contrarian_buy_drop':0.03,'require_4433_pass':1,'max_sector_count':3})
+for d in [0.02,0.03]:
+ for ms in [3.0,3.5]: a(f'V6B_D1_drop{d}_ms{ms}',{'contrarian_buy_drop':d,'min_score':ms})
+for d in [0.02,0.03]: a(f'V6B_D1_drop{d}_ms33',{'contrarian_buy_drop':d,'min_score':3.3})
+for d in [0.01,0.02,0.03]: a(f'V6B_D1_drop{d}_cons3',{'contrarian_buy_drop':d,'min_consensus':3})
+a('V6B_D1_equal_ms35',{'equal_allocate':True,'min_score':3.5})
+a('V6B_D1_equal_cons3',{'equal_allocate':True,'min_consensus':3})
+a('V6B_E1_champ_full_combo',{'contrarian_buy_drop':0.03,'require_4433_pass':1,'max_correlation':0.7,'max_sector_count':3})
+a('V6B_E1_equal_full_combo',{'equal_allocate':True,'require_4433_pass':1,'max_correlation':0.7,'max_sector_count':3})
+a('V6B_E1_champ_4433_corr_sec_rebal',{'contrarian_buy_drop':0.03,'require_4433_pass':1,'max_correlation':0.7,'rebalance':True,'max_sector_pct':30})
+a('V6B_Z0_baseline',{})
+a('V6B_Z1_champion',{'contrarian_buy_drop':0.03})
+json.dump(S,open('backtest/v6b_sweep_configs.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+print(f'V6B total: {len(S)}')

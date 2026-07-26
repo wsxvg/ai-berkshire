@@ -1,0 +1,545 @@
+{
+  "created": "2026-07-01",
+  "initial_cash": 100000,
+  "cash": 32800.0,
+  "total_fees": 59.56,
+  "holdings": {
+    "021528": {
+      "name": "财通成长优选混合C",
+      "cost_basis": 100.0,
+      "shares": 17.708517797060384,
+      "buy_nav": 5.647,
+      "market_value": 85.44,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -14.56
+    },
+    "001480": {
+      "name": "财通成长优选混合A",
+      "cost_basis": 100.0,
+      "shares": 10.142204164550533,
+      "buy_nav": 9.845,
+      "market_value": 85.44,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -14.56
+    },
+    "011452": {
+      "name": "华泰柏瑞质量成长混合C",
+      "cost_basis": 10000.0,
+      "shares": 4715.837763862913,
+      "buy_nav": 2.120514,
+      "market_value": 8633.76,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -13.66
+    },
+    "024481": {
+      "name": "财通品质甄选混合C",
+      "cost_basis": 100.0,
+      "shares": 39.29736314693284,
+      "buy_nav": 2.5447,
+      "market_value": 85.1,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -14.9
+    },
+    "011370": {
+      "name": "华商均衡成长混合C",
+      "cost_basis": 1000.0,
+      "shares": 209.2356621262528,
+      "buy_nav": 4.7793,
+      "market_value": 843.66,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -15.63
+    },
+    "006502": {
+      "name": "财通集成电路产业股票A",
+      "cost_basis": 100.0,
+      "shares": 10.135100843492117,
+      "buy_nav": 9.8519,
+      "market_value": 84.27,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -15.73
+    },
+    "005959": {
+      "name": "财通新视野混合C",
+      "cost_basis": 8200,
+      "shares": 1344.8134481344814,
+      "buy_nav": 6.0975,
+      "market_value": 7246.39,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -11.63
+    },
+    "008989": {
+      "name": "大成科技创新混合C",
+      "cost_basis": 500,
+      "shares": 76.08844520871061,
+      "buy_nav": 6.5713,
+      "market_value": 415.82,
+      "buy_date": "2026-07-01",
+      "buy_score": 3.0,
+      "pnl_pct": -16.84
+    },
+    "012970": {
+      "name": "鹏华国证半导体芯片ETF联接C",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "003235": {
+      "name": "中信保诚至利混合C",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "019155": {
+      "name": "易方达全球配置混合(QDII)A",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "519981": {
+      "name": "长信标普100等权重指数（QDII）人民币份额",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "096001": {
+      "name": "大成标普500等权重指数(QDII)A人民币",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "008401": {
+      "name": "大成标普500等权重指数(QDII)C人民币",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "008702": {
+      "name": "华夏黄金ETF联接C",
+      "cost_basis": 3000,
+      "shares": 3000.0,
+      "buy_nav": 1.0,
+      "market_value": 3000,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "017559": {
+      "name": "华安上证科创板芯片ETF发起式联接A",
+      "cost_basis": 2900,
+      "shares": 2898.55,
+      "buy_nav": 1.0,
+      "market_value": 2900,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "020988": {
+      "name": "南方恒生科技ETF发起联接(QDII)A",
+      "cost_basis": 2800,
+      "shares": 2796.64,
+      "buy_nav": 1.0,
+      "market_value": 2800,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "025824": {
+      "name": "易方达产业优选混合A",
+      "cost_basis": 2800,
+      "shares": 2795.8,
+      "buy_nav": 1.0,
+      "market_value": 2800,
+      "buy_date": "2026-07-02",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "022664": {
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)I",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-06",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "001198": {
+      "name": "东方惠新灵活配置混合A",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-10",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "020640": {
+      "name": "广发中证半导体材料设备ETF发起式联接C",
+      "cost_basis": 1100,
+      "shares": 1100.0,
+      "buy_nav": 1.0,
+      "market_value": 1100,
+      "buy_date": "2026-07-14",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "002891": {
+      "name": "华夏移动互联混合(QDII)",
+      "cost_basis": 100.0,
+      "shares": 33.37232620320855,
+      "buy_nav": 2.992,
+      "market_value": 100.0,
+      "buy_date": "2026-07-14",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "014332": {
+      "name": "华泰柏瑞中证稀土产业ETF发起式联接C",
+      "cost_basis": 3100,
+      "shares": 3095.35,
+      "buy_nav": 1.0,
+      "market_value": 3100,
+      "buy_date": "2026-07-15",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "007817": {
+      "name": "国泰中证全指通信设备ETF联接A",
+      "cost_basis": 5500,
+      "shares": 5491.75,
+      "buy_nav": 1.0,
+      "market_value": 5500,
+      "buy_date": "2026-07-16",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    },
+    "012349": {
+      "name": "天弘恒生科技ETF联接C",
+      "cost_basis": 1000.0,
+      "shares": 1000.0,
+      "buy_nav": 1.0,
+      "market_value": 1000.0,
+      "buy_date": "2026-07-16",
+      "buy_score": 3.0,
+      "pnl_pct": 0.0
+    }
+  },
+  "pending": [],
+  "history": [],
+  "snapshots": [
+    {
+      "date": "2026-07-01",
+      "total_value": 100000.0,
+      "cash": 79900.0,
+      "holdings": 0,
+      "pending": 8
+    },
+    {
+      "date": "2026-07-02",
+      "total_value": 98416.31,
+      "cash": 49800.0,
+      "holdings": 8,
+      "pending": 10
+    },
+    {
+      "date": "2026-07-03",
+      "total_value": 98615.2,
+      "cash": 49800.0,
+      "holdings": 18,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-06",
+      "total_value": 97801.19,
+      "cash": 46700.0,
+      "holdings": 18,
+      "pending": 1
+    },
+    {
+      "date": "2026-07-07",
+      "total_value": 97646.86,
+      "cash": 46700.0,
+      "holdings": 19,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-08",
+      "total_value": 97277.53,
+      "cash": 46700.0,
+      "holdings": 19,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-09",
+      "total_value": 98339.77,
+      "cash": 46700.0,
+      "holdings": 19,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-10",
+      "total_value": 97379.89,
+      "cash": 43600.0,
+      "holdings": 19,
+      "pending": 1
+    },
+    {
+      "date": "2026-07-13",
+      "total_value": 97379.89,
+      "cash": 43600.0,
+      "holdings": 20,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-14",
+      "total_value": 97379.89,
+      "cash": 42400.0,
+      "holdings": 20,
+      "pending": 2
+    },
+    {
+      "date": "2026-07-15",
+      "total_value": 97379.89,
+      "cash": 39300.0,
+      "holdings": 21,
+      "pending": 2
+    },
+    {
+      "date": "2026-07-16",
+      "total_value": 97379.89,
+      "cash": 32800.0,
+      "holdings": 23,
+      "pending": 2
+    },
+    {
+      "date": "2026-07-17",
+      "total_value": 97379.89,
+      "cash": 32800.0,
+      "holdings": 25,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-20",
+      "total_value": 97379.89,
+      "cash": 32800.0,
+      "holdings": 25,
+      "pending": 0
+    },
+    {
+      "date": "2026-07-21",
+      "total_value": 97379.89,
+      "cash": 32800.0,
+      "holdings": 25,
+      "pending": 0
+    }
+  ],
+  "trade_log": [
+    {
+      "date": "2026-07-01",
+      "code": "021528",
+      "name": "财通成长优选混合C",
+      "action": "buy",
+      "amount": 100.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "001480",
+      "name": "财通成长优选混合A",
+      "action": "buy",
+      "amount": 100.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "011452",
+      "name": "华泰柏瑞质量成长混合C",
+      "action": "buy",
+      "amount": 10000.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "024481",
+      "name": "财通品质甄选混合C",
+      "action": "buy",
+      "amount": 100.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "011370",
+      "name": "华商均衡成长混合C",
+      "action": "buy",
+      "amount": 1000.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "006502",
+      "name": "财通集成电路产业股票A",
+      "action": "buy",
+      "amount": 100.0
+    },
+    {
+      "date": "2026-07-01",
+      "code": "005959",
+      "name": "财通新视野混合C",
+      "action": "buy",
+      "amount": 8200
+    },
+    {
+      "date": "2026-07-01",
+      "code": "008989",
+      "name": "大成科技创新混合C",
+      "action": "buy",
+      "amount": 500
+    },
+    {
+      "date": "2026-07-02",
+      "code": "012970",
+      "name": "鹏华国证半导体芯片ETF联接C",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "003235",
+      "name": "中信保诚至利混合C",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "019155",
+      "name": "易方达全球配置混合(QDII)A",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "519981",
+      "name": "长信标普100等权重指数（QDII）人民币份额",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "096001",
+      "name": "大成标普500等权重指数(QDII)A人民币",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "008401",
+      "name": "大成标普500等权重指数(QDII)C人民币",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-02",
+      "code": "008702",
+      "name": "华夏黄金ETF联接C",
+      "action": "buy",
+      "amount": 3000
+    },
+    {
+      "date": "2026-07-02",
+      "code": "017559",
+      "name": "华安上证科创板芯片ETF发起式联接A",
+      "action": "buy",
+      "amount": 2900
+    },
+    {
+      "date": "2026-07-02",
+      "code": "020988",
+      "name": "南方恒生科技ETF发起联接(QDII)A",
+      "action": "buy",
+      "amount": 2800
+    },
+    {
+      "date": "2026-07-02",
+      "code": "025824",
+      "name": "易方达产业优选混合A",
+      "action": "buy",
+      "amount": 2800
+    },
+    {
+      "date": "2026-07-06",
+      "code": "022664",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)I",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-10",
+      "code": "001198",
+      "name": "东方惠新灵活配置混合A",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-14",
+      "code": "002891",
+      "name": "华夏移动互联混合(QDII)",
+      "action": "buy",
+      "amount": 100.0
+    },
+    {
+      "date": "2026-07-14",
+      "code": "020640",
+      "name": "广发中证半导体材料设备ETF发起式联接C",
+      "action": "buy",
+      "amount": 1100
+    },
+    {
+      "date": "2026-07-15",
+      "code": "014332",
+      "name": "华泰柏瑞中证稀土产业ETF发起式联接C",
+      "action": "buy",
+      "amount": 3100
+    },
+    {
+      "date": "2026-07-16",
+      "code": "007817",
+      "name": "国泰中证全指通信设备ETF联接A",
+      "action": "buy",
+      "amount": 5500
+    },
+    {
+      "date": "2026-07-16",
+      "code": "012349",
+      "name": "天弘恒生科技ETF联接C",
+      "action": "buy",
+      "amount": 1000.0
+    }
+  ],
+  "sell_history": {}
+}

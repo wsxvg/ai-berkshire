@@ -217,7 +217,7 @@ class FundScore:
 # Cache Reader
 # ============================================================
 
-def _read_cache(cache_type: str, key: str):
+def _read_cache_simple(cache_type: str, key: str):
     safe_key = key.replace("/", "_").replace("\\", "_")
     p = CACHE_DIR / f"{cache_type}_{safe_key}.json"
     if not p.exists():
@@ -325,9 +325,10 @@ def calc_max_drawdown(values: list[float]) -> float:
     for v in values:
         if v > peak:
             peak = v
-        dd = (peak - v) / peak
-        if dd > max_dd:
-            max_dd = dd
+        if peak > 0:
+            dd = (peak - v) / peak
+            if dd > max_dd:
+                max_dd = dd
     return max_dd * 100
 
 
@@ -691,20 +692,20 @@ def score_momentum(nav_index: list[float]) -> DimensionScore:
 
     # Short-term trend (25%): 20-day MA vs current
     ma20 = statistics.mean(values[-20:])
-    score_short = min(5.0, (current / ma20 - 1) * 100 + 2.5)
+    score_short = min(5.0, (current / ma20 - 1) * 100 + 2.5) if ma20 != 0 else 2.5
 
     # Medium-term trend (25%): 60-day MA slope
     if len(values) >= 60:
         ma60 = statistics.mean(values[-60:])
         ma60_30 = statistics.mean(values[-90:-30]) if len(values) >= 90 else statistics.mean(values[:30])
-        slope = (ma60 - ma60_30) / ma60_30 * 100
+        slope = (ma60 - ma60_30) / ma60_30 * 100 if ma60_30 != 0 else 0
         score_mid = min(5.0, slope * 2 + 2.5)
     else:
         score_mid = 2.5
 
     # Max drawdown recovery (15%)
-    peak = max(values)
-    distance = (current - peak) / peak
+    peak = max(values) if values else 0
+    distance = (current - peak) / peak if peak > 0 else 0
     if distance >= 0:
         score_recovery = 5.0
     elif distance > -0.05:

@@ -1,0 +1,638 @@
+{
+  "qualified": [
+    {
+      "uid": "11036788",
+      "name": "吼吼拉拉",
+      "n_funds": 3,
+      "source": "收益率-近一年",
+      "return_rate": "+158.18%"
+    },
+    {
+      "uid": "185759",
+      "name": "L***6",
+      "n_funds": 3,
+      "source": "收益率-近一年",
+      "return_rate": "+134.96%"
+    },
+    {
+      "uid": "1202693",
+      "name": "万今888",
+      "n_funds": 14,
+      "source": "收益率-近一年",
+      "return_rate": "+108.91%"
+    },
+    {
+      "uid": "277615",
+      "name": "s***4",
+      "n_funds": 7,
+      "source": "收益率-近一年",
+      "return_rate": "+102.99%"
+    },
+    {
+      "uid": "6401658",
+      "name": "和平的使命延续",
+      "n_funds": 11,
+      "source": "收益率-近一年",
+      "return_rate": "+84.03%"
+    },
+    {
+      "uid": "4452314",
+      "name": "jd_136395apy",
+      "n_funds": 7,
+      "source": "收益率-近一年",
+      "return_rate": "+72.64%"
+    },
+    {
+      "uid": "8670487",
+      "name": "给自己的家",
+      "n_funds": 9,
+      "source": "收益额-近一年",
+      "return_rate": "+26.80%"
+    },
+    {
+      "uid": "585742",
+      "name": "大勇653999",
+      "n_funds": 23,
+      "source": "收益额-近一年",
+      "return_rate": "+23.17%"
+    },
+    {
+      "uid": "11013749",
+      "name": "永远相信美好的事情即将发生",
+      "n_funds": 40,
+      "source": "收益额-近一年",
+      "return_rate": "+46.33%"
+    },
+    {
+      "uid": "2719343",
+      "name": "石破天",
+      "n_funds": 15,
+      "source": "收益额-近一年",
+      "return_rate": "+57.27%"
+    },
+    {
+      "uid": "9640747",
+      "name": "Andyzhangwang",
+      "n_funds": 12,
+      "source": "收益额-近一年",
+      "return_rate": "+15.12%"
+    },
+    {
+      "uid": "3008969",
+      "name": "时序生息",
+      "n_funds": 501,
+      "source": "收益额-近一年",
+      "return_rate": "+18.95%"
+    },
+    {
+      "uid": "11105928",
+      "name": "u_2j4tiwd4peom",
+      "n_funds": 34,
+      "source": "收益额-近一年",
+      "return_rate": "+26.56%"
+    },
+    {
+      "uid": "3371899",
+      "name": "jd156110phv",
+      "n_funds": 78,
+      "source": "收益额-近一年",
+      "return_rate": "+15.28%"
+    },
+    {
+      "uid": "10661959",
+      "name": "jmrf",
+      "n_funds": 35,
+      "source": "收益额-近一年",
+      "return_rate": "+15.56%"
+    },
+    {
+      "uid": "13268051",
+      "name": "羊214",
+      "n_funds": 24,
+      "source": "收益额-近一年",
+      "return_rate": "+7.57%"
+    },
+    {
+      "uid": "10643324",
+      "name": "自由王国",
+      "n_funds": 70,
+      "source": "收益额-近一年",
+      "return_rate": "+8.01%"
+    },
+    {
+      "uid": "3622545",
+      "name": "哺泽沪",
+      "n_funds": 53,
+      "source": "收益额-近一年",
+      "return_rate": "+8.47%"
+    },
+    {
+      "uid": "3093534",
+      "name": "C***e",
+      "n_funds": 7,
+      "source": "收益额-近一年",
+      "return_rate": "+18.38%"
+    },
+    {
+      "uid": "7732627",
+      "name": "Skyhawk_cn1",
+      "n_funds": 34,
+      "source": "收益额-近一年",
+      "return_rate": "+3.08%"
+    },
+    {
+      "uid": "3005950",
+      "name": "伦与星辰",
+      "n_funds": 30,
+      "source": "收益额-近一年",
+      "return_rate": "+28.73%"
+    },
+    {
+      "uid": "7934309",
+      "name": "星尘的舞蹈",
+      "n_funds": 101,
+      "source": "收益额-近一年",
+      "return_rate": "+15.94%"
+    },
+    {
+      "uid": "5399032",
+      "name": "jd_博阿托9",
+      "n_funds": 67,
+      "source": "收益额-近一年",
+      "return_rate": "+31.33%"
+    },
+    {
+      "uid": "12361093",
+      "name": "堵门大苹果",
+      "n_funds": 9,
+      "source": "收益额-近一年",
+      "return_rate": "+12.20%"
+    },
+    {
+      "uid": "775240",
+      "name": "春的序曲",
+      "n_funds": 57,
+      "source": "收益额-近一年",
+      "return_rate": "+16.82%"
+    },
+    {
+      "uid": "57250",
+      "name": "画船听雨眠",
+      "n_funds": 53,
+      "source": "收益额-近一年",
+      "return_rate": "+6.62%"
+    },
+    {
+      "uid": "4311778",
+      "name": "jd_VXsDPeTrIkUH",
+      "n_funds": 13,
+      "source": "收益额-近一年",
+      "return_rate": "+2.56%"
+    },
+    {
+      "uid": "1084584",
+      "name": "每周定投的单身理工男",
+      "n_funds": 90,
+      "source": "收益额-近一年",
+      "return_rate": "+5.65%"
+    },
+    {
+      "uid": "10787839",
+      "name": "慢慢变富之路",
+      "n_funds": 15,
+      "source": "收益额-近一年",
+      "return_rate": "+4.79%"
+    },
+    {
+      "uid": "3642403",
+      "name": "DDMOM",
+      "n_funds": 52,
+      "source": "收益额-近一年",
+      "return_rate": "+3.81%"
+    },
+    {
+      "uid": "11543463",
+      "name": "BellGray",
+      "n_funds": 59,
+      "source": "收益额-近一年",
+      "return_rate": "+14.24%"
+    },
+    {
+      "uid": "2738203",
+      "name": "西江月夜美",
+      "n_funds": 10,
+      "source": "收益额-近一年",
+      "return_rate": "+6.59%"
+    },
+    {
+      "uid": "3457841",
+      "name": "thinnon_ex",
+      "n_funds": 68,
+      "source": "收益额-近一年",
+      "return_rate": "+16.68%"
+    },
+    {
+      "uid": "2974957",
+      "name": "jojo小气鬼",
+      "n_funds": 25,
+      "source": "收益额-近一年",
+      "return_rate": "+3.51%"
+    },
+    {
+      "uid": "10784093",
+      "name": "西城云舒",
+      "n_funds": 21,
+      "source": "收益额-近一年",
+      "return_rate": "+11.08%"
+    },
+    {
+      "uid": "2751549",
+      "name": "有胆有识走江湖",
+      "n_funds": 22,
+      "source": "收益额-近一年",
+      "return_rate": "+19.60%"
+    },
+    {
+      "uid": "12172233",
+      "name": "3bs55rje5cfqka",
+      "n_funds": 15,
+      "source": "收益额-近一年",
+      "return_rate": "+8.92%"
+    },
+    {
+      "uid": "2895806",
+      "name": "景东景西",
+      "n_funds": 101,
+      "source": "收益额-近一年",
+      "return_rate": "+10.70%"
+    },
+    {
+      "uid": "3550475",
+      "name": "晨享麦子",
+      "n_funds": 44,
+      "source": "收益额-近一年",
+      "return_rate": "+2.14%"
+    },
+    {
+      "uid": "388484",
+      "name": "铁蛋战斗基",
+      "n_funds": 24,
+      "source": "收益额-近一年",
+      "return_rate": "+5.19%"
+    },
+    {
+      "uid": "3628855",
+      "name": "先稳再赢",
+      "n_funds": 122,
+      "source": "收益额-近一年",
+      "return_rate": "+2.89%"
+    },
+    {
+      "uid": "2956990",
+      "name": "朵朵丽",
+      "n_funds": 58,
+      "source": "收益额-近一年",
+      "return_rate": "+4.05%"
+    },
+    {
+      "uid": "10478912",
+      "name": "我已暴富",
+      "n_funds": 25,
+      "source": "收益额-近一年",
+      "return_rate": "+25.37%"
+    },
+    {
+      "uid": "3651000",
+      "name": "坦桑尼亚老云",
+      "n_funds": 19,
+      "source": "收益额-近一年",
+      "return_rate": "+12.49%"
+    },
+    {
+      "uid": "13670260",
+      "name": "sonic_sis",
+      "n_funds": 48,
+      "source": "收益额-近一年",
+      "return_rate": "+19.78%"
+    },
+    {
+      "uid": "2679059",
+      "name": "我***2",
+      "n_funds": 28,
+      "source": "收益额-近一年",
+      "return_rate": "+11.05%"
+    },
+    {
+      "uid": "4083060",
+      "name": "tttxz",
+      "n_funds": 16,
+      "source": "收益额-近一年",
+      "return_rate": "+16.34%"
+    },
+    {
+      "uid": "2702941",
+      "name": "磁力情书",
+      "n_funds": 13,
+      "source": "收益额-近一年",
+      "return_rate": "+5.46%"
+    },
+    {
+      "uid": "561428",
+      "name": "jd_135525hzz",
+      "n_funds": 40,
+      "source": "收益额-近一年",
+      "return_rate": "+16.11%"
+    },
+    {
+      "uid": "3191290",
+      "name": "lkqbangbangde",
+      "n_funds": 43,
+      "source": "收益额-近一年",
+      "return_rate": "+12.00%"
+    },
+    {
+      "uid": "2865336",
+      "name": "dcowen",
+      "n_funds": 11,
+      "source": "收益额-近一年",
+      "return_rate": "+3.91%"
+    },
+    {
+      "uid": "3062442",
+      "name": "dlpf0411",
+      "n_funds": 42,
+      "source": "收益额-近一年",
+      "return_rate": "+3.95%"
+    },
+    {
+      "uid": "194468",
+      "name": "a***4",
+      "n_funds": 14,
+      "source": "收益额-近一年",
+      "return_rate": "+9.60%"
+    },
+    {
+      "uid": "2872907",
+      "name": "投资常青树",
+      "n_funds": 67,
+      "source": "收益额-近一年",
+      "return_rate": "+11.54%"
+    },
+    {
+      "uid": "9573732",
+      "name": "小牛阳",
+      "n_funds": 55,
+      "source": "收益额-近一年",
+      "return_rate": "+7.12%"
+    },
+    {
+      "uid": "3784699",
+      "name": "t113h27jxr71x4",
+      "n_funds": 34,
+      "source": "收益额-近一年",
+      "return_rate": "+16.64%"
+    },
+    {
+      "uid": "3190221",
+      "name": "匿名的昵称",
+      "n_funds": 25,
+      "source": "收益额-近一年",
+      "return_rate": "+9.35%"
+    },
+    {
+      "uid": "3773831",
+      "name": "雪山雨狂",
+      "n_funds": 32,
+      "source": "收益额-近一年",
+      "return_rate": "+10.64%"
+    },
+    {
+      "uid": "1008272",
+      "name": "wbh5",
+      "n_funds": 19,
+      "source": "收益额-近一年",
+      "return_rate": "+14.75%"
+    },
+    {
+      "uid": "4101853",
+      "name": "子瑜3",
+      "n_funds": 13,
+      "source": "收益额-近一年",
+      "return_rate": "+10.41%"
+    },
+    {
+      "uid": "3924608",
+      "name": "jd_NJXHhTzGXbQm",
+      "n_funds": 49,
+      "source": "收益额-近一年",
+      "return_rate": "+14.27%"
+    },
+    {
+      "uid": "4137294",
+      "name": "jd_mqyw0",
+      "n_funds": 848,
+      "source": "收益额-近一年",
+      "return_rate": "+10.01%"
+    },
+    {
+      "uid": "2676342",
+      "name": "zhouhuar888",
+      "n_funds": 42,
+      "source": "收益额-近一年",
+      "return_rate": "+19.31%"
+    },
+    {
+      "uid": "120101",
+      "name": "勇敢小火车卡尔",
+      "n_funds": 151,
+      "source": "收益额-近一年",
+      "return_rate": "+14.26%"
+    },
+    {
+      "uid": "1077903",
+      "name": "t***f",
+      "n_funds": 24,
+      "source": "收益额-近一年",
+      "return_rate": "+14.45%"
+    },
+    {
+      "uid": "2794996",
+      "name": "凤的美好未来",
+      "n_funds": 41,
+      "source": "收益额-近一年",
+      "return_rate": "+8.73%"
+    },
+    {
+      "uid": "3601777",
+      "name": "勤劳的大鳄",
+      "n_funds": 33,
+      "source": "收益额-近一年",
+      "return_rate": "+12.16%"
+    },
+    {
+      "uid": "99886",
+      "name": "这个昵称怎么样",
+      "n_funds": 26,
+      "source": "收益额-近一年",
+      "return_rate": "+7.73%"
+    },
+    {
+      "uid": "9159361",
+      "name": "Soleil_1003",
+      "n_funds": 25,
+      "source": "收益额-近一年",
+      "return_rate": "+9.93%"
+    },
+    {
+      "uid": "11695592",
+      "name": "花样年华jie",
+      "n_funds": 22,
+      "source": "收益额-近一年",
+      "return_rate": "+8.30%"
+    },
+    {
+      "uid": "13381240",
+      "name": "泰山宏观多资产策略",
+      "n_funds": 72,
+      "source": "收益额-近一年",
+      "return_rate": "+3.65%"
+    },
+    {
+      "uid": "349589",
+      "name": "小熊彼特存钱罐",
+      "n_funds": 57,
+      "source": "收益额-近一年",
+      "return_rate": "+2.17%"
+    },
+    {
+      "uid": "3595023",
+      "name": "理财大樱桃",
+      "n_funds": 185,
+      "source": "收益额-近一年",
+      "return_rate": "+7.07%"
+    },
+    {
+      "uid": "42022",
+      "name": "不断加仓的大韭菜",
+      "n_funds": 20,
+      "source": "收益额-近一年",
+      "return_rate": "+11.75%"
+    },
+    {
+      "uid": "1132141",
+      "name": "亲爱的外公外婆",
+      "n_funds": 56,
+      "source": "收益额-近一年",
+      "return_rate": "+8.97%"
+    },
+    {
+      "uid": "11024842",
+      "name": "衡岳1993",
+      "n_funds": 16,
+      "source": "收益额-近一年",
+      "return_rate": "+7.97%"
+    },
+    {
+      "uid": "3451133",
+      "name": "m***s",
+      "n_funds": 34,
+      "source": "收益额-近一年",
+      "return_rate": "+4.77%"
+    },
+    {
+      "uid": "16511134",
+      "name": "冷月963289366",
+      "n_funds": 9,
+      "source": "收益额-近一年",
+      "return_rate": "+4.50%"
+    },
+    {
+      "uid": "10841623",
+      "name": "7u0kd6a92ipz8k",
+      "n_funds": 35,
+      "source": "收益额-近一年",
+      "return_rate": "+4.66%"
+    },
+    {
+      "uid": "2979901",
+      "name": "hn_feng",
+      "n_funds": 38,
+      "source": "收益额-近一年",
+      "return_rate": "+8.62%"
+    },
+    {
+      "uid": "3701197",
+      "name": "jd_接盘侠",
+      "n_funds": 13,
+      "source": "收益额-近一年",
+      "return_rate": "+4.50%"
+    },
+    {
+      "uid": "11492714",
+      "name": "隐身honeywind",
+      "n_funds": 153,
+      "source": "收益额-近一年",
+      "return_rate": "+4.95%"
+    },
+    {
+      "uid": "138612",
+      "name": "基金长跑者",
+      "n_funds": 45,
+      "source": "收益额-近一年",
+      "return_rate": "+0.46%"
+    },
+    {
+      "uid": "3138062",
+      "name": "招财猫丶",
+      "n_funds": 39,
+      "source": "收益额-近一年",
+      "return_rate": "+1.16%"
+    },
+    {
+      "uid": "1247566",
+      "name": "焰尾鸢尾",
+      "n_funds": 63,
+      "source": "收益额-近一年",
+      "return_rate": "+8.53%"
+    },
+    {
+      "uid": "3565721",
+      "name": "下岗女工",
+      "n_funds": 70,
+      "source": "收益额-近一年",
+      "return_rate": "+5.13%"
+    },
+    {
+      "uid": "7827853",
+      "name": "夜空守望者王",
+      "n_funds": 3,
+      "source": "收益额-近一年",
+      "return_rate": "+8.24%"
+    },
+    {
+      "uid": "890454",
+      "name": "山川本草bjldwxm",
+      "n_funds": 70,
+      "source": "收益额-近一年",
+      "return_rate": "+4.43%"
+    },
+    {
+      "uid": "11548033",
+      "name": "f97693ud56722c",
+      "n_funds": 73,
+      "source": "收益额-近一年",
+      "return_rate": "+1.07%"
+    },
+    {
+      "uid": "302584",
+      "name": "船长爱吃虾",
+      "n_funds": 10,
+      "source": "收益额-近一年",
+      "return_rate": "+12.57%"
+    }
+  ],
+  "total": 110,
+  "single_bet": 20,
+  "zombie": 0,
+  "failed": 0
+}

@@ -1,0 +1,1067 @@
+{
+  "fetch_time": "2026-07-24T14:25:02.404424",
+  "total_ranked": 100,
+  "already_followed": 29,
+  "zombie_or_single_local": 9,
+  "to_follow": 62,
+  "followed_ok": 62,
+  "followed_fail": 0,
+  "followed_users": [
+    {
+      "rank": 1,
+      "uid": "14569374",
+      "name": "宝宝100102",
+      "ret": 204.28
+    },
+    {
+      "rank": 4,
+      "uid": "18118793",
+      "name": "公开持仓",
+      "ret": 147.28
+    },
+    {
+      "rank": 12,
+      "uid": "18170275",
+      "name": "安叔GX",
+      "ret": 124.57
+    },
+    {
+      "rank": 15,
+      "uid": "384397",
+      "name": "嘻嘻哈哈112",
+      "ret": 112.61
+    },
+    {
+      "rank": 23,
+      "uid": "3786598",
+      "name": "茅年斌",
+      "ret": 98.17
+    },
+    {
+      "rank": 27,
+      "uid": "14215625",
+      "name": "jd_心琪无忧",
+      "ret": 90.89
+    },
+    {
+      "rank": 33,
+      "uid": "13877467",
+      "name": "西门喷血1981",
+      "ret": 87.54
+    },
+    {
+      "rank": 34,
+      "uid": "14160183",
+      "name": "jd_找寻神",
+      "ret": 86.8
+    },
+    {
+      "rank": 42,
+      "uid": "13716567",
+      "name": "大锤子JD",
+      "ret": 83.64
+    },
+    {
+      "rank": 43,
+      "uid": "14223324",
+      "name": "jd_hOYyoaVzlUDM",
+      "ret": 82.56
+    },
+    {
+      "rank": 45,
+      "uid": "1224896",
+      "name": "无影天尊",
+      "ret": 81.79
+    },
+    {
+      "rank": 47,
+      "uid": "235970",
+      "name": "随心与",
+      "ret": 81.06
+    },
+    {
+      "rank": 48,
+      "uid": "14189099",
+      "name": "酉酉2013",
+      "ret": 80.99
+    },
+    {
+      "rank": 49,
+      "uid": "3101248",
+      "name": "jdhe1190",
+      "ret": 79.59
+    },
+    {
+      "rank": 50,
+      "uid": "180948",
+      "name": "思茅区陈磊",
+      "ret": 79.24
+    },
+    {
+      "rank": 51,
+      "uid": "3585515",
+      "name": "regexz",
+      "ret": 79.18
+    },
+    {
+      "rank": 52,
+      "uid": "11077713",
+      "name": "彩色的风",
+      "ret": 78.93
+    },
+    {
+      "rank": 53,
+      "uid": "14089372",
+      "name": "清凉的山风8922@",
+      "ret": 78.52
+    },
+    {
+      "rank": 55,
+      "uid": "3123736",
+      "name": "北漂的龙少帅",
+      "ret": 76.81
+    },
+    {
+      "rank": 56,
+      "uid": "14225881",
+      "name": "r1506u2fj614l2",
+      "ret": 76.71
+    },
+    {
+      "rank": 57,
+      "uid": "2929964",
+      "name": "大哲哥nio2",
+      "ret": 76.62
+    },
+    {
+      "rank": 59,
+      "uid": "2378188",
+      "name": "天朝网购战士",
+      "ret": 75.95
+    },
+    {
+      "rank": 60,
+      "uid": "1130028",
+      "name": "jd_136972hxy",
+      "ret": 75.63
+    },
+    {
+      "rank": 61,
+      "uid": "1133060",
+      "name": "不浊的流水",
+      "ret": 75.55
+    },
+    {
+      "rank": 62,
+      "uid": "14197156",
+      "name": "亚修",
+      "ret": 75.18
+    },
+    {
+      "rank": 63,
+      "uid": "2705091",
+      "name": "dlbcangel",
+      "ret": 74.92
+    },
+    {
+      "rank": 64,
+      "uid": "44553",
+      "name": "独孤隐龟",
+      "ret": 74.84
+    },
+    {
+      "rank": 65,
+      "uid": "570540",
+      "name": "永恒的梦",
+      "ret": 74.56
+    },
+    {
+      "rank": 66,
+      "uid": "183856",
+      "name": "风之徽章",
+      "ret": 72.99
+    },
+    {
+      "rank": 68,
+      "uid": "10945204",
+      "name": "jd_32s5t55v0tc8iu",
+      "ret": 72.38
+    },
+    {
+      "rank": 69,
+      "uid": "1096064",
+      "name": "world7602",
+      "ret": 72.35
+    },
+    {
+      "rank": 70,
+      "uid": "344148",
+      "name": "准确命中o",
+      "ret": 72.29
+    },
+    {
+      "rank": 71,
+      "uid": "11977071",
+      "name": "nd04v4qyaxy8dz",
+      "ret": 71.68
+    },
+    {
+      "rank": 72,
+      "uid": "2849211",
+      "name": "帅杨先生",
+      "ret": 70.31
+    },
+    {
+      "rank": 73,
+      "uid": "153342",
+      "name": "顺大势耐住气",
+      "ret": 69.99
+    },
+    {
+      "rank": 74,
+      "uid": "8792440",
+      "name": "jd_178570qdg",
+      "ret": 69.8
+    },
+    {
+      "rank": 75,
+      "uid": "9374298",
+      "name": "92g10ys5zafuvn",
+      "ret": 69.67
+    },
+    {
+      "rank": 76,
+      "uid": "14170940",
+      "name": "cheaaa",
+      "ret": 69.62
+    },
+    {
+      "rank": 77,
+      "uid": "4944636",
+      "name": "2hyz69pu7xlw5j",
+      "ret": 69.56
+    },
+    {
+      "rank": 78,
+      "uid": "299891",
+      "name": "心跳的奇迹",
+      "ret": 69.53
+    },
+    {
+      "rank": 79,
+      "uid": "3623438",
+      "name": "理财日记1号",
+      "ret": 69.48
+    },
+    {
+      "rank": 80,
+      "uid": "2880111",
+      "name": "jd_etAMVeqwUlRi",
+      "ret": 69.31
+    },
+    {
+      "rank": 81,
+      "uid": "14194272",
+      "name": "4e0dkprnbew9yj",
+      "ret": 69.17
+    },
+    {
+      "rank": 82,
+      "uid": "1234313",
+      "name": "弦月之翼",
+      "ret": 69.06
+    },
+    {
+      "rank": 83,
+      "uid": "13788338",
+      "name": "888大地主888",
+      "ret": 68.67
+    },
+    {
+      "rank": 84,
+      "uid": "12478776",
+      "name": "赵wdd",
+      "ret": 68.66
+    },
+    {
+      "rank": 85,
+      "uid": "2657128",
+      "name": "丹尼尔2014",
+      "ret": 67.25
+    },
+    {
+      "rank": 86,
+      "uid": "10829377",
+      "name": "jd_182356dwq",
+      "ret": 67.08
+    },
+    {
+      "rank": 87,
+      "uid": "1136313",
+      "name": "gan__gan",
+      "ret": 67.06
+    },
+    {
+      "rank": 88,
+      "uid": "14196059",
+      "name": "octeau",
+      "ret": 66.92
+    },
+    {
+      "rank": 89,
+      "uid": "230901",
+      "name": "jd_qiwang966",
+      "ret": 66.82
+    },
+    {
+      "rank": 90,
+      "uid": "11285806",
+      "name": "jd_137929gez",
+      "ret": 66.6
+    },
+    {
+      "rank": 91,
+      "uid": "13901763",
+      "name": "嗜书如好色",
+      "ret": 66.28
+    },
+    {
+      "rank": 92,
+      "uid": "1132486",
+      "name": "jd_136833abm",
+      "ret": 65.99
+    },
+    {
+      "rank": 93,
+      "uid": "14216028",
+      "name": "豆豆0118",
+      "ret": 65.95
+    },
+    {
+      "rank": 94,
+      "uid": "10819553",
+      "name": "Siketsu",
+      "ret": 65.73
+    },
+    {
+      "rank": 95,
+      "uid": "4019495",
+      "name": "斗士888zku",
+      "ret": 65.61
+    },
+    {
+      "rank": 96,
+      "uid": "14219581",
+      "name": "JanzMan",
+      "ret": 65.6
+    },
+    {
+      "rank": 97,
+      "uid": "2734447",
+      "name": "哪吒nao海",
+      "ret": 65.57
+    },
+    {
+      "rank": 98,
+      "uid": "1066000",
+      "name": "h***u",
+      "ret": 64.25
+    },
+    {
+      "rank": 99,
+      "uid": "14148626",
+      "name": "布丁小芒果",
+      "ret": 64.21
+    },
+    {
+      "rank": 100,
+      "uid": "2773435",
+      "name": "a***8",
+      "ret": 64.02
+    }
+  ],
+  "verified": [
+    {
+      "rank": 1,
+      "uid": "14569374",
+      "name": "宝宝100102",
+      "ret": 204.28,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 4,
+      "uid": "18118793",
+      "name": "公开持仓",
+      "ret": 147.28,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 12,
+      "uid": "18170275",
+      "name": "安叔GX",
+      "ret": 124.57,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 15,
+      "uid": "384397",
+      "name": "嘻嘻哈哈112",
+      "ret": 112.61,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 23,
+      "uid": "3786598",
+      "name": "茅年斌",
+      "ret": 98.17,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 27,
+      "uid": "14215625",
+      "name": "jd_心琪无忧",
+      "ret": 90.89,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 33,
+      "uid": "13877467",
+      "name": "西门喷血1981",
+      "ret": 87.54,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 34,
+      "uid": "14160183",
+      "name": "jd_找寻神",
+      "ret": 86.8,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 42,
+      "uid": "13716567",
+      "name": "大锤子JD",
+      "ret": 83.64,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 43,
+      "uid": "14223324",
+      "name": "jd_hOYyoaVzlUDM",
+      "ret": 82.56,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 45,
+      "uid": "1224896",
+      "name": "无影天尊",
+      "ret": 81.79,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 47,
+      "uid": "235970",
+      "name": "随心与",
+      "ret": 81.06,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 48,
+      "uid": "14189099",
+      "name": "酉酉2013",
+      "ret": 80.99,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 49,
+      "uid": "3101248",
+      "name": "jdhe1190",
+      "ret": 79.59,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 50,
+      "uid": "180948",
+      "name": "思茅区陈磊",
+      "ret": 79.24,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 51,
+      "uid": "3585515",
+      "name": "regexz",
+      "ret": 79.18,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 52,
+      "uid": "11077713",
+      "name": "彩色的风",
+      "ret": 78.93,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 53,
+      "uid": "14089372",
+      "name": "清凉的山风8922@",
+      "ret": 78.52,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 55,
+      "uid": "3123736",
+      "name": "北漂的龙少帅",
+      "ret": 76.81,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 56,
+      "uid": "14225881",
+      "name": "r1506u2fj614l2",
+      "ret": 76.71,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 57,
+      "uid": "2929964",
+      "name": "大哲哥nio2",
+      "ret": 76.62,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 59,
+      "uid": "2378188",
+      "name": "天朝网购战士",
+      "ret": 75.95,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 60,
+      "uid": "1130028",
+      "name": "jd_136972hxy",
+      "ret": 75.63,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 61,
+      "uid": "1133060",
+      "name": "不浊的流水",
+      "ret": 75.55,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 62,
+      "uid": "14197156",
+      "name": "亚修",
+      "ret": 75.18,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 63,
+      "uid": "2705091",
+      "name": "dlbcangel",
+      "ret": 74.92,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 64,
+      "uid": "44553",
+      "name": "独孤隐龟",
+      "ret": 74.84,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 65,
+      "uid": "570540",
+      "name": "永恒的梦",
+      "ret": 74.56,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 66,
+      "uid": "183856",
+      "name": "风之徽章",
+      "ret": 72.99,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 68,
+      "uid": "10945204",
+      "name": "jd_32s5t55v0tc8iu",
+      "ret": 72.38,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 69,
+      "uid": "1096064",
+      "name": "world7602",
+      "ret": 72.35,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 70,
+      "uid": "344148",
+      "name": "准确命中o",
+      "ret": 72.29,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 71,
+      "uid": "11977071",
+      "name": "nd04v4qyaxy8dz",
+      "ret": 71.68,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 72,
+      "uid": "2849211",
+      "name": "帅杨先生",
+      "ret": 70.31,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 73,
+      "uid": "153342",
+      "name": "顺大势耐住气",
+      "ret": 69.99,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 74,
+      "uid": "8792440",
+      "name": "jd_178570qdg",
+      "ret": 69.8,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 75,
+      "uid": "9374298",
+      "name": "92g10ys5zafuvn",
+      "ret": 69.67,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 76,
+      "uid": "14170940",
+      "name": "cheaaa",
+      "ret": 69.62,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 77,
+      "uid": "4944636",
+      "name": "2hyz69pu7xlw5j",
+      "ret": 69.56,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 78,
+      "uid": "299891",
+      "name": "心跳的奇迹",
+      "ret": 69.53,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 79,
+      "uid": "3623438",
+      "name": "理财日记1号",
+      "ret": 69.48,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 80,
+      "uid": "2880111",
+      "name": "jd_etAMVeqwUlRi",
+      "ret": 69.31,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 81,
+      "uid": "14194272",
+      "name": "4e0dkprnbew9yj",
+      "ret": 69.17,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 82,
+      "uid": "1234313",
+      "name": "弦月之翼",
+      "ret": 69.06,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 83,
+      "uid": "13788338",
+      "name": "888大地主888",
+      "ret": 68.67,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 84,
+      "uid": "12478776",
+      "name": "赵wdd",
+      "ret": 68.66,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 85,
+      "uid": "2657128",
+      "name": "丹尼尔2014",
+      "ret": 67.25,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 86,
+      "uid": "10829377",
+      "name": "jd_182356dwq",
+      "ret": 67.08,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 87,
+      "uid": "1136313",
+      "name": "gan__gan",
+      "ret": 67.06,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 88,
+      "uid": "14196059",
+      "name": "octeau",
+      "ret": 66.92,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 89,
+      "uid": "230901",
+      "name": "jd_qiwang966",
+      "ret": 66.82,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 90,
+      "uid": "11285806",
+      "name": "jd_137929gez",
+      "ret": 66.6,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 91,
+      "uid": "13901763",
+      "name": "嗜书如好色",
+      "ret": 66.28,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 92,
+      "uid": "1132486",
+      "name": "jd_136833abm",
+      "ret": 65.99,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 93,
+      "uid": "14216028",
+      "name": "豆豆0118",
+      "ret": 65.95,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 94,
+      "uid": "10819553",
+      "name": "Siketsu",
+      "ret": 65.73,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 95,
+      "uid": "4019495",
+      "name": "斗士888zku",
+      "ret": 65.61,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 96,
+      "uid": "14219581",
+      "name": "JanzMan",
+      "ret": 65.6,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 97,
+      "uid": "2734447",
+      "name": "哪吒nao海",
+      "ret": 65.57,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 98,
+      "uid": "1066000",
+      "name": "h***u",
+      "ret": 64.25,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 99,
+      "uid": "14148626",
+      "name": "布丁小芒果",
+      "ret": 64.21,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    },
+    {
+      "rank": 100,
+      "uid": "2773435",
+      "name": "a***8",
+      "ret": 64.02,
+      "n_funds": 0,
+      "total_amount": 0,
+      "is_single_bet": false,
+      "is_cleared": true,
+      "fund_names": []
+    }
+  ]
+}
