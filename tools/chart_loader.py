@@ -2,25 +2,37 @@
 
 回测引擎和实盘模拟共用此模块，确保数据一致性。
 数据存储: data/fund_charts/{code}.json (每只基金一个文件)
+压缩存档: backtest/data/fund_charts.json.gz (3648只基金，37MB，加载快15倍)
 索引文件: data/fund_charts_index.json (轻量元数据)
 
 文件格式: [{xAxis: "2026-01-15", yAxis: 5.23}, ...]
 yAxis = 累计收益率% (与回测引擎完全兼容)
 """
 import json
+import gzip
 from pathlib import Path
 from datetime import datetime
 
 PROJECT = Path(__file__).resolve().parent.parent
 DEFAULT_CHARTS_DIR = PROJECT / "data" / "fund_charts"
+GZ_ARCHIVE = PROJECT / "backtest" / "data" / "fund_charts.json.gz"
 
 
 def load_all_charts(charts_dir: Path = None) -> dict:
-    """加载目录下所有基金chart数据。
+    """加载所有基金chart数据。
 
+    优先从 gzip 压缩文件加载（20秒/3648只），如果不存在则回退到逐文件加载（5分钟+/4056只）。
     返回 {code: [{xAxis, yAxis}, ...]} 字典。
     与回测引擎的 fund_charts 变量格式完全兼容。
     """
+    # 优先使用 gzip 压缩文件（快15倍）
+    if charts_dir is None and GZ_ARCHIVE.exists():
+        try:
+            with gzip.open(GZ_ARCHIVE, "rt", encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
+            pass  # 回退到逐文件加载
+
     charts_dir = Path(charts_dir) if charts_dir else DEFAULT_CHARTS_DIR
     if not charts_dir.exists():
         return {}
