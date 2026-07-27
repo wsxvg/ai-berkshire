@@ -399,7 +399,17 @@ def run_evolution():
     log(f"Improvement threshold: {IMPROVEMENT_THRESHOLD}%")
     log("=" * 80)
 
-    current_version = 6  # Start by monitoring V6
+    # Seed V6 champion history (manually analyzed)
+    v6_champ_config = {
+        "contrarian_buy_drop": 0.03, "pyramiding_enabled": True,
+        "regime_specific": True, "kelly_cap_bull": 0.5, "kelly_cap_bear": 0.15,
+        "min_score": 3.3, "min_consensus": 2, "kelly_cap": 0.35,
+        "max_holdings": 8, "smart_swap": True, "dynamic_max_holdings": True,
+    }
+    champion_history.append((6, "V6A_G1_champ_dk_pyr", 95.70, 6.06, v6_champ_config))
+    log("Seeded V6 champion: V6A_G1_champ_dk_pyr ret=+95.70% sharpe=6.06")
+
+    current_version = 7  # V6 already done manually, start from V7
 
     while current_version < 6 + MAX_VERSIONS:
         version_letter = chr(ord('a') + current_version - 6)
@@ -442,8 +452,35 @@ def run_evolution():
                 if run_id:
                     artifacts = curl_api(f"{GH_API}/actions/runs/{run_id}/artifacts")
                     for art in artifacts.get("artifacts", []):
-                        if "final" in art["name"].lower() or "merged" in art["name"].lower():
-                            log(f"    Found artifact: {art['name']}")
+                        art_name = art["name"]
+                        # Download phase1-merged artifacts
+                        if "phase1-merged" in art_name.lower():
+                            log(f"    Downloading {art_name}...")
+                            zip_path = os.path.join(REPO_DIR, f"_art_{art_name}.zip")
+                            rc = subprocess.call(["curl.exe", "--connect-timeout", "30", "--max-time", "120",
+                                "--insecure", "-L", "-s", "-o", zip_path,
+                                "-H", f"Authorization: token {TOKEN}",
+                                art["archive_download_url"]], cwd=REPO_DIR)
+                            if os.path.exists(zip_path) and os.path.getsize(zip_path) > 100:
+                                import zipfile
+                                extract_dir = os.path.join(REPO_DIR, f"_art_{art_name}")
+                                os.makedirs(extract_dir, exist_ok=True)
+                                try:
+                                    with zipfile.ZipFile(zip_path, 'r') as z:
+                                        z.extractall(extract_dir)
+                                    # Parse all_strategies.json from extracted dir
+                                    for f in glob.glob(os.path.join(extract_dir, "*.json")):
+                                        try:
+                                            data = json.load(open(f, "r", encoding="utf-8"))
+                                            strats = data.get("strategies", data if isinstance(data, list) else [])
+                                            phase1.extend(strats)
+                                            log(f"      Loaded {len(strats)} strategies from {os.path.basename(f)}")
+                                        except Exception as e:
+                                            log(f"      Error parsing {f}: {e}")
+                                except Exception as e:
+                                    log(f"      Extract error: {e}")
+                            if os.path.exists(zip_path):
+                                os.remove(zip_path)
 
         log(f"\nTotal Phase 1 strategies: {len(phase1)}")
 
@@ -453,6 +490,43 @@ def run_evolution():
         for letter in "abcdefgh":
             phase2 += parse_phase2_results(f"{version_prefix}{letter}")
         phase2 += parse_phase2_results(version_prefix)
+
+        # If no local phase2 results, download from artifacts
+        if not phase2:
+            log("  No local Phase 2 results, downloading artifacts...")
+            for run in runs:
+                run_id = run.get("id")
+                if run_id:
+                    artifacts = curl_api(f"{GH_API}/actions/runs/{run_id}/artifacts")
+                    for art in artifacts.get("artifacts", []):
+                        art_name = art["name"]
+                        if "phase2" in art_name.lower() or "final" in art_name.lower():
+                            log(f"    Downloading {art_name}...")
+                            zip_path = os.path.join(REPO_DIR, f"_art_{art_name}.zip")
+                            rc = subprocess.call(["curl.exe", "--connect-timeout", "30", "--max-time", "120",
+                                "--insecure", "-L", "-s", "-o", zip_path,
+                                "-H", f"Authorization: token {TOKEN}",
+                                art["archive_download_url"]], cwd=REPO_DIR)
+                            if os.path.exists(zip_path) and os.path.getsize(zip_path) > 100:
+                                import zipfile
+                                extract_dir = os.path.join(REPO_DIR, f"_art_{art_name}")
+                                os.makedirs(extract_dir, exist_ok=True)
+                                try:
+                                    with zipfile.ZipFile(zip_path, 'r') as z:
+                                        z.extractall(extract_dir)
+                                    for f in glob.glob(os.path.join(extract_dir, "*.json")):
+                                        try:
+                                            data = json.load(open(f, "r", encoding="utf-8"))
+                                            strats = data.get("strategies", data if isinstance(data, list) else [])
+                                            if strats:
+                                                phase2.extend(strats)
+                                                log(f"      Loaded {len(strats)} RW strategies from {os.path.basename(f)}")
+                                        except:
+                                            pass
+                                except Exception as e:
+                                    log(f"      Extract error: {e}")
+                            if os.path.exists(zip_path):
+                                os.remove(zip_path)
 
         log(f"Total Phase 2 strategies: {len(phase2)}")
 
