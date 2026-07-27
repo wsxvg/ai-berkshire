@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-"""Generate V7 sweep configs: Cross-combine V5 champion + V6 winners."""
+"""Generate V7 sweep configs: Cross-combine V5 champion + V6 winners.
+
+V7 fix (2026-07-27):
+  - V5_CHAMP min_consensus 3→2 (was too strict, caused 0 trades with contrarian)
+  - D4/D5/E4/F4 removed min_consensus=3 overrides
+  - Added Group G: control strategies WITHOUT contrarian_buy_drop
+    (to test if contrarian caused 0 trades)
+  - Added Group H: fund_drop_buy instead of contrarian_buy_drop
+    (V6's real winning feature was fund-level drop, not market-level)
+"""
 import json
 
 # ═══════════════════════════════════════════════════════════════
 # V5 Champion base config (ret=+99.80%, sharpe=6.94)
-# Key differentiators: min_consensus=3, custom weights, kelly=0.5,
-#   bear_market_no_buy, downtrend_penalty, ranking_half_life=45
+# Key differentiators: min_consensus=2 (lowered from 3), custom weights,
+#   kelly=0.5, bear_market_no_buy, downtrend_penalty, ranking_half_life=45
 # ═══════════════════════════════════════════════════════════════
 V5_CHAMP = {
     "start_date": "2023-07-17",
@@ -14,7 +23,7 @@ V5_CHAMP = {
     "monthly_injection": 0,
     "weights": {"quality": 17, "cost": 23, "manager": 29, "momentum": 11, "smart_money": 20},
     "min_score": 0.0,
-    "min_consensus": 3,
+    "min_consensus": 2,
     "max_holdings": 8,
     "max_position_pct": 40,
     "cash_reserve_pct": 0.05,
@@ -125,11 +134,12 @@ def v6_with(**overrides):
     return cfg
 
 
+v5_weights = {"quality": 17, "cost": 23, "manager": 29, "momentum": 11, "smart_money": 20}
+
 strategies = []
 
 # ═══════════════════════════════════════════════════════════════
-# A. V5 Champion + V6 Winning Features (most promising)
-# V5 had 99.80% return, V6 features add robustness
+# A. V5 Champion + V6 Winning Features (with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
 strategies.append({"name": "V7_A1_v5_drop03", "desc": "V5 champ + contrarian drop 3%", "config": v5_with(contrarian_buy_drop=0.03)})
 strategies.append({"name": "V7_A2_v5_drop03_pyr", "desc": "V5 champ + drop3% + pyramiding", "config": v5_with(contrarian_buy_drop=0.03, pyramiding_enabled=True)})
@@ -145,8 +155,7 @@ strategies.append({"name": "V7_A11_v5_drop03_pyr_4433_momdecay", "desc": "V5 cha
 strategies.append({"name": "V7_A12_v5_smartswap", "desc": "V5 champ + smart_swap (from V6 base)", "config": v5_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, smart_swap=True, smart_swap_margin=1.0, smart_swap_min_hold_days=30)})
 
 # ═══════════════════════════════════════════════════════════════
-# B. V6 Champion Cross-Combinations
-# Combine top V6 features with each other
+# B. V6 Champion Cross-Combinations (with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
 strategies.append({"name": "V7_B1_pyr_4433_2", "desc": "V6 #1 + #2: pyramiding + 4433", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, require_4433_pass=2)})
 strategies.append({"name": "V7_B2_pyr_momdecay", "desc": "V6 #1 + #4: pyramiding + mom decay", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, mom_decay_days=5)})
@@ -158,8 +167,7 @@ strategies.append({"name": "V7_B7_4433_corr_momdecay", "desc": "4433 + corr + mo
 strategies.append({"name": "V7_B8_pyr_4433_smartswap", "desc": "pyramiding + 4433 + smart_swap", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, require_4433_pass=2, smart_swap=True)})
 
 # ═══════════════════════════════════════════════════════════════
-# C. V6 Champion Fine-Tuning
-# Vary kelly_cap, 4433 strictness, min_score, max_holdings
+# C. V6 Champion Fine-Tuning (with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
 strategies.append({"name": "V7_C1_pyr_kc040", "desc": "pyramiding kelly=0.40", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, kelly_cap=0.40)})
 strategies.append({"name": "V7_C2_pyr_kc045", "desc": "pyramiding kelly=0.45", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, kelly_cap=0.45)})
@@ -173,20 +181,18 @@ strategies.append({"name": "V7_C9_pyr_maxhold6", "desc": "pyramiding + max_holdi
 strategies.append({"name": "V7_C10_pyr_trail20_8", "desc": "pyramiding + trailing TP 20/8", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, trailing_tp_activate=20, trailing_tp_drawdown=8)})
 
 # ═══════════════════════════════════════════════════════════════
-# D. V5 Features on V6 Base
-# Test V5's unique features on V6's base
+# D. V5 Features on V6 Base (with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
-v5_weights = {"quality": 17, "cost": 23, "manager": 29, "momentum": 11, "smart_money": 20}
 strategies.append({"name": "V7_D1_v6base_v5weights", "desc": "V6 base + V5 weights", "config": v6_with(weights=v5_weights, contrarian_buy_drop=0.03)})
 strategies.append({"name": "V7_D2_v6base_v5w_pyr", "desc": "V6 base + V5 weights + pyramiding", "config": v6_with(weights=v5_weights, contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
 strategies.append({"name": "V7_D3_v6base_v5w_pyr_4433", "desc": "V6 base + V5 weights + pyramiding + 4433", "config": v6_with(weights=v5_weights, contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, require_4433_pass=2)})
-strategies.append({"name": "V7_D4_v6base_cons3_pyr", "desc": "V6 base + consensus=3 + pyramiding", "config": v6_with(contrarian_buy_drop=0.03, min_consensus=3, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
-strategies.append({"name": "V7_D5_v6base_v5w_cons3_pyr", "desc": "V6 base + V5 weights + consensus=3 + pyramiding", "config": v6_with(weights=v5_weights, contrarian_buy_drop=0.03, min_consensus=3, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_D4_v6base_pyr", "desc": "V6 base + pyramiding (was cons3, now cons2)", "config": v6_with(contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_D5_v6base_v5w_pyr", "desc": "V6 base + V5 weights + pyramiding (was cons3)", "config": v6_with(weights=v5_weights, contrarian_buy_drop=0.03, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
 strategies.append({"name": "V7_D6_v6base_bearnobuy_pyr", "desc": "V6 base + bear_market_no_buy + pyramiding", "config": v6_with(contrarian_buy_drop=0.03, bear_market_no_buy=True, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
 strategies.append({"name": "V7_D7_v6base_momsell_pyr", "desc": "V6 base + momentum_sell=0.07 + pyramiding", "config": v6_with(contrarian_buy_drop=0.03, momentum_sell=0.07, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
 
 # ═══════════════════════════════════════════════════════════════
-# E. Ultimate Hybrids (V5 + V6 everything)
+# E. Ultimate Hybrids (V5 + V6 everything, with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
 strategies.append({"name": "V7_E1_v5_all_v6", "desc": "V5 champ + ALL V6 features", "config": v5_with(
     contrarian_buy_drop=0.03, pyramiding_enabled=True, require_4433_pass=2,
@@ -196,7 +202,7 @@ strategies.append({"name": "V7_E1_v5_all_v6", "desc": "V5 champ + ALL V6 feature
     dynamic_max_holdings=True, max_holdings_bull_mult=1.5, max_holdings_bear_mult=0.6,
     max_holdings=8
 )})
-strategies.append({"name": "V7_E2_v5_pyr_4433_momdecay", "desc": "V5 champ + pyramiding + 4433 + momdecay (no corr/sector)", "config": v5_with(
+strategies.append({"name": "V7_E2_v5_pyr_4433_momdecay", "desc": "V5 champ + pyramiding + 4433 + momdecay", "config": v5_with(
     contrarian_buy_drop=0.03, pyramiding_enabled=True, require_4433_pass=2, mom_decay_days=5,
     regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15
 )})
@@ -206,8 +212,8 @@ strategies.append({"name": "V7_E3_v5_pyr_smartswap_4433", "desc": "V5 champ + py
     regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15,
     dynamic_max_holdings=True, max_holdings_bull_mult=1.5, max_holdings_bear_mult=0.6, max_holdings=8
 )})
-strategies.append({"name": "V7_E4_v5w_cons3_ultimate", "desc": "V6 base + V5 weights + cons3 + ALL V6 winners", "config": v6_with(
-    weights=v5_weights, min_consensus=3, contrarian_buy_drop=0.03,
+strategies.append({"name": "V7_E4_v5w_ultimate", "desc": "V6 base + V5 weights + ALL V6 winners", "config": v6_with(
+    weights=v5_weights, contrarian_buy_drop=0.03,
     pyramiding_enabled=True, require_4433_pass=2, max_correlation=0.7,
     max_sector_count=3, mom_decay_days=5, regime_specific=True,
     kelly_cap_bull=0.5, kelly_cap_bear=0.15, bear_market_no_buy=True,
@@ -219,7 +225,7 @@ strategies.append({"name": "V7_E5_v5_drop03_4433_3_pyr", "desc": "V5 champ + dro
 )})
 
 # ═══════════════════════════════════════════════════════════════
-# F. Exploratory: New parameter combinations
+# F. Exploratory: New parameter combinations (with contrarian_buy_drop)
 # ═══════════════════════════════════════════════════════════════
 strategies.append({"name": "V7_F1_v5_drop03_downtrend02", "desc": "V5 + drop3% + lower downtrend penalty", "config": v5_with(contrarian_buy_drop=0.03, downtrend_penalty=0.3)})
 strategies.append({"name": "V7_F2_v5_drop03_downtrend08", "desc": "V5 + drop3% + higher downtrend penalty", "config": v5_with(contrarian_buy_drop=0.03, downtrend_penalty=0.8)})
@@ -228,12 +234,40 @@ strategies.append({"name": "V7_F3_v5_drop03_rkelly_smartswap", "desc": "V5 + dro
     kelly_cap_bull=0.5, kelly_cap_bear=0.15, smart_swap=True,
     smart_swap_margin=1.0, smart_swap_min_hold_days=30
 )})
-strategies.append({"name": "V7_F4_v6base_v5w_cons3_bear_4433", "desc": "V6 base + V5w + cons3 + bear + 4433 + pyramiding", "config": v6_with(
-    weights=v5_weights, min_consensus=3, bear_market_no_buy=True,
+strategies.append({"name": "V7_F4_v6base_v5w_bear_4433", "desc": "V6 base + V5w + bear + 4433 + pyramiding", "config": v6_with(
+    weights=v5_weights, bear_market_no_buy=True,
     contrarian_buy_drop=0.03, require_4433_pass=2, pyramiding_enabled=True,
     regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15,
     momentum_sell=0.07, downtrend_penalty=0.602
 )})
+
+# ═══════════════════════════════════════════════════════════════
+# G. Control Group: NO contrarian_buy_drop
+# Test if contrarian_buy_drop caused 0 trades in previous V7 run.
+# Same features as A/B but without market-crash filter.
+# ═══════════════════════════════════════════════════════════════
+strategies.append({"name": "V7_G1_v5_nocontrarian_pyr", "desc": "V5 champ, no contrarian, pyramiding", "config": v5_with(pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G2_v5_nocontrarian_pyr_4433", "desc": "V5 champ, no contrarian, pyramiding+4433", "config": v5_with(pyramiding_enabled=True, require_4433_pass=2, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G3_v5_nocontrarian_smartswap", "desc": "V5 champ, no contrarian, smartswap+pyramiding", "config": v5_with(pyramiding_enabled=True, smart_swap=True, smart_swap_margin=1.0, smart_swap_min_hold_days=30, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G4_v6_nocontrarian_pyr", "desc": "V6 base, no contrarian, pyramiding+rkelly", "config": v6_with(pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G5_v6_nocontrarian_pyr_4433", "desc": "V6 base, no contrarian, 4433+pyramiding", "config": v6_with(pyramiding_enabled=True, require_4433_pass=2, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G6_v6_nocontrarian_ultimate", "desc": "V6 base, no contrarian, ALL winners", "config": v6_with(pyramiding_enabled=True, require_4433_pass=2, max_correlation=0.7, max_sector_count=3, mom_decay_days=5, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_G7_v5w_nocontrarian_ultimate", "desc": "V6 base+V5w, no contrarian, ALL winners", "config": v6_with(weights=v5_weights, pyramiding_enabled=True, require_4433_pass=2, max_correlation=0.7, max_sector_count=3, mom_decay_days=5, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15, bear_market_no_buy=True, momentum_sell=0.07)})
+strategies.append({"name": "V7_G8_v6_nocontrarian_baseline", "desc": "V6 base, no contrarian, no extras (pure baseline)", "config": v6_with()})
+
+# ═══════════════════════════════════════════════════════════════
+# H. Fund-level drop (fund_drop_buy) instead of market-level (contrarian_buy_drop)
+# V6's real winning feature was fund_drop_buy, not contrarian_buy_drop.
+# fund_drop_buy checks each individual fund's N-day drop, much more common.
+# ═══════════════════════════════════════════════════════════════
+strategies.append({"name": "V7_H1_v6_funddrop03_d5_pyr", "desc": "V6 base + fund_drop 3% 5d + pyramiding", "config": v6_with(fund_drop_buy=0.03, fund_drop_days=5, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H2_v6_funddrop03_d5_pyr_4433", "desc": "V6 base + fund_drop + 4433 + pyramiding", "config": v6_with(fund_drop_buy=0.03, fund_drop_days=5, pyramiding_enabled=True, require_4433_pass=2, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H3_v6_funddrop05_d5_pyr", "desc": "V6 base + fund_drop 5% 5d + pyramiding", "config": v6_with(fund_drop_buy=0.05, fund_drop_days=5, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H4_v6_funddrop03_d10_pyr", "desc": "V6 base + fund_drop 3% 10d + pyramiding", "config": v6_with(fund_drop_buy=0.03, fund_drop_days=10, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H5_v6_funddrop05_d5_ultimate", "desc": "V6 base + fund_drop 5% + ALL winners", "config": v6_with(fund_drop_buy=0.05, fund_drop_days=5, pyramiding_enabled=True, require_4433_pass=2, max_correlation=0.7, max_sector_count=3, mom_decay_days=5, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H6_v5w_funddrop05_d5_pyr", "desc": "V6 base+V5w + fund_drop 5% + pyramiding", "config": v6_with(weights=v5_weights, fund_drop_buy=0.05, fund_drop_days=5, pyramiding_enabled=True, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H7_v6_funddrop03_d5_smartswap", "desc": "V6 base + fund_drop + smartswap + pyramiding", "config": v6_with(fund_drop_buy=0.03, fund_drop_days=5, pyramiding_enabled=True, smart_swap=True, smart_swap_margin=1.0, smart_swap_min_hold_days=30, regime_specific=True, kelly_cap_bull=0.5, kelly_cap_bear=0.15)})
+strategies.append({"name": "V7_H8_v6_funddrop05_d5_equal", "desc": "V6 base + fund_drop 5% + equal_allocate", "config": v6_with(fund_drop_buy=0.05, fund_drop_days=5, equal_allocate=True, kelly_cap=0.40)})
 
 print(f"Total V7 strategies: {len(strategies)}")
 for s in strategies:
