@@ -15,7 +15,7 @@ V5_CHAMP = {
     "weights": {"quality": 17, "cost": 23, "manager": 29, "momentum": 11, "smart_money": 20},
     "min_score": 0.0,
     "min_consensus": 3,
-    "max_holdings": 0,
+    "max_holdings": 8,
     "max_position_pct": 40,
     "cash_reserve_pct": 0.05,
     "cooldown_days": 0,

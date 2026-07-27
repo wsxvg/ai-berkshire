@@ -1731,12 +1731,6 @@ def run_backtest(config, clear_cache=True):
             except Exception:
                 pass
 
-        # 方案V：LGB预测过滤 — P(crash)>阈值时停止买入
-        if _lgb_enabled and candidates and _lgb_prob_down > config.get("lgb_buy_stop_threshold", 0.7):
-            candidates = []
-            if idx % 20 == 0:
-                print(f"  lgb_filter: STOP BUY (P_crash={_lgb_prob_down:.2f})")
-
         # 方案V2：LGB大跌预测清仓 — P(crash)>sell_threshold时清仓逃跑
         if _lgb_enabled and _lgb_sell_threshold > 0 and _lgb_prob_down > _lgb_sell_threshold:
             if portfolio.holdings and (not hasattr(portfolio, '_last_lgb_crash_sell') or idx - getattr(portfolio, '_last_lgb_crash_sell', 0) >= 10):
@@ -1908,6 +1902,11 @@ def run_backtest(config, clear_cache=True):
         # 对该日有买入信号的基金评分
         candidates = []
 
+        # 方案V：LGB预测过滤 — P(crash)>阈值时停止买入（移至此处，因candidates需先初始化）
+        _lgb_block_buy = _lgb_enabled and _lgb_prob_down > config.get("lgb_buy_stop_threshold", 0.7)
+        if _lgb_block_buy and idx % 20 == 0:
+            print(f"  lgb_filter: STOP BUY (P_crash={_lgb_prob_down:.2f})")
+
         # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
         _min_consensus = config.get("min_consensus", 2)
         if config.get("adaptive_consensus", False):
@@ -1932,22 +1931,23 @@ def run_backtest(config, clear_cache=True):
 
         # 第一遍：快速过滤（共识门槛+净信号），收集通过的候选
         _pre_filtered = []  # [(fn, signal, buy_count)]
-        for fn, signal in fund_signals.items():
-            _bc = signal["buy_count"]
-            if use_weighted and _weighted_threshold > 0:
-                if _bc < _weighted_threshold:
+        if not _lgb_block_buy:  # LGB阻断时不收集候选
+            for fn, signal in fund_signals.items():
+                _bc = signal["buy_count"]
+                if use_weighted and _weighted_threshold > 0:
+                    if _bc < _weighted_threshold:
+                        continue
+                else:
+                    if _bc < _min_consensus:
+                        continue
+                _sc = signal.get("sell_count", 0)
+                if _net_signal and _bc <= _sc:
                     continue
-            else:
-                if _bc < _min_consensus:
+                if _net_signal_ratio > 0 and _bc < _sc * _net_signal_ratio:
                     continue
-            _sc = signal.get("sell_count", 0)
-            if _net_signal and _bc <= _sc:
-                continue
-            if _net_signal_ratio > 0 and _bc < _sc * _net_signal_ratio:
-                continue
-            if _net_signal_diff > 0 and (_bc - _sc) < _net_signal_diff:
-                continue
-            _pre_filtered.append((fn, signal, _bc))
+                if _net_signal_diff > 0 and (_bc - _sc) < _net_signal_diff:
+                    continue
+                _pre_filtered.append((fn, signal, _bc))
 
         # 如果候选数超过上限，按 buy_count 降序截取前N个
         if _max_candidates > 0 and len(_pre_filtered) > _max_candidates:
