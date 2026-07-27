@@ -11,11 +11,6 @@ on:
         description: 'Phase 2 滚动窗口验证的策略数'
         required: false
         default: '30'
-  push:
-    branches:
-      - master
-    paths:
-      - '.github/workflows/v7-sweep.yml'
 
 permissions:
   contents: write
