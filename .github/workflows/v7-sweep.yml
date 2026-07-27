@@ -11,6 +11,11 @@ on:
         description: 'Phase 2 滚动窗口验证的策略数'
         required: false
         default: '30'
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/v7-sweep.yml'
 
 permissions:
   contents: write
@@ -275,7 +280,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: v7-phase1-merged
-          path: v7-results/phase1-merged/
+          path: backtest/v7-results/phase1-merged/
 
       - name: Run rolling window validation chunk ${{ matrix.chunk }}
         run: |
@@ -320,7 +325,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: v7-phase1-merged
-          path: v7-results/phase1-merged/
+          path: backtest/v7-results/phase1-merged/
 
       - name: Merge rolling window results and generate final ranking
         run: |
@@ -379,4 +384,4 @@ jobs:
           path: |
             v7-results/final/rolling_window_final.json
             v7-results/final/anti_overfit_passed.json
-            v7-results/phase1-merged/all_strategies.json
+            backtest/v7-results/phase1-merged/all_strategies.json
