@@ -1887,6 +1887,30 @@ def run_backtest(config, clear_cache=True):
                     fund_signals[fn]["sell_count"] += 1
                 fund_signals[fn]["records"].append(r)
 
+            # V8: 多日共识窗口 — 累积过去N个交易日的买入信号
+            # 当 consensus_window_days > 0 时，将过去N天的交易记录也纳入信号收集
+            # 这样即使当天只有1人买入，如果前N天也有人买入，累计共识也能达标
+            _consensus_window = config.get("consensus_window_days", 0)
+            if _consensus_window > 0:
+                _lookback_start_idx = max(0, idx - _consensus_window)
+                _window_dates = backtest_dates[_lookback_start_idx:idx]  # 过去N天（不含今天）
+                for _wd in _window_dates:
+                    _wd_records = trading_by_date.get(_wd, [])
+                    if not _wd_records:
+                        continue
+                    for _wr in _wd_records:
+                        _wuid = str(_wr.get("_uid", ""))
+                        if exclude_uids and _wuid in exclude_uids:
+                            continue
+                        _wfn = _wr.get("fund_name", "")
+                        _wact = _wr.get("action", "")
+                        _wweight = float(player_weights.get(_wuid, 1.0)) if player_weights else 1.0
+                        if "买入" in _wact:
+                            fund_signals[_wfn]["buy_count"] += 1
+                            fund_signals[_wfn]["weighted_buy"] += _wweight
+                        elif "卖出" in _wact:
+                            fund_signals[_wfn]["sell_count"] += 1
+
             # 如果启用了加权，用加权后的买数替代原始买数
             use_weighted = config.get("use_weighted_consensus", False)
             _weighted_threshold = config.get("weighted_consensus_threshold", 0)  # 加权共识门槛(浮点)
@@ -1906,6 +1930,15 @@ def run_backtest(config, clear_cache=True):
         _lgb_block_buy = _lgb_enabled and _lgb_prob_down > config.get("lgb_buy_stop_threshold", 0.7)
         if _lgb_block_buy and idx % 20 == 0:
             print(f"  lgb_filter: STOP BUY (P_crash={_lgb_prob_down:.2f})")
+
+        # V8性能优化：提前检查contrarian_buy_drop，如果今天市场没跌够就跳过评分
+        # （contrarian在L2282检查，但那时所有候选已评分完毕，浪费大量时间）
+        _contrarian_drop = config.get("contrarian_buy_drop", 0)
+        _contrarian_skip = False
+        if _contrarian_drop > 0 and _bm_nav_values and len(_bm_nav_values) >= 2:
+            _bm_daily_ret = _bm_nav_values[-1] / _bm_nav_values[-2] - 1 if _bm_nav_values[-2] != 0 else 0
+            if _bm_daily_ret >= -_contrarian_drop:
+                _contrarian_skip = True  # 市场没大跌，今天不会买入
 
         # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
         _min_consensus = config.get("min_consensus", 2)
@@ -1931,7 +1964,7 @@ def run_backtest(config, clear_cache=True):
 
         # 第一遍：快速过滤（共识门槛+净信号），收集通过的候选
         _pre_filtered = []  # [(fn, signal, buy_count)]
-        if not _lgb_block_buy:  # LGB阻断时不收集候选
+        if not _lgb_block_buy and not _contrarian_skip:  # LGB或contrarian阻断时不收集候选
             for fn, signal in fund_signals.items():
                 _bc = signal["buy_count"]
                 if use_weighted and _weighted_threshold > 0:
