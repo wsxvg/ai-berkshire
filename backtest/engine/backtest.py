@@ -917,6 +917,7 @@ class Portfolio:
         self.max_yearly_trades = 50  # annual trade cap (可被config覆盖)
         self.sell_history = {}  # {code: {date: "YYYY-MM-DD", reason: "...", nav: float}} — 冷却期追踪
         self.slippage_pct = 0.0  # 滑点百分比（买入加价，卖出发折）
+        self.pending_sells = []  # [{date, code, amount, fee, confirm_date}] — 卖出资金T+N到账队列
 
     def set_fund_rules(self, fund_rules):
         self.fund_rules = fund_rules
@@ -1061,6 +1062,9 @@ class Portfolio:
         # 待确认买入（T+N 期间，按成本价计入）
         for pb in self.pending_buys:
             total += pb["shares"] * pb["nav"]
+        # 待到账卖出资金（按净额计入）
+        for ps in self.pending_sells:
+            total += ps["amount"]
         return total
 
     def buy(self, code, name, amount, price=1.0, day_str="", fund_rules=None):
@@ -1131,6 +1135,47 @@ class Portfolio:
                 remaining.append(pb)
         self.pending_buys = remaining
         return len(settled)
+
+    def _get_sell_t_plus_n(self, code):
+        """获取基金赎回到账T+N天数。
+        与买入确认天数不同：赎回到账通常比确认慢1-2天。
+        普通基金: T+2到T+3, QDII: T+4到T+7
+        """
+        rules = self.fund_rules.get(code, {})
+        # 优先用API返回的赎回到账信息
+        redeem_arrive = rules.get("redeem_arrive_date", "")
+        buy_date = rules.get("buy_date", "")
+        if redeem_arrive and buy_date:
+            try:
+                from datetime import datetime
+                _year = datetime.now().year
+                b_str = buy_date.split(" ")[0]
+                b_dt = datetime.strptime(f"{_year}-{b_str}", "%Y-%m-%d")
+                r_dt = datetime.strptime(f"{_year}-{redeem_arrive}", "%Y-%m-%d")
+                diff = (r_dt - b_dt).days
+                if diff >= 1:
+                    return diff
+            except:
+                pass
+        # 根据基金类型判断
+        profile = getattr(self, '_profiles', {}).get(code, {})
+        fund_type = profile.get("fund_type", "") if profile else ""
+        if "QDII" in fund_type:
+            return 4  # QDII赎回T+4
+        return 2  # 普通基金赎回T+2
+
+    def settle_pending_sells(self, current_date):
+        """处理卖出资金T+N到账。"""
+        settled = 0
+        remaining = []
+        for ps in self.pending_sells:
+            if ps["confirm_date"] <= current_date:
+                self.cash += ps["amount"]
+                settled += 1
+            else:
+                remaining.append(ps)
+        self.pending_sells = remaining
+        return settled
 
     @staticmethod
     def _add_trading_days(date_str, n_days):
@@ -1225,14 +1270,20 @@ class Portfolio:
             # 清仓
             proceeds = h["shares"] * price * _slip
             fee = round(proceeds * redeem_fee_rate, 2)
-            self.cash += (proceeds - fee)
+            # 卖出资金不立即到账，进入 pending_sells 队列
+            _sell_net = round(proceeds - fee, 2)
+            _sell_tn = self._get_sell_t_plus_n(code)
+            _sell_confirm = self._add_trading_days(day_str, _sell_tn)
             self.total_fees += fee
             _yr = day_str[:4] if len(day_str) >= 4 else "0000"
             self.yearly_trades[_yr] = self.yearly_trades.get(_yr, 0) + 1
             self.trades.append({"date": day_str, "code": code, "action": "sell_all",
                                "amount": round(proceeds, 2), "fee": fee,
-                               "price": price, "days_held": days_held, "reason": sell_reason})
+                               "price": price, "days_held": days_held, "reason": sell_reason,
+                               "sell_confirm_date": _sell_confirm, "sell_t_plus_n": _sell_tn})
             if code in self.holdings: del self.holdings[code]
+            self.pending_sells.append({"date": day_str, "code": code,
+                                       "amount": _sell_net, "confirm_date": _sell_confirm})
             # 记录卖出历史（用于冷却期追踪）
             self.sell_history[code] = {"date": day_str, "reason": sell_reason, "nav": price}
             return True
@@ -1248,10 +1299,16 @@ class Portfolio:
         cost_ratio = shares_to_sell / h["shares"] if h["shares"] > 0 else 0
         h["cost"] -= h["cost"] * cost_ratio
         h["shares"] -= shares_to_sell
-        self.cash += (proceeds - fee)
+        # 卖出资金不立即到账，进入 pending_sells 队列
+        _sell_net = round(proceeds - fee, 2)
+        _sell_tn = self._get_sell_t_plus_n(code)
+        _sell_confirm = self._add_trading_days(day_str, _sell_tn)
         self.total_fees += fee
         self.trades.append({"date": day_str, "code": code, "action": "sell",
-                           "amount": amount, "fee": fee, "days_held": days_held, "reason": sell_reason})
+                           "amount": amount, "fee": fee, "days_held": days_held, "reason": sell_reason,
+                           "sell_confirm_date": _sell_confirm, "sell_t_plus_n": _sell_tn})
+        self.pending_sells.append({"date": day_str, "code": code,
+                                   "amount": _sell_net, "confirm_date": _sell_confirm})
         return True
 
     def snapshot(self, day_str, fund_prices=None):
@@ -1592,6 +1649,8 @@ def run_backtest(config, clear_cache=True):
 
         # 处理 T+N 确认到期的买入
         portfolio.settle_pending(cutoff_full)
+        # 处理卖出资金T+N到账
+        portfolio.settle_pending_sells(cutoff_full)
 
         # 更新 fund_prices（在卖出检查之前，确保新确认的持仓有正确价格）
         # 修复 bug: 原来 fund_prices 只在每天结束时更新，导致 T+N 首日确认的持仓
@@ -1933,12 +1992,15 @@ def run_backtest(config, clear_cache=True):
 
         # V8性能优化：提前检查contrarian_buy_drop，如果今天市场没跌够就跳过评分
         # （contrarian在L2282检查，但那时所有候选已评分完毕，浪费大量时间）
+        # V9新增：secondary_trigger缓冲带 — 跌3.0%-3.5%区间轻仓试探
         _contrarian_drop = config.get("contrarian_buy_drop", 0)
+        _secondary_drop = config.get("secondary_trigger", 0)  # 0=不启用缓冲带
         _contrarian_skip = False
         if _contrarian_drop > 0 and _bm_nav_values and len(_bm_nav_values) >= 2:
             _bm_daily_ret = _bm_nav_values[-1] / _bm_nav_values[-2] - 1 if _bm_nav_values[-2] != 0 else 0
-            if _bm_daily_ret >= -_contrarian_drop:
-                _contrarian_skip = True  # 市场没大跌，今天不会买入
+            _effective_skip_threshold = min(_contrarian_drop, _secondary_drop) if _secondary_drop > 0 else _contrarian_drop
+            if _bm_daily_ret >= -_effective_skip_threshold:
+                _contrarian_skip = True  # 市场没跌够，今天不会买入
 
         # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
         _min_consensus = config.get("min_consensus", 2)
@@ -2290,16 +2352,29 @@ def run_backtest(config, clear_cache=True):
 
         # 方案U5：逆向买入 — 基准前一日跌幅>X%时才买入（抄底策略）
         # 注意：此参数检查基准(沪深300)单日跌幅，触发频率很低（3年约15-20天）
+        # V9新增：secondary_trigger缓冲带 — 主信号重仓，次信号轻仓
         _contrarian_drop = config.get("contrarian_buy_drop", 0)
+        _secondary_drop = config.get("secondary_trigger", 0)
+        _secondary_kelly = config.get("secondary_kelly_cap", 0.10)
+        _secondary_active = False
         if _contrarian_drop > 0 and _bm_nav_values and len(_bm_nav_values) >= 2:
             _bm_daily_ret = _bm_nav_values[-1] / _bm_nav_values[-2] - 1 if _bm_nav_values[-2] != 0 else 0
             if _bm_daily_ret < -_contrarian_drop:
-                # 市场大跌，保持候选不变（抄底信号）
+                # 市场大跌（≥主信号），保持候选不变（重仓抄底）
                 if idx % 20 == 0:
-                    print(f"  contrarian_buy: market drop={_bm_daily_ret*100:.2f}%, KEEPING candidates")
+                    print(f"  contrarian_buy: market drop={_bm_daily_ret*100:.2f}%, KEEPING candidates (full)")
+            elif _secondary_drop > 0 and _bm_daily_ret < -_secondary_drop:
+                # 市场中等跌（次信号区间），保持候选但标记轻仓
+                _secondary_active = True
+                if idx % 20 == 0:
+                    print(f"  contrarian_buy: market drop={_bm_daily_ret*100:.2f}%, SECONDARY trigger (light position)")
             else:
-                # 市场没大跌，不买
+                # 市场没跌够，不买
                 candidates = []
+
+        # V9缓冲带：次信号触发时，降低kelly_cap（轻仓试探）
+        if _secondary_active:
+            _dyn_kelly = min(_dyn_kelly, _secondary_kelly)
 
         # 方案U5b：基金级逆向买入 — 只买近N日跌幅>X%的候选基金（更精细的抄底）
         # 与U5的区别：U5检查基准单日跌幅(全局开关)，U5b检查每只候选基金自身N日跌幅(逐基金过滤)
