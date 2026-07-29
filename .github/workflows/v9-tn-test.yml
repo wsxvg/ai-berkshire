@@ -1,0 +1,78 @@
+name: V9 T+N Validation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - backtest/engine/backtest.py
+  workflow_dispatch:
+
+jobs:
+  tn-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install chinese_calendar
+
+      - name: Run B1 + V7C6 with T+N sell fix
+        run: |
+          python -c "
+          import sys, json, time
+          sys.path.insert(0, '.')
+          from backtest.engine.backtest import run_backtest
+
+          BASE = {
+              'start_date': '2023-07-17', 'end_date': '2026-07-24',
+              'initial_cash': 10000, 'monthly_injection': 0,
+              'weights': {'quality':25,'cost':20,'manager':20,'momentum':15,'smart_money':20},
+              'min_score': 3.0, 'take_profit_pct': 1000, 'profit_mode': 'half',
+              'cost_penalty': 0, 'min_consensus': 2, 'fund_type_filter': 'all',
+              'max_holdings': 8, 'smart_swap': True, 'smart_swap_margin': 1.0,
+              'smart_swap_min_hold_days': 30, 'dynamic_max_holdings': True,
+              'max_holdings_bull_mult': 1.5, 'max_holdings_bear_mult': 0.6,
+              'pyramiding_enabled': True, 'regime_specific': True,
+          }
+
+          strategies = [
+              ('B1_fund_drop5_TN', {**BASE, 'fund_drop_buy': 0.05, 'kelly_cap': 0.25, 'no_stop_loss': True, 'momentum_sell': 0}),
+              ('V7C6_baseline_TN', {**BASE, 'contrarian_buy_drop': 0.03, 'kelly_cap': 0.35, 'no_stop_loss': True, 'momentum_sell': 0, 'max_candidates_per_day': 0, 'kelly_cap_bull': 0.5, 'kelly_cap_bear': 0.15}),
+          ]
+
+          results = []
+          first = True
+          for name, cfg in strategies:
+              print(f'Running {name}...')
+              t0 = time.time()
+              r = run_backtest(cfg, clear_cache=first)
+              first = False
+              elapsed = time.time() - t0
+              results.append({'name': name, 'return': r['total_return'], 'trades': r['trade_count'], 'dd': r['max_drawdown'], 'sharpe': r.get('sharpe',0), 'fees': r.get('fees',0), 'elapsed': elapsed})
+              print(f'  Return={r[\"total_return\"]:+.2f}% Trades={r[\"trade_count\"]} DD={r[\"max_drawdown\"]:.2f}% Sharpe={r.get(\"sharpe\",0):.2f} ({elapsed:.0f}s)')
+
+          print()
+          print('=== T+N SELL SETTLEMENT IMPACT ===')
+          print(f'B1 previous (immediate cash): +75.06%  117 trades  DD=20.71%  Top2=46%')
+          b1 = [r for r in results if r['name'].startswith('B1')][0]
+          print(f'B1 new (T+N sell):             {b1[\"return\"]:+.2f}%  {b1[\"trades\"]} trades  DD={b1[\"dd\"]:.2f}%')
+          print(f'Delta: {b1[\"return\"]-75.06:+.2f}pp')
+          print()
+          print(f'V7_C6 previous (immediate cash): +101.68%  39 trades  DD=16.36%  Top2=93%')
+          v7 = [r for r in results if r['name'].startswith('V7C6')][0]
+          print(f'V7_C6 new (T+N sell):           {v7[\"return\"]:+.2f}%  {v7[\"trades\"]} trades  DD={v7[\"dd\"]:.2f}%')
+
+          with open('tn_results.json', 'w') as f:
+              json.dump(results, f, indent=2)
+          "
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: tn-results
+          path: tn_results.json
