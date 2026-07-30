@@ -196,5 +196,16 @@ jobs:
           mkdir -p v9-results
           cp sector_momentum_summary.json v9-results/
           git add v9-results/sector_momentum_summary.json
-          git diff --cached --quiet || git commit -m "Sector Momentum + Volatility Targeting: 9 configs parallel backtest"
+          git diff --cached --quiet || git commit -m "Sector Momentum + Volatility Targeting: 9 configs parallel backtest $(date +%Y%m%d-%H%M)"
           git push
+
+      - name: Upload results branch
+        run: |
+          # Also commit to a results branch for easy access
+          git checkout -b sm-results
+          mkdir -p results
+          cp sector_momentum_summary.json results/latest.json
+          git add -A
+          git diff --cached --quiet || git commit -m "SM results update"
+          git push -f origin sm-results || true
+          git checkout master

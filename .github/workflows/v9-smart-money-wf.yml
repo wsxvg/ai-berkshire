@@ -1,0 +1,226 @@
+name: V9 Smart Money Robust - Walk-Forward
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - scripts/v9_smart_money_robust.py
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # 9 个 Walk-Window，每个跑所有参数组合
+  walkforward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        wf_window: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install chinese_calendar
+
+      - name: Restore data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+
+      - name: Run Walk-Forward Window ${{ matrix.wf_window }}
+        run: |
+          python -c "
+          import sys, json, copy
+          sys.path.insert(0, '.')
+          from backtest.engine.backtest import run_backtest
+
+          # Walk-Forward 窗口定义（6月训练 → 3月测试，滑动1月）
+          TRAIN_STARTS = [
+              '2023-07-17', '2023-08-17', '2023-09-17', '2023-10-17',
+              '2023-11-17', '2023-12-17', '2024-01-17', '2024-02-17', '2024-03-17'
+          ]
+          TRAIN_ENDS = [
+              '2024-01-17', '2024-02-17', '2024-03-17', '2024-04-17',
+              '2024-05-17', '2024-06-17', '2024-07-17', '2024-08-17', '2024-09-17'
+          ]
+          TEST_STARTS = TRAIN_ENDS
+          TEST_ENDS = [
+              '2024-04-17', '2024-05-17', '2024-06-17', '2024-07-17',
+              '2024-08-17', '2024-09-17', '2024-10-17', '2024-11-17', '2026-07-24'
+          ]
+
+          wi = ${{ matrix.wf_window }}
+          train_start = TRAIN_STARTS[wi]
+          train_end = TRAIN_ENDS[wi]
+          test_start = TEST_STARTS[wi]
+          test_end = TEST_ENDS[wi]
+
+          print(f'=== Window {wi}: Train {train_start}~{train_end} | Test {test_start}~{test_end} ===')
+
+          base = {
+              'initial_cash': 10000,
+              'weights': {'quality': 25, 'cost': 20, 'manager': 20, 'momentum': 15, 'smart_money': 20},
+              'no_stop_loss': True,
+              'take_profit_pct': 0.50,
+              'pyramiding_enabled': False,
+              'smart_swap': True,
+              'regime_specific': True,
+              'step_take_profit': True,
+          }
+
+          # 参数组合
+          PARAM_SETS = [
+              ('min_score=2.5,kelly_bull=0.4', {'min_score': 2.5, 'kelly_cap_bull': 0.4, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25}),
+              ('min_score=2.5,kelly_bull=0.5', {'min_score': 2.5, 'kelly_cap_bull': 0.5, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25}),
+              ('min_score=3.0,kelly_bull=0.4', {'min_score': 3.0, 'kelly_cap_bull': 0.4, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25}),
+              ('min_score=3.0,kelly_bull=0.5', {'min_score': 3.0, 'kelly_cap_bull': 0.5, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25}),
+              ('min_score=2.5,win5', {'min_score': 2.5, 'kelly_cap_bull': 0.4, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25, 'consensus_window_days': 5}),
+              ('min_score=2.5,win10', {'min_score': 2.5, 'kelly_cap_bull': 0.4, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.25, 'consensus_window_days': 10}),
+              ('min_score=3.0,kelly=0.3', {'min_score': 3.0, 'kelly_cap_bull': 0.3, 'min_consensus': 3, 'max_holdings': 5, 'kelly_cap_bear': 0.15}),
+              ('min_score=2.5,hold8', {'min_score': 2.5, 'kelly_cap_bull': 0.4, 'min_consensus': 3, 'max_holdings': 8, 'kelly_cap_bear': 0.25}),
+              ('min_score=3.0,win5,kelly=0.3,hold8', {'min_score': 3.0, 'kelly_cap_bull': 0.3, 'min_consensus': 3, 'max_holdings': 8, 'kelly_cap_bear': 0.15, 'consensus_window_days': 5}),
+          ]
+
+          train_results = []
+          for label, params in PARAM_SETS:
+              cfg = copy.deepcopy(base)
+              cfg.update(params)
+              cfg['start_date'] = train_start
+              cfg['end_date'] = train_end
+              result = run_backtest(cfg, clear_cache=True)
+              train_results.append((label, params, result.get('total_return', 0)))
+              print(f'  TRAIN {label}: {result.get(\"total_return\", 0):.2f}% (DD={result.get(\"max_drawdown\", 0):.1f}%)')
+
+          # 选训练集最佳参数
+          train_results.sort(key=lambda x: x[2], reverse=True)
+          best_label, best_params, best_train_ret = train_results[0]
+          print(f'  Best train: {best_label} = {best_train_ret:.2f}%')
+
+          # 用最佳参数跑测试集
+          test_cfg = copy.deepcopy(base)
+          test_cfg.update(best_params)
+          test_cfg['start_date'] = test_start
+          test_cfg['end_date'] = test_end
+          test_result = run_backtest(test_cfg, clear_cache=True)
+
+          print(f'  TEST {best_label}: {test_result.get(\"total_return\", 0):.2f}% (DD={test_result.get(\"max_drawdown\", 0):.1f}%)')
+
+          output = {
+              'window': wi,
+              'train_period': f'{train_start}~{train_end}',
+              'test_period': f'{test_start}~{test_end}',
+              'best_params': best_label,
+              'train_return': best_train_ret,
+              'test_return': test_result.get('total_return', 0),
+              'test_drawdown': test_result.get('max_drawdown', 0),
+              'test_sharpe': test_result.get('sharpe_ratio', 0),
+              'all_train_results': {l: r for l, p, r in train_results},
+          }
+
+          with open(f'wf_sm_${{ matrix.wf_window }}.json', 'w') as f:
+              json.dump(output, f, indent=2)
+
+          print(f'  Saved: wf_sm_${{ matrix.wf_window }}.json')
+          "
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: wf-sm-${{ matrix.wf_window }}
+          path: wf_sm_${{ matrix.wf_window }}.json
+
+  summarize:
+    needs: walkforward
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: wf-sm-artifacts
+          pattern: wf-sm-*
+
+      - name: Summarize Walk-Forward
+        run: |
+          python -c "
+          import json, glob, statistics
+
+          results = []
+          for f in sorted(glob.glob('wf-sm-artifacts/*/wf_sm_*.json')):
+              with open(f) as fh:
+                  results.append(json.load(fh))
+
+          results.sort(key=lambda x: x['window'])
+
+          print('='*80)
+          print('V9 Smart Money - Walk-Forward Validation')
+          print('='*80)
+          print(f\"{'Win':<4} {'Train Period':<22} {'Test Period':<22} {'Best Params':<30} {'Train%':>8} {'Test%':>8} {'DD%':>6}\")
+          print('-'*100)
+
+          test_returns = []
+          train_returns = []
+          best_params_count = {}
+
+          for r in results:
+              print(f\"{r['window']:<4} {r['train_period']:<22} {r['test_period']:<22} {r['best_params']:<30} {r['train_return']:>7.1f}% {r['test_return']:>7.1f}% {r['test_drawdown']:>5.1f}%\")
+              test_returns.append(r['test_return'])
+              train_returns.append(r['train_return'])
+              best_params_count[r['best_params']] = best_params_count.get(r['best_params'], 0) + 1
+
+          print(f\"\\n统计:\")
+          print(f\"  训练收益: 均值={statistics.mean(train_returns):.1f}%, 中位数={statistics.median(train_returns):.1f}%\")
+          print(f\"  测试收益: 均值={statistics.mean(test_returns):.1f}%, 中位数={statistics.median(test_returns):.1f}%\")
+          print(f\"  过拟合比: {statistics.mean(train_returns)/max(statistics.mean(test_returns), 0.01):.1f}x\")
+          print(f\"  参数稳定性: {best_params_count}\")
+
+          summary = {
+              'strategy': 'V9 Smart Money Robust',
+              'results': results,
+              'statistics': {
+                  'avg_train_return': statistics.mean(train_returns),
+                  'avg_test_return': statistics.mean(test_returns),
+                  'median_test_return': statistics.median(test_returns),
+                  'param_stability': best_params_count,
+              }
+          }
+
+          with open('v9_sm_walkforward_summary.json', 'w') as f:
+              json.dump(summary, f, ensure_ascii=False, indent=2)
+
+          print('\\nSaved: v9_sm_walkforward_summary.json')
+          "
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p v9-results
+          cp v9_sm_walkforward_summary.json v9-results/
+          git add v9-results/v9_sm_walkforward_summary.json
+          git diff --cached --quiet || git commit -m "V9 Smart Money Walk-Forward results $(date +%Y%m%d-%H%M)"
+          git push
