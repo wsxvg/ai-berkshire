@@ -1,0 +1,397 @@
+{
+  "version": "V9_WalkForward",
+  "results": [
+    {
+      "window": "WF1",
+      "train_period": "2023-07-17~2024-01-16",
+      "test_period": "2024-01-17~2024-04-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 0.0,
+      "test_return": 0.0,
+      "test_dd": 0,
+      "degradation": 0.0,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        }
+      ]
+    },
+    {
+      "window": "WF2",
+      "train_period": "2023-10-17~2024-04-16",
+      "test_period": "2024-04-17~2024-07-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 0.0,
+      "test_return": 0.0,
+      "test_dd": 0,
+      "degradation": 0.0,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        }
+      ]
+    },
+    {
+      "window": "WF3",
+      "train_period": "2024-01-17~2024-07-16",
+      "test_period": "2024-07-17~2024-10-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 0.0,
+      "test_return": -3.6770999999999914,
+      "test_dd": 3.6770999999999914,
+      "degradation": 3.68,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        }
+      ]
+    },
+    {
+      "window": "WF4",
+      "train_period": "2024-04-17~2024-10-16",
+      "test_period": "2024-10-17~2025-01-16",
+      "best_params": {
+        "min_score": 3.0,
+        "kelly_cap_bull": 0.3
+      },
+      "train_return": -2.7447999999999957,
+      "test_return": 0.0,
+      "test_dd": 0,
+      "degradation": -2.74,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 3.0,
+            "kelly_cap_bull": 0.3
+          },
+          "return": -2.7447999999999957,
+          "dd": 2.7447999999999957,
+          "sharpe": -2.8
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": -3.6770999999999914,
+          "dd": 3.6770999999999914,
+          "sharpe": -2.5
+        },
+        {
+          "params": {
+            "min_score": 3.0,
+            "kelly_cap_bull": 0.4
+          },
+          "return": -3.6770999999999914,
+          "dd": 3.6770999999999914,
+          "sharpe": -2.5
+        }
+      ]
+    },
+    {
+      "window": "WF5",
+      "train_period": "2024-07-17~2025-01-16",
+      "test_period": "2025-01-17~2025-04-16",
+      "best_params": {
+        "min_score": 3.0,
+        "kelly_cap_bull": 0.3
+      },
+      "train_return": -0.4913999999999942,
+      "test_return": 1.4182999999999992,
+      "test_dd": 0.02231153417465803,
+      "degradation": -1.91,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 3.0,
+            "kelly_cap_bull": 0.3
+          },
+          "return": -0.4913999999999942,
+          "dd": 3.7099737378257633,
+          "sharpe": -0.51
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": -0.648799999999992,
+          "dd": 4.936628514097353,
+          "sharpe": -0.41
+        },
+        {
+          "params": {
+            "min_score": 3.0,
+            "kelly_cap_bull": 0.4
+          },
+          "return": -0.648799999999992,
+          "dd": 4.936628514097353,
+          "sharpe": -0.41
+        }
+      ]
+    },
+    {
+      "window": "WF6",
+      "train_period": "2025-01-17~2025-07-16",
+      "test_period": "2025-07-17~2025-10-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 1.7242000000000006,
+      "test_return": 0.0,
+      "test_dd": 0,
+      "degradation": 1.72,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 1.7242000000000006,
+          "dd": 1.1033064930615113,
+          "sharpe": -0.06
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 1.7242000000000006,
+          "dd": 1.1033064930615113,
+          "sharpe": -0.06
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 1.7242000000000006,
+          "dd": 1.1033064930615113,
+          "sharpe": -0.06
+        }
+      ]
+    },
+    {
+      "window": "WF7",
+      "train_period": "2025-04-17~2025-10-16",
+      "test_period": "2025-10-17~2026-01-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 0.0,
+      "test_return": 0.0,
+      "test_dd": 0,
+      "degradation": 0.0,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        }
+      ]
+    },
+    {
+      "window": "WF8",
+      "train_period": "2025-07-17~2026-01-16",
+      "test_period": "2026-01-17~2026-04-16",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 0.0,
+      "test_return": 9.001100000000006,
+      "test_dd": 2.811499508078951,
+      "degradation": -9.0,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 0.0,
+          "dd": 0,
+          "sharpe": 0.0
+        }
+      ]
+    },
+    {
+      "window": "WF9",
+      "train_period": "2025-10-17~2026-04-16",
+      "test_period": "2026-04-17~2026-07-24",
+      "best_params": {
+        "min_score": 2.5,
+        "kelly_cap_bull": 0.4
+      },
+      "train_return": 9.001100000000006,
+      "test_return": 0.09350000000000364,
+      "test_dd": 0.04489999999999782,
+      "degradation": 8.91,
+      "top3_train": [
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.4
+          },
+          "return": 9.001100000000006,
+          "dd": 2.811499508078951,
+          "sharpe": 1.7
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.5
+          },
+          "return": 9.001100000000006,
+          "dd": 2.811499508078951,
+          "sharpe": 1.7
+        },
+        {
+          "params": {
+            "min_score": 2.5,
+            "kelly_cap_bull": 0.6
+          },
+          "return": 9.001100000000006,
+          "dd": 2.811499508078951,
+          "sharpe": 1.7
+        }
+      ]
+    }
+  ],
+  "robust_params": {
+    "min_score": 2.5,
+    "kelly_cap_bull": 0.4
+  },
+  "stability": {
+    "min_score_mode": 2.5,
+    "kelly_bull_mode": 0.4
+  },
+  "statistics": {
+    "avg_train_return": 0.8321222222222242,
+    "avg_test_return": 0.7595333333333353,
+    "avg_degradation": 0.07333333333333335,
+    "positive_oos_windows": "3/9"
+  }
+}
