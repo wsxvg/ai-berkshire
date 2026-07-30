@@ -3,12 +3,12 @@
   "period": "2023-07-17 ~ 2026-07-24",
   "results": [
     {
-      "total_return": 12575.51,
-      "max_drawdown": 98.77,
-      "annualized_return": 202.01,
-      "sharpe_ratio": 0.72,
-      "trade_count": 168,
-      "final_value": 15844.39,
+      "total_return": 46.74,
+      "max_drawdown": 75.66,
+      "annualized_return": 9.18,
+      "sharpe_ratio": 0.62,
+      "trade_count": 164,
+      "final_value": 14673.76,
       "name": "SM6",
       "config": {
         "name": "SM6",
@@ -22,31 +22,12 @@
       }
     },
     {
-      "total_return": 10417.2,
-      "max_drawdown": 99.15,
-      "annualized_return": 189.41,
-      "sharpe_ratio": 0.85,
-      "trade_count": 199,
-      "final_value": 10517.2,
-      "name": "SM7",
-      "config": {
-        "name": "SM7",
-        "momentum_lookback": 63,
-        "top_n_sectors": 5,
-        "target_vol": 0.1,
-        "rebalance_days": 21,
-        "start_date": "2023-07-17",
-        "end_date": "2026-07-24",
-        "initial_cash": 10000
-      }
-    },
-    {
-      "total_return": 9248.91,
-      "max_drawdown": 99.54,
-      "annualized_return": 181.74,
-      "sharpe_ratio": 1.05,
-      "trade_count": 119,
-      "final_value": 11686.14,
+      "total_return": 19.96,
+      "max_drawdown": 98.44,
+      "annualized_return": 4.28,
+      "sharpe_ratio": 0.58,
+      "trade_count": 117,
+      "final_value": 11996.07,
       "name": "SM9",
       "config": {
         "name": "SM9",
@@ -60,12 +41,12 @@
       }
     },
     {
-      "total_return": 8988.46,
-      "max_drawdown": 98.85,
-      "annualized_return": 179.93,
-      "sharpe_ratio": 0.86,
-      "trade_count": 224,
-      "final_value": 11360.57,
+      "total_return": 14.55,
+      "max_drawdown": 80.31,
+      "annualized_return": 3.18,
+      "sharpe_ratio": 0.66,
+      "trade_count": 219,
+      "final_value": 11454.51,
       "name": "SM3",
       "config": {
         "name": "SM3",
@@ -79,12 +60,12 @@
       }
     },
     {
-      "total_return": 8734.68,
-      "max_drawdown": 98.92,
-      "annualized_return": 178.12,
-      "sharpe_ratio": 0.86,
-      "trade_count": 223,
-      "final_value": 11043.35,
+      "total_return": 10.21,
+      "max_drawdown": 69.61,
+      "annualized_return": 2.28,
+      "sharpe_ratio": 0.68,
+      "trade_count": 221,
+      "final_value": 11021.48,
       "name": "SM1",
       "config": {
         "name": "SM1",
@@ -98,31 +79,12 @@
       }
     },
     {
-      "total_return": 8422.81,
-      "max_drawdown": 98.99,
-      "annualized_return": 175.85,
-      "sharpe_ratio": 0.88,
-      "trade_count": 207,
-      "final_value": 10653.52,
-      "name": "SM4",
-      "config": {
-        "name": "SM4",
-        "momentum_lookback": 63,
-        "top_n_sectors": 4,
-        "target_vol": 0.12,
-        "rebalance_days": 21,
-        "start_date": "2023-07-17",
-        "end_date": "2026-07-24",
-        "initial_cash": 10000
-      }
-    },
-    {
-      "total_return": 8011.52,
-      "max_drawdown": 99.35,
-      "annualized_return": 172.76,
-      "sharpe_ratio": 0.97,
-      "trade_count": 221,
-      "final_value": 10139.4,
+      "total_return": 8.38,
+      "max_drawdown": 91.59,
+      "annualized_return": 1.89,
+      "sharpe_ratio": 0.77,
+      "trade_count": 228,
+      "final_value": 10838.23,
       "name": "SM5",
       "config": {
         "name": "SM5",
@@ -136,12 +98,50 @@
       }
     },
     {
-      "total_return": 7534.76,
-      "max_drawdown": 98.94,
-      "annualized_return": 169.01,
-      "sharpe_ratio": 0.86,
-      "trade_count": 228,
-      "final_value": 9543.45,
+      "total_return": 5.67,
+      "max_drawdown": 81.07,
+      "annualized_return": 1.3,
+      "sharpe_ratio": 0.72,
+      "trade_count": 212,
+      "final_value": 10566.52,
+      "name": "SM4",
+      "config": {
+        "name": "SM4",
+        "momentum_lookback": 63,
+        "top_n_sectors": 4,
+        "target_vol": 0.12,
+        "rebalance_days": 21,
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 10000
+      }
+    },
+    {
+      "total_return": 3.09,
+      "max_drawdown": 75.12,
+      "annualized_return": 0.73,
+      "sharpe_ratio": 0.79,
+      "trade_count": 190,
+      "final_value": 10309.1,
+      "name": "SM2",
+      "config": {
+        "name": "SM2",
+        "momentum_lookback": 63,
+        "top_n_sectors": 3,
+        "target_vol": 0.1,
+        "rebalance_days": 21,
+        "start_date": "2023-07-17",
+        "end_date": "2026-07-24",
+        "initial_cash": 10000
+      }
+    },
+    {
+      "total_return": -0.49,
+      "max_drawdown": 85.59,
+      "annualized_return": -0.08,
+      "sharpe_ratio": 0.66,
+      "trade_count": 221,
+      "final_value": 9951.47,
       "name": "SM8",
       "config": {
         "name": "SM8",
@@ -155,17 +155,17 @@
       }
     },
     {
-      "total_return": 6354.61,
-      "max_drawdown": 98.68,
-      "annualized_return": 158.89,
-      "sharpe_ratio": 0.89,
-      "trade_count": 199,
-      "final_value": 10757.69,
-      "name": "SM2",
+      "total_return": -7.48,
+      "max_drawdown": 67.59,
+      "annualized_return": -1.73,
+      "sharpe_ratio": 0.56,
+      "trade_count": 202,
+      "final_value": 9252.25,
+      "name": "SM7",
       "config": {
-        "name": "SM2",
+        "name": "SM7",
         "momentum_lookback": 63,
-        "top_n_sectors": 3,
+        "top_n_sectors": 5,
         "target_vol": 0.1,
         "rebalance_days": 21,
         "start_date": "2023-07-17",
@@ -175,12 +175,12 @@
     }
   ],
   "statistics": {
-    "avg_return": 8920.94,
-    "median_return": 8734.68,
-    "best_return": 12575.51,
-    "worst_return": 6354.61,
-    "avg_drawdown": 99.02111111111111,
-    "avg_sharpe": 0.8822222222222222
+    "avg_return": 11.181111111111111,
+    "median_return": 8.38,
+    "best_return": 46.74,
+    "worst_return": -7.48,
+    "avg_drawdown": 80.55333333333333,
+    "avg_sharpe": 0.6711111111111111
   },
   "best_config": {
     "name": "SM6",
