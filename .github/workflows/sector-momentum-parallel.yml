@@ -1,0 +1,200 @@
+name: Sector Momentum + Volatility Targeting (Parallel)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - scripts/sector_momentum_strategy.py
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # 9 个并行任务，每个跑一个参数组合
+  sector-momentum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        config_id: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install chinese_calendar
+
+      - name: Restore data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+
+      - name: Run Sector Momentum Config ${{ matrix.config_id }}
+        run: |
+          python -c "
+          import sys, json
+          sys.path.insert(0, '.')
+          from scripts.sector_momentum_strategy import run_sector_momentum_backtest
+
+          CONFIGS = [
+              {'name': 'SM1', 'momentum_lookback': 63, 'top_n_sectors': 4, 'target_vol': 0.10, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM2', 'momentum_lookback': 63, 'top_n_sectors': 3, 'target_vol': 0.10, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM3', 'momentum_lookback': 63, 'top_n_sectors': 4, 'target_vol': 0.08, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM4', 'momentum_lookback': 63, 'top_n_sectors': 4, 'target_vol': 0.12, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM5', 'momentum_lookback': 42, 'top_n_sectors': 4, 'target_vol': 0.10, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM6', 'momentum_lookback': 126, 'top_n_sectors': 4, 'target_vol': 0.10, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM7', 'momentum_lookback': 63, 'top_n_sectors': 5, 'target_vol': 0.10, 'rebalance_days': 21,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM8', 'momentum_lookback': 63, 'top_n_sectors': 4, 'target_vol': 0.10, 'rebalance_days': 14,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+              {'name': 'SM9', 'momentum_lookback': 63, 'top_n_sectors': 4, 'target_vol': 0.10, 'rebalance_days': 42,
+               'start_date': '2023-07-17', 'end_date': '2026-07-24', 'initial_cash': 10000},
+          ]
+
+          cfg = CONFIGS[${{ matrix.config_id }} - 1]
+          print(f'=== Running {cfg[\"name\"]} ===')
+          print(f'  lookback={cfg[\"momentum_lookback\"]}d, top{cfg[\"top_n_sectors\"]} sectors')
+          print(f'  target_vol={cfg[\"target_vol\"]*100}%, rebalance={cfg[\"rebalance_days\"]}d')
+
+          result = run_sector_momentum_backtest(cfg)
+          result['name'] = cfg['name']
+          result['config'] = cfg
+
+          print(f'\\n--- {cfg[\"name\"]} Results ---')
+          print(f'  Total Return: {result.get(\"total_return\", \"N/A\")}%')
+          print(f'  Max Drawdown: {result.get(\"max_drawdown\", \"N/A\")}%')
+          print(f'  Sharpe Ratio: {result.get(\"sharpe_ratio\", \"N/A\")}')
+          print(f'  Annualized: {result.get(\"annualized_return\", \"N/A\")}%')
+          print(f'  Trades: {result.get(\"trade_count\", \"N/A\")}')
+
+          with open(f'sm_result_${{ matrix.config_id }}.json', 'w') as f:
+              # 不保存 daily_values 以减小文件
+              save_result = {k: v for k, v in result.items() if k not in ('daily_values', 'trades')}
+              json.dump(save_result, f, indent=2)
+
+          print(f'\\nSaved: sm_result_${{ matrix.config_id }}.json')
+          "
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm-result-${{ matrix.config_id }}
+          path: sm_result_${{ matrix.config_id }}.json
+
+  # 汇总任务
+  summarize:
+    needs: sector-momentum
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: sm-artifacts
+          pattern: sm-result-*
+
+      - name: Combine and rank results
+        run: |
+          python -c "
+          import json, glob, statistics
+
+          results = []
+          for f in sorted(glob.glob('sm-artifacts/*/sm_result_*.json')):
+              with open(f) as fh:
+                  results.append(json.load(fh))
+
+          # 按收益排序
+          results.sort(key=lambda x: x.get('total_return', 0), reverse=True)
+
+          print('='*80)
+          print('行业动量轮动 + 波动率目标仓位 - 回测结果')
+          print('='*80)
+          print(f\"{'排名':<4} {'策略':<6} {'收益':>8} {'回撤':>8} {'夏普':>6} {'年化':>7} {'交易':>5} {'参数'}\")
+          print('-'*80)
+
+          for i, r in enumerate(results, 1):
+              c = r.get('config', {})
+              params = f\"lb={c.get('momentum_lookback')}d,top{c.get('top_n_sectors')},vol={c.get('target_vol')*100:.0f}%,rebal={c.get('rebalance_days')}d\"
+              print(f\"{i:<4} {r['name']:<6} {r.get('total_return',0):>7.1f}% {r.get('max_drawdown',0):>7.1f}% {r.get('sharpe_ratio',0):>5.2f} {r.get('annualized_return',0):>6.1f}% {r.get('trade_count',0):>4}  {params}\")
+
+          # 统计
+          returns = [r.get('total_return', 0) for r in results]
+          dds = [r.get('max_drawdown', 0) for r in results]
+          sharpes = [r.get('sharpe_ratio', 0) for r in results]
+
+          print(f\"\\n统计:\")
+          print(f\"  收益: 均值={statistics.mean(returns):.1f}%, 中位数={statistics.median(returns):.1f}%, 最佳={max(returns):.1f}%, 最差={min(returns):.1f}%\")
+          print(f\"  回撤: 均值={statistics.mean(dds):.1f}%, 中位数={statistics.median(dds):.1f}%\")
+          print(f\"  夏普: 均值={statistics.mean(sharpes):.2f}, 中位数={statistics.median(sharpes):.2f}\")
+
+          # 最佳配置
+          best = results[0]
+          print(f\"\\n最佳配置: {best['name']}\")
+          print(f\"  参数: {best.get('config', {})}\")
+          print(f\"  收益: {best.get('total_return', 0):.1f}%, 回撤: {best.get('max_drawdown', 0):.1f}%\")
+
+          # 保存汇总
+          summary = {
+              'strategy': 'Sector Momentum + Volatility Targeting',
+              'period': '2023-07-17 ~ 2026-07-24',
+              'results': results,
+              'statistics': {
+                  'avg_return': statistics.mean(returns),
+                  'median_return': statistics.median(returns),
+                  'best_return': max(returns),
+                  'worst_return': min(returns),
+                  'avg_drawdown': statistics.mean(dds),
+                  'avg_sharpe': statistics.mean(sharpes),
+              },
+              'best_config': best.get('config', {}),
+          }
+
+          with open('sector_momentum_summary.json', 'w') as f:
+              json.dump(summary, f, ensure_ascii=False, indent=2)
+
+          print('\\n结果已保存: sector_momentum_summary.json')
+          "
+
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: sector-momentum-summary
+          path: sector_momentum_summary.json
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p v9-results
+          cp sector_momentum_summary.json v9-results/
+          git add v9-results/sector_momentum_summary.json
+          git diff --cached --quiet || git commit -m "Sector Momentum + Volatility Targeting: 9 configs parallel backtest"
+          git push
