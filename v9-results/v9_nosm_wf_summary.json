@@ -1,0 +1,229 @@
+{
+  "windows": [
+    {
+      "window": 0,
+      "train_period": "2023-07-17~2024-01-17",
+      "test_period": "2024-01-17~2024-04-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.8661000000000058,
+          "test_return": -2.924400000000005,
+          "test_drawdown": 3.4820769420063993,
+          "test_sharpe": -3.21
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 1,
+      "train_period": "2023-08-17~2024-02-17",
+      "test_period": "2024-02-17~2024-05-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.6220000000000072,
+          "test_return": -0.33829999999999927,
+          "test_drawdown": 1.1044372019062136,
+          "test_sharpe": -1.7
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 2,
+      "train_period": "2023-09-17~2024-03-17",
+      "test_period": "2024-03-17~2024-06-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.7325,
+          "test_return": -0.6344000000000051,
+          "test_drawdown": 2.0987006666214567,
+          "test_sharpe": -1.07
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 3,
+      "train_period": "2023-10-17~2024-04-17",
+      "test_period": "2024-04-17~2024-07-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.2902000000000044,
+          "test_return": -0.271299999999992,
+          "test_drawdown": 2.1926070505795376,
+          "test_sharpe": -0.69
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 4,
+      "train_period": "2023-11-17~2024-05-17",
+      "test_period": "2024-05-17~2024-08-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.526299999999992,
+          "test_return": -2.8559000000000014,
+          "test_drawdown": 3.4603320739075585,
+          "test_sharpe": -4.01
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 5,
+      "train_period": "2023-12-17~2024-06-17",
+      "test_period": "2024-06-17~2024-09-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.6219000000000051,
+          "test_return": -0.741299999999992,
+          "test_drawdown": 0.8799113393140098,
+          "test_sharpe": -4.14
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 6,
+      "train_period": "2024-01-17~2024-07-17",
+      "test_period": "2024-07-17~2024-10-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -3.7026000000000026,
+          "test_return": -4.423999999999997,
+          "test_drawdown": 4.400673764398505,
+          "test_sharpe": -3.16
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 7,
+      "train_period": "2024-02-17~2024-08-17",
+      "test_period": "2024-08-17~2024-11-17",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -1.2342000000000009,
+          "test_return": -2.9749999999999996,
+          "test_drawdown": 4.983910872680219,
+          "test_sharpe": -1.1
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    },
+    {
+      "window": 8,
+      "train_period": "2024-03-17~2024-09-17",
+      "test_period": "2024-09-17~2026-07-24",
+      "results": {
+        "QUALITY_ONLY": {
+          "train_return": -0.08770000000000437,
+          "test_return": -2.9749999999999996,
+          "test_drawdown": 6.372077117255319,
+          "test_sharpe": -0.95
+        },
+        "MOMENTUM_63_5": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        },
+        "QUALITY_MOM": {
+          "train_return": 0.0,
+          "test_return": 0.0,
+          "test_drawdown": 0,
+          "test_sharpe": 0.0
+        }
+      }
+    }
+  ]
+}
