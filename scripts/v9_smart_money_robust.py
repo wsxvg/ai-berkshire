@@ -101,40 +101,25 @@ def main():
 
     results = []
 
-    # 1. V8 基线
+    # 精简到5个核心配置，避免超时
+    # 1. V8 基线（step_take_profit 版）
     results.append(run_config(v8_baseline, {}, "V8_BASELINE"))
 
-    # 2. V9a: 强化共识窗口 (5天)
+    # 2. 共识窗口5天
     results.append(run_config(v8_baseline, {"consensus_window_days": 5}, "V9A_CONSENSUS5"))
 
-    # 3. V9b: 强化共识窗口 (10天)
-    results.append(run_config(v8_baseline, {"consensus_window_days": 10}, "V9B_CONSENSUS10"))
+    # 3. 更保守 Kelly
+    results.append(run_config(v8_baseline, {"kelly_cap_bull": 0.3}, "V9B_KELLY03"))
 
-    # 4. V9c: 降低 min_consensus 到 2（放宽买入门槛但加长观察期）
-    results.append(run_config(v8_baseline, {"min_consensus": 2, "consensus_window_days": 5}, "V9C_RELAX2_WIN5"))
+    # 4. 更多持仓分散
+    results.append(run_config(v8_baseline, {"max_holdings": 8}, "V9C_HOLD8"))
 
-    # 5. V9d: 提高 min_score 到 3.3
-    results.append(run_config(v8_baseline, {"min_score": 3.3}, "V9D_SCORE33"))
-
-    # 6. V9e: 最大持仓 8 只（分散）
-    results.append(run_config(v8_baseline, {"max_holdings": 8}, "V9E_HOLD8"))
-
-    # 7. V9f: 降低 Kelly cap（更保守仓位）
-    results.append(run_config(v8_baseline, {"kelly_cap_bull": 0.3}, "V9F_KELLY03"))
-
-    # 8. V9g: 组合：强化共识 + 降低 Kelly
+    # 5. 组合优化
     results.append(run_config(v8_baseline, {
         "consensus_window_days": 5,
         "kelly_cap_bull": 0.3,
         "max_holdings": 8,
-    }, "V9G_COMBO"))
-
-    # 9. V9h: 加权共识（大佬权重更高）
-    results.append(run_config(v8_baseline, {
-        "use_weighted_consensus": True,
-        "weighted_consensus_threshold": 2.5,
-        "consensus_window_days": 0,
-    }, "V9H_WEIGHTED"))
+    }, "V9D_COMBO"))
 
     # 排序
     results.sort(key=lambda x: x["total_return"], reverse=True)

@@ -2,10 +2,6 @@ name: V9 All Strategies Comparison
 
 on:
   workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - scripts/v9_*.py
 
 permissions:
   contents: write
