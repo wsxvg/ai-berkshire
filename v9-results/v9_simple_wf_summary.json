@@ -1,0 +1,216 @@
+{
+  "strategy": "V9 Simple WF (2 configs only)",
+  "windows": [
+    {
+      "window": 0,
+      "train_period": "2023-07-17~2024-01-17",
+      "test_period": "2023-07-17~2024-04-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": 0.0525,
+          "train_drawdown": 0.30828166178494765,
+          "test_return": 0.3113999999999942,
+          "test_drawdown": 0.04719957520381662,
+          "test_sharpe": -7.67,
+          "test_trades": 11
+        },
+        "V9_IMPROVED": {
+          "train_return": -0.2254999999999927,
+          "train_drawdown": 0.6146099744245568,
+          "test_return": -0.5078000000000065,
+          "test_drawdown": 0.6669033345166777,
+          "test_sharpe": -4.03,
+          "test_trades": 59
+        }
+      }
+    },
+    {
+      "window": 1,
+      "train_period": "2023-08-17~2024-02-17",
+      "test_period": "2023-08-17~2024-05-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": -0.1825,
+          "train_drawdown": 0.4671832497566649,
+          "test_return": 0.2068000000000029,
+          "test_drawdown": 0.9060855390979847,
+          "test_sharpe": -1.68,
+          "test_trades": 17
+        },
+        "V9_IMPROVED": {
+          "train_return": -1.1204000000000087,
+          "train_drawdown": 1.3890775981265922,
+          "test_return": 0.393799999999992,
+          "test_drawdown": 1.5351987971268177,
+          "test_sharpe": -0.56,
+          "test_trades": 54
+        }
+      }
+    },
+    {
+      "window": 2,
+      "train_period": "2023-09-17~2024-03-17",
+      "test_period": "2023-09-17~2024-06-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": -0.7769000000000051,
+          "train_drawdown": 1.21816101944682,
+          "test_return": 0.15790000000000873,
+          "test_drawdown": 0.8763030435909218,
+          "test_sharpe": -1.41,
+          "test_trades": 15
+        },
+        "V9_IMPROVED": {
+          "train_return": -1.1915999999999987,
+          "train_drawdown": 1.211900000000005,
+          "test_return": -0.23979999999999563,
+          "test_drawdown": 2.3788712904799447,
+          "test_sharpe": -0.84,
+          "test_trades": 66
+        }
+      }
+    },
+    {
+      "window": 3,
+      "train_period": "2023-10-17~2024-04-17",
+      "test_period": "2023-10-17~2024-07-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": 0.6402000000000044,
+          "train_drawdown": 0.11581099088163657,
+          "test_return": -0.027600000000002182,
+          "test_drawdown": 1.3761697192673723,
+          "test_sharpe": -1.11,
+          "test_trades": 16
+        },
+        "V9_IMPROVED": {
+          "train_return": 0.07469999999999345,
+          "train_drawdown": 0.6508474441434741,
+          "test_return": -0.4363999999999942,
+          "test_drawdown": 1.8717332606703128,
+          "test_sharpe": -1.01,
+          "test_trades": 69
+        }
+      }
+    },
+    {
+      "window": 4,
+      "train_period": "2023-11-17~2024-05-17",
+      "test_period": "2023-11-17~2024-08-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": 0.7201000000000022,
+          "train_drawdown": 0.9963471894367861,
+          "test_return": -0.29299999999999277,
+          "test_drawdown": 0.7617387840462061,
+          "test_sharpe": -3.29,
+          "test_trades": 18
+        },
+        "V9_IMPROVED": {
+          "train_return": 0.8006999999999971,
+          "train_drawdown": 0.8568840073595543,
+          "test_return": 0.3910000000000037,
+          "test_drawdown": 0.7473189012478708,
+          "test_sharpe": -1.23,
+          "test_trades": 44
+        }
+      }
+    },
+    {
+      "window": 5,
+      "train_period": "2023-12-17~2024-06-17",
+      "test_period": "2023-12-17~2024-09-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": 0.3480999999999949,
+          "train_drawdown": 0.9514081337197922,
+          "test_return": 0.10959999999999126,
+          "test_drawdown": 0.2195003819785949,
+          "test_sharpe": -6.88,
+          "test_trades": 14
+        },
+        "V9_IMPROVED": {
+          "train_return": -0.30100000000000365,
+          "train_drawdown": 1.3688765843802602,
+          "test_return": 0.4805999999999949,
+          "test_drawdown": 0.3554165623719111,
+          "test_sharpe": -1.11,
+          "test_trades": 42
+        }
+      }
+    },
+    {
+      "window": 6,
+      "train_period": "2024-01-17~2024-07-17",
+      "test_period": "2024-01-17~2024-10-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": 0.25969999999999344,
+          "train_drawdown": 0.9065769194727489,
+          "test_return": -6.431499999999997,
+          "test_drawdown": 6.535486088078874,
+          "test_sharpe": -3.19,
+          "test_trades": 20
+        },
+        "V9_IMPROVED": {
+          "train_return": 0.7570999999999913,
+          "train_drawdown": 1.4402397946549392,
+          "test_return": -0.33999999999999997,
+          "test_drawdown": 2.411510858996094,
+          "test_sharpe": -0.68,
+          "test_trades": 54
+        }
+      }
+    },
+    {
+      "window": 7,
+      "train_period": "2024-02-17~2024-08-17",
+      "test_period": "2024-02-17~2024-11-17",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": -0.1330999999999949,
+          "train_drawdown": 0.9060855390979847,
+          "test_return": -0.4907999999999993,
+          "test_drawdown": 6.56440811306213,
+          "test_sharpe": -0.39,
+          "test_trades": 41
+        },
+        "V9_IMPROVED": {
+          "train_return": 0.5207999999999993,
+          "train_drawdown": 1.5351987971268177,
+          "test_return": 6.217600000000003,
+          "test_drawdown": 3.2765314885586974,
+          "test_sharpe": 1.36,
+          "test_trades": 79
+        }
+      }
+    },
+    {
+      "window": 8,
+      "train_period": "2024-03-17~2024-09-17",
+      "test_period": "2024-03-17~2026-07-24",
+      "results": {
+        "V8_CHAMPION": {
+          "train_return": -0.11299999999999273,
+          "train_drawdown": 0.8763030435909218,
+          "test_return": 9.222999999999992,
+          "test_drawdown": 4.461067195255491,
+          "test_sharpe": 0.17,
+          "test_trades": 264
+        },
+        "V9_IMPROVED": {
+          "train_return": -0.02030000000000655,
+          "train_drawdown": 2.3788712904799447,
+          "test_return": -3.9425000000000003,
+          "test_drawdown": 8.529271111465352,
+          "test_sharpe": -0.79,
+          "test_trades": 268
+        }
+      }
+    }
+  ],
+  "stats": {
+    "v8_avg_test": 0.30731111111111087,
+    "v9_avg_test": 0.22405555555555517
+  }
+}
