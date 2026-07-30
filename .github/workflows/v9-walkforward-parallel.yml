@@ -1,0 +1,241 @@
+name: V9 Walk-Forward Parallel (9 windows × 10 params)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - scripts/v9_walkforward.py
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # 9 个并行任务，每个跑 1 个 walk-forward 窗口
+  walkforward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        window: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install chinese_calendar
+
+      - name: Restore data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+
+      - name: Run Walk-Forward Window ${{ matrix.window }}
+        run: |
+          python -c "
+          import sys, json
+          sys.path.insert(0, '.')
+          from backtest.engine.backtest import run_backtest
+
+          # Walk-forward 窗口定义
+          WINDOWS = [
+              {'name':'WF1','train':('2023-07-17','2024-01-16'),'test':('2024-01-17','2024-04-16')},
+              {'name':'WF2','train':('2023-10-17','2024-04-16'),'test':('2024-04-17','2024-07-16')},
+              {'name':'WF3','train':('2024-01-17','2024-07-16'),'test':('2024-07-17','2024-10-16')},
+              {'name':'WF4','train':('2024-04-17','2024-10-16'),'test':('2024-10-17','2025-01-16')},
+              {'name':'WF5','train':('2024-07-17','2025-01-16'),'test':('2025-01-17','2025-04-16')},
+              {'name':'WF6','train':('2025-01-17','2025-07-16'),'test':('2025-07-17','2025-10-16')},
+              {'name':'WF7','train':('2025-04-17','2025-10-16'),'test':('2025-10-17','2026-01-16')},
+              {'name':'WF8','train':('2025-07-17','2026-01-16'),'test':('2026-01-17','2026-04-16')},
+              {'name':'WF9','train':('2025-10-17','2026-04-16'),'test':('2026-04-17','2026-07-24')},
+          ]
+
+          PARAM_SETS = [
+              {'min_score':2.5, 'kelly_cap_bull':0.4},
+              {'min_score':2.5, 'kelly_cap_bull':0.5},
+              {'min_score':2.5, 'kelly_cap_bull':0.6},
+              {'min_score':3.0, 'kelly_cap_bull':0.3},
+              {'min_score':3.0, 'kelly_cap_bull':0.4},
+              {'min_score':3.0, 'kelly_cap_bull':0.5},
+              {'min_score':3.0, 'kelly_cap_bull':0.6},
+              {'min_score':3.3, 'kelly_cap_bull':0.4},
+              {'min_score':3.3, 'kelly_cap_bull':0.5},
+              {'min_score':3.3, 'kelly_cap_bull':0.6},
+          ]
+
+          BASE = {
+              'initial_cash':10000,'monthly_injection':0,
+              'weights':{'quality':25,'cost':20,'manager':20,'momentum':15,'smart_money':20},
+              'no_stop_loss':True,'take_profit_pct':1000,'profit_mode':'half',
+              'cost_penalty':0,'min_consensus':2,'fund_type_filter':'all',
+              'momentum_sell':0,'max_candidates_per_day':30,'max_holdings':8,
+              'kelly_cap':0.35,'smart_swap':True,'smart_swap_margin':1.0,
+              'smart_swap_min_hold_days':30,'dynamic_max_holdings':True,
+              'max_holdings_bull_mult':1.5,'max_holdings_bear_mult':0.6,
+              'contrarian_buy_drop':0.03,'pyramiding_enabled':True,
+              'regime_specific':True,'kelly_cap_bear':0.15,
+          }
+
+          w = WINDOWS[${{ matrix.window }}]
+          print(f'=== {w[\"name\"]}: train {w[\"train\"][0]}~{w[\"train\"][1]} -> test {w[\"test\"][0]}~{w[\"test\"][1]} ===')
+
+          # 训练集搜索
+          train_results = []
+          first = True
+          for p in PARAM_SETS:
+              cfg = {**BASE, **p, 'start_date': w['train'][0], 'end_date': w['train'][1]}
+              r = run_backtest(cfg, clear_cache=first)
+              first = False
+              train_results.append({'params': p, 'return': r['total_return'], 'dd': r['max_drawdown'], 'sharpe': r['sharpe_ratio']})
+              print(f'  train ms={p[\"min_score\"]} kb={p[\"kelly_cap_bull\"]} -> {r[\"total_return\"]:.2f}%')
+
+          train_results.sort(key=lambda x: x['return'], reverse=True)
+          best = train_results[0]
+
+          # 样本外测试
+          test_cfg = {**BASE, **best['params'], 'start_date': w['test'][0], 'end_date': w['test'][1]}
+          test_r = run_backtest(test_cfg, clear_cache=False)
+
+          degradation = best['return'] - test_r['total_return']
+
+          result = {
+              'window': w['name'],
+              'train_period': f'{w[\"train\"][0]}~{w[\"train\"][1]}',
+              'test_period': f'{w[\"test\"][0]}~{w[\"test\"][1]}',
+              'best_params': best['params'],
+              'train_return': best['return'],
+              'test_return': test_r['total_return'],
+              'test_dd': test_r['max_drawdown'],
+              'degradation': round(degradation, 2),
+              'top3_train': train_results[:3],
+          }
+
+          print(f'BEST: ms={best[\"params\"][\"min_score\"]} kb={best[\"params\"][\"kelly_cap_bull\"]}')
+          print(f'Train: {best[\"return\"]:.2f}% -> Test: {test_r[\"total_return\"]:.2f}% (degradation: {degradation:.1f}p)')
+
+          with open(f'wf_result_${{ matrix.window }}.json', 'w') as f:
+              json.dump(result, f, indent=2)
+          "
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: wf-result-${{ matrix.window }}
+          path: wf_result_${{ matrix.window }}.json
+
+  # 汇总任务
+  summarize:
+    needs: walkforward
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: wf-artifacts
+          pattern: wf-result-*
+
+      - name: Combine results
+        run: |
+          python -c "
+          import json, glob, statistics
+
+          results = []
+          for f in sorted(glob.glob('wf-artifacts/*/wf_result_*.json')):
+              with open(f) as fh:
+                  results.append(json.load(fh))
+
+          results.sort(key=lambda x: x['window'])
+
+          print('='*70)
+          print('V9 Walk-Forward 汇总')
+          print('='*70)
+          print(f\"{'窗口':<6} {'min_score':>9} {'kelly_bull':>10} {'训练收益':>9} {'样本外':>9} {'衰减p':>6}\")
+          print('-'*70)
+
+          for r in results:
+              p = r['best_params']
+              print(f\"{r['window']:<6} {p['min_score']:>9} {p['kelly_cap_bull']:>10} {r['train_return']:>8.1f}% {r['test_return']:>8.1f}% {r['degradation']:>5.1f}\")
+
+          # 参数稳定性
+          ms_vals = [r['best_params']['min_score'] for r in results]
+          kb_vals = [r['best_params']['kelly_cap_bull'] for r in results]
+
+          print(f\"\\n参数稳定性:\")
+          print(f\"  min_score: 众数={max(set(ms_vals), key=ms_vals.count)}, 出现{max(ms_vals.count(v) for v in set(ms_vals))}/{len(results)}次\")
+          print(f\"  kelly_bull: 众数={max(set(kb_vals), key=kb_vals.count)}, 出现{max(kb_vals.count(v) for v in set(kb_vals))}/{len(results)}次\")
+
+          # 稳健参数
+          robust_ms = round(statistics.median(ms_vals), 1)
+          robust_kb = round(statistics.median(kb_vals), 2)
+          print(f\"\\n稳健参数（中位数）: min_score={robust_ms}, kelly_cap_bull={robust_kb}\")
+
+          # 样本外统计
+          positive = sum(1 for r in results if r['test_return'] > 0)
+          avg_train = sum(r['train_return'] for r in results) / len(results)
+          avg_test = sum(r['test_return'] for r in results) / len(results)
+          avg_deg = sum(r['degradation'] for r in results) / len(results)
+
+          print(f\"\\n样本外平均收益: {avg_test:.1f}%\")
+          print(f\"样本外正向窗口: {positive}/{len(results)}\")
+          print(f\"平均衰减: {avg_deg:.1f}p\")
+
+          # 保存汇总
+          summary = {
+              'version': 'V9_WalkForward',
+              'results': results,
+              'robust_params': {'min_score': robust_ms, 'kelly_cap_bull': robust_kb},
+              'stability': {
+                  'min_score_mode': max(set(ms_vals), key=ms_vals.count),
+                  'kelly_bull_mode': max(set(kb_vals), key=kb_vals.count),
+              },
+              'statistics': {
+                  'avg_train_return': avg_train,
+                  'avg_test_return': avg_test,
+                  'avg_degradation': avg_deg,
+                  'positive_oos_windows': f'{positive}/{len(results)}',
+              }
+          }
+
+          with open('walkforward_summary.json', 'w') as f:
+              json.dump(summary, f, ensure_ascii=False, indent=2)
+
+          print('\\n结果已保存: walkforward_summary.json')
+          "
+
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: walkforward-summary
+          path: walkforward_summary.json
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p v9-results
+          cp walkforward_summary.json v9-results/
+          git add v9-results/walkforward_summary.json
+          git diff --cached --quiet || git commit -m "V9 Walk-Forward results: 9 windows parallel"
+          git push
