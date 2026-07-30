@@ -1,0 +1,94 @@
+name: V9 No Smart Money - Walk-Forward
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  wf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        wf_window: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install chinese_calendar
+      - uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v7-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v6-
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+
+      - name: Run WF Window ${{ matrix.wf_window }}
+        run: python scripts/wf_no_sm_runner.py ${{ matrix.wf_window }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wf-nosm-${{ matrix.wf_window }}
+          path: wf_nosm_${{ matrix.wf_window }}.json
+
+  summarize:
+    needs: wf
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: wf-nosm-artifacts
+          pattern: wf-nosm-*
+
+      - name: Summarize
+        run: |
+          python -c "
+          import json, glob, statistics
+
+          windows = []
+          for f in sorted(glob.glob('wf-nosm-artifacts/*/wf_nosm_*.json')):
+              with open(f) as fh:
+                  windows.append(json.load(fh))
+          windows.sort(key=lambda x: x['window'])
+
+          print('='*100)
+          print('V9 No Smart Money: WF Results')
+          print('='*100)
+
+          for strat in ['QUALITY_ONLY', 'MOMENTUM_63_5', 'QUALITY_MOM']:
+              rets = [w['results'][strat]['test_return'] for w in windows if strat in w.get('results', {})]
+              if rets:
+                  print(f'{strat}: avg={statistics.mean(rets):.2f}%, median={statistics.median(rets):.2f}%, windows={len(rets)}')
+
+          with open('v9_nosm_wf_summary.json', 'w') as f:
+              json.dump({'windows': windows}, f, indent=2)
+          print('\\nSaved: v9_nosm_wf_summary.json')
+          "
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p v9-results
+          cp v9_nosm_wf_summary.json v9-results/
+          git add v9-results/v9_nosm_wf_summary.json
+          git diff --cached --quiet || git commit -m "V9 No-SmartMoney WF results $(date +%Y%m%d-%H%M)"
+          git push
