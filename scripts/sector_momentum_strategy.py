@@ -219,8 +219,10 @@ def run_sector_momentum_backtest(config):
                             buy_amount = min(per_fund, portfolio.cash * 0.9)
                             portfolio.buy(code, f"sector_{sector}", buy_amount, nav, day)
 
-        # 记录每日净值
+        # 记录每日净值（包含 T+N 结算中的买入）
         current_value = portfolio.cash
+
+        # 已确认持仓
         for code, holding in portfolio.holdings.items():
             pts = fund_charts.get(code, [])
             valid = _bisect_valid(pts, day)
@@ -228,16 +230,25 @@ def run_sector_momentum_backtest(config):
                 nav = (100 + _float(valid[-1].get("yAxis", 0))) / 100
                 current_value += holding["shares"] * nav
 
+        # 待确认买入（T+N 结算中）
+        for pb in portfolio.pending_buys:
+            if pb["confirm_date"] > day:
+                pts = fund_charts.get(pb["code"], [])
+                valid = _bisect_valid(pts, day)
+                if valid:
+                    nav = (100 + _float(valid[-1].get("yAxis", 0))) / 100
+                    current_value += pb.get("shares", 0) * nav
+
         daily_values.append(current_value)
 
     # 计算回测指标
     if len(daily_values) < 2:
         return {"error": "Insufficient data"}
 
-    total_return = (daily_values[-1] / daily_values[0] - 1) * 100
+    total_return = (daily_values[-1] / initial_cash - 1) * 100
 
-    # 最大回撤
-    peak = daily_values[0]
+    # 最大回撤（以初始资金为起点，首日T+N结算中的买入按成本计入）
+    peak = max(initial_cash, daily_values[0])
     max_dd = 0
     for v in daily_values:
         if v > peak:
