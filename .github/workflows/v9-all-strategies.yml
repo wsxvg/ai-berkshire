@@ -1,0 +1,157 @@
+name: V9 All Strategies Comparison
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - scripts/v9_*.py
+
+permissions:
+  contents: write
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  # 并行运行三种策略
+  smart-money:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install chinese_calendar
+      - uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+      - name: Run V9 Smart Money Robust
+        run: python scripts/v9_smart_money_robust.py 2>&1 | tail -30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-smart-money-results
+          path: v9-results/v9_smart_money_results.json
+
+  macro-trend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install chinese_calendar
+      - uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+      - name: Run V9 Macro Trend Quality
+        run: python scripts/v9_macro_trend_quality.py 2>&1 | tail -30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-macro-trend-results
+          path: v9-results/v9_macro_trend_results.json
+
+  pure-momentum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install chinese_calendar
+      - uses: actions/cache@v4
+        with:
+          path: |
+            backtest/data
+            data/fund_cache
+            data/fund_name_map.json
+            data/watchlist.json
+          key: trading-data-v6-${{ hashFiles('backtest/data/trading_by_date_fixed.json') }}
+          restore-keys: |
+            trading-data-v5-
+            trading-data-v4-
+            trading-data-
+      - name: Run V9 Pure Momentum
+        run: python scripts/v9_pure_momentum.py 2>&1 | tail -30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-pure-momentum-results
+          path: v9-results/v9_pure_momentum_results.json
+
+  summarize:
+    needs: [smart-money, macro-trend, pure-momentum]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all
+        uses: actions/download-artifact@v4
+        with:
+          path: v9-all-artifacts
+          pattern: v9-*-results
+
+      - name: Combine and rank
+        run: |
+          python -c "
+          import json, glob, os
+
+          all_results = []
+          for f in sorted(glob.glob('v9-all-artifacts/*/v9_*.json')):
+              print(f'Reading: {f}')
+              with open(f) as fh:
+                  data = json.load(fh)
+                  if isinstance(data, list):
+                      all_results.extend(data)
+                  elif isinstance(data, dict) and 'results' in data:
+                      all_results.extend(data['results'])
+
+          # Sort by total_return
+          all_results.sort(key=lambda x: x.get('total_return', 0), reverse=True)
+
+          print('\\n' + '='*90)
+          print('V9 全策略对比')
+          print('='*90)
+          print(f\"{'排名':<4} {'策略':<25} {'收益':>8} {'回撤':>8} {'夏普':>6} {'年化':>7} {'交易':>5} {'备注'}\")
+          print('-'*90)
+
+          for i, r in enumerate(all_results, 1):
+              note = ''
+              if 'config' in r and 'consensus_window_days' in r.get('config', {}):
+                  note = f\"win={r['config']['consensus_window_days']}d\"
+              print(f\"{i:<4} {r['name']:<25} {r.get('total_return',0):>7.1f}% {r.get('max_drawdown',0):>7.1f}% {r.get('sharpe_ratio',0):>5.2f} {r.get('annualized_return',0):>6.1f}% {r.get('trade_count',0):>4}  {note}\")
+
+          # Save
+          with open('v9-results/v9_all_strategies_comparison.json', 'w') as f:
+              json.dump(all_results, f, ensure_ascii=False, indent=2)
+
+          print('\\nSaved: v9-results/v9_all_strategies_comparison.json')
+          "
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A v9-results/
+          git diff --cached --quiet || git commit -m "V9 all strategies comparison $(date +%Y%m%d-%H%M)"
+          git push
