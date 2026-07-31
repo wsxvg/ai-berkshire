@@ -19,7 +19,13 @@ jobs:
           
       - name: Install dependencies
         run: pip install numpy pandas requests pyyaml
-      
+
+      - name: Decompress data files
+        run: |
+          cd fund/backtest/data
+          if [ ! -f fund_charts.json ]; then gunzip -k fund_charts.json.gz; fi
+          ls -la *.json | head -10
+
       - name: Run WalkForward Window ${{ matrix.wf_window }}
         run: cd fund && python scripts/expert_wf_runner.py ${{ matrix.wf_window }}
       
