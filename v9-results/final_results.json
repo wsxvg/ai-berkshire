@@ -1,0 +1,1046 @@
+{
+  "results": [
+    {
+      "window": 0,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-01-17~2024-04-17",
+      "return": 1.9065999999999985,
+      "trades": 29,
+      "fees": 15.52,
+      "max_dd": 0.30051107731285753,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 0,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-01-17~2024-04-17",
+      "return": 1.766900000000005,
+      "trades": 34,
+      "fees": 15.28,
+      "max_dd": 0.22628877526751806,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 0,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-01-17~2024-04-17",
+      "return": 1.9065999999999985,
+      "trades": 29,
+      "fees": 15.52,
+      "max_dd": 0.30051107731285753,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 0,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-01-17~2024-04-17",
+      "return": 2.1520000000000072,
+      "trades": 29,
+      "fees": 15.54,
+      "max_dd": 0.30875105729864033,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 0,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-01-17~2024-04-17",
+      "return": 1.9065999999999985,
+      "trades": 29,
+      "fees": 15.52,
+      "max_dd": 0.30051107731285753,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 1,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-02-17~2024-05-17",
+      "return": 2.568400000000002,
+      "trades": 27,
+      "fees": 13.81,
+      "max_dd": 0.9442606610707572,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 1,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-02-17~2024-05-17",
+      "return": 3.028899999999994,
+      "trades": 36,
+      "fees": 18.37,
+      "max_dd": 0.26579618658874105,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 1,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-02-17~2024-05-17",
+      "return": 2.568400000000002,
+      "trades": 27,
+      "fees": 13.81,
+      "max_dd": 0.9442606610707572,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 1,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-02-17~2024-05-17",
+      "return": 2.785599999999995,
+      "trades": 26,
+      "fees": 12.25,
+      "max_dd": 0.9424069415981852,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 1,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-02-17~2024-05-17",
+      "return": 2.568400000000002,
+      "trades": 27,
+      "fees": 13.81,
+      "max_dd": 0.9442606610707572,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 2,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-03-17~2024-06-17",
+      "return": 0.8823999999999977,
+      "trades": 27,
+      "fees": 17.64,
+      "max_dd": 1.8677561343352567,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 2,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-03-17~2024-06-17",
+      "return": 4.586299999999992,
+      "trades": 49,
+      "fees": 31.15,
+      "max_dd": 1.8843285159585883,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 2,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-03-17~2024-06-17",
+      "return": 0.8823999999999977,
+      "trades": 27,
+      "fees": 17.64,
+      "max_dd": 1.8677561343352567,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 2,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-03-17~2024-06-17",
+      "return": 0.9965999999999985,
+      "trades": 25,
+      "fees": 15.45,
+      "max_dd": 2.0106918666136258,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 2,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-03-17~2024-06-17",
+      "return": 0.8823999999999977,
+      "trades": 27,
+      "fees": 17.64,
+      "max_dd": 1.8677561343352567,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 3,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-04-17~2024-07-17",
+      "return": 1.204300000000003,
+      "trades": 35,
+      "fees": 23.19,
+      "max_dd": 2.1428923283055514,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 3,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-04-17~2024-07-17",
+      "return": -0.2947999999999956,
+      "trades": 32,
+      "fees": 26.38,
+      "max_dd": 3.5484271964199037,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 3,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-04-17~2024-07-17",
+      "return": 1.204300000000003,
+      "trades": 35,
+      "fees": 23.19,
+      "max_dd": 2.1428923283055514,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 3,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-04-17~2024-07-17",
+      "return": 1.0432999999999992,
+      "trades": 32,
+      "fees": 21.44,
+      "max_dd": 2.567556663760583,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 3,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-04-17~2024-07-17",
+      "return": 1.204300000000003,
+      "trades": 35,
+      "fees": 23.19,
+      "max_dd": 2.1428923283055514,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 4,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-05-17~2024-08-17",
+      "return": -1.2881999999999971,
+      "trades": 27,
+      "fees": 19.47,
+      "max_dd": 1.9476668729908366,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 4,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-05-17~2024-08-17",
+      "return": -7.619300000000003,
+      "trades": 53,
+      "fees": 51.62,
+      "max_dd": 8.97371061769297,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 4,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-05-17~2024-08-17",
+      "return": -1.2881999999999971,
+      "trades": 27,
+      "fees": 19.47,
+      "max_dd": 1.9476668729908366,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 4,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-05-17~2024-08-17",
+      "return": -1.2881999999999971,
+      "trades": 27,
+      "fees": 19.47,
+      "max_dd": 1.9476668729908366,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 4,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-05-17~2024-08-17",
+      "return": -1.2881999999999971,
+      "trades": 27,
+      "fees": 19.47,
+      "max_dd": 1.9476668729908366,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 5,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-06-17~2024-09-17",
+      "return": 0.466200000000008,
+      "trades": 28,
+      "fees": 18.19,
+      "max_dd": 1.0795106033626,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 5,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-06-17~2024-09-17",
+      "return": -0.7388999999999941,
+      "trades": 51,
+      "fees": 25.4,
+      "max_dd": 3.3363280655502607,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 5,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-06-17~2024-09-17",
+      "return": 0.466200000000008,
+      "trades": 28,
+      "fees": 18.19,
+      "max_dd": 1.0795106033626,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 5,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-06-17~2024-09-17",
+      "return": 0.466299999999992,
+      "trades": 26,
+      "fees": 18.19,
+      "max_dd": 1.0795106033626,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 5,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-06-17~2024-09-17",
+      "return": 0.466200000000008,
+      "trades": 28,
+      "fees": 18.19,
+      "max_dd": 1.0795106033626,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 6,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-07-17~2024-10-17",
+      "return": -1.3452000000000044,
+      "trades": 30,
+      "fees": 13.11,
+      "max_dd": 2.1712087423714452,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 6,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-07-17~2024-10-17",
+      "return": -1.4521999999999935,
+      "trades": 46,
+      "fees": 41.2,
+      "max_dd": 3.777493273587454,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 6,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-07-17~2024-10-17",
+      "return": -1.3452000000000044,
+      "trades": 30,
+      "fees": 13.11,
+      "max_dd": 2.1712087423714452,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 6,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-07-17~2024-10-17",
+      "return": -0.9652000000000044,
+      "trades": 28,
+      "fees": 12.36,
+      "max_dd": 1.8985056385756267,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 6,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-07-17~2024-10-17",
+      "return": -1.3452000000000044,
+      "trades": 30,
+      "fees": 13.11,
+      "max_dd": 2.1712087423714452,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 7,
+      "config": "MOM24_BASE",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-08-17~2024-11-17",
+      "return": 2.6592000000000007,
+      "trades": 44,
+      "fees": 21.06,
+      "max_dd": 2.023886503736804,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 7,
+      "config": "MOM24_MC1",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 1,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-08-17~2024-11-17",
+      "return": -0.6327000000000044,
+      "trades": 38,
+      "fees": 26.73,
+      "max_dd": 1.481911739124363,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 7,
+      "config": "MOM24_KC15",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.15,
+        "smart_swap": false
+      },
+      "period": "2024-08-17~2024-11-17",
+      "return": 2.6592000000000007,
+      "trades": 44,
+      "fees": 21.06,
+      "max_dd": 2.023886503736804,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 7,
+      "config": "MOM24_TP7",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 7.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": false
+      },
+      "period": "2024-08-17~2024-11-17",
+      "return": 2.7177000000000047,
+      "trades": 44,
+      "fees": 21.08,
+      "max_dd": 2.023886503736804,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    },
+    {
+      "window": 7,
+      "config": "MOM24_SWAP",
+      "params": {
+        "weights": {
+          "quality": 0,
+          "cost": 0,
+          "manager": 0,
+          "momentum": 30,
+          "smart_money": 70
+        },
+        "take_profit_pct": 6.0,
+        "min_consensus": 2,
+        "min_score": 0,
+        "max_holdings": 24,
+        "kelly_cap_bull": 0.1,
+        "smart_swap": true
+      },
+      "period": "2024-08-17~2024-11-17",
+      "return": 1.4279999999999926,
+      "trades": 68,
+      "fees": 50.08,
+      "max_dd": 4.351827752567844,
+      "win_rate": 0,
+      "avg_hold_days": 0
+    }
+  ],
+  "best_config": "MOM24_TP7",
+  "best_avg": 0.9885124999999995
+}
