@@ -1,0 +1,40 @@
+name: Sizing Experiment (Parallel)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sizing:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        wf_window: [3, 4, 5, 6, 7]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+      
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz
+          cd ../..
+      
+      - name: Run Sizing Window ${{ matrix.wf_window }}
+        timeout-minutes: 40
+        run: python scripts/exp_sizing.py ${{ matrix.wf_window }}
+      
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sizing-w${{ matrix.wf_window }}
+          path: exp_sizing.log
