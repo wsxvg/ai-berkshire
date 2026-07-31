@@ -22,17 +22,18 @@ jobs:
 
       - name: Decompress data files
         run: |
-          cd fund/backtest/data
-          if [ ! -f fund_charts.json ]; then gunzip -k fund_charts.json.gz; fi
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz
           ls -la *.json | head -10
+          cd ../..
 
       - name: Run WalkForward Window ${{ matrix.wf_window }}
-        run: cd fund && python scripts/expert_wf_runner.py ${{ matrix.wf_window }}
+        run: python scripts/expert_wf_runner.py ${{ matrix.wf_window }}
       
       - uses: actions/upload-artifact@v4
         with:
           name: expert-wf-${{ matrix.wf_window }}
-          path: fund/expert_wf_window${{ matrix.wf_window }}.json
+          path: expert_wf_window${{ matrix.wf_window }}.json
 
   aggregate:
     needs: backtest
