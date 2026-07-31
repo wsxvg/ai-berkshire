@@ -1,0 +1,38 @@
+{
+  "window": 0,
+  "test_period": "2024-01-17~2024-04-17",
+  "results": {
+    "EXP_3P": {
+      "return": 0.2611000000000058,
+      "drawdown": 0.02379528853286249,
+      "trades": 3,
+      "fees": 0.6,
+      "fee_ratio": 0.006,
+      "gross_est": 0.27
+    },
+    "EXP_2P": {
+      "return": 0.2594000000000051,
+      "drawdown": 0.06068300875754499,
+      "trades": 4,
+      "fees": 1.35,
+      "fee_ratio": 0.013,
+      "gross_est": 0.27
+    },
+    "EXP_MOM": {
+      "return": 0.4032999999999992,
+      "drawdown": 0.11578703185243179,
+      "trades": 9,
+      "fees": 3.0,
+      "fee_ratio": 0.03,
+      "gross_est": 0.43
+    },
+    "V8_ORIGINAL": {
+      "return": 0.3721999999999935,
+      "drawdown": 0.03659981700091354,
+      "trades": 11,
+      "fees": 9.53,
+      "fee_ratio": 0.095,
+      "gross_est": 0.47
+    }
+  }
+}

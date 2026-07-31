@@ -1,0 +1,20 @@
+{
+  "window": 0,
+  "test_period": "2024-01-17~2024-04-17",
+  "results": {
+    "EXPERT_ONLY_LONG": {
+      "return": 0.32270000000000437,
+      "drawdown": 0.05258312081820136,
+      "sharpe": -9.39,
+      "trades": 6,
+      "fees": 2.34
+    },
+    "V8_TP5": {
+      "return": -0.1168000000000029,
+      "drawdown": 0.4682915707517258,
+      "sharpe": -2.1,
+      "trades": 33,
+      "fees": 46.44
+    }
+  }
+}
