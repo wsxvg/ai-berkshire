@@ -1,24 +1,18 @@
-name: Capacity3 Experiment (Parallel)
+name: Capacity4 Experiment (Parallel)
 
 on:
   push:
     branches: [master]
   workflow_dispatch:
-    inputs:
-      reaggregate:
-        description: 'Re-aggregate without re-running capacity3 jobs'
-        required: false
-        default: 'false'
-        type: boolean
 
 jobs:
-  capacity3:
+  capacity4:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       max-parallel: 8
       matrix:
-        job_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+        job_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 
     steps:
       - uses: actions/checkout@v4
@@ -40,25 +34,25 @@ jobs:
         id: decode
         run: |
           JOB_ID=${{ matrix.job_id }}
-          WI=$(( JOB_ID / 5 ))
-          CI=$(( JOB_ID % 5 ))
+          WI=$(( JOB_ID / 3 ))
+          CI=$(( JOB_ID % 3 ))
           echo "wi=$WI" >> $GITHUB_OUTPUT
           echo "ci=$CI" >> $GITHUB_OUTPUT
 
-      - name: Run Capacity3 w${{ steps.decode.outputs.wi }} c${{ steps.decode.outputs.ci }}
+      - name: Run Capacity4 w${{ steps.decode.outputs.wi }} c${{ steps.decode.outputs.ci }}
         timeout-minutes: 35
         run: |
-          python scripts/exp_capacity3_runner.py ${{ steps.decode.outputs.wi }} ${{ steps.decode.outputs.ci }}
+          python scripts/exp_capacity4_runner.py ${{ steps.decode.outputs.wi }} ${{ steps.decode.outputs.ci }}
 
       - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cap3-w${{ steps.decode.outputs.wi }}-c${{ steps.decode.outputs.ci }}
-          path: "cap3_w${{ steps.decode.outputs.wi }}_c${{ steps.decode.outputs.ci }}.json"
+          name: cap4-w${{ steps.decode.outputs.wi }}-c${{ steps.decode.outputs.ci }}
+          path: "cap4_w${{ steps.decode.outputs.wi }}_c${{ steps.decode.outputs.ci }}.json"
 
   aggregate:
-    needs: capacity3
+    needs: capacity4
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -78,24 +72,24 @@ jobs:
         run: |
           python3 << 'EOF'
           import glob, json, os
-          files = sorted(glob.glob('all-results/cap3_w*.json'))
+          files = sorted(glob.glob('all-results/cap4_w*.json'))
           results = []
           for f in files:
               with open(f) as fh:
                   results.append(json.load(fh))
 
-          # Build summary
           configs = sorted(set(r['config'] for r in results))
           windows = sorted(set(r['window'] for r in results))
 
           summary_lines = []
-          summary_lines.append(f"# Capacity3 Results ({len(results)} runs)")
+          summary_lines.append(f"# Capacity4 Results ({len(results)} runs)")
           summary_lines.append("")
           summary_lines.append("| Config | " + " | ".join(f"W{w}" for w in windows) + " | Avg |")
           summary_lines.append("|--------|" + "|".join(["------"] * len(windows)) + "|------|")
 
           best_avg = -999
           best_config = ""
+          prev_best = 0.882  # MOM24_TP6 benchmark
           for cfg in configs:
               row = [cfg]
               vals = []
@@ -115,10 +109,12 @@ jobs:
               summary_lines.append(" | ".join(row) + " |")
 
           summary_lines.append("")
-          summary_lines.append(f"**Best: {best_config} at {best_avg:+.3f}% per quarter**")
+          if best_avg > prev_best:
+              summary_lines.append(f"**BEST: {best_config} at {best_avg:+.3f}% (improved from {prev_best:+.3f}%)**")
+          else:
+              summary_lines.append(f"**BEST: {best_config} at {best_avg:+.3f}% (did NOT beat MOM24_TP6 {prev_best:+.3f}%)**")
           summary_lines.append("")
 
-          # Per-config detail
           summary_lines.append("## Per-Config Stats")
           for cfg in configs:
               cfg_results = [r for r in results if r['config'] == cfg]
@@ -126,19 +122,15 @@ jobs:
               avg_trades = sum(r['trades'] for r in cfg_results) / len(cfg_results)
               avg_fees = sum(r['fees'] for r in cfg_results) / len(cfg_results)
               avg_dd = sum(r['max_dd'] for r in cfg_results) / len(cfg_results)
-              avg_wr = sum(r.get('win_rate', 0) for r in cfg_results) / len(cfg_results)
-              summary_lines.append(f"- **{cfg}**: Ret={avg_ret:+.3f}%  Trades={avg_trades:.0f}  Fees={avg_fees:.0f}  DD={avg_dd:.2f}%  WR={avg_wr:.0f}%")
+              summary_lines.append(f"- **{cfg}**: Ret={avg_ret:+.3f}%  Trades={avg_trades:.0f}  Fees={avg_fees:.0f}  DD={avg_dd:.2f}%")
 
           summary = "\n".join(summary_lines)
 
-          # Write summary file
           os.makedirs('v9-results', exist_ok=True)
-          with open('v9-results/capacity3_summary.md', 'w') as f:
+          with open('v9-results/capacity4_summary.md', 'w') as f:
               f.write(summary + "\n")
-
-          # Also write JSON for easy parsing
-          with open('v9-results/capacity3_results.json', 'w') as f:
-              json.dump({'results': results, 'best_config': best_config, 'best_avg': best_avg}, f, indent=2)
+          with open('v9-results/capacity4_results.json', 'w') as f:
+              json.dump({'results': results, 'best_config': best_config, 'best_avg': best_avg, 'prev_best': prev_best}, f, indent=2)
 
           print(summary)
           EOF
@@ -147,8 +139,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add v9-results/capacity3_summary.md v9-results/capacity3_results.json
+          git add v9-results/capacity4_summary.md v9-results/capacity4_results.json
           git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Capacity3 results: $(date -u +%Y-%m-%d)"
+          git commit -m "Capacity4 results: $(date -u +%Y-%m-%d)"
           git pull --rebase origin master
           git push origin HEAD:master
