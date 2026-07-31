@@ -1,8 +1,5 @@
-"""Run a single (window, config) pair. Used by GitHub Actions matrix strategy.
-
-Usage: python exp_capacity2_runner.py <window_idx> <config_idx>
-Example: python exp_capacity2_runner.py 0 3  (W0, MOM_12_TP5)
-"""
+"""Capacity3 experiment: test 14-24 holdings, different TP and weights.
+Outputs one JSON per (window, config) pair for GitHub Actions artifact collection."""
 import sys, copy, json
 sys.path.insert(0, '.')
 from backtest.engine.backtest import run_backtest
@@ -24,54 +21,44 @@ base = {
     'consensus_window_days': 0,
 }
 
-CONFIGS = [
-    ('MOM_14_S0', {  # larger capacity
-        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
-        'take_profit_pct': 6.0,
-        'min_consensus': 2,
-        'min_score': 0.0,
-        'max_holdings': 14,
-        'kelly_cap_bull': 0.09,
-    }),
-    ('MOM_16_S0', {  # max capacity
-        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
-        'take_profit_pct': 6.0,
-        'min_consensus': 2,
-        'min_score': 0.0,
-        'max_holdings': 16,
-        'kelly_cap_bull': 0.08,
-    }),
-    ('MOM_12_TP5', {  # lower take profit
+configs = [
+    # c0: MOM_12 baseline + TP5 (faster exit → more trades/year)
+    ('MOM12_TP5', {
         'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
         'take_profit_pct': 5.0,
-        'min_consensus': 2,
-        'min_score': 0.0,
-        'max_holdings': 12,
-        'kelly_cap_bull': 0.10,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 12, 'kelly_cap_bull': 0.10,
     }),
-    ('MOM_12_TP8', {  # higher take profit
+    # c1: 16 slots, TP6 (more capacity)
+    ('MOM16_TP6', {
         'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
-        'take_profit_pct': 8.0,
-        'min_consensus': 2,
-        'min_score': 0.0,
-        'max_holdings': 12,
-        'kelly_cap_bull': 0.10,
+        'take_profit_pct': 6.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 16, 'kelly_cap_bull': 0.10,
     }),
-    ('MOM_12_W20', {  # w20 - more smart money
+    # c2: 24 slots max capacity
+    ('MOM24_TP6', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 6.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.10,
+    }),
+    # c3: Mo20/SM80 weight with 16 slots — test if more smart_money weight helps
+    ('MOM16_SM80', {
         'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 20, 'smart_money': 80},
         'take_profit_pct': 6.0,
-        'min_consensus': 2,
-        'min_score': 0.0,
-        'max_holdings': 12,
-        'kelly_cap_bull': 0.10,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 16, 'kelly_cap_bull': 0.10,
+    }),
+    # c4: 16 slots + TP8 (let winners run)
+    ('MOM16_TP8', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 8.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 16, 'kelly_cap_bull': 0.10,
     }),
 ]
 
 wi = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 ci = int(sys.argv[2]) if len(sys.argv) > 2 else 0
 
+label, params = configs[ci]
 tts, tte = WINDOWS[wi]
-label, params = CONFIGS[ci]
 
 cfg = copy.deepcopy(base)
 cfg.update(params)
@@ -79,22 +66,20 @@ cfg['start_date'] = tts
 cfg['end_date'] = tte
 cfg['kelly_cap_bear'] = params['kelly_cap_bull'] * 0.7
 
-print(f'Running w{wi} {tts}~{tte} {label}')
 res = run_backtest(cfg, clear_cache=True)
-
 result = {
     'window': wi,
     'config': label,
+    'params': params,
     'period': f'{tts}~{tte}',
     'return': res.get('total_return', 0),
     'trades': res.get('trade_count', 0),
     'fees': res.get('total_fees', 0),
     'max_dd': res.get('max_drawdown', 0),
+    'win_rate': res.get('win_rate', 0),
+    'avg_hold_days': res.get('avg_hold_days', 0),
 }
-print(json.dumps(result))
-
-# Write to file for artifact
-out_file = f'cap2_w{wi}_c{ci}.json'
-with open(out_file, 'w') as f:
+outname = f'cap3_w{wi}_c{ci}.json'
+with open(outname, 'w') as f:
     json.dump(result, f)
-print(f'Saved to {out_file}')
+print(f'{label} W{wi}: Ret={result["return"]:+.3f}%  Trades={result["trades"]}  DD={result["max_dd"]:.2f}%  WR={result["win_rate"]:.0f}%')
