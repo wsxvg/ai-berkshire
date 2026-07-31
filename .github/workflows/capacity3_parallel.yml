@@ -3,6 +3,13 @@ name: Capacity3 Experiment (Parallel)
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    inputs:
+      reaggregate:
+        description: 'Re-aggregate without re-running capacity3 jobs'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   capacity3:
@@ -53,8 +60,14 @@ jobs:
   aggregate:
     needs: capacity3
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+          fetch-depth: 0
 
       - uses: actions/download-artifact@v4
         with:
@@ -132,8 +145,10 @@ jobs:
 
       - name: Commit results to repo
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add v9-results/capacity3_summary.md v9-results/capacity3_results.json
-          git diff --staged --quiet || git commit -m "Capacity3 results: $(date -u +%Y-%m-%d)"
-          git push
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Capacity3 results: $(date -u +%Y-%m-%d)"
+          git pull --rebase origin master
+          git push origin HEAD:master
