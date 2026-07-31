@@ -1,0 +1,52 @@
+name: Expert Strategy Experiments
+
+on:
+  workflow_dispatch:
+    inputs:
+      experiment:
+        description: 'Experiment ID'
+        required: true
+        type: string
+      wf_window:
+        description: 'Window (0-8 or -1 for all)'
+        required: true
+        type: string
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Install deps & decompress
+        run: |
+          pip install numpy pandas requests pyyaml
+          cd backtest/data && gunzip -kf fund_charts.json.gz && cd ../..
+      
+      - name: RUN EXPERIMENT
+        run: |
+          cd fund
+          for W in 0 1 2 3 4 5 6 7; do
+            python scripts/expert_wf_runner.py --exp ${{ inputs.experiment }} --window $W >> exp_${{ inputs.experiment }}.log 2>&1
+          done
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp-${{ inputs.experiment }}
+          path: fund/exp_${{ inputs.experiment }}.log
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: exp-${{ inputs.experiment }}
+      
+      - name: Show results
+        run: cat exp_${{ inputs.experiment }}.log | tail -50

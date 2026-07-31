@@ -1,0 +1,53 @@
+{
+  "window": 2,
+  "train_period": "2023-09-17~2024-03-17",
+  "test_period": "2024-03-17~2024-06-17",
+  "train_results": {
+    "EXP_3P": {
+      "return": 0,
+      "drawdown": 0
+    },
+    "EXP_2P": {
+      "return": 0,
+      "drawdown": 0
+    },
+    "EXP_MOM": {
+      "return": 0,
+      "drawdown": 0
+    },
+    "V8_ORIGINAL": {
+      "return": 0,
+      "drawdown": 0
+    }
+  },
+  "test_results": {
+    "EXP_3P": {
+      "return": 0.2685,
+      "drawdown": 0.0834,
+      "sharpe": -6.35,
+      "trades": 2,
+      "fees": 0.0
+    },
+    "EXP_2P": {
+      "return": 0.8196,
+      "drawdown": 0.2269,
+      "sharpe": -0.35,
+      "trades": 8,
+      "fees": 3.27
+    },
+    "EXP_MOM": {
+      "return": 0.9525,
+      "drawdown": 0.6361,
+      "sharpe": 0.07,
+      "trades": 8,
+      "fees": 1.8
+    },
+    "V8_ORIGINAL": {
+      "return": 0.0102,
+      "drawdown": 0.3664,
+      "sharpe": -3.24,
+      "trades": 12,
+      "fees": 5.77
+    }
+  }
+}
