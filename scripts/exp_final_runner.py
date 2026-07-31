@@ -1,5 +1,6 @@
-"""Capacity4: test 30 holdings, Mo40 weight, regime_specific, min_consensus=1.
-Same 8-windows walk-forward, single (wi, ci) pair per invocation."""
+"""Final extreme tests:
+- MOM24 base vs MOM24 min_consensus=1 vs MOM24 TP6 kelly_cap=0.15
+- Summary: confirm whether MOM24_TP6 is local optimum."""
 import sys, copy, json
 sys.path.insert(0, '.')
 from backtest.engine.backtest import run_backtest
@@ -22,23 +23,40 @@ base = {
 }
 
 configs = [
-    # c0: 30 slots, TP6, Mo30 — 直接推容量上限
-    ('MOM30_TP6', {
+    # c0: MOM24 baseline (re-run for confirmation)
+    ('MOM24_BASE', {
         'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
-        'take_profit_pct': 6.0,
-        'min_consensus': 2, 'min_score': 0, 'max_holdings': 30, 'kelly_cap_bull': 0.10,
-    }),
-    # c1: 30 slots with TP8 — 利润跑得更多 (因为容量大单仓位小)
-    ('MOM30_TP8', {
-        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
-        'take_profit_pct': 8.0,
-        'min_consensus': 2, 'min_score': 0, 'max_holdings': 30, 'kelly_cap_bull': 0.10,
-    }),
-    # c2: MOM24 with Mo40/SM60 — momentum 多一点看能不能抗 W4/W6 回撤
-    ('MOM24_Mo40', {
-        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 40, 'smart_money': 60},
         'take_profit_pct': 6.0,
         'min_consensus': 2, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.10,
+        'smart_swap': False,
+    }),
+    # c1: MOM24 + min_consensus=1 (lower filter, pick up more signals)
+    ('MOM24_MC1', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 6.0,
+        'min_consensus': 1, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.10,
+        'smart_swap': False,
+    }),
+    # c2: MOM24 + kelly_cap=0.15 (larger position size)
+    ('MOM24_KC15', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 6.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.15,
+        'smart_swap': False,
+    }),
+    # c3: MOM24_TP6 + TP8 on half the positions (hybrid TP strategy)
+    ('MOM24_TP7', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 7.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.10,
+        'smart_swap': False,
+    }),
+    # c4: MOM24 + smart_swap=True (allow swapping existing holdings)
+    ('MOM24_SWAP', {
+        'weights': {'quality': 0, 'cost': 0, 'manager': 0, 'momentum': 30, 'smart_money': 70},
+        'take_profit_pct': 6.0,
+        'min_consensus': 2, 'min_score': 0, 'max_holdings': 24, 'kelly_cap_bull': 0.10,
+        'smart_swap': True,
     }),
 ]
 
@@ -67,7 +85,7 @@ result = {
     'win_rate': res.get('win_rate', 0),
     'avg_hold_days': res.get('avg_hold_days', 0),
 }
-outname = f'cap4_w{wi}_c{ci}.json'
+outname = f'final_w{wi}_c{ci}.json'
 with open(outname, 'w') as f:
     json.dump(result, f)
 print(f'{label} W{wi}: Ret={result["return"]:+.3f}%  Trades={result["trades"]}  DD={result["max_dd"]:.2f}%  WR={result["win_rate"]:.0f}%')
