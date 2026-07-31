@@ -49,3 +49,35 @@ jobs:
         with:
           name: cap2-w${{ steps.decode.outputs.wi }}-c${{ steps.decode.outputs.ci }}
           path: "cap2_w${{ steps.decode.outputs.wi }}_c${{ steps.decode.outputs.ci }}.json"
+
+  aggregate:
+    needs: capacity2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: all-results
+          merge-multiple: true
+      
+      - name: Summarize results
+        run: |
+          echo "## Capacity2 Results" >> $GITHUB_STEP_SUMMARY
+          python -c "
+          import glob, json
+          files = sorted(glob.glob('all-results/cap2_w*.json'))
+          configs = ['MOM_14_S0','MOM_16_S0','MOM_12_TP5','MOM_12_TP8','MOM_12_W20']
+          windows = ['W0','W1','W2','W3','W4','W5','W6','W7']
+          table = {c: [] for c in configs}
+          for f in files:
+              with open(f) as fh:
+                  r = json.load(fh)
+              table[r['config']].append((r['window'], r['return'], r['trades'], r['max_dd']))
+          print('| Config | ' + ' | '.join(windows) + ' | Avg |')
+          print('|--------|' + '|'.join(['------']*8) + '|------|')
+          for c in configs:
+              vals = sorted(table[c], key=lambda x: x[0])
+              avg = sum(v[1] for v in vals)/len(vals) if vals else 0
+              cells = [f'{v[1]:+.2f}' for v in vals]
+              print(f'| {c} | ' + ' | '.join(cells) + f' | {avg:+.3f} |')
+          " >> $GITHUB_STEP_SUMMARY 2>&1
+          cat $GITHUB_STEP_SUMMARY
