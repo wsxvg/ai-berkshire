@@ -18,27 +18,27 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# 候选配置 (预注册 — 在看到任何回测结果前定义)
-# 每轮实验最多 5 个，避免多重比较
+# Round 2 候选 — 成本敏感版 (降低交易频率，提升净收益)
+# 假设: 严格过滤 + 更早止盈 + 减少换仓可以在保持 alpha 的同时降成本
+# 设计原则 (非测试结果驱动):
+#   1. 严格评分过滤 → 减少信号噪音交易
+#   2. 更早止盈 → 降低持仓波动风险
+#   3. 禁止频繁换仓 → 降低手续费摩擦
 # ============================================================
+
+ROUND = 2
+
 CANDIDATES = [
-    ("V8_BASE", {
-        "max_holdings": 5,
-    }),
-    ("V8_HOLD9", {
-        "max_holdings": 9,
-    }),
-    ("V8_HOLD12", {
-        "max_holdings": 12,
-    }),
-    ("V8_TP40", {
-        "max_holdings": 9,
-        "take_profit_pct": 40.0,
-    }),
-    ("V8_TP60", {
-        "max_holdings": 9,
-        "take_profit_pct": 60.0,
-    }),
+    # 基线 (Round 1 胜出)
+    ("HOLD12_BASE", {"max_holdings": 12}),
+    # 严格评分 → 更少但更确定的信号
+    ("HOLD12_STRICT", {"max_holdings": 12, "min_score": 4.0}),
+    # 更早止盈 → 减少持仓周期
+    ("HOLD12_TP40", {"max_holdings": 12, "take_profit_pct": 40.0}),
+    # 禁用智能换仓 → 减少换仓磨损
+    ("HOLD12_NOSWAP", {"max_holdings": 12, "smart_swap": False}),
+    # 更高共识要求 → 多人确认才交易
+    ("HOLD12_CONS4", {"max_holdings": 12, "min_consensus": 4}),
 ]
 
 # 基线配置（所有候选共享）
