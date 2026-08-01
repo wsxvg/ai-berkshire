@@ -18,38 +18,42 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 4 候选 — 全部在 test data 上跑 (解决 R3 盲区)
+# Round 5 候选 — 风险过滤器 (Drawdown Control)
 #
-# R3 结果: AUTO-SELECT 选出了 AGGRESSIVE (train best), 
-#           但 AGGRESSIVE 在 test 上最差 (7.90% vs R1 的 10.05%).
-# R3 教训: 只测一个 winner, 剩下4个候选完全未知.
+# R4 结果: WEIGHTS_ALT 在 TEST 上 10.583% (最高), beats 10/14.
+# 
+# R4 关键发现:
+#   - 所有候选都有相同问题: W7 (-9.x%) 和 W12 (-4.x%) 大幅回撤
+#   - 原因: 没有投资组合层面的回撤保护 (只有position-level TP)
+#   - 引擎有 market_risk_filter: 风险分>threshold时停止买入
 #
-# R4 协议变化: 解决盲区
-#   1. 所有5个候选都在 TEST windows 上跑 (70 test jobs)
-#   2. 输出 5行对比表 (每个候选 avg_return/test_beats/win_rate)
-#   3. 用 TEST 数据选出最佳 (不是 train)
+# R5 假设:
+#   1. 风险过滤器可以在高风险期 (W7/W12) 暂停买入 → 保住收益
+#   2. R4的WEIGHTS_ALT是最优权重配比 — 配风险过滤更佳
+#   3. 风险阈值太低 (太敏感) 会错过牛市 → 需要校准
+#   4. predictor_sell_threshold 可以在极端风险时清仓
 #
-# R4 候选假设 (基于 R1/R2/R3 pattern):
-#   1. HOLD12_BASE — 不变 (R1 winner, 作为 Anchor)
-#   2. WEIGHTS_ALT — 5维权重倾斜试不同配比
-#   3. HOLD15_DIVERSIFY — 更多标的 (对冲单股风险)
-#   4. HOLD9_CORE — 集中持股 (R1 HOLD9 也是好策略)
-#   5. CHECKPOINT — 只在大盘上方 (regime filter 加入)
+# R5 候选 (预注册, 不能在看到结果后再改):
+#   1. WEIGHTS_ALT — R4 winner, 对照
+#   2. RISK_FILTER_60 — WEIGHTS_ALT + market_risk_filter
+#   3. RISK_FILTER_45 — 更敏感的风控
+#   4. RISK_KELLY — 风控 + 降低 Bear kelly_cap
+#   5. RISK_PREDICTOR — market_predictor + sell_when_crash
 # ============================================================
 
-ROUND = 4
+ROUND = 5
 
 CANDIDATES = [
-    # Anchor: R1 胜出 (V8_HOLD12), 作为对照
-    ("HOLD12_BASE", {"max_holdings": 12}),
-    # 权重倾斜 — 加权重性价比和 smart_money
+    # R4 winner, 对照
     ("WEIGHTS_ALT", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
-    # 更多标的 — 试 max_holdings=15
-    ("HOLD15_DIVERSIFY", {"max_holdings": 15}),
-    # 集中持股 — R1 的 V8_HOLD9 也表现很好
-    ("HOLD9_CORE", {"max_holdings": 9}),
-    # 大盘趋势过滤 + 原配置 — 不下行市不操盘
-    ("TREND_FILTER", {"max_holdings": 12, "regime_specific": True, "smart_swap": True}),
+    # WEIGHTS_ALT + 风险分>60 停买
+    ("RISK_FILTER_60", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 60}),
+    # 更敏感: 风险分>45 停买
+    ("RISK_FILTER_45", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 45}),
+    # 风控 + 更保守 Bear kelly_cap
+    ("RISK_KELLY", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 55, "kelly_cap_bear": 0.15, "cash_reserve_pct": 0.20}),
+    # 市场预测器 + crash_sell
+    ("RISK_PREDICTOR", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_predictor": True, "predictor_sell_threshold": 0.65, "predictor_crash_threshold": -0.04}),
 ]
 
 # 基线配置（所有候选共享）
@@ -108,7 +112,6 @@ def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "help"
     
     if mode == "run_train":
-        # 跑训练集，保存结果给 aggregate 用
         ci = int(sys.argv[2])
         wi = int(sys.argv[3])
         name, override = CANDIDATES[ci]
@@ -122,7 +125,6 @@ def main():
         sys.stdout.flush()
     
     elif mode == "run_test":
-        # 跑测试集（只跑 best config）
         ci = int(sys.argv[2])
         wi = int(sys.argv[3])
         name, override = CANDIDATES[ci]
@@ -136,7 +138,6 @@ def main():
         sys.stdout.flush()
     
     elif mode == "aggregate_train":
-        # 收集训练集结果，选出 best config
         results = []
         for ci in range(len(CANDIDATES)):
             for wi in range(len(TRAIN_WINDOWS)):
@@ -145,7 +146,6 @@ def main():
                     with open(fname) as f:
                         results.append(json.load(f))
         
-        # 按 candidate 聚合
         by_cand = defaultdict(list)
         for r in results:
             by_cand[r['candidate']].append(r)
@@ -164,7 +164,6 @@ def main():
                 "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0,
             }
         
-        # 选最佳 (只看 avg_return)
         best_name = max(summary.keys(), key=lambda k: summary[k]['avg_return'])
         best_ci = [c[0] for c in CANDIDATES].index(best_name)
         
@@ -182,7 +181,6 @@ def main():
             print(f"  {name}: +{s['avg_return']:.3f}% (bench {s['avg_benchmark']:+.3f}%) beats={s['beats_count']}/{s['total_windows']}")
     
     elif mode == "aggregate_test":
-        # 收集测试集结果
         results = []
         for fname in os.listdir('.'):
             if fname.startswith("strict_test_") and fname.endswith(".json"):

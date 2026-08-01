@@ -40,41 +40,47 @@
 ## 实施顺序
 P1(数据层)+P3(LLM)+P4(决策引擎) → P2(Pipeline)+P7(回测加固) → P5(EventBus)+P6(RAG+Memory) → P8(进化)+P9(全市场扫描) → P10(信息感知) → P11(归因) → P12(Skills整合)
 
-## 当前策略状态 (2026-08-01)
+## 当前策略状态 (2026-08-02)
 
 **目标: 严格零作弊 OOS 验证 — 每轮都在 Action 跑，本地自动等结果迭代**
 
-### Round 1 结果 (严格 OOS, 零作弊) ✅
+### OOS Round 1-4 结果 (严格 OOS, 零作弊)
 
-**胜出候选**: V8_HOLD12 — 自动从训练集选出 (非人工挑选)
+| Round | 胜出候选 | OOS 季度收益 | CSI300 | 跑赢数 | 关键发现 |
+|-------|---------|-------------|--------|--------|---------|
+| R1 | V8_HOLD12 | +10.054% | +6.096% | 11/14 | 基线确立 |
+| R2 | HOLD12_CONS4 | +8.771% | +6.096% | 8/14 | 严格共识不如宽松 |
+| R3 | HOLD12_AGGRESSIVE | +7.901% | +6.096% | 8/14 | 激进=高费低效 |
+| **R4** | **WEIGHTS_ALT** | **+10.583%** | +6.096% | **10/14** | **smart_money↑ 最优** |
 
-| 指标 | 策略 | CSI300 |
-|------|------|--------|
-| 平均季度收益 | **+10.054%** | +6.096% |
-| 跑赢窗口 | **11/14** (78.6%) | — |
-| 平均超额 | +3.958% | — |
-| 平均交易笔数 | 43.3 笔/季度 | — |
-| 平均手续费 | 13.51 元 | — |
+### R4 胜出配置 (2026-08-02 起)
 
-**问题**: 交易频率太高 (43笔/季度)，赎回费可能显著拉低真实回报。
+```python
+{
+    'weights': {'quality': 20, 'cost': 25, 'manager': 15, 'momentum': 10, 'smart_money': 30},
+    'max_holdings': 12, 'take_profit_pct': 50.0, 'min_consensus': 3,
+    'kelly_cap_bull': 0.5, 'kelly_cap_bear': 0.25,
+    'no_stop_loss': True, 'smart_swap': True, 'regime_specific': True,
+}
+```
 
-## Round 2 进行中
+**关键洞察**:
+- 候选间差异 < 1%: 评分模型本身已成熟, 微调边际极低
+- W7/W12 是所有候选的共同弱点: 需组合层面 protection (R5 方向)
+- WEIGHTS_ALT 的 smart_money=30 是最有效改动
 
-**目标**: 降低交易频率/成本，同时保持 OOS 优势
+## Round 5 启动 (drawdown protection)
 
-1. 前 14 窗口 (W0-W13, 2024-01~2025-07) = 训练集 — 只用这些选参数
-2. 后 14 窗口 (W14-W27, 2025-07~2026-07) = 测试集 — 绝不能用来选参数
-3. 自动化选参 — 脚本自动从训练集选最佳候选，人工不干预
-4. 最终结论只基于测试集
-5. 每轮最多 5 个候选 — 避多重比较偏差
-6. 迭代规则: 每轮结束 → 据测试结果设计下一轮 → 重新预注册候选
+**目标**: 通过 market_risk_filter 在 W7/W12 类高风险期停止买入/清仓
 
-### Round 2 候选 (成本敏感版)
+### R5 候选 (预注册, 2026-08-02)
 
-- HOLD12_BASE (R1 胜出基线)
-- HOLD12_STRICT (min_score 3→4, 更严过滤)
-- HOLD12_TP40 (TP 50%→40%, 更早止盈)
-- HOLD12_NOSWAP (smart_swap=False, 减少换仓)
-- HOLD12_CONS4 (min_consensus 3→4, 多人确认)
+| # | 名称 | 策略 |
+|---|------|------|
+| 0 | WEIGHTS_ALT | R4 胜出, 对照 |
+| 1 | RISK_FILTER_60 | + market_risk_filter, threshold=60 |
+| 2 | RISK_FILTER_45 | + market_risk_filter, threshold=45 (更敏感) |
+| 3 | RISK_KELLY | + 风控 + lower bear_kelly_cap + cash_reserve |
+| 4 | RISK_PREDICTOR | + market_predictor + crash_sell |
 
-详细记录见: v9-results/STRICT_OOS_LOG.md
+详细记录见: v9-results/STRATEGY_EVOLUTION.md

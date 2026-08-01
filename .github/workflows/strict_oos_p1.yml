@@ -102,9 +102,9 @@ jobs:
       - name: Commit results
         run: |
           mkdir -p v9-results
-          cp strict_test_evaluation.json v9-results/strict_oos_r4_eval.json
+          cp strict_test_evaluation.json v9-results/strict_oos_r5_eval.json
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add v9-results/strict_oos_r4_eval.json
-          git commit -m "Strict OOS R4: all 5 candidates OOS tested (70 test jobs, zero cheat)"
+          git add v9-results/strict_oos_r5_eval.json
+          git commit -m "Strict OOS R5: drawdown protection candidates OOS tested (70 test jobs, zero cheat)"
           git push
