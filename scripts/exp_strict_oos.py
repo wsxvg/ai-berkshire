@@ -18,29 +18,38 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 3 候选 — 止盈/风控/集中度优化
-# R2 教训: CONS4 过拟合训练集 → 测试集下降 (10.05→8.77)
-# R2 教训: W7 出现 -10.67% 巨额单窗亏损 → 需要更严格的风控
-# R3 方向: 
-#   1. 更早点止盈 (TP30/TP40) 锁定收益，避免 W7 类灾难
-#   2. 降低集中度 (max_holdings=8) 减少单股风险
-#   3. 单独跑 stop-loss 测试 → 看下折返是否改善
-#   4. 更激进换仓 (smart_swap=False + min_consensus=2)
+# Round 4 候选 — 全部在 test data 上跑 (解决 R3 盲区)
+#
+# R3 结果: AUTO-SELECT 选出了 AGGRESSIVE (train best), 
+#           但 AGGRESSIVE 在 test 上最差 (7.90% vs R1 的 10.05%).
+# R3 教训: 只测一个 winner, 剩下4个候选完全未知.
+#
+# R4 协议变化: 解决盲区
+#   1. 所有5个候选都在 TEST windows 上跑 (70 test jobs)
+#   2. 输出 5行对比表 (每个候选 avg_return/test_beats/win_rate)
+#   3. 用 TEST 数据选出最佳 (不是 train)
+#
+# R4 候选假设 (基于 R1/R2/R3 pattern):
+#   1. HOLD12_BASE — 不变 (R1 winner, 作为 Anchor)
+#   2. WEIGHTS_ALT — 5维权重倾斜试不同配比
+#   3. HOLD15_DIVERSIFY — 更多标的 (对冲单股风险)
+#   4. HOLD9_CORE — 集中持股 (R1 HOLD9 也是好策略)
+#   5. CHECKPOINT — 只在大盘上方 (regime filter 加入)
 # ============================================================
 
-ROUND = 3
+ROUND = 4
 
 CANDIDATES = [
-    # 基线 (R1 胜出，same as R1)
+    # Anchor: R1 胜出 (V8_HOLD12), 作为对照
     ("HOLD12_BASE", {"max_holdings": 12}),
-    # 更早点止盈 (TP30) — 避免 W7 类灾难
-    ("HOLD12_TP30", {"max_holdings": 12, "take_profit_pct": 30.0}),
-    # 降低集中度 (只选8只) — 减少单股黑天鹅
-    ("HOLD8_BASE", {"max_holdings": 8}),
-    # 单独看 stop-loss 5% 的效果
-    ("HOLD12_SL5", {"max_holdings": 12, "no_stop_loss": False, "stop_loss_pct": -5.0}),
-    # 更激进换仓 (no smart_swap, min_consensus=2)
-    ("HOLD12_AGGRESSIVE", {"max_holdings": 12, "smart_swap": False, "min_consensus": 2}),
+    # 权重倾斜 — 加权重性价比和 smart_money
+    ("WEIGHTS_ALT", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
+    # 更多标的 — 试 max_holdings=15
+    ("HOLD15_DIVERSIFY", {"max_holdings": 15}),
+    # 集中持股 — R1 的 V8_HOLD9 也表现很好
+    ("HOLD9_CORE", {"max_holdings": 9}),
+    # 大盘趋势过滤 + 原配置 — 不下行市不操盘
+    ("TREND_FILTER", {"max_holdings": 12, "regime_specific": True, "smart_swap": True}),
 ]
 
 # 基线配置（所有候选共享）

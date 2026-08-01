@@ -61,7 +61,7 @@ jobs:
           echo "best_name=$NAME" >> $GITHUB_OUTPUT
           echo "Auto-selected: ci=$CI ($NAME)"
 
-  # ============ PHASE 2: Test best candidate on OOS windows ============
+  # ============ PHASE 2: Test ALL 5 candidates on OOS windows (70 jobs) ============
   test:
     needs: select
     runs-on: ubuntu-latest
@@ -69,6 +69,7 @@ jobs:
       fail-fast: false
       max-parallel: 8
       matrix:
+        ci: [0, 1, 2, 3, 4]
         wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
     steps:
       - uses: actions/checkout@v4
@@ -77,14 +78,12 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - name: "Test ci=${{ needs.select.outputs.best_ci }} wi=${{ matrix.wi }}"
-        env:
-          CI: ${{ needs.select.outputs.best_ci }}
-        run: python scripts/exp_strict_oos.py run_test $CI ${{ matrix.wi }}
+      - name: "Test ci=${{ matrix.ci }} wi=${{ matrix.wi }}"
+        run: python scripts/exp_strict_oos.py run_test ${{ matrix.ci }} ${{ matrix.wi }}
       - uses: actions/upload-artifact@v4
         with:
-          name: tst-${{ matrix.wi }}
-          path: strict_test_*.json
+          name: tst-ci${{ matrix.ci }}-wi${{ matrix.wi }}
+          path: "strict_test_ci${{ matrix.ci }}_wi${{ matrix.wi }}.json"
 
   # ============ FINAL: OOS evaluation + commit results ============
   final:
@@ -94,18 +93,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          pattern: tst-*
+          pattern: tst-ci*-wi*
           merge-multiple: true
       - name: Collect JSON files from artifact subdirectories
         run: find . -name 'strict_test_*.json' -exec mv {} . \;
-      - name: Run OOS evaluation
+      - name: Run OOS evaluation (all 5 candidates)
         run: python scripts/exp_strict_oos.py aggregate_test
       - name: Commit results
         run: |
           mkdir -p v9-results
-          cp strict_test_evaluation.json v9-results/strict_oos_r3_eval.json
+          cp strict_test_evaluation.json v9-results/strict_oos_r4_eval.json
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add v9-results/strict_oos_r3_eval.json
-          git commit -m "Strict OOS R3: TP/concentration/slop control (zero cheat)"
+          git add v9-results/strict_oos_r4_eval.json
+          git commit -m "Strict OOS R4: all 5 candidates OOS tested (70 test jobs, zero cheat)"
           git push
