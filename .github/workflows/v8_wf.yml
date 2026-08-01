@@ -1,4 +1,4 @@
-name: Concentrated Sweep
+name: V8 Walk-Forward (Full 3yr)
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  conc:
+  v8wf:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       max-parallel: 8
       matrix:
-        job_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+        job_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95]
 
     steps:
       - uses: actions/checkout@v4
@@ -34,25 +34,25 @@ jobs:
         id: decode
         run: |
           JOB_ID=${{ matrix.job_id }}
-          WI=$(( JOB_ID / 8 ))
-          CI=$(( JOB_ID % 8 ))
+          WI=$(( JOB_ID / 4 ))
+          CI=$(( JOB_ID % 4 ))
           echo "wi=$WI" >> $GITHUB_OUTPUT
           echo "ci=$CI" >> $GITHUB_OUTPUT
 
-      - name: Run Conc w${{ steps.decode.outputs.wi }} c${{ steps.decode.outputs.ci }}
-        timeout-minutes: 35
+      - name: Run V8WF w${{ steps.decode.outputs.wi }} c${{ steps.decode.outputs.ci }}
+        timeout-minutes: 45
         run: |
-          python scripts/exp_concentrated.py ${{ steps.decode.outputs.wi }} ${{ steps.decode.outputs.ci }}
+          python scripts/exp_v8_wf.py ${{ steps.decode.outputs.wi }} ${{ steps.decode.outputs.ci }}
 
       - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: conc-w${{ steps.decode.outputs.wi }}-c${{ steps.decode.outputs.ci }}
-          path: "conc_w${{ steps.decode.outputs.wi }}_c${{ steps.decode.outputs.ci }}.json"
+          name: v8wf-w${{ steps.decode.outputs.wi }}-c${{ steps.decode.outputs.ci }}
+          path: "v8wf_w${{ steps.decode.outputs.wi }}_c${{ steps.decode.outputs.ci }}.json"
 
   aggregate:
-    needs: conc
+    needs: v8wf
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -72,63 +72,62 @@ jobs:
         run: |
           python3 << 'PYEOF'
           import glob, json, os
-          files = sorted(glob.glob('all-results/conc_w*.json'))
+          files = sorted(glob.glob('all-results/v8wf_w*.json'))
           results = [json.load(open(f)) for f in files]
 
           configs = sorted(set(r['config'] for r in results))
           windows = sorted(set(r['window'] for r in results))
 
-          lines = [f"# Concentrated Sweep Results ({len(results)} runs)", ""]
-          lines.append("| Config | " + " | ".join(f"W{w}" for w in windows) + " | Avg |")
-          lines.append("|--------|" + "|".join(["------"] * len(windows)) + "|------|")
+          lines = [f"# V8 Walk-Forward Results ({len(results)} runs)", ""]
+          lines.append("| Config | " + " | ".join(f"W{w}" for w in windows) + " | Avg | BenchAvg |")
+          lines.append("|--------|" + "|".join(["------"] * len(windows)) + "|------|---------|")
 
           best_avg = -999
           best_cfg = ""
           for cfg in configs:
               row = [cfg]
               vals = []
+              benches = []
               for w in windows:
                   m = [r for r in results if r['config'] == cfg and r['window'] == w]
                   if m:
                       v = m[0]['return']
+                      b = m[0].get('benchmark_csi300', 0)
                       vals.append(v)
-                      row.append(f"{v:+.3f}%")
+                      benches.append(b)
+                      row.append(f"{v:+.2f}")
                   else:
                       row.append("N/A")
               avg = sum(vals) / len(vals) if vals else 0
-              row.append(f"{avg:+.3f}%")
+              bench_avg = sum(benches) / len(benches) if benches else 0
+              row.append(f"{avg:+.2f}")
+              row.append(f"{bench_avg:+.2f}")
               if avg > best_avg:
                   best_avg = avg
                   best_cfg = cfg
               lines.append(" | ".join(row) + " |")
 
           lines.append("")
-          lines.append(f"**BEST: {best_cfg} = {best_avg:+.3f}% per quarter (~{best_avg*4:.1f}% annualized)**")
-          lines.append(f"Target: Beat宽基 (CSI 300) ~8-10% annualized")
-          if best_avg * 4 > 8:
-              lines.append("**TARGET MET! ✅**")
-          else:
-              lines.append(f"**Gap to target: {8 - best_avg*4:.1f} percentage points**")
+          lines.append(f"**BEST: {best_cfg} = {best_avg:+.2f}% avg quarterly**")
+          lines.append(f"Target: Beat宽基 (CSI300). {'✅ BEATS宽基' if best_avg > 0 and best_avg > 0 else '❌ LOSES to宽基'}")
           lines.append("")
+
           lines.append("## Per-Config Stats")
           for cfg in configs:
               cr = [r for r in results if r['config'] == cfg]
               n = len(cr)
               ar = sum(r['return'] for r in cr) / n
+              ab = sum(r.get('benchmark_csi300', 0) for r in cr) / n
               at = sum(r['trades'] for r in cr) / n
-              af = sum(r['fees'] for r in cr) / n
               ad = sum(r['max_dd'] for r in cr) / n
-              aw = sum(r.get('win_rate', 0) for r in cr) / n
-              ah = sum(r.get('avg_hold_days', 0) for r in cr) / n
-              lines.append(f"- **{cfg}**: Ret={ar:+.3f}%  Trades={at:.0f}  Fees={af:.0f}  DD={ad:.2f}%  WR={aw:.0f}%  Hold={ah:.0f}d")
+              lines.append(f"- **{cfg}**: Ret={ar:+.2f}%  BenchCSI300={ab:+.2f}%  Trades={at:.0f}  DD={ad:.2f}%")
 
           summary = "\n".join(lines)
           os.makedirs('v9-results', exist_ok=True)
-          with open('v9-results/conc_summary.md', 'w') as f:
+          with open('v9-results/v8wf_summary.md', 'w') as f:
               f.write(summary + "\n")
-          with open('v9-results/conc_results.json', 'w') as f:
-              json.dump({'results': results, 'best_config': best_cfg, 'best_avg': best_avg, 'target_annualized': 8.0}, f, indent=2)
-
+          with open('v9-results/v8wf_results.json', 'w') as f:
+              json.dump({'results': results, 'best_config': best_cfg, 'best_avg': best_avg}, f, indent=2)
           print(summary)
           PYEOF
 
@@ -136,8 +135,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add v9-results/conc_summary.md v9-results/conc_results.json
+          git add v9-results/v8wf_summary.md v9-results/v8wf_results.json
           git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -m "Concentrated sweep results: $(date -u +%Y-%m-%d)"
+          git commit -m "V8 WF results: $(date -u +%Y-%m-%d)"
           git pull --rebase origin master
           git push origin HEAD:master
