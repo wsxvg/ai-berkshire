@@ -12,7 +12,7 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 6 候选 — LGB 尾部风险防护 (Crash Protection)
+# Round 7 候选 — 价格型体制过滤 (Price-Based Regime Filters)
 #
 # R4 发现:
 #   - W7 (Oct~Jan) 所有候选均亏 ~-9%, 大盘仅亏 -1.16%
@@ -20,63 +20,61 @@ from backtest.engine.backtest import run_backtest
 #   - 候选间差异 < 1% → 评分模型已成熟, 需在 OTHER 维度改进
 #
 # R6 假设:
-#   1. LightGBM (lgb_predictor) 可通过历史净值序列检测 W7 类尾部风险
-#   2. 预测器 crash_sell: P(跌)>threshold 时强制清仓 → 躲过 W7
-#   3. 风控+预测器双保险 → 规则+ML 组合更强
-#   4. 更高的 LGB 重训练频率 → 捕捉regime变化更快
+#   - LightGBM 预测器检测尾部风险 → crash_sell
+#   - 但 ML 可能不够稳 → 需要价格型过滤互补
 #
-# R6 候选 (预注册, 2026-08-02):
-#   0. R4_BASELINE — WEIGHTS_ALT 对照
-#   1. LGB_AGGRESSIVE — LGB 预测器, 高灵敏度, crash<-4%P>0.6卖
-#   2. LGB_CONSERVATIVE — LGB + market_risk_filter 双保险
-#   3. LGB_RETRAIN — LGB 高频重训练
-#   4. COMBO_70 — LGB + 风险阈值70 + TP30
+# R7 假设 (如果 R6 不够或需互补):
+#   1. 年线过滤: 大盘跌破 250日均线 → 停止买入 → 避免熊市初期被套
+#   2. 周线 MACD 顶背离 → 仓位 ×0.7 → 精准逃顶
+#   3. 周线布林带 → 近上轨→减仓 近下轨→加仓
+#   4. 三因子组合: 年线+MACD+布林带 → 体制过滤的最优组合
+#
+# R7 候选 (预注册, 2026-08-02):
+#   0. R4_BASELINE — WEIGHTS_ALT 对照 (无滤波)
+#   1. MA250_FILTER — 跌破年线不买, 最简单的体制过滤
+#   2. WEEKLY_MACD — 周线MACD顶背离×0.7 (逃顶)
+#   3. WEEKLY_BOLL — 周线布林带仓位调节
+#   4. TRIPLE_COMBO — 年线+MACD+布林带 组合 (最强滤波)
 # ============================================================
 
-ROUND = 6
+ROUND = 7
 
 CANDIDATES = [
     # R4 winner, 对照
     ("R4_BASELINE", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
-    # LightGBM crash predictor — 主动清仓
-    ("LGB_AGGRESSIVE", {
+    # 年线过滤: 跌破250日均线 → 停止买入
+    ("MA250_FILTER", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "lgb_predictor": True,
-        "lgb_sell_threshold": 0.6,
-        "lgb_crash_threshold": -0.04,
-        "lgb_retrain_days": 20,
+        "yearly_ma_filter": True,
+        "yearly_bear_pos_ratio": 0.3,  # 跌破年线 → 仓位上限×0.3
     }),
-    # LGB + market_risk_filter 双重风控
-    ("LGB_CONSERVATIVE", {
+    # 周线 MACD 顶背离: 逃顶信号
+    ("WEEKLY_MACD", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "lgb_predictor": True,
-        "lgb_sell_threshold": 0.55,
-        "lgb_crash_threshold": -0.05,
-        "lgb_retrain_days": 20,
-        "market_risk_filter": True,
-        "market_risk_threshold": 55,
+        "weekly_macd_divergence": True,
+        "divergence_top_discount": 0.6,  # 顶背离 → 仓位×0.6
     }),
-    # LGB with 高频重训练
-    ("LGB_RETRAIN", {
+    # 周线布林带: 轨道仓位调节
+    ("WEEKLY_BOLL", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "lgb_predictor": True,
-        "lgb_sell_threshold": 0.6,
-        "lgb_crash_threshold": -0.04,
-        "lgb_retrain_days": 10,  # 更高频
+        "weekly_bollinger_adjust": True,
+        "bb_upper_discount": 0.7,
+        "bb_lower_boost": 1.2,
     }),
-    # Full combo
-    ("COMBO_70", {
+    # 三因子组合: 年线+MACD+布林带
+    ("TRIPLE_COMBO", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "lgb_predictor": True,
-        "lgb_sell_threshold": 0.65,
-        "lgb_crash_threshold": -0.04,
-        "lgb_retrain_days": 15,
-        "market_risk_filter": True,
-        "market_risk_threshold": 70,  # 更高阈值 (少干预)
+        "yearly_ma_filter": True,
+        "yearly_bear_pos_ratio": 0.3,
+        "weekly_macd_divergence": True,
+        "divergence_top_discount": 0.6,
+        "weekly_bollinger_adjust": True,
+        "bb_upper_discount": 0.7,
+        "bb_lower_boost": 1.2,
     }),
 ]
 
