@@ -1,0 +1,116 @@
+# Strict Out-of-Sample (OOS) Experiment — Zero Cheating Protocol
+#
+# Rule: train_windows (first 14, W0-W13) are used ONLY for candidate selection.
+#       test_windows (last 14, W14-W27) are used ONLY for final evaluation.
+#       There is NEVER any peeking at test data before selection.
+
+name: Strict OOS
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  # ============ PHASE 1: Train all candidates on train windows ============
+  train:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        ci: [0, 1, 2, 3, 4]
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: "Train: ci=${{ matrix.ci }} wi=${{ matrix.wi }}"
+        run: python scripts/exp_strict_oos.py run_train ${{ matrix.ci }} ${{ matrix.wi }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: t-ci${{ matrix.ci }}-wi${{ matrix.wi }}
+          path: strict_ci${{ matrix.ci }}_wi${{ matrix.wi }}.json
+
+  # ============ SELECT: Pick best candidate (automated, no human decision) ============
+  select:
+    needs: train
+    runs-on: ubuntu-latest
+    outputs:
+      best_ci: ${{ steps.out.outputs.best_ci }}
+      best_name: ${{ steps.out.outputs.best_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: t-ci*-wi*
+          merge-multiple: true
+      - name: Aggregate & auto-select best
+        run: python scripts/exp_strict_oos.py aggregate_train
+      - name: Export outputs
+        id: out
+        run: |
+          CI=$(python -c "import json;print(json.load(open('strict_train_selection.json'))['best_ci'])")
+          NAME=$(python -c "import json;print(json.load(open('strict_train_selection.json'))['best_candidate'])")
+          echo "best_ci=$CI" >> $GITHUB_OUTPUT
+          echo "best_name=$NAME" >> $GITHUB_OUTPUT
+          echo "Auto-selected: ci=$CI ($NAME)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: selection
+          path: strict_train_selection.json
+
+  # ============ PHASE 2: Test the SINGLE best candidate on test windows ============
+  test:
+    needs: select
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: "Test: ci=${{ needs.select.outputs.best_ci }} wi=${{ matrix.wi }}"
+        env:
+          CI: ${{ needs.select.outputs.best_ci }}
+        run: python scripts/exp_strict_oos.py run_test $CI ${{ matrix.wi }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tst-wi${{ matrix.wi }}
+          path: strict_test_*.json
+
+  # ============ FINAL: Report test performance ONLY ============
+  final:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: tst-wi*
+          merge-multiple: true
+      - name: Final OOS evaluation
+        run: python scripts/exp_strict_oos.py aggregate_test
+      - name: Save results
+        run: |
+          mkdir -p v9-results
+          cp strict_test_evaluation.json v9-results/strict_oos_r1_eval.json
+          cp strict_train_selection.json v9-results/strict_oos_r1_train.json
+      - name: Push results to master
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add v9-results/strict_oos_r1_*.json
+          git commit -m "Strict OOS R1: train 70 runs → select best → test 14 runs (ZERO cheat)"
+          git push
