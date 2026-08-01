@@ -18,27 +18,29 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 2 候选 — 成本敏感版 (降低交易频率，提升净收益)
-# 假设: 严格过滤 + 更早止盈 + 减少换仓可以在保持 alpha 的同时降成本
-# 设计原则 (非测试结果驱动):
-#   1. 严格评分过滤 → 减少信号噪音交易
-#   2. 更早止盈 → 降低持仓波动风险
-#   3. 禁止频繁换仓 → 降低手续费摩擦
+# Round 3 候选 — 止盈/风控/集中度优化
+# R2 教训: CONS4 过拟合训练集 → 测试集下降 (10.05→8.77)
+# R2 教训: W7 出现 -10.67% 巨额单窗亏损 → 需要更严格的风控
+# R3 方向: 
+#   1. 更早点止盈 (TP30/TP40) 锁定收益，避免 W7 类灾难
+#   2. 降低集中度 (max_holdings=8) 减少单股风险
+#   3. 单独跑 stop-loss 测试 → 看下折返是否改善
+#   4. 更激进换仓 (smart_swap=False + min_consensus=2)
 # ============================================================
 
-ROUND = 2
+ROUND = 3
 
 CANDIDATES = [
-    # 基线 (Round 1 胜出)
+    # 基线 (R1 胜出，same as R1)
     ("HOLD12_BASE", {"max_holdings": 12}),
-    # 严格评分 → 更少但更确定的信号
-    ("HOLD12_STRICT", {"max_holdings": 12, "min_score": 4.0}),
-    # 更早止盈 → 减少持仓周期
-    ("HOLD12_TP40", {"max_holdings": 12, "take_profit_pct": 40.0}),
-    # 禁用智能换仓 → 减少换仓磨损
-    ("HOLD12_NOSWAP", {"max_holdings": 12, "smart_swap": False}),
-    # 更高共识要求 → 多人确认才交易
-    ("HOLD12_CONS4", {"max_holdings": 12, "min_consensus": 4}),
+    # 更早点止盈 (TP30) — 避免 W7 类灾难
+    ("HOLD12_TP30", {"max_holdings": 12, "take_profit_pct": 30.0}),
+    # 降低集中度 (只选8只) — 减少单股黑天鹅
+    ("HOLD8_BASE", {"max_holdings": 8}),
+    # 单独看 stop-loss 5% 的效果
+    ("HOLD12_SL5", {"max_holdings": 12, "no_stop_loss": False, "stop_loss_pct": -5.0}),
+    # 更激进换仓 (no smart_swap, min_consensus=2)
+    ("HOLD12_AGGRESSIVE", {"max_holdings": 12, "smart_swap": False, "min_consensus": 2}),
 ]
 
 # 基线配置（所有候选共享）
