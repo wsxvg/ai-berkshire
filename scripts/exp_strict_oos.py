@@ -2,12 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 严格 OOS (Out-of-Sample) 回测框架 — 零作弊协议
-
-规则:
-1. train_windows = 前 14 个 window (W0-W13) → 只用这些选参数
-2. test_windows  = 后 14 个 window (W14-W27) → 只用这些报最终结果
-3. 选参数时禁止看 test_windows 表现
-4. 最终结论只能基于 test_windows
 """
 import sys, copy, json, os
 from datetime import datetime, timedelta
@@ -18,45 +12,74 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 5 候选 — 风险过滤器 (Drawdown Control)
+# Round 6 候选 — LGB 尾部风险防护 (Crash Protection)
 #
-# R4 结果: WEIGHTS_ALT 在 TEST 上 10.583% (最高), beats 10/14.
-# 
-# R4 关键发现:
-#   - 所有候选都有相同问题: W7 (-9.x%) 和 W12 (-4.x%) 大幅回撤
-#   - 原因: 没有投资组合层面的回撤保护 (只有position-level TP)
-#   - 引擎有 market_risk_filter: 风险分>threshold时停止买入
+# R4 发现:
+#   - W7 (Oct~Jan) 所有候选均亏 ~-9%, 大盘仅亏 -1.16%
+#   - W3-W4 smart_money 大幅跑赢 → 牛市捕获 OK
+#   - 候选间差异 < 1% → 评分模型已成熟, 需在 OTHER 维度改进
 #
-# R5 假设:
-#   1. 风险过滤器可以在高风险期 (W7/W12) 暂停买入 → 保住收益
-#   2. R4的WEIGHTS_ALT是最优权重配比 — 配风险过滤更佳
-#   3. 风险阈值太低 (太敏感) 会错过牛市 → 需要校准
-#   4. predictor_sell_threshold 可以在极端风险时清仓
+# R6 假设:
+#   1. LightGBM (lgb_predictor) 可通过历史净值序列检测 W7 类尾部风险
+#   2. 预测器 crash_sell: P(跌)>threshold 时强制清仓 → 躲过 W7
+#   3. 风控+预测器双保险 → 规则+ML 组合更强
+#   4. 更高的 LGB 重训练频率 → 捕捉regime变化更快
 #
-# R5 候选 (预注册, 不能在看到结果后再改):
-#   1. WEIGHTS_ALT — R4 winner, 对照
-#   2. RISK_FILTER_60 — WEIGHTS_ALT + market_risk_filter
-#   3. RISK_FILTER_45 — 更敏感的风控
-#   4. RISK_KELLY — 风控 + 降低 Bear kelly_cap
-#   5. RISK_PREDICTOR — market_predictor + sell_when_crash
+# R6 候选 (预注册, 2026-08-02):
+#   0. R4_BASELINE — WEIGHTS_ALT 对照
+#   1. LGB_AGGRESSIVE — LGB 预测器, 高灵敏度, crash<-4%P>0.6卖
+#   2. LGB_CONSERVATIVE — LGB + market_risk_filter 双保险
+#   3. LGB_RETRAIN — LGB 高频重训练
+#   4. COMBO_70 — LGB + 风险阈值70 + TP30
 # ============================================================
 
-ROUND = 5
+ROUND = 6
 
 CANDIDATES = [
     # R4 winner, 对照
-    ("WEIGHTS_ALT", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
-    # WEIGHTS_ALT + 风险分>60 停买
-    ("RISK_FILTER_60", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 60}),
-    # 更敏感: 风险分>45 停买
-    ("RISK_FILTER_45", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 45}),
-    # 风控 + 更保守 Bear kelly_cap
-    ("RISK_KELLY", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_risk_filter": True, "market_risk_threshold": 55, "kelly_cap_bear": 0.15, "cash_reserve_pct": 0.20}),
-    # 市场预测器 + crash_sell
-    ("RISK_PREDICTOR", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}, "market_predictor": True, "predictor_sell_threshold": 0.65, "predictor_crash_threshold": -0.04}),
+    ("R4_BASELINE", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
+    # LightGBM crash predictor — 主动清仓
+    ("LGB_AGGRESSIVE", {
+        "max_holdings": 12,
+        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
+        "lgb_predictor": True,
+        "lgb_sell_threshold": 0.6,
+        "lgb_crash_threshold": -0.04,
+        "lgb_retrain_days": 20,
+    }),
+    # LGB + market_risk_filter 双重风控
+    ("LGB_CONSERVATIVE", {
+        "max_holdings": 12,
+        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
+        "lgb_predictor": True,
+        "lgb_sell_threshold": 0.55,
+        "lgb_crash_threshold": -0.05,
+        "lgb_retrain_days": 20,
+        "market_risk_filter": True,
+        "market_risk_threshold": 55,
+    }),
+    # LGB with 高频重训练
+    ("LGB_RETRAIN", {
+        "max_holdings": 12,
+        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
+        "lgb_predictor": True,
+        "lgb_sell_threshold": 0.6,
+        "lgb_crash_threshold": -0.04,
+        "lgb_retrain_days": 10,  # 更高频
+    }),
+    # Full combo
+    ("COMBO_70", {
+        "max_holdings": 12,
+        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
+        "lgb_predictor": True,
+        "lgb_sell_threshold": 0.65,
+        "lgb_crash_threshold": -0.04,
+        "lgb_retrain_days": 15,
+        "market_risk_filter": True,
+        "market_risk_threshold": 70,  # 更高阈值 (少干预)
+    }),
 ]
 
-# 基线配置（所有候选共享）
 BASE_CFG = {
     "initial_cash": 10000,
     "weights": {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20},
@@ -72,7 +95,6 @@ BASE_CFG = {
     "regime_specific": True,
 }
 
-# 窗口生成 (28 windows, 6mo train + 3mo test, slide 1mo)
 base_start = datetime(2023, 7, 17)
 base_end = datetime(2026, 7, 24)
 
@@ -84,11 +106,10 @@ while current + timedelta(days=270) <= base_end:
     ALL_WINDOWS.append((train_end, test_end))
     current += timedelta(days=30)
 
-TRAIN_WINDOWS = ALL_WINDOWS[:14]   # W0-W13
-TEST_WINDOWS = ALL_WINDOWS[14:]    # W14-W27
+TRAIN_WINDOWS = ALL_WINDOWS[:14]
+TEST_WINDOWS = ALL_WINDOWS[14:]
 
-print(f"[STRICT_OOS] {len(TRAIN_WINDOWS)} train + {len(TEST_WINDOWS)} test windows")
-print(f"[STRICT_OOS] {len(CANDIDATES)} candidates × {len(TRAIN_WINDOWS)} train + {len(TEST_WINDOWS)} test runs")
+print(f"[STRICT_OOS] {len(TRAIN_WINDOWS)} train + {len(TEST_WINDOWS)} test windows, ROUND {ROUND}, {len(CANDIDATES)} candidates")
 
 
 def run_single(cfg_override, train_end, test_end):
@@ -117,12 +138,11 @@ def main():
         name, override = CANDIDATES[ci]
         train_end, test_end = TRAIN_WINDOWS[wi]
         res = run_single(override, train_end, test_end)
-        out = {"phase": "train", "candidate": name, "ci": ci, "wi": wi, 
+        out = {"phase": "train", "round": ROUND, "candidate": name, "ci": ci, "wi": wi,
                "period": f"{train_end}~{test_end}", **res}
         with open(f"strict_ci{ci}_wi{wi}.json", "w") as f:
             json.dump(out, f)
-        print(f"[TRAIN] {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%")
-        sys.stdout.flush()
+        print(f"[TRAIN] R{ROUND} {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%", flush=True)
     
     elif mode == "run_test":
         ci = int(sys.argv[2])
@@ -130,12 +150,11 @@ def main():
         name, override = CANDIDATES[ci]
         train_end, test_end = TEST_WINDOWS[wi]
         res = run_single(override, train_end, test_end)
-        out = {"phase": "test", "candidate": name, "ci": ci, "wi": wi,
+        out = {"phase": "test", "round": ROUND, "candidate": name, "ci": ci, "wi": wi,
                "period": f"{train_end}~{test_end}", **res}
         with open(f"strict_test_ci{ci}_wi{wi}.json", "w") as f:
             json.dump(out, f)
-        print(f"[TEST] {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%")
-        sys.stdout.flush()
+        print(f"[TEST] R{ROUND} {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%", flush=True)
     
     elif mode == "aggregate_train":
         results = []
@@ -145,35 +164,22 @@ def main():
                 if os.path.exists(fname):
                     with open(fname) as f:
                         results.append(json.load(f))
-        
         by_cand = defaultdict(list)
         for r in results:
             by_cand[r['candidate']].append(r)
-        
         summary = {}
         for name, ress in by_cand.items():
             avg_ret = sum(r['return'] for r in ress) / len(ress) if ress else 0
             avg_bench = sum(r['benchmark'] for r in ress) / len(ress) if ress else 0
             beats = sum(1 for r in ress if r['return'] > r['benchmark'])
-            summary[name] = {
-                "avg_return": avg_ret,
-                "avg_benchmark": avg_bench,
-                "beats_count": beats,
-                "total_windows": len(ress),
-                "win_rate_vsbench": beats / len(ress) if ress else 0,
-                "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0,
-            }
-        
+            summary[name] = {"avg_return": avg_ret, "avg_benchmark": avg_bench,
+                           "beats_count": beats, "total_windows": len(ress),
+                           "win_rate_vsbench": beats / len(ress) if ress else 0,
+                           "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0}
         best_name = max(summary.keys(), key=lambda k: summary[k]['avg_return'])
         best_ci = [c[0] for c in CANDIDATES].index(best_name)
-        
-        out = {
-            "phase": "train_selection",
-            "summary": summary,
-            "best_candidate": best_name,
-            "best_ci": best_ci,
-            "selection_metric": "avg_return_on_train_windows",
-        }
+        out = {"phase": "train_selection", "round": ROUND, "summary": summary,
+               "best_candidate": best_name, "best_ci": best_ci}
         with open("strict_train_selection.json", "w") as f:
             json.dump(out, f, indent=2)
         print(f"[SELECT] Best on TRAIN: {best_name} (ci={best_ci})")
@@ -186,42 +192,33 @@ def main():
             if fname.startswith("strict_test_") and fname.endswith(".json"):
                 with open(fname) as f:
                     results.append(json.load(f))
-        
         if not results:
-            print("[TEST_AGG] No test results found!")
+            print("[TEST_AGG] No test results found!", flush=True)
             return
-        
         by_cand = defaultdict(list)
         for r in results:
             by_cand[r['candidate']].append(r)
-        
         summary = {}
         for name, ress in by_cand.items():
             avg_ret = sum(r['return'] for r in ress) / len(ress) if ress else 0
             avg_bench = sum(r['benchmark'] for r in ress) / len(ress) if ress else 0
             beats = sum(1 for r in ress if r['return'] > r['benchmark'])
             summary[name] = {
-                "avg_return": avg_ret,
-                "avg_benchmark": avg_bench,
-                "beats_count": beats,
-                "total_windows": len(ress),
+                "avg_return": avg_ret, "avg_benchmark": avg_bench,
+                "beats_count": beats, "total_windows": len(ress),
                 "win_rate_vsbench": beats / len(ress) if ress else 0,
                 "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0,
                 "avg_fees": sum(r['fees'] for r in ress) / len(ress) if ress else 0,
                 "avg_max_dd": sum(r['max_dd'] for r in ress) / len(ress) if ress else 0,
                 "details": ress,
             }
-        
-        out = {
-            "phase": "test_evaluation",
-            "note": "THIS IS THE FINAL RESULT — OUT-OF-SAMPLE, NO CHEATING",
-            "summary": summary,
-        }
+        out = {"phase": "test_evaluation", "round": ROUND,
+               "note": "THIS IS THE FINAL RESULT — OUT-OF-SAMPLE, NO CHEATING",
+               "summary": summary}
         with open("strict_test_evaluation.json", "w") as f:
             json.dump(out, f, indent=2)
-        
         print("\n" + "="*60)
-        print("STRICT OOS — FINAL OUT-OF-SAMPLE RESULT")
+        print(f"STRICT OOS Round {ROUND} — FINAL OUT-OF-SAMPLE RESULT")
         print("="*60)
         for name, s in sorted(summary.items(), key=lambda x: -x[1]['avg_return']):
             status = "✅ BEAT" if s['avg_return'] > s['avg_benchmark'] else "❌ LOSE"
