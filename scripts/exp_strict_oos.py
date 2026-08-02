@@ -12,70 +12,69 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 8 候选 — 广度防御 + 组合回撤减仓 (Defensive Risk Management)
+# Round 9 候选 — 单基金止损线 (Per-position Stop-loss)
 #
-# R4-R7 发现:
-#   - 单基金价格滤波 (MACD/Bollinger/MA250) 在绝大多数窗口与 BASELINE 完全相同
-#   - R7 WEEKLY_MACD 仅 W12/W13 有微弱改善，W7 完全无效 (-9.29% vs -9.29% 不变)
-#   - 核心矛盾: CSI300 仅 -1.16% 时选股策略 -9.29% → smart_money 在选股失灵期产生严重负 alpha
-#   - 价格型预测滤波本质上是"预测"大盘，但对"选股相对大盘的 alpha 失效"无解
+# R7-R8 发现:
+#   - 价格型滤波 (MA250/MACD/Bollinger) 在绝大多数窗口与 BASELINE 完全相同
+#   - R8 广度防御组合回撤完全无效 (结构性上涨期广度很少跌破阈值)
+#   - 核心矛盾: smart_money 在牛市捕获力强, 但横盘偏弱期 (W7) 产生严重负 alpha
+#   - 价格/广度信号本质上是宏观预测, 但对"选股相对大盘的 alpha 失效"无解
 #
-# R8 假设 (被动式, 非预测):
-#   1. 广度防御: 全市场基金 20 日上涨占比 < 阈值 → 选股 alpha 系统性失效 → 减仓 (非预测!)
-#   2. 组合回撤减仓: 组合净值回撤 > X% 时每只减仓 Y% (被动式, 无未来函数)
-#   3. 组合: 广度 + 组合回撤 双保险
+# R9 假设 (截断亏损, 非预测):
+#   1. 单基金固定止损: 亏损 > Y% 强制清仓, 防止单只暴跌基金拖垮组合
+#   2. 组合层双保险: 单基金止损 + 组合回撤减仓
+#   3. 动态跟踪止损: 从最高净值回撤 X% 卖出 (不依赖成本价, 锁定浮盈)
 #
-# 关键金融学原理: 被动式风控不预测市场，只对已发生损失做出反应
-#   - 广度用的是 T 日截止的 chart 数据 (先验, 无未来函数)
-#   - 组合回撤用当前组合净值 vs 历史峰值 (先验, 无未来函数)
+# 关键金融学原理: 止损不预测市场, 只控制下行风险
+#   - 固定止损: 有明确成本价参照, 触发确定
+#   - 跟踪止损: 随净值上移, 锁定趋势利润
 #
-# R8 候选 (预注册, 2026-08-02):
-#   0. R4_BASELINE — 对照 (无防御)
-#   1. BREADTH_30 — 广度 < 0.30 → 减仓 (宽松阈值, 早期入场)
-#   2. BREADTH_20 — 广度 < 0.20 → 减仓 (激进阈值, 只在极度恐慌触发)
-#   3. COMBO_DEFENSE — 广度 < 0.35 + 组合回撤 6% → 双重防御
-#   4. PORTFOLIO_DD_8 — 仅组合回撤 8% → 减仓 30% (测试纯组合回撤效果)
+# R9 候选 (预注册, 2026-08-02):
+#   0. R4_BASELINE — 对照 (无止损)
+#   1. STOPLOSS_12 — 12% 固定止损
+#   2. STOPLOSS_15 — 15% 固定止损 (容忍度更高)
+#   3. STOPLOSS_15_TIGHT — 15% 止损 + 组合 DD 6% 减仓 (双保险)
+#   4. TRAILING_10 — 动态跟踪止损, 从最高净值回撤 10%
 # ============================================================
 
-ROUND = 8
+ROUND = 9
 
 CANDIDATES = [
-    # 0: R4 winner, 对照 (无防御滤波)
-    ("R4_BASELINE", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
-    # 1: 广度 < 30% → 减仓 (宽松阈值, 对选股失灵早期反应)
-    ("BREADTH_30", {
+    # 0: R4 winner, 对照 (无止损, 基线锚点)
+    ("R4_BASELINE", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "breadth_defense": True,
-        "breadth_threshold": 0.30,
-        "breadth_lookback": 20,
+        "no_stop_loss": True,
     }),
-    # 2: 广度 < 20% → 减仓 (激进阈值, 只在极度恐慌触发)
-    ("BREADTH_20", {
+    # 1: 12% 固定止损 — 单基金亏损 >12% 清仓
+    ("STOPLOSS_12", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "breadth_defense": True,
-        "breadth_threshold": 0.20,
-        "breadth_lookback": 20,
+        "no_stop_loss": False,
+        "stop_loss_pct": -12,
     }),
-    # 3: 双重防御: 广度 + 组合回撤
-    ("COMBO_DEFENSE", {
+    # 2: 15% 固定止损 — 容忍度更高，减少噪声触发
+    ("STOPLOSS_15", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "breadth_defense": True,
-        "breadth_threshold": 0.35,
-        "breadth_lookback": 20,
-        "portfolio_dd_reduce_pct": 1,  # enable > 0
+        "no_stop_loss": False,
+        "stop_loss_pct": -15,
+    }),
+    # 3: 15% 止损 + 组合 6% 回撤减仓 — 双保险
+    ("STOPLOSS_15_TIGHT", {
+        "max_holdings": 12,
+        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
+        "no_stop_loss": False,
+        "stop_loss_pct": -15,
+        "portfolio_dd_reduce_pct": 1,
         "portfolio_dd_reduce_threshold": 6,
         "portfolio_dd_reduce_frac": 0.3,
     }),
-    # 4: 仅组合回撤 (测试减仓自救效果)
-    ("PORTFOLIO_DD_8", {
+    # 4: 动态跟踪止损 — 从最高净值回撤 10% 即卖出 (不依赖成本价)
+    ("TRAILING_10", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "portfolio_dd_reduce_pct": 1,
-        "portfolio_dd_reduce_threshold": 8,
-        "portfolio_dd_reduce_frac": 0.3,
+        "peak_drawdown_exit": 10,
     }),
 ]
 
