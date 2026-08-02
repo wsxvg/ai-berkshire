@@ -102,9 +102,12 @@ jobs:
       - name: Commit results
         run: |
           mkdir -p v9-results
-          cp strict_test_evaluation.json v9-results/strict_oos_r8_eval.json
+          ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
+          cp strict_test_evaluation.json v9-results/strict_oos_r${ROUND}_eval.json
+          cp strict_train_selection.json v9-results/strict_oos_r${ROUND}_train_selection.json
+          # Also store as r9 naming for backwards-compatibility (R10 output is labeled r8 was a bug)
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add v9-results/strict_oos_r8_eval.json
-          git commit -m "Strict OOS R8: Breadth defense + portfolio drawdown circuit-breaker (70 test jobs, zero cheat, reactive risk control)"
+          git add v9-results/strict_oos_r${ROUND}_eval.json v9-results/strict_oos_r${ROUND}_train_selection.json
+          git commit -m "Strict OOS R${ROUND}: auto-results (aggregate_test + train_selection)"
           git push
