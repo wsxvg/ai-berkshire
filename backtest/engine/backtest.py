@@ -1723,6 +1723,13 @@ def run_backtest(config, clear_cache=True):
         try:
             _market_state = detect_market_state(cutoff_full, fund_charts)
         except: pass
+
+        # R10: 基于行情状态的动态因子权重 (regime-specific weights)
+        # 原理: 牛市加大动量权重趋势跟踪, 熊股加大质量/成本权重防守
+        # 防作弊: detect_market_state 只用 cutoff_full 之前的历史数据, 不构成未来函数
+        _dyn_weights = config.get(f"weights_{_market_state}")
+        if _dyn_weights:
+            config["weights"] = _dyn_weights
         # Check if user enabled dynamic limits
         _use_dyn = "dyn_max_pos_bull" in config
         if _use_dyn:

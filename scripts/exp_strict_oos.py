@@ -12,76 +12,113 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 9 候选 — 单基金止损线 (Per-position Stop-loss)
+# Round 10 候选 — 行情状态动态因子权重 (Regime-Specific Factor Weights)
 #
-# R7-R8 发现:
-#   - 价格型滤波 (MA250/MACD/Bollinger) 在绝大多数窗口与 BASELINE 完全相同
-#   - R8 广度防御组合回撤完全无效 (结构性上涨期广度很少跌破阈值)
-#   - 核心矛盾: smart_money 在牛市捕获力强, 但横盘偏弱期 (W7) 产生严重负 alpha
-#   - 价格/广度信号本质上是宏观预测, 但对"选股相对大盘的 alpha 失效"无解
+# R4-R9 回顾:
+#   - R4_BASELINE 9.624%/q 仍是最佳 (14 TEST windows OOS)
+#   - R7 价格型滤波 / R8 广度防御 / R9 止损均无法稳定超越基线
+#   - 核心矛盾: 固定权重 Q20/C25/M15/Mo10/SM30 在所有市场环境下使用同一套参数
+#   - 牛市中 smart_money 追涨有效但动量信号被低估;
+#     熊市/震荡期中 smart_money 失效, 应切换到质量/成本价值因子
 #
-# R9 假设 (截断亏损, 非预测):
-#   1. 单基金固定止损: 亏损 > Y% 强制清仓, 防止单只暴跌基金拖垮组合
-#   2. 组合层双保险: 单基金止损 + 组合回撤减仓
-#   3. 动态跟踪止损: 从最高净值回撤 X% 卖出 (不依赖成本价, 锁定浮盈)
+# R10 假设 (行情自适应, 非预测):
+#   1. 牛市 (benchmark 60 日涨幅 > 8%): 加大动量 + smart_money 权重 (趋势跟踪)
+#   2. 熊市 (benchmark 60 日跌幅 > 5%): 加大质量 + cost 价值防守
+#   3. 中性市: 使用 R4 原始权重 (平衡)
 #
-# 关键金融学原理: 止损不预测市场, 只控制下行风险
-#   - 固定止损: 有明确成本价参照, 触发确定
-#   - 跟踪止损: 随净值上移, 锁定趋势利润
+# 防作弊保证:
+#   - detect_market_state() 仅使用 cutoff_full (TEST 起始日) 之前的历史净值
+#   - weights_bull/bear 是预注册常数, 不基于 TEST 期数据调优
+#   - 每个 TEST 窗口的 regime 状态是该窗口的"特征", 不是未来信息
+#   - 权重在窗口起始日确定, 整个窗口内不切换
 #
-# R9 候选 (预注册, 2026-08-02):
-#   0. R4_BASELINE — 对照 (无止损)
-#   1. STOPLOSS_12 — 12% 固定止损
-#   2. STOPLOSS_15 — 15% 固定止损 (容忍度更高)
-#   3. STOPLOSS_15_TIGHT — 15% 止损 + 组合 DD 6% 减仓 (双保险)
-#   4. TRAILING_10 — 动态跟踪止损, 从最高净值回撤 10%
+# R10 候选 (预注册, 2026-08-02):
+#   0. R4_BASELINE — 对照 (固定权重, 无行情切换)
+#   1. DYN_AGGRESSIVE — 牛市 max 动量+smart_money, 熊市 max 质量+成本
+#   2. DYN_DEFENSIVE — 牛市加大质量防守, 熊市极端质量+成本
+#   3. DYN_MOMENTUM — 牛市纯动量, 熊市反向加大质量/成本
+#   4. DYN_TREND — 牛市 smart_money 最大化, 熊市切换到 manager quality
 # ============================================================
 
-ROUND = 9
+ROUND = 10
+
+# 行情权重预设 (总和=100)
+WTS_BULL_AGGRESSIVE = {"quality": 15, "cost": 20, "manager": 10, "momentum": 25, "smart_money": 30}
+WTS_BEAR_AGGRESSIVE = {"quality": 30, "cost": 30, "manager": 10, "momentum": 10, "smart_money": 20}
+WTS_BULL_DEFENSIVE = {"quality": 25, "cost": 30, "manager": 15, "momentum": 15, "smart_money": 15}
+WTS_BEAR_DEFENSIVE = {"quality": 35, "cost": 35, "manager": 10, "momentum": 5, "smart_money": 15}
+WTS_BULL_MOMENTUM = {"quality": 15, "cost": 15, "manager": 10, "momentum": 30, "smart_money": 30}
+WTS_BEAR_MOMENTUM = {"quality": 30, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 20}
+WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
+WTS_BEAR_TREND = {"quality": 25, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 10}
+WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 
 CANDIDATES = [
-    # 0: R4 winner, 对照 (无止损, 基线锚点)
+    # 0: R4 winner, 对照 (固定权重, 无行情切换)
     ("R4_BASELINE", {
         "max_holdings": 12,
-        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "no_stop_loss": True,
+        "weights": WTS_BASELINE,
     }),
-    # 1: 12% 固定止损 — 单基金亏损 >12% 清仓
-    ("STOPLOSS_12", {
+    # 1: 激进动态 — 牛市最大化追击, 熊市最大化防守
+    ("DYN_AGGRESSIVE", {
         "max_holdings": 12,
-        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "no_stop_loss": False,
-        "stop_loss_pct": -12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_AGGRESSIVE,
+        "weights_bear": WTS_BEAR_AGGRESSIVE,
     }),
-    # 2: 15% 固定止损 — 容忍度更高，减少噪声触发
-    ("STOPLOSS_15", {
+    # 2: 保守动态 — 即使牛市也保质量底, 熊市极端防守
+    ("DYN_DEFENSIVE", {
         "max_holdings": 12,
-        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "no_stop_loss": False,
-        "stop_loss_pct": -15,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_DEFENSIVE,
+        "weights_bear": WTS_BEAR_DEFENSIVE,
     }),
-    # 3: 15% 止损 + 组合 6% 回撤减仓 — 双保险
-    ("STOPLOSS_15_TIGHT", {
+    # 3: 动量动态 — 牛市巅峰追击, 熊市切换到价值回归
+    ("DYN_MOMENTUM", {
         "max_holdings": 12,
-        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "no_stop_loss": False,
-        "stop_loss_pct": -15,
-        "portfolio_dd_reduce_pct": 1,
-        "portfolio_dd_reduce_threshold": 6,
-        "portfolio_dd_reduce_frac": 0.3,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_MOMENTUM,
+        "weights_bear": WTS_BEAR_MOMENTUM,
     }),
-    # 4: 动态跟踪止损 — 从最高净值回撤 10% 即卖出 (不依赖成本价)
-    ("TRAILING_10", {
+    # 4: 趋势跟踪 — 牛市 smart_money 最大化, 熊市切换到 manager quality
+    ("DYN_TREND", {
         "max_holdings": 12,
-        "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "peak_drawdown_exit": 10,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": WTS_BEAR_TREND,
     }),
 ]
 
+
+# ─── 时间窗口定义 ───
+# 扩展: base_end 延伸至 2026-07-31 (数据已从 JD API 刷新)
+# 原始 ALL_WINDOWS 共 28 个 (index 0-27)
+# TRAIN = ALL_WINDOWS[:14]  (前 14 个做训练确认)
+# TEST  = ALL_WINDOWS[14:]  (后 14 个做纯 OOS)
+ALL_WINDOWS = []
+base_start = datetime(2023, 7, 17)
+base_end = datetime(2026, 7, 31)
+
+# 生成每 30 天滚动的窗口
+idx = 0
+while True:
+    current = base_start + timedelta(days=30 * idx)
+    train_end = current + timedelta(days=180)
+    test_end = current + timedelta(days=270)
+    if test_end > base_end:
+        break
+    ALL_WINDOWS.append({
+        "train_end": train_end.strftime("%Y-%m-%d"),
+        "test_end": test_end.strftime("%Y-%m-%d"),
+    })
+    idx += 1
+
+TRAIN_WINDOWS = ALL_WINDOWS[:14]
+TEST_WINDOWS = ALL_WINDOWS[14:]
+
+# ─── 配置基线 ───
 BASE_CFG = {
     "initial_cash": 10000,
-    "weights": {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20},
-    "min_score": 3.0,
     "no_stop_loss": True,
     "take_profit_pct": 50.0,
     "min_consensus": 3,
@@ -93,138 +130,70 @@ BASE_CFG = {
     "regime_specific": True,
 }
 
-base_start = datetime(2023, 7, 17)
-base_end = datetime(2026, 7, 24)
 
-ALL_WINDOWS = []
-current = base_start
-while current + timedelta(days=270) <= base_end:
-    train_end = (current + timedelta(days=180)).strftime("%Y-%m-%d")
-    test_end = (current + timedelta(days=270)).strftime("%Y-%m-%d")
-    ALL_WINDOWS.append((train_end, test_end))
-    current += timedelta(days=30)
-
-TRAIN_WINDOWS = ALL_WINDOWS[:14]
-TEST_WINDOWS = ALL_WINDOWS[14:]
-
-print(f"[STRICT_OOS] {len(TRAIN_WINDOWS)} train + {len(TEST_WINDOWS)} test windows, ROUND {ROUND}, {len(CANDIDATES)} candidates")
+def window_range(wi):
+    if 0 <= wi < len(ALL_WINDOWS):
+        return ALL_WINDOWS[wi]["train_end"], ALL_WINDOWS[wi]["test_end"]
+    return None, None
 
 
-def run_single(cfg_override, train_end, test_end):
+def run_train(ci, wi):
+    train_end, test_end = window_range(wi)
     cfg = copy.deepcopy(BASE_CFG)
+    cfg_override = CANDIDATES[ci][1]
     cfg.update(cfg_override)
     cfg['start_date'] = train_end
     cfg['end_date'] = test_end
     res = run_backtest(cfg, clear_cache=True)
-    return {
-        'return': res.get('total_return', 0),
-        'trades': res.get('trade_count', 0),
-        'fees': res.get('total_fees', 0),
-        'max_dd': res.get('max_drawdown', 0),
-        'benchmark': res.get('benchmark_csi300', res.get('benchmark_return', 0)),
-        'win_rate': res.get('win_rate', 0),
-        'avg_hold_days': res.get('avg_hold_days', 0),
-    }
+    return res
 
 
-def main():
-    mode = sys.argv[1] if len(sys.argv) > 1 else "help"
-    
-    if mode == "run_train":
-        ci = int(sys.argv[2])
-        wi = int(sys.argv[3])
-        name, override = CANDIDATES[ci]
-        train_end, test_end = TRAIN_WINDOWS[wi]
-        res = run_single(override, train_end, test_end)
-        out = {"phase": "train", "round": ROUND, "candidate": name, "ci": ci, "wi": wi,
-               "period": f"{train_end}~{test_end}", **res}
-        with open(f"strict_ci{ci}_wi{wi}.json", "w") as f:
-            json.dump(out, f)
-        print(f"[TRAIN] R{ROUND} {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%", flush=True)
-    
-    elif mode == "run_test":
-        ci = int(sys.argv[2])
-        wi = int(sys.argv[3])
-        name, override = CANDIDATES[ci]
-        train_end, test_end = TEST_WINDOWS[wi]
-        res = run_single(override, train_end, test_end)
-        out = {"phase": "test", "round": ROUND, "candidate": name, "ci": ci, "wi": wi,
-               "period": f"{train_end}~{test_end}", **res}
-        with open(f"strict_test_ci{ci}_wi{wi}.json", "w") as f:
-            json.dump(out, f)
-        print(f"[TEST] R{ROUND} {name} W{wi}: Ret={res['return']:+.2f}% Bench={res['benchmark']:+.2f}%", flush=True)
-    
-    elif mode == "aggregate_train":
-        results = []
-        for ci in range(len(CANDIDATES)):
-            for wi in range(len(TRAIN_WINDOWS)):
-                fname = f"strict_ci{ci}_wi{wi}.json"
-                if os.path.exists(fname):
-                    with open(fname) as f:
-                        results.append(json.load(f))
-        by_cand = defaultdict(list)
-        for r in results:
-            by_cand[r['candidate']].append(r)
-        summary = {}
-        for name, ress in by_cand.items():
-            avg_ret = sum(r['return'] for r in ress) / len(ress) if ress else 0
-            avg_bench = sum(r['benchmark'] for r in ress) / len(ress) if ress else 0
-            beats = sum(1 for r in ress if r['return'] > r['benchmark'])
-            summary[name] = {"avg_return": avg_ret, "avg_benchmark": avg_bench,
-                           "beats_count": beats, "total_windows": len(ress),
-                           "win_rate_vsbench": beats / len(ress) if ress else 0,
-                           "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0}
-        best_name = max(summary.keys(), key=lambda k: summary[k]['avg_return'])
-        best_ci = [c[0] for c in CANDIDATES].index(best_name)
-        out = {"phase": "train_selection", "round": ROUND, "summary": summary,
-               "best_candidate": best_name, "best_ci": best_ci}
-        with open("strict_train_selection.json", "w") as f:
-            json.dump(out, f, indent=2)
-        print(f"[SELECT] Best on TRAIN: {best_name} (ci={best_ci})")
-        for name, s in sorted(summary.items(), key=lambda x: -x[1]['avg_return']):
-            print(f"  {name}: +{s['avg_return']:.3f}% (bench {s['avg_benchmark']:+.3f}%) beats={s['beats_count']}/{s['total_windows']}")
-    
-    elif mode == "aggregate_test":
-        results = []
-        for fname in os.listdir('.'):
-            if fname.startswith("strict_test_") and fname.endswith(".json"):
-                with open(fname) as f:
-                    results.append(json.load(f))
-        if not results:
-            print("[TEST_AGG] No test results found!", flush=True)
-            return
-        by_cand = defaultdict(list)
-        for r in results:
-            by_cand[r['candidate']].append(r)
-        summary = {}
-        for name, ress in by_cand.items():
-            avg_ret = sum(r['return'] for r in ress) / len(ress) if ress else 0
-            avg_bench = sum(r['benchmark'] for r in ress) / len(ress) if ress else 0
-            beats = sum(1 for r in ress if r['return'] > r['benchmark'])
-            summary[name] = {
-                "avg_return": avg_ret, "avg_benchmark": avg_bench,
-                "beats_count": beats, "total_windows": len(ress),
-                "win_rate_vsbench": beats / len(ress) if ress else 0,
-                "avg_trades": sum(r['trades'] for r in ress) / len(ress) if ress else 0,
-                "avg_fees": sum(r['fees'] for r in ress) / len(ress) if ress else 0,
-                "avg_max_dd": sum(r['max_dd'] for r in ress) / len(ress) if ress else 0,
-                "details": ress,
-            }
-        out = {"phase": "test_evaluation", "round": ROUND,
-               "note": "THIS IS THE FINAL RESULT — OUT-OF-SAMPLE, NO CHEATING",
-               "summary": summary}
-        with open("strict_test_evaluation.json", "w") as f:
-            json.dump(out, f, indent=2)
-        print("\n" + "="*60)
-        print(f"STRICT OOS Round {ROUND} — FINAL OUT-OF-SAMPLE RESULT")
-        print("="*60)
-        for name, s in sorted(summary.items(), key=lambda x: -x[1]['avg_return']):
-            status = "✅ BEAT" if s['avg_return'] > s['avg_benchmark'] else "❌ LOSE"
-            print(f"{name}: +{s['avg_return']:.3f}%/q vs CSI300 {s['avg_benchmark']:+.3f}%/q [{status}] beats {s['beats_count']}/{s['total_windows']}")
-    
-    else:
-        print("Usage: python exp_strict_oos.py [run_train|run_test|aggregate_train|aggregate_test] [ci] [wi]")
+def run_test(ci, wi):
+    train_end, test_end = window_range(wi)
+    cfg = copy.deepcopy(BASE_CFG)
+    cfg_override = CANDIDATES[ci][1]
+    cfg.update(cfg_override)
+    cfg['start_date'] = train_end
+    cfg['end_date'] = test_end
+    res = run_backtest(cfg, clear_cache=True)
+    return res
+
+
+def run_all_train(ci):
+    results = []
+    for wi in range(len(TRAIN_WINDOWS)):
+        res = run_train(ci, wi)
+        results.append(res)
+    return results
+
+
+def run_all_test(ci):
+    results = []
+    for wi in range(len(TEST_WINDOWS)):
+        res = run_test(ci, len(TRAIN_WINDOWS) + wi)
+        results.append(res)
+    return results
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("mode", choices=["run_train", "run_test", "run_all_train", "run_all_test"])
+    p.add_argument("--ci", type=int, default=0)
+    p.add_argument("--wi", type=int, default=0)
+    args = p.parse_args()
+
+    if args.mode == "run_train":
+        r = run_train(args.ci, args.wi)
+        print(json.dumps({"return": r.get("total_return", 0), "trades": r.get("trade_count", 0)}, ensure_ascii=False))
+    elif args.mode == "run_test":
+        r = run_test(args.ci, args.wi)
+        print(json.dumps({"return": r.get("total_return", 0), "trades": r.get("trade_count", 0)}, ensure_ascii=False))
+    elif args.mode == "run_all_train":
+        rs = run_all_train(args.ci)
+        for i, r in enumerate(rs):
+            print(f"TRAIN wi={i}: return={r.get('total_return',0):.2f}")
+    elif args.mode == "run_all_test":
+        rs = run_all_test(args.ci)
+        for i, r in enumerate(rs):
+            print(f"TEST wi={i}: return={r.get('total_return',0):.2f}")
