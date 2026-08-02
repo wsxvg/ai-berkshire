@@ -28,7 +28,7 @@
 
 | 问题 | 位置 | 说明 |
 |------|------|------|
-| T+N确认用日历日 | `backtest.py` `_add_trading_days` | 使用`timedelta(days=n_days)`加日历日，未跳过周末。影响：T+1可能落在周六，实际T+2才确认。影响较小（延迟1天） |
+| T+N确认用日历日 | `backtest.py` `_add_trading_days` | ✅ 已修复 (2026-08-02): 直接使用京东 API 返回的 buy_date→confirm_date 和 redeem_date→redeem_arrive_date 的日历差。API 返回的日期即实际到账日期，无需交易日转换。 |
 | 周末信号处理 | `backtest.py` backtest_dates | 回测遍历包含周末的交易日期。基金净值在周末不变，影响有限，但增加了计算量 |
 | fund_name_map A/C混淆 | `backtest.py` `_resolve_fund_code` | 三步模糊匹配中，标准化去A/C后缀可能导致A类匹配到C类代码。实际影响取决于name_map的覆盖度 |
 

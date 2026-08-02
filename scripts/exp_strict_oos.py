@@ -12,69 +12,70 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 7 候选 — 价格型体制过滤 (Price-Based Regime Filters)
+# Round 8 候选 — 广度防御 + 组合回撤减仓 (Defensive Risk Management)
 #
-# R4 发现:
-#   - W7 (Oct~Jan) 所有候选均亏 ~-9%, 大盘仅亏 -1.16%
-#   - W3-W4 smart_money 大幅跑赢 → 牛市捕获 OK
-#   - 候选间差异 < 1% → 评分模型已成熟, 需在 OTHER 维度改进
+# R4-R7 发现:
+#   - 单基金价格滤波 (MACD/Bollinger/MA250) 在绝大多数窗口与 BASELINE 完全相同
+#   - R7 WEEKLY_MACD 仅 W12/W13 有微弱改善，W7 完全无效 (-9.29% vs -9.29% 不变)
+#   - 核心矛盾: CSI300 仅 -1.16% 时选股策略 -9.29% → smart_money 在选股失灵期产生严重负 alpha
+#   - 价格型预测滤波本质上是"预测"大盘，但对"选股相对大盘的 alpha 失效"无解
 #
-# R6 假设:
-#   - LightGBM 预测器检测尾部风险 → crash_sell
-#   - 但 ML 可能不够稳 → 需要价格型过滤互补
+# R8 假设 (被动式, 非预测):
+#   1. 广度防御: 全市场基金 20 日上涨占比 < 阈值 → 选股 alpha 系统性失效 → 减仓 (非预测!)
+#   2. 组合回撤减仓: 组合净值回撤 > X% 时每只减仓 Y% (被动式, 无未来函数)
+#   3. 组合: 广度 + 组合回撤 双保险
 #
-# R7 假设 (如果 R6 不够或需互补):
-#   1. 年线过滤: 大盘跌破 250日均线 → 停止买入 → 避免熊市初期被套
-#   2. 周线 MACD 顶背离 → 仓位 ×0.7 → 精准逃顶
-#   3. 周线布林带 → 近上轨→减仓 近下轨→加仓
-#   4. 三因子组合: 年线+MACD+布林带 → 体制过滤的最优组合
+# 关键金融学原理: 被动式风控不预测市场，只对已发生损失做出反应
+#   - 广度用的是 T 日截止的 chart 数据 (先验, 无未来函数)
+#   - 组合回撤用当前组合净值 vs 历史峰值 (先验, 无未来函数)
 #
-# R7 候选 (预注册, 2026-08-02):
-#   0. R4_BASELINE — WEIGHTS_ALT 对照 (无滤波)
-#   1. MA250_FILTER — 跌破年线不买, 最简单的体制过滤
-#   2. WEEKLY_MACD — 周线MACD顶背离×0.7 (逃顶)
-#   3. WEEKLY_BOLL — 周线布林带仓位调节
-#   4. TRIPLE_COMBO — 年线+MACD+布林带 组合 (最强滤波)
+# R8 候选 (预注册, 2026-08-02):
+#   0. R4_BASELINE — 对照 (无防御)
+#   1. BREADTH_30 — 广度 < 0.30 → 减仓 (宽松阈值, 早期入场)
+#   2. BREADTH_20 — 广度 < 0.20 → 减仓 (激进阈值, 只在极度恐慌触发)
+#   3. COMBO_DEFENSE — 广度 < 0.35 + 组合回撤 6% → 双重防御
+#   4. PORTFOLIO_DD_8 — 仅组合回撤 8% → 减仓 30% (测试纯组合回撤效果)
 # ============================================================
 
-ROUND = 7
+ROUND = 8
 
 CANDIDATES = [
-    # R4 winner, 对照
+    # 0: R4 winner, 对照 (无防御滤波)
     ("R4_BASELINE", {"max_holdings": 12, "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}}),
-    # 年线过滤: 跌破250日均线 → 停止买入
-    ("MA250_FILTER", {
+    # 1: 广度 < 30% → 减仓 (宽松阈值, 对选股失灵早期反应)
+    ("BREADTH_30", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "yearly_ma_filter": True,
-        "yearly_bear_pos_ratio": 0.3,  # 跌破年线 → 仓位上限×0.3
+        "breadth_defense": True,
+        "breadth_threshold": 0.30,
+        "breadth_lookback": 20,
     }),
-    # 周线 MACD 顶背离: 逃顶信号
-    ("WEEKLY_MACD", {
+    # 2: 广度 < 20% → 减仓 (激进阈值, 只在极度恐慌触发)
+    ("BREADTH_20", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "weekly_macd_divergence": True,
-        "divergence_top_discount": 0.6,  # 顶背离 → 仓位×0.6
+        "breadth_defense": True,
+        "breadth_threshold": 0.20,
+        "breadth_lookback": 20,
     }),
-    # 周线布林带: 轨道仓位调节
-    ("WEEKLY_BOLL", {
+    # 3: 双重防御: 广度 + 组合回撤
+    ("COMBO_DEFENSE", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "weekly_bollinger_adjust": True,
-        "bb_upper_discount": 0.7,
-        "bb_lower_boost": 1.2,
+        "breadth_defense": True,
+        "breadth_threshold": 0.35,
+        "breadth_lookback": 20,
+        "portfolio_dd_reduce_pct": 1,  # enable > 0
+        "portfolio_dd_reduce_threshold": 6,
+        "portfolio_dd_reduce_frac": 0.3,
     }),
-    # 三因子组合: 年线+MACD+布林带
-    ("TRIPLE_COMBO", {
+    # 4: 仅组合回撤 (测试减仓自救效果)
+    ("PORTFOLIO_DD_8", {
         "max_holdings": 12,
         "weights": {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30},
-        "yearly_ma_filter": True,
-        "yearly_bear_pos_ratio": 0.3,
-        "weekly_macd_divergence": True,
-        "divergence_top_discount": 0.6,
-        "weekly_bollinger_adjust": True,
-        "bb_upper_discount": 0.7,
-        "bb_lower_boost": 1.2,
+        "portfolio_dd_reduce_pct": 1,
+        "portfolio_dd_reduce_threshold": 8,
+        "portfolio_dd_reduce_frac": 0.3,
     }),
 ]
 

@@ -891,10 +891,28 @@ def get_fund_trade_rules(fund_code, use_cache=False):
         elif step.get("title") == "\u786e\u8ba4\u4efd\u989d":
             confirm_date = step.get("info", "")
 
+    # 卖出/赎回流程 (赎回 → 确认份额 → 资金到账)
+    redeem_process = rr.get("redeemBankProcess", []) or rr.get("redeemXjkProcess", []) or []
+    redeem_date = ""
+    redeem_confirm_date = ""
+    redeem_arrive_date = ""
+    for step in redeem_process:
+        title = step.get("title", "")
+        info = step.get("info", "")
+        if title == "\u8d4e\u56de":
+            redeem_date = info
+        elif title == "\u786e\u8ba4\u4efd\u989d":
+            redeem_confirm_date = info
+        elif title == "\u9884\u8ba1\u5230\u8d26" or title == "\u5230\u8d26":
+            redeem_arrive_date = info
+
     result = {
         "fund_code": fund_code,
         "buy_date": buy_date,
         "confirm_date": confirm_date,
+        "redeem_date": redeem_date,
+        "redeem_confirm_date": redeem_confirm_date,
+        "redeem_arrive_date": redeem_arrive_date,
         "manage_fee": _pct(pr.get("manageFeeRatio", "0")),
         "custody_fee": _pct(pr.get("depositFeeRatio", "0")),
         "sale_fee": _pct(pr.get("saleServiceFeeRatio", "0")),
@@ -3372,6 +3390,8 @@ def main():
             print(f"\nFund {args.trade_rules} trade rules:")
             print(f"  Buy cutoff: {rules['buy_date']}")
             print(f"  Confirm date: {rules['confirm_date']}")
+            if rules.get("redeem_date"):
+                print(f"  Redeem cutoff: {rules['redeem_date']} -> Confirm: {rules.get('redeem_confirm_date', '?')} -> Arrive: {rules.get('redeem_arrive_date', '?')}")
             print(f"  Purchase fee: {rules['purchase_fee']}% (original {rules['purchase_fee_original']}%)")
             print(f"  Management fee: {rules['manage_fee']}%/yr")
             print(f"  Custody fee: {rules['custody_fee']}%/yr")

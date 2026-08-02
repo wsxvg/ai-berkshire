@@ -22,6 +22,46 @@ def _add_days(date_str, n_days):
     except Exception:
         return date_str
 
+
+def _count_trading_days(start_str, end_str):
+    """计算从 start 到 end 的交易日天数（跳过周六日）。
+    返回整数, 如果 end <= start 返回 0。
+    方向: end > start 返回正数, end < start 返回负数。
+    """
+    try:
+        start = datetime.strptime(start_str[:10], "%Y-%m-%d")
+        end = datetime.strptime(end_str[:10], "%Y-%m-%d")
+    except Exception:
+        return 0
+    if end <= start:
+        return 0
+    count = 0
+    current = start + timedelta(days=1)  # 从 start 的下一天开始数
+    while current <= end:
+        if current.weekday() < 5:  # Mon-Fri
+            count += 1
+        current += timedelta(days=1)
+    return count
+
+
+def _add_trading_days_correct(date_str, n_days):
+    """给日期字符串加 N 个交易日（跳过周末），返回 YYYY-MM-DD。
+    n_days >= 0: 从 date_str 之后第 N 个工作日。
+    """
+    try:
+        dt = datetime.strptime(date_str[:10], "%Y-%m-%d")
+    except Exception:
+        return date_str
+    if n_days <= 0:
+        return date_str
+    added = 0
+    current = dt
+    while added < n_days:
+        current += timedelta(days=1)
+        if current.weekday() < 5:  # Mon-Fri = trading day
+            added += 1
+    return current.strftime("%Y-%m-%d")
+
 # ── 速度优化：bisect 二分查找代替线性截断 ──
 # 预处理时为每只基金缓存 dates 数组, id(pts)→dates
 _DATES_CACHE = {}
@@ -360,6 +400,36 @@ def detect_market_state(cutoff_date, fund_charts, benchmark_code="110020", lookb
     if perf > 8: return "bull"
     if perf < -5: return "bear"
     return "neutral"
+
+
+def compute_market_breadth(cutoff_date, fund_charts, lookback=20):
+    """Compute market breadth: fraction of all investable funds with positive N-day return.
+
+    This is a SYSTEMIC risk proxy — when breadth < 0.3 (less than 30% of funds
+    rising), we're in a regime where stock-picking alpha is systematically failing.
+
+    Returns:
+        (breadth_ratio, fund_count, avg_return_across_all)
+        breadth_ratio in [0, 1]; returns (0.5, 0, 0.0) if insufficient data.
+    """
+    pos_count = 0
+    total = 0
+    sum_ret = 0.0
+    for code, pts in fund_charts.items():
+        valid = _bisect_valid(pts, cutoff_date)
+        if len(valid) < lookback + 1:
+            continue
+        navs = [(100 + _float(p.get("yAxis", 0))) / 100 for p in valid[-(lookback + 1):]]
+        if navs[0] <= 0:
+            continue
+        ret = (navs[-1] / navs[0] - 1) * 100
+        if ret > 0:
+            pos_count += 1
+        sum_ret += ret
+        total += 1
+    if total < 10:
+        return 0.5, 0, 0.0  # insufficient data → neutral
+    return pos_count / total, total, sum_ret / total
 
 
 # ── 基金相关性分析 ──
@@ -1011,29 +1081,24 @@ class Portfolio:
         return 0.0
 
     def get_t_plus_n(self, code):
-        """获取基金T+N确认天数"""
+        """获取基金 T+N 确认天数（日历日，与 API 返回的实际日期对应）。
+        用 API 返回的 buy_date → confirm_date 之间的日历差。
+        fallback: T+1。
+        """
         rules = self.fund_rules.get(code, {})
         confirm = rules.get("confirm_date", "")
         buy_date = rules.get("buy_date", "")
-        # 用完整日期解析，避免跨月错误
         if confirm and buy_date:
             try:
-                from datetime import datetime
-                # confirm_date 格式如 "07-08", buy_date 格式如 "07-06 15:00前"
-                # 补全年份用当前年，只算日历差
                 _year = datetime.now().year
-                b_str = buy_date.split(" ")[0]  # "07-06"
+                b_str = buy_date.split(" ")[0]  # "08-03"
                 b_dt = datetime.strptime(f"{_year}-{b_str}", "%Y-%m-%d")
                 c_dt = datetime.strptime(f"{_year}-{confirm}", "%Y-%m-%d")
                 diff = (c_dt - b_dt).days
-                if diff <= 1: return 1  # T+1
-                if diff <= 2: return 2  # T+2
-                return diff
-            except: pass
-        # 根据基金类型判断
-        profile = getattr(self, '_profiles', {}).get(code, {})
-        fund_type = profile.get("fund_type", "") if profile else ""
-        if "QDII" in fund_type: return 2
+                if 0 < diff <= 7:
+                    return max(1, diff)
+            except:
+                pass
         return 1  # 默认 T+1
 
     def get_day_limit(self, code):
@@ -1086,7 +1151,7 @@ class Portfolio:
         net_amount = amount - fee
         shares = net_amount / eff_price if eff_price > 0 else 0
         t_plus_n = self.get_t_plus_n(code)
-        confirm_date = self._add_trading_days(day_str, t_plus_n)
+        confirm_date = _add_trading_days(day_str, t_plus_n)
 
         self.cash -= amount
         self.total_fees += fee
@@ -1137,32 +1202,26 @@ class Portfolio:
         return len(settled)
 
     def _get_sell_t_plus_n(self, code):
-        """获取基金赎回到账T+N天数。
-        与买入确认天数不同：赎回到账通常比确认慢1-2天。
-        普通基金: T+2到T+3, QDII: T+4到T+7
+        """获取基金赎回到账的 T+N 日历天数。
+        用 API 返回的 redeem_date → redeem_arrive_date 之间的日历差。
+        API 返回的"预计到账"就是实际到账日期。
+        fallback: T+3（保守假设多数场外权益基金实际 T+3）。
         """
         rules = self.fund_rules.get(code, {})
-        # 优先用API返回的赎回到账信息
+        redeem_date = rules.get("redeem_date", "")
         redeem_arrive = rules.get("redeem_arrive_date", "")
-        buy_date = rules.get("buy_date", "")
-        if redeem_arrive and buy_date:
+        if redeem_date and redeem_arrive:
             try:
-                from datetime import datetime
                 _year = datetime.now().year
-                b_str = buy_date.split(" ")[0]
-                b_dt = datetime.strptime(f"{_year}-{b_str}", "%Y-%m-%d")
-                r_dt = datetime.strptime(f"{_year}-{redeem_arrive}", "%Y-%m-%d")
-                diff = (r_dt - b_dt).days
-                if diff >= 1:
+                r_str = redeem_date.split(" ")[0]  # "08-03"
+                r_dt = datetime.strptime(f"{_year}-{r_str}", "%Y-%m-%d")
+                a_dt = datetime.strptime(f"{_year}-{redeem_arrive}", "%Y-%m-%d")
+                diff = (a_dt - r_dt).days
+                if 1 <= diff <= 14:
                     return diff
             except:
                 pass
-        # 根据基金类型判断
-        profile = getattr(self, '_profiles', {}).get(code, {})
-        fund_type = profile.get("fund_type", "") if profile else ""
-        if "QDII" in fund_type:
-            return 4  # QDII赎回T+4
-        return 2  # 普通基金赎回T+2
+        return 3  # 默认 T+3（多数场外权益基金实际赎回到账 T+3）
 
     def settle_pending_sells(self, current_date):
         """处理卖出资金T+N到账。"""
@@ -1179,13 +1238,8 @@ class Portfolio:
 
     @staticmethod
     def _add_trading_days(date_str, n_days):
-        """简单近似: 加 N 个日历日"""
-        from datetime import datetime, timedelta
-        try:
-            dt = datetime.strptime(date_str[:10], "%Y-%m-%d")
-            return (dt + timedelta(days=n_days)).strftime("%Y-%m-%d")
-        except:
-            return date_str
+        """加 N 个日历日（与 API 返回的实际日期一致）。"""
+        return _add_days(date_str, n_days)
 
     def _holding_days(self, code, current_date):
         """估算持有天数。"""
@@ -1273,7 +1327,7 @@ class Portfolio:
             # 卖出资金不立即到账，进入 pending_sells 队列
             _sell_net = round(proceeds - fee, 2)
             _sell_tn = self._get_sell_t_plus_n(code)
-            _sell_confirm = self._add_trading_days(day_str, _sell_tn)
+            _sell_confirm = _add_trading_days(day_str, _sell_tn)
             self.total_fees += fee
             _yr = day_str[:4] if len(day_str) >= 4 else "0000"
             self.yearly_trades[_yr] = self.yearly_trades.get(_yr, 0) + 1
@@ -1302,7 +1356,7 @@ class Portfolio:
         # 卖出资金不立即到账，进入 pending_sells 队列
         _sell_net = round(proceeds - fee, 2)
         _sell_tn = self._get_sell_t_plus_n(code)
-        _sell_confirm = self._add_trading_days(day_str, _sell_tn)
+        _sell_confirm = _add_trading_days(day_str, _sell_tn)
         self.total_fees += fee
         self.trades.append({"date": day_str, "code": code, "action": "sell",
                            "amount": amount, "fee": fee, "days_held": days_held, "reason": sell_reason,
@@ -1722,6 +1776,22 @@ def run_backtest(config, clear_cache=True):
                 _bm_nav, _bm_ma250, _above_ma = compute_ma_250(_bm_nav_values)
                 if not _above_ma:
                     _dyn_max_pos = _dyn_max_pos * config.get("yearly_bear_pos_ratio", 0.5)
+            except Exception:
+                pass
+
+        # ── 广度防御 (R8): 市场广度 < 阈值 → 选股 alpha 系统性失效 → 减仓 ──
+        if config.get("breadth_defense", False) and idx % 5 == 0:
+            try:
+                _breadth_ratio, _breadth_n, _breadth_avg = compute_market_breadth(
+                    cutoff_full, fund_charts,
+                    lookback=config.get("breadth_lookback", 20))
+                _breadth_threshold = config.get("breadth_threshold", 0.30)
+                if _breadth_ratio < _breadth_threshold:
+                    # 超跌市场: 持仓 × (breadth / threshold) 即越低仓位越低
+                    _breadth_discount = max(0.25, _breadth_ratio / _breadth_threshold)
+                    _market_discount *= _breadth_discount
+                    if idx % 20 == 0:
+                        print(f"  BREADTH_ALERT: ratio={_breadth_ratio:.2f} n={_breadth_n} avg={_breadth_avg:+.2f}% → discount×{_breadth_discount:.2f}")
             except Exception:
                 pass
 
