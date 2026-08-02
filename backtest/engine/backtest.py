@@ -1151,7 +1151,7 @@ class Portfolio:
         net_amount = amount - fee
         shares = net_amount / eff_price if eff_price > 0 else 0
         t_plus_n = self.get_t_plus_n(code)
-        confirm_date = _add_trading_days(day_str, t_plus_n)
+        confirm_date = _add_days(day_str, t_plus_n)
 
         self.cash -= amount
         self.total_fees += fee
@@ -1327,7 +1327,7 @@ class Portfolio:
             # 卖出资金不立即到账，进入 pending_sells 队列
             _sell_net = round(proceeds - fee, 2)
             _sell_tn = self._get_sell_t_plus_n(code)
-            _sell_confirm = _add_trading_days(day_str, _sell_tn)
+            _sell_confirm = _add_days(day_str, _sell_tn)
             self.total_fees += fee
             _yr = day_str[:4] if len(day_str) >= 4 else "0000"
             self.yearly_trades[_yr] = self.yearly_trades.get(_yr, 0) + 1
@@ -1356,7 +1356,7 @@ class Portfolio:
         # 卖出资金不立即到账，进入 pending_sells 队列
         _sell_net = round(proceeds - fee, 2)
         _sell_tn = self._get_sell_t_plus_n(code)
-        _sell_confirm = _add_trading_days(day_str, _sell_tn)
+        _sell_confirm = _add_days(day_str, _sell_tn)
         self.total_fees += fee
         self.trades.append({"date": day_str, "code": code, "action": "sell",
                            "amount": amount, "fee": fee, "days_held": days_held, "reason": sell_reason,
