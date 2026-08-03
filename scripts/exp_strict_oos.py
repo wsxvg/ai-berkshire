@@ -12,54 +12,48 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 15 候选 — 去掉 smart_money 的四维长期回测
-# Trigger: 2026-08-04 retry
+# Round 16 候选 — 4D 框架下的微调优化
+# Trigger: 2026-08-04-2
 #
-# R13 成功: KELLY_MAX = 11.148% (5D: SM=30 weight)
+# R15 结果:
+#   4D_BASELINE:      12.097% ★ BEST (25/25/25/25 equal, KC_bull=0.6, KC_bear=0.35)
+#   4D_MOMENTUM_BIAS: 11.922% (15/20/15/50 momentum heavy)
+#   R13_KELLY_MAX:    11.148% (5D baseline from R13)
+#   4D_QUALITY_BIAS:   8.640% (35/30/25/10 quality heavy)
+#   SMART_ONLY:        4.374% (smart_money=100, fails alone)
 #
-# 动机: trading_by_date.json 只有 2024-03 ~ 2026-07 的数据 (~2.5年)
-#       对长期回测来说 smart_money 在 2024-03 之前全=0
-#       问题: 有没有 smart_money 真的对回测有帮助?
+# 关键结论: smart_money=0 比包含它更好, 4D 均匀或偏动量效果最好
 #
-# R15 方向: 移除 smart_money, 用 Q/C/Mgr/Mo 四维重新归一化权重
-#   对比 5D baseline vs 4D 各种权重分布
+# R16 方向:
+#   1. 复制 R15 baseline 做 sanity check (15 OOS windows)
+#   2. 微调动量倾斜度 (momentum 35 vs 50 对比)
+#   3. 扩大 kelly_cap_bull (更激进建仓 0.7 vs 0.6)
+#   4. 质量+成本主导 (30/30/20/20)
+#   5. 集中持仓 (max=8 vs 12)
 #
-# 防作弊: 候选和参数在 R15 OOS 数据可见前预注册 (2026-08-04)
+# 防作弊: 候选和参数在 R16 OOS 数据可见前预注册 (2026-08-04)
 # ============================================================
 
-ROUND = 15
+ROUND = 16
 
-WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
-WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
-WTS_BEAR_TREND = {"quality": 25, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 10}
-WTS_BULL_EXTREME = {"quality": 10, "cost": 15, "manager": 10, "momentum": 25, "smart_money": 40}
-
-# 四维权重（smart_money=0，把它的权重新分配给其他维度）
+# 四维权重（smart_money=0）
 WTS_4D_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
 WTS_4D_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
 WTS_4D_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
 
-WTS_4D_QUALITY = {"quality": 35, "cost": 30, "manager": 25, "momentum": 10, "smart_money": 0}
-WTS_4D_QUALITY_BULL = {"quality": 30, "cost": 25, "manager": 15, "momentum": 30, "smart_money": 0}
-WTS_4D_QUALITY_BEAR = {"quality": 40, "cost": 30, "manager": 25, "momentum": 5, "smart_money": 0}
+# 轻度动量倾斜 (介于 equal 和 momentum_bias 之间)
+WTS_MO_MILD = {"quality": 22, "cost": 22, "manager": 21, "momentum": 35, "smart_money": 0}
+WTS_MO_MILD_BULL = {"quality": 18, "cost": 18, "manager": 14, "momentum": 50, "smart_money": 0}
+WTS_MO_MILD_BEAR = {"quality": 30, "cost": 25, "manager": 30, "momentum": 15, "smart_money": 0}
 
-WTS_4D_MOMENTUM = {"quality": 15, "cost": 20, "manager": 15, "momentum": 50, "smart_money": 0}
-WTS_4D_MOMENTUM_BULL = {"quality": 10, "cost": 10, "manager": 10, "momentum": 70, "smart_money": 0}
-WTS_4D_MOMENTUM_BEAR = {"quality": 25, "cost": 25, "manager": 30, "momentum": 20, "smart_money": 0}
+# 质量+成本主导 (防守升级版)
+WTS_QC_DOM = {"quality": 30, "cost": 30, "manager": 20, "momentum": 20, "smart_money": 0}
+WTS_QC_DOM_BULL = {"quality": 25, "cost": 25, "manager": 15, "momentum": 35, "smart_money": 0}
+WTS_QC_DOM_BEAR = {"quality": 35, "cost": 35, "manager": 20, "momentum": 10, "smart_money": 0}
 
 CANDIDATES = [
-    # 0: R13_KELLY_MAX (5D baseline - sanity check, 应该与 R13 结果一致)
-    ("R13_KELLY_MAX", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": WTS_BEAR_TREND,
-        "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.35,
-    }),
-
-    # 1: 4D_BASELINE — 去掉 smart_money, Q/C/Mgr/Mo 均匀 25/25/25/25
-    ("4D_BASELINE", {
+    # 0: R15_BASELINE_COPY — sanity check (identical to R15 4D_BASELINE)
+    ("R15_BASELINE_COPY", {
         "max_holdings": 12,
         "weights": WTS_4D_EQUAL,
         "weights_bull": WTS_4D_BULL,
@@ -68,31 +62,44 @@ CANDIDATES = [
         "kelly_cap_bear": 0.35,
     }),
 
-    # 2: 4D_QUALITY_BIAS — 偏质量/成本（防守型）
-    ("4D_QUALITY_BIAS", {
+    # 1: MO_TILT_MILD — 轻度动量倾斜 (介于最好的两个 R15 候选之间)
+    ("MO_TILT_MILD", {
         "max_holdings": 12,
-        "weights": WTS_4D_QUALITY,
-        "weights_bull": WTS_4D_QUALITY_BULL,
-        "weights_bear": WTS_4D_QUALITY_BEAR,
+        "weights": WTS_MO_MILD,
+        "weights_bull": WTS_MO_MILD_BULL,
+        "weights_bear": WTS_MO_MILD_BEAR,
         "kelly_cap_bull": 0.6,
         "kelly_cap_bear": 0.35,
     }),
 
-    # 3: 4D_MOMENTUM_BIAS — 偏动量（进攻型）
-    ("4D_MOMENTUM_BIAS", {
+    # 2: KC_AGGRESSIVE — 更激进的Kelly建仓上限
+    ("KC_AGGRESSIVE", {
         "max_holdings": 12,
-        "weights": WTS_4D_MOMENTUM,
-        "weights_bull": WTS_4D_MOMENTUM_BULL,
-        "weights_bear": WTS_4D_MOMENTUM_BEAR,
+        "weights": WTS_4D_EQUAL,
+        "weights_bull": WTS_4D_BULL,
+        "weights_bear": WTS_4D_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
+    }),
+
+    # 3: QC_DOMINANT — 质量成本主导 (防守升级版, 应胜过 4D_QUALITY_BIAS)
+    ("QC_DOMINANT", {
+        "max_holdings": 12,
+        "weights": WTS_QC_DOM,
+        "weights_bull": WTS_QC_DOM_BULL,
+        "weights_bear": WTS_QC_DOM_BEAR,
         "kelly_cap_bull": 0.6,
         "kelly_cap_bear": 0.35,
     }),
 
-    # 4: SMART_ONLY — 仅 smart_money=100，其他=0，测试 smart_money 单独贡献
-    ("SMART_ONLY", {
-        "max_holdings": 5,
-        "weights": {"quality": 0, "cost": 0, "manager": 0, "momentum": 0, "smart_money": 100},
-        "min_consensus": 3,  # 高门槛确保只买聪明的
+    # 4: CONCENTRATE_8 — 集中持仓 top8 (同权重但集中度更高)
+    ("CONCENTRATE_8", {
+        "max_holdings": 8,
+        "weights": WTS_4D_EQUAL,
+        "weights_bull": WTS_4D_BULL,
+        "weights_bear": WTS_4D_BEAR,
+        "kelly_cap_bull": 0.6,
+        "kelly_cap_bear": 0.35,
     }),
 ]
 
@@ -310,7 +317,7 @@ if __name__ == "__main__":
             json.dump(r, f, ensure_ascii=False)
         print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
     elif args.mode == "run_test":
-        # wi is LOCAL test window index (0-13) -> convert to global (14-27)
+        # wi is LOCAL test window index (0-14) -> convert to global (14-28)
         global_wi = len(TRAIN_WINDOWS) + args.wi
         r = _run_one(args.ci, global_wi)
         out = f"strict_test_ci{args.ci}_wi{args.wi}.json"
@@ -329,4 +336,3 @@ if __name__ == "__main__":
         aggregate_train()
     elif args.mode == "aggregate_test":
         aggregate_test()
-

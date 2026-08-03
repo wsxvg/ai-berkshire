@@ -1,7 +1,7 @@
 # Strict Out-of-Sample (OOS) Experiment — Zero Cheating Protocol
 #
 # Rule: train_windows (first 14, W0-W13) are used ONLY for candidate selection.
-#       test_windows (last 14, W14-W27) are used ONLY for final evaluation.
+#       test_windows (last 15, W14-W28) are used ONLY for final evaluation.
 #       There is NEVER any peeking at test data before selection.
 
 name: Strict OOS
@@ -61,7 +61,7 @@ jobs:
           echo "best_name=$NAME" >> $GITHUB_OUTPUT
           echo "Auto-selected: ci=$CI ($NAME)"
 
-  # ============ PHASE 2: Test ALL 5 candidates on OOS windows (70 jobs) ============
+  # ============ PHASE 2: Test ALL 5 candidates on OOS windows (75 jobs) ============
   test:
     needs: select
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
       max-parallel: 8
       matrix:
         ci: [0, 1, 2, 3, 4]
-        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -107,5 +107,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git commit -m "Strict OOS R${ROUND}: multi-mechanism dynamic scoring (${ROUND} candidates, 70 test jobs, zero cheat)"
+          git commit -m "Strict OOS R${ROUND}: 75 test jobs (15 windows × 5 candidates), 4D-optimized"
           git push
