@@ -12,29 +12,31 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 11 候选 — 多机制探索 (Multi-Mechanism Exploration)
+# Round 12 候选 — 资金管理三策略 (Position Management on R10 Trend)
 #
 # R10 结果回顾:
 #   DYN_TREND = 11.088% (BEST) — 牛市 SM=35/Mo=20, 熊市 Mgr=30/Q=25
 #   R4_BASELINE = 10.010%
 #   DYN_AGGRESSIVE = 9.834%, DYN_MOMENTUM = 9.735%, DYN_DEFENSIVE = 9.276%
 #
-# R10 关键发现:
-#   1. 趋势跟踪 + 适度进攻 > 全面防守
-#   2. 熊市防守型无效 (DYN_DEFENSIVE 最差 9.276%)
-#   3. W7 噩梦窗口: DYN_TREND -8.14% vs BASE -9.33% (唯一亏损窗口改善)
-#   4. w13/w14 最新窗口爆发期趋势跟踪效果最佳
+# R11 结果回顾:
+#   PYRAMID_MOMENTUM = 10.566% (+0.51 vs BASE, but -0.52 vs R10)
+#   TRAIL_STOP = 9.335%, CONTRARIAN = 8.709%, SMART_BREADTH = 7.252%
 #
-# R11 方向: 不是权重微调, 而是真正机制差异
-#   A. CONTRARIAN — 逆向: 牛市正常追趋势, 熊市提高 kelly_cap 到 0.4 + min_consensus=2
-#   B. SMART_BREADTH — 提高共识阈值到 5 (只看多大佬共同买入的高置信信号)
-#   C. PYRAMID_MOMENTUM — 金字塔加仓 + 紧止盈 30% (快进快出)
-#   D. TRAIL_STOP — 紧止盈 30% + 行情自适应权重
+# R11 关键失败:
+#   1. 机制创新(止损/逆向/共识)全部失败
+#   2. 金字塔+止盈组合也输给纯 R10 regime 权重
+#   3. 结论: R10 regime-specific = 选股层面已接近最优
 #
-# 防作弊: 候选和参数在 R11 OOS 数据可见前预注册 (2026-08-03)
+# R12 方向: 围绕 R10 成功路径, 在资金管理层面做改进
+#   A. PYRAMID_TREND: R10 权重 + 金字塔加仓 (牛市加仓赢家)
+#   B. HOLD_TREND: R10 权重 + smart_swap=False (持有赢家)
+#   C. TIGHT_TREND: R10 权重 + take_profit_pct=25 (最紧止盈)
+#
+# 防作弊: 候选和参数在 R12 OOS 数据可见前预注册 (2026-08-03)
 # ============================================================
 
-ROUND = 11
+ROUND = 12
 
 WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
@@ -46,40 +48,37 @@ CANDIDATES = [
         "max_holdings": 12,
         "weights": WTS_BASELINE,
     }),
-    # 1: CONTRARIAN — 逆向: 熊市提高 kelly_cap=0.4 (不缩仓) + min_consensus=2 (更敏感)
-    ("CONTRARIAN", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": {"quality": 25, "cost": 30, "manager": 20, "momentum": 10, "smart_money": 15},
-        "min_consensus": 2,
-        "kelly_cap_bear": 0.4,
-    }),
-    # 2: SMART_BREADTH — 高共识阈值 (5人共同买入 = 高置信信号)
-    ("SMART_BREADTH", {
+    # 1: R10_DYN_TREND — 精确复现 R10 最佳 (sanity check)
+    ("R10_DYN_TREND", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
         "weights_bear": WTS_BEAR_TREND,
-        "min_consensus": 5,
     }),
-    # 3: PYRAMID_MOMENTUM — 金字塔加仓 + 紧止盈 30%
-    ("PYRAMID_MOMENTUM", {
+    # 2: PYRAMID_TREND — R10 最佳权重 + 金字塔加仓
+    ("PYRAMID_TREND", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
         "weights_bear": WTS_BEAR_TREND,
         "pyramiding_enabled": True,
-        "take_profit_pct": 30.0,
         "kelly_cap_bull": 0.6,
     }),
-    # 4: TRAIL_STOP — 紧止盈 30% + DYN_TREND 权重
-    ("TRAIL_STOP", {
+    # 3: HOLD_TREND — R10 权重 + 持有赢家 (不换仓)
+    ("HOLD_TREND", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
         "weights_bear": WTS_BEAR_TREND,
-        "take_profit_pct": 30.0,
+        "smart_swap": False,
+    }),
+    # 4: TIGHT_TREND — R10 权重 + 紧止盈 25%
+    ("TIGHT_TREND", {
+        "max_holdings": 12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": WTS_BEAR_TREND,
+        "take_profit_pct": 25.0,
     }),
 ]
 
