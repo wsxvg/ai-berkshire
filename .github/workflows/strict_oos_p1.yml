@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       max-parallel: 8
       matrix:
-        ci: [0, 1, 2, 3, 4]
+        ci: [0, 1, 2]
         wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
     steps:
       - uses: actions/checkout@v4
@@ -69,7 +69,7 @@ jobs:
       fail-fast: false
       max-parallel: 8
       matrix:
-        ci: [0, 1, 2, 3, 4]
+        ci: [0, 1, 2]
         wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     steps:
       - uses: actions/checkout@v4
@@ -107,5 +107,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git commit -m "Strict OOS R${ROUND}: 75 test jobs (15 windows × 5 candidates), 4D-optimized"
+          git commit -m "Strict OOS R${ROUND}: 45 test jobs (3 candidates × 15 windows), regime-extreme + crash-window focus"
           git push

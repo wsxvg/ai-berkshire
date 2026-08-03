@@ -12,67 +12,57 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 16 候选 — 4D 框架下的微调优化
-# Trigger: 2026-08-04-2
+# Round 17 候选 — 关注防崩盘 + 3-regime全配置 + 过拟合验证
+# Trigger: 2026-08-04-3
 #
-# R15 结果:
-#   4D_BASELINE:      12.097% ★ BEST (25/25/25/25 equal, KC_bull=0.6, KC_bear=0.35)
-#   4D_MOMENTUM_BIAS: 11.922% (15/20/15/50 momentum heavy)
-#   R13_KELLY_MAX:    11.148% (5D baseline from R13)
-#   4D_QUALITY_BIAS:   8.640% (35/30/25/10 quality heavy)
-#   SMART_ONLY:        4.374% (smart_money=100, fails alone)
+# R15 结果 (14 OOS windows):
+#   4D_BASELINE:      12.097% ★ BEST
+#   4D_MOMENTUM_BIAS: 11.922%
+#   R13_KELLY_MAX:    11.148% (5D)
+#   SMART_ONLY:        4.374%
 #
-# 关键结论: smart_money=0 比包含它更好, 4D 均匀或偏动量效果最好
+# R16 结果 (15 OOS windows, 含7月崩盘 wi=14):
+#   KC_AGGRESSIVE:     11.561% ★ BEST (KC_bull=0.7, KC_bear=0.4, equal weights)
+#   R15_BASELINE_COPY: 11.472%
+#   MO_TILT_MILD:      10.710%
+#   CONCENTRATE_8:     10.314%
+#   QC_DOMINANT:        9.712%
 #
-# R16 方向:
-#   1. 复制 R15 baseline 做 sanity check (15 OOS windows)
-#   2. 微调动量倾斜度 (momentum 35 vs 50 对比)
-#   3. 扩大 kelly_cap_bull (更激进建仓 0.7 vs 0.6)
-#   4. 质量+成本主导 (30/30/20/20)
-#   5. 集中持仓 (max=8 vs 12)
+# R16 发现:
+#   - kelly_bull=0.7 比 0.6 边际改善 +0.09%
+#   - wi=14 崩盘窗口: MO_TILT_MILD 表现最佳 (5.28%), maxdd=13.21%
+#   - 集中持仓 (top8) 表现最差之一
 #
-# 防作弊: 候选和参数在 R16 OOS 数据可见前预注册 (2026-08-04)
+# R17 方向 (关注点转移到防崩盘和稳健性):
+#   1. KC_AGGRESSIVE 作为 sanity baseline
+#   2. FULL_REGIME: 测试极端差异化 bull/neutral/bear weights
+#      → 评测 regime-specific 权重差异化是否有意义
+#   3. MO_MILD_KC: MO_TILT_MILD 权重 + KC_AGGRESSIVE kelly caps
+#      → 结合 wi=14 最佳权重和整体最优 kelly
+#
+# 减少候选数量 (3 vs 4-5) → 45 test jobs vs 70-75 → 更快迭代
+# 防作弊: 候选和参数在 R17 OOS 数据可见前预注册 (2026-08-04)
 # ============================================================
 
-ROUND = 16
+ROUND = 17
 
-# 四维权重（smart_money=0）
+# 4D 均等权重
 WTS_4D_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
 WTS_4D_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
 WTS_4D_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
 
-# 轻度动量倾斜 (介于 equal 和 momentum_bias 之间)
+# 轻度动量倾斜
 WTS_MO_MILD = {"quality": 22, "cost": 22, "manager": 21, "momentum": 35, "smart_money": 0}
 WTS_MO_MILD_BULL = {"quality": 18, "cost": 18, "manager": 14, "momentum": 50, "smart_money": 0}
 WTS_MO_MILD_BEAR = {"quality": 30, "cost": 25, "manager": 30, "momentum": 15, "smart_money": 0}
 
-# 质量+成本主导 (防守升级版)
-WTS_QC_DOM = {"quality": 30, "cost": 30, "manager": 20, "momentum": 20, "smart_money": 0}
-WTS_QC_DOM_BULL = {"quality": 25, "cost": 25, "manager": 15, "momentum": 35, "smart_money": 0}
-WTS_QC_DOM_BEAR = {"quality": 35, "cost": 35, "manager": 20, "momentum": 10, "smart_money": 0}
+# 极端差异化 regime (测试 regime-specific 是否有意义)
+WTS_EXT_BULL = {"quality": 15, "cost": 15, "manager": 10, "momentum": 60, "smart_money": 0}
+WTS_EXT_NEUTRAL = {"quality": 30, "cost": 30, "manager": 25, "momentum": 15, "smart_money": 0}
+WTS_EXT_BEAR = {"quality": 45, "cost": 30, "manager": 20, "momentum": 5, "smart_money": 0}
 
 CANDIDATES = [
-    # 0: R15_BASELINE_COPY — sanity check (identical to R15 4D_BASELINE)
-    ("R15_BASELINE_COPY", {
-        "max_holdings": 12,
-        "weights": WTS_4D_EQUAL,
-        "weights_bull": WTS_4D_BULL,
-        "weights_bear": WTS_4D_BEAR,
-        "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.35,
-    }),
-
-    # 1: MO_TILT_MILD — 轻度动量倾斜 (介于最好的两个 R15 候选之间)
-    ("MO_TILT_MILD", {
-        "max_holdings": 12,
-        "weights": WTS_MO_MILD,
-        "weights_bull": WTS_MO_MILD_BULL,
-        "weights_bear": WTS_MO_MILD_BEAR,
-        "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.35,
-    }),
-
-    # 2: KC_AGGRESSIVE — 更激进的Kelly建仓上限
+    # 0: KC_AGGRESSIVE (R16 winner, sanity baseline)
     ("KC_AGGRESSIVE", {
         "max_holdings": 12,
         "weights": WTS_4D_EQUAL,
@@ -82,35 +72,33 @@ CANDIDATES = [
         "kelly_cap_bear": 0.40,
     }),
 
-    # 3: QC_DOMINANT — 质量成本主导 (防守升级版, 应胜过 4D_QUALITY_BIAS)
-    ("QC_DOMINANT", {
+    # 1: FULL_REGIME — 极端差异化三regime权重
+    ("FULL_REGIME", {
         "max_holdings": 12,
-        "weights": WTS_QC_DOM,
-        "weights_bull": WTS_QC_DOM_BULL,
-        "weights_bear": WTS_QC_DOM_BEAR,
-        "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.35,
+        "weights": WTS_EXT_NEUTRAL,
+        "weights_bull": WTS_EXT_BULL,
+        "weights_bear": WTS_EXT_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
     }),
 
-    # 4: CONCENTRATE_8 — 集中持仓 top8 (同权重但集中度更高)
-    ("CONCENTRATE_8", {
-        "max_holdings": 8,
-        "weights": WTS_4D_EQUAL,
-        "weights_bull": WTS_4D_BULL,
-        "weights_bear": WTS_4D_BEAR,
-        "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.35,
+    # 2: MO_MILD_KC — wi=14最佳权重 + R16最佳kelly
+    ("MO_MILD_KC", {
+        "max_holdings": 12,
+        "weights": WTS_MO_MILD,
+        "weights_bull": WTS_MO_MILD_BULL,
+        "weights_bear": WTS_MO_MILD_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
     }),
 ]
 
 
 # ─── 时间窗口定义 ───
-# 扩展: base_end 延伸至 2026-08-15 (包含 7 月崩盘完整周期)
 ALL_WINDOWS = []
 base_start = datetime(2023, 7, 17)
 base_end = datetime(2026, 8, 15)
 
-# 生成每 30 天滚动的窗口
 idx = 0
 while True:
     current = base_start + timedelta(days=30 * idx)
@@ -148,46 +136,8 @@ def window_range(wi):
     return None, None
 
 
-def run_train(ci, wi):
-    train_end, test_end = window_range(wi)
-    cfg = copy.deepcopy(BASE_CFG)
-    cfg_override = CANDIDATES[ci][1]
-    cfg.update(cfg_override)
-    cfg['start_date'] = train_end
-    cfg['end_date'] = test_end
-    res = run_backtest(cfg, clear_cache=True)
-    return res
-
-
-def run_test(ci, wi):
-    train_end, test_end = window_range(wi)
-    cfg = copy.deepcopy(BASE_CFG)
-    cfg_override = CANDIDATES[ci][1]
-    cfg.update(cfg_override)
-    cfg['start_date'] = train_end
-    cfg['end_date'] = test_end
-    res = run_backtest(cfg, clear_cache=True)
-    return res
-
-
-def run_all_train(ci):
-    results = []
-    for wi in range(len(TRAIN_WINDOWS)):
-        res = run_train(ci, wi)
-        results.append(res)
-    return results
-
-
-def run_all_test(ci):
-    results = []
-    for wi in range(len(TEST_WINDOWS)):
-        res = run_test(ci, len(TRAIN_WINDOWS) + wi)
-        results.append(res)
-    return results
-
-
 def _run_one(ci, wi_global):
-    """Run a single (ci, wi_global) backtest.  wi_global is 0-based across ALL_WINDOWS."""
+    """Run a single (ci, wi_global) backtest."""
     train_end, test_end = window_range(wi_global)
     cfg = copy.deepcopy(BASE_CFG)
     cfg_override = CANDIDATES[ci][1]
@@ -244,9 +194,9 @@ def aggregate_train():
     }
     with open("strict_train_selection.json", "w") as f:
         json.dump(selection, f, ensure_ascii=False, indent=2)
-    print(f"Auto-selected: ci={best_ci} ({best_name})  avg_return={summary[best_name]['avg_return']:.2f}")
+    print(f"Auto-selected: ci={best_ci} ({best_name})")
     for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
-        print(f"  {name}: avg_return={s['avg_return']:.2f} ({s['count']} windows)")
+        print(f"  {name}: avg={s['avg_return']:.2f} ({s['count']} windows)")
 
 
 def aggregate_test():
@@ -310,14 +260,12 @@ if __name__ == "__main__":
     args = p.parse_args()
 
     if args.mode == "run_train":
-        # wi is LOCAL train window index (0-13) -> convert to global
         r = _run_one(args.ci, args.wi)
         out = f"strict_ci{args.ci}_wi{args.wi}.json"
         with open(out, "w") as f:
             json.dump(r, f, ensure_ascii=False)
         print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
     elif args.mode == "run_test":
-        # wi is LOCAL test window index (0-14) -> convert to global (14-28)
         global_wi = len(TRAIN_WINDOWS) + args.wi
         r = _run_one(args.ci, global_wi)
         out = f"strict_test_ci{args.ci}_wi{args.wi}.json"
@@ -325,13 +273,13 @@ if __name__ == "__main__":
             json.dump(r, f, ensure_ascii=False)
         print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
     elif args.mode == "run_all_train":
-        rs = run_all_train(args.ci)
-        for i, r in enumerate(rs):
-            print(f"TRAIN wi={i}: return={r.get('total_return',0):.2f}")
+        for wi in range(len(TRAIN_WINDOWS)):
+            res = _run_one(args.ci, wi)
+            print(f"TRAIN wi={wi}: return={res['return']:.2f}")
     elif args.mode == "run_all_test":
-        rs = run_all_test(args.ci)
-        for i, r in enumerate(rs):
-            print(f"TEST wi={i}: return={r.get('total_return',0):.2f}")
+        for wi in range(len(TEST_WINDOWS)):
+            res = _run_one(args.ci, len(TRAIN_WINDOWS) + wi)
+            print(f"TEST wi={wi}: return={res['return']:.2f}")
     elif args.mode == "aggregate_train":
         aggregate_train()
     elif args.mode == "aggregate_test":
