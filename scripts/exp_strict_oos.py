@@ -13,6 +13,7 @@ from backtest.engine.backtest import run_backtest
 
 # ============================================================
 # Round 15 候选 — 去掉 smart_money 的四维长期回测
+# Trigger: 2026-08-04 retry
 #
 # R13 成功: KELLY_MAX = 11.148% (5D: SM=30 weight)
 #
@@ -328,3 +329,4 @@ if __name__ == "__main__":
         aggregate_train()
     elif args.mode == "aggregate_test":
         aggregate_test()
+
