@@ -12,35 +12,42 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 14 候选 — Kelly 激进强化 + Smart Money 极限
+# Round 15 候选 — 去掉 smart_money 的四维长期回测
 #
-# R13 成功: KELLY_MAX = 11.148% (NEW RECORD)
-#   kelly_cap_bull=0.6, kelly_cap_bear=0.35 + R10 DYN_TREND regime
-#   beats=11/14 winrate=0.79
+# R13 成功: KELLY_MAX = 11.148% (5D: SM=30 weight)
 #
-# R14 方向: 围绕 KELLY_MAX 的成功继续深化
-#   A. KELLY_AGGRESSIVE: 更激进 kelly (bull=0.7 bear=0.4)
-#   B. KELLY_BULL_MAX: 牛市最大化 kelly=0.7 + BASE bear=0.25
-#   C. SMART_REGIME_EXTREME: R10 regime 但牛市 SM=40 (从35→40)
-#   D. TREND_DOUBLE: 熊市也提升 kelly (bull=0.6 bear=0.45 对称)
+# 动机: trading_by_date.json 只有 2024-03 ~ 2026-07 的数据 (~2.5年)
+#       对长期回测来说 smart_money 在 2024-03 之前全=0
+#       问题: 有没有 smart_money 真的对回测有帮助?
 #
-# 防作弊: 候选和参数在 R14 OOS 数据可见前预注册 (2026-08-03)
+# R15 方向: 移除 smart_money, 用 Q/C/Mgr/Mo 四维重新归一化权重
+#   对比 5D baseline vs 4D 各种权重分布
+#
+# 防作弊: 候选和参数在 R15 OOS 数据可见前预注册 (2026-08-04)
 # ============================================================
 
-ROUND = 14
+ROUND = 15
 
 WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
 WTS_BEAR_TREND = {"quality": 25, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 10}
 WTS_BULL_EXTREME = {"quality": 10, "cost": 15, "manager": 10, "momentum": 25, "smart_money": 40}
 
+# 四维权重（smart_money=0，把它的权重新分配给其他维度）
+WTS_4D_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
+WTS_4D_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
+WTS_4D_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
+
+WTS_4D_QUALITY = {"quality": 35, "cost": 30, "manager": 25, "momentum": 10, "smart_money": 0}
+WTS_4D_QUALITY_BULL = {"quality": 30, "cost": 25, "manager": 15, "momentum": 30, "smart_money": 0}
+WTS_4D_QUALITY_BEAR = {"quality": 40, "cost": 30, "manager": 25, "momentum": 5, "smart_money": 0}
+
+WTS_4D_MOMENTUM = {"quality": 15, "cost": 20, "manager": 15, "momentum": 50, "smart_money": 0}
+WTS_4D_MOMENTUM_BULL = {"quality": 10, "cost": 10, "manager": 10, "momentum": 70, "smart_money": 0}
+WTS_4D_MOMENTUM_BEAR = {"quality": 25, "cost": 25, "manager": 30, "momentum": 20, "smart_money": 0}
+
 CANDIDATES = [
-    # 0: R4_BASELINE — 对照
-    ("R4_BASELINE", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-    }),
-    # 1: R13_KELLY_MAX — 精确复现 R13 最佳 (sanity check)
+    # 0: R13_KELLY_MAX (5D baseline - sanity check, 应该与 R13 结果一致)
     ("R13_KELLY_MAX", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
@@ -49,44 +56,51 @@ CANDIDATES = [
         "kelly_cap_bull": 0.6,
         "kelly_cap_bear": 0.35,
     }),
-    # 2: KELLY_AGGRESSIVE — 更激进 (bull=0.7 bear=0.4)
-    ("KELLY_AGGRESSIVE", {
+
+    # 1: 4D_BASELINE — 去掉 smart_money, Q/C/Mgr/Mo 均匀 25/25/25/25
+    ("4D_BASELINE", {
         "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": WTS_BEAR_TREND,
-        "kelly_cap_bull": 0.7,
-        "kelly_cap_bear": 0.4,
-    }),
-    # 3: SMART_EXTREME — R13 kelly + SM=40 牛市纯 alpha 追
-    ("SMART_EXTREME", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_EXTREME,
-        "weights_bear": WTS_BEAR_TREND,
+        "weights": WTS_4D_EQUAL,
+        "weights_bull": WTS_4D_BULL,
+        "weights_bear": WTS_4D_BEAR,
         "kelly_cap_bull": 0.6,
         "kelly_cap_bear": 0.35,
     }),
-    # 4: KELLY_SYMMETRIC — 牛市熊市 kelly 对称 (bull=0.6 bear=0.45)
-    ("KELLY_SYMMETRIC", {
+
+    # 2: 4D_QUALITY_BIAS — 偏质量/成本（防守型）
+    ("4D_QUALITY_BIAS", {
         "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": WTS_BEAR_TREND,
+        "weights": WTS_4D_QUALITY,
+        "weights_bull": WTS_4D_QUALITY_BULL,
+        "weights_bear": WTS_4D_QUALITY_BEAR,
         "kelly_cap_bull": 0.6,
-        "kelly_cap_bear": 0.45,
+        "kelly_cap_bear": 0.35,
+    }),
+
+    # 3: 4D_MOMENTUM_BIAS — 偏动量（进攻型）
+    ("4D_MOMENTUM_BIAS", {
+        "max_holdings": 12,
+        "weights": WTS_4D_MOMENTUM,
+        "weights_bull": WTS_4D_MOMENTUM_BULL,
+        "weights_bear": WTS_4D_MOMENTUM_BEAR,
+        "kelly_cap_bull": 0.6,
+        "kelly_cap_bear": 0.35,
+    }),
+
+    # 4: SMART_ONLY — 仅 smart_money=100，其他=0，测试 smart_money 单独贡献
+    ("SMART_ONLY", {
+        "max_holdings": 5,
+        "weights": {"quality": 0, "cost": 0, "manager": 0, "momentum": 0, "smart_money": 100},
+        "min_consensus": 3,  # 高门槛确保只买聪明的
     }),
 ]
 
 
 # ─── 时间窗口定义 ───
-# 扩展: base_end 延伸至 2026-07-31 (数据已从 JD API 刷新)
-# 原始 ALL_WINDOWS 共 28 个 (index 0-27)
-# TRAIN = ALL_WINDOWS[:14]  (前 14 个做训练确认)
-# TEST  = ALL_WINDOWS[14:]  (后 14 个做纯 OOS)
+# 扩展: base_end 延伸至 2026-08-15 (包含 7 月崩盘完整周期)
 ALL_WINDOWS = []
 base_start = datetime(2023, 7, 17)
-base_end = datetime(2026, 7, 31)
+base_end = datetime(2026, 8, 15)
 
 # 生成每 30 天滚动的窗口
 idx = 0
@@ -191,7 +205,6 @@ def _run_one(ci, wi_global):
 
 
 def aggregate_train():
-    """Aggregate all train results and pick best candidate."""
     results = []
     for fname in os.listdir("."):
         if fname.startswith("strict_ci") and fname.endswith(".json"):
@@ -229,7 +242,7 @@ def aggregate_train():
 
 
 def aggregate_test():
-    """Aggregate ALL 5 candidates' test (OOS) results."""
+    """Aggregate ALL candidates' test (OOS) results."""
     results = []
     for fname in os.listdir("."):
         if fname.startswith("strict_test_ci") and fname.endswith(".json"):
@@ -273,7 +286,7 @@ def aggregate_test():
         json.dump(evaluation, f, ensure_ascii=False, indent=2)
     print(f"R{ROUND} OOS Evaluation — ALL candidates ranked by avg OOS return:")
     for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
-        marker = " ← BEST" if name == max(summary, key=lambda k: summary[k]["avg_return"]) else ""
+        marker = " <- BEST" if name == max(summary, key=lambda k: summary[k]["avg_return"]) else ""
         print(f"  {name}: avg={s['avg_return']:.3f}%  bench={s['avg_benchmark']:.3f}%  "
               f"beats={s['beats_count']}/{s['total_windows']}  winrate={s['win_rate_vsbench']:.2f}"
               f"  maxdd={s['avg_max_dd']:.2f}{marker}")
@@ -289,14 +302,14 @@ if __name__ == "__main__":
     args = p.parse_args()
 
     if args.mode == "run_train":
-        # wi is LOCAL train window index (0-13) → convert to global
+        # wi is LOCAL train window index (0-13) -> convert to global
         r = _run_one(args.ci, args.wi)
         out = f"strict_ci{args.ci}_wi{args.wi}.json"
         with open(out, "w") as f:
             json.dump(r, f, ensure_ascii=False)
         print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
     elif args.mode == "run_test":
-        # wi is LOCAL test window index (0-13) → convert to global (14-27)
+        # wi is LOCAL test window index (0-13) -> convert to global (14-27)
         global_wi = len(TRAIN_WINDOWS) + args.wi
         r = _run_one(args.ci, global_wi)
         out = f"strict_test_ci{args.ci}_wi{args.wi}.json"
