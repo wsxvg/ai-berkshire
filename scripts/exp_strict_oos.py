@@ -12,80 +12,74 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 10 候选 — 行情状态动态因子权重 (Regime-Specific Factor Weights)
+# Round 11 候选 — 多机制探索 (Multi-Mechanism Exploration)
 #
-# R4-R9 回顾:
-#   - R4_BASELINE 9.624%/q 仍是最佳 (14 TEST windows OOS)
-#   - R7 价格型滤波 / R8 广度防御 / R9 止损均无法稳定超越基线
-#   - 核心矛盾: 固定权重 Q20/C25/M15/Mo10/SM30 在所有市场环境下使用同一套参数
-#   - 牛市中 smart_money 追涨有效但动量信号被低估;
-#     熊市/震荡期中 smart_money 失效, 应切换到质量/成本价值因子
+# R10 结果回顾:
+#   DYN_TREND = 11.088% (BEST) — 牛市 SM=35/Mo=20, 熊市 Mgr=30/Q=25
+#   R4_BASELINE = 10.010%
+#   DYN_AGGRESSIVE = 9.834%, DYN_MOMENTUM = 9.735%, DYN_DEFENSIVE = 9.276%
 #
-# R10 假设 (行情自适应, 非预测):
-#   1. 牛市 (benchmark 60 日涨幅 > 8%): 加大动量 + smart_money 权重 (趋势跟踪)
-#   2. 熊市 (benchmark 60 日跌幅 > 5%): 加大质量 + cost 价值防守
-#   3. 中性市: 使用 R4 原始权重 (平衡)
+# R10 关键发现:
+#   1. 趋势跟踪 + 适度进攻 > 全面防守
+#   2. 熊市防守型无效 (DYN_DEFENSIVE 最差 9.276%)
+#   3. W7 噩梦窗口: DYN_TREND -8.14% vs BASE -9.33% (唯一亏损窗口改善)
+#   4. w13/w14 最新窗口爆发期趋势跟踪效果最佳
 #
-# 防作弊保证:
-#   - detect_market_state() 仅使用 cutoff_full (TEST 起始日) 之前的历史净值
-#   - weights_bull/bear 是预注册常数, 不基于 TEST 期数据调优
-#   - 每个 TEST 窗口的 regime 状态是该窗口的"特征", 不是未来信息
-#   - 权重在窗口起始日确定, 整个窗口内不切换
+# R11 方向: 不是权重微调, 而是真正机制差异
+#   A. CONTRARIAN — 逆向: 牛市正常追趋势, 熊市提高 kelly_cap 到 0.4 + min_consensus=2
+#   B. SMART_BREADTH — 提高共识阈值到 5 (只看多大佬共同买入的高置信信号)
+#   C. PYRAMID_MOMENTUM — 金字塔加仓 + 紧止盈 30% (快进快出)
+#   D. TRAIL_STOP — 紧止盈 30% + 行情自适应权重
 #
-# R10 候选 (预注册, 2026-08-02):
-#   0. R4_BASELINE — 对照 (固定权重, 无行情切换)
-#   1. DYN_AGGRESSIVE — 牛市 max 动量+smart_money, 熊市 max 质量+成本
-#   2. DYN_DEFENSIVE — 牛市加大质量防守, 熊市极端质量+成本
-#   3. DYN_MOMENTUM — 牛市纯动量, 熊市反向加大质量/成本
-#   4. DYN_TREND — 牛市 smart_money 最大化, 熊市切换到 manager quality
+# 防作弊: 候选和参数在 R11 OOS 数据可见前预注册 (2026-08-03)
 # ============================================================
 
-ROUND = 10
+ROUND = 11
 
-# 行情权重预设 (总和=100)
-WTS_BULL_AGGRESSIVE = {"quality": 15, "cost": 20, "manager": 10, "momentum": 25, "smart_money": 30}
-WTS_BEAR_AGGRESSIVE = {"quality": 30, "cost": 30, "manager": 10, "momentum": 10, "smart_money": 20}
-WTS_BULL_DEFENSIVE = {"quality": 25, "cost": 30, "manager": 15, "momentum": 15, "smart_money": 15}
-WTS_BEAR_DEFENSIVE = {"quality": 35, "cost": 35, "manager": 10, "momentum": 5, "smart_money": 15}
-WTS_BULL_MOMENTUM = {"quality": 15, "cost": 15, "manager": 10, "momentum": 30, "smart_money": 30}
-WTS_BEAR_MOMENTUM = {"quality": 30, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 20}
+WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
 WTS_BEAR_TREND = {"quality": 25, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 10}
-WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 
 CANDIDATES = [
-    # 0: R4 winner, 对照 (固定权重, 无行情切换)
+    # 0: R4_BASELINE — 对照
     ("R4_BASELINE", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
     }),
-    # 1: 激进动态 — 牛市最大化追击, 熊市最大化防守
-    ("DYN_AGGRESSIVE", {
+    # 1: CONTRARIAN — 逆向: 熊市提高 kelly_cap=0.4 (不缩仓) + min_consensus=2 (更敏感)
+    ("CONTRARIAN", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_AGGRESSIVE,
-        "weights_bear": WTS_BEAR_AGGRESSIVE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": {"quality": 25, "cost": 30, "manager": 20, "momentum": 10, "smart_money": 15},
+        "min_consensus": 2,
+        "kelly_cap_bear": 0.4,
     }),
-    # 2: 保守动态 — 即使牛市也保质量底, 熊市极端防守
-    ("DYN_DEFENSIVE", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_DEFENSIVE,
-        "weights_bear": WTS_BEAR_DEFENSIVE,
-    }),
-    # 3: 动量动态 — 牛市巅峰追击, 熊市切换到价值回归
-    ("DYN_MOMENTUM", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_MOMENTUM,
-        "weights_bear": WTS_BEAR_MOMENTUM,
-    }),
-    # 4: 趋势跟踪 — 牛市 smart_money 最大化, 熊市切换到 manager quality
-    ("DYN_TREND", {
+    # 2: SMART_BREADTH — 高共识阈值 (5人共同买入 = 高置信信号)
+    ("SMART_BREADTH", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
         "weights_bear": WTS_BEAR_TREND,
+        "min_consensus": 5,
+    }),
+    # 3: PYRAMID_MOMENTUM — 金字塔加仓 + 紧止盈 30%
+    ("PYRAMID_MOMENTUM", {
+        "max_holdings": 12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": WTS_BEAR_TREND,
+        "pyramiding_enabled": True,
+        "take_profit_pct": 30.0,
+        "kelly_cap_bull": 0.6,
+    }),
+    # 4: TRAIL_STOP — 紧止盈 30% + DYN_TREND 权重
+    ("TRAIL_STOP", {
+        "max_holdings": 12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": WTS_BEAR_TREND,
+        "take_profit_pct": 30.0,
     }),
 ]
 

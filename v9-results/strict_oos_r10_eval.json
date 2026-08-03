@@ -1,0 +1,56 @@
+{
+  "round": 10,
+  "note": "OOS EVALUATION - OUT-OF-SAMPLE, NO CHEATING, 74 windows (Wi=13 of CI=4 missing)",
+  "summary": {
+    "R4_BASELINE": {
+      "avg": 10.010066666666665,
+      "bench": 5.582763381641403,
+      "beats": 11,
+      "total": 15,
+      "maxdd": 8.856994027135686,
+      "trades": 44.8,
+      "fees": 12.754
+    },
+    "DYN_AGGRESSIVE": {
+      "avg": 9.834173333333332,
+      "bench": 5.582763381641403,
+      "beats": 11,
+      "total": 15,
+      "maxdd": 9.02714816631854,
+      "trades": 44.733333333333334,
+      "fees": 12.839333333333334
+    },
+    "DYN_DEFENSIVE": {
+      "avg": 9.276180000000002,
+      "bench": 5.582763381641403,
+      "beats": 11,
+      "total": 15,
+      "maxdd": 8.407318124244084,
+      "trades": 40.86666666666667,
+      "fees": 10.863333333333333
+    },
+    "DYN_MOMENTUM": {
+      "avg": 9.73498,
+      "bench": 5.582763381641403,
+      "beats": 12,
+      "total": 15,
+      "maxdd": 9.23470959665903,
+      "trades": 45.6,
+      "fees": 14.735333333333333
+    },
+    "DYN_TREND": {
+      "avg": 11.087607142857141,
+      "bench": 6.095512020550752,
+      "beats": 10,
+      "total": 14,
+      "maxdd": 8.553410490868956,
+      "trades": 44.57142857142857,
+      "fees": 13.074285714285713
+    }
+  },
+  "baseline": "R4_BASELINE",
+  "baseline_avg": 10.010066666666665,
+  "best_candidate": "DYN_TREND",
+  "best_avg": 11.087607142857141,
+  "improvement_vs_baseline": 1.0775404761904763
+}

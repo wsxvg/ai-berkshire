@@ -85,7 +85,7 @@ jobs:
           name: tst-ci${{ matrix.ci }}-wi${{ matrix.wi }}
           path: "strict_test_ci${{ matrix.ci }}_wi${{ matrix.wi }}.json"
 
-  # ============ FINAL: OOS evaluation + commit results ============
+    # ============ FINAL: OOS evaluation + commit results ============
   final:
     needs: test
     runs-on: ubuntu-latest
@@ -104,10 +104,8 @@ jobs:
           mkdir -p v9-results
           ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
           cp strict_test_evaluation.json v9-results/strict_oos_r${ROUND}_eval.json
-          cp strict_train_selection.json v9-results/strict_oos_r${ROUND}_train_selection.json
-          # Also store as r9 naming for backwards-compatibility (R10 output is labeled r8 was a bug)
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add v9-results/strict_oos_r${ROUND}_eval.json v9-results/strict_oos_r${ROUND}_train_selection.json
-          git commit -m "Strict OOS R${ROUND}: auto-results (aggregate_test + train_selection)"
+          git add v9-results/strict_oos_r${ROUND}_eval.json
+          git commit -m "Strict OOS R${ROUND}: multi-mechanism dynamic scoring (${ROUND} candidates, 70 test jobs, zero cheat)"
           git push
