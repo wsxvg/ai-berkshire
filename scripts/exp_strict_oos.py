@@ -12,33 +12,27 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 13 候选 — 参数空间极端值探索 (Last Attempt Before Stop)
+# Round 14 候选 — Kelly 激进强化 + Smart Money 极限
 #
-# R10 = 11.088% (DYN_TREND regime-specific: bull SM=35/Mo=20, bear Mgr=30/Q=25)
-# R11 = 10.566% (mechanism innovation failed: pyramid/stop/contrarian/breadth)
-# R12 = 11.072% (PYRAMID_TREND almost matches but -0.016 short of R10)
+# R13 成功: KELLY_MAX = 11.148% (NEW RECORD)
+#   kelly_cap_bull=0.6, kelly_cap_bear=0.35 + R10 DYN_TREND regime
+#   beats=11/14 winrate=0.79
 #
-# R11/R12 key insight:
-#   - Stop-loss, contrarian, breadth: all HURT performance
-#   - Holding winners (no swap): WORSE than swapping
-#   - Pyramid: almost matches R10 but slightly worse
-#   - Tight take-profit: kills winners too early
+# R14 方向: 围绕 KELLY_MAX 的成功继续深化
+#   A. KELLY_AGGRESSIVE: 更激进 kelly (bull=0.7 bear=0.4)
+#   B. KELLY_BULL_MAX: 牛市最大化 kelly=0.7 + BASE bear=0.25
+#   C. SMART_REGIME_EXTREME: R10 regime 但牛市 SM=40 (从35→40)
+#   D. TREND_DOUBLE: 熊市也提升 kelly (bull=0.6 bear=0.45 对称)
 #
-# R13 direction: PARAMETER EXTREMES within the regime framework
-#   A. CONSENSUS_2: R10 weights + min_consensus=2 (enter on weaker signal)
-#   B. KELLY_MAX: R10 weights + aggressive kelly (larger positions)
-#   C. SMART_40: SM=40 in bull (even more extreme SM chasing)
-#   D. QUALITY_BEAR: Bear market floor quality=35 (avoid blow-ups)
-#
-# This is R13; if all fail = 3 consecutive rounds of no improvement, per protocol we stop.
-# 防作弊: 候选和参数在 R13 OOS 数据可见前预注册 (2026-08-03)
+# 防作弊: 候选和参数在 R14 OOS 数据可见前预注册 (2026-08-03)
 # ============================================================
 
-ROUND = 13
+ROUND = 14
 
 WTS_BASELINE = {"quality": 20, "cost": 25, "manager": 15, "momentum": 10, "smart_money": 30}
 WTS_BULL_TREND = {"quality": 15, "cost": 20, "manager": 10, "momentum": 20, "smart_money": 35}
 WTS_BEAR_TREND = {"quality": 25, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 10}
+WTS_BULL_EXTREME = {"quality": 10, "cost": 15, "manager": 10, "momentum": 25, "smart_money": 40}
 
 CANDIDATES = [
     # 0: R4_BASELINE — 对照
@@ -46,23 +40,8 @@ CANDIDATES = [
         "max_holdings": 12,
         "weights": WTS_BASELINE,
     }),
-    # 1: R10_DYN_TREND — 精确复现 R10 最佳 (sanity check)
-    ("R10_DYN_TREND", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": WTS_BEAR_TREND,
-    }),
-    # 2: CONSENSUS_2 — R10 牛市权重 + min_consensus=2 (更敏感入场)
-    ("CONSENSUS_2", {
-        "max_holdings": 12,
-        "weights": WTS_BASELINE,
-        "weights_bull": WTS_BULL_TREND,
-        "weights_bear": WTS_BEAR_TREND,
-        "min_consensus": 2,
-    }),
-    # 3: KELLY_MAX — R10 权重 + kelly_cap 极限 (更大仓位)
-    ("KELLY_MAX", {
+    # 1: R13_KELLY_MAX — 精确复现 R13 最佳 (sanity check)
+    ("R13_KELLY_MAX", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
@@ -70,12 +49,32 @@ CANDIDATES = [
         "kelly_cap_bull": 0.6,
         "kelly_cap_bear": 0.35,
     }),
-    # 4: QUALITY_BEAR — R10 权重 + 熊市质量下限=35 (防守升级)
-    ("QUALITY_BEAR", {
+    # 2: KELLY_AGGRESSIVE — 更激进 (bull=0.7 bear=0.4)
+    ("KELLY_AGGRESSIVE", {
         "max_holdings": 12,
         "weights": WTS_BASELINE,
         "weights_bull": WTS_BULL_TREND,
-        "weights_bear": {"quality": 35, "cost": 25, "manager": 25, "momentum": 5, "smart_money": 10},
+        "weights_bear": WTS_BEAR_TREND,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.4,
+    }),
+    # 3: SMART_EXTREME — R13 kelly + SM=40 牛市纯 alpha 追
+    ("SMART_EXTREME", {
+        "max_holdings": 12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_EXTREME,
+        "weights_bear": WTS_BEAR_TREND,
+        "kelly_cap_bull": 0.6,
+        "kelly_cap_bear": 0.35,
+    }),
+    # 4: KELLY_SYMMETRIC — 牛市熊市 kelly 对称 (bull=0.6 bear=0.45)
+    ("KELLY_SYMMETRIC", {
+        "max_holdings": 12,
+        "weights": WTS_BASELINE,
+        "weights_bull": WTS_BULL_TREND,
+        "weights_bear": WTS_BEAR_TREND,
+        "kelly_cap_bull": 0.6,
+        "kelly_cap_bear": 0.45,
     }),
 ]
 
