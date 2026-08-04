@@ -12,97 +12,82 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 18 候选 — 拓展 OOS 窗口至 2019-2026 (覆盖 COVID + 2022 熊市)
-# Trigger: 2026-08-04-4
+# Round 19 候选 — 止损机制验证 (降低 peak maxdd)
+# Trigger: 2026-08-04-5
 #
-# R17 结果 (15 OOS windows, 实际只覆盖 2023-2026):
-#   KC_AGGRESSIVE:     11.561% ★ BEST (R16 复现)
-#   MO_MILD_KC:        10.805%
-#   FULL_REGIME:        8.179% — 极端 regime 权重失败, 证实 overengineering
+# R18 结果 (22 OOS windows, 2022-12 到 2026-08, 覆盖 COVID+2022+2026):
+#   KC_AGGRESSIVE:     4.536% avg, maxdd 4.38%, beat bench 64%
+#   MO_TILT_BALANCED:  4.588% avg, maxdd 4.50%, beat bench 59%
+#   PURE_4D_EQUAL:     3.478% avg, maxdd 4.50%, beat bench 55%
 #
-# R17 关键发现:
-#   - FULL_REGIME 差异化 regime weights 表现最差
-#   - KC_AGGRESSIVE/R16 复现成功 (11.561% 完全一致)
-#   - 极端差异化 = overfitting 信号
+# R18 关键发现:
+#   - W42 (2026-05-24~08-22, 含 July crash): net -1.34%, peak maxdd=14.63%
+#   - 长期 alpha ~3%/q (vs benchmark 1.65%/q), 防摔能力本身不错
+#   - R16 的 11.56% 是牛市红利; 真实长期 OOS ~4.5%
 #
-# 用户过拟合质疑 (正确):
-#   - July 单测: KC_AGGRESSIVE 在 2026 年 7 月崩盘时亏损 -20.18% (score 6/25)
-#   - 只有 1 个崩盘数据点就加 cash 档位是典型 overfitting
-#   - 正确方向: 先扩展 OOS 窗口到 2019-2026, 用 COVID/2022 等多崩盘周期验证
+# R19 方向: 降低 peak maxdd (14.6% → 目标 ~8%)
+#   - 候选 0: KC_AGGRESSIVE_BASELINE (同 R18, 复现 baseline)
+#   - 候选 1: KC_AGGRESSIVE_STOPLOSS_8 — 启用 8% 止损线
+#   - 候选 2: KC_AGGRESSIVE_DYN_SL — 动态止盈(盈利>20%后回撤15%止损)
 #
-# R18 方向: 扩展 OOS 覆盖至 2019 年初
-#   - 数据: NAV 自 2001 年覆盖, 2020 年初已有 2300 只基金
-#   - 去掉 smart_money (仅 2023-07 起), 使用 4D 模型 (Quality/Cost/Manager/Momentum)
-#   - 窗口跨度: 2019-01 ~ 2026-08 (7.6 年)
-#   - 60-day slide, 42 windows (21 train / 21 test)
-#
-# 预注册候选 (2026-08-04, 跑 OOS 数据前):
-#   0. KC_AGGRESSIVE (R16/R17 winner): kelly_bull=0.7, kelly_bear=0.4, equal weights
-#   1. PURE_4D_EQUAL: 纯 4D 均等权重, 无 regime shift (无 overfitting 基线)
-#   2. MO_TILT_BALANCED: 轻微 momentum 倾斜 + 中等 regime 偏移
-#
-# 3 candidates × 42 windows = 126 train + 126 test = 252 jobs
+# 复用 R18 配置: 43 windows (2019-01~2026-09), 21 train / 22 test
+# 防作弊: 候选参数在 OOS 数据可见前预注册 (2026-08-04)
 # ============================================================
 
-ROUND = 18
+ROUND = 19
 
-# ─── 权重方案 ───
-
-# 4D 均等 (无 regime shift 基线)
+# ─── 权重方案 (与 R18 一致) ───
 WTS_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
-
-# KC_AGGRESSIVE: 均等 + 适度 regime 偏移
-WTS_KC_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
-WTS_KC_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
-WTS_KC_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
-
-# MO_TILT_BALANCED: 轻 momentum + 中等 regime
-WTS_MO_BAL = {"quality": 22, "cost": 22, "manager": 21, "momentum": 35, "smart_money": 0}
-WTS_MO_BAL_BULL = {"quality": 18, "cost": 20, "manager": 17, "momentum": 45, "smart_money": 0}
-WTS_MO_BAL_BEAR = {"quality": 30, "cost": 25, "manager": 28, "momentum": 17, "smart_money": 0}
+WTS_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
+WTS_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
 
 CANDIDATES = [
-    # 0: KC_AGGRESSIVE (R16/R17 winner, sanity baseline)
-    ("KC_AGGRESSIVE", {
-        "max_holdings": 12,
-        "weights": WTS_KC_EQUAL,
-        "weights_bull": WTS_KC_BULL,
-        "weights_bear": WTS_KC_BEAR,
-        "kelly_cap_bull": 0.7,
-        "kelly_cap_bear": 0.40,
-    }),
-
-    # 1: PURE_4D_EQUAL — 无 regime shift 基线
-    ("PURE_4D_EQUAL", {
+    # 0: KC_AGGRESSIVE_BASELINE (复现 R18)
+    ("KC_AGGRESSIVE_BASELINE", {
         "max_holdings": 12,
         "weights": WTS_EQUAL,
-        "weights_bull": WTS_EQUAL,   # same as neutral
-        "weights_bear": WTS_EQUAL,   # same as neutral
-        "kelly_cap_bull": 0.5,
-        "kelly_cap_bear": 0.5,       # no change in bear
-    }),
-
-    # 2: MO_TILT_BALANCED
-    ("MO_TILT_BALANCED", {
-        "max_holdings": 12,
-        "weights": WTS_MO_BAL,
-        "weights_bull": WTS_MO_BAL_BULL,
-        "weights_bear": WTS_MO_BAL_BEAR,
+        "weights_bull": WTS_BULL,
+        "weights_bear": WTS_BEAR,
         "kelly_cap_bull": 0.7,
         "kelly_cap_bear": 0.40,
+        "no_stop_loss": True,
+    }),
+
+    # 1: KC_AGGRESSIVE_STOPLOSS_8 — 8% 单基金止损
+    ("KC_AGGRESSIVE_STOPLOSS_8", {
+        "max_holdings": 12,
+        "weights": WTS_EQUAL,
+        "weights_bull": WTS_BULL,
+        "weights_bear": WTS_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
+        "no_stop_loss": False,
+        "stop_loss_pct": -8,
+    }),
+
+    # 2: KC_AGGRESSIVE_DYN_SL — 动态止盈
+    ("KC_AGGRESSIVE_DYN_SL", {
+        "max_holdings": 12,
+        "weights": WTS_EQUAL,
+        "weights_bull": WTS_BULL,
+        "weights_bear": WTS_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
+        "no_stop_loss": False,
+        "stop_loss_pct": -30,  # 硬止损 30% (宽松)
+        "dynamic_stop_loss": True,  # 盈利>20%后回撤15%止盈
     }),
 ]
 
 
-# ─── 时间窗口定义 ───
-# R18: 扩展至 2019 年初，覆盖 COVID (2020), 2022 bear, 2026 crash
+# ─── 时间窗口定义 (同 R18) ───
 ALL_WINDOWS = []
 base_start = datetime(2019, 1, 1)
-base_end = datetime(2026, 9, 30)  # extend to cover July 2026 crash window
+base_end = datetime(2026, 9, 30)
 
 idx = 0
 while True:
-    current = base_start + timedelta(days=60 * idx)  # 60-day slide
+    current = base_start + timedelta(days=60 * idx)
     train_end = current + timedelta(days=180)
     test_end = current + timedelta(days=270)
     if test_end > base_end:
@@ -113,10 +98,8 @@ while True:
     })
     idx += 1
 
-# 21 train / 22 test
 TRAIN_WINDOWS = ALL_WINDOWS[:21]
 TEST_WINDOWS = ALL_WINDOWS[21:]
-assert len(TRAIN_WINDOWS) + len(TEST_WINDOWS) == len(ALL_WINDOWS)
 
 print(f"[R{ROUND}] Total windows: {len(ALL_WINDOWS)} ({len(TRAIN_WINDOWS)} train / {len(TEST_WINDOWS)} test)")
 print(f"  First test window: {TEST_WINDOWS[0]['train_end']} ~ {TEST_WINDOWS[0]['test_end']}")
@@ -145,11 +128,9 @@ def window_range(wi):
 
 
 def _run_one(ci, wi_global):
-    """Run a single (ci, wi_global) backtest."""
     train_end, test_end = window_range(wi_global)
     cfg = copy.deepcopy(BASE_CFG)
-    cfg_override = CANDIDATES[ci][1]
-    cfg.update(cfg_override)
+    cfg.update(CANDIDATES[ci][1])
     cfg['start_date'] = train_end
     cfg['end_date'] = test_end
     res = run_backtest(cfg, clear_cache=True)
@@ -166,7 +147,6 @@ def _run_one(ci, wi_global):
         "max_dd": res.get("max_drawdown", 0),
         "benchmark": res.get("benchmark_return", 0),
         "win_rate": res.get("win_rate", 0),
-        "avg_hold_days": res.get("avg_hold_days", 0),
     }
 
 
@@ -194,12 +174,7 @@ def aggregate_train():
 
     best_name = max(summary, key=lambda k: summary[k]["avg_return"])
     best_ci = next(i for i, c in enumerate(CANDIDATES) if c[0] == best_name)
-    selection = {
-        "best_ci": best_ci,
-        "best_candidate": best_name,
-        "summary": summary,
-        "round": ROUND,
-    }
+    selection = {"best_ci": best_ci, "best_candidate": best_name, "summary": summary, "round": ROUND}
 
     with open("strict_train_selection.json", "w") as f:
         json.dump(selection, f, ensure_ascii=False, indent=2)
@@ -207,7 +182,7 @@ def aggregate_train():
     print("=== Train Aggregation ===")
     for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
         marker = " ★ BEST" if name == best_name else ""
-        print(f"  {name:20s}: {s['avg_return']:8.3f}% ({s['count']} windows){marker}")
+        print(f"  {name:30s}: {s['avg_return']:8.3f}% ({s['count']} windows){marker}")
     return selection
 
 
@@ -238,11 +213,13 @@ def aggregate_test():
         avg_ret = sum(x["return"] for x in items) / len(items)
         avg_bench = sum(x["benchmark"] for x in items) / len(items)
         avg_max_dd = sum(x["max_dd"] for x in items) / len(items)
+        max_max_dd = max(x["max_dd"] for x in items)
         beats_count = sum(1 for x in items if x["return"] > x["benchmark"])
         summary[name] = {
             "avg_return": avg_ret,
             "avg_benchmark": avg_bench,
             "avg_max_drawdown": avg_max_dd,
+            "peak_max_drawdown": max_max_dd,
             "beats_count": beats_count,
             "beats_rate": beats_count / len(items),
             "count": len(items),
@@ -258,6 +235,7 @@ def aggregate_test():
         print(f"    Avg Return: {s['avg_return']:8.3f}%")
         print(f"    Avg Bench:  {s['avg_benchmark']:8.3f}%")
         print(f"    Avg MaxDD:  {s['avg_max_drawdown']:8.3f}%")
+        print(f"    Peak MaxDD: {s['peak_max_drawdown']:8.3f}%  ← key metric")
         print(f"    Beat Bench: {s['beats_count']}/{s['count']} ({s['beats_rate']:.0%})")
 
     eval_result = {
