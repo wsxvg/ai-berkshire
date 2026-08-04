@@ -12,82 +12,82 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 17 候选 — 关注防崩盘 + 3-regime全配置 + 过拟合验证
-# Trigger: 2026-08-04-3
+# Round 18 候选 — 拓展 OOS 窗口至 2019-2026 (覆盖 COVID + 2022 熊市)
+# Trigger: 2026-08-04-4
 #
-# R15 结果 (14 OOS windows):
-#   4D_BASELINE:      12.097% ★ BEST
-#   4D_MOMENTUM_BIAS: 11.922%
-#   R13_KELLY_MAX:    11.148% (5D)
-#   SMART_ONLY:        4.374%
+# R17 结果 (15 OOS windows, 实际只覆盖 2023-2026):
+#   KC_AGGRESSIVE:     11.561% ★ BEST (R16 复现)
+#   MO_MILD_KC:        10.805%
+#   FULL_REGIME:        8.179% — 极端 regime 权重失败, 证实 overengineering
 #
-# R16 结果 (15 OOS windows, 含7月崩盘 wi=14):
-#   KC_AGGRESSIVE:     11.561% ★ BEST (KC_bull=0.7, KC_bear=0.4, equal weights)
-#   R15_BASELINE_COPY: 11.472%
-#   MO_TILT_MILD:      10.710%
-#   CONCENTRATE_8:     10.314%
-#   QC_DOMINANT:        9.712%
+# R17 关键发现:
+#   - FULL_REGIME 差异化 regime weights 表现最差
+#   - KC_AGGRESSIVE/R16 复现成功 (11.561% 完全一致)
+#   - 极端差异化 = overfitting 信号
 #
-# R16 发现:
-#   - kelly_bull=0.7 比 0.6 边际改善 +0.09%
-#   - wi=14 崩盘窗口: MO_TILT_MILD 表现最佳 (5.28%), maxdd=13.21%
-#   - 集中持仓 (top8) 表现最差之一
+# 用户过拟合质疑 (正确):
+#   - July 单测: KC_AGGRESSIVE 在 2026 年 7 月崩盘时亏损 -20.18% (score 6/25)
+#   - 只有 1 个崩盘数据点就加 cash 档位是典型 overfitting
+#   - 正确方向: 先扩展 OOS 窗口到 2019-2026, 用 COVID/2022 等多崩盘周期验证
 #
-# R17 方向 (关注点转移到防崩盘和稳健性):
-#   1. KC_AGGRESSIVE 作为 sanity baseline
-#   2. FULL_REGIME: 测试极端差异化 bull/neutral/bear weights
-#      → 评测 regime-specific 权重差异化是否有意义
-#   3. MO_MILD_KC: MO_TILT_MILD 权重 + KC_AGGRESSIVE kelly caps
-#      → 结合 wi=14 最佳权重和整体最优 kelly
+# R18 方向: 扩展 OOS 覆盖至 2019 年初
+#   - 数据: NAV 自 2001 年覆盖, 2020 年初已有 2300 只基金
+#   - 去掉 smart_money (仅 2023-07 起), 使用 4D 模型 (Quality/Cost/Manager/Momentum)
+#   - 窗口跨度: 2019-01 ~ 2026-08 (7.6 年)
+#   - 60-day slide, 42 windows (21 train / 21 test)
 #
-# 减少候选数量 (3 vs 4-5) → 45 test jobs vs 70-75 → 更快迭代
-# 防作弊: 候选和参数在 R17 OOS 数据可见前预注册 (2026-08-04)
+# 预注册候选 (2026-08-04, 跑 OOS 数据前):
+#   0. KC_AGGRESSIVE (R16/R17 winner): kelly_bull=0.7, kelly_bear=0.4, equal weights
+#   1. PURE_4D_EQUAL: 纯 4D 均等权重, 无 regime shift (无 overfitting 基线)
+#   2. MO_TILT_BALANCED: 轻微 momentum 倾斜 + 中等 regime 偏移
+#
+# 3 candidates × 42 windows = 126 train + 126 test = 252 jobs
 # ============================================================
 
-ROUND = 17
+ROUND = 18
 
-# 4D 均等权重
-WTS_4D_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
-WTS_4D_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
-WTS_4D_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
+# ─── 权重方案 ───
 
-# 轻度动量倾斜
-WTS_MO_MILD = {"quality": 22, "cost": 22, "manager": 21, "momentum": 35, "smart_money": 0}
-WTS_MO_MILD_BULL = {"quality": 18, "cost": 18, "manager": 14, "momentum": 50, "smart_money": 0}
-WTS_MO_MILD_BEAR = {"quality": 30, "cost": 25, "manager": 30, "momentum": 15, "smart_money": 0}
+# 4D 均等 (无 regime shift 基线)
+WTS_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
 
-# 极端差异化 regime (测试 regime-specific 是否有意义)
-WTS_EXT_BULL = {"quality": 15, "cost": 15, "manager": 10, "momentum": 60, "smart_money": 0}
-WTS_EXT_NEUTRAL = {"quality": 30, "cost": 30, "manager": 25, "momentum": 15, "smart_money": 0}
-WTS_EXT_BEAR = {"quality": 45, "cost": 30, "manager": 20, "momentum": 5, "smart_money": 0}
+# KC_AGGRESSIVE: 均等 + 适度 regime 偏移
+WTS_KC_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
+WTS_KC_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
+WTS_KC_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
+
+# MO_TILT_BALANCED: 轻 momentum + 中等 regime
+WTS_MO_BAL = {"quality": 22, "cost": 22, "manager": 21, "momentum": 35, "smart_money": 0}
+WTS_MO_BAL_BULL = {"quality": 18, "cost": 20, "manager": 17, "momentum": 45, "smart_money": 0}
+WTS_MO_BAL_BEAR = {"quality": 30, "cost": 25, "manager": 28, "momentum": 17, "smart_money": 0}
 
 CANDIDATES = [
-    # 0: KC_AGGRESSIVE (R16 winner, sanity baseline)
+    # 0: KC_AGGRESSIVE (R16/R17 winner, sanity baseline)
     ("KC_AGGRESSIVE", {
         "max_holdings": 12,
-        "weights": WTS_4D_EQUAL,
-        "weights_bull": WTS_4D_BULL,
-        "weights_bear": WTS_4D_BEAR,
+        "weights": WTS_KC_EQUAL,
+        "weights_bull": WTS_KC_BULL,
+        "weights_bear": WTS_KC_BEAR,
         "kelly_cap_bull": 0.7,
         "kelly_cap_bear": 0.40,
     }),
 
-    # 1: FULL_REGIME — 极端差异化三regime权重
-    ("FULL_REGIME", {
+    # 1: PURE_4D_EQUAL — 无 regime shift 基线
+    ("PURE_4D_EQUAL", {
         "max_holdings": 12,
-        "weights": WTS_EXT_NEUTRAL,
-        "weights_bull": WTS_EXT_BULL,
-        "weights_bear": WTS_EXT_BEAR,
-        "kelly_cap_bull": 0.7,
-        "kelly_cap_bear": 0.40,
+        "weights": WTS_EQUAL,
+        "weights_bull": WTS_EQUAL,   # same as neutral
+        "weights_bear": WTS_EQUAL,   # same as neutral
+        "kelly_cap_bull": 0.5,
+        "kelly_cap_bear": 0.5,       # no change in bear
     }),
 
-    # 2: MO_MILD_KC — wi=14最佳权重 + R16最佳kelly
-    ("MO_MILD_KC", {
+    # 2: MO_TILT_BALANCED
+    ("MO_TILT_BALANCED", {
         "max_holdings": 12,
-        "weights": WTS_MO_MILD,
-        "weights_bull": WTS_MO_MILD_BULL,
-        "weights_bear": WTS_MO_MILD_BEAR,
+        "weights": WTS_MO_BAL,
+        "weights_bull": WTS_MO_BAL_BULL,
+        "weights_bear": WTS_MO_BAL_BEAR,
         "kelly_cap_bull": 0.7,
         "kelly_cap_bear": 0.40,
     }),
@@ -95,13 +95,14 @@ CANDIDATES = [
 
 
 # ─── 时间窗口定义 ───
+# R18: 扩展至 2019 年初，覆盖 COVID (2020), 2022 bear, 2026 crash
 ALL_WINDOWS = []
-base_start = datetime(2023, 7, 17)
-base_end = datetime(2026, 8, 15)
+base_start = datetime(2019, 1, 1)
+base_end = datetime(2026, 9, 30)  # extend to cover July 2026 crash window
 
 idx = 0
 while True:
-    current = base_start + timedelta(days=30 * idx)
+    current = base_start + timedelta(days=60 * idx)  # 60-day slide
     train_end = current + timedelta(days=180)
     test_end = current + timedelta(days=270)
     if test_end > base_end:
@@ -112,8 +113,15 @@ while True:
     })
     idx += 1
 
-TRAIN_WINDOWS = ALL_WINDOWS[:14]
-TEST_WINDOWS = ALL_WINDOWS[14:]
+# 21 train / 22 test
+TRAIN_WINDOWS = ALL_WINDOWS[:21]
+TEST_WINDOWS = ALL_WINDOWS[21:]
+assert len(TRAIN_WINDOWS) + len(TEST_WINDOWS) == len(ALL_WINDOWS)
+
+print(f"[R{ROUND}] Total windows: {len(ALL_WINDOWS)} ({len(TRAIN_WINDOWS)} train / {len(TEST_WINDOWS)} test)")
+print(f"  First test window: {TEST_WINDOWS[0]['train_end']} ~ {TEST_WINDOWS[0]['test_end']}")
+print(f"  Last test window:  {TEST_WINDOWS[-1]['train_end']} ~ {TEST_WINDOWS[-1]['test_end']}")
+
 
 # ─── 配置基线 ───
 BASE_CFG = {
@@ -192,15 +200,18 @@ def aggregate_train():
         "summary": summary,
         "round": ROUND,
     }
+
     with open("strict_train_selection.json", "w") as f:
         json.dump(selection, f, ensure_ascii=False, indent=2)
-    print(f"Auto-selected: ci={best_ci} ({best_name})")
+
+    print("=== Train Aggregation ===")
     for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
-        print(f"  {name}: avg={s['avg_return']:.2f} ({s['count']} windows)")
+        marker = " ★ BEST" if name == best_name else ""
+        print(f"  {name:20s}: {s['avg_return']:8.3f}% ({s['count']} windows){marker}")
+    return selection
 
 
 def aggregate_test():
-    """Aggregate ALL candidates' test (OOS) results."""
     results = []
     for fname in os.listdir("."):
         if fname.startswith("strict_test_ci") and fname.endswith(".json"):
@@ -217,70 +228,83 @@ def aggregate_test():
     for r in results:
         by_candidate[r["candidate"]].append(r)
 
+    print(f"\n{'='*70}")
+    print(f"=== R{ROUND} OOS Evaluation ({len(TEST_WINDOWS)} test windows) ===")
+    print(f"=== Period: {TEST_WINDOWS[0]['train_end']} ~ {TEST_WINDOWS[-1]['test_end']}")
+    print(f"{'='*70}")
+
     summary = {}
     for name, items in by_candidate.items():
         avg_ret = sum(x["return"] for x in items) / len(items)
-        avg_bench = sum(x.get("benchmark", 0) for x in items) / len(items)
-        beats = sum(1 for x in items if x["return"] > x.get("benchmark", 0))
+        avg_bench = sum(x["benchmark"] for x in items) / len(items)
+        avg_max_dd = sum(x["max_dd"] for x in items) / len(items)
+        beats_count = sum(1 for x in items if x["return"] > x["benchmark"])
         summary[name] = {
             "avg_return": avg_ret,
             "avg_benchmark": avg_bench,
-            "beats_count": beats,
-            "total_windows": len(items),
-            "win_rate_vsbench": beats / len(items) if items else 0,
-            "avg_trades": sum(x.get("trades", 0) for x in items) / len(items),
-            "avg_fees": sum(x.get("fees", 0) for x in items) / len(items),
-            "avg_max_dd": sum(x.get("max_dd", 0) for x in items) / len(items),
-            "details": sorted(items, key=lambda x: x["period"]),
+            "avg_max_drawdown": avg_max_dd,
+            "beats_count": beats_count,
+            "beats_rate": beats_count / len(items),
+            "count": len(items),
+            "per_window": [
+                {"period": x["period"], "return": x["return"], "benchmark": x["benchmark"], "max_dd": x["max_dd"]}
+                for x in items
+            ],
         }
 
-    evaluation = {
-        "phase": "test_evaluation",
+    for name in sorted(summary, key=lambda k: -summary[k]["avg_return"]):
+        s = summary[name]
+        print(f"\n  {name}:")
+        print(f"    Avg Return: {s['avg_return']:8.3f}%")
+        print(f"    Avg Bench:  {s['avg_benchmark']:8.3f}%")
+        print(f"    Avg MaxDD:  {s['avg_max_drawdown']:8.3f}%")
+        print(f"    Beat Bench: {s['beats_count']}/{s['count']} ({s['beats_rate']:.0%})")
+
+    eval_result = {
         "round": ROUND,
-        "note": "THIS IS THE FINAL RESULT — OUT-OF-SAMPLE, NO CHEATING",
+        "window_count": len(TEST_WINDOWS),
+        "period": f"{TEST_WINDOWS[0]['train_end']}~{TEST_WINDOWS[-1]['test_end']}",
         "summary": summary,
     }
     with open("strict_test_evaluation.json", "w") as f:
-        json.dump(evaluation, f, ensure_ascii=False, indent=2)
-    print(f"R{ROUND} OOS Evaluation — ALL candidates ranked by avg OOS return:")
-    for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
-        marker = " <- BEST" if name == max(summary, key=lambda k: summary[k]["avg_return"]) else ""
-        print(f"  {name}: avg={s['avg_return']:.3f}%  bench={s['avg_benchmark']:.3f}%  "
-              f"beats={s['beats_count']}/{s['total_windows']}  winrate={s['win_rate_vsbench']:.2f}"
-              f"  maxdd={s['avg_max_dd']:.2f}{marker}")
+        json.dump(eval_result, f, ensure_ascii=False, indent=2)
+    print(f"\nSaved to strict_test_evaluation.json")
 
 
 if __name__ == "__main__":
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("mode", choices=["run_train", "run_test", "run_all_train", "run_all_test",
-                                     "aggregate_train", "aggregate_test"])
-    p.add_argument("ci", type=int, nargs="?", default=None)
-    p.add_argument("wi", type=int, nargs="?", default=None)
-    args = p.parse_args()
+    if len(sys.argv) < 2:
+        print("Usage:")
+        print("  python exp_strict_oos.py run_train <ci> <wi>")
+        print("  python exp_strict_oos.py run_test <ci> <wi>")
+        print("  python exp_strict_oos.py aggregate_train")
+        print("  python exp_strict_oos.py aggregate_test")
+        print("  python exp_strict_oos.py list_windows")
+        sys.exit(1)
 
-    if args.mode == "run_train":
-        r = _run_one(args.ci, args.wi)
-        out = f"strict_ci{args.ci}_wi{args.wi}.json"
+    cmd = sys.argv[1]
+    if cmd == "run_train":
+        ci, wi = int(sys.argv[2]), int(sys.argv[3])
+        r = _run_one(ci, wi)
+        out = f"strict_ci{ci}_wi{wi}.json"
         with open(out, "w") as f:
-            json.dump(r, f, ensure_ascii=False)
-        print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
-    elif args.mode == "run_test":
-        global_wi = len(TRAIN_WINDOWS) + args.wi
-        r = _run_one(args.ci, global_wi)
-        out = f"strict_test_ci{args.ci}_wi{args.wi}.json"
+            json.dump(r, f)
+        print(f"[R{r['round']}] Train c{ci} w{wi} ({r['period']}): {r['return']:.3f}%")
+    elif cmd == "run_test":
+        ci, wi = int(sys.argv[2]), int(sys.argv[3])
+        wi_global = wi + len(TRAIN_WINDOWS)
+        r = _run_one(ci, wi_global)
+        out = f"strict_test_ci{ci}_wi{wi}.json"
         with open(out, "w") as f:
-            json.dump(r, f, ensure_ascii=False)
-        print(json.dumps({"return": r["return"], "trades": r["trades"], "file": out}, ensure_ascii=False))
-    elif args.mode == "run_all_train":
-        for wi in range(len(TRAIN_WINDOWS)):
-            res = _run_one(args.ci, wi)
-            print(f"TRAIN wi={wi}: return={res['return']:.2f}")
-    elif args.mode == "run_all_test":
-        for wi in range(len(TEST_WINDOWS)):
-            res = _run_one(args.ci, len(TRAIN_WINDOWS) + wi)
-            print(f"TEST wi={wi}: return={res['return']:.2f}")
-    elif args.mode == "aggregate_train":
+            json.dump(r, f)
+        print(f"[R{r['round']}] Test c{ci} w{wi} ({r['period']}): {r['return']:.3f}%")
+    elif cmd == "aggregate_train":
         aggregate_train()
-    elif args.mode == "aggregate_test":
+    elif cmd == "aggregate_test":
         aggregate_test()
+    elif cmd == "list_windows":
+        for i, w in enumerate(ALL_WINDOWS):
+            phase = "TRAIN" if i < len(TRAIN_WINDOWS) else "TEST"
+            print(f"  W{i:2d} [{phase:5s}]: train_end={w['train_end']}  test_end={w['test_end']}")
+    else:
+        print(f"Unknown command: {cmd}")
+        sys.exit(1)

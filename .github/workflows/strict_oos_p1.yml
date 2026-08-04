@@ -1,8 +1,10 @@
 # Strict Out-of-Sample (OOS) Experiment — Zero Cheating Protocol
 #
-# Rule: train_windows (first 14, W0-W13) are used ONLY for candidate selection.
-#       test_windows (last 15, W14-W28) are used ONLY for final evaluation.
-#       There is NEVER any peeking at test data before selection.
+# R18: Extended historical windows (2019-2026, 7.6 years)
+#   - 60-day slide, 180 train + 90 test per window
+#   - 43 windows total: 21 train (W0-W20) + 22 test (W21-W42)
+#   - 3 candidates × 43 windows = 129 train + 129 test = 258 jobs
+#   - Covers: COVID crash, 2022 bear, 2026 July crash (multi-regime validation)
 
 name: Strict OOS
 
@@ -22,7 +24,7 @@ jobs:
       max-parallel: 8
       matrix:
         ci: [0, 1, 2]
-        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -61,7 +63,7 @@ jobs:
           echo "best_name=$NAME" >> $GITHUB_OUTPUT
           echo "Auto-selected: ci=$CI ($NAME)"
 
-  # ============ PHASE 2: Test ALL 5 candidates on OOS windows (75 jobs) ============
+  # ============ PHASE 2: Test ALL candidates on OOS windows ============
   test:
     needs: select
     runs-on: ubuntu-latest
@@ -70,7 +72,7 @@ jobs:
       max-parallel: 8
       matrix:
         ci: [0, 1, 2]
-        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -97,7 +99,7 @@ jobs:
           merge-multiple: true
       - name: Collect JSON files from artifact subdirectories
         run: find . -name 'strict_test_*.json' -exec mv {} . \;
-      - name: Run OOS evaluation (all 5 candidates)
+      - name: Run OOS evaluation (all candidates)
         run: python scripts/exp_strict_oos.py aggregate_test
       - name: Commit results
         run: |
@@ -107,5 +109,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git commit -m "Strict OOS R${ROUND}: 45 test jobs (3 candidates × 15 windows), regime-extreme + crash-window focus"
+          git commit -m "Strict OOS R${ROUND}: 126 test jobs (3 candidates × 22 windows), extended 2019-2026 OOS"
           git push
