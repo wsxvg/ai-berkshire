@@ -53,6 +53,8 @@ jobs:
         with:
           pattern: t-*-*
           merge-multiple: true
+      - name: Move JSON files to root
+        run: find . -name 'strict_ci*.json' -exec mv {} . \;
       - name: Aggregate & select best (AUTOMATED — no human decision)
         run: python scripts/exp_strict_oos.py aggregate_train
       - name: Export best_ci
