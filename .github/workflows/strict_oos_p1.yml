@@ -52,6 +52,8 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: t-*-*
+      - name: DEBUG workspace
+        run: echo "===PWD===" && pwd && echo "===ls root .json===" && ls ./*.json 2>/dev/null | head && echo "===find 1===" && find . -name '*.json' -maxdepth 2 | head -20 && echo "===ls -la (first 20)===" && ls -la | head -20
       - name: Aggregate & select best (AUTOMATED — no human decision)
         run: python scripts/exp_strict_oos.py aggregate_train
       - name: Export best_ci
