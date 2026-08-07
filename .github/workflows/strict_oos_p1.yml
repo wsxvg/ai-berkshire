@@ -92,7 +92,7 @@ jobs:
 
     # ============ FINAL: OOS evaluation + commit results ============
   final:
-    needs: [select, test]
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
