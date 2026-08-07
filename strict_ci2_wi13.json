@@ -1,0 +1,14 @@
+{
+  "phase": "train",
+  "round": 20,
+  "candidate": "KC_SMART_BUY_25",
+  "ci": 2,
+  "wi": 13,
+  "period": "2021-08-18~2021-11-16",
+  "return": 0.0,
+  "trades": 0,
+  "fees": 0,
+  "max_dd": 0,
+  "benchmark": 0.23080387300158378,
+  "win_rate": 0
+}

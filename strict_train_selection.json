@@ -1,0 +1,19 @@
+{
+  "best_ci": 0,
+  "best_candidate": "KC_AGGRESSIVE_BASELINE",
+  "summary": {
+    "KC_AGGRESSIVE_BASELINE": {
+      "avg_return": 0.0,
+      "count": 21
+    },
+    "KC_SMART_BUY_15": {
+      "avg_return": 0.0,
+      "count": 21
+    },
+    "KC_SMART_BUY_25": {
+      "avg_return": 0.0,
+      "count": 21
+    }
+  },
+  "round": 20
+}

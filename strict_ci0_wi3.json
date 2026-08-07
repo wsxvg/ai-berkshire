@@ -1,0 +1,14 @@
+{
+  "phase": "train",
+  "round": 20,
+  "candidate": "KC_AGGRESSIVE_BASELINE",
+  "ci": 0,
+  "wi": 3,
+  "period": "2019-12-27~2020-03-26",
+  "return": 0.0,
+  "trades": 0,
+  "fees": 0,
+  "max_dd": 0,
+  "benchmark": -7.337810803086608,
+  "win_rate": 0
+}

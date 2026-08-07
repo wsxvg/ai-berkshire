@@ -1,0 +1,14 @@
+{
+  "phase": "test",
+  "round": 20,
+  "candidate": "KC_SMART_BUY_15",
+  "ci": 1,
+  "wi": 19,
+  "period": "2026-01-24~2026-04-24",
+  "return": -1.756900000000005,
+  "trades": 56,
+  "fees": 6.0,
+  "max_dd": 11.577973350078103,
+  "benchmark": 1.4752538071066024,
+  "win_rate": 0
+}
