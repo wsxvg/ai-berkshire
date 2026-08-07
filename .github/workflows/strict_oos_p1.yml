@@ -68,7 +68,7 @@ jobs:
   # ============ PHASE 2: Test ALL candidates on OOS windows ============
   # wi = GLOBAL index (21..42 = test windows W0..W21)
   test:
-    needs: select
+    needs: train
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -92,16 +92,13 @@ jobs:
 
     # ============ FINAL: OOS evaluation + commit results ============
   final:
-    needs: test
+    needs: [select, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           pattern: tst-ci*-wi*
-          merge-multiple: true
-      - name: Collect JSON files from artifact subdirectories
-        run: find . -name 'strict_test_*.json' -exec mv {} . \;
       - name: Run OOS evaluation (all candidates)
         run: python scripts/exp_strict_oos.py test
       - name: Commit results
