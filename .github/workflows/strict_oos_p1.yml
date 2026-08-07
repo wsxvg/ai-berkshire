@@ -52,14 +52,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: t-*-*
-          merge-multiple: true
-          path: train-artifacts
-      - name: Debug — show tree of artifacts
-        run: find train-artifacts -type f | head -10 && echo "---" && echo "Total JSON files:" && find train-artifacts -name '*.json' | wc -l
-      - name: Move JSON to repo root
-        run: find train-artifacts -name '*.json' -exec cp {} . \;
-      - name: Verify JSON at root
-        run: echo "Files at root matching:" && ls -1 strict_*.json 2>/dev/null | wc -l
       - name: Aggregate & select best (AUTOMATED — no human decision)
         run: python scripts/exp_strict_oos.py aggregate_train
       - name: Export best_ci

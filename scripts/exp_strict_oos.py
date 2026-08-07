@@ -159,16 +159,32 @@ def _run_one(ci, wi_global):
 
 
 def aggregate_train():
+    import glob
     results = []
-    for fname in os.listdir("."):
-        if fname.startswith("strict_ci") and fname.endswith(".json"):
+    # Search root, train-artifacts/, and any t-*/ subdirs
+    patterns = [
+        "strict_ci*.json",  # ROOT
+        "train-artifacts/strict_ci*.json",
+        "t-*/strict_ci*.json",
+        "artifacts/strict_ci*.json",
+        "*/strict_ci*.json",
+    ]
+    seen = set()
+    for pat in patterns:
+        for fpath in glob.glob(pat):
+            fname = fpath.split("/")[-1]
+            if fname in seen:
+                continue
+            seen.add(fname)
             try:
-                with open(fname) as f:
+                with open(fpath) as f:
                     results.append(json.load(f))
             except Exception:
                 pass
+
+    print(f"[aggregate] Found {len(results)} train results", flush=True)
     if not results:
-        print("No train results found!")
+        print("No train results found!", flush=True)
         sys.exit(1)
 
     by_candidate = defaultdict(list)
@@ -195,16 +211,29 @@ def aggregate_train():
 
 
 def aggregate_test():
+    import glob
     results = []
-    for fname in os.listdir("."):
-        if fname.startswith("strict_test_ci") and fname.endswith(".json"):
+    patterns = [
+        "strict_test_ci*.json",
+        "t-*/strict_test_ci*.json",
+        "*/strict_test_ci*.json",
+    ]
+    seen = set()
+    for pat in patterns:
+        for fpath in glob.glob(pat):
+            fname = fpath.split("/")[-1]
+            if fname in seen:
+                continue
+            seen.add(fname)
             try:
-                with open(fname) as f:
+                with open(fpath) as f:
                     results.append(json.load(f))
             except Exception:
                 pass
+
+    print(f"[aggregate_test] Found {len(results)} test results", flush=True)
     if not results:
-        print("No test results found!")
+        print("No test results found!", flush=True)
         sys.exit(1)
 
     by_candidate = defaultdict(list)
