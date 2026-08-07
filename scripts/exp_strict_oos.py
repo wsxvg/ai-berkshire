@@ -159,26 +159,30 @@ def _run_one(ci, wi_global):
 
 
 def aggregate_train():
-    import glob
+    """聚合 train 阶段结果。从 t-*/ 子目录和根目录搜索 JSON。"""
+    import os
     results = []
-    # Search root, train-artifacts/, and any t-*/ subdirs
-    patterns = [
-        "strict_ci*.json",  # ROOT
-        "train-artifacts/strict_ci*.json",
-        "t-*/strict_ci*.json",
-        "artifacts/strict_ci*.json",
-        "*/strict_ci*.json",
-    ]
     seen = set()
-    for pat in patterns:
-        for fpath in glob.glob(pat):
-            fname = fpath.split("/")[-1]
+
+    for root, dirs, files in os.walk(".", topdown=True):
+        # 跳过隐藏目录和 node_modules 等
+        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('node_modules',)]
+        for fname in files:
+            if not (fname.startswith("strict_ci") and fname.endswith(".json")):
+                continue
+            # 排除 strict_train_selection 等输出文件
+            if fname.startswith("strict_train"):
+                continue
             if fname in seen:
                 continue
             seen.add(fname)
+            fpath = os.path.join(root, fname)
             try:
                 with open(fpath) as f:
-                    results.append(json.load(f))
+                    data = json.load(f)
+                    # 只取 train 阶段数据
+                    if data.get("phase") == "train":
+                        results.append(data)
             except Exception:
                 pass
 
@@ -211,23 +215,25 @@ def aggregate_train():
 
 
 def aggregate_test():
-    import glob
+    """聚合 test 阶段结果。从 t-*/ 子目录和根目录搜索 JSON。"""
+    import os
     results = []
-    patterns = [
-        "strict_test_ci*.json",
-        "t-*/strict_test_ci*.json",
-        "*/strict_test_ci*.json",
-    ]
     seen = set()
-    for pat in patterns:
-        for fpath in glob.glob(pat):
-            fname = fpath.split("/")[-1]
+
+    for root, dirs, files in os.walk(".", topdown=True):
+        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('node_modules',)]
+        for fname in files:
+            if not (fname.startswith("strict_test_ci") and fname.endswith(".json")):
+                continue
             if fname in seen:
                 continue
             seen.add(fname)
+            fpath = os.path.join(root, fname)
             try:
                 with open(fpath) as f:
-                    results.append(json.load(f))
+                    data = json.load(f)
+                    if data.get("phase") == "test":
+                        results.append(data)
             except Exception:
                 pass
 
