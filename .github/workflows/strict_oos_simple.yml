@@ -3,6 +3,8 @@
 name: R20 Simple (Sequential)
 
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
 
 jobs:

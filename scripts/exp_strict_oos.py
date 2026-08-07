@@ -159,34 +159,29 @@ def _run_one(ci, wi_global):
 
 
 def aggregate_train():
-    """聚合 train 阶段结果。从 t-*/ 子目录和根目录搜索 JSON。"""
-    import os
+    """聚合 train 阶段的 JSON 结果。"""
+    import os, glob
     results = []
     seen = set()
 
+    # 搜索所有位置的 strict_ci*.json
     for root, dirs, files in os.walk(".", topdown=True):
-        # 跳过隐藏目录和 node_modules 等
-        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('node_modules',)]
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
         for fname in files:
             if not (fname.startswith("strict_ci") and fname.endswith(".json")):
                 continue
-            # 排除 strict_train_selection 等输出文件
-            if fname.startswith("strict_train"):
+            if "strict_train_selection" in fname or "strict_oos_" in fname:
                 continue
             if fname in seen:
                 continue
             seen.add(fname)
-            fpath = os.path.join(root, fname)
             try:
-                with open(fpath) as f:
-                    data = json.load(f)
-                    # 只取 train 阶段数据
-                    if data.get("phase") == "train":
-                        results.append(data)
+                data = json.load(open(os.path.join(root, fname)))
+                results.append(data)
             except Exception:
                 pass
 
-    print(f"[aggregate] Found {len(results)} train results", flush=True)
+    print(f"[aggregate] Found {len(results)} results", flush=True)
     if not results:
         print("No train results found!", flush=True)
         sys.exit(1)
@@ -215,29 +210,25 @@ def aggregate_train():
 
 
 def aggregate_test():
-    """聚合 test 阶段结果。从 t-*/ 子目录和根目录搜索 JSON。"""
+    """聚合 test 阶段的 JSON 结果。"""
     import os
     results = []
     seen = set()
 
     for root, dirs, files in os.walk(".", topdown=True):
-        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('node_modules',)]
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
         for fname in files:
             if not (fname.startswith("strict_test_ci") and fname.endswith(".json")):
                 continue
             if fname in seen:
                 continue
             seen.add(fname)
-            fpath = os.path.join(root, fname)
             try:
-                with open(fpath) as f:
-                    data = json.load(f)
-                    if data.get("phase") == "test":
-                        results.append(data)
+                results.append(json.load(open(os.path.join(root, fname))))
             except Exception:
                 pass
 
-    print(f"[aggregate_test] Found {len(results)} test results", flush=True)
+    print(f"[aggregate_test] Found {len(results)} results", flush=True)
     if not results:
         print("No test results found!", flush=True)
         sys.exit(1)
