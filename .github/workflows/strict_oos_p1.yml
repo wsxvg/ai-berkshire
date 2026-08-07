@@ -44,6 +44,7 @@ jobs:
   select:
     needs: train
     runs-on: ubuntu-latest
+    continue-on-error: true
     outputs:
       best_ci: ${{ steps.out.outputs.best_ci }}
       best_name: ${{ steps.out.outputs.best_name }}
