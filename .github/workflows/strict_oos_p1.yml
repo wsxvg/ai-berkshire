@@ -1,13 +1,13 @@
-# Strict Out-of-Sample (OOS) Experiment — Zero Cheating Protocol
+# R20 Strict OOS — Sequential runner
+# Runs all 130 backtests (63 train + 66 test + 1 final commit) on a single runner.
 #
 # R20: Smart Money 回调信号集成
 #   - 60-day slide, 180 train + 90 test per window
 #   - 43 windows total: 21 train (W0-W20) + 22 test (W21-W42)
-#   - 3 candidates × 43 windows = 129 train + 129 test = 258 jobs
+#   - 3 candidates
 #   - 信号验证独立集确定: topgain>=4, callback -10~-3%, net_buy>=1
-#   - 启用 use_prebuilt_signal, smart_money weight=15/25
 
-name: Strict OOS
+name: R20 OOS
 
 on:
   push:
@@ -17,15 +17,9 @@ permissions:
   contents: write
 
 jobs:
-  # ============ PHASE 1: Train all candidates on train windows ============
-  train:
+  r20:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 8
-      matrix:
-        ci: [0, 1, 2]
-        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,82 +27,37 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - name: "Train ci=${{ matrix.ci }} wi=${{ matrix.wi }}"
-        run: python scripts/exp_strict_oos.py run ${{ matrix.ci }} ${{ matrix.wi }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: t-${{ matrix.ci }}-${{ matrix.wi }}
-          path: strict_ci${{ matrix.ci }}_wi${{ matrix.wi }}.json
 
-  # ============ SELECT: Automated best-candidate selection ============
-  select:
-    needs: train
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    outputs:
-      best_ci: ${{ steps.out.outputs.best_ci }}
-      best_name: ${{ steps.out.outputs.best_name }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: t-*-*
-      - name: List results
-        run: find . -name 'strict_*.json' | wc -l
-      - name: Aggregate & select best (AUTOMATED — no human decision)
-        run: python scripts/exp_strict_oos.py aggregate_train
-      - name: Export best_ci
-        id: out
+      - name: Train phase (63 backtests)
         run: |
-          CI=$(python -c "import json;print(json.load(open('strict_train_selection.json'))['best_ci'])")
-          NAME=$(python -c "import json;print(json.load(open('strict_train_selection.json'))['best_candidate'])")
-          echo "best_ci=$CI" >> $GITHUB_OUTPUT
-          echo "best_name=$NAME" >> $GITHUB_OUTPUT
-          echo "Auto-selected: ci=$CI ($NAME)"
+          for ci in 0 1 2; do
+            for wi in $(seq 0 20); do
+              echo "[$ci:$wi] $(date '+%H:%M')"
+              python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1
+            done
+          done
 
-  # ============ PHASE 2: Test ALL candidates on OOS windows ============
-  # wi = GLOBAL index (21..42 = test windows W0..W21)
-  test:
-    needs: train
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 8
-      matrix:
-        ci: [0, 1, 2]
-        wi: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-      - run: pip install -r requirements.txt
-      - name: "Test ci=${{ matrix.ci }} wi=${{ matrix.wi }}"
-        run: python scripts/exp_strict_oos.py run ${{ matrix.ci }} ${{ matrix.wi }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: tst-ci${{ matrix.ci }}-wi${{ matrix.wi }}
-          path: "strict_test_ci${{ matrix.ci }}_wi${{ matrix.wi }}.json"
+      - name: Test phase (66 backtests)
+        run: |
+          for ci in 0 1 2; do
+            for wi in $(seq 21 42); do
+              echo "[$ci:$wi] $(date '+%H:%M')"
+              python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1
+            done
+          done
 
-    # ============ FINAL: OOS evaluation + commit results ============
-  final:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: tst-ci*-wi*
-      - name: Run OOS evaluation (all candidates)
+      - name: Count results
+        run: echo "Train=$(ls strict_ci*_wi*.json 2>/dev/null | wc -l) Test=$(ls strict_test_ci*_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
         run: python scripts/exp_strict_oos.py test
+
       - name: Commit results
         run: |
           mkdir -p v9-results
           ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
-          cp v9-results/strict_oos_r${ROUND}_eval.json ./v9-results/
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json scripts/exp_strict_oos.py backtest/engine/backtest.py
-          git commit -m "Strict OOS R${ROUND}: Smart money callback signal integration test (topgain>=4 + callback -10~-3%)"
+          git commit -m "R20 OOS results: smart money callback signal (topgain>=4 + -10~-3%)"
           git push
