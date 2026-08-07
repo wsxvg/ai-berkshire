@@ -54,10 +54,12 @@ jobs:
           pattern: t-*-*
           merge-multiple: true
           path: train-artifacts
-      - name: Move JSON files to root
-        run: find train-artifacts -name '*.json' -exec mv {} . \;
-      - name: Debug — list JSON files
-        run: ls -la strict_ci*.json 2>&1 | head -5; echo "---"; ls strict_ci*.json 2>&1 | wc -l
+      - name: Debug — show tree of artifacts
+        run: find train-artifacts -type f | head -10 && echo "---" && echo "Total JSON files:" && find train-artifacts -name '*.json' | wc -l
+      - name: Move JSON to repo root
+        run: find train-artifacts -name '*.json' -exec cp {} . \;
+      - name: Verify JSON at root
+        run: echo "Files at root matching:" && ls -1 strict_*.json 2>/dev/null | wc -l
       - name: Aggregate & select best (AUTOMATED — no human decision)
         run: python scripts/exp_strict_oos.py aggregate_train
       - name: Export best_ci
