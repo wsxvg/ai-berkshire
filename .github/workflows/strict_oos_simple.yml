@@ -1,0 +1,45 @@
+# R20 Simple: Single-runner sequential backtest for R20
+# Avoids matrix scheduling / artifact issues
+name: R20 Simple (Sequential)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  all-in-one:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      - name: Run all 130 backtests sequentially
+        run: |
+          set -e
+          for ci in 0 1 2; do
+            for wi in $(seq 0 42); do
+              echo "### ci=$ci wi=$wi"
+              python scripts/exp_strict_oos.py run $ci $wi > /dev/null 2>&1 || true
+            done
+          done
+          echo "### Done"
+
+      - name: Count results
+        run: echo "Train files: $(ls strict_ci*_wi*.json 2>/dev/null | wc -l)"; echo "Test files: $(ls strict_test_ci*_wi*.json 2>/dev/null | wc -l)"
+
+      - name: Aggregate test phase
+        run: python scripts/exp_strict_oos.py test
+
+      - name: Save results
+        run: |
+          mkdir -p v9-results
+          ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add v9-results/strict_oos_r${ROUND}_eval.json 2>/dev/null
+          git commit -m "R20 OOS eval (sequential run)" || echo "Nothing to commit"
+          git push
