@@ -12,34 +12,43 @@ from backtest.engine.backtest import run_backtest
 
 
 # ============================================================
-# Round 19 候选 — 止损机制验证 (降低 peak maxdd)
-# Trigger: 2026-08-04-5
+# Round 20 候选 — Smart Money 回调信号集成
+# Trigger: 2026-08-07
 #
-# R18 结果 (22 OOS windows, 2022-12 到 2026-08, 覆盖 COVID+2022+2026):
-#   KC_AGGRESSIVE:     4.536% avg, maxdd 4.38%, beat bench 64%
-#   MO_TILT_BALANCED:  4.588% avg, maxdd 4.50%, beat bench 59%
-#   PURE_4D_EQUAL:     3.478% avg, maxdd 4.50%, beat bench 55%
+# R18/R19 结果 (22 OOS windows, 2022-12 到 2026-08):
+#   KC_AGGRESSIVE_BASELINE: 4.536% avg, maxdd 4.38%, beat bench 64%
+#   STOP-LOSS 8%: FAILED (return decreased)
+#   DYNAMIC SL: FAILED (return decreased)
 #
-# R18 关键发现:
-#   - W42 (2026-05-24~08-22, 含 July crash): net -1.34%, peak maxdd=14.63%
-#   - 长期 alpha ~3%/q (vs benchmark 1.65%/q), 防摔能力本身不错
-#   - R16 的 11.56% 是牛市红利; 真实长期 OOS ~4.5%
+# R20 新发现 (信号优化扫描结果):
+#   smart_money "回调 + 共识" 信号: 90天超额 +9.76%, 胜率 66.4%
+#   最优参数: 单日 -10%~-3% 回调, topgain_hold>=4, net_buy>=1
+#   原始版本 (topgain>=2): 90天超额 +6.08%
 #
-# R19 方向: 降低 peak maxdd (14.6% → 目标 ~8%)
-#   - 候选 0: KC_AGGRESSIVE_BASELINE (同 R18, 复现 baseline)
-#   - 候选 1: KC_AGGRESSIVE_STOPLOSS_8 — 启用 8% 止损线
-#   - 候选 2: KC_AGGRESSIVE_DYN_SL — 动态止盈(盈利>20%后回撤15%止损)
+# R20 方向: 将预计算信号引入 4D 评分作为 smart_money 维度
+#   - 候选 0: KC_AGGRESSIVE_BASELINE (复现 R18)
+#   - 候选 1: KC_SMART_BUY_15 — 启用预计算信号, smart_money weight=15
+#   - 候选 2: KC_SMART_BUY_25 — 启用预计算信号, smart_money weight=25
 #
-# 复用 R18 配置: 43 windows (2019-01~2026-09), 21 train / 22 test
-# 防作弊: 候选参数在 OOS 数据可见前预注册 (2026-08-04)
+# 防作弊: 信号参数 (topgain>=4, -10%~-3%, net_buy>=1) 通过独立验证集确定，
+#         不接触 R20 OOS 窗口数据。R20 只验证"是否能在 OOS 中复现 alpha"。
 # ============================================================
 
-ROUND = 19
+ROUND = 20
 
-# ─── 权重方案 (与 R18 一致) ───
+# ─── 权重方案 ───
 WTS_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
 WTS_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
 WTS_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
+
+# R20: 信号启用权重（给 smart_money 分配一定权重）
+WTS_SIGNAL_15 = {"quality": 23, "cost": 23, "manager": 23, "momentum": 16, "smart_money": 15}
+WTS_SIGNAL_15_BULL = {"quality": 18, "cost": 18, "manager": 13, "momentum": 36, "smart_money": 15}
+WTS_SIGNAL_15_BEAR = {"quality": 30, "cost": 22, "manager": 25, "momentum": 8, "smart_money": 15}
+
+WTS_SIGNAL_25 = {"quality": 20, "cost": 20, "manager": 20, "momentum": 10, "smart_money": 25}
+WTS_SIGNAL_25_BULL = {"quality": 15, "cost": 15, "manager": 10, "momentum": 35, "smart_money": 25}
+WTS_SIGNAL_25_BEAR = {"quality": 25, "cost": 20, "manager": 20, "momentum": 5, "smart_money": 25}
 
 CANDIDATES = [
     # 0: KC_AGGRESSIVE_BASELINE (复现 R18)
@@ -53,34 +62,33 @@ CANDIDATES = [
         "no_stop_loss": True,
     }),
 
-    # 1: KC_AGGRESSIVE_STOPLOSS_8 — 8% 单基金止损
-    ("KC_AGGRESSIVE_STOPLOSS_8", {
+    # 1: KC_SMART_BUY_15 — 启用预计算信号, smart_money weight=15
+    ("KC_SMART_BUY_15", {
         "max_holdings": 12,
-        "weights": WTS_EQUAL,
-        "weights_bull": WTS_BULL,
-        "weights_bear": WTS_BEAR,
+        "weights": WTS_SIGNAL_15,
+        "weights_bull": WTS_SIGNAL_15_BULL,
+        "weights_bear": WTS_SIGNAL_15_BEAR,
         "kelly_cap_bull": 0.7,
         "kelly_cap_bear": 0.40,
-        "no_stop_loss": False,
-        "stop_loss_pct": -8,
+        "no_stop_loss": True,
+        "use_prebuilt_signal": True,
     }),
 
-    # 2: KC_AGGRESSIVE_DYN_SL — 动态止盈
-    ("KC_AGGRESSIVE_DYN_SL", {
+    # 2: KC_SMART_BUY_25 — 启用预计算信号, smart_money weight=25
+    ("KC_SMART_BUY_25", {
         "max_holdings": 12,
-        "weights": WTS_EQUAL,
-        "weights_bull": WTS_BULL,
-        "weights_bear": WTS_BEAR,
+        "weights": WTS_SIGNAL_25,
+        "weights_bull": WTS_SIGNAL_25_BULL,
+        "weights_bear": WTS_SIGNAL_25_BEAR,
         "kelly_cap_bull": 0.7,
         "kelly_cap_bear": 0.40,
-        "no_stop_loss": False,
-        "stop_loss_pct": -30,  # 硬止损 30% (宽松)
-        "dynamic_stop_loss": True,  # 盈利>20%后回撤15%止盈
+        "no_stop_loss": True,
+        "use_prebuilt_signal": True,
     }),
 ]
 
 
-# ─── 时间窗口定义 (同 R18) ───
+# ─── 时间窗口定义 (同 R18-R19) ───
 ALL_WINDOWS = []
 base_start = datetime(2019, 1, 1)
 base_end = datetime(2026, 9, 30)
@@ -219,70 +227,60 @@ def aggregate_test():
             "avg_return": avg_ret,
             "avg_benchmark": avg_bench,
             "avg_max_drawdown": avg_max_dd,
-            "peak_max_drawdown": max_max_dd,
+            "peak_max_dd": max_max_dd,
             "beats_count": beats_count,
             "beats_rate": beats_count / len(items),
             "count": len(items),
-            "per_window": [
-                {"period": x["period"], "return": x["return"], "benchmark": x["benchmark"], "max_dd": x["max_dd"]}
-                for x in items
-            ],
+            "per_window": [{
+                "period": x["period"],
+                "return": x["return"],
+                "benchmark": x["benchmark"],
+                "max_dd": x["max_dd"],
+            } for x in sorted(items, key=lambda x: x["period"])],
         }
 
-    for name in sorted(summary, key=lambda k: -summary[k]["avg_return"]):
-        s = summary[name]
-        print(f"\n  {name}:")
-        print(f"    Avg Return: {s['avg_return']:8.3f}%")
-        print(f"    Avg Bench:  {s['avg_benchmark']:8.3f}%")
-        print(f"    Avg MaxDD:  {s['avg_max_drawdown']:8.3f}%")
-        print(f"    Peak MaxDD: {s['peak_max_drawdown']:8.3f}%  ← key metric")
-        print(f"    Beat Bench: {s['beats_count']}/{s['count']} ({s['beats_rate']:.0%})")
+    with open(f"v9-results/strict_oos_r{ROUND}_eval.json", "w") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=2)
 
-    eval_result = {
-        "round": ROUND,
-        "window_count": len(TEST_WINDOWS),
-        "period": f"{TEST_WINDOWS[0]['train_end']}~{TEST_WINDOWS[-1]['test_end']}",
-        "summary": summary,
-    }
-    with open("strict_test_evaluation.json", "w") as f:
-        json.dump(eval_result, f, ensure_ascii=False, indent=2)
-    print(f"\nSaved to strict_test_evaluation.json")
+    for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
+        marker = ""
+        if name != "KC_AGGRESSIVE_BASELINE":
+            if name in summary and "KC_AGGRESSIVE_BASELINE" in summary:
+                diff = s["avg_return"] - summary["KC_AGGRESSIVE_BASELINE"]["avg_return"]
+                marker = f" ({diff:+.3f}% vs BASELINE)"
+        print(f"\n  {name}:")
+        print(f"    Avg Return:    {s['avg_return']:8.3f}%  (bench {s['avg_benchmark']:+.3f}%){marker}")
+        print(f"    Avg MaxDD:     {s['avg_max_drawdown']:8.3f}%  (peak {s['peak_max_dd']:.3f}%)")
+        print(f"    Beat Bench:    {s['beats_count']}/{s['count']} ({s['beats_rate']*100:.0f}%)")
+
+    return summary
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage:")
-        print("  python exp_strict_oos.py run_train <ci> <wi>")
-        print("  python exp_strict_oos.py run_test <ci> <wi>")
-        print("  python exp_strict_oos.py aggregate_train")
-        print("  python exp_strict_oos.py aggregate_test")
-        print("  python exp_strict_oos.py list_windows")
+        print("Usage: python exp_strict_oos.py <train|test|all>")
+        print("  train: aggregate train results")
+        print("  test: aggregate test results")
+        print("  both: train then test")
         sys.exit(1)
 
     cmd = sys.argv[1]
-    if cmd == "run_train":
+    if cmd == "train":
+        aggregate_train()
+    elif cmd == "test":
+        aggregate_test()
+    elif cmd == "both":
+        aggregate_train()
+        aggregate_test()
+    elif cmd == "run" and len(sys.argv) == 4:
         ci, wi = int(sys.argv[2]), int(sys.argv[3])
         r = _run_one(ci, wi)
-        out = f"strict_ci{ci}_wi{wi}.json"
-        with open(out, "w") as f:
-            json.dump(r, f)
-        print(f"[R{r['round']}] Train c{ci} w{wi} ({r['period']}): {r['return']:.3f}%")
-    elif cmd == "run_test":
-        ci, wi = int(sys.argv[2]), int(sys.argv[3])
-        wi_global = wi + len(TRAIN_WINDOWS)
-        r = _run_one(ci, wi_global)
-        out = f"strict_test_ci{ci}_wi{wi}.json"
-        with open(out, "w") as f:
-            json.dump(r, f)
-        print(f"[R{r['round']}] Test c{ci} w{wi} ({r['period']}): {r['return']:.3f}%")
-    elif cmd == "aggregate_train":
-        aggregate_train()
-    elif cmd == "aggregate_test":
-        aggregate_test()
-    elif cmd == "list_windows":
-        for i, w in enumerate(ALL_WINDOWS):
-            phase = "TRAIN" if i < len(TRAIN_WINDOWS) else "TEST"
-            print(f"  W{i:2d} [{phase:5s}]: train_end={w['train_end']}  test_end={w['test_end']}")
+        prefix = "strict_test_ci" if wi >= len(TRAIN_WINDOWS) else "strict_ci"
+        out_name = f"{prefix}{ci}_wi{wi}.json"
+        with open(out_name, "w") as f:
+            json.dump(r, f, ensure_ascii=False, indent=2)
+        print(f"Saved: {out_name}")
+        print(f"  Return: {r['return']:.3f}%  Bench: {r['benchmark']:+.3f}%  MaxDD: {r['max_dd']:.3f}%")
     else:
         print(f"Unknown command: {cmd}")
         sys.exit(1)

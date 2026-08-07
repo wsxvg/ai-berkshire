@@ -251,13 +251,43 @@ def score_quality_backtest(chart_points, cutoff_date, scale_text=None, perf_data
     return DimensionScore(score=min(5.0, max(0, score * penalty)), weight=0.25, freshness_days=0)
 
 
-def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None):
+_SM_SIGNAL_CACHE = None  # 预计算信号缓存
+
+def _load_sm_signals():
+    global _SM_SIGNAL_CACHE
+    if _SM_SIGNAL_CACHE is None:
+        sig_file = PROJECT_DIR / "data" / "smart_money_signals.json"
+        if sig_file.exists():
+            _SM_SIGNAL_CACHE = json.loads(sig_file.read_text("utf-8"))
+        else:
+            _SM_SIGNAL_CACHE = {}
+    return _SM_SIGNAL_CACHE
+
+
+def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
+                                use_prebuilt_signal=False):
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
     trading_by_date: {"2026-01-15": [{fund_name, action, _user, fund_code?}, ...]}
     cutoff_date: "2026-03-15" → 只取 <= 的日期。
     fund_code: 可选，用于精确匹配（优先级高于 fund_name）。
+    use_prebuilt_signal: 若为 True, 使用预计算的 smart_money_signals.js (R20+)
     """
+    # R20+: 预计算信号模式 (topgain>=4 + callback -10~-3% + net_buy>=1)
+    if use_prebuilt_signal:
+        sigs = _load_sm_signals()
+        day_sigs = sigs.get(cutoff_date[:10], {})
+        sig = day_sigs.get(fund_code, day_sigs.get(fund_name))
+        if sig:
+            cb = sig.get("callback_pct", 0)
+            tg = sig.get("topgain_hold", 0)
+            nb = sig.get("net_buy", 0)
+            # 最优参数: 单日 -10%~-3%, topgain>=4, net_buy>=1
+            if -10 <= cb <= -3 and tg >= 4 and nb >= 1:
+                return DimensionScore(score=4.8, weight=0.20, freshness_days=0)
+            elif -10 <= cb <= -3 and tg >= 2 and nb >= 0:
+                return DimensionScore(score=3.5, weight=0.20, freshness_days=0)
+        return DimensionScore(score=2.5, weight=0.20, freshness_days=0)
     # 用 bisect 在预排序的 dates 中截断（速度优化）
     if _TRADING_DATES_SORTED:
         pos = bisect.bisect_right(_TRADING_DATES_SORTED, cutoff_date)
@@ -748,7 +778,8 @@ def score_4433(fund_code, cutoff_date, fund_charts):
 def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         cutoff_date, trading_by_date, profile=None,
                         allocation_data=None, fund_data_cache=None,
-                        industry_data=None, weights=None):
+                        industry_data=None, weights=None,
+                        use_prebuilt_signal=False):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
@@ -794,7 +825,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     quality = score_quality_backtest(chart_pts, cutoff_date,
                                      profile.get("scale") if profile else None,
                                      perf_data)
-    smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code)
+    smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code,
+                                        use_prebuilt_signal=use_prebuilt_signal)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
@@ -2142,6 +2174,7 @@ def run_backtest(config, clear_cache=True):
                 fund_data_cache=fund_data_cache,
                 industry_data=industry_data if industry_data else None,
                 weights=config.get("weights"),
+                use_prebuilt_signal=config.get("use_prebuilt_signal", False),
             )
             ft = fund_profiles.get(code, {}).get("fund_type", "")
             is_active = "指数" not in ft and "QDII" not in ft
