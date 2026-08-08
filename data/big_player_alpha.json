@@ -1,0 +1,8 @@
+{
+  "match_count": 63181,
+  "unmatch_count": 61062,
+  "legit_60d_alpha": 3.305,
+  "suspicious_60d_alpha": 10.573,
+  "legit_trade_samples": 32332,
+  "suspicious_trade_samples": 7372
+}

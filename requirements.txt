@@ -1,4 +1,0 @@
-chinese_calendar
-lightgbm
-numpy
-scikit-learn
