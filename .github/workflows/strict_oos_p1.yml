@@ -1,13 +1,12 @@
-# R20 Strict OOS — Sequential runner
-# Runs all 130 backtests (63 train + 66 test + 1 final commit) on a single runner.
+# R21 Strict OOS — Sequential runner
+# Runs all 172 backtests (84 train + 88 test + 1 commit) on a single runner.
 #
-# R20: Smart Money 回调信号集成
-#   - 60-day slide, 180 train + 90 test per window
-#   - 43 windows total: 21 train (W0-W20) + 22 test (W21-W42)
-#   - 3 candidates
-#   - 信号验证独立集确定: topgain>=4, callback -10~-3%, net_buy>=1
+# R21: Smart Money 修饰符模式
+#   - 同 R20 窗口划分 + BASELINE + SMART_BUY_15/25
+#   - 新增 KC_SMART_MOD: smart_money 作加减分修饰符, 不占维度权重
+#   - 预期: 上涨基金不扣分，只在回调+信号满足时给 +0.3~+0.5 加成
 
-name: R20 OOS
+name: R21 OOS
 
 on:
   push:
@@ -28,7 +27,7 @@ jobs:
 
       - name: Train phase (63 backtests)
         run: |
-          for ci in 0 1 2; do
+          for ci in 0 1 2 3; do
             for wi in $(seq 0 20); do
               echo "[$ci:$wi] $(date '+%H:%M')"
               timeout 90 python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
@@ -37,7 +36,7 @@ jobs:
 
       - name: Test phase (66 backtests)
         run: |
-          for ci in 0 1 2; do
+          for ci in 0 1 2 3; do
             for wi in $(seq 21 42); do
               echo "[$ci:$wi] $(date '+%H:%M')"
               timeout 90 python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
@@ -57,5 +56,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json scripts/exp_strict_oos.py backtest/engine/backtest.py
-          git commit -m "R20 OOS results: smart money callback signal (topgain>=4 + -10~-3%)"
+          git commit -m "R21 OOS results: smart money modifier mode (vs R20 original dimension mode)"
           git push

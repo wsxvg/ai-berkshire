@@ -34,7 +34,7 @@ from backtest.engine.backtest import run_backtest
 #         不接触 R20 OOS 窗口数据。R20 只验证"是否能在 OOS 中复现 alpha"。
 # ============================================================
 
-ROUND = 20
+ROUND = 21
 
 # ─── 权重方案 ───
 WTS_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
@@ -49,6 +49,11 @@ WTS_SIGNAL_15_BEAR = {"quality": 30, "cost": 22, "manager": 25, "momentum": 8, "
 WTS_SIGNAL_25 = {"quality": 20, "cost": 20, "manager": 20, "momentum": 10, "smart_money": 25}
 WTS_SIGNAL_25_BULL = {"quality": 15, "cost": 15, "manager": 10, "momentum": 35, "smart_money": 25}
 WTS_SIGNAL_25_BEAR = {"quality": 25, "cost": 20, "manager": 20, "momentum": 5, "smart_money": 25}
+
+# R21: 修饰符模式 — smart_money 不占维度权重，只作为加减分
+WTS_MOD = {"quality": 28, "cost": 24, "manager": 24, "momentum": 24, "smart_money": 0}
+WTS_MOD_BULL = {"quality": 22, "cost": 22, "manager": 16, "momentum": 40, "smart_money": 0}
+WTS_MOD_BEAR = {"quality": 35, "cost": 25, "manager": 28, "momentum": 12, "smart_money": 0}
 
 CANDIDATES = [
     # 0: KC_AGGRESSIVE_BASELINE (复现 R18)
@@ -84,6 +89,20 @@ CANDIDATES = [
         "kelly_cap_bear": 0.40,
         "no_stop_loss": True,
         "use_prebuilt_signal": True,
+    }),
+
+    # 3: KC_SMART_MOD — R21: 修饰符模式
+    #    不占维度权重，上涨基金不扣分，回调+信号满足时 +0.3~+0.5 加成
+    ("KC_SMART_MOD", {
+        "max_holdings": 12,
+        "weights": WTS_MOD,
+        "weights_bull": WTS_MOD_BULL,
+        "weights_bear": WTS_MOD_BEAR,
+        "kelly_cap_bull": 0.7,
+        "kelly_cap_bear": 0.40,
+        "no_stop_loss": True,
+        "use_prebuilt_signal": True,
+        "smart_money_modifier": True,
     }),
 ]
 

@@ -67,7 +67,8 @@ def _add_trading_days_correct(date_str, n_days):
 _DATES_CACHE = {}
 _TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
 _4433_RANK_CACHE = {}  # {cutoff_date: {period_name: [(code, return_pct), ...]}} — score_4433 排名缓存
-_SCORE_CACHE = {}  # {(code, cutoff_date): (q, c, m, mo, sm, ft, alloc, scale, s4433, sector)} — 跨策略评分缓存（存各维度独立分数+修饰符，不存总分，支持自定义权重）
+_SCORE_CACHE = {}  # {(code, cutoff_date): (q, c, m, mo, sm, ft, alloc, scale, s4433, sector, sm_mod)} — 跨策略评分缓存（含smart_money修饰符）
+_SMART_MONEY_MODIFIER = 0.0  # 模块级变量：最近一次score_smart_money_backtest设置的修饰符值
 
 def _bisect_valid(pts, cutoff_date):
     """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
@@ -265,13 +266,16 @@ def _load_sm_signals():
 
 
 def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
-                                use_prebuilt_signal=False):
+                                use_prebuilt_signal=False, as_modifier=False):
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
     trading_by_date: {"2026-01-15": [{fund_name, action, _user, fund_code?}, ...]}
     cutoff_date: "2026-03-15" → 只取 <= 的日期。
     fund_code: 可选，用于精确匹配（优先级高于 fund_name）。
     use_prebuilt_signal: 若为 True, 使用预计算的 smart_money_signals.js (R20+)
+    as_modifier: 若为 True, 返回零权 DimensionScore 并设置 _SMART_MONEY_MODIFIER,
+                 在 score_fund_backtest 中作为加减分应用到 4D 加权均值上。
+                 修饰符模式关键区别：上涨基金不扣分，只在回调+信号满足时给正向加成。
     """
     # R20+: 预计算信号模式 (topgain>=4 + callback -10~-3% + net_buy>=1)
     if use_prebuilt_signal:
@@ -282,11 +286,27 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
             cb = sig.get("callback_pct", 0)
             tg = sig.get("topgain_hold", 0)
             nb = sig.get("net_buy", 0)
-            # 最优参数: 单日 -10%~-3%, topgain>=4, net_buy>=1
-            if -10 <= cb <= -3 and tg >= 4 and nb >= 1:
-                return DimensionScore(score=4.8, weight=0.20, freshness_days=0)
-            elif -10 <= cb <= -3 and tg >= 2 and nb >= 0:
-                return DimensionScore(score=3.5, weight=0.20, freshness_days=0)
+            if as_modifier:
+                # 修饰符模式：不扣分，只给正向加成
+                # 回调 -10~-3% + topgain>=4 + net_buy>=1 → +0.5 (强信号)
+                # 回调 -10~-3% + topgain>=2 + net_buy>=0 → +0.3 (中等信号)
+                # 上涨或无信号 → 0.0 (不惩罚)
+                if -10 <= cb <= -3 and tg >= 4 and nb >= 1:
+                    _SMART_MONEY_MODIFIER = 0.5
+                elif -10 <= cb <= -3 and tg >= 2 and nb >= 0:
+                    _SMART_MONEY_MODIFIER = 0.3
+                else:
+                    _SMART_MONEY_MODIFIER = 0.0
+                return DimensionScore(score=0, weight=0, freshness_days=0)
+            else:
+                # 原始模式 (R20): 高信号给高分，无信号给低分 (2.5)
+                if -10 <= cb <= -3 and tg >= 4 and nb >= 1:
+                    return DimensionScore(score=4.8, weight=0.20, freshness_days=0)
+                elif -10 <= cb <= -3 and tg >= 2 and nb >= 0:
+                    return DimensionScore(score=3.5, weight=0.20, freshness_days=0)
+            return DimensionScore(score=2.5, weight=0.20, freshness_days=0)
+        if as_modifier:
+            _SMART_MONEY_MODIFIER = 0.0
         return DimensionScore(score=2.5, weight=0.20, freshness_days=0)
     # 用 bisect 在预排序的 dates 中截断（速度优化）
     if _TRADING_DATES_SORTED:
@@ -779,12 +799,16 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         cutoff_date, trading_by_date, profile=None,
                         allocation_data=None, fund_data_cache=None,
                         industry_data=None, weights=None,
-                        use_prebuilt_signal=False):
+                        use_prebuilt_signal=False,
+                        smart_money_modifier=False):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
     weights: 可选 dict {"quality": 25, "cost": 20, "manager": 20, "momentum": 15, "smart_money": 20}
              用于自定义各维度权重。默认 None=使用硬编码权重(25/20/20/15/20)。
+    use_prebuilt_signal: 使用预计算信号 (R20+)
+    smart_money_modifier: 信号作为加减分修饰符，不计入独立维度；
+                          上涨基金不扣分，仅在有回调信号时 +0.3~+0.5 加成。
     缓存策略: 各维度独立分数和修饰符与权重无关，可跨策略共享；
              仅最终加权总分按各策略的 weights 重算。
     """
@@ -801,19 +825,30 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     _cached = _SCORE_CACHE.get(_cache_key)
     if _cached is not None:
         from tools.fund_scorer import FundScore, DimensionScore as DS
-        _q, _c, _m, _mo, _sm, _ft, _am, _sc, _s4433, _sec = _cached
+        if len(_cached) >= 11:
+            _q, _c, _m, _mo, _sm, _ft, _am, _sc, _s4433, _sec, _sm_mod = _cached
+        else:
+            _q, _c, _m, _mo, _sm, _ft, _am, _sc, _s4433, _sec = _cached
+            _sm_mod = 0.0
         # 经理缺失(passive_index 或无数据) → 权重归零
         _wm = 0 if _m <= 0 else w_m
-        _denom = max(w_q + w_c + _wm + w_mo + w_sm, 0.01)
-        _raw = (_q * w_q + _c * w_c + _m * _wm + _mo * w_mo + _sm * w_sm) / _denom
-        _total = max(0.5, min(5.0, _raw + _am + _sc + _s4433 + _sec))
+        # 若 smart_money 修饰符模式 (w_sm=0), 不将其纳入分母
+        _w_sm_eff = 0 if smart_money_modifier else w_sm
+        _sm_score = 0 if smart_money_modifier else _sm
+        _denom = max(w_q + w_c + _wm + w_mo + _w_sm_eff, 0.01)
+        _raw = (_q * w_q + _c * w_c + _m * _wm + _mo * w_mo + _sm_score * _w_sm_eff) / _denom
+        _total_raw = _raw + _am + _sc + _s4433 + _sec
+        if smart_money_modifier:
+            _total_raw += _sm_mod
+        _total = max(0.5, min(5.0, _total_raw))
         fs = FundScore(
             fund_code=fund_code, fund_type=_ft,
             quality=DS(score=_q, weight=w_q, freshness_days=0),
             cost=DS(score=_c, weight=w_c, freshness_days=0),
             manager=DS(score=_m, weight=_wm, freshness_days=0),
             momentum=DS(score=_mo, weight=w_mo, freshness_days=0),
-            smart_money=DS(score=_sm, weight=w_sm, freshness_days=0),
+            smart_money=DS(score=_sm if not smart_money_modifier else _sm_mod,
+                           weight=w_sm if not smart_money_modifier else 0, freshness_days=0),
         )
         fs.total = _total
         fs.verdict = "buy" if _raw >= 4.0 else "watch" if _raw >= 3.3 else "pass"
@@ -826,7 +861,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                                      profile.get("scale") if profile else None,
                                      perf_data)
     smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code,
-                                        use_prebuilt_signal=use_prebuilt_signal)
+                                        use_prebuilt_signal=use_prebuilt_signal,
+                                        as_modifier=smart_money_modifier)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
@@ -949,17 +985,22 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     # 跳过成立天数检测（回测中不准确）
     # 使用自定义权重计算加权平均（与缓存命中路径一致）
     _wm = 0 if (manager_dim.score if manager_dim else -1) <= 0 else w_m
-    _denom = max(w_q + w_c + _wm + w_mo + w_sm, 0.01)
+    # 修饰符模式: smart_money 不占权重，_强制 w_sm=0 且 _sm_s=0
+    _w_sm_eff = 0 if smart_money_modifier else w_sm
+    _sm_score = 0 if smart_money_modifier else (smart.score if smart else 0)
+    _denom = max(w_q + w_c + _wm + w_mo + _w_sm_eff, 0.01)
     _q_s = quality.score if quality else 3.0
     _c_s = cost.score if cost else 3.0
     _m_s = manager_dim.score if manager_dim else -1
     _mo_s = momentum.score if momentum else 3.0
-    _sm_s = smart.score if smart else 0
-    raw = (_q_s * w_q + _c_s * w_c + _m_s * _wm + _mo_s * w_mo + _sm_s * w_sm) / _denom
+    raw = (_q_s * w_q + _c_s * w_c + _m_s * _wm + _mo_s * w_mo + _sm_score * _w_sm_eff) / _denom
     fs.total = raw
 
     # 应用资产配置+规模修正
     total_modifier = alloc_modifier + scale_modifier
+
+    # Smart Money 修饰符（只在修饰符模式下生效）
+    _sm_mod_val = _SMART_MONEY_MODIFIER if smart_money_modifier else 0.0
 
     # ===== 新增: 4433法则评分 =====
     _s4433_val = 0.0
@@ -979,6 +1020,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
         if sector_adjust != 0:
             pass  # 可在 verbose 模式下打印
 
+    # 总修饰符 = 资产 + 规模 + 4433 + 行业 + SmartMoney修饰符
+    total_modifier += _sm_mod_val
     fs.total = max(0.5, min(5.0, fs.total + total_modifier))
 
     # 过度上涨扣分已包含在 score_quality_backtest 的 heat_penalty 中
@@ -986,7 +1029,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
 
     fs.verdict = "buy" if raw >= 4.0 else "watch" if raw >= 3.3 else "pass"
 
-    # ── 写入评分缓存（各维度独立分数+修饰符，不含总分，支持自定义权重） ──
+    # ── 写入评分缓存（各维度独立分数+修饰符，不含总分，支持自定义权重）──
+    # 第11个元素: smart_money 修饰符值 (仅修饰符模式下非零)
     _SCORE_CACHE[_cache_key] = (
         _q_s,       # quality score
         _c_s,       # cost score
@@ -998,6 +1042,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
         scale_modifier,
         _s4433_val,
         _sector_val,
+        _sm_mod_val,  # smart_money modifier value (0.0 in original mode)
     )
     return fs
 
@@ -2175,6 +2220,7 @@ def run_backtest(config, clear_cache=True):
                 industry_data=industry_data if industry_data else None,
                 weights=config.get("weights"),
                 use_prebuilt_signal=config.get("use_prebuilt_signal", False),
+                smart_money_modifier=config.get("smart_money_modifier", False),
             )
             ft = fund_profiles.get(code, {}).get("fund_type", "")
             is_active = "指数" not in ft and "QDII" not in ft
