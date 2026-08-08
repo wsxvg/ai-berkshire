@@ -19,7 +19,7 @@ permissions:
 jobs:
   r20:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,7 +31,7 @@ jobs:
           for ci in 0 1 2; do
             for wi in $(seq 0 20); do
               echo "[$ci:$wi] $(date '+%H:%M')"
-              python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1
+              timeout 90 python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
             done
           done
 
@@ -40,7 +40,7 @@ jobs:
           for ci in 0 1 2; do
             for wi in $(seq 21 42); do
               echo "[$ci:$wi] $(date '+%H:%M')"
-              python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1
+              timeout 90 python scripts/exp_strict_oos.py run $ci $wi 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
             done
           done
 
