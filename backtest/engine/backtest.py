@@ -816,7 +816,9 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     _w = weights or {}
     w_q = _w.get("quality", 25)
     w_c = _w.get("cost", 20)
-    w_m = _w.get("manager", 20)
+    # 注意: 经理维度已禁用——无历史经理数据（朝阳/天天均不公开历任经理变更时间序列）
+    # 保留 w_m=0 避免破坏评分缓存结构，但不再对结果产生任何影响
+    w_m = 0  # _w.get("manager", 20)  ← 已禁用
     w_mo = _w.get("momentum", 15)
     w_sm = _w.get("smart_money", 20)
 

@@ -37,23 +37,24 @@ from backtest.engine.backtest import run_backtest
 ROUND = 21
 
 # ─── 权重方案 ───
-WTS_EQUAL = {"quality": 25, "cost": 25, "manager": 25, "momentum": 25, "smart_money": 0}
-WTS_BULL = {"quality": 20, "cost": 20, "manager": 15, "momentum": 45, "smart_money": 0}
-WTS_BEAR = {"quality": 35, "cost": 25, "manager": 30, "momentum": 10, "smart_money": 0}
+# 注意: 经理维度已禁用（无历史数据），权重归零
+WTS_EQUAL = {"quality": 33, "cost": 33, "momentum": 34, "smart_money": 0}
+WTS_BULL = {"quality": 22, "cost": 22, "momentum": 56, "smart_money": 0}
+WTS_BEAR = {"quality": 40, "cost": 30, "momentum": 30, "smart_money": 0}
 
 # R20: 信号启用权重（给 smart_money 分配一定权重）
-WTS_SIGNAL_15 = {"quality": 23, "cost": 23, "manager": 23, "momentum": 16, "smart_money": 15}
-WTS_SIGNAL_15_BULL = {"quality": 18, "cost": 18, "manager": 13, "momentum": 36, "smart_money": 15}
-WTS_SIGNAL_15_BEAR = {"quality": 30, "cost": 22, "manager": 25, "momentum": 8, "smart_money": 15}
+WTS_SIGNAL_15 = {"quality": 27, "cost": 27, "momentum": 31, "smart_money": 15}
+WTS_SIGNAL_15_BULL = {"quality": 21, "cost": 21, "momentum": 43, "smart_money": 15}
+WTS_SIGNAL_15_BEAR = {"quality": 35, "cost": 26, "momentum": 24, "smart_money": 15}
 
-WTS_SIGNAL_25 = {"quality": 20, "cost": 20, "manager": 20, "momentum": 10, "smart_money": 25}
-WTS_SIGNAL_25_BULL = {"quality": 15, "cost": 15, "manager": 10, "momentum": 35, "smart_money": 25}
-WTS_SIGNAL_25_BEAR = {"quality": 25, "cost": 20, "manager": 20, "momentum": 5, "smart_money": 25}
+WTS_SIGNAL_25 = {"quality": 25, "cost": 25, "momentum": 25, "smart_money": 25}
+WTS_SIGNAL_25_BULL = {"quality": 19, "cost": 19, "momentum": 37, "smart_money": 25}
+WTS_SIGNAL_25_BEAR = {"quality": 31, "cost": 25, "momentum": 19, "smart_money": 25}
 
 # R21: 修饰符模式 — smart_money 不占维度权重，只作为加减分
-WTS_MOD = {"quality": 28, "cost": 24, "manager": 24, "momentum": 24, "smart_money": 0}
-WTS_MOD_BULL = {"quality": 22, "cost": 22, "manager": 16, "momentum": 40, "smart_money": 0}
-WTS_MOD_BEAR = {"quality": 35, "cost": 25, "manager": 28, "momentum": 12, "smart_money": 0}
+WTS_MOD = {"quality": 33, "cost": 33, "momentum": 34, "smart_money": 0}
+WTS_MOD_BULL = {"quality": 22, "cost": 22, "momentum": 56, "smart_money": 0}
+WTS_MOD_BEAR = {"quality": 40, "cost": 30, "momentum": 30, "smart_money": 0}
 
 CANDIDATES = [
     # 0: KC_AGGRESSIVE_BASELINE (复现 R18)
