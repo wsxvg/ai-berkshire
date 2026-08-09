@@ -1549,11 +1549,16 @@ def run_backtest(config, clear_cache=True):
     """
     import json
 
-    # 加载数据（优先用真实关注池 414 人数据 v5(已用京东官方 getFundChart 标准码权威修正 ~99.9%)，回退旧文件）
-    # v5 因单文件超 100MB 以 .json.gz 形式存储（10.9MB），支持两种读取
+    # 加载数据（优先用真实关注池 414 人数据 v7(在v5权威码基础上修正异常fid残留错配)，
+    # 回退 v5(京东官方 getFundChart 标准码权威修正 ~99.9%)，再回退旧文件）
+    # 因单文件超 100MB 以 .json.gz 形式存储（10.9MB），支持两种读取
     print("加载历史数据...")
     import gzip as _gzip
-    data_file = DATA_DIR / "trading_by_date_real414_v5.json"
+    data_file = DATA_DIR / "trading_by_date_real414_v7.json"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414_v7.json.gz"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414_v5.json"
     if not data_file.exists():
         data_file = DATA_DIR / "trading_by_date_real414_v5.json.gz"
     if not data_file.exists():

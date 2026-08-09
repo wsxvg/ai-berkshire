@@ -24,7 +24,7 @@ from collections import defaultdict
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 V5 = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                  "backtest", "data", "trading_by_date_real414_v5.json")
+                  "backtest", "data", "trading_by_date_real414_v7.json.gz")
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    "data", "smart_money_signals.json")
 
@@ -39,8 +39,13 @@ def parse_amount(s):
 
 def main():
     print("加载 v5 交易数据...")
-    with open(V5, encoding="utf-8") as f:
-        tbd = json.load(f)
+    if V5.endswith(".gz"):
+        import gzip
+        with gzip.open(V5, "rt", encoding="utf-8") as f:
+            tbd = json.load(f)
+    else:
+        with open(V5, encoding="utf-8") as f:
+            tbd = json.load(f)
 
     dates = sorted(tbd.keys())
     print(f"{dates[0]} ~ {dates[-1]}, {len(dates)} days")
