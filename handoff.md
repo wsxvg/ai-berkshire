@@ -70,6 +70,14 @@ v7.json → v7.json.gz → v5.json → v5.json.gz → v4 → v2 → real414 → 
 
 ## 四、R21 状态（最关键——评估大佬因子）
 
+### 并行化性能优化（2026-08-09 14:40，重要！）
+- **原 `strict_oos_p1.yml`（顺序版）单 runner 顺序跑 129 个回测，约 2 小时，太慢**
+- **已新增并行版 `strict_oos_r21_parallel.yml`**（`strategy.matrix` + `max-parallel:8`，4 个候选 ci=0..3 各一个 runner，+聚合 job）
+- 顺序版已改为 `workflow_dispatch`（手动触发），**不再随 push 自动跑**，避免误触发
+- **并行版已手动触发并在跑**：run_id=`31299392136`，head=`b95fe2f`，4 个 backtest job 全部 in_progress
+- **预估 10–20 分钟跑完**（4 runner 并行，每 runner 43 窗口）
+- **触发方式**（以后需要时）：GitHub API `workflow_dispatch`（用 `C:\Users\27360\.git-credentials` 里的 PAT，走代理 127.0.0.1:7890）
+
 ### 已做
 - 触发 R21：push `33a476b` + `99b0ae0` 到 origin/master，**已触发 GitHub Actions `strict_oos_p1.yml` workflow**
 - **R21 run 已确认 in_progress**：run_id=`31298563147`，head=`99b0ae0`（2026-08-09 06:18 触发）
