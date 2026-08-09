@@ -70,19 +70,26 @@ v7.json → v7.json.gz → v5.json → v5.json.gz → v4 → v2 → real414 → 
 
 ## 四、R21 状态（最关键——评估大佬因子）
 
-### ⭐ R21 结果已算出（2026-08-09 20:36，从 aggregate 日志提取）
-**核心结论：3 个大佬因子候选全部显著跑赢 BASELINE，大佬因子有效！**
+### ⭐ R21 结果（2026-08-09 更新——**结论颠覆，谨慎！**）
+**⚠️ 核心结论已反转：补全 BASELINE 后，大佬因子无正 alpha，此前"跑赢基线"是缺窗口造成的假象！**
 
-| 候选 | avg_return | vs BASELINE | avg_maxDD | peak_maxDD | beats_rate |
-|---|---|---|---|---|---|
-| `KC_AGGRESSIVE_BASELINE` | 1.162% (16窗) | — | 3.43% | 9.79% | 8/16 (50%) |
-| `KC_SMART_BUY_15` | **3.366%** (22窗) | **+2.20%** | 5.56% | 15.87% | 12/22 (55%) |
-| `KC_SMART_BUY_25` | **3.085%** (22窗) | **+1.92%** | 5.37% | 16.12% | 14/22 (64%) |
-| `KC_SMART_MOD` | **3.271%** (22窗) | **+2.11%** | 5.77% | 15.63% | 12/22 (55%) |
+**背景**：R21 在 v7 干净数据上跑，24 backtest job 全部 success（run `31308921476`），但 aggregate 的 git push 失败。我直接从 artifacts 下载了全部结果（含 ci0-BASELINE 的 wi21-38），本地做逐窗口对比 + 敏感性分析，得出**与上一轮相反的结论**。
 
-**⚠️ 重要 caveat**：BASELINE 只有 **16 窗**（缺 ci0-b5 即 wi 37-42 的 6 个后段窗口，那些窗口收益通常很高），其他 3 候选是完整 **22 窗**。因此 BASELINE 的 1.16% **被低估**，直接对比略不公平。**需补全 BASELINE 后做同窗复核**。
+**重叠 18 窗（wi21-38）逐窗口对比（最公平）**：
+| 候选 | 跑赢 BASELINE | 平均超额 vs BASELINE |
+|---|---|---|
+| `SMART_BUY_15` | 8/18 (44%) | **-0.270%** |
+| `SMART_BUY_25` | 9/18 (50%) | **-0.121%** |
+| `SMART_MOD` | 0/18 (0%) | **+0.000%**（与基线完全相同）|
 
-**R21 目的达成**：SMART_MOD（修饰符模式，不占维度权重）≈ SMART_BUY_15（维度模式）≈ 3.3%，且都跑赢 BASELINE → **大佬因子值得保留**。修饰符模式与维度模式效果相当。
+**关键事实**：
+1. **`SMART_MOD` 在所有窗口收益与 `BASELINE` 完全一致**（wi24-38 全部相同数值）→ 修饰符逻辑在 OOS 中**零触发/零影响**（回调+大佬持仓信号在测试期极少满足条件，或匹配失败）。
+2. **BASELINE 缺的 4 窗（wi39-42）是高收益窗口**：wi41 参考值 +23~33%。用 ci1/ci3 敏感性补全后，**BASELINE 22窗 avg = 3.27~3.59%**，直接追平甚至反超 3 候选（3.09~3.37%）。
+3. 上一轮"BASELINE 1.16% + 大佬因子 +2.2%"是**假象**——只因 BASELINE 缺了高收益后段窗口被低估。
+
+**最终判断（数据支持）**：大佬因子（SMART_BUY 维度 / SMART_MOD 修饰符）在 R21 OOS 上**没有带来正超额收益**。SMART_BUY 略跑输，SMART_MOD 完全无效。**不推荐保留大佬因子作为增强方向。**
+
+**遗留**：ci0 BASELINE 的 wi39-42 仍缺（GitHub runner 上 ci0 后段窗口每个 >300s 超时被杀，ci1/2/3 能跑完但 ci0 不能——疑为 BASELINE 无信号过滤导致全市场扫描更慢）。需把 ci0-b5 的 timeout 单独提到 600s+ 或拆分窗口才能补全。
 
 ### R21 并行化历程（2026-08-09，血泪踩坑，务必参考！）
 GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历：
@@ -96,20 +103,18 @@ GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历�
 - 块窗口划分：b0=wi0-7, b1=wi8-15, b2=wi16-22, b3=wi23-29, b4=wi30-36, b5=wi37-42
 - 每窗口 `timeout 300`；job `timeout-minutes: 60`
 - **每块单进程**（无 OOM），**24 个 artifact**（上传可靠）
-- **待修复**：aggregate 最后 git push 报 `fatal: /: '/' is outside repository`，需修正（可能是 ROUND 变量在 bash 展开问题导致 add 路径错，或 push 需设置 remote）
+- **⚠️ aggregate 仍失败**：Commit results 步骤 `git push origin "HEAD:${GITHUB_REF_NAME}"` 在 `workflow_dispatch` 下 `GITHUB_REF_NAME` 可能为空 → 仍报 `fatal: /: '/' is outside repository`。**修复办法**：显式写死分支 `git push origin HEAD:master`（勿用 GITHUB_REF_NAME）。**但注意**：24 个 backtest job 的 artifacts 已在 run `31308921476` 里，可**直接下载聚合，无需重跑**（本次就是这么拿到公平结果的）。
 
 ### 成功 run 记录
-- **本次成功算出结果的 run**：run_id=`31302696102`，head=`a5bbfcf`，24 job 全完成（0 失败），aggregate 算出 eval 但 push 失败
+- **最新 run**：run_id=`31308921476`，head=`dd49383`，24 backtest job **全部 success**（含 ci0-b5 但该 job 实际 0 产出，见下），aggregate 仍 git push 失败
+- **上轮有结果 run**：run_id=`31302696102`，head=`a5bbfcf`，24 job 全完成，aggregate 算出 eval 但 push 失败
 - 之前失败 run（历史，勿再用）：`31299392136`、`31300564189`(v1 artifact丢)、`31301363828`(v2 OOM)、`31302050338`(v3 timeout)
 
-### ⚠️ 当前阻塞 + 下一步（2026-08-09 21:00 更新）
-- **R21 eval 没推到远程**：aggregate 最后 `git push` 报 `fatal: /: '/' is outside repository`（checkout 后 detached HEAD + push 无参数）。**已修好**：`.github/workflows/strict_oos_r21_parallel.yml` 的 Commit results 步骤改为显式 `git push origin "HEAD:${GITHUB_REF_NAME}"`，并用 `x-access-token:${GH_TOKEN}`。YAML 已验证通过。**commit 已在本地（`19df73c`），但尚未推送**。
-- **本地无法访问 GitHub**：Clash 代理未启动（系统代理 7890 开关 ProxyEnable=0、端口无监听），直连也被拒。**需用户打开 Clash/系统代理后，才能 `git push` 并重新触发 workflow**。
-- **重跑目的**：补全 BASELINE 缺失的 6 个窗口（ci0 wi37-42）。本地已知其中 2 个值（`strict_test_ci0_wi37/38.json`）：
-  - wi16(本地)/全局37: return **+25.61%**, bench +12.52% → **高收益窗口，大幅跑赢**
-  - wi17(本地)/全局38: return **-6.21%**, bench +2.41% → 跑输
-  - → 证实 BASELINE 只跑 16 窗被**低估**（缺的后段含高收益窗口）。**补全后 BASELINE 均值会上升，大佬因子超额会收窄，需同窗复核后下最终结论**。
-- **触发命令**（代理打开后）：用 PAT + `workflow_dispatch` 触发 `strict_oos_r21_parallel.yml`，24 job 约 12 分钟，聚合后 eval 自动 push 到远程。
+### ✅ 当前状态（2026-08-09 22:00 更新）
+- **已推送**：commit `dd49383`（workflow push 修复 + handoff 更新）已在 master 远程。
+- **已从 artifacts 拿到公平结果**：24 backtest job 的 artifacts 从 run `31308921476` 下载到本地，用 `scripts/_tmp_compare.py` / `_tmp_sensitivity.py` 做了逐窗口对比和敏感性分析，**结论已下（见上：大佬因子无正 alpha）**。
+- **eval.json 未 push 远程**：aggregate 仍报 push 错，且本地未生成 `v9-results/strict_oos_r21_eval.json`。若要落盘可本地跑 `python scripts/exp_strict_oos.py test`（需先把 `_r21x` 里的 json 放根目录，且确认无旧文件干扰）。
+- **后续若重跑**：把 Commit results 的 push 改写成 `git push origin HEAD:master`（写死分支，勿用 GITHUB_REF_NAME）。
 
 ### R21 框架（`scripts/exp_strict_oos.py`, `ROUND=21`）4 个候选
 1. `KC_AGGRESSIVE_BASELINE` — 基线（无大佬因子）
@@ -117,12 +122,11 @@ GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历�
 3. `KC_SMART_BUY_25` — 大佬因子作独立维度，weight=25
 4. `KC_SMART_MOD` — **大佬因子作加减分修饰符（不占维度权重）** ← R21 新增核心
 
-### 待新对话做（按优先级）
-1. **补全 BASELINE 缺的 6 窗**（wi 37-42），做公平对比：本地跑 `python scripts/exp_strict_oos.py run 0 37~42`（每窗~45s）
-2. **本地落盘 eval**：`v9-results/strict_oos_r21_eval.json`（当前无此文件，需从 aggregate 日志或重跑生成）
-3. **补全后复核**：确认 SMART_BUY/SMART_MOD 仍显著跑赢同窗 BASELINE
-4. 若确认跑赢 → 保留大佬因子 → 设计 R22；若同窗对比后优势消失 → 降权/移除
-5. **修复 aggregate 的 git push 报错**（见上）
+### 待新对话做（按优先级，2026-08-09 已下结论）
+1. **✅ 已下最终结论**：大佬因子在 R21 OOS 无正 alpha（重叠18窗 SMART_BUY 跑输/-0.1~-0.3%，SMART_MOD 与基线完全相同）。**R22 方向：不再以大佬因子作为增强主方向**，转而探索其他 alpha 来源（如动量/质量维度调参、行业轮动、更细的择时）。
+2. **（可选）落盘 eval**：`v9-results/strict_oos_r21_eval.json` 尚未生成。可在把 `_r21x` json 放根目录后本地跑 `python scripts/exp_strict_oos.py test` 生成并记录。
+3. **（可选）彻底补全 BASELINE wi39-42**：仅对 ci0-b5 单独跑，timeout 提到 600s+。但既然重叠 18 窗对比已足够下结论，此步非必需。
+4. **清理临时脚本/目录**：`scripts/_dl_r21_artifacts.py`、`_tmp_*.py`、`_tmp_r21/`、`_r21x/`、`_r21_artifacts/` 等是本次会话临时产物，结论落盘后可清理；根目录的 `strict_*.json` 是回测结果文件，可清理（它们是 artifacts 解压产物）。
 
 ### 如何查看 GitHub Actions 状态
 - API 轮询：`python scripts/_poll_r21_true_parallel.py`（脚本内改 RUN_ID 即可复用）
