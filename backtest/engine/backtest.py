@@ -252,21 +252,28 @@ def score_quality_backtest(chart_points, cutoff_date, scale_text=None, perf_data
     return DimensionScore(score=min(5.0, max(0, score * penalty)), weight=0.25, freshness_days=0)
 
 
-_SM_SIGNAL_CACHE = None  # 预计算信号缓存
+_SM_SIGNAL_CACHE = {}  # 预计算信号缓存, key=signal_line ("amount"/"return")
 
-def _load_sm_signals():
-    global _SM_SIGNAL_CACHE
-    if _SM_SIGNAL_CACHE is None:
-        sig_file = PROJECT_DIR / "data" / "smart_money_signals.json"
+_SIGNAL_FILE_NAMES = {
+    "amount": "smart_money_signals_amount.json",
+    "return": "smart_money_signals_ret.json",
+}
+
+def _load_sm_signals(signal_line="amount"):
+    """按线路加载预计算信号。signal_line: amount=持仓金额top3 / return=持仓收益率top3。"""
+    if signal_line not in _SM_SIGNAL_CACHE:
+        fname = _SIGNAL_FILE_NAMES.get(signal_line, "smart_money_signals_amount.json")
+        sig_file = PROJECT_DIR / "data" / fname
         if sig_file.exists():
-            _SM_SIGNAL_CACHE = json.loads(sig_file.read_text("utf-8"))
+            _SM_SIGNAL_CACHE[signal_line] = json.loads(sig_file.read_text("utf-8"))
         else:
-            _SM_SIGNAL_CACHE = {}
-    return _SM_SIGNAL_CACHE
+            _SM_SIGNAL_CACHE[signal_line] = {}
+    return _SM_SIGNAL_CACHE[signal_line]
 
 
 def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
-                         use_prebuilt_signal=False, as_modifier=False, consensus_layers=False):
+                         use_prebuilt_signal=False, as_modifier=False, consensus_layers=False,
+                         signal_line="amount"):
     global _SMART_MONEY_MODIFIER  # BUGFIX: 缺 global 声明会使赋值变成局部变量, 模块级变量恒为0.0, 修饰符模式完全失效
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
@@ -280,7 +287,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
     """
     # R20+: 预计算信号模式 (topgain>=4 + callback -10~-3% + net_buy>=1)
     if use_prebuilt_signal:
-        sigs = _load_sm_signals()
+        sigs = _load_sm_signals(signal_line)
         day_sigs = sigs.get(cutoff_date[:10], {})
         sig = day_sigs.get(fund_code, day_sigs.get(fund_name))
         if sig:
@@ -816,7 +823,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         allocation_data=None, fund_data_cache=None,
                         industry_data=None, weights=None,
                         use_prebuilt_signal=False,
-                        smart_money_modifier=False, consensus_layers=False):
+                        smart_money_modifier=False, consensus_layers=False,
+                        signal_line="amount"):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
@@ -880,7 +888,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                                      perf_data)
     smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code,
                 use_prebuilt_signal=use_prebuilt_signal,
-                as_modifier=smart_money_modifier, consensus_layers=consensus_layers)
+                as_modifier=smart_money_modifier, consensus_layers=consensus_layers,
+                signal_line=signal_line)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
@@ -2264,6 +2273,7 @@ def run_backtest(config, clear_cache=True):
                 use_prebuilt_signal=config.get("use_prebuilt_signal", False),
                 smart_money_modifier=config.get("smart_money_modifier", False),
                 consensus_layers=config.get("consensus_layers", False),
+                signal_line=config.get("signal_line", "amount"),
             )
             ft = fund_profiles.get(code, {}).get("fund_type", "")
             is_active = "指数" not in ft and "QDII" not in ft

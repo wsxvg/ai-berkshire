@@ -1,0 +1,119 @@
+# R23 Strict OOS — 双线路 top3 大佬因子 (修复未来泄露 + T+N) vs BASELINE
+# 背景:
+#   R21 证明老 SMART_MOD (低门槛) 无 alpha。
+#   R22 证明共识分层 (提高 net_buy 门槛) 无 alpha。
+#   本轮发现致命 bug: 旧信号构建用"全期期末累计持仓"算 player_top3,
+#     再判断每一天的信号 → 未来数据泄露, R20-R22 的大佬因子结果不可信。
+#   R23 用修复版信号:
+#     1. player_top3 逐日滚动, 只基于截至信号日的已确认持仓。
+#     2. 逐基金 T+N 确认规则 (买入/卖出份额在确认日才计入持仓)。
+#     3. 双线路: A=持仓金额top3, B=持仓收益率top3。
+#
+# 本 workflow: 只跑 ci1 (KC_SMART_AMOUNT) 和 ci2 (KC_SMART_RETURN) 的 22 个 OOS 窗口。
+#   BASELINE(ci0) 复用 R21 的 strict_test_ci0_wi*.json (同 config, 无需重跑)。
+#   拆 3 块 (每块 ~8 窗), 每块内顺序跑 ci1 + ci2, timeout 900。
+#   aggregate: 读 R21 ci0 (已提交到仓库) + R23 ci1/ci2 (本次跑) 一起汇总。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+# 每块跑 2 个候选 (ci1, ci2) × 窗口数 = 16 次 backtest。
+
+name: R23 OOS Dual-Line Smart Money
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run dual-line candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 900 python scripts/exp_strict_oos_r23.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
+            done
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R23 test files: $(ls strict_test_r23_ci1*.json strict_test_r23_ci2*.json 2>/dev/null | wc -l)"
+          ls strict_test_r23_ci*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r23-dualline-b${{ matrix.b }}
+          path: strict_test_r23_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R23 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r23_ci*.json' -exec cp {} ./ \;
+          echo "R23 test files: $(ls strict_test_r23_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r23.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r23_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R23 OOS eval: dual-line top3 smart money (amount/return) with T+N vs baseline"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"
