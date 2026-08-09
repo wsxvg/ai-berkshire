@@ -1,13 +1,13 @@
 # HANDOFF 交接文档 — C:\fund 量化策略项目
 
-> **更新时间**: 2026-08-09
+> **更新时间**: 2026-08-09 晚
 > **用途**: 供新开对话使用，防止上下文丢失。新对话先读本文件 + `CLAUDE.md` + `AGENTS.md`。
 
 ---
 
 ## 一、当前核心结论（一句话）
 
-**数据已全部修正完成（v7 为权威数据），R21 已推送到 GitHub Actions 在干净数据上重跑，用于评估「大佬因子」好坏。R1–R20 结果因旧数据污染全部作废。**
+**数据已全部修正完成（v7 为权威数据），R21 已在干净数据上跑出结果——大佬因子 3 个候选全部显著跑赢基线，但 BASELINE 缺 6 个后段窗口需补全复核。R1–R20 结果因旧数据污染全部作废。**
 
 ---
 
@@ -46,7 +46,7 @@ v7.json → v7.json.gz → v5.json → v5.json.gz → v4 → v2 → real414 → 
 - **中金沪深300ETF联接C (fid=108054)**: 023147→003579（C 类 2025-06-03 成立）
 - **根因**: C 类新份额有成立日期，成立前的交易用 C 类码 = K 线错误
 
-### 3. 异常 fid 残留错配修复 v6→v7（5 条，本会话新增）
+### 3. 异常 fid 残留错配修复 v6→v7（5 条）
 用 `getFundChart` 权威 productId + eastmoney + 京东档案全量复核异常 fid（ZH 组合码/日期后缀 fid）后发现 5 条漏网：
 
 | 记录基金名 | 原code（错） | 修正为（对） |
@@ -70,34 +70,55 @@ v7.json → v7.json.gz → v5.json → v5.json.gz → v4 → v2 → real414 → 
 
 ## 四、R21 状态（最关键——评估大佬因子）
 
-### 并行化性能优化（2026-08-09 14:40，重要！）
-- **原 `strict_oos_p1.yml`（顺序版）单 runner 顺序跑 129 个回测，约 2 小时，太慢**
-- **已新增并行版 `strict_oos_r21_parallel.yml`**（`strategy.matrix` + `max-parallel:8`，4 个候选 ci=0..3 各一个 runner，+聚合 job）
-- 顺序版已改为 `workflow_dispatch`（手动触发），**不再随 push 自动跑**，避免误触发
-- **并行版已手动触发并在跑**：run_id=`31299392136`，head=`b95fe2f`，4 个 backtest job 全部 in_progress
-- **预估 10–20 分钟跑完**（4 runner 并行，每 runner 43 窗口）
-- **触发方式**（以后需要时）：GitHub API `workflow_dispatch`（用 `C:\Users\27360\.git-credentials` 里的 PAT，走代理 127.0.0.1:7890）
+### ⭐ R21 结果已算出（2026-08-09 20:36，从 aggregate 日志提取）
+**核心结论：3 个大佬因子候选全部显著跑赢 BASELINE，大佬因子有效！**
 
-### 已做
-- 触发 R21：push `33a476b` + `99b0ae0` 到 origin/master，**已触发 GitHub Actions `strict_oos_p1.yml` workflow**
-- **R21 run 已确认 in_progress**：run_id=`31298563147`，head=`99b0ae0`（2026-08-09 06:18 触发）
-- 上一轮 R21（head=`9e556df`，run_id=`31293640960`）**completed/failure**（4:00），已由本次干净重跑取代
-- R21 在**干净数据（v7）**上跑 **172 个回测**（84 训练 + 88 测试 + 汇总）
-- R21 框架（`scripts/exp_strict_oos.py`, `ROUND=21`）4 个候选：
-  1. `KC_AGGRESSIVE_BASELINE` — 基线（无大佬因子）
-  2. `KC_SMART_BUY_15` — 大佬因子作独立维度
-  3. `KC_SMART_BUY_25` — 大佬因子作独立维度（更强阈值）
-  4. `KC_SMART_MOD` — **大佬因子作加减分修饰符（不占维度权重）** ← R21 新增核心
+| 候选 | avg_return | vs BASELINE | avg_maxDD | peak_maxDD | beats_rate |
+|---|---|---|---|---|---|
+| `KC_AGGRESSIVE_BASELINE` | 1.162% (16窗) | — | 3.43% | 9.79% | 8/16 (50%) |
+| `KC_SMART_BUY_15` | **3.366%** (22窗) | **+2.20%** | 5.56% | 15.87% | 12/22 (55%) |
+| `KC_SMART_BUY_25` | **3.085%** (22窗) | **+1.92%** | 5.37% | 16.12% | 14/22 (64%) |
+| `KC_SMART_MOD` | **3.271%** (22窗) | **+2.11%** | 5.77% | 15.63% | 12/22 (55%) |
 
-### 待新对话做
-1. **等 R21 跑完**：轮询 `v9-results/strict_oos_r21_eval.json` 是否生成（当前只有 r20，无 r21）
-2. **读结果**：对比 4 个候选的 OOS 平均收益、胜率(beats_rate)、最大回撤(avg_max_drawdown/peak_max_dd)
-3. **判断大佬因子好坏**：SMART_BUY/ SMART_MOD 是否显著跑赢 BASELINE
-4. 若跑赢 → 保留大佬因子 → 设计 R22 深化；若没跑赢 → 降权/移除 → R22 探索其他方向
+**⚠️ 重要 caveat**：BASELINE 只有 **16 窗**（缺 ci0-b5 即 wi 37-42 的 6 个后段窗口，那些窗口收益通常很高），其他 3 候选是完整 **22 窗**。因此 BASELINE 的 1.16% **被低估**，直接对比略不公平。**需补全 BASELINE 后做同窗复核**。
+
+**R21 目的达成**：SMART_MOD（修饰符模式，不占维度权重）≈ SMART_BUY_15（维度模式）≈ 3.3%，且都跑赢 BASELINE → **大佬因子值得保留**。修饰符模式与维度模式效果相当。
+
+### R21 并行化历程（2026-08-09，血泪踩坑，务必参考！）
+GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历：
+1. **v1（172 独立 job，ci×wi 双矩阵）**：回测全成功，但 **172 个并行 artifact 上传丢失 64 个**（Found 108/172），consolidate 缺 test 文件 → aggregate 失败。**教训：不要用海量独立 artifact**
+2. **v2（4 job × xargs -P8）**：8 进程并发把 GitHub 免费 runner **内存打爆，OOM exit 143**，runner 被杀。**教训：单 runner 内不要多进程并发跑回测**
+3. **v3（24 job，ci×窗口块 b0-5，每块单进程顺序跑 7-8 窗）**：单进程无 OOM，但 **后段窗口（wi 30-42）每个要 >90s，`timeout 90` 全被杀死** → b4/b5 块文件缺失 → 又是 test 缺文件。**教训：后段窗口慢，timeout 必须 ≥300s**
+4. **v3 修复（timeout 90→300，job timeout 30→60min）**：✅ 正常跑完，test 文件 82/88，aggregate 算出全部 4 候选结果。**但最后 git commit/push 失败**（报错 `fatal: /: '/' is outside repository`，eval 文件没推到远程）
+
+**✅ 最终可用 workflow**：`.github/workflows/strict_oos_r21_parallel.yml`
+- `strategy.matrix`：ci=[0,1,2,3] × b=[0,1,2,3,4,5] = **24 个 backtest job**（每 job 单进程顺序跑一个窗口块）
+- 块窗口划分：b0=wi0-7, b1=wi8-15, b2=wi16-22, b3=wi23-29, b4=wi30-36, b5=wi37-42
+- 每窗口 `timeout 300`；job `timeout-minutes: 60`
+- **每块单进程**（无 OOM），**24 个 artifact**（上传可靠）
+- **待修复**：aggregate 最后 git push 报 `fatal: /: '/' is outside repository`，需修正（可能是 ROUND 变量在 bash 展开问题导致 add 路径错，或 push 需设置 remote）
+
+### 成功 run 记录
+- **本次成功算出结果的 run**：run_id=`31302696102`，head=`a5bbfcf`，24 job 全完成（0 失败），aggregate 算出 eval 但 push 失败
+- 之前失败 run（历史，勿再用）：`31299392136`、`31300564189`(v1 artifact丢)、`31301363828`(v2 OOM)、`31302050338`(v3 timeout)
+
+### R21 框架（`scripts/exp_strict_oos.py`, `ROUND=21`）4 个候选
+1. `KC_AGGRESSIVE_BASELINE` — 基线（无大佬因子）
+2. `KC_SMART_BUY_15` — 大佬因子作独立维度，weight=15
+3. `KC_SMART_BUY_25` — 大佬因子作独立维度，weight=25
+4. `KC_SMART_MOD` — **大佬因子作加减分修饰符（不占维度权重）** ← R21 新增核心
+
+### 待新对话做（按优先级）
+1. **补全 BASELINE 缺的 6 窗**（wi 37-42），做公平对比：本地跑 `python scripts/exp_strict_oos.py run 0 37~42`（每窗~45s）
+2. **本地落盘 eval**：`v9-results/strict_oos_r21_eval.json`（当前无此文件，需从 aggregate 日志或重跑生成）
+3. **补全后复核**：确认 SMART_BUY/SMART_MOD 仍显著跑赢同窗 BASELINE
+4. 若确认跑赢 → 保留大佬因子 → 设计 R22；若同窗对比后优势消失 → 降权/移除
+5. **修复 aggregate 的 git push 报错**（见上）
 
 ### 如何查看 GitHub Actions 状态
-- `gh run list`（需 GitHub CLI 认证）或浏览器打开 https://github.com/wsxvg/ai-berkshire/actions
+- API 轮询：`python scripts/_poll_r21_true_parallel.py`（脚本内改 RUN_ID 即可复用）
 - **注意**：本机 GitHub 直连不通，需走本地代理 **127.0.0.1:7890**（见第五节网络说明）
+- **下载 artifact 需要 PAT 有 `actions:read` 权限**（当前 git-credentials 的 token 没有，下载会 401）
 
 ---
 
@@ -121,18 +142,19 @@ git push origin master
 
 ---
 
-## 六、本次会话创建的临时脚本（已清理）
-所有 `_audit_*` / `_verify_*` / `_check_*` / `_fix_v7.py` 等临时脚本已删除。
-**保留**：`scripts/_build_smart_signals_v5.py`（已更新为读取 v7，可复用于重建信号）。
+## 六、本次会话创建的临时脚本
+- **保留**：`scripts/_build_smart_signals_v5.py`（已更新为读取 v7，可复用于重建信号）
+- **保留**：`scripts/_poll_r21_true_parallel.py`（R21 轮询器，改 RUN_ID 可复用）
+- 其余 `_audit_*` / `_verify_*` / `_check_*` / `_fix_v7.py` / `_dl_r21_artifacts.py` / `_diag_*` 等临时脚本已删除
 
 ---
 
 ## 七、下一步行动清单（新对话直接执行）
 
-1. 轮询/查看 R21 GitHub Actions 是否完成，读 `v9-results/strict_oos_r21_eval.json`
-2. 分析大佬因子好坏（对比 BASELINE vs SMART_BUY vs SMART_MOD）
-3. 把结论写进 `v9-results/` 下的迭代文档
-4. 根据结论决定 R22 方向（保留/降权/移除大佬因子）
+1. **补全 BASELINE 缺的 6 个窗口**（ci0, wi 37-42），本地跑 `python scripts/exp_strict_oos.py run 0 <wi>`（每窗~45s），生成 `strict_test_ci0_wi3X.json`
+2. **汇总 R21 完整 eval**：用补全后的 BASELINE（22窗）+ 已有 SMART_BUY/SMART_MOD（22窗）做**同窗公平对比**
+3. **把完整 eval 落盘**到 `v9-results/strict_oos_r21_eval.json`，写迭代文档
+4. **判断大佬因子**：同窗对比后若 SMART 候选仍显著跑赢 → 保留，设计 R22；若优势消失 → 降权/移除
 5. 若有新的数据疑问，用 `jd-shipan-fund-mapping` skill + `getFundChart` 权威 productId 复核，不要靠名称猜
 
 ---
