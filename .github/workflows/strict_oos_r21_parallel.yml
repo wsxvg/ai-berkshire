@@ -1,12 +1,16 @@
-# R21 Strict OOS — 真并行 v2 (4 job × 内部 xargs 并行)
-# 上一版 (172 独立 artifact) 因 artifact 过多在 download 阶段丢失 64 个 test 文件。
+# R21 Strict OOS — 真并行 v3 (ci × 窗口块, 单进程无OOM, 少量artifact)
+# 历史教训:
+#   v1 (172独立job): 全部 success 但 artifact 上传丢失64个(108/172) → 聚合缺文件
+#   v2 (4 job × xargs -P8): OOM exit 143, runner 被杀
 #
-# 本版: 4 个 backtest job (ci=0..3)，每个 job 内部用 xargs -P8 并行跑 43 个窗口。
-#   只有 4 个 artifact → download 不会丢。
-#   xargs -P8: 单 runner 8 进程并行，43 窗口 ≈ ceil(43/8)=6 批。
-#   4 job 并行 + 内部 8 并发 → 总时长远小于顺序版。
+# 本版 v3: 每个 ci 拆 6 块(b=0..5), 每块单进程顺序跑 7-8 个窗口。
+#   - 单进程 → 无 OOM
+#   - 4 ci × 6 块 = 24 job → 24 个 artifact, 上传可靠
+#   - 每块 ≤8窗口 × ≤90s ≈ ≤12min; 24 job 并行 → 总时长 ~12min
 #
-# 触发: workflow_dispatch
+# 块窗口划分:
+#   b0: wi 0-7    b1: wi 8-15   b2: wi 16-22
+#   b3: wi 23-29  b4: wi 30-36  b5: wi 37-42
 
 name: R21 OOS Parallel
 
@@ -19,11 +23,13 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
     strategy:
       fail-fast: false
+      max-parallel: 24
       matrix:
-        ci: [0, 1, 2, 3]   # 4 个候选
+        ci: [0, 1, 2, 3]
+        b: [0, 1, 2, 3, 4, 5]
 
     steps:
       - uses: actions/checkout@v4
@@ -41,28 +47,38 @@ jobs:
           gunzip -kf fund_charts.json.gz 2>/dev/null || true
           cd ../..
 
-      - name: Run all 43 windows for candidate ${{ matrix.ci }} (xargs -P8)
+      - name: Run window block for candidate ${{ matrix.ci }} block ${{ matrix.b }} (sequential, single process)
         run: |
-          # 生成窗口列表，xargs -P8 并行跑，每个窗口独立进程
-          seq 0 42 | xargs -P8 -I{} bash -c '
-            wi="{}"
-            ci="${{ matrix.ci }}"
-            out=$(timeout 120 python scripts/exp_strict_oos.py run "$ci" "$wi" 2>&1 | tail -1)
-            echo "[ci=$ci wi=$wi] $out"
-            echo "$out" >> r21_ci${ci}_log.txt
-          '
-          echo "=== ci=${{ matrix.ci }} done ==="
+          python - <<'PY'
+import sys
+blocks = {
+    0: range(0, 8),
+    1: range(8, 16),
+    2: range(16, 23),
+    3: range(23, 30),
+    4: range(30, 37),
+    5: range(37, 43),
+}
+ci = int("${{ matrix.ci }}")
+b = int("${{ matrix.b }}")
+wins = ",".join(str(w) for w in blocks[b])
+print(f"ci={ci} block={b} windows=[{wins}]")
+PY
+          for wi in $(python -c "import sys; ci=int('${{ matrix.ci }}'); b=int('${{ matrix.b }}'); blocks={0:range(0,8),1:range(8,16),2:range(16,23),3:range(23,30),4:range(30,37),5:range(37,43)}; print(' '.join(map(str,blocks[b])))"); do
+            echo "[ci=${{ matrix.ci }} wi=$wi] $(date '+%H:%M')"
+            timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} "$wi" 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
+          done
 
       - name: Count produced files
         run: |
           echo "train files: $(ls strict_ci${{ matrix.ci }}*.json 2>/dev/null | wc -l)"
           echo "test files:  $(ls strict_test_ci${{ matrix.ci }}*.json 2>/dev/null | wc -l)"
 
-      - name: Upload result (single artifact per ci)
+      - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: strict-ci${{ matrix.ci }}
+          name: strict-ci${{ matrix.ci }}-b${{ matrix.b }}
           path: |
             strict_ci${{ matrix.ci }}*.json
             strict_test_ci${{ matrix.ci }}*.json
@@ -101,5 +117,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git diff --cached --quiet || git commit -m "R21 OOS results (parallel v2 xargs): smart money modifier mode"
+          git diff --cached --quiet || git commit -m "R21 OOS results (parallel v3 blocks): smart money modifier mode"
           git push
