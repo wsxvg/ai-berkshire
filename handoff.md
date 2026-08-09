@@ -7,7 +7,9 @@
 
 ## 一、当前核心结论（一句话）
 
-**数据已全部修正完成（v7 为权威数据），R21 已跑完并补全 BASELINE 全部 6 窗，完成 4 候选 × 22 窗同窗公平对比——最终结论：大佬因子（smart_money）无净 alpha，放弃该因子，保留 BASELINE 作为 R22 起点。R1–R20 结果因旧数据污染全部作废。**
+**R21 修正版结论（2026-08-09 晚，重跑已完成）：发现并修复了 `score_smart_money_backtest()` 缺 `global _SMART_MONEY_MODIFIER` 的 bug（该 bug 让 SMART_MOD 在初版 22 窗全部退化成 BASELINE，制造"大佬因子无用"的假象）。修复后重跑 ci3 证明：SMART_MOD 确实改变持仓（9/22 窗与基线不同），但**平均收益 -0.001%、peak MaxDD 恶化到 16.43%**——独立维度（SMART_BUY ±0.09~-0.19%）和修饰符两种方式均无正净 alpha。因此"放弃大佬因子、保留 BASELINE"的**方向判断仍成立**，但原因修正为"触发了但确实没 alpha"。R1–R20 结果因旧数据污染作废。**
+
+**（以下为中间结论，已被上方取代，保留作历史）"大佬因子无 alpha"初判曾因 global bug 被推翻，修复后重跑确认方向不变。**
 
 ---
 
@@ -70,6 +72,13 @@ v7.json → v7.json.gz → v5.json → v5.json.gz → v4 → v2 → real414 → 
 
 ## 四、R21 状态（最关键——评估大佬因子）
 
+### 🔴 R21 结论修正公告（2026-08-09 晚，重跑已完成）
+**发现致命 bug，R21 初版对 SMART_MOD 的结论作废。** `score_smart_money_backtest()`（`backtest/engine/backtest.py` 第 268 行）给全局变量 `_SMART_MONEY_MODIFIER` 赋值（0.5/0.3/0.0）时**没有 `global` 声明**，导致这些赋值成为函数局部变量，模块级变量恒为 0.0。于是 `score_fund_backtest()`（第 1005 行）读到的修饰符**永远是 0.0**，**SMART_MOD 在初版全部 22 窗 === BASELINE 是必然，不是"信号未触发"，而是"触发了但没生效"**。初版"修饰符逻辑零触发/零影响"是误判。
+
+- **修复**：commit `61f00ec` 在 `score_smart_money_backtest` 首行加 `global _SMART_MONEY_MODIFIER`。已验证：强信号（2023-11-23/161725, cb=-7.07,tg=4,nb=2）修复后返回 0.5，无信号返回 0.0。✅
+- **影响范围**：仅 SMART_MOD（ci3）受影响。SMART_BUY_15/25（ci1/2）用原始模式（直接返回 DimensionScore 带 score），**不受 global bug 影响，结果真实**。
+- **重跑结果（已出）**：`.github/workflows/strict_oos_r21_smartmod_rerun.yml` 已在 GitHub Actions 跑完（run `31313216507`，4 job 全 success），修复后 ci3 与 BASELINE 在 **9/22 窗不同**（修饰符确实生效），但**平均收益 -0.001%、peak MaxDD 恶化到 16.43%**——修饰符模式无净 alpha。**结论：放弃大佬因子方向不变，但原因修正为"触发了但确实没 alpha"。**
+
 ### ⭐ R21 结果（2026-08-09 更新——**结论颠覆，谨慎！**）
 **⚠️ 核心结论已反转：补全 BASELINE 后，大佬因子无正 alpha，此前"跑赢基线"是缺窗口造成的假象！**
 
@@ -123,11 +132,10 @@ GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历�
 3. `KC_SMART_BUY_25` — 大佬因子作独立维度，weight=25
 4. `KC_SMART_MOD` — **大佬因子作加减分修饰符（不占维度权重）** ← R21 新增核心
 
-### 待新对话做（按优先级，2026-08-09 已下结论）
-1. **✅ 已下最终结论**：大佬因子在 R21 OOS 无正 alpha（重叠18窗 SMART_BUY 跑输/-0.1~-0.3%，SMART_MOD 与基线完全相同）。**R22 方向：不再以大佬因子作为增强主方向**，转而探索其他 alpha 来源（如动量/质量维度调参、行业轮动、更细的择时）。
-2. **（可选）落盘 eval**：`v9-results/strict_oos_r21_eval.json` 尚未生成。可在把 `_r21x` json 放根目录后本地跑 `python scripts/exp_strict_oos.py test` 生成并记录。
-3. **（可选）彻底补全 BASELINE wi39-42**：仅对 ci0-b5 单独跑，timeout 提到 600s+。但既然重叠 18 窗对比已足够下结论，此步非必需。
-4. **清理临时脚本/目录**：`scripts/_dl_r21_artifacts.py`、`_tmp_*.py`、`_tmp_r21/`、`_r21x/`、`_r21_artifacts/` 等是本次会话临时产物，结论落盘后可清理；根目录的 `strict_*.json` 是回测结果文件，可清理（它们是 artifacts 解压产物）。
+### 待新对话做（按优先级，2026-08-09 晚重跑完成后）
+1. **✅ R21 修正版结论已确认**：修复 global bug 后重跑 ci3（run `31313216507`），SMART_MOD 确实改变持仓（9/22 窗不同）但平均收益 -0.001%、peak MaxDD 16.43%——修饰符模式无净 alpha。**结论：放弃大佬因子方向不变，原因修正为"触发了但确实没 alpha"。** eval 已重聚落盘。
+2. **R22 方向**：不再以大佬因子为增强主方向，基于 BASELINE（KC_AGGRESSIVE_BASELINE）探索其他 alpha（动量/质量调参、行业轮动、择时细化）。若未来再引入 smart_money，务必先用单元测试验证修饰符确实改变分数（本次教训）。
+3. **清理临时脚本/目录**：`_ci3_rerun/`（重跑下载产物，eval 已落盘可删）、`scripts/_dl_r21_artifacts.py`、`_tmp_*.py`、`_r21x/`、`_r21_artifacts/` 等可清理；根目录的 `strict_*.json` 是回测结果文件，可清理（eval 已落盘）。
 
 ### 如何查看 GitHub Actions 状态
 - API 轮询：`python scripts/_poll_r21_true_parallel.py`（脚本内改 RUN_ID 即可复用）
@@ -165,16 +173,16 @@ git push origin master
 
 ## 七、下一步行动清单（新对话直接执行）
 
-### R21 已全部完成（2026-08-09 23:00）
-1. **✅ 补全 BASELINE 6 窗（wi37-42）**：已在 Actions 跑完（run `31310382385`），timeout 900。
-2. **✅ 完整 22 窗公平 eval 落盘**：`v9-results/strict_oos_r21_eval.json`（4 候选 × 22 窗），已 push（commit `2e98080`）。
-3. **✅ 判断大佬因子**：**无净 alpha，放弃 smart_money，保留 BASELINE**。
-4. **迭代文档**：`v9-results/STRATEGY_EVOLUTION_R21.md` 已写，已 push。
+### R21 状态（2026-08-09 晚更新——bug 已修复，重跑已完成，修正结论落盘）
+1. **✅ 已修复 bug**：`score_smart_money_backtest()` 补 `global _SMART_MONEY_MODIFIER` 声明（commit `61f00ec`）。初版 SMART_MOD 因该 bug 在 22 窗全 ≡ BASELINE，初版结论作废。
+2. **✅ 重跑已完成**：`.github/workflows/strict_oos_r21_smartmod_rerun.yml` 在 Actions 跑完（run `31313216507`，4 job 全 success），修复后 ci3 与 BASELINE 在 9/22 窗不同。
+3. **✅ 修正结论已落盘**：SMART_MOD 平均收益 -0.001%、peak MaxDD 16.43%——修饰符模式无净 alpha。`v9-results/strict_oos_r21_eval.json` 已重聚。
+4. **✅ ci0/1/2 复用**：BASELINE/SMART_BUY_15/SMART_BUY_25 不受 bug 影响，结果真实有效。
 
-### 下一步（R22 方向）
+### 下一步（R22 方向——已确认）
 1. **R22 设计**：不再以大佬因子为增强主方向，基于 BASELINE（KC_AGGRESSIVE_BASELINE）探索其他 alpha：动量/质量维度调参、行业轮动、择时细化。
 2. **遗留（可选）**：`strict_oos_r21_parallel.yml` 的 aggregate push 仍失败（GITHUB_REF_NAME 为空），可改 `git push origin HEAD:master`。但 aggregate 非必需（可下载 artifact 本地聚合）。
-3. **清理（可选）**：根目录的 88 个 `strict_test_ci*.json` 是回测结果文件（可删，eval 已落盘）；`scripts/_dl_r21_artifacts.py`、`scripts/_poll_r21_*.py` 可保留（复用于下载/轮询）。
+3. **清理（可选）**：`_ci3_rerun/`、根目录的 88 个 `strict_test_ci*.json`（eval 已落盘可删）；`scripts/_dl_r21_artifacts.py`、`scripts/_poll_r21_*.py` 可保留（复用于下载/轮询）。
 5. 若有新的数据疑问，用 `jd-shipan-fund-mapping` skill + `getFundChart` 权威 productId 复核，不要靠名称猜
 
 ---
