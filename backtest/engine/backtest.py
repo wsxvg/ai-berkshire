@@ -267,6 +267,7 @@ def _load_sm_signals():
 
 def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
                                 use_prebuilt_signal=False, as_modifier=False):
+    global _SMART_MONEY_MODIFIER  # BUGFIX: 缺 global 声明会使赋值变成局部变量, 模块级变量恒为0.0, 修饰符模式完全失效
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
     trading_by_date: {"2026-01-15": [{fund_name, action, _user, fund_code?}, ...]}

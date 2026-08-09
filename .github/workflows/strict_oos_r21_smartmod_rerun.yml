@@ -1,0 +1,69 @@
+# R21 SMART_MOD (ci=3) 修正重跑 workflow
+# 背景: 发现 backtest.py 中 _SMART_MONEY_MODIFIER 缺 global 声明,
+#       导致修饰符模式(SMART_MOD) 的加成从未生效, 22窗全部 === BASELINE。
+#       本 workflow 在修复后重跑 ci3 的 22 个测试窗口 (wi21-42)。
+# 说明: ci0/1/2 (BASELINE/SMART_BUY_15/SMART_BUY_25) 不受该 bug 影响, 结果仍有效, 无需重跑。
+# 分块: 4 个 job, 每 job 顺序跑若干窗口。前端窗口快, 后端窗口慢, 统一 timeout 900。
+
+name: R21 SMART_MOD Rerun
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - job_id: a
+            wins: "21 22 23 24 25 26"
+          - job_id: b
+            wins: "27 28 29 30 31 32"
+          - job_id: c
+            wins: "33 34 35 36 37 38"
+          - job_id: d
+            wins: "39 40 41 42"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run SMART_MOD windows (${{ matrix.wins }})
+        run: |
+          for wi in ${{ matrix.wins }}; do
+            echo "[ci=3 wi=$wi] $(date '+%H:%M')"
+            timeout 900 python scripts/exp_strict_oos.py run 3 "$wi" 2>&1 | tail -3
+            echo "rc=$? wi=$wi $(date '+%H:%M')"
+          done
+
+      - name: Count produced files
+        run: |
+          echo "ci3 test files: $(ls strict_test_ci3*.json 2>/dev/null | wc -l)"
+          ls strict_test_ci3*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strict-ci3-rerun-${{ matrix.job_id }}
+          path: strict_test_ci3*.json
+          if-no-files-found: warn
