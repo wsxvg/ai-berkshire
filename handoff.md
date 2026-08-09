@@ -7,7 +7,7 @@
 
 ## 一、当前核心结论（一句话）
 
-**数据已全部修正完成（v7 为权威数据），R21 已在干净数据上跑出结果——大佬因子 3 个候选全部显著跑赢基线，但 BASELINE 缺 6 个后段窗口需补全复核。R1–R20 结果因旧数据污染全部作废。**
+**数据已全部修正完成（v7 为权威数据），R21 已跑完并补全 BASELINE 全部 6 窗，完成 4 候选 × 22 窗同窗公平对比——最终结论：大佬因子（smart_money）无净 alpha，放弃该因子，保留 BASELINE 作为 R22 起点。R1–R20 结果因旧数据污染全部作废。**
 
 ---
 
@@ -110,11 +110,12 @@ GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历�
 - **上轮有结果 run**：run_id=`31302696102`，head=`a5bbfcf`，24 job 全完成，aggregate 算出 eval 但 push 失败
 - 之前失败 run（历史，勿再用）：`31299392136`、`31300564189`(v1 artifact丢)、`31301363828`(v2 OOM)、`31302050338`(v3 timeout)
 
-### ✅ 当前状态（2026-08-09 22:00 更新）
-- **已推送**：commit `dd49383`（workflow push 修复 + handoff 更新）已在 master 远程。
-- **已从 artifacts 拿到公平结果**：24 backtest job 的 artifacts 从 run `31308921476` 下载到本地，用 `scripts/_tmp_compare.py` / `_tmp_sensitivity.py` 做了逐窗口对比和敏感性分析，**结论已下（见上：大佬因子无正 alpha）**。
-- **eval.json 未 push 远程**：aggregate 仍报 push 错，且本地未生成 `v9-results/strict_oos_r21_eval.json`。若要落盘可本地跑 `python scripts/exp_strict_oos.py test`（需先把 `_r21x` 里的 json 放根目录，且确认无旧文件干扰）。
-- **后续若重跑**：把 Commit results 的 push 改写成 `git push origin HEAD:master`（写死分支，勿用 GITHUB_REF_NAME）。
+### ✅ 当前状态（2026-08-09 23:00 更新——补全完成，eval 已落盘推送）
+- **✅ 已补全 BASELINE 全部 6 窗（wi37-42）**：新建 `.github/workflows/strict_oos_r21_baseline_backfill.yml`（3 job × 2 窗，`timeout 900`，commit `6fe758e`），在 Actions 上跑完 run `31310382385` 全部 success。补全的 6 窗：wi37(+25.6%) wi38(-6.2%) wi39(+8.2%) wi40(-5.8%) wi41(+30.7%) wi42(+0.9%)，均值 ~+8.8%/窗（确认为高收益段）。
+- **✅ 完整 22 窗公平 eval 已落盘**：下载全部 4 候选 × 22 窗窗口数据（run `31308921476` 的 ci1/2/3 artifact + ci0 b0-b4 artifact + 补跑的 ci0 b5），本地 `python scripts/exp_strict_oos.py test` 生成 `v9-results/strict_oos_r21_eval.json`，并已 push 到 master（commit `2e98080`）。
+- **✅ 最终结论（22 窗同窗公平对比）**：见下方表格——大佬因子**无净 alpha**，保留 BASELINE，放弃 smart_money。
+- **⚠️ ci0-b5 超时根因**：`strict_oos_r21_parallel.yml` 的 b5 块 `timeout 300` 对 ci0 后段窗口不够（每窗 >300s，BASELINE 无信号过滤全市场扫描更慢），导致 wi37-42 全被杀。补跑 workflow 已用 `timeout 900` 解决。
+- **aggregate 的 git push 修复**：把 Commit results 的 push 改写成 `git push origin "HEAD:${GITHUB_REF_NAME}"` 仍会因 `workflow_dispatch` 下 `GITHUB_REF_NAME` 为空而报 `fatal: /: '/' is outside repository`。**建议写死 `git push origin HEAD:master`**。但 aggregate 非必需（可直接下载 artifact 本地聚合，本次即如此）。
 
 ### R21 框架（`scripts/exp_strict_oos.py`, `ROUND=21`）4 个候选
 1. `KC_AGGRESSIVE_BASELINE` — 基线（无大佬因子）
@@ -164,10 +165,16 @@ git push origin master
 
 ## 七、下一步行动清单（新对话直接执行）
 
-1. **补全 BASELINE 缺的 6 个窗口**（ci0, wi 37-42），本地跑 `python scripts/exp_strict_oos.py run 0 <wi>`（每窗~45s），生成 `strict_test_ci0_wi3X.json`
-2. **汇总 R21 完整 eval**：用补全后的 BASELINE（22窗）+ 已有 SMART_BUY/SMART_MOD（22窗）做**同窗公平对比**
-3. **把完整 eval 落盘**到 `v9-results/strict_oos_r21_eval.json`，写迭代文档
-4. **判断大佬因子**：同窗对比后若 SMART 候选仍显著跑赢 → 保留，设计 R22；若优势消失 → 降权/移除
+### R21 已全部完成（2026-08-09 23:00）
+1. **✅ 补全 BASELINE 6 窗（wi37-42）**：已在 Actions 跑完（run `31310382385`），timeout 900。
+2. **✅ 完整 22 窗公平 eval 落盘**：`v9-results/strict_oos_r21_eval.json`（4 候选 × 22 窗），已 push（commit `2e98080`）。
+3. **✅ 判断大佬因子**：**无净 alpha，放弃 smart_money，保留 BASELINE**。
+4. **迭代文档**：`v9-results/STRATEGY_EVOLUTION_R21.md` 已写，已 push。
+
+### 下一步（R22 方向）
+1. **R22 设计**：不再以大佬因子为增强主方向，基于 BASELINE（KC_AGGRESSIVE_BASELINE）探索其他 alpha：动量/质量维度调参、行业轮动、择时细化。
+2. **遗留（可选）**：`strict_oos_r21_parallel.yml` 的 aggregate push 仍失败（GITHUB_REF_NAME 为空），可改 `git push origin HEAD:master`。但 aggregate 非必需（可下载 artifact 本地聚合）。
+3. **清理（可选）**：根目录的 88 个 `strict_test_ci*.json` 是回测结果文件（可删，eval 已落盘）；`scripts/_dl_r21_artifacts.py`、`scripts/_poll_r21_*.py` 可保留（复用于下载/轮询）。
 5. 若有新的数据疑问，用 `jd-shipan-fund-mapping` skill + `getFundChart` 权威 productId 复核，不要靠名称猜
 
 ---
