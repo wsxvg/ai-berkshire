@@ -1,12 +1,12 @@
-# R21 Strict OOS — 真并行版 (窗口级全并行)
-# 将 4 个候选(ci=0..3) × 43 窗口(wi=0..42) 拆成 172 个独立 job 全并行。
-# 每个 job 只跑 1 个窗口，彻底消除单 job 内部串行瓶颈。
+# R21 Strict OOS — 真并行 v2 (4 job × 内部 xargs 并行)
+# 上一版 (172 独立 artifact) 因 artifact 过多在 download 阶段丢失 64 个 test 文件。
 #
-# 相比上一版 (每个 job 内部串行跑 43 窗口 ~65min)：
-#   本版 172 job 全并行，预计 5-10 分钟完成。
+# 本版: 4 个 backtest job (ci=0..3)，每个 job 内部用 xargs -P8 并行跑 43 个窗口。
+#   只有 4 个 artifact → download 不会丢。
+#   xargs -P8: 单 runner 8 进程并行，43 窗口 ≈ ceil(43/8)=6 批。
+#   4 job 并行 + 内部 8 并发 → 总时长远小于顺序版。
 #
-# 触发: workflow_dispatch (手动)
-# 聚合: aggregate job 下载所有 job 的 artifact，合并后跑 OOS eval + commit。
+# 触发: workflow_dispatch
 
 name: R21 OOS Parallel
 
@@ -19,15 +19,11 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
-      max-parallel: 50        # GitHub 允许并发 job 数上限，尽量开大
       matrix:
-        ci: [0, 1, 2, 3]      # 4 个候选
-        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-             20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
-             38, 39, 40, 41, 42]   # 43 个窗口
+        ci: [0, 1, 2, 3]   # 4 个候选
 
     steps:
       - uses: actions/checkout@v4
@@ -45,15 +41,28 @@ jobs:
           gunzip -kf fund_charts.json.gz 2>/dev/null || true
           cd ../..
 
-      - name: Run candidate ${{ matrix.ci }} window ${{ matrix.wi }}
+      - name: Run all 43 windows for candidate ${{ matrix.ci }} (xargs -P8)
         run: |
-          timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} ${{ matrix.wi }} 2>&1 | tail -1 || echo "SKIP ci=${{ matrix.ci }} wi=${{ matrix.wi }} (timeout/error)"
+          # 生成窗口列表，xargs -P8 并行跑，每个窗口独立进程
+          seq 0 42 | xargs -P8 -I{} bash -c '
+            wi="{}"
+            ci="${{ matrix.ci }}"
+            out=$(timeout 120 python scripts/exp_strict_oos.py run "$ci" "$wi" 2>&1 | tail -1)
+            echo "[ci=$ci wi=$wi] $out"
+            echo "$out" >> r21_ci${ci}_log.txt
+          '
+          echo "=== ci=${{ matrix.ci }} done ==="
 
-      - name: Upload result
+      - name: Count produced files
+        run: |
+          echo "train files: $(ls strict_ci${{ matrix.ci }}*.json 2>/dev/null | wc -l)"
+          echo "test files:  $(ls strict_test_ci${{ matrix.ci }}*.json 2>/dev/null | wc -l)"
+
+      - name: Upload result (single artifact per ci)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: strict-ci${{ matrix.ci }}-wi${{ matrix.wi }}
+          name: strict-ci${{ matrix.ci }}
           path: |
             strict_ci${{ matrix.ci }}*.json
             strict_test_ci${{ matrix.ci }}*.json
@@ -92,5 +101,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git diff --cached --quiet || git commit -m "R21 OOS results (true parallel): smart money modifier mode"
+          git diff --cached --quiet || git commit -m "R21 OOS results (parallel v2 xargs): smart money modifier mode"
           git push
