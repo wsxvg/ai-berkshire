@@ -1,9 +1,12 @@
-# R21 Strict OOS — 并行版 (max-parallel: 8)
-# 将 4 个候选(ci=0..3) × 43 窗口拆到多个 runner 并行跑，再聚合出 OOS eval。
-# 相比 strict_oos_p1.yml (单 runner 顺序跑 129 个回测 ~2h)，本版预计 15-25 分钟。
+# R21 Strict OOS — 真并行版 (窗口级全并行)
+# 将 4 个候选(ci=0..3) × 43 窗口(wi=0..42) 拆成 172 个独立 job 全并行。
+# 每个 job 只跑 1 个窗口，彻底消除单 job 内部串行瓶颈。
 #
-# 触发: workflow_dispatch (手动)，避免与 push 触发的顺序版冲突。
-# 也可在需要时通过 GitHub API 手动触发。
+# 相比上一版 (每个 job 内部串行跑 43 窗口 ~65min)：
+#   本版 172 job 全并行，预计 5-10 分钟完成。
+#
+# 触发: workflow_dispatch (手动)
+# 聚合: aggregate job 下载所有 job 的 artifact，合并后跑 OOS eval + commit。
 
 name: R21 OOS Parallel
 
@@ -16,12 +19,15 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 30
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 50        # GitHub 允许并发 job 数上限，尽量开大
       matrix:
-        ci: [0, 1, 2, 3]   # 4 个候选并行
+        ci: [0, 1, 2, 3]      # 4 个候选
+        wi: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+             20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+             38, 39, 40, 41, 42]   # 43 个窗口
 
     steps:
       - uses: actions/checkout@v4
@@ -30,27 +36,27 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run all windows for candidate ${{ matrix.ci }}
-        run: |
-          # 43 个窗口 (wi 0..42)，本 runner 只跑自己 ci 的全部窗口
-          for wi in $(seq 0 42); do
-            echo "[ci=${{ matrix.ci }} wi=$wi] $(date '+%H:%M')"
-            timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} $wi 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
-          done
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
 
-      - name: Count produced files
+      - name: Decompress data
         run: |
-          echo "train files: $(ls strict_ci*.json 2>/dev/null | wc -l)"
-          echo "test files:  $(ls strict_test_ci*.json 2>/dev/null | wc -l)"
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
 
-      - name: Upload results
+      - name: Run candidate ${{ matrix.ci }} window ${{ matrix.wi }}
+        run: |
+          timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} ${{ matrix.wi }} 2>&1 | tail -1 || echo "SKIP ci=${{ matrix.ci }} wi=${{ matrix.wi }} (timeout/error)"
+
+      - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: strict-ci${{ matrix.ci }}
+          name: strict-ci${{ matrix.ci }}-wi${{ matrix.wi }}
           path: |
-            strict_ci*.json
-            strict_test_ci*.json
+            strict_ci${{ matrix.ci }}*.json
+            strict_test_ci${{ matrix.ci }}*.json
           if-no-files-found: warn
 
   aggregate:
@@ -86,5 +92,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git diff --cached --quiet || git commit -m "R21 OOS results (parallel): smart money modifier mode"
+          git diff --cached --quiet || git commit -m "R21 OOS results (true parallel): smart money modifier mode"
           git push
