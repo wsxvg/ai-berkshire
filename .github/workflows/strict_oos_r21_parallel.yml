@@ -100,10 +100,19 @@ jobs:
         run: python scripts/exp_strict_oos.py test
 
       - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -e
           ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add v9-results/strict_oos_r${ROUND}_eval.json
-          git diff --cached --quiet || git commit -m "R21 OOS results (parallel v3 blocks): smart money modifier mode"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R21 OOS eval results: smart money modifier mode (parallel v3)"
+          fi
+          # detached HEAD 下 git push 不带参数会报错, 显式推到当前分支
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
