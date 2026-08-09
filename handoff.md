@@ -102,6 +102,15 @@ GitHub Actions 并行化连续踩坑，**最终方案才可用**。完整经历�
 - **本次成功算出结果的 run**：run_id=`31302696102`，head=`a5bbfcf`，24 job 全完成（0 失败），aggregate 算出 eval 但 push 失败
 - 之前失败 run（历史，勿再用）：`31299392136`、`31300564189`(v1 artifact丢)、`31301363828`(v2 OOM)、`31302050338`(v3 timeout)
 
+### ⚠️ 当前阻塞 + 下一步（2026-08-09 21:00 更新）
+- **R21 eval 没推到远程**：aggregate 最后 `git push` 报 `fatal: /: '/' is outside repository`（checkout 后 detached HEAD + push 无参数）。**已修好**：`.github/workflows/strict_oos_r21_parallel.yml` 的 Commit results 步骤改为显式 `git push origin "HEAD:${GITHUB_REF_NAME}"`，并用 `x-access-token:${GH_TOKEN}`。YAML 已验证通过。**commit 已在本地（`19df73c`），但尚未推送**。
+- **本地无法访问 GitHub**：Clash 代理未启动（系统代理 7890 开关 ProxyEnable=0、端口无监听），直连也被拒。**需用户打开 Clash/系统代理后，才能 `git push` 并重新触发 workflow**。
+- **重跑目的**：补全 BASELINE 缺失的 6 个窗口（ci0 wi37-42）。本地已知其中 2 个值（`strict_test_ci0_wi37/38.json`）：
+  - wi16(本地)/全局37: return **+25.61%**, bench +12.52% → **高收益窗口，大幅跑赢**
+  - wi17(本地)/全局38: return **-6.21%**, bench +2.41% → 跑输
+  - → 证实 BASELINE 只跑 16 窗被**低估**（缺的后段含高收益窗口）。**补全后 BASELINE 均值会上升，大佬因子超额会收窄，需同窗复核后下最终结论**。
+- **触发命令**（代理打开后）：用 PAT + `workflow_dispatch` 触发 `strict_oos_r21_parallel.yml`，24 job 约 12 分钟，聚合后 eval 自动 push 到远程。
+
 ### R21 框架（`scripts/exp_strict_oos.py`, `ROUND=21`）4 个候选
 1. `KC_AGGRESSIVE_BASELINE` — 基线（无大佬因子）
 2. `KC_SMART_BUY_15` — 大佬因子作独立维度，weight=15
