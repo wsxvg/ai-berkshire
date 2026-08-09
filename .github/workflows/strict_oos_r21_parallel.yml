@@ -49,22 +49,10 @@ jobs:
 
       - name: Run window block for candidate ${{ matrix.ci }} block ${{ matrix.b }} (sequential, single process)
         run: |
-          python - <<'PY'
-import sys
-blocks = {
-    0: range(0, 8),
-    1: range(8, 16),
-    2: range(16, 23),
-    3: range(23, 30),
-    4: range(30, 37),
-    5: range(37, 43),
-}
-ci = int("${{ matrix.ci }}")
-b = int("${{ matrix.b }}")
-wins = ",".join(str(w) for w in blocks[b])
-print(f"ci={ci} block={b} windows=[{wins}]")
-PY
-          for wi in $(python -c "import sys; ci=int('${{ matrix.ci }}'); b=int('${{ matrix.b }}'); blocks={0:range(0,8),1:range(8,16),2:range(16,23),3:range(23,30),4:range(30,37),5:range(37,43)}; print(' '.join(map(str,blocks[b])))"); do
+          START=(0 8 16 23 30 37)
+          END=(7 15 22 29 36 42)
+          b=${{ matrix.b }}
+          for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
             echo "[ci=${{ matrix.ci }} wi=$wi] $(date '+%H:%M')"
             timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} "$wi" 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
           done
