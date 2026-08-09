@@ -23,7 +23,7 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       max-parallel: 24
@@ -54,7 +54,7 @@ jobs:
           b=${{ matrix.b }}
           for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
             echo "[ci=${{ matrix.ci }} wi=$wi] $(date '+%H:%M')"
-            timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} "$wi" 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
+            timeout 300 python scripts/exp_strict_oos.py run ${{ matrix.ci }} "$wi" 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
           done
 
       - name: Count produced files
