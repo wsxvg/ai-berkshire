@@ -1,0 +1,65 @@
+# R21 BASELINE (ci=0) 后段窗口补跑 workflow
+# 目的: 补全 ci0 的 wi 37-42 (BASELINE 缺失的 6 个后段窗口)
+# 背景: strict_oos_r21_parallel.yml 的 b5 块用 timeout 300, 但 ci0 后段窗口在 runner 上 >300s,
+#       导致 wi37-42 全部超时被杀, ci0-b5 artifact 为空, BASELINE 仍缺 6 窗。
+# 本 workflow: 3 个 job, 每 job 顺序跑 2 个窗口, timeout 900 (15min/窗), 上传 3 个 artifact。
+
+name: R21 Baseline Backfill
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - job_id: a
+            wins: "37 38"
+          - job_id: b
+            wins: "39 40"
+          - job_id: c
+            wins: "41 42"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run baseline windows (${{ matrix.wins }})
+        run: |
+          for wi in ${{ matrix.wins }}; do
+            echo "[ci=0 wi=$wi] $(date '+%H:%M')"
+            timeout 900 python scripts/exp_strict_oos.py run 0 "$wi" 2>&1 | tail -3
+            echo "rc=$? wi=$wi $(date '+%H:%M')"
+          done
+
+      - name: Count produced files
+        run: |
+          echo "test files: $(ls strict_test_ci0*.json 2>/dev/null | wc -l)"
+          ls strict_test_ci0*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strict-ci0-backfill-${{ matrix.job_id }}
+          path: strict_test_ci0*.json
+          if-no-files-found: warn
