@@ -1038,7 +1038,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
         _c_s,       # cost score
         _m_s,       # manager score (-1=缺失/passive_index)
         _mo_s,      # momentum score
-        _sm_s,      # smart_money score
+        _sm_score,  # smart_money score
         fund_type,
         alloc_modifier,
         scale_modifier,
@@ -1549,15 +1549,33 @@ def run_backtest(config, clear_cache=True):
     """
     import json
 
-    # 加载数据（支持多年；用 _fixed 文件）
+    # 加载数据（优先用真实关注池 414 人数据 v5(已用京东官方 getFundChart 标准码权威修正 ~99.9%)，回退旧文件）
+    # v5 因单文件超 100MB 以 .json.gz 形式存储（10.9MB），支持两种读取
     print("加载历史数据...")
-    data_file = DATA_DIR / "trading_by_date_fixed.json"
+    import gzip as _gzip
+    data_file = DATA_DIR / "trading_by_date_real414_v5.json"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414_v5.json.gz"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414_v4.json"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414_v2.json"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_real414.json"
+    if not data_file.exists():
+        data_file = DATA_DIR / "trading_by_date_fixed.json"
     if not data_file.exists():
         data_file = DATA_DIR / "trading_by_date.json"
-    with open(data_file, "r", encoding="utf-8") as f:
-        trading_by_date = json.load(f)
+    if str(data_file).endswith(".gz"):
+        with _gzip.open(data_file, "rt", encoding="utf-8") as f:
+            trading_by_date = json.load(f)
+    else:
+        with open(data_file, "r", encoding="utf-8") as f:
+            trading_by_date = json.load(f)
 
-    # 为交易记录补充 fund_code（基于 name_map）
+    # 为交易记录补充 fund_code（仅当为空时）。注意: v4 数据已通过
+    # 天天基金标准码修正（覆盖 ~99%），此处只作为旧文件的空码兜底，
+    # 不可覆盖已有码（否则会把已修正的码重新写坏）。
     _name_map_path = PROJECT_DIR / "data" / "fund_name_map.json"
     _name_to_code = {}
     if _name_map_path.exists():
@@ -1715,7 +1733,8 @@ def run_backtest(config, clear_cache=True):
     print(f"\nPeriod: {config['start_date']} ~ {config['end_date']}")
     print(f"Days: {len(backtest_dates)}")
     print(f"start_cash: {config['initial_cash']:,.0f}")
-    print(f"weights: Q{config['weights']['quality']} C{config['weights']['cost']} M{config['weights']['manager']} Mo{config['weights']['momentum']} SM{config['weights']['smart_money']}")
+    w = config["weights"]
+    print(f"weights: Q{w.get('quality',0)} C{w.get('cost',0)} M{w.get('manager',0)} Mo{w.get('momentum',0)} SM{w.get('smart_money',0)}")
 
     portfolio = Portfolio(config["initial_cash"])
     portfolio.set_fund_rules(fund_rules)
