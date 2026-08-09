@@ -1,0 +1,14 @@
+{
+  "phase": "test",
+  "round": 21,
+  "candidate": "KC_AGGRESSIVE_BASELINE",
+  "ci": 0,
+  "wi": 8,
+  "period": "2024-04-04~2024-07-03",
+  "return": -1.0561000000000058,
+  "trades": 28,
+  "fees": 69.32,
+  "max_dd": 4.99471899762234,
+  "benchmark": -0.9772462077012878,
+  "win_rate": 0
+}

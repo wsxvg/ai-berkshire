@@ -1,0 +1,113 @@
+# R22 Strict OOS — 共识强度分层版大佬因子 vs BASELINE
+# 背景:
+#   R21 证明老 SMART_MOD 修饰符(低门槛 net_buy>=1) 无效 (≡BASELINE)。
+#   轻量前向收益验证: 共识强度(net_buy)分层单调提升回调买入质量
+#     nb>=1: 中位 11.64% / 胜率 72.8%
+#     nb>=5: 中位 17.33% / 胜率 78.4%
+#   假设: 提高 net_buy 门槛(>=3/>=5)并按其给分层修饰符分 → 正 alpha。
+#
+# 本 workflow: 只跑 ci1 (KC_SMART_CONSENSUS) 的 22 个 OOS 窗口。
+#   BASELINE(ci0) 复用 R21 的 strict_test_ci0_wi*.json (同 config, 无需重跑)。
+#   拆 3 块 (每块 ~8 窗), 单进程顺序跑, timeout 900。
+#   aggregate: 读 R21 ci0 (已提交到仓库) + R22 ci1 (本次跑) 一起汇总。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R22 OOS Consensus
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run consensus candidate windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+            echo "[ci=1 wi=$wi] $(date '+%H:%M')"
+            timeout 900 python scripts/exp_strict_oos_r22.py run 1 "$wi" 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R22 test files: $(ls strict_test_r22_ci1*.json 2>/dev/null | wc -l)"
+          ls strict_test_r22_ci1*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r22-consensus-b${{ matrix.b }}
+          path: strict_test_r22_ci1*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R22 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r22_ci*.json' -exec cp {} ./ \;
+          echo "R22 test files: $(ls strict_test_r22_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r22.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r22_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R22 OOS eval: consensus-strength stratified smart money vs baseline"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"
