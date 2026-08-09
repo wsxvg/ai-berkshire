@@ -1,0 +1,90 @@
+# R21 Strict OOS — 并行版 (max-parallel: 8)
+# 将 4 个候选(ci=0..3) × 43 窗口拆到多个 runner 并行跑，再聚合出 OOS eval。
+# 相比 strict_oos_p1.yml (单 runner 顺序跑 129 个回测 ~2h)，本版预计 15-25 分钟。
+#
+# 触发: workflow_dispatch (手动)，避免与 push 触发的顺序版冲突。
+# 也可在需要时通过 GitHub API 手动触发。
+
+name: R21 OOS Parallel
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        ci: [0, 1, 2, 3]   # 4 个候选并行
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run all windows for candidate ${{ matrix.ci }}
+        run: |
+          # 43 个窗口 (wi 0..42)，本 runner 只跑自己 ci 的全部窗口
+          for wi in $(seq 0 42); do
+            echo "[ci=${{ matrix.ci }} wi=$wi] $(date '+%H:%M')"
+            timeout 90 python scripts/exp_strict_oos.py run ${{ matrix.ci }} $wi 2>&1 | tail -1 || echo "SKIP wi=$wi (timeout/error)"
+          done
+
+      - name: Count produced files
+        run: |
+          echo "train files: $(ls strict_ci*.json 2>/dev/null | wc -l)"
+          echo "test files:  $(ls strict_test_ci*.json 2>/dev/null | wc -l)"
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strict-ci${{ matrix.ci }}
+          path: |
+            strict_ci*.json
+            strict_test_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_ci*.json' -exec cp {} ./ \;
+          find ./artifacts -name 'strict_test_ci*.json' -exec cp {} ./ \;
+          echo "consolidated train: $(ls strict_ci*.json 2>/dev/null | wc -l)"
+          echo "consolidated test:  $(ls strict_test_ci*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos.py test
+
+      - name: Commit results
+        run: |
+          ROUND=$(python -c "import sys; sys.path.insert(0,'scripts'); from exp_strict_oos import ROUND; print(ROUND)")
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add v9-results/strict_oos_r${ROUND}_eval.json
+          git diff --cached --quiet || git commit -m "R21 OOS results (parallel): smart money modifier mode"
+          git push

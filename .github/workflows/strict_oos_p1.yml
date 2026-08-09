@@ -9,8 +9,7 @@
 name: R21 OOS
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: write
