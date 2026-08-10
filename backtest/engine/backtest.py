@@ -69,6 +69,7 @@ _TRADING_DATES_SORTED = []  # 预排序的 trading_by_date keys
 _4433_RANK_CACHE = {}  # {cutoff_date: {period_name: [(code, return_pct), ...]}} — score_4433 排名缓存
 _SCORE_CACHE = {}  # {(code, cutoff_date): (q, c, m, mo, sm, ft, alloc, scale, s4433, sector, sm_mod)} — 跨策略评分缓存（含smart_money修饰符）
 _SMART_MONEY_MODIFIER = 0.0  # 模块级变量：最近一次score_smart_money_backtest设置的修饰符值
+_SM_WINDOW_ACTIVE = True  # R32 window-level consensus gate: False=窗口大佬失声, 强制boost=0
 
 def _bisect_valid(pts, cutoff_date):
     """用 bisect 快速截断已排序的 chart_points。pts 必须按 xAxis 升序排列。"""
@@ -306,7 +307,8 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
             if as_modifier:
                 # 修饰符模式：不扣分，只给正向加成
                 # 上涨或无信号 → 0.0 (不惩罚)
-                if consensus_layers:
+                # R32: window-level gate — 当 _SM_WINDOW_ACTIVE=False (窗口大佬失声), 强制 boost=0
+                if consensus_layers and _SM_WINDOW_ACTIVE:
                     # R22 共识强度分层版：提高门槛，按净买入人数给分
                     # R24+ 阈值可通过 sm_params 配置
                     p = sm_params or {}
@@ -1691,6 +1693,12 @@ def run_backtest(config, clear_cache=True):
         with open(data_file, "r", encoding="utf-8") as f:
             trading_by_date = json.load(f)
 
+    # ── R32: 提取信号相关本地变量 (供 gate 逻辑使用) ──
+    _use_prebuilt_signal = config.get("use_prebuilt_signal", False)
+    _signal_line = config.get("signal_line", "amount")
+    _consensus_layers = config.get("consensus_layers", False)
+    _sm_params = config.get("sm_params", None)
+
     # 为交易记录补充 fund_code（仅当为空时）。注意: v4 数据已通过
     # 天天基金标准码修正（覆盖 ~99%），此处只作为旧文件的空码兜底，
     # 不可覆盖已有码（否则会把已修正的码重新写坏）。
@@ -1914,6 +1922,41 @@ def run_backtest(config, clear_cache=True):
             crash_threshold=_lgb_crash_threshold)
         print(f"LGB predictor: enabled, crash_thresh={_lgb_crash_threshold}, sell_thresh={_lgb_sell_threshold}")
 
+    # ── R32: smart_money 活跃共识门控 (window-level) ──
+    global _SM_WINDOW_ACTIVE
+    _sm_active_gate_cfg = config.get("sm_active_gate")
+    _SM_WINDOW_ACTIVE = True
+    if _sm_active_gate_cfg and _use_prebuilt_signal and _consensus_layers:
+        try:
+            sigs_all = _load_sm_signals(_signal_line)
+            p_gate = _sm_params or {}
+            cb_lo_g = p_gate.get("cb_lo", -15)
+            cb_hi_g = p_gate.get("cb_hi", -2)
+            tg_mid_g = p_gate.get("tg_mid", 2)
+            nb_lo_g = p_gate.get("nb_lo", 3)
+            win_start = backtest_dates[0][:10] if backtest_dates else start_date
+            win_end = backtest_dates[-1][:10] if backtest_dates else end_date
+            max_nb_in_window = 0
+            qualified_funds_in_window = set()
+            for _dt_str, _day_sigs in sigs_all.items():
+                if not (win_start <= _dt_str <= win_end):
+                    continue
+                for _code, _sig in _day_sigs.items():
+                    cb_v = _sig.get("callback_pct", 0)
+                    tg_v = _sig.get("topgain_hold", 0)
+                    nb_v = _sig.get("net_buy", 0)
+                    if cb_lo_g <= cb_v <= cb_hi_g and tg_v >= tg_mid_g and nb_v >= nb_lo_g:
+                        qualified_funds_in_window.add(_code)
+                        if nb_v > max_nb_in_window:
+                            max_nb_in_window = nb_v
+            min_funds = _sm_active_gate_cfg.get("min_qualified_funds", 3)
+            min_nb = _sm_active_gate_cfg.get("min_max_nb", 5)
+            _SM_WINDOW_ACTIVE = (len(qualified_funds_in_window) >= min_funds and max_nb_in_window >= min_nb)
+            if not _SM_WINDOW_ACTIVE:
+                print(f"[SM_GATE_CLOSED] window {win_start}~{win_end}: qualified={len(qualified_funds_in_window)} max_nb={max_nb_in_window} < thresh({min_funds}/{min_nb})")
+        except Exception as e:
+            print(f"[WARN] _sm_active_gate compute failed: {e}")
+
     for idx, day in enumerate(backtest_dates):
         cutoff_full = day  # 已经是 YYYY-MM-DD
 
@@ -1921,6 +1964,10 @@ def run_backtest(config, clear_cache=True):
         portfolio.settle_pending(cutoff_full)
         # 处理卖出资金T+N到账
         portfolio.settle_pending_sells(cutoff_full)
+
+        # R32: 窗口门控关闭 → 全仓货基, 跳过当日所有评分/买卖
+        if _sm_active_gate_cfg and not _SM_WINDOW_ACTIVE:
+            continue
 
         # 更新 fund_prices（在卖出检查之前，确保新确认的持仓有正确价格）
         # 修复 bug: 原来 fund_prices 只在每天结束时更新，导致 T+N 首日确认的持仓
