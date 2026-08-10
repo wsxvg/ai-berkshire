@@ -332,6 +332,20 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                     if mom_gate is not None and momentum_score is not None and _SMART_MONEY_MODIFIER > 0:
                         if momentum_score < mom_gate:
                             _SMART_MONEY_MODIFIER = 0.0
+                    # R29 回调深度分层: 深跌 vs 浅跌信号给不同 boost (cb_band_mode)
+                    band = p.get("cb_band_mode")
+                    if band and _SMART_MONEY_MODIFIER > 0:
+                        dl = p.get("deep_lo", -15)
+                        dh = p.get("deep_hi", -8)
+                        dm = p.get("deep_mult", 1.5)
+                        sm = p.get("shallow_mult", 0.8)
+                        if band == "deep_boost":
+                            _SMART_MONEY_MODIFIER = round(_SMART_MONEY_MODIFIER * (dm if dl <= cb <= dh else sm), 4)
+                        elif band == "shallow_boost":
+                            _SMART_MONEY_MODIFIER = round(_SMART_MONEY_MODIFIER * (sm if dl <= cb <= dh else dm), 4)
+                        elif band == "deep_only":
+                            if not (dl <= cb <= dh):
+                                _SMART_MONEY_MODIFIER = 0.0
                     return DimensionScore(score=0, weight=0, freshness_days=0)
                 # 原 R21 逻辑：低门槛，弱信号也算
                 # 回调 -10~-3% + topgain>=4 + net_buy>=1 → +0.5 (强信号)
