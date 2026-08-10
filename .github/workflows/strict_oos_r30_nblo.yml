@@ -1,0 +1,112 @@
+# R30 Strict OOS — 降低净买入共识门槛 (nb_lo: 低共识信号价值)
+# 背景: R24-R29 已确认 WIDE 配置(回调-15~-2%+amount top3)是信号甜点位,
+#   回调窗口/boost/线路/topN/动量门控/信号有效期/回调深度 7 维度全验证到头 (~+0.86%)。
+# R30 转向降低共识门槛: R24 HICONS 提高 nb 门槛(7/5/3) → +0.12% 更差, 暗示低共识有空间。
+#   当前 boost 三档 nb 门槛 5/3/3, 没一档接受 nb<3。R30 引擎加 nb_lo(boost_lo 门槛,默认3):
+#   ci1: nb_lo=1        → 只要 1 个大佬买 + tg>=2 + 回调达标 就给 boost_lo(0.2)
+#   ci2: nb_lo=2        → 2 个大佬买
+#   ci3: nb_lo=1 + boost_lo=0.3 → 低共识但基础 boost 提高
+# 全部基于 WIDE 最优配置 + amount top3 信号。BASELINE(ci0) 复用 R21 ci0。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R30 OOS Smart Money Low Consensus
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R30 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_strict_oos_r30.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
+            done
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R30 test files: $(ls strict_test_r30_ci*.json 2>/dev/null | wc -l)"
+          ls strict_test_r30_ci*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r30-nblo-b${{ matrix.b }}
+          path: strict_test_r30_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R30 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r30_ci*.json' -exec cp {} ./ \;
+          echo "R30 test files: $(ls strict_test_r30_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r30.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r30_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R30 OOS eval: smart money low consensus (nb_lo 1/2)"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"

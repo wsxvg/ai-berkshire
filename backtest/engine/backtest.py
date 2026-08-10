@@ -314,6 +314,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                     cb_hi = p.get("cb_hi", -3)
                     nb_hi = p.get("nb_hi", 5)
                     nb_mid = p.get("nb_mid", 3)
+                    nb_lo = p.get("nb_lo", 3)      # R30: boost_lo 净买入门槛 (默认3, 可降低到1/2)
                     tg_hi = p.get("tg_hi", 4)
                     tg_mid = p.get("tg_mid", 2)
                     boost_hi = p.get("boost_hi", 0.6)
@@ -323,7 +324,7 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                         _SMART_MONEY_MODIFIER = boost_hi
                     elif cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_mid:
                         _SMART_MONEY_MODIFIER = boost_mid
-                    elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_mid:
+                    elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_lo:
                         _SMART_MONEY_MODIFIER = boost_lo
                     else:
                         _SMART_MONEY_MODIFIER = 0.0
