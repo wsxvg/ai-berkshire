@@ -275,7 +275,7 @@ def _load_sm_signals(signal_line="amount"):
 
 def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
                          use_prebuilt_signal=False, as_modifier=False, consensus_layers=False,
-                         signal_line="amount", sm_params=None):
+                         signal_line="amount", sm_params=None, momentum_score=None):
     global _SMART_MONEY_MODIFIER  # BUGFIX: 缺 global 声明会使赋值变成局部变量, 模块级变量恒为0.0, 修饰符模式完全失效
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
@@ -291,6 +291,8 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                 "nb_hi": 5, "nb_mid": 3,      净买入分层
                 "tg_hi": 4, "tg_mid": 2,      topgain_hold 分层
                 "boost_hi": 0.6, "boost_mid": 0.4, "boost_lo": 0.2}
+    momentum_score: float|None, R27+ 动量门控——若配置 sm_params["mom_gate"], 仅当
+                    momentum_score >= mom_gate 时给加成 (避免接"趋势向下"的下跌刀)。
     """
     # R20+: 预计算信号模式 (topgain>=4 + callback -10~-3% + net_buy>=1)
     if use_prebuilt_signal:
@@ -325,6 +327,11 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                         _SMART_MONEY_MODIFIER = boost_lo
                     else:
                         _SMART_MONEY_MODIFIER = 0.0
+                    # R27 动量门控: 若配置 mom_gate, 仅当动量分达标才给加成 (否则归零)
+                    mom_gate = p.get("mom_gate")
+                    if mom_gate is not None and momentum_score is not None and _SMART_MONEY_MODIFIER > 0:
+                        if momentum_score < mom_gate:
+                            _SMART_MONEY_MODIFIER = 0.0
                     return DimensionScore(score=0, weight=0, freshness_days=0)
                 # 原 R21 逻辑：低门槛，弱信号也算
                 # 回调 -10~-3% + topgain>=4 + net_buy>=1 → +0.5 (强信号)
@@ -904,7 +911,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code,
                 use_prebuilt_signal=use_prebuilt_signal,
                 as_modifier=smart_money_modifier, consensus_layers=consensus_layers,
-                signal_line=signal_line, sm_params=sm_params)
+                signal_line=signal_line, sm_params=sm_params,
+                momentum_score=momentum.score if momentum else None)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
