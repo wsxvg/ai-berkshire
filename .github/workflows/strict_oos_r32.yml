@@ -1,0 +1,106 @@
+# R32 Strict OOS — 仓位收紧 + smart_money 共识活跃门控 (max_holdings 4/6 + 窗口 gate)
+# 背景: R24-R31 WIDE 配置(修饰符)是信号甜点位, 10维度验证到头 (~+0.86%).
+# R32 目标 (用户方向 ①+④): ① max_holdings 12→4/6 (集中仓位); ④ 窗口级共识门控:
+#   统计 test_win 期内 top3 大佬合格基金数 + max net_buy; 双低→全仓货基(0%)避免空转.
+#   ci1: WIDE_NARROW4     max_holdings=4, 纯收紧
+#   ci2: WIDE_NARROW4_GATE  max_holdings=4 + gate
+#   ci3: WIDE_NARROW6_GATE  max_holdings=6 + gate
+# 全部基于 amount top3 信号 + WIDE sm_params. BASELINE(ci0) 复用 R21 ci0.
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R32 OOS Narrow Holdings + Active Gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R32 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_strict_oos_r32.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP"
+            done
+          done
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r32-b${{ matrix.b }}
+          path: strict_test_r32_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R32 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r32_ci*.json' -exec cp {} ./ \;
+          echo "R32 files: $(ls strict_test_r32_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files: $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r32.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r32_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "R32 OOS eval: narrow holdings + active gate"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"
