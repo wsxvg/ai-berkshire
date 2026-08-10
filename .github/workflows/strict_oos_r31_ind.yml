@@ -1,0 +1,112 @@
+# R31 Strict OOS — smart_money 作为独立维度重测 (非修饰符)
+# 背景: R24-R30 已确认 WIDE 配置(回调-15~-2%+amount top3+修饰符boost)是信号甜点位,
+#   8 维度全验证到头 (~+0.86%)。R31 初案(nb连续映射)已证伪(3候选全与WIDE平局)。
+# R31 转向: smart_money 作为独立维度(带权重参与 4D 加权), 修复look-ahead后从未重测此形式。
+#   ci1: SM_IND20  quality26 cost26 momentum28 smart_money20
+#   ci2: SM_IND30  quality23 cost23 momentum24 smart_money30
+#   ci3: SM_IND40  quality20 cost20 momentum20 smart_money40  (重仓 smart_money)
+# 全部基于 WIDE 最优配置 + amount top3 信号 + consensus_layers 独立评分。
+# BASELINE(ci0) 复用 R21 ci0。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R31 OOS Smart Money Independent
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R31 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_strict_oos_r31.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
+            done
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R31 test files: $(ls strict_test_r31_ci*.json 2>/dev/null | wc -l)"
+          ls strict_test_r31_ci*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r31-ind-b${{ matrix.b }}
+          path: strict_test_r31_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R31 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r31_ci*.json' -exec cp {} ./ \;
+          echo "R31 test files: $(ls strict_test_r31_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r31.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r31_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R31 OOS eval: smart money independent dimension"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"

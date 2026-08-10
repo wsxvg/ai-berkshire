@@ -320,14 +320,45 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                     boost_hi = p.get("boost_hi", 0.6)
                     boost_mid = p.get("boost_mid", 0.4)
                     boost_lo = p.get("boost_lo", 0.2)
-                    if cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_hi:
-                        _SMART_MONEY_MODIFIER = boost_hi
-                    elif cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_mid:
-                        _SMART_MONEY_MODIFIER = boost_mid
-                    elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_lo:
-                        _SMART_MONEY_MODIFIER = boost_lo
+                    # R31 共识连续映射: nb_cont 配置时, 不再用硬三档, 把 nb 连续映射到 boost
+                    # (准入仍保持 nb>=nb_lo, 不掺 R30 证明是噪音的 nb<3 信号; 但带内 nb 越大 boost 越高)
+                    nb_cont = p.get("nb_cont")
+                    if nb_cont:
+                        eligible = cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_lo
+                        if eligible:
+                            mode = nb_cont.get("mode", "linear")
+                            b_base = nb_cont.get("boost_base", 0.2)   # nb=nb_lo 时的最低 boost
+                            b_cap = nb_cont.get("boost_cap", 0.9)     # 上限
+                            nb_max = nb_cont.get("nb_max", 15)         # 归一化上界
+                            pwr = nb_cont.get("power", 0.5)            # power 模式的幂次
+                            coef = nb_cont.get("coef", 0.08)           # linear 模式每多 1 人增量
+                            if nb <= nb_lo:
+                                _SMART_MONEY_MODIFIER = b_base
+                            elif mode == "linear":
+                                _SMART_MONEY_MODIFIER = min(b_cap, b_base + coef * (nb - nb_lo))
+                            elif mode == "log":
+                                import math as _math
+                                span = (_math.log(nb_max) - _math.log(nb_lo)) or 1.0
+                                frac = (_math.log(nb) - _math.log(nb_lo)) / span
+                                _SMART_MONEY_MODIFIER = b_base + (b_cap - b_base) * frac
+                            elif mode == "power":
+                                span = nb_max - nb_lo
+                                frac = ((nb - nb_lo) / span) ** pwr if span > 0 else 0.0
+                                _SMART_MONEY_MODIFIER = b_base + (b_cap - b_base) * frac
+                            else:
+                                _SMART_MONEY_MODIFIER = b_base
+                            _SMART_MONEY_MODIFIER = round(min(b_cap, max(b_base, _SMART_MONEY_MODIFIER)), 4)
+                        else:
+                            _SMART_MONEY_MODIFIER = 0.0
                     else:
-                        _SMART_MONEY_MODIFIER = 0.0
+                        if cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_hi:
+                            _SMART_MONEY_MODIFIER = boost_hi
+                        elif cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_mid:
+                            _SMART_MONEY_MODIFIER = boost_mid
+                        elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_lo:
+                            _SMART_MONEY_MODIFIER = boost_lo
+                        else:
+                            _SMART_MONEY_MODIFIER = 0.0
                     # R27 动量门控: 若配置 mom_gate, 仅当动量分达标才给加成 (否则归零)
                     mom_gate = p.get("mom_gate")
                     if mom_gate is not None and momentum_score is not None and _SMART_MONEY_MODIFIER > 0:
@@ -359,6 +390,25 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                     _SMART_MONEY_MODIFIER = 0.0
                 return DimensionScore(score=0, weight=0, freshness_days=0)
             else:
+                # R31 独立维度模式 (非修饰符): 用 WIDE 共识阈值给真实分数,
+                # 让 smart_money 作为独立维度(带权重)参与加权, 而非仅加减分。
+                # 无信号/不达标给低基准分, 达标按共识强度给 4.2/3.8/3.4。
+                if consensus_layers:
+                    p = sm_params or {}
+                    cb_lo = p.get("cb_lo", -10)
+                    cb_hi = p.get("cb_hi", -3)
+                    nb_hi = p.get("nb_hi", 5)
+                    nb_mid = p.get("nb_mid", 3)
+                    nb_lo = p.get("nb_lo", 3)
+                    tg_hi = p.get("tg_hi", 4)
+                    tg_mid = p.get("tg_mid", 2)
+                    if cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_hi:
+                        return DimensionScore(score=4.8, weight=0.20, freshness_days=0)
+                    elif cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_mid:
+                        return DimensionScore(score=4.2, weight=0.20, freshness_days=0)
+                    elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_lo:
+                        return DimensionScore(score=3.6, weight=0.20, freshness_days=0)
+                    return DimensionScore(score=2.5, weight=0.20, freshness_days=0)
                 # 原始模式 (R20): 高信号给高分，无信号给低分 (2.5)
                 if -10 <= cb <= -3 and tg >= 4 and nb >= 1:
                     return DimensionScore(score=4.8, weight=0.20, freshness_days=0)
