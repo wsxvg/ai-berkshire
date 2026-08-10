@@ -134,8 +134,8 @@ def nav_on(arr, date):
 # top3 计算 (逐日)
 # ═══════════════════════════════════════════════════════════════
 
-def compute_top3(pos, pid, nav_arr, date, mode):
-    """计算某玩家截至 date 的 top3 持仓集合 (只含已确认份额)。"""
+def compute_top3(pos, pid, nav_arr, date, mode, topn=3):
+    """计算某玩家截至 date 的 topN 持仓集合 (只含已确认份额)。topn 可配置。"""
     holdings = pos[pid]
     items = []
     for fc, h in holdings.items():
@@ -153,14 +153,14 @@ def compute_top3(pos, pid, nav_arr, date, mode):
             key = (ret, fc)
         items.append(key)
     items.sort(reverse=True)
-    return {fc for _, fc in items[:3]}
+    return {fc for _, fc in items[:topn]}
 
 
 # ═══════════════════════════════════════════════════════════════
 # 信号构建
 # ═══════════════════════════════════════════════════════════════
 
-def build_signals(tbd, nav_arr, tn_rules, mode):
+def build_signals(tbd, nav_arr, tn_rules, mode, topn=3):
     dates = sorted(tbd.keys())
     date_index = {d: i for i, d in enumerate(dates)}
     print(f"构建线路 {mode} ...", flush=True)
@@ -224,9 +224,9 @@ def build_signals(tbd, nav_arr, tn_rules, mode):
                 day_funds[fcode]["sell"].add(pid)
                 touched_players.add(pid)
 
-        # ── 2. 重算被触达玩家的 top3 (持仓可能因确认/卖出改变) ──
+        # ── 2. 重算被触达玩家的 topN (持仓可能因确认/卖出改变) ──
         for pid in touched_players:
-            top3_cached[pid] = compute_top3(pos, pid, nav_arr, date, mode)
+            top3_cached[pid] = compute_top3(pos, pid, nav_arr, date, mode, topn=topn)
 
         # ── 3. 生成信号 (只用已确认持仓的 top3) ──
         for fcode, stats in day_funds.items():
@@ -274,17 +274,19 @@ def main():
     tn_rules = load_tn_rules()
     print(f"交易天数: {len(tbd)}, 有净值基金: {len(nav_arr)}, T+N规则: {len(tn_rules)}", flush=True)
 
-    sig_a = build_signals(tbd, nav_arr, tn_rules, "amount")
-    out_a = os.path.join(ROOT, "data", "smart_money_signals_amount.json")
+    topn = 3
+    if len(sys.argv) > 1:
+        try:
+            topn = int(sys.argv[1])
+        except ValueError:
+            pass
+    suffix = f"_top{topn}" if topn != 3 else ""
+
+    sig_a = build_signals(tbd, nav_arr, tn_rules, "amount", topn=topn)
+    out_a = os.path.join(ROOT, "data", f"smart_money_signals_amount{suffix}.json")
     with open(out_a, "w", encoding="utf-8") as f:
         json.dump(sig_a, f, ensure_ascii=False)
-    print(f"线路A(金额top3) 信号总数: {sum(len(v) for v in sig_a.values())}, -> {out_a}", flush=True)
-
-    sig_b = build_signals(tbd, nav_arr, tn_rules, "return")
-    out_b = os.path.join(ROOT, "data", "smart_money_signals_ret.json")
-    with open(out_b, "w", encoding="utf-8") as f:
-        json.dump(sig_b, f, ensure_ascii=False)
-    print(f"线路B(收益率top3) 信号总数: {sum(len(v) for v in sig_b.values())}, -> {out_b}", flush=True)
+    print(f"线路A(金额top{topn}) 信号总数: {sum(len(v) for v in sig_a.values())}, -> {out_a}", flush=True)
 
 
 if __name__ == "__main__":

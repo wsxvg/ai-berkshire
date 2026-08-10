@@ -1,0 +1,111 @@
+# R26 Strict OOS — 信号丰富度: 加大 topN (top3→top5/top10)
+# 背景: R24/R25 已确认 WIDE 配置(回调-15~-2%+amount线路+boost0.6/0.4/0.2)是回调甜点位,
+#   回调/boost/线路 3 维度均到头 (连续3次正超额 ~+0.86%)。
+# R26 转向信号源丰富度: 每个大佬暴露更多持仓, 看是否带来更高上限 alpha。
+#   ci1: WIDE+top3 (基准, 复用 R24 KC_SMART_AMOUNT_WIDE)  signal_line=amount
+#   ci2: WIDE+top5  (112318 信号)                          signal_line=amount_top5
+#   ci3: WIDE+top10 (149356 信号)                          signal_line=amount_top10
+# 全部基于 WIDE 最优配置。BASELINE(ci0) 复用 R21 strict_test_ci0_wi*.json。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R26 OOS Smart Money TopN Richness
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R26 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_strict_oos_r26.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
+            done
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R26 test files: $(ls strict_test_r26_ci*.json 2>/dev/null | wc -l)"
+          ls strict_test_r26_ci*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r26-topn-b${{ matrix.b }}
+          path: strict_test_r26_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R26 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r26_ci*.json' -exec cp {} ./ \;
+          echo "R26 test files: $(ls strict_test_r26_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r26.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r26_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R26 OOS eval: smart money topN richness (top3/top5/top10)"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"

@@ -257,6 +257,8 @@ _SM_SIGNAL_CACHE = {}  # 预计算信号缓存, key=signal_line ("amount"/"retur
 _SIGNAL_FILE_NAMES = {
     "amount": "smart_money_signals_amount.json",
     "return": "smart_money_signals_ret.json",
+    "amount_top5": "smart_money_signals_amount_top5.json",
+    "amount_top10": "smart_money_signals_amount_top10.json",
 }
 
 def _load_sm_signals(signal_line="amount"):
