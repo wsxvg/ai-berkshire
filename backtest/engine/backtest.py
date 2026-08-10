@@ -273,7 +273,7 @@ def _load_sm_signals(signal_line="amount"):
 
 def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code=None,
                          use_prebuilt_signal=False, as_modifier=False, consensus_layers=False,
-                         signal_line="amount"):
+                         signal_line="amount", sm_params=None):
     global _SMART_MONEY_MODIFIER  # BUGFIX: 缺 global 声明会使赋值变成局部变量, 模块级变量恒为0.0, 修饰符模式完全失效
     """基于截止到 cutoff_date 的大佬交易记录计算聪明钱分。
     增强版: 区分建仓/加仓/清仓信号，叠加共识与趋势强度。
@@ -284,6 +284,11 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
     as_modifier: 若为 True, 返回零权 DimensionScore 并设置 _SMART_MONEY_MODIFIER,
                  在 score_fund_backtest 中作为加减分应用到 4D 加权均值上。
                  修饰符模式关键区别：上涨基金不扣分，只在回调+信号满足时给正向加成。
+    sm_params: dict, R24+ 可配置信号门槛，覆盖硬编码阈值。
+               {"cb_lo": -10, "cb_hi": -3,  回调区间
+                "nb_hi": 5, "nb_mid": 3,      净买入分层
+                "tg_hi": 4, "tg_mid": 2,      topgain_hold 分层
+                "boost_hi": 0.6, "boost_mid": 0.4, "boost_lo": 0.2}
     """
     # R20+: 预计算信号模式 (topgain>=4 + callback -10~-3% + net_buy>=1)
     if use_prebuilt_signal:
@@ -299,15 +304,23 @@ def score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_cod
                 # 上涨或无信号 → 0.0 (不惩罚)
                 if consensus_layers:
                     # R22 共识强度分层版：提高门槛，按净买入人数给分
-                    # 极高共识: 回调 + topgain>=4 + net_buy>=5 → +0.6
-                    # 中共识:   回调 + topgain>=4 + net_buy>=3 → +0.4
-                    # 弱共识:   回调 + topgain>=2 + net_buy>=3 → +0.2
-                    if -10 <= cb <= -3 and tg >= 4 and nb >= 5:
-                        _SMART_MONEY_MODIFIER = 0.6
-                    elif -10 <= cb <= -3 and tg >= 4 and nb >= 3:
-                        _SMART_MONEY_MODIFIER = 0.4
-                    elif -10 <= cb <= -3 and tg >= 2 and nb >= 3:
-                        _SMART_MONEY_MODIFIER = 0.2
+                    # R24+ 阈值可通过 sm_params 配置
+                    p = sm_params or {}
+                    cb_lo = p.get("cb_lo", -10)
+                    cb_hi = p.get("cb_hi", -3)
+                    nb_hi = p.get("nb_hi", 5)
+                    nb_mid = p.get("nb_mid", 3)
+                    tg_hi = p.get("tg_hi", 4)
+                    tg_mid = p.get("tg_mid", 2)
+                    boost_hi = p.get("boost_hi", 0.6)
+                    boost_mid = p.get("boost_mid", 0.4)
+                    boost_lo = p.get("boost_lo", 0.2)
+                    if cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_hi:
+                        _SMART_MONEY_MODIFIER = boost_hi
+                    elif cb_lo <= cb <= cb_hi and tg >= tg_hi and nb >= nb_mid:
+                        _SMART_MONEY_MODIFIER = boost_mid
+                    elif cb_lo <= cb <= cb_hi and tg >= tg_mid and nb >= nb_mid:
+                        _SMART_MONEY_MODIFIER = boost_lo
                     else:
                         _SMART_MONEY_MODIFIER = 0.0
                     return DimensionScore(score=0, weight=0, freshness_days=0)
@@ -824,7 +837,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         industry_data=None, weights=None,
                         use_prebuilt_signal=False,
                         smart_money_modifier=False, consensus_layers=False,
-                        signal_line="amount"):
+                        signal_line="amount", sm_params=None):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
@@ -889,7 +902,7 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     smart = score_smart_money_backtest(fund_name, cutoff_date, trading_by_date, fund_code,
                 use_prebuilt_signal=use_prebuilt_signal,
                 as_modifier=smart_money_modifier, consensus_layers=consensus_layers,
-                signal_line=signal_line)
+                signal_line=signal_line, sm_params=sm_params)
 
     # 成本分（使用实际费率）
     from tools.fund_scorer import score_cost
@@ -2274,6 +2287,7 @@ def run_backtest(config, clear_cache=True):
                 smart_money_modifier=config.get("smart_money_modifier", False),
                 consensus_layers=config.get("consensus_layers", False),
                 signal_line=config.get("signal_line", "amount"),
+                sm_params=config.get("sm_params", None),
             )
             ft = fund_profiles.get(code, {}).get("fund_type", "")
             is_active = "指数" not in ft and "QDII" not in ft

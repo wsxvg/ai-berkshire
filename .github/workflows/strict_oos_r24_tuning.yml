@@ -1,0 +1,114 @@
+# R24 Strict OOS — 精调金额 top3 信号阈值 (sm_params) vs BASELINE
+# 背景: R23 修复未来泄露 + 真实 T+N 后, 金额 top3 avg 3.641% (+0.37% vs BASELINE 3.271%) 首次正超额。
+# R24 在获胜候选(金额top3+共识分层修饰符)基础上精调信号阈值:
+#   ci1: 更宽回调 -15~-2%
+#   ci2: 更严回调 -8~-4%
+#   ci3: 原回调但更高净买入共识 (nb 7/5/3)
+# BASELINE(ci0) 复用 R21 的 strict_test_ci0_wi*.json。
+#
+# 本 workflow: 跑 ci1/ci2/ci3 的 22 个 OOS 窗口。
+#   拆 3 块 (每块 ~8 窗), 每块内顺序跑 ci1+ci2+ci3, timeout 1500。
+#   aggregate: 读 R21 ci0 + R24 ci1/ci2/ci3 汇总。
+#
+# 块窗口划分 (test windows wi21-42):
+#   b0: wi 21-28   b1: wi 29-35   b2: wi 36-42
+
+name: R24 OOS Smart Money Threshold Tuning
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R24 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 29 36)
+          END=(28 35 42)
+          b=${{ matrix.b }}
+          for ci in 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_strict_oos_r24.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi (timeout/error)"
+            done
+          done
+
+      - name: Count produced files
+        run: |
+          echo "R24 test files: $(ls strict_test_r24_ci*.json 2>/dev/null | wc -l)"
+          ls strict_test_r24_ci*.json 2>/dev/null
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r24-tune-b${{ matrix.b }}
+          path: strict_test_r24_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R24 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_r24_ci*.json' -exec cp {} ./ \;
+          echo "R24 test files: $(ls strict_test_r24_ci*.json 2>/dev/null | wc -l)"
+          echo "R21 baseline files (from repo): $(ls strict_test_ci0_wi*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_strict_oos_r24.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_r24_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (eval file already up to date)."
+          else
+            git commit -m "R24 OOS eval: smart money threshold tuning (wide/strict callback + high consensus)"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"
