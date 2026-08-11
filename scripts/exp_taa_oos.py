@@ -78,6 +78,34 @@ def _run_one(ci, wi_global):
         "benchmark": res["benchmark"],
     }
 
+def _full_span_cagr(ci, span_start="2016-12-12", span_end="2026-08-07"):
+    if ci == 0:
+        res = run_taa_backtest(nav, meta, bm_series, span_start, span_end,
+                               rebalance_days=99999, top_k=13, bear_max_equity=999)
+    elif ci == 1:
+        res = run_taa_backtest(nav, meta, bm_series, span_start, span_end,
+                               rebalance_days=21, top_k=4, bear_max_equity=0)
+    elif ci == 2:
+        res = run_taa_backtest(nav, meta, bm_series, span_start, span_end,
+                               rebalance_days=21, top_k=3, bear_max_equity=0)
+    elif ci == 3:
+        res = run_taa_backtest(nav, meta, bm_series, span_start, span_end,
+                               rebalance_days=21, top_k=5, bear_max_equity=0)
+    if res is None:
+        return None
+    from datetime import datetime
+    d = (datetime.strptime(span_end, "%Y-%m-%d") - datetime.strptime(span_start, "%Y-%m-%d")).days
+    yrs = d / 365.25
+    cagr = ((res["final_value"] / 10000) ** (1/yrs) - 1) * 100
+    return {
+        "total_return": res["return"],
+        "cagr": round(cagr, 2),
+        "final_value": res["final_value"],
+        "peak_mdd": res["max_drawdown"],
+        "years": round(yrs, 2),
+    }
+
+
 def aggregate_test():
     results = []
     seen = set()
@@ -92,6 +120,7 @@ def aggregate_test():
         print(f"No R{FOUND if False else ROUND} results!", flush=True)
         sys.exit(1)
     
+    ci_map = {"C_EQW13": 0, "C_TAA_K4": 1, "C_TAA_K3": 2, "C_TAA_K5": 3}
     by_candidate = defaultdict(list)
     for r in results:
         by_candidate[r["candidate"]].append(r)
@@ -105,9 +134,15 @@ def aggregate_test():
         avg_dd = sum(x["max_dd"] for x in items) / n
         peak_dd = max(x["max_dd"] for x in items)
         beats = sum(1 for x in items if x["return"] > x["benchmark"])
+        
+        # Full-span CAGR (true annualized)
+        ci = ci_map.get(name, 0)
+        fs = _full_span_cagr(ci)
+        
         summary[name] = {
             "avg_return": avg_r,
-            "avg_ann_return": avg_ann,
+            "avg_ann_return_per_window": avg_ann,
+            "full_span": fs,
             "avg_benchmark": avg_b,
             "avg_mdd": avg_dd,
             "peak_mdd": peak_dd,
@@ -123,16 +158,33 @@ def aggregate_test():
     with open(f"v9-results/strict_oos_{OUT_TAG}_eval.json","w") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
     
-    print(f"\n{'='*75}")
-    print(f"=== R{ROUND} TAA OOS ({len(TEST_WINDOWS)} test windows) ===")
-    print(f"{'='*75}")
-    for name, s in sorted(summary.items(), key=lambda x: -x[1]["avg_return"]):
+    print(f"\n{'='*95}")
+    print(f"=== R{ROUND} TAA OOS ({len(TEST_WINDOWS)} test windows, walk-forward + full-span) ===")
+    print(f"{'='*95}")
+    print(f"  (avg/w = per-window arithmetic mean; CAGR = true compounded annualized over full span)\n")
+    for name, s in sorted(summary.items(), key=lambda x: -(x[1]["full_span"]["cagr"] if x[1]["full_span"] else 0)):
+        fs = s["full_span"]
         alpha = 0
-        # best baseline = highest avg_return in summary (likely EQW13)
-        best_base = max(v["avg_return"] for v in summary.values())
-        alpha = s["avg_return"] - best_base
-        marker = f"  ({alpha:+.3f}% vs BEST)" if alpha != 0 else "  (BEST)"
-        print(f"  {name:14s}: avg {s['avg_return']:8.3f}%  ann {s['avg_ann_return']:7.2f}%  bench {s['avg_benchmark']:7.2f}%  mdd {s['avg_mdd']:5.2f}%  peak {s['peak_mdd']:5.2f}%  beats {s['beats']}/{s['count']}{marker}")
+        # best baseline = highest full-span CAGR (likely EQW13)
+        best_base = max((v["full_span"]["cagr"] if v["full_span"] else 0) for v in summary.values())
+        alpha = (fs["cagr"] if fs else 0) - best_base
+        marker = f"  ({alpha:+.2f}% CAGR vs BEST)" if alpha != 0 else "  (BEST CAGR)"
+        cagr_str = f"CAGR={fs['cagr']:+.2f}%" if fs else "CAGR=N/A"
+        total_str = f"total={fs['total_return']:+.1f}%" if fs else ""
+        print(f"  {name:14s}: avg/w {s['avg_return']:+.2f}%  {cagr_str}  {total_str}  "
+              f"mdd_avg {s['avg_mdd']:.1f}%  peak {s['peak_mdd']:.1f}%  beats {s['beats']}/{s['count']}{marker}")
+    
+    # Benchmark full-span
+    bm_fs = _full_span_cagr(0)  # dummy, compute CSI300 directly
+    bm_start = sorted(bm_series.keys())[0]
+    bm_end = sorted(bm_series.keys())[-1]
+    # actually benchmark doesn't need nav, just use idx
+    bms = [d for d in sorted(bm_series.keys()) if "2016-12-12" <= d <= "2026-08-07"]
+    if len(bms) >= 2:
+        btotal = (bm_series[bms[-1]] / bm_series[bms[0]] - 1) * 100
+        byrs = 9.65
+        bcagr = ((1 + btotal/100) ** (1/byrs) - 1) * 100
+        print(f"  {'CSI300':14s}: {'':12s} CAGR={bcagr:+.2f}%  total={btotal:+.1f}%")
     
     return summary
 
