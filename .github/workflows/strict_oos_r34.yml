@@ -1,0 +1,96 @@
+# R34 TAA OOS — Tactical Asset Allocation 宽基战术资产配置
+# 13 类宽基资产 (A股大小盘、红利低波、纳指/标普QDII、恒生、国债、信用债、黄金、货币)
+# 4 candidates: C_EQW13 / C_TAA_K4 / C_TAA_K3 / C_TAA_K5
+# Walk-forward: 80 windows (21 train / 59 test)
+
+name: R34 TAA OOS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        b: [0, 1, 2, 3]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Decompress data
+        run: |
+          cd backtest/data
+          gunzip -kf fund_charts.json.gz 2>/dev/null || true
+          cd ../..
+
+      - name: Run R34 candidates windows block ${{ matrix.b }}
+        run: |
+          START=(21 36 50 65)
+          END=(35 49 64 79)
+          b=${{ matrix.b }}
+          for ci in 0 1 2 3; do
+            for (( wi=${START[$b]}; wi<=${END[$b]}; wi++ )); do
+              echo "[ci=$ci wi=$wi] $(date '+%H:%M')"
+              timeout 1500 python scripts/exp_taa_oos.py run "$ci" "$wi" 2>&1 | tail -1 || echo "SKIP ci=$ci wi=$wi"
+            done
+          done
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r34-b${{ matrix.b }}
+          path: strict_test_taa_ci*.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: backtest
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download all candidate artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Consolidate R34 result files to repo root
+        run: |
+          mkdir -p v9-results
+          find ./artifacts -name 'strict_test_taa_ci*.json' -exec cp {} ./ \;
+          echo "R34 test files: $(ls strict_test_taa_ci*.json 2>/dev/null | wc -l)"
+
+      - name: OOS Evaluation
+        run: python scripts/exp_taa_oos.py test
+
+      - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v9-results/strict_oos_taa_eval.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "R34 TAA OOS eval: 13-asset tactical allocation"
+          fi
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}" 2>/dev/null || git push origin "HEAD:master"
