@@ -913,7 +913,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
                         industry_data=None, weights=None,
                         use_prebuilt_signal=False,
                         smart_money_modifier=False, consensus_layers=False,
-                        signal_line="amount", sm_params=None):
+                        signal_line="amount", sm_params=None,
+                        smart_money_clone=False):
     """对单只基金在某个历史日期 T 的完整评分。
     ⚠️ 只用 T 之前的 chart_data 和交易记录。
     新增: 资产配置评分 + 规模评分 + 管理稳定性评分 + 行业估值评分
@@ -938,6 +939,41 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     # ── 跨策略评分缓存：同一基金同一日期的各维度分数+修饰符完全相同 ──
     _cache_key = (fund_code, cutoff_date[:10])
     _cached = _SCORE_CACHE.get(_cache_key)
+    # R33 smart_money_clone 模式：跳过 q/c/m 并用信号分替代
+    if smart_money_clone:
+        _sig = score_smart_money_backtest(fund_code, cutoff_date, trading_by_date, fund_code,
+                    use_prebuilt_signal=True, as_modifier=True, consensus_layers=True,
+                    signal_line=signal_line, sm_params=sm_params)
+        from tools.fund_scorer import FundScore, DimensionScore as DS
+        # pull raw signal fields for precise ranking
+        _nb = 0; _tg = 0; _cb = 0.0
+        if use_prebuilt_signal:
+            _sigs = _load_sm_signals(signal_line)
+            _day = _sigs.get(cutoff_date[:10], {})
+            _raw = _day.get(fund_code, _day.get(fund_name, {}))
+            if isinstance(_raw, dict):
+                _nb = _raw.get("net_buy", 0)
+                _tg = _raw.get("topgain_hold", 0)
+                _cb = _raw.get("callback_pct", 0)
+        if _SMART_MONEY_MODIFIER > 0:
+            # rank key: net_buy desc > topgain_hold desc > boost tier desc
+            #   5.0 base + nb[0~20]*0.1 + tg[0~10]*0.01 + boost[0~1]*1.0
+            #   max ≈ 5.0 + 2.0 + 0.1 + 0.6 = 7.7 → clamped to 5.0 by caller anyway
+            _total = 4.0 + min(_nb, 20) * 0.02 + min(_tg, 10) * 0.01 + _SMART_MONEY_MODIFIER
+        else:
+            _total = 0.05  # 不合格, 被 top-n 自动过滤
+        fs = FundScore(
+            fund_code=fund_code, fund_type="",
+            quality=DS(score=3.0, weight=0, freshness_days=0),
+            cost=DS(score=3.0, weight=0, freshness_days=0),
+            manager=DS(score=0, weight=0, freshness_days=0),
+            momentum=DS(score=3.0, weight=0, freshness_days=0),
+            smart_money=DS(score=0, weight=0, freshness_days=0),
+        )
+        fs.total = _total
+        fs.verdict = "buy" if _SMART_MONEY_MODIFIER > 0 else "pass"
+        return fs
+
     if _cached is not None:
         from tools.fund_scorer import FundScore, DimensionScore as DS
         if len(_cached) >= 11:
@@ -2363,10 +2399,16 @@ def run_backtest(config, clear_cache=True):
 
         # ── 候选数上限：评分前按 buy_count 截取前N个，防止mc=1时评分爆炸 ──
         _max_candidates = config.get("max_candidates_per_day", 0)  # 0=不限制
+        _smart_money_clone = config.get("smart_money_clone", False)
 
         # 第一遍：快速过滤（共识门槛+净信号），收集通过的候选
         _pre_filtered = []  # [(fn, signal, buy_count)]
-        if not _lgb_block_buy and not _contrarian_skip:  # LGB或contrarian阻断时不收集候选
+        # R33 smart_money_clone 模式：绕过 q/c/m 过滤，candidate 列表 = 全量基金
+        #   score_fund_backtest 中 clone=True 会给不合格基金打 0 分，合格基金打纯信号分
+        if _smart_money_clone and not _lgb_block_buy and not _contrarian_skip:
+            for _code in fund_charts:
+                _pre_filtered.append((_code, {"buy_count": 1}, 1))
+        elif not _lgb_block_buy and not _contrarian_skip:  # LGB或contrarian阻断时不收集候选
             for fn, signal in fund_signals.items():
                 _bc = signal["buy_count"]
                 if use_weighted and _weighted_threshold > 0:
@@ -2405,9 +2447,10 @@ def run_backtest(config, clear_cache=True):
                 fund_data_cache=fund_data_cache,
                 industry_data=industry_data if industry_data else None,
                 weights=config.get("weights"),
-                use_prebuilt_signal=config.get("use_prebuilt_signal", False),
-                smart_money_modifier=config.get("smart_money_modifier", False),
-                consensus_layers=config.get("consensus_layers", False),
+                use_prebuilt_signal=config.get("use_prebuilt_signal", False) or _smart_money_clone,
+                smart_money_clone=_smart_money_clone,
+                smart_money_modifier=config.get("smart_money_modifier", False) or _smart_money_clone,
+                consensus_layers=config.get("consensus_layers", False) or _smart_money_clone,
                 signal_line=config.get("signal_line", "amount"),
                 sm_params=config.get("sm_params", None),
             )

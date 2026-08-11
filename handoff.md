@@ -171,10 +171,51 @@
 
 **R31 方向调整**：初案 nb 连续值映射（线性/对数/幂 3 候选）在 wi26/30/36 全部与 WIDE 平局 → **boost 量级维度确证冗余（R25 HIGHBOOST 已证明结论一致）**。改测③独立维度：smart_money 作为非修饰符（`smart_money_modifier=False`），带权重（20/30/40%）参与 4D 加权，自 R23 修复 look-ahead 后**从未重测此形式**。wi30 烟雾测试确认区分：SM_IND20=-1.231%、SM_IND30=-1.009%、SM_IND40=-1.151%，全部跑赢 R29/R30 的 WIDE(-1.747%)，方向有效。
 
-### 关键技术改动（R27，已提交）
-- 引擎 `backtest/engine/backtest.py`：`score_smart_money_backtest` 加 `momentum_score` 参数，sm_params 支持 `mom_gate`（动量门控）。`score_fund_backtest` 传入 `momentum.score`。
-- 脚本 `scripts/exp_strict_oos_r27.py`（ci1/2/3 mom_gate 2.5/3.0/3.5）；workflow `strict_oos_r27_momgate.yml`。
-- 通用脚本保留：`scripts/_poll_github.py`、`scripts/_analyze_eval.py`。
+**R31 结果（独立维度，run 31400180891）**：
+| 候选 | avg_return | vs BASELINE | 去top1 | 去top2 |
+|---|---|---|---|---|
+| KC_SM_IND40 | 3.651% | **+0.380%** | +0.118% | -0.144% |
+| KC_SM_IND30 | 3.595% | +0.324% | +0.014% | -0.269% |
+| KC_AGGRESSIVE_BASELINE | 3.271% | — | — | — |
+| KC_SM_IND20 | 3.188% | -0.084% | -0.333% | -0.438% |
+
+**结论（独立维度证伪）**：最好的 SM_IND40 +0.38% 远低于 WIDE 修饰符 +0.86%。独立维度参与 4D 加权反而不如修饰符加减分模式。WIDE 仍是最优 — 累计第 10 个维度证伪。
+
+**当前 10 维度验证全貌**：
+| 维度 | 最优 | 验证轮 |
+|---|---|---|
+| 回调窗口 | -15~-2%（甜点位）| R24/R25 |
+| boost 强度 | 提档无效 | R25 |
+| 线路 | 金额 > 收益率 | R25 |
+| topN | **top3 最优**，top5 略降，top10 变负 | R26 |
+| 动量门控 | **无效，越严越差** | R27 |
+| 信号有效期 TTL | 本地证伪 | R28 |
+| 回调深度分层 | 证伪 | R29 |
+| 降低共识门槛 | 证伪，nb>=3 是下限 | R30 |
+| nb 连续值映射 | ✗ 与 WIDE 全平局 (局部证伪) | R31a |
+| 独立维度 | ✗ +0.38% < WIDE +0.86% | R31b |
+
+**用户反馈与 R32 方向**：WIDE 16% CAGR ≈ 宽基 ETF，没有超额外收益。转用户的 ①③ 方向（引擎易实现且未测过）：
+- ① 仓位收紧：max_holdings 12→4/6（信号更集中）
+- ③ 活跃门控：引擎加 window-level `sm_active_gate` — 测试窗口期内统计 max net_buy + 合格基金数，双低→全仓货基(0%窗口收益)，避免低共识期"空转"
+- 下一轮考虑：② 克隆大佬组合（直接买 top3 重仓），④ 更短 walk-forward 窗口（30d）
+
+**R32 状态 (run 31411854332)**：已触发，监控中。ci1=NARROW4(4只,无gate), ci2=NARROW4_GATE(4只+门控), ci3=NARROW6_GATE(6只+门控)。wi30 烟雾测试三候选区分：NARROW4 -0.808%、NARROW4_GATE -0.808%(gate未触发)、NARROW6_GATE -1.305%，均不同于 WIDE -1.747%。
+
+### 关键技术改动（R27 已提交 → R32 增量 108de3e）
+- R27 引擎 `backtest/engine/backtest.py`：`score_smart_money_backtest` 加 `momentum_score` 参数，sm_params 支持 `mom_gate`。
+- R32 引擎（108de3e）：
+  - 模块级全局 `_SM_WINDOW_ACTIVE = True`：window-level consensus gate 标志
+  - `run_backtest` 顶部提取 `_sm_active_gate_cfg` 等本地变量（避免作用域污染）
+  - 窗口循环前置扫描：按 `min_qualified_funds=3` + `min_max_nb=5` 阈值，预计算整个窗口是否通过 gate，不通过则 `_SM_WINDOW_ACTIVE = False`
+  - 主循环跳过：`if cfg has gate and not _SM_WINDOW_ACTIVE: continue` 效果=全仓货基, 窗口收益=0
+  - `score_smart_money_backtest` modifier 分支：共识评分 gated（`if consensus_layers and _SM_WINDOW_ACTIVE:`），gate 关→tiers 不生效
+  - `max_holdings` 参数：12（默认）→4/6（通过候选配置传入）
+- 脚本 `scripts/exp_strict_oos_r32.py`（NARROW4 / NARROW4_GATE / NARROW6_GATE + BASELINE）；workflow `strict_oos_r32.yml`（3 块并行）。
+- 通用保留：`scripts/_poll_github.py`、`scripts/_analyze_eval.py`。
+## R16 前瞻（待验证，不阻塞 R/O 系列）
+- **最保守 OOS 概念**：不做任何 walk-forward，直接用全部历史数据训练一个模型，对未来（未知）做一次性测试。
+- 与当前 walk-forward OOS 的区别：当前 43 窗口滚动训练-测试；R16 前瞻=1 窗口全程训练 → 1 次真实前瞻测试
 
 ---
 
