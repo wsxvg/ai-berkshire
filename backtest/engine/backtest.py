@@ -2404,12 +2404,33 @@ def run_backtest(config, clear_cache=True):
         _max_candidates = config.get("max_candidates_per_day", 0)  # 0=不限制
         _smart_money_clone = config.get("smart_money_clone", False)
 
+        # R33 预计算 clone 合格池：仅包含曾满足 WIDE 信号的基金 (~150只)
+        #   全量遍历 fund_charts (8000+) 每天评分会极慢 → 预筛一次信号文件即可
+        _sm_clone_pool = None
+        if _smart_money_clone:
+            _smcp = set()
+            _sigs_all = _load_sm_signals(config.get("signal_line", "amount"))
+            _p = config.get("sm_params") or {}
+            _cb_lo = _p.get("cb_lo", -15)
+            _cb_hi = _p.get("cb_hi", -2)
+            _tg_mid = _p.get("tg_mid", 2)
+            _nb_lo = _p.get("nb_lo", 3)
+            for _day_sig in _sigs_all.values():
+                for _c, _raw in _day_sig.items():
+                    if isinstance(_raw, dict):
+                        _cb_v = _raw.get("callback_pct", 0)
+                        _tg_v = _raw.get("topgain_hold", 0)
+                        _nb_v = _raw.get("net_buy", 0)
+                        if _cb_lo <= _cb_v <= _cb_hi and _tg_v >= _tg_mid and _nb_v >= _nb_lo:
+                            _smcp.add(_c)
+            _sm_clone_pool = _smcp
+
         # 第一遍：快速过滤（共识门槛+净信号），收集通过的候选
         _pre_filtered = []  # [(fn, signal, buy_count)]
-        # R33 smart_money_clone 模式：绕过 q/c/m 过滤，candidate 列表 = 全量基金
+        # R33 smart_money_clone 模式：绕过 q/c/m 过滤，candidate 列表 = 全部曾合格基金
         #   score_fund_backtest 中 clone=True 会给不合格基金打 0 分，合格基金打纯信号分
         if _smart_money_clone and not _lgb_block_buy and not _contrarian_skip:
-            for _code in fund_charts:
+            for _code in (_sm_clone_pool if _sm_clone_pool is not None else fund_charts):
                 _pre_filtered.append((_code, {"buy_count": 1}, 1))
         elif not _lgb_block_buy and not _contrarian_skip:  # LGB或contrarian阻断时不收集候选
             for fn, signal in fund_signals.items():
@@ -2436,7 +2457,10 @@ def run_backtest(config, clear_cache=True):
 
         for fn, signal, _bc in _pre_filtered:
             # 找基金代码（三步模糊匹配：精确→标准化→包含）
-            code = _resolve_fund_code(fn)
+            if _smart_money_clone:
+                code = fn  # clone pool 里已经是基金代码
+            else:
+                code = _resolve_fund_code(fn)
             if not code:
                 continue
 
