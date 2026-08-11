@@ -1,0 +1,20 @@
+{
+  "description": "R34 TAA 宽基配置候选池 — 含红利低波",
+  "assets": [
+    {"code": "050002", "name": "博时沪深300指数A",     "category": "A_share_large",  "currency": "CNY"},
+    {"code": "160119", "name": "南方中证500ETF联接A",  "category": "A_share_mid",    "currency": "CNY"},
+    {"code": "110026", "name": "易方达创业板ETF联接A", "category": "A_share_growth",  "currency": "CNY"},
+    {"code": "003646", "name": "创金合信中证1000增强A","category": "A_share_small",   "currency": "CNY"},
+    {"code": "100032", "name": "富国中证红利增强A",    "category": "A_share_dividend","currency": "CNY"},
+    {"code": "005561", "name": "创金合信中证红利低波A", "category": "A_share_lowvol",  "currency": "CNY"},
+    {"code": "270042", "name": "广发纳指100ETF链接A", "category": "US_equity",       "currency": "USD_CNY"},
+    {"code": "096001", "name": "大成标普500等权重",    "category": "US_equity",       "currency": "USD_CNY"},
+    {"code": "000071", "name": "华夏恒生ETF联接A",    "category": "HK_equity",       "currency": "HKD_CNY"},
+    {"code": "003376", "name": "广发中债7-10年国开债", "category": "CN_bond",        "currency": "CNY"},
+    {"code": "050011", "name": "博时信用债A",         "category": "CN_credit",       "currency": "CNY"},
+    {"code": "320013", "name": "诺安全球黄金FOF",     "category": "commodity",       "currency": "USD_CNY"},
+    {"code": "470014", "name": "汇添富理财14天债A",   "category": "cash",           "currency": "CNY"}
+  ],
+  "benchmark": "CSI300",
+  "benchmark_code": "000300"
+}
