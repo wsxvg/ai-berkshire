@@ -941,6 +941,8 @@ def score_fund_backtest(fund_code, fund_name, charts, perf_data, rules, mgr,
     _cached = _SCORE_CACHE.get(_cache_key)
     # R33 smart_money_clone 模式：跳过 q/c/m 并用信号分替代
     if smart_money_clone:
+        global _SMART_MONEY_MODIFIER
+        _SMART_MONEY_MODIFIER = 0.0  # reset to prevent residual from prior fund
         _sig = score_smart_money_backtest(fund_code, cutoff_date, trading_by_date, fund_code,
                     use_prebuilt_signal=True, as_modifier=True, consensus_layers=True,
                     signal_line=signal_line, sm_params=sm_params)
@@ -2379,8 +2381,9 @@ def run_backtest(config, clear_cache=True):
                 _contrarian_skip = True  # 市场没跌够，今天不会买入
 
         # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
-        _min_consensus = 1 if _smart_money_clone else config.get("min_consensus", 2)
-        if config.get("adaptive_consensus", False) and not _smart_money_clone:
+        _sm_clone_flag = config.get("smart_money_clone", False)
+        _min_consensus = 1 if _sm_clone_flag else config.get("min_consensus", 2)
+        if config.get("adaptive_consensus", False) and not _sm_clone_flag:
             # 近30日日均信号密度
             _recent_days = backtest_dates[max(0, idx-30):idx+1]
             _recent_signals = sum(len(trading_by_date.get(d, [])) for d in _recent_days)
