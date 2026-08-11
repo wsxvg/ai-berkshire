@@ -454,3 +454,51 @@ git push origin master
 - 工具: `tools/jd_finance_api.py`、`tools/authoritative_remap.py`
 - 数据: `data/chart_to_name.json`、`data/fund_name_map.json`、`data/jdcode_to_chart.json`
 - 引擎: `backtest/engine/backtest.py`（加载链已优先 v7）
+
+---
+
+## 九、R33 交接更新（2026-08-11 13:30 — smart_money_clone 证伪 + 5 引擎 bug 修复）
+
+### 🎯 一句话核心结论
+R24 找到 WIDE 修饰符 +0.86% alpha 后，R25-R33 连续 6 次尝试全部证伪。**结构性问题**：q/c/m 过滤器反向剔除回调中的基金 → 修饰器无法补救 → R33 直接绕过 q/c/m "克隆大佬持仓"也失败（avg +0.70% < BASELINE 3.271%，alpha -2.57%）。同时发现并修复了 5 个引擎 bug。
+
+### 当前最优策略（未被超越）
+| 候选 | avg_return | alpha | peak MaxDD |
+|---|---|---|---|
+| KC_AGGRESSIVE_BASELINE | **3.271%** | — | 15.63% |
+| KC_SMART_AMOUNT_WIDE (R24) | **4.130%** | **+0.859%** | 16.08% |
+
+### R25~R33 汇总
+| 轮次 | 方向 | 结果 | avg_return (alpha) |
+|---|---|---|---|
+| R25 | WIDE+动量过滤/行业轮动/多周期 | 全负 | 最高 +0.52% |
+| R26 | 净信号约束 / 非对称 boost | 全负 | 最高 +0.47% |
+| R27 | 动量门控 | 更差 | +0.05% |
+| R28 | 回调深度分层 | 更差 | +0.40% |
+| R29 | 回调波段(deep/shallow) | 更差 | +0.45% |
+| R30 | 降 nb_lo→1 (更多信号) | 更差 | +0.23% |
+| R31 | 独立维度 SM_IND40 | 不如修饰符 | +0.38% |
+| R32 | NARROW 窄持仓+共识门控 | 全崩 | NARROW4_GATE -1.48% |
+| **R33** | **smart_money_clone 绕过 q/c/m** | **证伪** | **+0.70% (α -2.57%)** |
+
+### R33 详情（关键发现）
+1. **结构性 bug**：q/c/m 分与 smart money 信号反向 → 回调时 q/c/m 分极低 → 修饰器无法救回
+2. **修复路径**：smart_money_clone 模式 → 候选=全量基金 → 纯信号评分 → top-N 买入
+3. **引擎 bug 修复 5 处**：
+   - `_min_consensus=1` in clone mode (commit f5d8a1f)
+   - `_smart_money_clone` UnboundLocalError — line 2382 uses var before line 2402 def
+   - `_SMART_MONEY_MODIFIER` 跨基金残留 (commit 070280c)
+   - `_resolve_fund_code()` 不识别代码，returns None (commit 0ac5e4a)
+   - 全量 fund_charts (8000+) 每日评分 → 改用预计算合格池 (~150) (commit 0ac5e4a)
+4. **结果**：22 窗中 3 零(无信号), 16 负 3 正；win_avg +21.3%, loss_avg -3.0%
+5. **根因**：smart money 回调抄底常继续回调 → crash 止损
+
+### 迭代停损协议执行
+- 当前：连续 9 轮 (R25-R33) alpha 为负（R24 之后）
+- **已达停损阈值边缘**（10 次连续无 alpha → 判定无 alpha 并停止）
+- **建议**：暂停独立大佬因子方向，改完全不同的 alpha 源（动量/质量/行业轮动独立优化）
+
+### 关键 commit（R33 相关）
+- `f5d8a1f` fix _min_consensus=1 in clone mode
+- `070280c` fix UnboundLocal + SM modifier reset
+- `0ac5e4a` fix _resolve_fund_code + pre-computed pool (FINAL working engine)
