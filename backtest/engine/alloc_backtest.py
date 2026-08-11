@@ -32,9 +32,14 @@ def load_navseries(universe_path='data/taa_universe.json',
         series = {}
         for p in pts:
             d = p['xAxis']
+            # JD chart API returns yAxis = cumulative % return since earliest data point
+            # (yAxis_t = (NAV_t / NAV_0 - 1) * 100). Convert back to normalized NAV
+            # (NAV_0 = 1.0) so downstream return math is correct.
+            # Filter only on truly invalid yAxis (NAV cannot be <= 0).
             v = float(p['yAxis'])
-            if v > 0:
-                series[d] = v
+            norm = 1.0 + v / 100.0
+            if norm > 0:
+                series[d] = norm
         if len(series) < 30:
             continue
         nav[code] = series
