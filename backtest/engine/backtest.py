@@ -2379,8 +2379,8 @@ def run_backtest(config, clear_cache=True):
                 _contrarian_skip = True  # 市场没跌够，今天不会买入
 
         # ── 自适应共识：稀疏期降门槛，密集期提门槛 ──
-        _min_consensus = config.get("min_consensus", 2)
-        if config.get("adaptive_consensus", False):
+        _min_consensus = 1 if _smart_money_clone else config.get("min_consensus", 2)
+        if config.get("adaptive_consensus", False) and not _smart_money_clone:
             # 近30日日均信号密度
             _recent_days = backtest_dates[max(0, idx-30):idx+1]
             _recent_signals = sum(len(trading_by_date.get(d, [])) for d in _recent_days)
